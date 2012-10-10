@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Markdown | Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.github.com/blog/categories/markdown/atom.xml" rel="self"/>
   <link href="http://hustcalm.github.com/"/>
-  <updated>2012-10-10T02:10:57+08:00</updated>
+  <updated>2012-10-10T12:43:00+08:00</updated>
   <id>http://hustcalm.github.com/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -25,6 +25,9 @@
 <p>Want to make something <strong>bold</strong>? Press <code>Ctrl + B</code>.</p>
 
 <p>How about <em>italic</em>? Press <code>Ctrl + I</code>.</p>
+
+<!--more-->
+
 
 <blockquote><p>Write a quote with <code>Ctrl + Q</code></p></blockquote>
 
