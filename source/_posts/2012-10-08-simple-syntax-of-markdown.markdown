@@ -13,7 +13,7 @@ categories: Markdown
 Want to make something **bold**? Press `Ctrl + B`.
 
 How about *italic*? Press `Ctrl + I`.
-
+<!--more-->
 > Write a quote with `Ctrl + Q`
 
 No matter what you're working on, you'll have quick access to Markdown syntax with handy keyboard shortcuts and toolbar buttons.
