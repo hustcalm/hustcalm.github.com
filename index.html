@@ -9,7 +9,7 @@
   <meta name="author" content="CALM">
 
   
-  <meta name="description" content="相比来说，name.com家的注册貌似比godaddy家的简单些，而且设置起来更适合于新手，具体请参考文章Name.com和Godaddy的一些区别。 今天发现一个比较郁闷的事情，本地rake preview没有问题，rake generate and rake deploy后却在hustcalm &hellip;">
+  <meta name="description" content="在Ubuntu的环境下重新搭建了Octopress的环境，其中包括重新设定ssh，安装rbenv以及ruby 1.9.3-p194，之后从github迁出Octopress的内容。下面简单说说主要过程。 我是直接把Cygwin下的ssh拷贝到了Ubuntu下，此时需要注意的是修改文件的属主， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/13/first-post-from-ubuntu-11-dot-04-and-greetings/">First Post From Ubuntu 11.04 and Greetings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-13T17:57:00+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/13/first-post-from-ubuntu-11-dot-04-and-greetings/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>  在Ubuntu的环境下重新搭建了Octopress的环境，其中包括重新设定ssh，安装rbenv以及ruby 1.9.3-p194，之后从github迁出Octopress的内容。下面简单说说主要过程。<br/>
+  我是直接把Cygwin下的ssh拷贝到了Ubuntu下，此时需要注意的是修改文件的属主，命令参考：</p>
+
+<pre><code>sudo chown -R group:user .ssh    
+</code></pre>
+
+<p>  之后安装rbenv和ruby，具体请参考<a href="dailyrb.org/gem/2012/07/20/rbenv-ruby-build.html">rbenv+ruby-build：轻松管理多个Ruby版本</a>   <br/>
+  然后开始迁出自己已有的Octopress，具体请参考<a href="www.360.com/content/12/0216/16/1016783_187128091.shtml">为已经存在的github Octopress配置本地环境</a>  <br/>
+  Done!:)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -261,7 +307,8 @@
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
-    
+    <a style="font-size: NaN%" href="//octopress/">Octopress</a>
+
   </ul>
 </section>
 <section>
@@ -269,6 +316,8 @@
   <ul id="categories">
     <li class='category'><a href='/blog/categories/markdown/'>Markdown (1)</a></li>
 <li class='category'><a href='/blog/categories/network/'>Network (1)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
+<li class='category'><a href='/blog/categories/ubuntu/'>Ubuntu (1)</a></li>
 <li class='category'><a href='/blog/categories/domain/'>domain (1)</a></li>
 <li class='category'><a href='/blog/categories/name-com/'>name.com (1)</a></li>
 
@@ -277,6 +326,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/13/first-post-from-ubuntu-11-dot-04-and-greetings/">First Post From Ubuntu 11.04 and Greetings</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me/">入手了name.com的域名hustcalm.me</a>
