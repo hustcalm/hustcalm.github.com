@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: Octopress - Welcome to Pandora's Box(Why)</title>
+  <title>Ubuntu下检出Cygwin搭建的Octopress遇到的问题 - Welcome to Pandora's Box(Why)</title>
   <meta name="author" content="CALM">
 
   
-  <meta name="description" content="Tag: Octopress">
+  <meta name="description" content="原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“deploy”对应的是remote_master branch即可。 而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hustcalm.github.comtags/octopress/">
+  <link rel="canonical" href="http://hustcalm.github.com/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -64,36 +64,101 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: Octopress</h1>
+    
+      <h1 class="entry-title">Ubuntu下检出Cygwin搭建的Octopress遇到的问题</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-13T19:37:00+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="tag">
 
 
-
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/blog/2012/10/13/first-post-from-ubuntu-11-dot-04-and-greetings/">First Post From Ubuntu 11.04 and Greetings</a></h1>
-<time datetime="2012-10-13T17:57:00+08:00" pubdate><span class='month'>Oct</span> <span class='day'>13</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/octopress/'>Octopress</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a></span>
-</footer>
-
-
-</article>
-
+<div class="entry-content"><p>原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“<em>deploy”对应的是remote_master branch即可。    <br/>
+而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。     <br/>
+可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。     <br/>
+而现在写文章先不管Octopress了，只管</em>deploy。    <br/>
+唉，郁闷:(。</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">CALM</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-13T19:37:00+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cygwin/'>Cygwin</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://hustcalm.github.com/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/" data-via="calm_calmer" data-counturl="http://hustcalm.github.com/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me/" title="Previous Post: 入手了name.com的域名hustcalm.me">&laquo; 入手了name.com的域名hustcalm.me</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -112,14 +177,15 @@
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
-    <a style="font-size: NaN%" href="//octopress/">Octopress</a>
+    <a style="font-size: NaN%" href="//cygwin/">Cygwin</a>
 
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/markdown/'>Markdown (1)</a></li>
+    <li class='category'><a href='/blog/categories/cygwin/'>Cygwin (1)</a></li>
+<li class='category'><a href='/blog/categories/markdown/'>Markdown (1)</a></li>
 <li class='category'><a href='/blog/categories/network/'>Network (1)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
 <li class='category'><a href='/blog/categories/ubuntu/'>Ubuntu (1)</a></li>
@@ -133,7 +199,7 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/10/13/first-post-from-ubuntu-11-dot-04-and-greetings/">First Post From Ubuntu 11.04 and Greetings</a>
+        <a href="/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/">Ubuntu下检出Cygwin搭建的Octopress遇到的问题</a>
       </li>
     
       <li class="post">
@@ -209,7 +275,10 @@
       var disqus_shortname = 'calmmagicblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.github.com/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/';
+        var disqus_url = 'http://hustcalm.github.com/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

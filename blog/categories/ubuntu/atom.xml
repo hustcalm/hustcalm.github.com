@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.github.com/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://hustcalm.github.com/"/>
-  <updated>2012-10-13T19:24:48+08:00</updated>
+  <updated>2012-10-13T19:52:22+08:00</updated>
   <id>http://hustcalm.github.com/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -14,19 +14,15 @@
 
   
   <entry>
-    <title type="html"><![CDATA[First Post From Ubuntu 11.04 and Greetings]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/13/first-post-from-ubuntu-11-dot-04-and-greetings/"/>
-    <updated>2012-10-13T17:57:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/13/first-post-from-ubuntu-11-dot-04-and-greetings</id>
-    <content type="html"><![CDATA[<p>  在Ubuntu的环境下重新搭建了Octopress的环境，其中包括重新设定ssh，安装rbenv以及ruby 1.9.3-p194，之后从github迁出Octopress的内容。下面简单说说主要过程。<br/>
-  我是直接把Cygwin下的ssh拷贝到了Ubuntu下，此时需要注意的是修改文件的属主，命令参考：</p>
-
-<pre><code>sudo chown -R group:user .ssh    
-</code></pre>
-
-<p>  之后安装rbenv和ruby，具体请参考<a href="dailyrb.org/gem/2012/07/20/rbenv-ruby-build.html">rbenv+ruby-build：轻松管理多个Ruby版本</a>   <br/>
-  然后开始迁出自己已有的Octopress，具体请参考<a href="www.360.com/content/12/0216/16/1016783_187128091.shtml">为已经存在的github Octopress配置本地环境</a>  <br/>
-  Done!:)</p>
+    <title type="html"><![CDATA[Ubuntu下检出Cygwin搭建的Octopress遇到的问题]]></title>
+    <link href="http://hustcalm.github.com/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/"/>
+    <updated>2012-10-13T19:37:00+08:00</updated>
+    <id>http://hustcalm.github.com/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti</id>
+    <content type="html"><![CDATA[<p>原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“<em>deploy”对应的是remote_master branch即可。    <br/>
+而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。     <br/>
+可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。     <br/>
+而现在写文章先不管Octopress了，只管</em>deploy。    <br/>
+唉，郁闷:(。</p>
 ]]></content>
   </entry>
   

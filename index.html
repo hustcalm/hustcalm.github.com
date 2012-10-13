@@ -9,7 +9,7 @@
   <meta name="author" content="CALM">
 
   
-  <meta name="description" content="在Ubuntu的环境下重新搭建了Octopress的环境，其中包括重新设定ssh，安装rbenv以及ruby 1.9.3-p194，之后从github迁出Octopress的内容。下面简单说说主要过程。 我是直接把Cygwin下的ssh拷贝到了Ubuntu下，此时需要注意的是修改文件的属主， &hellip;">
+  <meta name="description" content="原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“deploy”对应的是remote_master branch即可。 而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +71,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/10/13/first-post-from-ubuntu-11-dot-04-and-greetings/">First Post From Ubuntu 11.04 and Greetings</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/">Ubuntu下检出Cygwin搭建的Octopress遇到的问题</a></h1>
     
     
       <p class="meta">
@@ -87,24 +87,20 @@
   
 
 
-<time datetime="2012-10-13T17:57:00+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
+<time datetime="2012-10-13T19:37:00+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
         
-         | <a href="/blog/2012/10/13/first-post-from-ubuntu-11-dot-04-and-greetings/#disqus_thread">Comments</a>
+         | <a href="/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>  在Ubuntu的环境下重新搭建了Octopress的环境，其中包括重新设定ssh，安装rbenv以及ruby 1.9.3-p194，之后从github迁出Octopress的内容。下面简单说说主要过程。<br/>
-  我是直接把Cygwin下的ssh拷贝到了Ubuntu下，此时需要注意的是修改文件的属主，命令参考：</p>
-
-<pre><code>sudo chown -R group:user .ssh    
-</code></pre>
-
-<p>  之后安装rbenv和ruby，具体请参考<a href="dailyrb.org/gem/2012/07/20/rbenv-ruby-build.html">rbenv+ruby-build：轻松管理多个Ruby版本</a>   <br/>
-  然后开始迁出自己已有的Octopress，具体请参考<a href="www.360.com/content/12/0216/16/1016783_187128091.shtml">为已经存在的github Octopress配置本地环境</a>  <br/>
-  Done!:)</p>
+  <div class="entry-content"><p>原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“<em>deploy”对应的是remote_master branch即可。    <br/>
+而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。     <br/>
+可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。     <br/>
+而现在写文章先不管Octopress了，只管</em>deploy。    <br/>
+唉，郁闷:(。</p>
 </div>
   
   
@@ -307,14 +303,15 @@
 <section>
   <h1>Tags</h1>
   <ul class="tag-cloud">
-    <a style="font-size: NaN%" href="//octopress/">Octopress</a>
+    <a style="font-size: NaN%" href="//cygwin/">Cygwin</a>
 
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/markdown/'>Markdown (1)</a></li>
+    <li class='category'><a href='/blog/categories/cygwin/'>Cygwin (1)</a></li>
+<li class='category'><a href='/blog/categories/markdown/'>Markdown (1)</a></li>
 <li class='category'><a href='/blog/categories/network/'>Network (1)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
 <li class='category'><a href='/blog/categories/ubuntu/'>Ubuntu (1)</a></li>
@@ -328,7 +325,7 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/10/13/first-post-from-ubuntu-11-dot-04-and-greetings/">First Post From Ubuntu 11.04 and Greetings</a>
+        <a href="/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/">Ubuntu下检出Cygwin搭建的Octopress遇到的问题</a>
       </li>
     
       <li class="post">
