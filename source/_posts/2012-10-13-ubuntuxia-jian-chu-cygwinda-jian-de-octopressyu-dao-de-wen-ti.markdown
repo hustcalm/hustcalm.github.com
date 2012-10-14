@@ -4,7 +4,6 @@ title: "Ubuntu下检出Cygwin搭建的Octopress遇到的问题"
 date: 2012-10-13 19:37
 comments: true
 categories: Octopress Cygwin Ubuntu
-tags: Cygwin
 ---
 原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“_deploy”对应的是remote_master branch即可。		
 而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。		

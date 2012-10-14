@@ -4,7 +4,7 @@ title: "Successfully Compiled VLC 2.0.3 Under Ubuntu 11.04"
 date: 2012-10-13 22:18
 comments: true
 categories: VLC MediaPlayer 
-tags: VLC
+tags: [VLC]
 ---
 With Instructions On [UnixCompile](wiki.videolan.org/UnixCompile) and [User:J-b](wiki.videolan.org/User:J-b#VLC_configure_line), I compile VLC successfully on Ubuntu 11.04.
 
