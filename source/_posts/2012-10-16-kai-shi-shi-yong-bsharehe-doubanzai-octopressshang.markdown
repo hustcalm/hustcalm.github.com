@@ -3,7 +3,7 @@ layout: post
 title: "开始使用Bshare和Douban在Octopress上"
 date: 2012-10-16 01:24
 comments: true
-categories: Octopres 
+categories: Octopress 
 ---
 今天对自己的Octopress站点进行了一些小的更新，主要包括替换tag_cloud的显示为category_cloud，增加了Douban的侧边栏，增加了Bshare的文章分享。		
 其中category_cloud，自己目前使用：		
