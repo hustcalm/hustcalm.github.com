@@ -46,7 +46,7 @@ titlecase: true       # Converts page and post titles to titlecase
 # list each of the sidebar modules you want to include, in the order you want them to appear.
 # To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
 #default_asides: [asides/about.html, asides/recent_posts.html, asides/weibo.html, asides/github.html, asides/twitter.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
-default_asides: [asides/about.html, asides/kado.html, asides/tags.html, asides/category_list.html, asides/recent_posts.html, asides/weibo.html, asides/delicious.html, asides/douban.html, asides/pinboard.html]
+default_asides: [asides/about.html, asides/kado.html, custom/asides/category_cloud.html, asides/recent_posts.html, asides/weibo.html, asides/delicious.html, asides/douban.html, asides/pinboard.html]
 
 # Weibo  
 # Please refer to http://weibo.com/tool/weiboshow to get your uid and verifier.   
@@ -79,10 +79,10 @@ twitter_tweet_count: 4
 twitter_show_replies: false
 twitter_follow_button: true
 twitter_show_follower_count: false
-twitter_tweet_button: true
+twitter_tweet_button: false
 
 # Google +1
-google_plus_one: true
+google_plus_one: false 
 google_plus_one_size: medium
 
 # Google Plus Profile
@@ -106,7 +106,10 @@ disqus_show_comment_count: true
 google_analytics_tracking_id:
 
 # Facebook Like
-facebook_like: true
+facebook_like: false 
 
 #Douban
 douban_user: hustcalm
+
+#Bshare
+bshare: true
