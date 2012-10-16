@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Network - Welcome to Pandora's Box(Why)</title>
+  <title>Machine Learning工具包PMTK3的简单解析 - Welcome to Pandora's Box(Why)</title>
   <meta name="author" content="CALM">
 
   
-  <meta name="description" content="Category: Network">
+  <meta name="description" content="最近学习《机器学习》云里雾里的，很多时候不知道老师在说什么，参考书买的是Kevin P. Murphy的《Machine Learning:A Probabilistic Perspective》，一共上下两卷，打印版本的共50大洋。作者除了书之外，还在google &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hustcalm.github.comblog/categories/network/">
+  <link rel="canonical" href="http://hustcalm.github.com/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -64,36 +64,100 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Network</h1>
+    
+      <h1 class="entry-title">Machine Learning工具包PMTK3的简单解析</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-16T23:47:00+08:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
-
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/">Many thanks to CMCC &amp; CMCC-EDU</a></h1>
-<time datetime="2012-09-26T00:43:00+08:00" pubdate><span class='month'>Sep</span> <span class='day'>26</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/network/'>Network</a></span>
-</footer>
-
-
-</article>
-
+<div class="entry-content"><p>最近学习《机器学习》云里雾里的，很多时候不知道老师在说什么，参考书买的是Kevin P. Murphy的《Machine Learning:A Probabilistic Perspective》，一共上下两卷，打印版本的共50大洋。作者除了书之外，还在google code上维护了与书本同步的工具包代码和数据，叫做PMTK3，主页地址<a href="code.google.com/p/pmtk3">PMTK3 on Google Code</a>。
+具体的解释大家可以看Project Home的官方介绍，PMTK是<!--more-->一组Matlab/Octave的函数集合，主要由Matt Dunham，Kevin Murphy编写维护，blabla&#8230;作者把主项目，数据，以及额外的工具包支持分成了三个Project托管在Google Code上，其它两个是<a href="code.google.com/p/pmtkdata">PMTKData</a>以及<a href="code.google.com/p/pmtksupport">PMTKSupport</a>。  <br/>
+下载了PMTK后的第一步是运行initPmtk3，主要执行的是下载依赖的package from <code>pmtksupport.googlecode.com</code>到pmtk3/pmtksupportCopy目录。把所有的包下完并解压缩，其中下载用perl（如果有的话）或者urlwrite，解压用unzip。其实也可以实现离线安装，即提前下载好所有的package，人工复制到pmtksupportCopy目录即可。悲剧的是，官方并没有提供一个离线压缩包，google code上只提供了SVN检出，也罢，其实实质也是下载，这个时候可以直接把package检出到pmtksupportCopy目录，方便以后直接<code>svn update</code>，当然也可以checkout到其它目录，然后人工复制。      <br/>
+第二步是运行testPmtk3，主要执行了几个Demo，这个时候需要数据支持，因此脚本会触发网络链接去google code上下载数据包，同样的办法，我们也可以用SVN检出，拷贝过去即可。      <br/>
+最后，runDemos，官方说运行时间比较长，我觉得是因为下载数据包占用了大量时间，如果提前把数据准备好，放到相应的pmtkdataCopy目录，时间会缩短不少，我没有实际运行，估计也就十分钟左右吧，当然还要看你的电脑配置了。   <br/>
+PMTK3的整个工具包有很强的学习意义，Machine Learning自然不必多说，也是学习Matlab的好教材，自己研读作者的代码，可以发现代码的简洁和严谨。目前，这个项目还在维护中，而且作者在做Python的Port，希望之后自己能在这方面榜上点忙。    <br/>
+机器学习，模式识别，人工智能，数据挖掘。任重道远，路漫漫修远兮！</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">CALM</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-16T23:47:00+08:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/learning/'>Learning</a>, <a class='category' href='/blog/categories/machine/'>Machine</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+  <div class="bshare-custom icon-medium-plus"><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到Evernote" class="bshare-evernote" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span style="float: none;" class="BSHARE_COUNT bshare-share-count">7.72K</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license/" title="Previous Post: 为Octopress博客添加CreativeCommons License">&laquo; 为Octopress博客添加CreativeCommons License</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -214,7 +278,10 @@
       var disqus_shortname = 'hustcalm';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.github.com/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/';
+        var disqus_url = 'http://hustcalm.github.com/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
