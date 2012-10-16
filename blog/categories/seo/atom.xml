@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: SEO | Welcome to Pandora's Box(Why)]]></title>
+  <link href="http://hustcalm.github.com/blog/categories/seo/atom.xml" rel="self"/>
+  <link href="http://hustcalm.github.com/"/>
+  <updated>2012-10-16T12:07:05+08:00</updated>
+  <id>http://hustcalm.github.com/</id>
+  <author>
+    <name><![CDATA[CALM]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[为Octopress博客添加Flag Counter侧边栏]]></title>
+    <link href="http://hustcalm.github.com/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/"/>
+    <updated>2012-10-16T11:19:00+08:00</updated>
+    <id>http://hustcalm.github.com/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan</id>
+    <content type="html"><![CDATA[<p>今天为自己的Octopress博客添加了访问者统计工具，<a href="www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。      <br/>
+拿到了代码后，添加到侧边栏，在custom/asides添加flag_counter.html，然后在_config.yml中开启即可，其中flag_counter.html的格式如下：</p>
+
+<pre><code>      
+&lt;section&gt;       
+&lt;h1&gt;Flag Counter&lt;/h1&gt;       
+Code you get from [Flag Counter](www.flagcounter.com)       
+&lt;/section&gt;      
+ 
+</code></pre>
+
+<p>针对以上代码，还需要在_config.yml文件中添加一行：</p>
+
+<pre><code>flag_counter: true  
+</code></pre>
+
+<p>      <br/>
+为了在本博文中显示flag_counter.html的第一行和最后一行的开关语句，特意额外添加了一组<code>if Tag</code>，Markdown，囧～      <br/>
+因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon...解决方案参考了<a href="code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a>       <br/>
+<em>Enjoy your Flag Counter:)</em></p>
+]]></content>
+  </entry>
+  
+</feed>

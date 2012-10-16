@@ -37,8 +37,14 @@
         <lastmod>2012-10-16T01:44:15+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://hustcalm.github.com/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/
+        </loc>
+        <lastmod>2012-10-16T12:07:00+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://hustcalm.github.com/</loc>
-        <lastmod>2012-10-16T01:44:15+08:00</lastmod>
+        <lastmod>2012-10-16T12:07:00+08:00</lastmod>
     </url>
     <url>
         <loc>http://hustcalm.github.com/about/</loc>
@@ -46,6 +52,6 @@
     </url>
     <url>
         <loc>http://hustcalm.github.com/blog/archives/</loc>
-        <lastmod>2012-10-16T01:44:15+08:00</lastmod>
+        <lastmod>2012-10-16T12:07:00+08:00</lastmod>
     </url>
 </urlset>
