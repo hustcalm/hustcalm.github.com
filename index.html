@@ -9,7 +9,7 @@
   <meta name="author" content="CALM">
 
   
-  <meta name="description" content="最近学习《机器学习》云里雾里的，很多时候不知道老师在说什么，参考书买的是Kevin P. Murphy的《Machine Learning:A Probabilistic Perspective》，一共上下两卷，打印版本的共50大洋。作者除了书之外，还在google &hellip;">
+  <meta name="description" content="Obtain the toolchain I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,150 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/">Cross Complile VLC for Windows on Ubuntu How to and Trouble Shooting</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-19T11:53:00+08:00" pubdate data-updated="true">Oct 19<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Obtain the toolchain</h2>
+
+<p>I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly rely on official guide on <a href="http://www.wiki.videolan.org/Win32Compile">Win32Compile-VideoLANWiki</a>.      To get the toolchain, I just run <code>apt-get install gcc-mingw32 mingw32-binutils</code>.And also the development tools,run <code>apt-get install lua automake autoconf autopoint libtool make gettext pkg-config git subversion cmake cvs zip p7zip nsis bzip2</code>.   <br/>
+After that I got my Host triplet,<code>i586-mingw32msvc</code> for Windows 32-bits, using the Mingw32 toolchain.</p>
+
+<h2>Get the source code</h2>
+
+<p>If you want to use an official release, as I did, just run:</p>
+
+<pre><code>wget ftp://ftp.videolan.org/pub/videolan/vlc/2.0.3/vlc-2.0.3.tar.xz
+tar zxJf vlc-2.0.3.tar.xz
+cd vlc-2.0.3
+</code></pre>
+
+<p>If you are using the Git development version, you must do a bootstrap to generate the files for configuration and make:</p>
+
+<pre><code>git clone git://git.videolan.org/vlc.git
+cd vlc
+./bootstrap
+</code></pre>
+
+<h2>Prepare 3rd party libraries</h2>
+
+<p>I got the prebuilt libraries by running:</p>
+
+<pre><code>mkdir -p contrib/win32
+cd contrib/win32
+../bootstrap --host=i586-ming232msvc
+make prebuilt
+</code></pre>
+
+<p>the codes above will download the latest prebuilt libs on your disk and then install them automatically.  <br/>
+If you got a lot time to burn and enjoy compiling the contribs yourself,you may do this:</p>
+
+<pre><code>apt-get install subversion yasm cvs cmake
+makdir -p contrib/win32
+cd contrib/win32
+../bootstrap --host=i586-mingw32msvc
+make fetch
+make
+</code></pre>
+
+<h2>Go Back</h2>
+
+<pre><code>cd -
+</code></pre>
+
+<h2>Bootstrap</h2>
+
+<pre><code>./bootstrap
+</code></pre>
+
+<h2>Configure</h2>
+
+<pre><code>mkdir win32 &amp;&amp; cd win32
+../extras/package/win32/configure.sh --host=i586-mingw32msvc
+</code></pre>
+
+<p>you can get a lot of information with <code>../configure -- help | less</code>.</p>
+
+<h2>Building VLC</h2>
+
+<pre><code>make
+</code></pre>
+
+<h2>Packaging VLC</h2>
+
+<p>I just run</p>
+
+<pre><code>make package-win32
+</code></pre>
+
+<p>and got an auto-installer generated with NSIS and also a zip package and 7zip package.    <br/>
+If everything goes well,congratulations,you have got your own compiled VLC for windows,but always there will be some minor problems.The list below is what I got:</p>
+
+<ul>
+<li><p>liblibbluray_plugin.la No such file or directory</p></li>
+<li><p>dialos/preferences.hpp expected unqualified-id before &#8216;char&#8217;</p></li>
+<li><p>error:implicit declaration of av_free,av_malloc,av_realloc</p></li>
+<li><p>can&#8217;t find some language files *.nsh while making nsis installer</p></li>
+</ul>
+
+
+<h2>Trouble Shooting</h2>
+
+<h3>liblibbluray_plugin.la</h3>
+
+<p>To be honest, I just avoid this by losing my VLC playing bluray discs with &#8211;disable-bluray passing to configure.</p>
+
+<h3>qt compiling about expected unqualified-id before &#8216;char&#8217;</h3>
+
+<pre><code>In file included from dialogs_provider.cpp:42:0:
+dialogs/preferences.hpp: At global scope:
+dialogs/preferences.hpp:72:19: error: expected unqualified-id before 'char'
+dialogs/preferences.hpp:72:18: error: expected ';' at end of member declaration
+dialogs/preferences.hpp:72:24: error: expected unqualified-id before ',' token
+I solved this problem by referencing this [link](http://forum.videolan.org/view&gt;topic.php?f=14&amp;t=102257).
+</code></pre>
+
+<h3>error: implicit declaration of av_free,av_malloc,av_realloc</h3>
+
+<p>I simply browse avcodec.c and add declarations to avcodec.h by referencing this <a href="http://ffmpeg.org/doxygen/trunk/mem_8c.html">link</a>.</p>
+
+<h3>no such language file *.nsh</h3>
+
+<p>Just read extras/package/win32/vlc.win32.nsi and delete the lines about languages,then you can successfully make the nsis work but if you want your VLC playing with locales perfectly, you&#8217;d better add the languages mannually. <br/>
+<strong>The End.Feel free to contact me if you got any problem about compiling:)</strong></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -252,48 +396,6 @@ Done.:)</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/">Successfully Compiled VLC 2.0.3 Under Ubuntu 11.04</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-13T22:18:00+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>With Instructions On <a href="wiki.videolan.org/UnixCompile">UnixCompile</a> and <a href="wiki.videolan.org/User:J-b#VLC_configure_line">User:J-b</a>, I compile VLC successfully on Ubuntu 11.04.</p>
-
-<p>But trouble is there are some libraries missiing or version too old, and can&#8217;t figure it out too clear now. Also after make complete,Got an error&#8221;No Plugins found! Check your VLC installation&#8221; when attempt to run vlc with in bin, but runs fine with ./vlc-static.</p>
-
-<p>Anyway it is a good start to dig into VLC further:)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -316,11 +418,15 @@ Done.:)</p>
 <iframe frameborder="0" scrolling="no" src="http://kado.im/widget/5075993fabaa3/default.html" style="width: 100%; height: 67px; margin-bottom: 15px;" id="kadoWidgetFrame"></iframe>
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/cygwin' style='font-size: 115.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 115.0%'>domain(1)</a> <a href='/blog/categories/learning' style='font-size: 115.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 115.0%'>License(1)</a> <a href='/blog/categories/machine' style='font-size: 115.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 115.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 115.0%'>MediaPlayer(1)</a> <a href='/blog/categories/name-com' style='font-size: 115.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 115.0%'>Network(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(4)</a> <a href='/blog/categories/seo' style='font-size: 115.0%'>SEO(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 115.0%'>Ubuntu(1)</a> <a href='/blog/categories/vlc' style='font-size: 115.0%'>VLC(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/cygwin' style='font-size: 115.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 115.0%'>domain(1)</a> <a href='/blog/categories/learning' style='font-size: 115.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 115.0%'>License(1)</a> <a href='/blog/categories/machine' style='font-size: 115.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 115.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 115.0%'>MediaPlayer(1)</a> <a href='/blog/categories/name-com' style='font-size: 115.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 115.0%'>Network(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(4)</a> <a href='/blog/categories/seo' style='font-size: 115.0%'>SEO(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 115.0%'>Ubuntu(1)</a> <a href='/blog/categories/vlc' style='font-size: 130.0%'>VLC(2)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/">Cross Complile VLC for Windows On Ubuntu How To and Trouble Shooting </a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/">Machine Learning工具包PMTK3的简单解析</a>
@@ -336,10 +442,6 @@ Done.:)</p>
     
       <li class="post">
         <a href="/blog/2012/10/16/kai-shi-shi-yong-bsharehe-doubanzai-octopressshang/">开始使用Bshare和Douban在Octopress上</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/">Successfully Compiled VLC 2.0.3 Under Ubuntu 11.04</a>
       </li>
     
   </ul>
