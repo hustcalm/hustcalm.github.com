@@ -6,7 +6,7 @@ comments: true
 categories: VLC 
 ---
 ## Obtain the toolchain ##
-I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly rely on official guide on [Win32Compile-VideoLANWiki](http://www.wiki.videolan.org/Win32Compile).		To get the toolchain, I just run `apt-get install gcc-mingw32 mingw32-binutils`.And also the development tools,run `apt-get install lua automake autoconf autopoint libtool make gettext pkg-config git subversion cmake cvs zip p7zip nsis bzip2`.		
+I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly rely on official guide on [Win32Compile-VideoLANWiki](http://www.wiki.videolan.org/Win32Compile).		To get the toolchain, I just run `apt-get install gcc-mingw32 mingw32-binutils`.And also the development tools,run `apt-get install lua automake autoconf autopoint libtool make gettext pkg-config git subversion cmake cvs zip p7zip nsis bzip2`.		<!--more-->	
 After that I got my Host triplet,`i586-mingw32msvc` for Windows 32-bits, using the Mingw32 toolchain.
 ## Get the source code ##
 If you want to use an official release, as I did, just run:
