@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VIM | Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.github.com/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://hustcalm.github.com/"/>
-  <updated>2012-10-20T17:01:15+08:00</updated>
+  <updated>2012-10-20T17:18:24+08:00</updated>
   <id>http://hustcalm.github.com/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[github上的终级vimrc]]></title>
+    <link href="http://hustcalm.github.com/blog/2012/10/20/githubshang-de-zhong-ji-vimrc/"/>
+    <updated>2012-10-20T17:07:00+08:00</updated>
+    <id>http://hustcalm.github.com/blog/2012/10/20/githubshang-de-zhong-ji-vimrc</id>
+    <content type="html"><![CDATA[<p>相比于上面的<a href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">文章</a>,这个方案合适懒人，只需要clone作者的repo然后install即可，方便但是减少了DIY的乐趣。作者amix也是.vim_runtime的作者，方便起见，我fork了<a href="https://github.com/amix/vimrc">amix/vimrc</a>，以后就可以在此基础上打造自己的.vim_runtime了～</p>
+
+<p>具体如何使用，请直接访问我的repo<a href="https://github.com/hustcalm/vimrc">hustcalm/vimrc</a>.<br/>
+Enjoy your Ultimate vimrc:)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用git和github来管理vim配置和插件]]></title>
