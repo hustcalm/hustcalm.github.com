@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Cross Complile VLC for Windows On Ubuntu How To and Trouble Shooting  - Welcome to Pandora's Box(Why)</title>
+  <title>使用git和github来管理vim配置和插件 - Welcome to Pandora's Box(Why)</title>
   <meta name="author" content="CALM">
 
   
-  <meta name="description" content="Obtain the toolchain I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly &hellip;">
+  <meta name="description" content="现在越来越觉得自己离不开Linux了，也越来越离不开VIM了，虽然一直有想学习下Emacs的心思，不过学习曲线太陡峭了，准备细水常流了～之前在windows下使用cygwin，配置VIM用的是.vim_runtime，作者是用svn管理的。今天再去看，发现作者也把自己的. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hustcalm.github.com/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/">
+  <link rel="canonical" href="http://hustcalm.github.com/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Cross Complile VLC for Windows on Ubuntu How to and Trouble Shooting</h1>
+      <h1 class="entry-title">使用git和github来管理vim配置和插件</h1>
     
     
       <p class="meta">
@@ -84,7 +84,7 @@
   
 
 
-<time datetime="2012-10-19T11:53:00+08:00" pubdate data-updated="true">Oct 19<span>th</span>, 2012</time>
+<time datetime="2012-10-20T16:29:00+08:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -93,113 +93,94 @@
   </header>
 
 
-<div class="entry-content"><h2>Obtain the toolchain</h2>
-
-<p>I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly rely on official guide on <a href="http://www.wiki.videolan.org/Win32Compile">Win32Compile-VideoLANWiki</a>.      To get the toolchain, I just run <code>apt-get install gcc-mingw32 mingw32-binutils</code>.And also the development tools,run <code>apt-get install lua automake autoconf autopoint libtool make gettext pkg-config git subversion cmake cvs zip p7zip nsis bzip2</code>.     <!--more-->
-After that I got my Host triplet,<code>i586-mingw32msvc</code> for Windows 32-bits, using the Mingw32 toolchain.</p>
-
-<h2>Get the source code</h2>
-
-<p>If you want to use an official release, as I did, just run:</p>
-
-<pre><code>wget ftp://ftp.videolan.org/pub/videolan/vlc/2.0.3/vlc-2.0.3.tar.xz
-tar zxJf vlc-2.0.3.tar.xz
-cd vlc-2.0.3
-</code></pre>
-
-<p>If you are using the Git development version, you must do a bootstrap to generate the files for configuration and make:</p>
-
-<pre><code>git clone git://git.videolan.org/vlc.git
-cd vlc
-./bootstrap
-</code></pre>
-
-<h2>Prepare 3rd party libraries</h2>
-
-<p>I got the prebuilt libraries by running:</p>
-
-<pre><code>mkdir -p contrib/win32
-cd contrib/win32
-../bootstrap --host=i586-ming232msvc
-make prebuilt
-</code></pre>
-
-<p>the codes above will download the latest prebuilt libs on your disk and then install them automatically.  <br/>
-If you got a lot time to burn and enjoy compiling the contribs yourself,you may do this:</p>
-
-<pre><code>apt-get install subversion yasm cvs cmake
-makdir -p contrib/win32
-cd contrib/win32
-../bootstrap --host=i586-mingw32msvc
-make fetch
-make
-</code></pre>
-
-<h2>Go Back</h2>
-
-<pre><code>cd -
-</code></pre>
-
-<h2>Bootstrap</h2>
-
-<pre><code>./bootstrap
-</code></pre>
-
-<h2>Configure</h2>
-
-<pre><code>mkdir win32 &amp;&amp; cd win32
-../extras/package/win32/configure.sh --host=i586-mingw32msvc
-</code></pre>
-
-<p>you can get a lot of information with <code>../configure -- help | less</code>.</p>
-
-<h2>Building VLC</h2>
-
-<pre><code>make
-</code></pre>
-
-<h2>Packaging VLC</h2>
-
-<p>I just run</p>
-
-<pre><code>make package-win32
-</code></pre>
-
-<p>and got an auto-installer generated with NSIS and also a zip package and 7zip package.    <br/>
-If everything goes well,congratulations,you have got your own compiled VLC for windows,but always there will be some minor problems.The list below is what I got:</p>
+<div class="entry-content"><p>现在越来越觉得自己离不开Linux了，也越来越离不开VIM了，虽然一直有想学习下Emacs的心思，不过学习曲线太陡峭了，准备细水常流了～之前在windows下使用cygwin，配置VIM用的是<code>.vim_runtime</code>，作者是用svn管理的。今天再去看，发现作者也把自己的.vimrc以及整个配置都迁移到了github上，因此参考了<a href="http://blog.pkufranky.com/2011/11/%E4%BD%BF%E7%94%A8git%E5%92%8Cgithub%E6%9D%A5%E7%AE%A1%E7%90%86vim%E9%85%8D%E7%BD%AE%E5%92%8C%E6%8F%92%E4%BB%B6">这篇文章</a>。请作者原谅我使用了一样的题目～  <br/>
+文章的目标为：</p>
 
 <ul>
-<li><p>liblibbluray_plugin.la No such file or directory</p></li>
-<li><p>dialos/preferences.hpp expected unqualified-id before &#8216;char&#8217;</p></li>
-<li><p>error:implicit declaration of av_free,av_malloc,av_realloc</p></li>
-<li><p>can&#8217;t find some language files *.nsh while making nsis installer</p></li>
+<li><p>将vim的配置文件使用git管理，并托管到github上</p></li>
+<li><p>通过github来安装和更新vim plugin</p></li>
 </ul>
 
 
-<h2>Trouble Shooting</h2>
+<!--more-->
 
-<h3>liblibbluray_plugin.la</h3>
 
-<p>To be honest, I just avoid this by losing my VLC playing bluray discs with &#8211;disable-bluray passing to configure.</p>
+<h2>使用git管理vim配置文件并托管到github上</h2>
 
-<h3>qt compiling about expected unqualified-id before &#8216;char&#8217;</h3>
+<h3>安装git</h3>
 
-<pre><code>In file included from dialogs_provider.cpp:42:0:
-dialogs/preferences.hpp: At global scope:
-dialogs/preferences.hpp:72:19: error: expected unqualified-id before 'char'
-dialogs/preferences.hpp:72:18: error: expected ';' at end of member declaration
-dialogs/preferences.hpp:72:24: error: expected unqualified-id before ',' token
-I solved this problem by referencing this [link](http://forum.videolan.org/view&gt;topic.php?f=14&amp;t=102257).
+<pre><code>sudo apt-get install git-core
 </code></pre>
 
-<h3>error: implicit declaration of av_free,av_malloc,av_realloc</h3>
+<h3>安装git-subtree</h3>
 
-<p>I simply browse avcodec.c and add declarations to avcodec.h by referencing this <a href="http://ffmpeg.org/doxygen/trunk/mem_8c.html">link</a>.</p>
+<pre><code>cd
+mkdir github &amp;&amp; cd github
+git clone git://github.com/apenwarr/git-subtree.git
+cd git-subtree
+sudo sh install.sh
+</code></pre>
 
-<h3>no such language file *.nsh</h3>
+<h3>使用git管理.vim目录</h3>
 
-<p>Just read extras/package/win32/vlc.win32.nsi and delete the lines about languages,then you can successfully make the nsis work but if you want your VLC playing with locales perfectly, you&#8217;d better add the languages mannually. <br/>
-<strong>The End.Feel free to contact me if you got any problem about compiling:)</strong></p>
+<pre><code>cd
+mkdir .vim
+git init
+touch README
+git add .
+git commit -a -m 'Initial commit of .vim configuration'
+touch vimrc
+git add .
+git commit -a -m 'add vimrc'
+git remote add 'your repo at github that you created for vim conf'
+git push
+</code></pre>
+
+<h3>使vimrc配置生效</h3>
+
+<pre><code>ln -s .vim/vimrc .vimrc
+</code></pre>
+
+<h2>从github安装和更新vim plugin</h2>
+
+<h3>bootstrap：安装vim-pathogen</h3>
+
+<p>vim-pathogen可以使得每个vim plugin单独放到bundle目录下，方便管理和更新。</p>
+
+<p>首次安装：</p>
+
+<pre><code>cd 
+cd .vim &amp;&amp; mkdir bundle
+git subtree add \
+    --prefix=bundle/vim-pathogen \
+    --squash \
+    https://github.com/tpope/vim-pathogen.git master
+</code></pre>
+
+<p>更新：</p>
+
+<pre><code>git subtree pull \
+    --prefix=bundle/vim-pathogen \
+    --squash \
+    https://github.com/tpope/vim-pathogen.git master
+</code></pre>
+
+<p>配置：</p>
+
+<pre><code>runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+</code></pre>
+
+<h3>从github安装其它plugin</h3>
+
+<p>过程类似安装vim-pathogen，也可以使用<a href="https://github.com/pkufranky/vimconf/blob/master/github-plugin-install.sh">pkufranky在github的脚本</a>来简化安装。<br/>
+比如安装或更新 <code>https://github.com/hallison/vim-markdow</code></p>
+
+<pre><code>sh github-plugin-install.sh hallison/vim-markdown
+</code></pre>
+
+<p>脚本会根据bundle下对应目录是否存在，决定是否安装或者跟新。  <br/>
+Done:)</p>
 </div>
 
 
@@ -222,12 +203,12 @@ I solved this problem by referencing this [link](http://forum.videolan.org/view&
   
 
 
-<time datetime="2012-10-19T11:53:00+08:00" pubdate data-updated="true">Oct 19<span>th</span>, 2012</time>
+<time datetime="2012-10-20T16:29:00+08:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/vlc/'>VLC</a>
+    <a class='category' href='/blog/categories/vim/'>VIM</a>
   
 </span>
 
@@ -246,10 +227,8 @@ I solved this problem by referencing this [link](http://forum.videolan.org/view&
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/" title="Previous Post: Machine Learning工具包PMTK3的简单解析">&laquo; Machine Learning工具包PMTK3的简单解析</a>
+        <a class="basic-alignment left" href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/" title="Previous Post: Cross Complile VLC for Windows On Ubuntu How To and Trouble Shooting ">&laquo; Cross Complile VLC for Windows On Ubuntu How To and Trouble Shooting </a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/" title="Next Post: 使用git和github来管理vim配置和插件">使用git和github来管理vim配置和插件 &raquo;</a>
       
     </p>
   </footer>
@@ -381,8 +360,8 @@ I solved this problem by referencing this [link](http://forum.videolan.org/view&
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://hustcalm.github.com/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/';
-        var disqus_url = 'http://hustcalm.github.com/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/';
+        var disqus_identifier = 'http://hustcalm.github.com/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/';
+        var disqus_url = 'http://hustcalm.github.com/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/';
         var disqus_script = 'embed.js';
       
     (function () {

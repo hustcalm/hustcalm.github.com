@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.github.com/atom.xml" rel="self"/>
   <link href="http://hustcalm.github.com/"/>
-  <updated>2012-10-19T12:51:50+08:00</updated>
+  <updated>2012-10-20T17:01:15+08:00</updated>
   <id>http://hustcalm.github.com/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -14,13 +14,109 @@
 
   
   <entry>
+    <title type="html"><![CDATA[使用git和github来管理vim配置和插件]]></title>
+    <link href="http://hustcalm.github.com/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/"/>
+    <updated>2012-10-20T16:29:00+08:00</updated>
+    <id>http://hustcalm.github.com/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian</id>
+    <content type="html"><![CDATA[<p>现在越来越觉得自己离不开Linux了，也越来越离不开VIM了，虽然一直有想学习下Emacs的心思，不过学习曲线太陡峭了，准备细水常流了～之前在windows下使用cygwin，配置VIM用的是<code>.vim_runtime</code>，作者是用svn管理的。今天再去看，发现作者也把自己的.vimrc以及整个配置都迁移到了github上，因此参考了<a href="http://blog.pkufranky.com/2011/11/%E4%BD%BF%E7%94%A8git%E5%92%8Cgithub%E6%9D%A5%E7%AE%A1%E7%90%86vim%E9%85%8D%E7%BD%AE%E5%92%8C%E6%8F%92%E4%BB%B6">这篇文章</a>。请作者原谅我使用了一样的题目～  <br/>
+文章的目标为：</p>
+
+<ul>
+<li><p>将vim的配置文件使用git管理，并托管到github上</p></li>
+<li><p>通过github来安装和更新vim plugin</p></li>
+</ul>
+
+
+<!--more-->
+
+
+<h2>使用git管理vim配置文件并托管到github上</h2>
+
+<h3>安装git</h3>
+
+<pre><code>sudo apt-get install git-core
+</code></pre>
+
+<h3>安装git-subtree</h3>
+
+<pre><code>cd
+mkdir github &amp;&amp; cd github
+git clone git://github.com/apenwarr/git-subtree.git
+cd git-subtree
+sudo sh install.sh
+</code></pre>
+
+<h3>使用git管理.vim目录</h3>
+
+<pre><code>cd
+mkdir .vim
+git init
+touch README
+git add .
+git commit -a -m 'Initial commit of .vim configuration'
+touch vimrc
+git add .
+git commit -a -m 'add vimrc'
+git remote add 'your repo at github that you created for vim conf'
+git push
+</code></pre>
+
+<h3>使vimrc配置生效</h3>
+
+<pre><code>ln -s .vim/vimrc .vimrc
+</code></pre>
+
+<h2>从github安装和更新vim plugin</h2>
+
+<h3>bootstrap：安装vim-pathogen</h3>
+
+<p>vim-pathogen可以使得每个vim plugin单独放到bundle目录下，方便管理和更新。</p>
+
+<p>首次安装：</p>
+
+<pre><code>cd 
+cd .vim &amp;&amp; mkdir bundle
+git subtree add \
+    --prefix=bundle/vim-pathogen \
+    --squash \
+    https://github.com/tpope/vim-pathogen.git master
+</code></pre>
+
+<p>更新：</p>
+
+<pre><code>git subtree pull \
+    --prefix=bundle/vim-pathogen \
+    --squash \
+    https://github.com/tpope/vim-pathogen.git master
+</code></pre>
+
+<p>配置：</p>
+
+<pre><code>runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+</code></pre>
+
+<h3>从github安装其它plugin</h3>
+
+<p>过程类似安装vim-pathogen，也可以使用<a href="https://github.com/pkufranky/vimconf/blob/master/github-plugin-install.sh">pkufranky在github的脚本</a>来简化安装。<br/>
+比如安装或更新 <code>https://github.com/hallison/vim-markdow</code></p>
+
+<pre><code>sh github-plugin-install.sh hallison/vim-markdown
+</code></pre>
+
+<p>脚本会根据bundle下对应目录是否存在，决定是否安装或者跟新。  <br/>
+Done:)</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Cross Complile VLC for Windows On Ubuntu How To and Trouble Shooting ]]></title>
     <link href="http://hustcalm.github.com/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/"/>
     <updated>2012-10-19T11:53:00+08:00</updated>
     <id>http://hustcalm.github.com/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting</id>
     <content type="html"><![CDATA[<h2>Obtain the toolchain</h2>
 
-<p>I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly rely on official guide on <a href="http://www.wiki.videolan.org/Win32Compile">Win32Compile-VideoLANWiki</a>.      To get the toolchain, I just run <code>apt-get install gcc-mingw32 mingw32-binutils</code>.And also the development tools,run <code>apt-get install lua automake autoconf autopoint libtool make gettext pkg-config git subversion cmake cvs zip p7zip nsis bzip2</code>.   <br/>
+<p>I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly rely on official guide on <a href="http://www.wiki.videolan.org/Win32Compile">Win32Compile-VideoLANWiki</a>.      To get the toolchain, I just run <code>apt-get install gcc-mingw32 mingw32-binutils</code>.And also the development tools,run <code>apt-get install lua automake autoconf autopoint libtool make gettext pkg-config git subversion cmake cvs zip p7zip nsis bzip2</code>.     <!--more-->
 After that I got my Host triplet,<code>i586-mingw32msvc</code> for Windows 32-bits, using the Mingw32 toolchain.</p>
 
 <h2>Get the source code</h2>
