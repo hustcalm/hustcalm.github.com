@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.github.com/atom.xml" rel="self"/>
   <link href="http://hustcalm.github.com/"/>
-  <updated>2012-10-20T17:18:24+08:00</updated>
+  <updated>2012-10-21T10:59:47+08:00</updated>
   <id>http://hustcalm.github.com/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu桌面管理器Unity快捷键大全]]></title>
+    <link href="http://hustcalm.github.com/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/"/>
+    <updated>2012-10-21T10:24:00+08:00</updated>
+    <id>http://hustcalm.github.com/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan</id>
+    <content type="html"><![CDATA[<p>在Windows下用惯了TotalCommander了，结合Windows本身的资源管理器，会使工作的效率有质的飞跃，如果要投个票，这个软件必须是Life Changing的:) 在Linux下的桌面管理器很多，重量级的经典的Gnome和KDE，以及很多轻量级的桌面管理器，Ubuntu开发团队为用户提供了他们自家的Unity，个人觉得还是非常好用的:) <br/>
+下面这篇文章来自<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">askubuntu</a>，这里除了一个比较全面的回答外，还有不少的cheatsheet提供下载，有png的，pdf的，还有源文件SVG的，如果喜欢，大家可以移步到<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">原文</a>。也可以通过本文下面部分的链接查看或者下载。    <!--more-->
+首先请阅读一下两个post，熟悉Unity的界面元素以及键盘上特殊快捷键的分布：</p>
+
+<ul>
+<li><ol>
+<li><a href="http://www.askubuntu.com/questions/10228/whats-the-right-terminology-for-unitys-ui-elements">Unity Terminology</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="http://www.askubuntu.com/questions/19558/what-are-the-meta-super-and-hyper-keys">什么是meta，super，hyper键</a>
+
+<h2>比较官方全面的回答</h2>
+
+<h3>键盘快捷键</h3>
+
+在12.04版本的Unity中，长按<code>Super</code>键，可以得到一个快捷键的列表提示。
+
+<h3>Launcher</h3>
+
+<p>blablabla&#8230;</p></li>
+</ol>
+</li>
+</ul>
+
+
+<h2>cheatsheet的链接</h2>
+
+<ul>
+<li><a href="http://i.stack.imgur.com/pf1y5.png">桌面墙纸上的快捷键列表</a>    <a href="http://ubuntuone.com/p/pBs">源文件</a></li>
+<li><a href="http://i.stack.imgur.com/ddQ7n.png">又一个桌面墙纸</a></li>
+<li><a href="http://clusterbleep.net/files/Ubuntu_11.04_Unity_Cheat_Sheet.odt">ODT版本的cheatsheet</a></li>
+<li><a href="http://clusterbleep.net/files/Ubuntu_11.04_Unity_Cheat_Sheet.pdf">PDF版本的cheatsheet</a></li>
+</ul>
+
+
+<p><strong>Enjoy your Unity:)</strong></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[github上的终级vimrc]]></title>
