@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.github.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://hustcalm.github.com/"/>
-  <updated>2012-10-23T18:50:46+08:00</updated>
+  <updated>2012-10-23T18:52:44+08:00</updated>
   <id>http://hustcalm.github.com/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -45,8 +45,12 @@ git config --global difftool.prompt false
 
 <h3>Alias设置别名</h3>
 
-<p>通过别名设置，提高操作效率。      <br/>
-分支切换</p>
+<p>通过别名设置，提高操作效率。</p>
+
+<!--more-->
+
+
+<p>分支切换</p>
 
 <pre><code>git config --global alias.br branch
 git br
