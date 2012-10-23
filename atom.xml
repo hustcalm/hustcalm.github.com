@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.github.com/atom.xml" rel="self"/>
   <link href="http://hustcalm.github.com/"/>
-  <updated>2012-10-21T10:59:47+08:00</updated>
+  <updated>2012-10-23T18:14:00+08:00</updated>
   <id>http://hustcalm.github.com/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[2012年亚太大学生机器人大赛CCTV视频汇总]]></title>
+    <link href="http://hustcalm.github.com/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/"/>
+    <updated>2012-10-23T17:55:00+08:00</updated>
+    <id>http://hustcalm.github.com/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong</id>
+    <content type="html"><![CDATA[<p>央视终于在CCTV7播出了2012年亚太大学生机器人大赛的国内选拔赛的视频以及国际赛视频，现在把视频链接整理如下，方便各位Roboconer以及热爱机器人的朋友查看。</p>
+
+<ul>
+<li><a href="http://tv.cntv.cn/video/C39764/20121015100904">《2012年亚太大学生机器人大赛国内选拔活动 初试锋芒》</a></li>
+<li><a href="http://tv.cntv.cn/video/C39764/20121016100798">《2012年亚太大学生机器人大赛国内选拔活动 独门秘笈》</a></li>
+<li><a href="http://tv.cntv.cn/video/C39764/20121017101086">《2012年亚太大学生机器人大赛国内选拔活动 侠路相逢》</a></li>
+<li><a href="http://tv.cntv.cn/video/C39764/20121018100886">《2012年亚太大学生机器人大赛国内选拔活动 出奇制胜》</a></li>
+<li><a href="http://tv.cntv.cn/video/C39764/20121019100811">《2012年亚太大学生机器人大赛国内选拔活动 巅峰对决》</a></li>
+<li><a href="http://tv.cntv.cn/video/C39764/20121020100533">《2012年亚太大学生机器人大赛国内选拔活动 智者无敌（香港总决赛）》</a></li>
+</ul>
+
+
+<p>Anyway,thx to CCTV!
+<strong>Hust Go and China Go!</strong></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ubuntu桌面管理器Unity快捷键大全]]></title>
