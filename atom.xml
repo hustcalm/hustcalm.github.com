@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.github.com/atom.xml" rel="self"/>
   <link href="http://hustcalm.github.com/"/>
-  <updated>2012-10-23T18:17:32+08:00</updated>
+  <updated>2012-10-23T18:50:46+08:00</updated>
   <id>http://hustcalm.github.com/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,97 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[git的global config和repo config]]></title>
+    <link href="http://hustcalm.github.com/blog/2012/10/23/gitde-globle-confighe-repo-config/"/>
+    <updated>2012-10-23T18:26:00+08:00</updated>
+    <id>http://hustcalm.github.com/blog/2012/10/23/gitde-globle-confighe-repo-config</id>
+    <content type="html"><![CDATA[<p>相比于CVS，SVN，现在越来越喜欢Git了，下面说说Git的全局配置，即global config以及代码库级别的配置，即repo config。</p>
+
+<h2>Global Config</h2>
+
+<p>git的全局配置，存储在$HOME/.gitconfig这个文件里面，对当前用户的所有git repo有效。</p>
+
+<h3>基本配置</h3>
+
+<pre><code>git config --global user.name yourname
+git config --global user.email youremail
+</code></pre>
+
+<h3>默认编辑器</h3>
+
+<pre><code>git config --global core.editor vim
+</code></pre>
+
+<h3>默认merge/diff工具</h3>
+
+<p>设置后需要通过difftool和mergetool启动。</p>
+
+<pre><code>git config --global diff.tool vimdiff
+git config --global difftool.prompt false
+</code></pre>
+
+<h3>Alias设置别名</h3>
+
+<p>通过别名设置，提高操作效率。      <br/>
+分支切换</p>
+
+<pre><code>git config --global alias.br branch
+git br
+</code></pre>
+
+<p>查看日志</p>
+
+<pre><code>git config --global alias.last log --pretty=oneline -1 HEAD
+git last
+</code></pre>
+
+<p>设置difftool</p>
+
+<pre><code>git config --global alias.df difftool
+git df
+</code></pre>
+
+<p>提交代码</p>
+
+<pre><code>git config --global alias.cm commit
+</code></pre>
+
+<p>查看版本库状态</p>
+
+<pre><code>git config --global alias.st status
+</code></pre>
+
+<p>查看远程版本库</p>
+
+<pre><code>git config --global alias.re remote
+</code></pre>
+
+<h2>Repo Config</h2>
+
+<p>repo级别的配置，存储在仓库目录的.git/config文件中，可以覆盖全局信息。如果用不同的用户名和邮箱参加不同的项目，这里设置即可，还包括
+不同项目git使用习惯的一些不同。
+配置命令如下：</p>
+
+<pre><code>git config user.name yournewname
+git config user.email yournewemail
+</code></pre>
+
+<p>git本身也会存储远程仓库以及分支列表等信息：</p>
+
+<pre><code>cat .git/config
+</code></pre>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="http://f2e.us/wiki/git-config.html#!/">Frank Xu</a></li>
+<li><a href="http://www.kernel.org/pub/software/scm/git/docs/git-config.html">git-config</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2012年亚太大学生机器人大赛CCTV视频汇总]]></title>

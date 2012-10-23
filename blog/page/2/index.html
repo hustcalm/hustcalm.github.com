@@ -9,7 +9,7 @@
   <meta name="author" content="CALM">
 
   
-  <meta name="description" content="最近学习《机器学习》云里雾里的，很多时候不知道老师在说什么，参考书买的是Kevin P. Murphy的《Machine Learning:A Probabilistic Perspective》，一共上下两卷，打印版本的共50大洋。作者除了书之外，还在google &hellip;">
+  <meta name="description" content="Obtain the toolchain I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/">Cross Complile VLC for Windows on Ubuntu How to and Trouble Shooting</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-19T11:53:00+08:00" pubdate data-updated="true">Oct 19<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Obtain the toolchain</h2>
+
+<p>I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly rely on official guide on <a href="http://www.wiki.videolan.org/Win32Compile">Win32Compile-VideoLANWiki</a>.      To get the toolchain, I just run <code>apt-get install gcc-mingw32 mingw32-binutils</code>.And also the development tools,run <code>apt-get install lua automake autoconf autopoint libtool make gettext pkg-config git subversion cmake cvs zip p7zip nsis bzip2</code>.     </div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -252,48 +295,6 @@ Done.:)</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/">Successfully Compiled VLC 2.0.3 Under Ubuntu 11.04</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-13T22:18:00+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>With Instructions On <a href="wiki.videolan.org/UnixCompile">UnixCompile</a> and <a href="wiki.videolan.org/User:J-b#VLC_configure_line">User:J-b</a>, I compile VLC successfully on Ubuntu 11.04.</p>
-
-<p>But trouble is there are some libraries missiing or version too old, and can&#8217;t figure it out too clear now. Also after make complete,Got an error&#8221;No Plugins found! Check your VLC installation&#8221; when attempt to run vlc with in bin, but runs fine with ./vlc-static.</p>
-
-<p>Anyway it is a good start to dig into VLC further:)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -318,11 +319,15 @@ Done.:)</p>
 <iframe frameborder="0" scrolling="no" src="http://kado.im/widget/5075993fabaa3/default.html" style="width: 100%; height: 67px; margin-bottom: 15px;" id="kadoWidgetFrame"></iframe>
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/cygwin' style='font-size: 115.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 115.0%'>domain(1)</a> <a href='/blog/categories/learning' style='font-size: 115.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 115.0%'>License(1)</a> <a href='/blog/categories/machine' style='font-size: 115.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 115.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 115.0%'>MediaPlayer(1)</a> <a href='/blog/categories/name-com' style='font-size: 115.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 115.0%'>Network(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(4)</a> <a href='/blog/categories/robot' style='font-size: 115.0%'>Robot(1)</a> <a href='/blog/categories/seo' style='font-size: 115.0%'>SEO(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 130.0%'>Ubuntu(2)</a> <a href='/blog/categories/vim' style='font-size: 130.0%'>VIM(2)</a> <a href='/blog/categories/vlc' style='font-size: 130.0%'>VLC(2)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/cygwin' style='font-size: 115.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 115.0%'>domain(1)</a> <a href='/blog/categories/git' style='font-size: 115.0%'>Git(1)</a> <a href='/blog/categories/learning' style='font-size: 115.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 115.0%'>License(1)</a> <a href='/blog/categories/machine' style='font-size: 115.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 115.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 115.0%'>MediaPlayer(1)</a> <a href='/blog/categories/name-com' style='font-size: 115.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 115.0%'>Network(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(4)</a> <a href='/blog/categories/robot' style='font-size: 115.0%'>Robot(1)</a> <a href='/blog/categories/seo' style='font-size: 115.0%'>SEO(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 130.0%'>Ubuntu(2)</a> <a href='/blog/categories/vim' style='font-size: 130.0%'>VIM(2)</a> <a href='/blog/categories/vlc' style='font-size: 130.0%'>VLC(2)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/23/gitde-globle-confighe-repo-config/">git的global config和repo config</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/">2012年亚太大学生机器人大赛CCTV视频汇总</a>
@@ -338,10 +343,6 @@ Done.:)</p>
     
       <li class="post">
         <a href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">使用git和github来管理vim配置和插件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/">Cross Complile VLC for Windows On Ubuntu How To and Trouble Shooting </a>
       </li>
     
   </ul>
