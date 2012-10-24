@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: SEO | Welcome to Pandora's Box(Why)]]></title>
-  <link href="http://hustcalm.github.com/blog/categories/seo/atom.xml" rel="self"/>
-  <link href="http://hustcalm.github.com/"/>
-  <updated>2012-10-23T18:52:44+08:00</updated>
-  <id>http://hustcalm.github.com/</id>
+  <link href="http://hustcalm.me/blog/categories/seo/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2012-10-24T18:18:03+08:00</updated>
+  <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[为Octopress博客添加Flag Counter侧边栏]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/"/>
+    <link href="http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/"/>
     <updated>2012-10-16T11:19:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan</id>
+    <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan</id>
     <content type="html"><![CDATA[<p>今天为自己的Octopress博客添加了访问者统计工具，<a href="www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。      <br/>
 拿到了代码后，添加到侧边栏，在custom/asides添加flag_counter.html，然后在_config.yml中开启即可，其中flag_counter.html的格式如下：</p>
 

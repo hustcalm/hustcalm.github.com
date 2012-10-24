@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
-  <link href="http://hustcalm.github.com/atom.xml" rel="self"/>
-  <link href="http://hustcalm.github.com/"/>
-  <updated>2012-10-23T18:52:44+08:00</updated>
-  <id>http://hustcalm.github.com/</id>
+  <link href="http://hustcalm.me/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2012-10-24T18:18:03+08:00</updated>
+  <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[git的global config和repo config]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/23/gitde-globle-confighe-repo-config/"/>
+    <link href="http://hustcalm.me/blog/2012/10/23/gitde-globle-confighe-repo-config/"/>
     <updated>2012-10-23T18:26:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/23/gitde-globle-confighe-repo-config</id>
+    <id>http://hustcalm.me/blog/2012/10/23/gitde-globle-confighe-repo-config</id>
     <content type="html"><![CDATA[<p>相比于CVS，SVN，现在越来越喜欢Git了，下面说说Git的全局配置，即global config以及代码库级别的配置，即repo config。</p>
 
 <h2>Global Config</h2>
@@ -110,9 +110,9 @@ git config user.email yournewemail
   
   <entry>
     <title type="html"><![CDATA[2012年亚太大学生机器人大赛CCTV视频汇总]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/"/>
+    <link href="http://hustcalm.me/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/"/>
     <updated>2012-10-23T17:55:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong</id>
+    <id>http://hustcalm.me/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong</id>
     <content type="html"><![CDATA[<p>央视终于在CCTV7播出了2012年亚太大学生机器人大赛的国内选拔赛的视频以及国际赛视频，现在把视频链接整理如下，方便各位Roboconer以及热爱机器人的朋友查看。</p>
 
 <ul>
@@ -133,9 +133,9 @@ git config user.email yournewemail
   
   <entry>
     <title type="html"><![CDATA[Ubuntu桌面管理器Unity快捷键大全]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/"/>
+    <link href="http://hustcalm.me/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/"/>
     <updated>2012-10-21T10:24:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan</id>
+    <id>http://hustcalm.me/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan</id>
     <content type="html"><![CDATA[<p>在Windows下用惯了TotalCommander了，结合Windows本身的资源管理器，会使工作的效率有质的飞跃，如果要投个票，这个软件必须是Life Changing的:) 在Linux下的桌面管理器很多，重量级的经典的Gnome和KDE，以及很多轻量级的桌面管理器，Ubuntu开发团队为用户提供了他们自家的Unity，个人觉得还是非常好用的:) <br/>
 下面这篇文章来自<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">askubuntu</a>，这里除了一个比较全面的回答外，还有不少的cheatsheet提供下载，有png的，pdf的，还有源文件SVG的，如果喜欢，大家可以移步到<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">原文</a>。也可以通过本文下面部分的链接查看或者下载。    <!--more-->
 首先请阅读一下两个post，熟悉Unity的界面元素以及键盘上特殊快捷键的分布：</p>
@@ -178,10 +178,10 @@ git config user.email yournewemail
   
   <entry>
     <title type="html"><![CDATA[github上的终级vimrc]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/20/githubshang-de-zhong-ji-vimrc/"/>
+    <link href="http://hustcalm.me/blog/2012/10/20/githubshang-de-zhong-ji-vimrc/"/>
     <updated>2012-10-20T17:07:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/20/githubshang-de-zhong-ji-vimrc</id>
-    <content type="html"><![CDATA[<p>相比于上面的<a href="http://hustcalm.github.com/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">文章</a>,这个方案合适懒人，只需要clone作者的repo然后install即可，方便但是减少了DIY的乐趣。作者amix也是.vim_runtime的作者，方便起见，我fork了<a href="https://github.com/amix/vimrc">amix/vimrc</a>，以后就可以在此基础上打造自己的.vim_runtime了～</p>
+    <id>http://hustcalm.me/blog/2012/10/20/githubshang-de-zhong-ji-vimrc</id>
+    <content type="html"><![CDATA[<p>相比于上面的<a href="http://hustcalm.me/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">文章</a>,这个方案合适懒人，只需要clone作者的repo然后install即可，方便但是减少了DIY的乐趣。作者amix也是.vim_runtime的作者，方便起见，我fork了<a href="https://github.com/amix/vimrc">amix/vimrc</a>，以后就可以在此基础上打造自己的.vim_runtime了～</p>
 
 <p>具体如何使用，请直接访问我的repo<a href="https://github.com/hustcalm/vimrc">hustcalm/vimrc</a>.<br/>
 Enjoy your Ultimate vimrc:)</p>
@@ -190,9 +190,9 @@ Enjoy your Ultimate vimrc:)</p>
   
   <entry>
     <title type="html"><![CDATA[使用git和github来管理vim配置和插件]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/"/>
+    <link href="http://hustcalm.me/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/"/>
     <updated>2012-10-20T16:29:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian</id>
+    <id>http://hustcalm.me/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian</id>
     <content type="html"><![CDATA[<p>现在越来越觉得自己离不开Linux了，也越来越离不开VIM了，虽然一直有想学习下Emacs的心思，不过学习曲线太陡峭了，准备细水常流了～之前在windows下使用cygwin，配置VIM用的是<code>.vim_runtime</code>，作者是用svn管理的。今天再去看，发现作者也把自己的.vimrc以及整个配置都迁移到了github上，因此参考了<a href="http://blog.pkufranky.com/2011/11/%E4%BD%BF%E7%94%A8git%E5%92%8Cgithub%E6%9D%A5%E7%AE%A1%E7%90%86vim%E9%85%8D%E7%BD%AE%E5%92%8C%E6%8F%92%E4%BB%B6">这篇文章</a>。请作者原谅我使用了一样的题目～  <br/>
 文章的目标为：</p>
 
@@ -286,9 +286,9 @@ Done:)</p>
   
   <entry>
     <title type="html"><![CDATA[Cross Complile VLC for Windows On Ubuntu How To and Trouble Shooting ]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/"/>
+    <link href="http://hustcalm.me/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/"/>
     <updated>2012-10-19T11:53:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting</id>
+    <id>http://hustcalm.me/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting</id>
     <content type="html"><![CDATA[<h2>Obtain the toolchain</h2>
 
 <p>I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly rely on official guide on <a href="http://www.wiki.videolan.org/Win32Compile">Win32Compile-VideoLANWiki</a>.      To get the toolchain, I just run <code>apt-get install gcc-mingw32 mingw32-binutils</code>.And also the development tools,run <code>apt-get install lua automake autoconf autopoint libtool make gettext pkg-config git subversion cmake cvs zip p7zip nsis bzip2</code>.     <!--more-->
@@ -401,9 +401,9 @@ I solved this problem by referencing this [link](http://forum.videolan.org/view&
   
   <entry>
     <title type="html"><![CDATA[Machine Learning工具包PMTK3的简单解析]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/"/>
+    <link href="http://hustcalm.me/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/"/>
     <updated>2012-10-16T23:47:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi</id>
+    <id>http://hustcalm.me/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi</id>
     <content type="html"><![CDATA[<p>最近学习《机器学习》云里雾里的，很多时候不知道老师在说什么，参考书买的是Kevin P. Murphy的《Machine Learning:A Probabilistic Perspective》，一共上下两卷，打印版本的共50大洋。作者除了书之外，还在google code上维护了与书本同步的工具包代码和数据，叫做PMTK3，主页地址<a href="code.google.com/p/pmtk3">PMTK3 on Google Code</a>。
 具体的解释大家可以看Project Home的官方介绍，PMTK是<!--more-->一组Matlab/Octave的函数集合，主要由Matt Dunham，Kevin Murphy编写维护，blabla&#8230;作者把主项目，数据，以及额外的工具包支持分成了三个Project托管在Google Code上，其它两个是<a href="code.google.com/p/pmtkdata">PMTKData</a>以及<a href="code.google.com/p/pmtksupport">PMTKSupport</a>。  <br/>
 下载了PMTK后的第一步是运行initPmtk3，主要执行的是下载依赖的package from <code>pmtksupport.googlecode.com</code>到pmtk3/pmtksupportCopy目录。把所有的包下完并解压缩，其中下载用perl（如果有的话）或者urlwrite，解压用unzip。其实也可以实现离线安装，即提前下载好所有的package，人工复制到pmtksupportCopy目录即可。悲剧的是，官方并没有提供一个离线压缩包，google code上只提供了SVN检出，也罢，其实实质也是下载，这个时候可以直接把package检出到pmtksupportCopy目录，方便以后直接<code>svn update</code>，当然也可以checkout到其它目录，然后人工复制。      <br/>
@@ -416,9 +416,9 @@ PMTK3的整个工具包有很强的学习意义，Machine Learning自然不必�
   
   <entry>
     <title type="html"><![CDATA[为Octopress博客添加CreativeCommons License]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license/"/>
+    <link href="http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license/"/>
     <updated>2012-10-16T12:42:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license</id>
+    <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license</id>
     <content type="html"><![CDATA[<p>很久之前就听说了CreativeCommons License，并且看到很多博客站点上也在此License下授权，因此想在自己的Octopress上添加CC License。   <br/>
 我添加的是非商业化使用，自由分享修改的授权，即NonCommercial-ShareAlike。      <br/>
 具体的添加步骤也是经典的添加侧边栏，只是需要去<a href="creativecommons.org/choose">官方站点</a>选择自己需要的协议，拿到代码。相信玩Octopress
@@ -430,9 +430,9 @@ One For All,All For One.</p>
   
   <entry>
     <title type="html"><![CDATA[为Octopress博客添加Flag Counter侧边栏]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/"/>
+    <link href="http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/"/>
     <updated>2012-10-16T11:19:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan</id>
+    <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan</id>
     <content type="html"><![CDATA[<p>今天为自己的Octopress博客添加了访问者统计工具，<a href="www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。      <br/>
 拿到了代码后，添加到侧边栏，在custom/asides添加flag_counter.html，然后在_config.yml中开启即可，其中flag_counter.html的格式如下：</p>
 
@@ -455,9 +455,9 @@ Code you get from [Flag Counter](www.flagcounter.com)
   
   <entry>
     <title type="html"><![CDATA[开始使用Bshare和Douban在Octopress上]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/16/kai-shi-shi-yong-bsharehe-doubanzai-octopressshang/"/>
+    <link href="http://hustcalm.me/blog/2012/10/16/kai-shi-shi-yong-bsharehe-doubanzai-octopressshang/"/>
     <updated>2012-10-16T01:24:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/16/kai-shi-shi-yong-bsharehe-doubanzai-octopressshang</id>
+    <id>http://hustcalm.me/blog/2012/10/16/kai-shi-shi-yong-bsharehe-doubanzai-octopressshang</id>
     <content type="html"><![CDATA[<p>今天对自己的Octopress站点进行了一些小的更新，主要包括替换tag_cloud的显示为category_cloud，增加了Douban的侧边栏，增加了Bshare的文章分享。    <br/>
 其中category_cloud，自己目前使用：</p>
 
@@ -473,9 +473,9 @@ Done.:)</p>
   
   <entry>
     <title type="html"><![CDATA[Successfully Compiled VLC 2.0.3 Under Ubuntu 11.04]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/"/>
+    <link href="http://hustcalm.me/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/"/>
     <updated>2012-10-13T22:18:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04</id>
+    <id>http://hustcalm.me/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04</id>
     <content type="html"><![CDATA[<p>With Instructions On <a href="wiki.videolan.org/UnixCompile">UnixCompile</a> and <a href="wiki.videolan.org/User:J-b#VLC_configure_line">User:J-b</a>, I compile VLC successfully on Ubuntu 11.04.</p>
 
 <p>But trouble is there are some libraries missiing or version too old, and can&#8217;t figure it out too clear now. Also after make complete,Got an error&#8221;No Plugins found! Check your VLC installation&#8221; when attempt to run vlc with in bin, but runs fine with ./vlc-static.</p>
@@ -486,9 +486,9 @@ Done.:)</p>
   
   <entry>
     <title type="html"><![CDATA[Ubuntu下检出Cygwin搭建的Octopress遇到的问题]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/"/>
+    <link href="http://hustcalm.me/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/"/>
     <updated>2012-10-13T19:37:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti</id>
+    <id>http://hustcalm.me/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti</id>
     <content type="html"><![CDATA[<p>原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“<em>deploy”对应的是remote_master branch即可。    <br/>
 而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。     <br/>
 可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。     <br/>
@@ -499,9 +499,9 @@ Done.:)</p>
   
   <entry>
     <title type="html"><![CDATA[入手了name.com的域名hustcalm.me]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me/"/>
+    <link href="http://hustcalm.me/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me/"/>
     <updated>2012-10-10T01:50:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me</id>
+    <id>http://hustcalm.me/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me</id>
     <content type="html"><![CDATA[<p>相比来说，name.com家的注册貌似比godaddy家的简单些，而且设置起来更适合于新手，具体请参考文章<a href="http://hugege.com/2010/01/19/the-diference-between-name-com-and-godaddy/">Name.com和Godaddy的一些区别</a>。</p>
 
 <p>今天发现一个比较郁闷的事情，本地rake preview没有问题，rake generate and rake deploy后却在hustcalm.github.com上看不到效果，后来神奇地绑定域名hustcalm.me后看到了效果。莫非是域名绑定惹的祸？可是在绑定前就存在此问题。</p>
@@ -534,9 +534,9 @@ Done.:)</p>
   
   <entry>
     <title type="html"><![CDATA[Simple Syntax of Markdown]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/08/simple-syntax-of-markdown/"/>
+    <link href="http://hustcalm.me/blog/2012/10/08/simple-syntax-of-markdown/"/>
     <updated>2012-10-08T14:00:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/08/simple-syntax-of-markdown</id>
+    <id>http://hustcalm.me/blog/2012/10/08/simple-syntax-of-markdown</id>
     <content type="html"><![CDATA[<p><strong>MarkdownPad</strong> is a full-featured Markdown editor for Windows.</p>
 
 <h2>Full control over your documents</h2>
@@ -564,9 +564,9 @@ Done.:)</p>
   
   <entry>
     <title type="html"><![CDATA[Many thanks to CMCC &amp; CMCC-EDU]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/"/>
+    <link href="http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/"/>
     <updated>2012-09-26T00:43:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu</id>
+    <id>http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu</id>
     <content type="html"><![CDATA[<h2>Wireless NetWork is nice  of CMCC</h2>
 
 <p>Even got stuck by CAS&#8217;s policy about bandwidth limit, prefered to use CMCC wireless network though some times there is no speed.</p>
@@ -575,9 +575,9 @@ Done.:)</p>
   
   <entry>
     <title type="html"><![CDATA[Hello GitHub]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/08/16/hello-github/"/>
+    <link href="http://hustcalm.me/blog/2012/08/16/hello-github/"/>
     <updated>2012-08-16T17:27:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/08/16/hello-github</id>
+    <id>http://hustcalm.me/blog/2012/08/16/hello-github</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Git | Welcome to Pandora's Box(Why)]]></title>
-  <link href="http://hustcalm.github.com/blog/categories/git/atom.xml" rel="self"/>
-  <link href="http://hustcalm.github.com/"/>
-  <updated>2012-10-23T18:52:44+08:00</updated>
-  <id>http://hustcalm.github.com/</id>
+  <link href="http://hustcalm.me/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2012-10-24T18:18:03+08:00</updated>
+  <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[git的global config和repo config]]></title>
-    <link href="http://hustcalm.github.com/blog/2012/10/23/gitde-globle-confighe-repo-config/"/>
+    <link href="http://hustcalm.me/blog/2012/10/23/gitde-globle-confighe-repo-config/"/>
     <updated>2012-10-23T18:26:00+08:00</updated>
-    <id>http://hustcalm.github.com/blog/2012/10/23/gitde-globle-confighe-repo-config</id>
+    <id>http://hustcalm.me/blog/2012/10/23/gitde-globle-confighe-repo-config</id>
     <content type="html"><![CDATA[<p>相比于CVS，SVN，现在越来越喜欢Git了，下面说说Git的全局配置，即global config以及代码库级别的配置，即repo config。</p>
 
 <h2>Global Config</h2>
