@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2012-10-24T23:49:10+08:00</updated>
+  <updated>2012-10-25T00:21:38+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用PortableApps.com制作自己的U3盘，实现PC Anywhere]]></title>
+    <link href="http://hustcalm.me/blog/2012/10/24/shi-yong-portableapps-dot-comzhi-zuo-zi-ji-de-u3pan-%2Cshi-xian-pc-anywhere/"/>
+    <updated>2012-10-24T23:55:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2012/10/24/shi-yong-portableapps-dot-comzhi-zuo-zi-ji-de-u3pan-,shi-xian-pc-anywhere</id>
+    <content type="html"><![CDATA[<p>现在绿化软件的方法层出不穷，主流的云端软件平台以及ThinAPP基本都是在一个SandBox中运行软件，实现所谓的绿色化。今天向大家推荐一款绿色软件平台<a href="http://portableapps.com">PortableApps.com</a>，具体实现机理没有研究，不过使用起来觉得较好，关于是可以安装到U盘中随身携带，碰到了脾气不好的电脑，很有可能就派上用场了，呵呵:)</p>
+
+<!--more-->
+
+
+<p>具体如何安装什么的，就不罗嗦了，标准的Windows软件的安装和使用方法，目前<a href="http://portableapps.com">PortableApps.com</a>支持所有的Windows系列系统以及Linux下的Wine，下面只给出链接，想用的朋友自行下载安装折腾吧:)</p>
+
+<ul>
+<li><a href="http://portableapps.com">PortableApps.com的官方主页</a>     <br/>
+其下载链接是在<a href="http://sourceforge.net">SourceForge</a>上的，有可能需要梯子，如果有困难，可以移步别处下载。</li>
+<li><a href="http://portableapps.com/development">PortableApps.Development</a>       <br/>
+教你怎么制作自己的绿色软件，当然是符合一定规范的，这里有可以折腾的地方。</li>
+<li><a href="http://www.portableappc.com">PortableApps.com的中文站点</a>     <br/>
+这里有一些比较大型软件的绿化，比如QQ，迅雷，WPS等等，有需要的朋友就有福啦:)而官方站点通常是一些国外的软件，而且基本上都是比较轻量级的。</li>
+<li><a href="http://www.portableappc.com/guide">PortableApps.com的中文开发指引</a>   <br/>
+个人认为这个开发指引还是比较赞的，可以给没有多少软件开发功底的同学一个制作软件的机会，有开发基础的也可以学习下PortableApps.com的软件格式约定。</li>
+<li><a href="http://portableappz.blogspot.com">PortableAppZ</a>      <br/>
+这是一个山寨版，相比于官方的只提供开源软件，PortableAppZ提供很多常用的软件，不过访问blogspot比较困难，希望的朋友自己想办法吧&#8230;</li>
+</ul>
+
+
+<p>除了这个，我特别喜欢微软收购的一个公司开发的一个工具套件<a href="http://www.systeminternals.com">SystemInternals</a>，把它作为系统system32目录下系统工具的一个补充，没有用的朋友可以试试。</p>
+
+<p><strong>有更好的办法或者很酷的绿化软件的方法，请留言分享:)</strong></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[盘点我知道的代码托管站点：Code Hosting Website]]></title>
