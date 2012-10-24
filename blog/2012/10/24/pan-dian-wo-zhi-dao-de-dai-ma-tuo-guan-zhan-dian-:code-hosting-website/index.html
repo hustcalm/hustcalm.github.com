@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>为Octopress博客添加Flag Counter侧边栏 - Welcome to Pandora's Box(Why)</title>
+  <title>盘点我知道的代码托管站点：Code Hosting Website - Welcome to Pandora's Box(Why)</title>
   <meta name="author" content="CALM">
 
   
-  <meta name="description" content="今天为自己的Octopress博客添加了访问者统计工具，Flag Counter，如何获得代码请访问官网。 拿到了代码后，添加到侧边栏，在custom/asides添加flag_counter.html，然后在_config.yml中开启即可，其中flag_counter.html的格式如下： & &hellip;">
+  <meta name="description" content="伴随着开源运动的发展，源码托管站点越来越流行了，提供托管服务的同时，大大促进了开源社区的交流并且加速了源码的共享和更新，下面罗列下我所知道的提供源码托管服务的站点，供大家参考。 SourceForge 我最早知道的源码托管站点，上面托管了很多有名的项目和软件， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/">
+  <link rel="canonical" href="http://hustcalm.me/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">为Octopress博客添加Flag Counter侧边栏</h1>
+      <h1 class="entry-title">盘点我知道的代码托管站点：Code Hosting Website</h1>
     
     
       <p class="meta">
@@ -84,7 +84,7 @@
   
 
 
-<time datetime="2012-10-16T11:19:00+08:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
+<time datetime="2012-10-24T23:13:00+08:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -93,23 +93,25 @@
   </header>
 
 
-<div class="entry-content"><p>今天为自己的Octopress博客添加了访问者统计工具，<a href="www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。      <br/>
-拿到了代码后，添加到侧边栏，在custom/asides添加flag_counter.html，然后在_config.yml中开启即可，其中flag_counter.html的格式如下：</p>
+<div class="entry-content"><p>伴随着开源运动的发展，源码托管站点越来越流行了，提供托管服务的同时，大大促进了开源社区的交流并且加速了源码的共享和更新，下面罗列下我所知道的提供源码托管服务的站点，供大家参考。</p>
 
-<pre><code>&lt;section&gt;       
-&lt;h1&gt;Flag Counter&lt;/h1&gt;       
-Code you get from [Flag Counter](www.flagcounter.com)       
-&lt;/section&gt;      
-</code></pre>
+<ul>
+<li><p><a href="http://sourceforge.net">SourceForge</a>     <br/>
+我最早知道的源码托管站点，上面托管了很多有名的项目和软件，现在很多开源软件的下载链接来自于<a href="http://sourceforge.net">SourceForge</a>，比如Python的一些扩展依赖包，编译VLC所需的很多contrib，vim插件需要的ctags以及cscope等等。GFW曾对其不友好，前段时间由于国内用户在其上托管了过多垃圾站点而遭到了<a href="http://sourceforge.net">SourceForge</a>的反封锁。由于其比较有历史，很多协同开发用SVN甚至CVS多一些。</p></li>
+<li><p><a href="http://code.google.com">GoogleCode</a>       <!--more-->
+大名鼎鼎的Google出品，界面简洁，并结合了<a href="http://developers.google.com">Google Developers</a>，上面也有不少的知名项目，我最近用的PMTK3（机器学习的工具包）就是托管在其上的，但好像一直以来<a href="http://code.google.com">GoogleCode</a>都不是特别火，我也不知道原因。版本控制方面，全面支持SVN,Git,Mercurial等等，我个人比较信赖Google的服务。</p></li>
+<li><p><a href="https://bitbucket.org">BitBucket</a>    <br/>
+这个貌似在国外用户比较多，知道这个站点是因为PT的缘故，当时追溯PT源码的历史，了解到了TBSource，知道是托管在<a href="https://bitbucket.org">BitBucket</a>上的。后来研究播放器的开发，知道了优秀的射手播放器（SPlayer）的源码是托管在其上的，这个站点比较偏好使用Mercurial和git貌似。</p></li>
+<li><p><a href="http://www.codeproject.com">CodeProject</a>     <br/>
+知道这个站点是因为自己在学习Windows编程的时候，这上面有很多的小例子的源码，是一个非常好的学习的地方。与其说是源码托管站点，更确切的是一个交流代码，相互学习的地方。有点像StackOverflow，不过这里更多是用代码交流。</p></li>
+<li><p><a href="https://github.com">GitHub</a>      <br/>
+好吧，最后才说这个大腕，只是因为最近<a href="https://github.com">GitHub</a>太火太火了，压轴出场。相比于其它的源码托管站点，其在功能方面未必见长，不过其Social Coding的理念以及和git的完美结合，吸引了不少coder和project来此安家。比如说ruby，很多vim的插件等等，具体的无需多说，谁用谁知道:)</p></li>
+</ul>
 
-<p>针对以上代码，还需要在_config.yml文件中添加一行：</p>
 
-<pre><code>flag_counter: true  
-</code></pre>
+<p>欢迎大家访问<a href="https://github.com/hustcalm">我的Github</a>。我的这个<a href="http://hustcalm.me">Octopress博客</a>也是托管在GitHub Pages之上的，使用了<a href="http://jekyllbootstrap.com">Jekyll</a>静态网站生成引擎。</p>
 
-<p>为了在本博文中显示flag_counter.html的第一行和最后一行的开关语句，特意额外添加了一组<code>if Tag</code>，Markdown，囧～      <br/>
-因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon&#8230;解决方案参考了<a href="code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a>       <br/>
-<em>Enjoy your Flag Counter:)</em></p>
+<p><strong>我就知道这么多了，有知道更多的朋友，欢迎留言补充:)</strong></p>
 </div>
 
 
@@ -132,12 +134,12 @@ Code you get from [Flag Counter](www.flagcounter.com)
   
 
 
-<time datetime="2012-10-16T11:19:00+08:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
+<time datetime="2012-10-24T23:13:00+08:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/octopress/'>Octopress</a>, <a class='category' href='/blog/categories/seo/'>SEO</a>
+    <a class='category' href='/blog/categories/opensource/'>OpenSource</a>
   
 </span>
 
@@ -156,10 +158,8 @@ Code you get from [Flag Counter](www.flagcounter.com)
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/10/16/kai-shi-shi-yong-bsharehe-doubanzai-octopressshang/" title="Previous Post: 开始使用Bshare和Douban在Octopress上">&laquo; 开始使用Bshare和Douban在Octopress上</a>
+        <a class="basic-alignment left" href="/blog/2012/10/23/gitde-globle-confighe-repo-config/" title="Previous Post: git的global config和repo config">&laquo; git的global config和repo config</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license/" title="Next Post: 为Octopress博客添加CreativeCommons License">为Octopress博客添加CreativeCommons License &raquo;</a>
       
     </p>
   </footer>
@@ -291,8 +291,8 @@ Code you get from [Flag Counter](www.flagcounter.com)
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/';
-        var disqus_url = 'http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/';
+        var disqus_identifier = 'http://hustcalm.me/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/';
+        var disqus_url = 'http://hustcalm.me/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/';
         var disqus_script = 'embed.js';
       
     (function () {
