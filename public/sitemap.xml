@@ -2,32 +2,100 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://hustcalm.github.com/blog/2012/08/16/hello-github/</loc>
-        <lastmod>2012-09-26T00:35:07+08:00</lastmod>
+        <lastmod>2012-10-13T19:29:27+08:00</lastmod>
     </url>
     <url>
         <loc>http://hustcalm.github.com/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/</loc>
-        <lastmod>2012-10-08T14:06:12+08:00</lastmod>
+        <lastmod>2012-10-13T19:29:27+08:00</lastmod>
     </url>
     <url>
         <loc>http://hustcalm.github.com/blog/2012/10/08/simple-syntax-of-markdown/</loc>
-        <lastmod>2012-10-10T12:41:11+08:00</lastmod>
+        <lastmod>2012-10-13T19:29:27+08:00</lastmod>
     </url>
     <url>
         <loc>
             http://hustcalm.github.com/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me/
         </loc>
-        <lastmod>2012-10-10T12:41:17+08:00</lastmod>
+        <lastmod>2012-10-13T19:29:27+08:00</lastmod>
     </url>
     <url>
-        <loc>http://hustcalm.github.com/about/</loc>
-        <lastmod>2012-10-10T00:27:50+08:00</lastmod>
+        <loc>
+            http://hustcalm.github.com/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/
+        </loc>
+        <lastmod>2012-10-14T10:28:42+08:00</lastmod>
     </url>
     <url>
-        <loc>http://hustcalm.github.com/blog/archives/</loc>
-        <lastmod>2012-10-10T12:41:17+08:00</lastmod>
+        <loc>
+            http://hustcalm.github.com/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/
+        </loc>
+        <lastmod>2012-10-14T10:28:50+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hustcalm.github.com/blog/2012/10/16/kai-shi-shi-yong-bsharehe-doubanzai-octopressshang/
+        </loc>
+        <lastmod>2012-10-16T01:44:15+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hustcalm.github.com/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/
+        </loc>
+        <lastmod>2012-10-16T12:07:00+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hustcalm.github.com/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license/
+        </loc>
+        <lastmod>2012-10-16T12:49:37+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hustcalm.github.com/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/
+        </loc>
+        <lastmod>2012-10-17T00:17:23+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hustcalm.github.com/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/
+        </loc>
+        <lastmod>2012-10-20T16:30:55+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hustcalm.github.com/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/
+        </loc>
+        <lastmod>2012-10-20T17:00:34+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hustcalm.github.com/blog/2012/10/20/githubshang-de-zhong-ji-vimrc/</loc>
+        <lastmod>2012-10-20T17:17:44+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hustcalm.github.com/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/
+        </loc>
+        <lastmod>2012-10-21T10:58:30+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://hustcalm.github.com/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/
+        </loc>
+        <lastmod>2012-10-23T18:17:27+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hustcalm.github.com/blog/2012/10/23/gitde-globle-confighe-repo-config/</loc>
+        <lastmod>2012-10-23T18:52:40+08:00</lastmod>
     </url>
     <url>
         <loc>http://hustcalm.github.com/</loc>
-        <lastmod>2012-10-10T12:41:17+08:00</lastmod>
+        <lastmod>2012-10-23T18:52:40+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hustcalm.github.com/about/</loc>
+        <lastmod>2012-10-13T19:29:27+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://hustcalm.github.com/blog/archives/</loc>
+        <lastmod>2012-10-23T18:52:40+08:00</lastmod>
     </url>
 </urlset>

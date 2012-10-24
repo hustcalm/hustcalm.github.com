@@ -9,7 +9,7 @@
   <meta name="author" content="CALM">
 
   
-  <meta name="description" content="相比来说，name.com家的注册貌似比godaddy家的简单些，而且设置起来更适合于新手，具体请参考文章Name.com和Godaddy的一些区别。 今天发现一个比较郁闷的事情，本地rake preview没有问题，rake generate and rake deploy后却在hustcalm &hellip;">
+  <meta name="description" content="相比于CVS，SVN，现在越来越喜欢Git了，下面说说Git的全局配置，即global config以及代码库级别的配置，即repo config。 Global Config git的全局配置，存储在$HOME/.gitconfig这个文件里面，对当前用户的所有git repo有效。 基本配置 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +71,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me/">入手了name.com的域名hustcalm.me</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/10/23/gitde-globle-confighe-repo-config/">Git的global Config和repo Config</a></h1>
     
     
       <p class="meta">
@@ -87,26 +87,49 @@
   
 
 
-<time datetime="2012-10-10T01:50:00+08:00" pubdate data-updated="true">Oct 10<span>th</span>, 2012</time>
+<time datetime="2012-10-23T18:26:00+08:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2012</time>
         
-         | <a href="/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me/#disqus_thread">Comments</a>
+         | <a href="/blog/2012/10/23/gitde-globle-confighe-repo-config/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>相比来说，name.com家的注册貌似比godaddy家的简单些，而且设置起来更适合于新手，具体请参考文章<a href="http://hugege.com/2010/01/19/the-diference-between-name-com-and-godaddy/">Name.com和Godaddy的一些区别</a>。</p>
+  <div class="entry-content"><p>相比于CVS，SVN，现在越来越喜欢Git了，下面说说Git的全局配置，即global config以及代码库级别的配置，即repo config。</p>
 
-<p>今天发现一个比较郁闷的事情，本地rake preview没有问题，rake generate and rake deploy后却在hustcalm.github.com上看不到效果，后来神奇地绑定域名hustcalm.me后看到了效果。莫非是域名绑定惹的祸？可是在绑定前就存在此问题。</p>
+<h2>Global Config</h2>
 
-<p>下面简单说说如何给Github Pages绑定Name.com的注册域名，以我注册的hustcalm.me域名为例。</p>
+<p>git的全局配置，存储在$HOME/.gitconfig这个文件里面，对当前用户的所有git repo有效。</p>
+
+<h3>基本配置</h3>
+
+<pre><code>git config --global user.name yourname
+git config --global user.email youremail
+</code></pre>
+
+<h3>默认编辑器</h3>
+
+<pre><code>git config --global core.editor vim
+</code></pre>
+
+<h3>默认merge/diff工具</h3>
+
+<p>设置后需要通过difftool和mergetool启动。</p>
+
+<pre><code>git config --global diff.tool vimdiff
+git config --global difftool.prompt false
+</code></pre>
+
+<h3>Alias设置别名</h3>
+
+<p>通过别名设置，提高操作效率。</p>
 
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2012/10/23/gitde-globle-confighe-repo-config/">Read on &rarr;</a>
     </footer>
   
 
@@ -118,7 +141,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/10/08/simple-syntax-of-markdown/">Simple Syntax of Markdown</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/">2012年亚太大学生机器人大赛CCTV视频汇总</a></h1>
     
     
       <p class="meta">
@@ -134,28 +157,73 @@
   
 
 
-<time datetime="2012-10-08T14:00:00+08:00" pubdate data-updated="true">Oct 8<span>th</span>, 2012</time>
+<time datetime="2012-10-23T17:55:00+08:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2012</time>
         
-         | <a href="/blog/2012/10/08/simple-syntax-of-markdown/#disqus_thread">Comments</a>
+         | <a href="/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><strong>MarkdownPad</strong> is a full-featured Markdown editor for Windows.</p>
+  <div class="entry-content"><p>央视终于在CCTV7播出了2012年亚太大学生机器人大赛的国内选拔赛的视频以及国际赛视频，现在把视频链接整理如下，方便各位Roboconer以及热爱机器人的朋友查看。</p>
 
-<h2>Full control over your documents</h2>
+<ul>
+<li><a href="http://tv.cntv.cn/videoset/C39764">央视比赛视频列表链接</a></li>
+<li><a href="http://tv.cntv.cn/video/C39764/20121015100904">《2012年亚太大学生机器人大赛国内选拔活动 初试锋芒》</a></li>
+<li><a href="http://tv.cntv.cn/video/C39764/20121016100798">《2012年亚太大学生机器人大赛国内选拔活动 独门秘笈》</a></li>
+<li><a href="http://tv.cntv.cn/video/C39764/20121017101086">《2012年亚太大学生机器人大赛国内选拔活动 侠路相逢》</a></li>
+<li><a href="http://tv.cntv.cn/video/C39764/20121018100886">《2012年亚太大学生机器人大赛国内选拔活动 出奇制胜》</a></li>
+<li><a href="http://tv.cntv.cn/video/C39764/20121019100811">《2012年亚太大学生机器人大赛国内选拔活动 巅峰对决》</a></li>
+<li><a href="http://tv.cntv.cn/video/C39764/20121020100533">《2012年亚太大学生机器人大赛国内选拔活动 智者无敌（香港总决赛）》</a></li>
+</ul>
 
-<p>Want to make something <strong>bold</strong>? Press <code>Ctrl + B</code>.</p>
 
-<p>How about <em>italic</em>? Press <code>Ctrl + I</code>.</p>
-
+<p>Anyway,thx to CCTV!   <br/>
+<strong>Hust Go and China Go!</strong></p>
 </div>
   
   
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/">Ubuntu桌面管理器Unity快捷键大全</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-21T10:24:00+08:00" pubdate data-updated="true">Oct 21<span>st</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在Windows下用惯了TotalCommander了，结合Windows本身的资源管理器，会使工作的效率有质的飞跃，如果要投个票，这个软件必须是Life Changing的:) 在Linux下的桌面管理器很多，重量级的经典的Gnome和KDE，以及很多轻量级的桌面管理器，Ubuntu开发团队为用户提供了他们自家的Unity，个人觉得还是非常好用的:) <br/>
+下面这篇文章来自<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">askubuntu</a>，这里除了一个比较全面的回答外，还有不少的cheatsheet提供下载，有png的，pdf的，还有源文件SVG的，如果喜欢，大家可以移步到<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">原文</a>。也可以通过本文下面部分的链接查看或者下载。    </div>
+  
+  
     <footer>
-      <a rel="full-article" href="/blog/2012/10/08/simple-syntax-of-markdown/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/">Read on &rarr;</a>
     </footer>
   
 
@@ -167,7 +235,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/">Many Thanks to CMCC &amp; CMCC-EDU</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/10/20/githubshang-de-zhong-ji-vimrc/">Github上的终级vimrc</a></h1>
     
     
       <p class="meta">
@@ -183,18 +251,19 @@
   
 
 
-<time datetime="2012-09-26T00:43:00+08:00" pubdate data-updated="true">Sep 26<span>th</span>, 2012</time>
+<time datetime="2012-10-20T17:07:00+08:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
         
-         | <a href="/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/#disqus_thread">Comments</a>
+         | <a href="/blog/2012/10/20/githubshang-de-zhong-ji-vimrc/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h2>Wireless NetWork is nice  of CMCC</h2>
+  <div class="entry-content"><p>相比于上面的<a href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">文章</a>,这个方案合适懒人，只需要clone作者的repo然后install即可，方便但是减少了DIY的乐趣。作者amix也是.vim_runtime的作者，方便起见，我fork了<a href="https://github.com/amix/vimrc">amix/vimrc</a>，以后就可以在此基础上打造自己的.vim_runtime了～</p>
 
-<p>Even got stuck by CAS&#8217;s policy about bandwidth limit, prefered to use CMCC wireless network though some times there is no speed.</p>
+<p>具体如何使用，请直接访问我的repo<a href="https://github.com/hustcalm/vimrc">hustcalm/vimrc</a>.<br/>
+Enjoy your Ultimate vimrc:)</p>
 </div>
   
   
@@ -207,7 +276,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/08/16/hello-github/">Hello GitHub</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">使用git和github来管理vim配置和插件</a></h1>
     
     
       <p class="meta">
@@ -223,24 +292,38 @@
   
 
 
-<time datetime="2012-08-16T17:27:00+08:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
+<time datetime="2012-10-20T16:29:00+08:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
         
-         | <a href="/blog/2012/08/16/hello-github/#disqus_thread">Comments</a>
+         | <a href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content">
+  <div class="entry-content"><p>现在越来越觉得自己离不开Linux了，也越来越离不开VIM了，虽然一直有想学习下Emacs的心思，不过学习曲线太陡峭了，准备细水常流了～之前在windows下使用cygwin，配置VIM用的是<code>.vim_runtime</code>，作者是用svn管理的。今天再去看，发现作者也把自己的.vimrc以及整个配置都迁移到了github上，因此参考了<a href="http://blog.pkufranky.com/2011/11/%E4%BD%BF%E7%94%A8git%E5%92%8Cgithub%E6%9D%A5%E7%AE%A1%E7%90%86vim%E9%85%8D%E7%BD%AE%E5%92%8C%E6%8F%92%E4%BB%B6">这篇文章</a>。请作者原谅我使用了一样的题目～  <br/>
+文章的目标为：</p>
+
+<ul>
+<li><p>将vim的配置文件使用git管理，并托管到github上</p></li>
+<li><p>通过github来安装和更新vim plugin</p></li>
+</ul>
+
+
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">Read on &rarr;</a>
+    </footer>
   
 
 
     </article>
   
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -259,39 +342,31 @@
 </section>
 <iframe frameborder="0" scrolling="no" src="http://kado.im/widget/5075993fabaa3/default.html" style="width: 100%; height: 67px; margin-bottom: 15px;" id="kadoWidgetFrame"></iframe>
 <section>
-  <h1>Tags</h1>
-  <ul class="tag-cloud">
-    
-  </ul>
-</section>
-<section>
-  <h1>Categories</h1>
-  <ul id="categories">
-    <li class='category'><a href='/blog/categories/markdown/'>Markdown (1)</a></li>
-<li class='category'><a href='/blog/categories/network/'>Network (1)</a></li>
-<li class='category'><a href='/blog/categories/domain/'>domain (1)</a></li>
-<li class='category'><a href='/blog/categories/name-com/'>name.com (1)</a></li>
-
-  </ul>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/cygwin' style='font-size: 115.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 115.0%'>domain(1)</a> <a href='/blog/categories/git' style='font-size: 115.0%'>Git(1)</a> <a href='/blog/categories/learning' style='font-size: 115.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 115.0%'>License(1)</a> <a href='/blog/categories/machine' style='font-size: 115.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 115.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 115.0%'>MediaPlayer(1)</a> <a href='/blog/categories/name-com' style='font-size: 115.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 115.0%'>Network(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(4)</a> <a href='/blog/categories/robot' style='font-size: 115.0%'>Robot(1)</a> <a href='/blog/categories/seo' style='font-size: 115.0%'>SEO(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 130.0%'>Ubuntu(2)</a> <a href='/blog/categories/vim' style='font-size: 130.0%'>VIM(2)</a> <a href='/blog/categories/vlc' style='font-size: 130.0%'>VLC(2)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me/">入手了name.com的域名hustcalm.me</a>
+        <a href="/blog/2012/10/23/gitde-globle-confighe-repo-config/">git的global config和repo config</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/10/08/simple-syntax-of-markdown/">Simple Syntax of Markdown</a>
+        <a href="/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/">2012年亚太大学生机器人大赛CCTV视频汇总</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/">Many thanks to CMCC &amp; CMCC-EDU</a>
+        <a href="/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/">Ubuntu桌面管理器Unity快捷键大全</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/08/16/hello-github/">Hello GitHub</a>
+        <a href="/blog/2012/10/20/githubshang-de-zhong-ji-vimrc/">github上的终级vimrc</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">使用git和github来管理vim配置和插件</a>
       </li>
     
   </ul>
@@ -332,6 +407,26 @@
   <p><a href="http://delicious.com/licalmer">My Delicious Bookmarks &raquo;</a></p>
 </section>
 
+<section>
+<h2>Douban Show</h2>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/hustcalm/?show=wishlist&amp;select=random&amp;n=9&amp;columns=3"></script>
+</div>
+</section>
+
+
+<section>
+<h1>Flag Counter</h1>
+ <a href="http://s01.flagcounter.com/more/5Vzn"><img src="http://s01.flagcounter.com/count/5Vzn/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a><br><a href="http://flagcounter.com/">free counters</a> 
+</section>
+
+
+<section>
+<h1>CC License</h1>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />Except where otherwise noted,content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+</section>
+
+
 
   
 </aside>
@@ -347,7 +442,7 @@
   
 
 <script type="text/javascript">
-      var disqus_shortname = 'calmmagicblog';
+      var disqus_shortname = 'hustcalm';
       
         
         var disqus_script = 'count.js';
@@ -361,24 +456,7 @@
 
 
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
 
 
 
