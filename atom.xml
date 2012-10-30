@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2012-10-25T00:21:38+08:00</updated>
+  <updated>2012-10-30T11:00:57+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[用ifttt和Openshift搭建用于知识共享的Wordpress博客]]></title>
+    <link href="http://hustcalm.me/blog/2012/10/30/yong-ifttthe-openshiftda-jian-yong-yu-zhi-shi-gong-xiang-de-wordpressbo-ke/"/>
+    <updated>2012-10-30T10:18:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2012/10/30/yong-ifttthe-openshiftda-jian-yong-yu-zhi-shi-gong-xiang-de-wordpressbo-ke</id>
+    <content type="html"><![CDATA[<p>笔者一直通过RSS订阅了解一些行业信息并且看一些比较好玩的东西，比如<a href="http://www.iplaysoft.com/">异次元软件世界</a>什么的:)用了很长一段时间的QQ邮箱的阅读空间，整理了很多的收藏和分享以及自己的Tag Cloud，无奈，QQ邮箱的阅读空间除了对<a href="http://weibo.com/u/1236738912">Weibo</a>比较友好以外，跟其它产品的交互比较弱，给QQ团队发建议希望他们能够提供导出Tag的功能，没人搭理:(</p>
+
+<p>Anyway，现在转到Google Reader下了，把QQ邮箱的阅读空间的RSS导出到OPML文件，之后导入到GReader。</p>
+
+<p>分享是学习的一大乐趣，之前一直是把好文分享到微博或者Delicious，现在萌生了把自己的订阅再挑选一些值得玩味的文章自动更新到blog的想法。互联网的神奇使得我的这个想法很快就实现了，主要用到的服务如下：</p>
+
+<!--more-->
+
+
+<ul>
+<li><p><a href="http://www.ifttt.com">ifttt</a>
+实现GReader星标文章自动post到WordPress站点。</p></li>
+<li><p><a href="http://openshift.redhat.com">Openshift</a>
+提供Wordpress站点的托管。</p></li>
+<li><p><a href="http://wordpress.org">WordPress</a>
+不解释。用到了一些插件：</p></li>
+</ul>
+
+
+<p><strong>Akismet</strong> 用于处理垃圾评论。</p>
+
+<p><strong>Auto Describe Taxonomies</strong> 自动生成文章的tag和category。</p>
+
+<p><strong>Efficient Related Posts</strong> 显示相关文章。</p>
+
+<p><strong>WP Limit Posts Automatically</strong> 显示文章摘要而不是全文。</p>
+
+<p><strong>WTI Like Post</strong> 实现文章的“thumbs up“和”thumbs down“功能。</p>
+
+<p>效果请看<a href="http://wordpress-hustcalm.rhcloud.com">笔者的知识分享站点</a>.</p>
+
+<p>Enjoy auto blogging and knowledge sharring；）</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用PortableApps.com制作自己的U3盘，实现PC Anywhere]]></title>
