@@ -9,9 +9,7 @@
   <meta name="author" content="CALM">
 
   
-  <meta name="description" content="央视终于在CCTV7播出了2012年亚太大学生机器人大赛的国内选拔赛的视频以及国际赛视频，现在把视频链接整理如下，方便各位Roboconer以及热爱机器人的朋友查看。 央视比赛视频列表链接
-《2012年亚太大学生机器人大赛国内选拔活动 初试锋芒》
-《2012年亚太大学生机器人大赛国内选拔活动 &hellip;">
+  <meta name="description" content="相比于CVS，SVN，现在越来越喜欢Git了，下面说说Git的全局配置，即global config以及代码库级别的配置，即repo config。 Global Config git的全局配置，存储在$HOME/.gitconfig这个文件里面，对当前用户的所有git repo有效。 基本配置 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +65,76 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/23/gitde-globle-confighe-repo-config/">Git的global Config和repo Config</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-23T18:26:00+08:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/23/gitde-globle-confighe-repo-config/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>相比于CVS，SVN，现在越来越喜欢Git了，下面说说Git的全局配置，即global config以及代码库级别的配置，即repo config。</p>
+
+<h2>Global Config</h2>
+
+<p>git的全局配置，存储在$HOME/.gitconfig这个文件里面，对当前用户的所有git repo有效。</p>
+
+<h3>基本配置</h3>
+
+<pre><code>git config --global user.name yourname
+git config --global user.email youremail
+</code></pre>
+
+<h3>默认编辑器</h3>
+
+<pre><code>git config --global core.editor vim
+</code></pre>
+
+<h3>默认merge/diff工具</h3>
+
+<p>设置后需要通过difftool和mergetool启动。</p>
+
+<pre><code>git config --global diff.tool vimdiff
+git config --global difftool.prompt false
+</code></pre>
+
+<h3>Alias设置别名</h3>
+
+<p>通过别名设置，提高操作效率。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/23/gitde-globle-confighe-repo-config/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -253,49 +321,6 @@ Enjoy your Ultimate vimrc:)</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/">Cross Complile VLC for Windows on Ubuntu How to and Trouble Shooting</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-19T11:53:00+08:00" pubdate data-updated="true">Oct 19<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Obtain the toolchain</h2>
-
-<p>I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly rely on official guide on <a href="http://www.wiki.videolan.org/Win32Compile">Win32Compile-VideoLANWiki</a>.      To get the toolchain, I just run <code>apt-get install gcc-mingw32 mingw32-binutils</code>.And also the development tools,run <code>apt-get install lua automake autoconf autopoint libtool make gettext pkg-config git subversion cmake cvs zip p7zip nsis bzip2</code>.     </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -328,11 +353,15 @@ Enjoy your Ultimate vimrc:)</p>
 
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/cygwin' style='font-size: 115.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 115.0%'>domain(1)</a> <a href='/blog/categories/geek' style='font-size: 115.0%'>Geek(1)</a> <a href='/blog/categories/git' style='font-size: 115.0%'>Git(1)</a> <a href='/blog/categories/learning' style='font-size: 115.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 115.0%'>License(1)</a> <a href='/blog/categories/machine' style='font-size: 115.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 115.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 115.0%'>MediaPlayer(1)</a> <a href='/blog/categories/name-com' style='font-size: 115.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 115.0%'>Network(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(4)</a> <a href='/blog/categories/opensource' style='font-size: 130.0%'>OpenSource(2)</a> <a href='/blog/categories/robot' style='font-size: 115.0%'>Robot(1)</a> <a href='/blog/categories/seo' style='font-size: 115.0%'>SEO(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 130.0%'>Ubuntu(2)</a> <a href='/blog/categories/vim' style='font-size: 130.0%'>VIM(2)</a> <a href='/blog/categories/vlc' style='font-size: 130.0%'>VLC(2)</a> <a href='/blog/categories/wordpress' style='font-size: 115.0%'>WordPress(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/cygwin' style='font-size: 115.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 115.0%'>domain(1)</a> <a href='/blog/categories/geek' style='font-size: 115.0%'>Geek(1)</a> <a href='/blog/categories/git' style='font-size: 115.0%'>Git(1)</a> <a href='/blog/categories/learning' style='font-size: 115.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 115.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 115.0%'>Life(1)</a> <a href='/blog/categories/machine' style='font-size: 115.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 115.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 115.0%'>MediaPlayer(1)</a> <a href='/blog/categories/name-com' style='font-size: 115.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 115.0%'>Network(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(4)</a> <a href='/blog/categories/opensource' style='font-size: 130.0%'>OpenSource(2)</a> <a href='/blog/categories/robot' style='font-size: 115.0%'>Robot(1)</a> <a href='/blog/categories/seo' style='font-size: 115.0%'>SEO(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 130.0%'>Ubuntu(2)</a> <a href='/blog/categories/vim' style='font-size: 130.0%'>VIM(2)</a> <a href='/blog/categories/vlc' style='font-size: 130.0%'>VLC(2)</a> <a href='/blog/categories/wordpress' style='font-size: 115.0%'>WordPress(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/21/ke-yuan-you-gan/">科苑有感</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/11/02/a-stupid-tutorial-on-starting-contribution-to-opensource-software/">A stupid tutorial on starting contribution to Opensource software</a>
@@ -348,10 +377,6 @@ Enjoy your Ultimate vimrc:)</p>
     
       <li class="post">
         <a href="/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/">盘点我知道的代码托管站点：Code Hosting Website</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/23/gitde-globle-confighe-repo-config/">git的global config和repo config</a>
       </li>
     
   </ul>
