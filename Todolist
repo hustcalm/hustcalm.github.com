@@ -5,3 +5,7 @@ Personal Todolist to add features to my Octopress blog
 4.  Add 'Social Me' Buttons on NavBar including Facebook,Twitter,Weibo,Douban,LinkedIn,Github...
 5.  Add 'Animated Gmail' to 'about page'
 6.  Do some SEO to optimize website, like Google fonts...
+7.  Add status bar to write today's moods or sth., post new status with 'rake new_status[sth]'
+8.  Add microblog maybe, sometimes don't want to write too much long a post, post a microblog 
+with 'rake new_microblog[sth]'
+
