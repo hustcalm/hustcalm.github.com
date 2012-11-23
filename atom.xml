@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2012-11-21T18:28:42+08:00</updated>
+  <updated>2012-11-24T01:35:04+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hello Octopress From Ubuntu 12.04]]></title>
+    <link href="http://hustcalm.me/blog/2012/11/24/hello-octopress-from-ubuntu-12-dot-04/"/>
+    <updated>2012-11-24T01:00:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2012/11/24/hello-octopress-from-ubuntu-12-dot-04</id>
+    <content type="html"><![CDATA[<p>今天又把Octopress博客安了一个新家，Windows XP下虚拟出来的Ubuntu 12.04.想想从Cygwin上开始建立博客，后来到Ubuntu 11.04上维护，现在又搭一个新窝，自己都佩服自己的折腾能力了:)</p>
+
+<p>遇到的主要问题，除了<code>posix-spawn</code>，竟然还有<code>openssl</code>，随之而来的依赖缺失，mkmf，编译的时候又输给了路径问题，Ubuntu本身带着1.8.7的<code>ruby</code>，而现在我的Octopress使用<code>1.9.3-p194</code>，并且用了<code>rbenv</code>和<code>ruby-build</code>进行版本管理，这给编译<code>openssl</code>的时候带来一个困扰，直接在<code>ext/openssl</code>下运行<code>ruby
+extconf.rb</code>的话生成的Makefile是依赖系统的1.8.7的，因为直接执行<code>ruby</code>，由于路径设置问题，运行的是系统的Ruby，而不是我们自己安装的，所以这里需要小心，通过<code>~/.rbenv/versions/1.9.3-p194/bin/ruby extconf.rb</code>解决问题。</p>
+
+<p>参考的链接有以下，感谢他们：</p>
+
+<!--more-->
+
+
+<ul>
+<li><a href="http://www.360doc.com/content/12/0216/16/1016783_187128091.shtml">为已经存在的github Octopress配置本地环境</a></li>
+<li><a href="http://madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a></li>
+<li><a href="http://ns2.beta4better.org/2012/01/octopress-no-such-file-to-load-zlib-or-openssl.html">Octopress:no such file to load:zlib,openssl</a></li>
+<li><a href="http://blog.csdn.net/dqatsh/article/details/2125089">ubuntu下安装ruby后openssl找不到的问题</a></li>
+<li><a href="http://www.myexception.cn/ruby-rails/665543.html">in &#8216;require&#8217;:no such file to load -openssl (LoadError)</a></li>
+<li><a href="http://www.linuxdiyf.com/viewarticle.php?id=68545">安装ruby-debug-base是mkmf(LoadError)问题的解决办法</a></li>
+</ul>
+
+
+<p>暂时就这么多了，发现有问题才比较有意思。</p>
+
+<p>如果你在设置Octopress的时候有任何疑问，欢迎和我讨论:)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[科苑有感]]></title>
@@ -762,17 +793,6 @@ Done.:)</p>
 <h2>Make it your own</h2>
 
 <p>Fonts, sizes, color schemes, and even the HTML stylesheets are 100% customizable so you can turn MarkdownPad into your ideal editor.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Many thanks to CMCC &amp; CMCC-EDU]]></title>
-    <link href="http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/"/>
-    <updated>2012-09-26T00:43:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu</id>
-    <content type="html"><![CDATA[<h2>Wireless NetWork is nice  of CMCC</h2>
-
-<p>Even got stuck by CAS&#8217;s policy about bandwidth limit, prefered to use CMCC wireless network though some times there is no speed.</p>
 ]]></content>
   </entry>
   

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>盘点我知道的代码托管站点：Code Hosting Website - Welcome to Pandora's Box(Why)</title>
+  <title>Hello Octopress From Ubuntu 12.04 - Welcome to Pandora's Box(Why)</title>
   <meta name="author" content="CALM">
 
   
-  <meta name="description" content="伴随着开源运动的发展，源码托管站点越来越流行了，提供托管服务的同时，大大促进了开源社区的交流并且加速了源码的共享和更新，下面罗列下我所知道的提供源码托管服务的站点，供大家参考。 SourceForge 我最早知道的源码托管站点，上面托管了很多有名的项目和软件， &hellip;">
+  <meta name="description" content="今天又把Octopress博客安了一个新家，Windows XP下虚拟出来的Ubuntu 12.04.想想从Cygwin上开始建立博客，后来到Ubuntu 11.04上维护，现在又搭一个新窝，自己都佩服自己的折腾能力了:) 遇到的主要问题，除了posix-spawn，竟然还有openssl， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hustcalm.me/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/">
+  <link rel="canonical" href="http://hustcalm.me/blog/2012/11/24/hello-octopress-from-ubuntu-12-dot-04/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">盘点我知道的代码托管站点：Code Hosting Website</h1>
+      <h1 class="entry-title">Hello Octopress From Ubuntu 12.04</h1>
     
     
       <p class="meta">
@@ -84,7 +84,7 @@
   
 
 
-<time datetime="2012-10-24T23:13:00+08:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
+<time datetime="2012-11-24T01:00:00+08:00" pubdate data-updated="true">Nov 24<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -93,25 +93,29 @@
   </header>
 
 
-<div class="entry-content"><p>伴随着开源运动的发展，源码托管站点越来越流行了，提供托管服务的同时，大大促进了开源社区的交流并且加速了源码的共享和更新，下面罗列下我所知道的提供源码托管服务的站点，供大家参考。</p>
+<div class="entry-content"><p>今天又把Octopress博客安了一个新家，Windows XP下虚拟出来的Ubuntu 12.04.想想从Cygwin上开始建立博客，后来到Ubuntu 11.04上维护，现在又搭一个新窝，自己都佩服自己的折腾能力了:)</p>
+
+<p>遇到的主要问题，除了<code>posix-spawn</code>，竟然还有<code>openssl</code>，随之而来的依赖缺失，mkmf，编译的时候又输给了路径问题，Ubuntu本身带着1.8.7的<code>ruby</code>，而现在我的Octopress使用<code>1.9.3-p194</code>，并且用了<code>rbenv</code>和<code>ruby-build</code>进行版本管理，这给编译<code>openssl</code>的时候带来一个困扰，直接在<code>ext/openssl</code>下运行<code>ruby
+extconf.rb</code>的话生成的Makefile是依赖系统的1.8.7的，因为直接执行<code>ruby</code>，由于路径设置问题，运行的是系统的Ruby，而不是我们自己安装的，所以这里需要小心，通过<code>~/.rbenv/versions/1.9.3-p194/bin/ruby extconf.rb</code>解决问题。</p>
+
+<p>参考的链接有以下，感谢他们：</p>
+
+<!--more-->
+
 
 <ul>
-<li><p><a href="http://sourceforge.net">SourceForge</a>     <br/>
-我最早知道的源码托管站点，上面托管了很多有名的项目和软件，现在很多开源软件的下载链接来自于<a href="http://sourceforge.net">SourceForge</a>，比如Python的一些扩展依赖包，编译VLC所需的很多contrib，vim插件需要的ctags以及cscope等等。GFW曾对其不友好，前段时间由于国内用户在其上托管了过多垃圾站点而遭到了<a href="http://sourceforge.net">SourceForge</a>的反封锁。由于其比较有历史，很多协同开发用SVN甚至CVS多一些。</p></li>
-<li><p><a href="http://code.google.com">GoogleCode</a>       <!--more-->
-大名鼎鼎的Google出品，界面简洁，并结合了<a href="http://developers.google.com">Google Developers</a>，上面也有不少的知名项目，我最近用的PMTK3（机器学习的工具包）就是托管在其上的，但好像一直以来<a href="http://code.google.com">GoogleCode</a>都不是特别火，我也不知道原因。版本控制方面，全面支持SVN,Git,Mercurial等等，我个人比较信赖Google的服务。</p></li>
-<li><p><a href="https://bitbucket.org">BitBucket</a>    <br/>
-这个貌似在国外用户比较多，知道这个站点是因为PT的缘故，当时追溯PT源码的历史，了解到了TBSource，知道是托管在<a href="https://bitbucket.org">BitBucket</a>上的。后来研究播放器的开发，知道了优秀的射手播放器（SPlayer）的源码是托管在其上的，这个站点比较偏好使用Mercurial和git貌似。</p></li>
-<li><p><a href="http://www.codeproject.com">CodeProject</a>     <br/>
-知道这个站点是因为自己在学习Windows编程的时候，这上面有很多的小例子的源码，是一个非常好的学习的地方。与其说是源码托管站点，更确切的是一个交流代码，相互学习的地方。有点像StackOverflow，不过这里更多是用代码交流。</p></li>
-<li><p><a href="https://github.com">GitHub</a>      <br/>
-好吧，最后才说这个大腕，只是因为最近<a href="https://github.com">GitHub</a>太火太火了，压轴出场。相比于其它的源码托管站点，其在功能方面未必见长，不过其Social Coding的理念以及和git的完美结合，吸引了不少coder和project来此安家。比如说ruby，很多vim的插件等等，具体的无需多说，谁用谁知道:)</p></li>
+<li><a href="http://www.360doc.com/content/12/0216/16/1016783_187128091.shtml">为已经存在的github Octopress配置本地环境</a></li>
+<li><a href="http://madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a></li>
+<li><a href="http://ns2.beta4better.org/2012/01/octopress-no-such-file-to-load-zlib-or-openssl.html">Octopress:no such file to load:zlib,openssl</a></li>
+<li><a href="http://blog.csdn.net/dqatsh/article/details/2125089">ubuntu下安装ruby后openssl找不到的问题</a></li>
+<li><a href="http://www.myexception.cn/ruby-rails/665543.html">in &#8216;require&#8217;:no such file to load -openssl (LoadError)</a></li>
+<li><a href="http://www.linuxdiyf.com/viewarticle.php?id=68545">安装ruby-debug-base是mkmf(LoadError)问题的解决办法</a></li>
 </ul>
 
 
-<p>欢迎大家访问<a href="https://github.com/hustcalm">我的Github</a>。我的这个<a href="http://hustcalm.me">Octopress博客</a>也是托管在GitHub Pages之上的，使用了<a href="http://jekyllbootstrap.com">Jekyll</a>静态网站生成引擎。</p>
+<p>暂时就这么多了，发现有问题才比较有意思。</p>
 
-<p><strong>我就知道这么多了，有知道更多的朋友，欢迎留言补充:)</strong></p>
+<p>如果你在设置Octopress的时候有任何疑问，欢迎和我讨论:)</p>
 </div>
 
 
@@ -134,12 +138,12 @@
   
 
 
-<time datetime="2012-10-24T23:13:00+08:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
+<time datetime="2012-11-24T01:00:00+08:00" pubdate data-updated="true">Nov 24<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/opensource/'>OpenSource</a>
+    <a class='category' href='/blog/categories/octopress/'>Octopress</a>
   
 </span>
 
@@ -158,10 +162,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/10/23/gitde-globle-confighe-repo-config/" title="Previous Post: git的global config和repo config">&laquo; git的global config和repo config</a>
+        <a class="basic-alignment left" href="/blog/2012/11/21/ke-yuan-you-gan/" title="Previous Post: 科苑有感">&laquo; 科苑有感</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/10/24/shi-yong-portableapps-dot-comzhi-zuo-zi-ji-de-u3pan-%2Cshi-xian-pc-anywhere/" title="Next Post: 使用PortableApps.com制作自己的U3盘，实现PC Anywhere">使用PortableApps.com制作自己的U3盘，实现PC Anywhere &raquo;</a>
       
     </p>
   </footer>
@@ -301,8 +303,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://hustcalm.me/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/';
-        var disqus_url = 'http://hustcalm.me/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/';
+        var disqus_identifier = 'http://hustcalm.me/blog/2012/11/24/hello-octopress-from-ubuntu-12-dot-04/';
+        var disqus_url = 'http://hustcalm.me/blog/2012/11/24/hello-octopress-from-ubuntu-12-dot-04/';
         var disqus_script = 'embed.js';
       
     (function () {
