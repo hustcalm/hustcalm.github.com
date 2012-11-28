@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2012-11-25T01:17:57+08:00</updated>
+  <updated>2012-11-28T22:02:10+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[纪念一下刚刚过去的BLUG 2012]]></title>
+    <link href="http://hustcalm.me/blog/2012/11/25/ji-nian-yi-xia-gang-gang-guo-qu-de-blug-2012/"/>
+    <updated>2012-11-25T01:30:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2012/11/25/ji-nian-yi-xia-gang-gang-guo-qu-de-blug-2012</id>
+    <content type="html"><![CDATA[<p>挺high的一个party，nice game， nice food， nice guys!!!</p>
+
+<p>嗯，北理工的xy大哥，北邮的ysr兄弟，清华的fxt师兄，澳大利亚的richard，SUSE的Shawn，幽默的ABC，给力的<a href="http://blug.chinalug.org">BLUG</a>!</p>
+
+<p>加入了OpenDrone小组，希望能在这里找到乐趣:)</p>
+
+<p>Safe and sound, finally I got what I want.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hello Octopress From Ubuntu 12.04]]></title>
@@ -763,36 +778,6 @@ Done.:)</p>
 
 <p>感觉Name.com家的服务还是很快的。另外，在注册域名的时候默认附带一个收费的whois privacy，不知道是干啥的，但是买了下来。
 官方文章请参考<a href="octopress.org/docs/deploying/github">Deploying to Github Pages</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Simple Syntax of Markdown]]></title>
-    <link href="http://hustcalm.me/blog/2012/10/08/simple-syntax-of-markdown/"/>
-    <updated>2012-10-08T14:00:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2012/10/08/simple-syntax-of-markdown</id>
-    <content type="html"><![CDATA[<p><strong>MarkdownPad</strong> is a full-featured Markdown editor for Windows.</p>
-
-<h2>Full control over your documents</h2>
-
-<p>Want to make something <strong>bold</strong>? Press <code>Ctrl + B</code>.</p>
-
-<p>How about <em>italic</em>? Press <code>Ctrl + I</code>.</p>
-
-<!--more-->
-
-
-<blockquote><p>Write a quote with <code>Ctrl + Q</code></p></blockquote>
-
-<p>No matter what you&#8217;re working on, you&#8217;ll have quick access to Markdown syntax with handy keyboard shortcuts and toolbar buttons.</p>
-
-<h2>See your changes instantly with LivePreview</h2>
-
-<p>Don&#8217;t guess if your <a href="http://markdownpad.com">hyperlink syntax</a> is correct; LivePreview will show you exactly what your document looks like every time you press a key.</p>
-
-<h2>Make it your own</h2>
-
-<p>Fonts, sizes, color schemes, and even the HTML stylesheets are 100% customizable so you can turn MarkdownPad into your ideal editor.</p>
 ]]></content>
   </entry>
   
