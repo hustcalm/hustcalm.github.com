@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2012-11-28T22:02:10+08:00</updated>
+  <updated>2012-11-30T19:58:33+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[分享一些有用的机器学习方面的链接]]></title>
+    <link href="http://hustcalm.me/blog/2012/11/30/fen-xiang-yi-xie-you-yong-de-ji-qi-xue-xi-fang-mian-de-lian-jie/"/>
+    <updated>2012-11-30T19:37:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2012/11/30/fen-xiang-yi-xie-you-yong-de-ji-qi-xue-xi-fang-mian-de-lian-jie</id>
+    <content type="html"><![CDATA[<p>被机器学习上了不要紧，要紧的是你都不知道上你的是机器学习。发现学了机器学习之后，自残情绪剧增，分享几个优秀的机器学习方面的链接了以慰藉。</p>
+
+<ul>
+<li><a href="http://blog.csdn.net/shfkuang/article/details/7772935">机器学习与计算机视觉大牛族谱</a></li>
+<li><a href="http://doctorimage.cn/2012/11/19/maching-learning-computer-vison-family-sites/">机器学习与计算机视觉大牛族谱和链接</a></li>
+<li><a href="http://blog.csdn.net/j_study/article/details/7903302">人工智能、机器学习、计算机视觉（整理）</a></li>
+<li><a href="http://blog.csdn.net/j_study/article/details/7903823">计算机视觉方面的会议、期刊</a></li>
+<li><a href="http://blog.csdn.net/j_study/article/details/7938982">《SCI》、《EI》、《ISTP》简介</a></li>
+<li><a href="http://shijuanfeng.blogbus.com/logs/216968430.html">计算机视觉与图像处理、模式识别、机器学习学科之间的关系</a></li>
+<li><a href="http://wenku.baidu.com/course/view/49e8b8f67c1cfad6195fa705">机器学习Machine Learning百度课程-龙星计划</a></li>
+<li><a href="http://cs229.stanford.edu/">CS229 Machine Learning Stanford</a></li>
+<li><a href="http://mldemos.epfl.ch/">MLDemos可视化机器学习资源</a></li>
+</ul>
+
+
+<p>学。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[纪念一下刚刚过去的BLUG 2012]]></title>
@@ -743,41 +767,6 @@ Done.:)</p>
 可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。     <br/>
 而现在写文章先不管Octopress了，只管</em>deploy。    <br/>
 唉，郁闷:(。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[入手了name.com的域名hustcalm.me]]></title>
-    <link href="http://hustcalm.me/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me/"/>
-    <updated>2012-10-10T01:50:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me</id>
-    <content type="html"><![CDATA[<p>相比来说，name.com家的注册貌似比godaddy家的简单些，而且设置起来更适合于新手，具体请参考文章<a href="http://hugege.com/2010/01/19/the-diference-between-name-com-and-godaddy/">Name.com和Godaddy的一些区别</a>。</p>
-
-<p>今天发现一个比较郁闷的事情，本地rake preview没有问题，rake generate and rake deploy后却在hustcalm.github.com上看不到效果，后来神奇地绑定域名hustcalm.me后看到了效果。莫非是域名绑定惹的祸？可是在绑定前就存在此问题。</p>
-
-<p>下面简单说说如何给Github Pages绑定Name.com的注册域名，以我注册的hustcalm.me域名为例。</p>
-
-<!--more-->
-
-
-<p>echo &#8220;hustcalm.me&#8221; >> ~/blog/octopress/source/CNAME</p>
-
-<p>git add .</p>
-
-<p>git commit -a -m &#8216;add custom domain CNAME configuration&#8217;</p>
-
-<p>git push origin source</p>
-
-<p>接下来到Name.com的Account里面设置域名指向，添加两个A记录，分别为：</p>
-
-<p>hustcalm.me 207.97.227.245</p>
-
-<p>www.hustcalm.me 207.97.227.245</p>
-
-<p>稍等一会，就可以访问hustcalm.me了。</p>
-
-<p>感觉Name.com家的服务还是很快的。另外，在注册域名的时候默认附带一个收费的whois privacy，不知道是干啥的，但是买了下来。
-官方文章请参考<a href="octopress.org/docs/deploying/github">Deploying to Github Pages</a></p>
 ]]></content>
   </entry>
   
