@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2012-12-04T18:17:58+08:00</updated>
+  <updated>2012-12-23T23:33:07+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[诫子书]]></title>
+    <link href="http://hustcalm.me/blog/2012/12/23/jie-zi-shu/"/>
+    <updated>2012-12-23T23:25:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2012/12/23/jie-zi-shu</id>
+    <content type="html"><![CDATA[<p>夫君子之行，静以修身，俭以养德。</p>
+
+<p>非淡泊无以明志，非宁静无以致远。夫学须静也，才须学也，非学无以广才，非志无以成学。慆慢则不能研精，险躁则不能理性。</p>
+
+<p>年与时驰，意与岁去，遂成枯落，多不接世。悲叹穷庐，将复何及！</p>
+
+<p>**自勉！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[分享一些有用的机器学习方面的链接]]></title>
@@ -754,19 +769,6 @@ Done.:)</p>
 <p>But trouble is there are some libraries missiing or version too old, and can&#8217;t figure it out too clear now. Also after make complete,Got an error&#8221;No Plugins found! Check your VLC installation&#8221; when attempt to run vlc with in bin, but runs fine with ./vlc-static.</p>
 
 <p>Anyway it is a good start to dig into VLC further:)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ubuntu下检出Cygwin搭建的Octopress遇到的问题]]></title>
-    <link href="http://hustcalm.me/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/"/>
-    <updated>2012-10-13T19:37:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti</id>
-    <content type="html"><![CDATA[<p>原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“<em>deploy”对应的是remote_master branch即可。    <br/>
-而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。     <br/>
-可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。     <br/>
-而现在写文章先不管Octopress了，只管</em>deploy。    <br/>
-唉，郁闷:(。</p>
 ]]></content>
   </entry>
   
