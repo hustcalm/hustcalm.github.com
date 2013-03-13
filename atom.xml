@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-03-02T11:42:05+08:00</updated>
+  <updated>2013-03-13T23:16:47+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[BIOS是如何被加载并执行的]]></title>
+    <link href="http://hustcalm.me/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de/"/>
+    <updated>2013-03-13T22:32:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de</id>
+    <content type="html"><![CDATA[<p>最近在上杨立祥老师的《操作系统高级教程I》，主要讲述Linux 0.11是如何被加载到内存，并且开始接管计算机。那么系统是如何被加载并执行的呢？基本上分为三步：
+*   （1）启动BIOS，准备实模式下的中断向量表和中断服务程序
+*   （2）从启动盘加载操作系统到内存，加载操作系统程序的工作，由第一步准备好的中断服务程序完成
+*   （3）为执行32位的main函数做过渡工作</p>
+
+<p>杨老师的书中，在BIOS启动之后的讲解都很清楚，唯一在BIOS启动那里，有点“犹抱琵琶半遮面”的感觉。我个人的理解是，整个计算机里面只有处理器（也就是CPU）可以“干活”，所以BIOS的启动肯定需要CPU的参与，那么指令执行的地方在哪里呢？本质上，指令执行都是在CPU的寄存器和运算单元那里完成的，为了完成复杂的运算，需要保存很多数据，所以需要内存访问的支持。</p>
+
+<p>而BIOS是被固化在EEPROM里面的，通过总线连接着主板上的南桥芯片（貌似现在已经取消了，anyway，BIOS是可以被CPU通过总线访问的）供CPU访问。问题是目前内存可用么？答案应该是不可用，因为需要初始化“memory
+controller”，才能访问内存。那么代码在哪里执行呢？有个“就地执行”的概念，我本科在嵌入式组的时候，对这个东西只是感到神奇，并没有真正理解。现在看了汇编的一些东西，加上x86微机原理的东西，感觉“只要能够被CPU寻址，并且提供访问driver的存储器，理论上都可以执行代码”，记得“任何执行都发生在CPU内部”。</p>
+
+<p>既然软件环境还没建立好，那么BIOS是如何开始被执行的呢？直觉上，想到了硬件的自启动。也就是加电后，CPU立即开始执行BIOS的代码，至于CPU如何知道运行那里的代码呢？涉及到硬件的东西，一时说不清楚。这里需要留意一个概念，就是CPU寻址和存储器编址，再具体来讲，就是ROM和RAM是如何统一编址的。现在还没要搞清楚具体机制，需要进一步的学习。</p>
+
+<p>参考了stackoverflow上的一个<a href="http://stackoverflow.com/questions/5300527/do-normal-x86-or-amd-pcs-run-startup-bios-code-directly-from-rom-or-do-they-cop">讨论</a>：</p>
+
+<!--more-->
+
+
+<p>It both directly executes from ROM and copies stuff into RAM.</p>
+
+<p>On a modern x86 processor, the chipset memory controller is uninitialized at initial power-up, so there is no RAM available.</p>
+
+<p>A modern BIOS is usually divided into two parts:</p>
+
+<ul>
+<li>Boot Block (early POST)</li>
+<li>Compressed Area (mid-to-late POST)</li>
+</ul>
+
+
+<p>When the processor comes out of reset, it begins executing instructions at a fixed address in memory, called the &#8220;reset vector&#8221;. The BIOS flash chip is mapped to this address in memory. The processor simply starts executing instructions from this address.</p>
+
+<p>The &#8220;Boot Block&#8221; refers to the BIOS code starting at the reset vector (plus a few JMPs). This is executed directly from ROM (memory controller isn&#8217;t up yet), so it is very slow.</p>
+
+<p>The BIOS Boot Block generally does the following:</p>
+
+<ul>
+<li>1.Initialize the memory controller. (If you get a &#8220;memory not detected&#8221; beep code from a motherboard, it happens here.)</li>
+<li>2.Perform a checksum on the Compressed Area to make sure the rest of the BIOS is free of corruption.</li>
+<li>3.Jump into a Recovery Mode if any corruption is detected.</li>
+<li>4.If the checksum passes, decompress the rest of the BIOS into RAM somewhere (typically below the 1MB boundary).</li>
+<li>5.Jump to the decompressed code in RAM and continue with boot.</li>
+</ul>
+
+
+<p>A long road to go&#8230;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[git和github的哲学和艺术]]></title>
@@ -843,31 +896,6 @@ PMTK3的整个工具包有很强的学习意义，Machine Learning自然不必�
 的朋友可以轻松搞定:)     <br/>
 Enjoy Creating on Internet:)      <br/>
 One For All,All For One.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[为Octopress博客添加Flag Counter侧边栏]]></title>
-    <link href="http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/"/>
-    <updated>2012-10-16T11:19:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan</id>
-    <content type="html"><![CDATA[<p>今天为自己的Octopress博客添加了访问者统计工具，<a href="www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。      <br/>
-拿到了代码后，添加到侧边栏，在custom/asides添加flag_counter.html，然后在_config.yml中开启即可，其中flag_counter.html的格式如下：</p>
-
-<pre><code>&lt;section&gt;       
-&lt;h1&gt;Flag Counter&lt;/h1&gt;       
-Code you get from [Flag Counter](www.flagcounter.com)       
-&lt;/section&gt;      
-</code></pre>
-
-<p>针对以上代码，还需要在_config.yml文件中添加一行：</p>
-
-<pre><code>flag_counter: true  
-</code></pre>
-
-<p>为了在本博文中显示flag_counter.html的第一行和最后一行的开关语句，特意额外添加了一组<code>if Tag</code>，Markdown，囧～      <br/>
-因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon&#8230;解决方案参考了<a href="code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a>       <br/>
-<em>Enjoy your Flag Counter:)</em></p>
 ]]></content>
   </entry>
   
