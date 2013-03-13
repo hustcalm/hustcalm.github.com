@@ -1,0 +1,51 @@
+---
+layout: post
+title: "BIOS是如何被加载并执行的"
+date: 2013-03-13 22:32
+comments: true
+categories: BIOS
+---
+
+最近在上杨立祥老师的《操作系统高级教程I》，主要讲述Linux 0.11是如何被加载到内存，并且开始接管计算机。那么系统是如何被加载并执行的呢？
+
+基本上分为三步：
+
+*   （1）启动BIOS，准备实模式下的中断向量表和中断服务程序
+*   （2）从启动盘加载操作系统到内存，加载操作系统程序的工作，由第一步准备好的中断服务程序完成
+*   （3）为执行32位的main函数做过渡工作
+
+杨老师的书中，在BIOS启动之后的讲解都很清楚，唯一在BIOS启动那里，有点“犹抱琵琶半遮面”的感觉。我个人的理解是，整个计算机里面只有处理器（也就是CPU）可以“干活”，所以BIOS的启动肯定需要CPU的参与，那么指令执行的地方在哪里呢？本质上，指令执行都是在CPU的寄存器和运算单元那里完成的，为了完成复杂的运算，需要保存很多数据，所以需要内存访问的支持。
+
+<!--more-->
+
+而BIOS是被固化在EEPROM里面的，通过总线连接着主板上的南桥芯片（貌似现在已经取消了，anyway，BIOS是可以被CPU通过总线访问的）供CPU访问。问题是目前内存可用么？答案应该是不可用，因为需要初始化“memory
+controller”，才能访问内存。那么代码在哪里执行呢？有个“就地执行”的概念，我本科在嵌入式组的时候，对这个东西只是感到神奇，并没有真正理解。现在看了汇编的一些东西，加上x86微机原理的东西，感觉“只要能够被CPU寻址，并且提供访问driver的存储器，理论上都可以执行代码”，记得“任何执行都发生在CPU内部”。
+
+既然软件环境还没建立好，那么BIOS是如何开始被执行的呢？直觉上，想到了硬件的自启动。也就是加电后，CPU立即开始执行BIOS的代码，至于CPU如何知道运行那里的代码呢？涉及到硬件的东西，一时说不清楚。这里需要留意一个概念，就是CPU寻址和存储器编址，再具体来讲，就是ROM和RAM是如何统一编址的。现在还没要搞清楚具体机制，需要进一步的学习。
+
+参考了stackoverflow上的一个[讨论](http://stackoverflow.com/questions/5300527/do-normal-x86-or-amd-pcs-run-startup-bios-code-directly-from-rom-or-do-they-cop)：
+
+It both directly executes from ROM and copies stuff into RAM.
+
+On a modern x86 processor, the chipset memory controller is uninitialized at initial power-up, so there is no RAM available.
+
+A modern BIOS is usually divided into two parts:
+
+*   Boot Block (early POST)
+*   Compressed Area (mid-to-late POST)
+
+When the processor comes out of reset, it begins executing instructions at a fixed address in memory, called the "reset vector". The BIOS flash chip is mapped to this address in memory. The processor simply starts executing instructions from this address.
+
+The "Boot Block" refers to the BIOS code starting at the reset vector (plus a few JMPs). This is executed directly from ROM (memory controller isn't up yet), so it is very slow.
+
+The BIOS Boot Block generally does the following:
+
+*   1.Initialize the memory controller. (If you get a "memory not detected" beep code from a motherboard, it happens here.)
+*   2.Perform a checksum on the Compressed Area to make sure the rest of the BIOS is free of corruption.
+*   3.Jump into a Recovery Mode if any corruption is detected.
+*   4.If the checksum passes, decompress the rest of the BIOS into RAM somewhere (typically below the 1MB boundary).
+*   5.Jump to the decompressed code in RAM and continue with boot.
+
+
+A long road to go...
+
