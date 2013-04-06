@@ -149,8 +149,14 @@
         <lastmod>2013-03-13T23:23:11+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://hustcalm.me/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts/
+        </loc>
+        <lastmod>2013-04-06T13:01:11+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://hustcalm.me/</loc>
-        <lastmod>2013-03-13T23:23:11+08:00</lastmod>
+        <lastmod>2013-04-06T13:01:11+08:00</lastmod>
     </url>
     <url>
         <loc>http://hustcalm.me/about/</loc>
@@ -158,6 +164,6 @@
     </url>
     <url>
         <loc>http://hustcalm.me/blog/archives/</loc>
-        <lastmod>2013-03-13T23:23:11+08:00</lastmod>
+        <lastmod>2013-04-06T13:01:11+08:00</lastmod>
     </url>
 </urlset>

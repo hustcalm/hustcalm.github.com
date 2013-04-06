@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-03-13T23:23:19+08:00</updated>
+  <updated>2013-04-06T13:02:53+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -12,6 +12,110 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[彻底搞懂字符集和字符编码(Cooked from other posts)]]></title>
+    <link href="http://hustcalm.me/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts/"/>
+    <updated>2013-04-06T12:08:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts</id>
+    <content type="html"><![CDATA[<p>ASCII,ANSI,Unicode,UTF-8,BOM,UCS,GB2312,GBK,GB18030,BIG5,Code Page&#8230; Blabla&#8230;</p>
+
+<p>对于以上概念，你是否都理解了呢？下面，带着大家彻底搞懂字符集和字符编码的相关知识。我是读了别人的posts，然后cook出来，整理思路，所以需要大家边读边仔细阅读相应的post哦～</p>
+
+<h2>入门篇</h2>
+
+<p>首先，简单了解一下。</p>
+
+<ul>
+<li><a href="http://www.imkevinyang.com/2009/02/%E5%AD%97%E7%AC%A6%E7%BC%96%E8%A7%A3%E7%A0%81%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88ascii%EF%BC%8Cansi%EF%BC%8Cunicode%EF%BC%8Cutf-8%E5%8C%BA%E5%88%AB%EF%BC%89.html">字符编解码的故事（ASCII，ANSI，Unicode，Utf-8区别）</a></li>
+</ul>
+
+
+<p>这篇文章，以类似《明朝那些事儿》的文笔，向大家介绍了”编码“的简史。</p>
+
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编码笔记：ASCII，Unicode和UTF-8</a></li>
+</ul>
+
+
+<p>阮一峰的博客，重点描述了ASCII和Unicode，并强调“<strong>UTF-8是Unicode的实现方式之一</strong>”，Little endian和Big endian的典故也说到了。跟上篇文章一样，适合入门。</p>
+
+<h2>初级篇</h2>
+
+<p>入门之后，需要搞清楚究竟“字符集”和“字符编码”是什么东东。</p>
+
+<!--more-->
+
+
+<ul>
+<li><a href="http://www.iteye.com/topic/97803">深入了解字符集和编码</a></li>
+</ul>
+
+
+<p>这篇文章，给出了“字符集”和“字符编码”的“<strong>定义</strong>”，并对ANSI编码有了比较合理的解释（使用2个字节来代表一个字符的各种汉字延伸编码方式，称为ANSI编码。 在简体中文系统下，ANSI编码代表GB2312编码，在日文操作系统下，ANSI编码代表JIS编码。 ）这里也提到了BOM的概念，在“<strong>编程语言与编码</strong>”那里描述了编程语言对于内部字符串是如何进行编码的。</p>
+
+<h2>中级篇</h2>
+
+<p>在基本了解了“字符集”和“字符编码”是什么东东后，让我们再仔细看看主流的“字符集和编码”。</p>
+
+<ul>
+<li><a href="http://space.itpub.net/55022/viewspace-713849">各种字符集和编码详解</a></li>
+</ul>
+
+
+<p>本文也是按照“<strong>字符编码的历程</strong>”来展开，ASCII，ISO8859-1，GB2312，GBK，GB18030，BIG5，UCS，Unicode都说到了。而在编码方面，重点说了UTF-8，UTF-16，UTF-32，UTF-7。此外，提到了MIME（多用途网际邮件扩充协议），是现在邮件编码方式的主流，其中定义了两种编码方法Base64和QP（Quote-Pritable）。</p>
+
+<h2>高级篇</h2>
+
+<p>下面，更加细致地了解下“编码”是如何存储的，以及分析下优缺点。</p>
+
+<ul>
+<li><a href="http://www.cnblogs.com/skynet/archive/2011/05/03/2035105.html">字符集和字符编码（Charset &amp; Encoding）</a></li>
+</ul>
+
+
+<p>本文知识点比较系统，在看了以上的文章后，可以“<strong>系统</strong>”地整理下思路了。本文在描述了“ASCII字符集&amp;编码&#8221;,&#8221;GBXXXX字符集&amp;编码”以及“BIG5字符集&amp;编码”后，提出了“<strong>伟大的创想Unicode</strong>”。之后，又说到了“互联网传输”的编码问题，Accept-Charset/Accept-Encoding/Accept-Language/Content-Type/Content-Encoding/Content-Language。</p>
+
+<h2>拾遗篇</h2>
+
+<p>了解“<strong>字符集</strong>”和“<strong>字符编码</strong>”的主线了，可能还对一些常见的概念疑惑。下面的链接就一些概念进行了简明的解释。</p>
+
+<ul>
+<li><a href="http://bbs.chinaunix.net/thread-3610023-1-1.html">中文字符编码标准+Unicode+Code Page</a></li>
+</ul>
+
+
+<p>这里是想重点了解“<strong>Code Page</strong>”的，跟操作系统的实现有关。</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Code_page">Code page</a></li>
+</ul>
+
+
+<p>Code page is another term for character encoding. It consists of a table of values that describes the character set for a particular language. The term code page originated from IBM&#8217;s EBCDIC-based mainframe systems,[1] but many vendors use this term including Microsoft, SAP,[2] and Oracle Corporation.[3] Vendors often allocate their own code page number to a character encoding, even if it is better known by another name (for example UTF-8 character encoding has code page numbers 1208 at
+IBM, 65001 at Microsoft, 4110 at SAP).</p>
+
+<ul>
+<li><a href="http://hi.baidu.com/kumosheng/item/0864400782d3df7abfe97e87">区位码和内码，外码，国标码</a></li>
+</ul>
+
+
+<p>我国“技术专家”的智慧结晶！看看汉字是怎么被编码的！～</p>
+
+<ul>
+<li><a href="http://www.htmer.com/article/232.htm">输入法中全角/半角的区别以及切换方法</a></li>
+</ul>
+
+
+<p>刚学输入法的时候，就一直被“全角”和“半角”折磨着，现在终于搞明白了！</p>
+
+<h2>总结篇</h2>
+
+<p>输入，编码，显示，存储，读取，解码，输出。</p>
+
+<p>看来，不管什么东西，还是要从“操作系统”的层面去认识！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[BIOS是如何被加载并执行的]]></title>
@@ -888,20 +992,6 @@ I solved this problem by referencing this [link](http://forum.videolan.org/view&
 最后，runDemos，官方说运行时间比较长，我觉得是因为下载数据包占用了大量时间，如果提前把数据准备好，放到相应的pmtkdataCopy目录，时间会缩短不少，我没有实际运行，估计也就十分钟左右吧，当然还要看你的电脑配置了。   <br/>
 PMTK3的整个工具包有很强的学习意义，Machine Learning自然不必多说，也是学习Matlab的好教材，自己研读作者的代码，可以发现代码的简洁和严谨。目前，这个项目还在维护中，而且作者在做Python的Port，希望之后自己能在这方面榜上点忙。    <br/>
 机器学习，模式识别，人工智能，数据挖掘。任重道远，路漫漫修远兮！</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[为Octopress博客添加CreativeCommons License]]></title>
-    <link href="http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license/"/>
-    <updated>2012-10-16T12:42:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license</id>
-    <content type="html"><![CDATA[<p>很久之前就听说了CreativeCommons License，并且看到很多博客站点上也在此License下授权，因此想在自己的Octopress上添加CC License。   <br/>
-我添加的是非商业化使用，自由分享修改的授权，即NonCommercial-ShareAlike。      <br/>
-具体的添加步骤也是经典的添加侧边栏，只是需要去<a href="creativecommons.org/choose">官方站点</a>选择自己需要的协议，拿到代码。相信玩Octopress
-的朋友可以轻松搞定:)     <br/>
-Enjoy Creating on Internet:)      <br/>
-One For All,All For One.</p>
 ]]></content>
   </entry>
   
