@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-05-01T23:41:18+08:00</updated>
+  <updated>2013-05-01T23:43:31+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[CALM]]></name>
@@ -35,6 +35,13 @@
 <li>RFP: Request For Packaging</li>
 <li>RFS: Request For Sponsor</li>
 <li>ITP: Intent To Packagge</li>
+</ul>
+
+
+<!--more-->
+
+
+<ul>
 <li>RFH: Request For Help</li>
 <li>RFA: Request For Adoption</li>
 <li>O: Orphan</li>
