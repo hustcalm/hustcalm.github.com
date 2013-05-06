@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VIM | Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-05-06T21:05:34+08:00</updated>
+  <updated>2013-05-06T21:08:03+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Vim是一种态度]]></title>
-    <link href="http://hustcalm.me/blog/2013/05/06/vimshi-%5B%3F%5D-chong-tai-du/"/>
+    <link href="http://hustcalm.me/blog/2013/05/06/vimshi-yi-zhong-tai-du/"/>
     <updated>2013-05-06T20:30:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/05/06/vimshi-[?]-chong-tai-du</id>
+    <id>http://hustcalm.me/blog/2013/05/06/vimshi-yi-zhong-tai-du</id>
     <content type="html"><![CDATA[<p>想想接触VIM也有段时间了，一直比较半调子，从没认真看过vimtutor，倒是东拼西凑，到处画斋:-)</p>
 
 <p>目前自己把VIM的使用分为三个层次：</p>
