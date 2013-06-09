@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Geek | Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/blog/categories/geek/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-05-12T00:21:57+08:00</updated>
+  <updated>2013-06-09T12:28:38+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Firefox利器Vimperator简明攻略]]></title>
+    <link href="http://hustcalm.me/blog/2013/06/09/firefoxli-qi-vimperatorjian-ming-gong-lue/"/>
+    <updated>2013-06-09T12:13:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/06/09/firefoxli-qi-vimperatorjian-ming-gong-lue</id>
+    <content type="html"><![CDATA[<p>使用Vimperator也有那么一段时间了，着实再次发现CLI的强大和美好，关键是脱离鼠标后，浏览体验大大增强。正如大部分使用者只会使用一个软件大概20%的功能，我觉得我只是在使用Vimperator 10%的功能，不过这10%已经足以应对普通的需求。</p>
+
+<p>正如Vimperator的原始开发者之一，后来另起炉灶开发了Pentadactyl所说，Vimperator更加注重易用性和效率，而Pentadactyl是专门为geek打造。本攻略适合入门级geek，因为Vimperator的学习曲线还是有那么一点陡的（至少得先对VIM比较熟悉）。然而，本文试图去繁就简，给出核心的一些操作，如果需要更加深入的指导，请参考Vimperator的帮助文件或者我托管在Github上的一个<a href="https://github.com/hustcalm/vimperator">Repository</a>。</p>
+
+<h3>核心操作</h3>
+
+<ul>
+<li><code>o</code> Open new link in current tab</li>
+<li><code>t</code> Open new link in new tab, also you can input keywords for search</li>
+<li><code>Tab</code>  select the candinates recycly</li>
+<li><code>f</code> Follow hint and open link in current tab, also very useful for locating user input forms</li>
+<li><code>F</code> Follow hint and open link in new tab</li>
+<li><code>gi</code> Locate the input form quickly</li>
+<li><code>Ctrl + A</code>  Move cursor to the beginning of the line in insert mode</li>
+<li><code>Ctrl + E</code>  Move cursor to the end of the line in insert mode</li>
+<li><code>Ctrl + U</code>  Delete the characters before cursor in insert mode</li>
+<li><code>Ctrl + K</code>  Delete the characters after cursor in insert mode</li>
+<li><code>gt</code> Jump to right tab</li>
+<li><code>gT</code> Jump to left tab</li>
+<li><code>g0</code> Jump to first tab</li>
+<li><code>g$</code> Jump to last tab</li>
+<li><code>H</code>  Navigate back</li>
+<li><code>L</code>  Navigate forward</li>
+<li><code>d</code>  Close current tab</li>
+<li><code>u</code>  Undo and reopen the lastest closed tab</li>
+<li><code>/</code>  Search in current page</li>
+<li><code>?</code>  Search in current page reversely</li>
+<li><code>:</code>  Command mode</li>
+<li><code>;c</code> Follow hint and open the right click menu(also called the contextual menu) for links</li>
+</ul>
+
+
+<h3>详细参考</h3>
+
+<p>请参考<a href="https://github.com/hustcalm/vimperator">Vimperator On Github</a>.</p>
+
+<p>有任何问题，欢迎留言讨论！如果觉得Vimperator不够极客，可以拿Pentadactyl玩玩:-)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[彻底搞懂字符集和字符编码(Cooked from other posts)]]></title>
