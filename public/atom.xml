@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-05-12T00:21:57+08:00</updated>
+  <updated>2013-06-09T12:35:16+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Firefox利器Vimperator简明攻略]]></title>
+    <link href="http://hustcalm.me/blog/2013/06/09/firefoxli-qi-vimperatorjian-ming-gong-lue/"/>
+    <updated>2013-06-09T12:13:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/06/09/firefoxli-qi-vimperatorjian-ming-gong-lue</id>
+    <content type="html"><![CDATA[<p>使用Vimperator也有那么一段时间了，着实再次发现CLI的强大和美好，关键是脱离鼠标后，浏览体验大大增强。正如大部分使用者只会使用一个软件大概20%的功能，我觉得我只是在使用Vimperator 10%的功能，不过这10%已经足以应对普通的需求。</p>
+
+<p>正如Vimperator的原始开发者之一，后来另起炉灶开发了Pentadactyl所说，Vimperator更加注重易用性和效率，而Pentadactyl是专门为geek打造。本攻略适合入门级geek，因为Vimperator的学习曲线还是有那么一点陡的（至少得先对VIM比较熟悉）。然而，本文试图去繁就简，给出核心的一些操作，如果需要更加深入的指导，请参考Vimperator的帮助文件或者我托管在Github上的一个<a href="https://github.com/hustcalm/vimperator">Repository</a>。</p>
+
+<h3>核心操作</h3>
+
+<ul>
+<li><code>o</code> Open new link in current tab</li>
+<li><code>t</code> Open new link in new tab, also you can input keywords for search</li>
+<li><code>Tab</code>  select the candinates recycly</li>
+<li><code>f</code> Follow hint and open link in current tab, also very useful for locating user input forms</li>
+<li><code>F</code> Follow hint and open link in new tab</li>
+<li><code>gi</code> Locate the input form quickly</li>
+<li><code>Ctrl + A</code>  Move cursor to the beginning of the line in insert mode</li>
+<li><code>Ctrl + E</code>  Move cursor to the end of the line in insert mode</li>
+<li><code>Ctrl + U</code>  Delete the characters before cursor in insert mode</li>
+<li><code>Ctrl + K</code>  Delete the characters after cursor in insert mode</li>
+<li><code>gt</code> Jump to right tab</li>
+<li><code>gT</code> Jump to left tab</li>
+<li><code>g0</code> Jump to first tab</li>
+<li><code>g$</code> Jump to last tab</li>
+<li><code>H</code>  Navigate back</li>
+<li><code>L</code>  Navigate forward</li>
+<li><code>d</code>  Close current tab</li>
+<li><code>u</code>  Undo and reopen the lastest closed tab</li>
+<li><code>/</code>  Search in current page</li>
+<li><code>?</code>  Search in current page reversely</li>
+<li><code>:</code>  Command mode</li>
+<li><code>;c</code> Follow hint and open the right click menu(also called the contextual menu) for links</li>
+</ul>
+
+
+<h3>详细参考</h3>
+
+<p>请参考<a href="https://github.com/hustcalm/vimperator">Vimperator On Github</a>.</p>
+
+<p>有任何问题，欢迎留言讨论！如果觉得Vimperator不够极客，可以拿Pentadactyl玩玩:-)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[记Ubuntu/UbuntuKylin 13.04 发布派对及主持感想]]></title>
@@ -1121,29 +1166,6 @@ git config user.email yournewemail
 <li><a href="http://www.kernel.org/pub/software/scm/git/docs/git-config.html">git-config</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2012年亚太大学生机器人大赛CCTV视频汇总]]></title>
-    <link href="http://hustcalm.me/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/"/>
-    <updated>2012-10-23T17:55:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong</id>
-    <content type="html"><![CDATA[<p>央视终于在CCTV7播出了2012年亚太大学生机器人大赛的国内选拔赛的视频以及国际赛视频，现在把视频链接整理如下，方便各位Roboconer以及热爱机器人的朋友查看。</p>
-
-<ul>
-<li><a href="http://tv.cntv.cn/videoset/C39764">央视比赛视频列表链接</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121015100904">《2012年亚太大学生机器人大赛国内选拔活动 初试锋芒》</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121016100798">《2012年亚太大学生机器人大赛国内选拔活动 独门秘笈》</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121017101086">《2012年亚太大学生机器人大赛国内选拔活动 侠路相逢》</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121018100886">《2012年亚太大学生机器人大赛国内选拔活动 出奇制胜》</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121019100811">《2012年亚太大学生机器人大赛国内选拔活动 巅峰对决》</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121020100533">《2012年亚太大学生机器人大赛国内选拔活动 智者无敌（香港总决赛）》</a></li>
-</ul>
-
-
-<p>Anyway,thx to CCTV!   <br/>
-<strong>Hust Go and China Go!</strong></p>
 ]]></content>
   </entry>
   
