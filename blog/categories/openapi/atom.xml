@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: OpenAPI | Welcome to Pandora's Box(Why)]]></title>
+  <link href="http://hustcalm.me/blog/categories/openapi/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2013-06-23T22:25:59+08:00</updated>
+  <id>http://hustcalm.me/</id>
+  <author>
+    <name><![CDATA[hustcalm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[也谈SNS OpenAPI接入-OAuth 2.0和Java SDK]]></title>
+    <link href="http://hustcalm.me/blog/2013/06/23/ye-tan-sns-openapijie-ru-oauth-2-dot-0he-java-sdk/"/>
+    <updated>2013-06-23T21:10:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/06/23/ye-tan-sns-openapijie-ru-oauth-2-dot-0he-java-sdk</id>
+    <content type="html"><![CDATA[<p>由于一个项目的需求，开始接触开放平台的API，已完成客户端的用户接入。参考了一些OpenAPI的相关文章后，开始动手封装国内的几大主流开放平台的Java SDK，下面谈一谈我在封装过程中的体会，也算是对自己工作的一个小结。</p>
+
+<h2>OpenAPI是啥</h2>
+
+<p>简单来讲，就是在UCG之外，服务提供商为了增强自身服务的可用性，为了鼓励开发者开发站内或者第三方应用，提供的应用程序接口（可以联想下Restful）。按照历史顺序来看，facebook和twitter仍然是开山鼻祖，一领OpenAPI的先河，尤其是twitter的t4j在国内被发扬光大了（看看网易微博Java
+SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，第三方应用可以操作用户的数据，当然服务提供商会对应用请求有所限制（比如每小时的API请求次数等等）。用户的授权，使用OAuth协议完成，而用户数据的操作通过服务提供商提供的API搞定。</p>
+
+<h2>OAuth是啥</h2>
+
+<!--more-->
+
+
+<p>一种“时髦”的授权机制和协议，目前是2.0版本，核心目的是第三方应用在不必知道用户的用户名和密码的情况下，可以给用户提供服务。在用户将要使用第三方应用的时候，应用会引导用户到服务提供商的授权页面，待完成用户授权后，第三方应用会拿到一个许可证（Access Token），凭借这个许可证访问用户数据，下面引用一张图片说明具体的授权过程：
+<img src="http://www.sinaimg.cn/blog/developer/wiki/oAuth2_01.gif" alt="OAuth授权流程说明" /></p>
+
+<h2>如何接入</h2>
+
+<p>针对各大开发平台，其核心都是授权流程，由于大多都是基于OAuth的，所以大同小异。作为开发者，一般的接入流程是：
+*   1. 申请应用，得到appKey和appSecret（也可能是appID及其它，本质都是应用的UIUD）
+*   2. 下载开放平台的SDK测试，针对自己开放将要使用的API，最好做一个充分的测试，保证其能工作
+*   3. 将SDK封装成简洁的调用接口，供自己的应用调用</p>
+
+<h2>更多信息</h2>
+
+<p>我在github上托管了一个项目<a href="https://github.com/hustcalm/SNS-Shim">SNS-Shim</a>，封装了新浪微博，QQ互联，人人网，豆瓣，网易微博的Java SDK，而且给出了各大开发平台以及OAuth的相关链接，大家可以参考讨论！</p>
+]]></content>
+  </entry>
+  
+</feed>

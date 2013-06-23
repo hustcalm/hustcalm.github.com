@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: OpenSource | Welcome to Pandora's Box(Why)]]></title>
+  <link href="http://hustcalm.me/blog/categories/opensource/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2013-06-23T22:25:59+08:00</updated>
+  <id>http://hustcalm.me/</id>
+  <author>
+    <name><![CDATA[hustcalm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[纪念一下刚刚过去的BLUG 2012]]></title>
+    <link href="http://hustcalm.me/blog/2012/11/25/ji-nian-yi-xia-gang-gang-guo-qu-de-blug-2012/"/>
+    <updated>2012-11-25T01:30:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2012/11/25/ji-nian-yi-xia-gang-gang-guo-qu-de-blug-2012</id>
+    <content type="html"><![CDATA[<p>挺high的一个party，nice game， nice food， nice guys!!!</p>
+
+<p>嗯，北理工的xy大哥，北邮的ysr兄弟，清华的fxt师兄，澳大利亚的richard，SUSE的Shawn，幽默的ABC，给力的<a href="http://blug.chinalug.org">BLUG</a>!</p>
+
+<p>加入了OpenDrone小组，希望能在这里找到乐趣:)</p>
+
+<p>Safe and sound, finally I got what I want.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A stupid tutorial on starting contribution to Opensource software]]></title>
+    <link href="http://hustcalm.me/blog/2012/11/02/a-stupid-tutorial-on-starting-contribution-to-opensource-software/"/>
+    <updated>2012-11-02T16:32:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2012/11/02/a-stupid-tutorial-on-starting-contribution-to-opensource-software</id>
+    <content type="html"><![CDATA[<p><strong>Anyone</strong> who's not a nerd can get on boat after this stupid tutorial, I guess.     <br/>
+<strong>All</strong> you need is passion before contributing to An Open Source Project and some learning about their workflow maybe.   <br/>
+<strong>Open Source</strong> projects need help and every project owner does know this. Besides writing code, they got lots of to do, finding and reporting bugs, do documentation, answer questions on forums or IRC channels, some translation, etc.</p>
+
+<p>And today I want to simply talk about how to get startted on Open Source Community.</p>
+
+<h2>Knowing about Workflow</h2>
+
+<p>Right, we should start here.You want to get involed, you got to know the game rules and how the work is done. Basically,most open source projects have their version control system, their bug trackers, their mailing lists, their IRC channels and their wiki of courese, maybe they also have a forum.</p>
+
+<!--more-->
+
+
+<p>Do read about the wiki pages and I think you should get on feet after that.</p>
+
+<h2>Get familiar</h2>
+
+<p>As soon as you know how is everyting being done, you may start to think about to do something. So how to start? Suscribe their mailing lists, go around the forums, to introduce yourself on IRC and just show up to let people know you:)If you are a coder, then go to the bug tracker system, doing some easy hacks to get to know the whole world.</p>
+
+<p>What? Don't know any code or sth? Don't worry, try to do some translation if possible or just use the software and see if everyting is going ok. If
+not, of course, search the bug tracker, if you confirm this is a new bug ,report it and describe it as the way other people do.</p>
+
+<p>Maybe several days later, people will know you and appreciate your contribution. If not, don't get depressed, just hang on and your efforts will pay.</p>
+
+<p>Of course get no happy? Switch to a new project as you like:)</p>
+
+<h2>Do Thins Right</h2>
+
+<p>Let's say you have been enjoying involed in the project and maybe it's time to do something more. But remember everything must be obey the game rules:)</p>
+
+<p>Make patches and submit it to the developers(of course via emails) and be caution don't make any unnecessary minor changes.</p>
+
+<h2>New ideas</h2>
+
+<p>As you are doing more and more contribution, maybe you got some good ideas to enhence the project。Don't hesitate to write the maintainer of the project and get feedback about your thoughts, let other people know it and discuss if it is worth it.</p>
+
+<h2>Help others</h2>
+
+<p>You know what? You have earned much knowledge about the project after some strugellings though. Sure you would be happy to help the newbies to get on track. So don't be mean to ask questions and reply emails if you can.</p>
+
+<h2>What's Next</h2>
+
+<p>As you have completely got knowledge about contributing to Open Source Project, you are free to broaden your horizon now. Choose some other projects that interest you or even get your own project open sourced and enjoy the cooperation with people from every corner in the world:)</p>
+
+<h2>Referencs</h2>
+
+<ul>
+<li><a href="http://www.kegel.com/academy/opensource.html">Contributing to Open Source Projects HOWTO</a></li>
+<li><a href="http://reinh.com/blog/2009/03/02/a-git-workflow-for-agile-teams.html">A Git Workflow for Agile Teams</a></li>
+</ul>
+
+
+<p><strong>Hope you enjoy the life with the Opensource Community:)</strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[盘点我知道的代码托管站点：Code Hosting Website]]></title>
+    <link href="http://hustcalm.me/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/"/>
+    <updated>2012-10-24T23:13:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-:code-hosting-website</id>
+    <content type="html"><![CDATA[<p>伴随着开源运动的发展，源码托管站点越来越流行了，提供托管服务的同时，大大促进了开源社区的交流并且加速了源码的共享和更新，下面罗列下我所知道的提供源码托管服务的站点，供大家参考。</p>
+
+<ul>
+<li><p><a href="http://sourceforge.net">SourceForge</a>     <br/>
+我最早知道的源码托管站点，上面托管了很多有名的项目和软件，现在很多开源软件的下载链接来自于<a href="http://sourceforge.net">SourceForge</a>，比如Python的一些扩展依赖包，编译VLC所需的很多contrib，vim插件需要的ctags以及cscope等等。GFW曾对其不友好，前段时间由于国内用户在其上托管了过多垃圾站点而遭到了<a href="http://sourceforge.net">SourceForge</a>的反封锁。由于其比较有历史，很多协同开发用SVN甚至CVS多一些。</p></li>
+<li><p><a href="http://code.google.com">GoogleCode</a>       <!--more-->
+大名鼎鼎的Google出品，界面简洁，并结合了<a href="http://developers.google.com">Google Developers</a>，上面也有不少的知名项目，我最近用的PMTK3（机器学习的工具包）就是托管在其上的，但好像一直以来<a href="http://code.google.com">GoogleCode</a>都不是特别火，我也不知道原因。版本控制方面，全面支持SVN,Git,Mercurial等等，我个人比较信赖Google的服务。</p></li>
+<li><p><a href="https://bitbucket.org">BitBucket</a>    <br/>
+这个貌似在国外用户比较多，知道这个站点是因为PT的缘故，当时追溯PT源码的历史，了解到了TBSource，知道是托管在<a href="https://bitbucket.org">BitBucket</a>上的。后来研究播放器的开发，知道了优秀的射手播放器（SPlayer）的源码是托管在其上的，这个站点比较偏好使用Mercurial和git貌似。</p></li>
+<li><p><a href="http://www.codeproject.com">CodeProject</a>     <br/>
+知道这个站点是因为自己在学习Windows编程的时候，这上面有很多的小例子的源码，是一个非常好的学习的地方。与其说是源码托管站点，更确切的是一个交流代码，相互学习的地方。有点像StackOverflow，不过这里更多是用代码交流。</p></li>
+<li><p><a href="https://github.com">GitHub</a>      <br/>
+好吧，最后才说这个大腕，只是因为最近<a href="https://github.com">GitHub</a>太火太火了，压轴出场。相比于其它的源码托管站点，其在功能方面未必见长，不过其Social Coding的理念以及和git的完美结合，吸引了不少coder和project来此安家。比如说ruby，很多vim的插件等等，具体的无需多说，谁用谁知道:)</p></li>
+</ul>
+
+
+<p>欢迎大家访问<a href="https://github.com/hustcalm">我的Github</a>。我的这个<a href="http://hustcalm.me">Octopress博客</a>也是托管在GitHub Pages之上的，使用了<a href="http://jekyllbootstrap.com">Jekyll</a>静态网站生成引擎。</p>
+
+<p><strong>我就知道这么多了，有知道更多的朋友，欢迎留言补充:)</strong></p>
+]]></content>
+  </entry>
+  
+</feed>

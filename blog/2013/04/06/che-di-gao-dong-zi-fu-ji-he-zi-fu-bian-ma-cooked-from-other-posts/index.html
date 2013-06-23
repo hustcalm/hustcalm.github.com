@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>彻底搞懂字符集和字符编码(Cooked from other posts) - Welcome to Pandora's Box(Why)</title>
+  <meta name="author" content="hustcalm">
+
+  
+  <meta name="description" content="ASCII,ANSI,Unicode,UTF-8,BOM,UCS,GB2312,GBK,GB18030,BIG5,Code Page&#8230; Blabla&#8230; 对于以上概念，你是否都理解了呢？下面，带着大家彻底搞懂字符集和字符编码的相关知识。我是读了别人的posts， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hustcalm.me/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts/">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Welcome to Pandora's Box(Why)" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Welcome to Pandora's Box(Why)</a></h1>
+  
+    <h2>Hustcalm的个人博客！</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:hustcalm.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">彻底搞懂字符集和字符编码(Cooked From Other Posts)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-06T12:08:00+08:00" pubdate data-updated="true">Apr 6<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>ASCII,ANSI,Unicode,UTF-8,BOM,UCS,GB2312,GBK,GB18030,BIG5,Code Page&#8230; Blabla&#8230;</p>
+
+<p>对于以上概念，你是否都理解了呢？下面，带着大家彻底搞懂字符集和字符编码的相关知识。我是读了别人的posts，然后cook出来，整理思路，所以需要大家边读边仔细阅读相应的post哦～</p>
+
+<h2>入门篇</h2>
+
+<p>首先，简单了解一下。</p>
+
+<ul>
+<li><a href="http://www.imkevinyang.com/2009/02/%E5%AD%97%E7%AC%A6%E7%BC%96%E8%A7%A3%E7%A0%81%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88ascii%EF%BC%8Cansi%EF%BC%8Cunicode%EF%BC%8Cutf-8%E5%8C%BA%E5%88%AB%EF%BC%89.html">字符编解码的故事（ASCII，ANSI，Unicode，Utf-8区别）</a></li>
+</ul>
+
+
+<p>这篇文章，以类似《明朝那些事儿》的文笔，向大家介绍了”编码“的简史。</p>
+
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编码笔记：ASCII，Unicode和UTF-8</a></li>
+</ul>
+
+
+<p>阮一峰的博客，重点描述了ASCII和Unicode，并强调“<strong>UTF-8是Unicode的实现方式之一</strong>”，Little endian和Big endian的典故也说到了。跟上篇文章一样，适合入门。</p>
+
+<h2>初级篇</h2>
+
+<p>入门之后，需要搞清楚究竟“字符集”和“字符编码”是什么东东。</p>
+
+<!--more-->
+
+
+<ul>
+<li><a href="http://www.iteye.com/topic/97803">深入了解字符集和编码</a></li>
+</ul>
+
+
+<p>这篇文章，给出了“字符集”和“字符编码”的“<strong>定义</strong>”，并对ANSI编码有了比较合理的解释（使用2个字节来代表一个字符的各种汉字延伸编码方式，称为ANSI编码。 在简体中文系统下，ANSI编码代表GB2312编码，在日文操作系统下，ANSI编码代表JIS编码。 ）这里也提到了BOM的概念，在“<strong>编程语言与编码</strong>”那里描述了编程语言对于内部字符串是如何进行编码的。</p>
+
+<h2>中级篇</h2>
+
+<p>在基本了解了“字符集”和“字符编码”是什么东东后，让我们再仔细看看主流的“字符集和编码”。</p>
+
+<ul>
+<li><a href="http://space.itpub.net/55022/viewspace-713849">各种字符集和编码详解</a></li>
+</ul>
+
+
+<p>本文也是按照“<strong>字符编码的历程</strong>”来展开，ASCII，ISO8859-1，GB2312，GBK，GB18030，BIG5，UCS，Unicode都说到了。而在编码方面，重点说了UTF-8，UTF-16，UTF-32，UTF-7。此外，提到了MIME（多用途网际邮件扩充协议），是现在邮件编码方式的主流，其中定义了两种编码方法Base64和QP（Quote-Pritable）。</p>
+
+<h2>高级篇</h2>
+
+<p>下面，更加细致地了解下“编码”是如何存储的，以及分析下优缺点。</p>
+
+<ul>
+<li><a href="http://www.cnblogs.com/skynet/archive/2011/05/03/2035105.html">字符集和字符编码（Charset &amp; Encoding）</a></li>
+</ul>
+
+
+<p>本文知识点比较系统，在看了以上的文章后，可以“<strong>系统</strong>”地整理下思路了。本文在描述了“ASCII字符集&amp;编码&#8221;,&#8221;GBXXXX字符集&amp;编码”以及“BIG5字符集&amp;编码”后，提出了“<strong>伟大的创想Unicode</strong>”。之后，又说到了“互联网传输”的编码问题，Accept-Charset/Accept-Encoding/Accept-Language/Content-Type/Content-Encoding/Content-Language。</p>
+
+<h2>拾遗篇</h2>
+
+<p>了解“<strong>字符集</strong>”和“<strong>字符编码</strong>”的主线了，可能还对一些常见的概念疑惑。下面的链接就一些概念进行了简明的解释。</p>
+
+<ul>
+<li><a href="http://bbs.chinaunix.net/thread-3610023-1-1.html">中文字符编码标准+Unicode+Code Page</a></li>
+</ul>
+
+
+<p>这里是想重点了解“<strong>Code Page</strong>”的，跟操作系统的实现有关。</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Code_page">Code page</a></li>
+</ul>
+
+
+<p>Code page is another term for character encoding. It consists of a table of values that describes the character set for a particular language. The term code page originated from IBM&#8217;s EBCDIC-based mainframe systems,[1] but many vendors use this term including Microsoft, SAP,[2] and Oracle Corporation.[3] Vendors often allocate their own code page number to a character encoding, even if it is better known by another name (for example UTF-8 character encoding has code page numbers 1208 at
+IBM, 65001 at Microsoft, 4110 at SAP).</p>
+
+<ul>
+<li><a href="http://hi.baidu.com/kumosheng/item/0864400782d3df7abfe97e87">区位码和内码，外码，国标码</a></li>
+</ul>
+
+
+<p>我国“技术专家”的智慧结晶！看看汉字是怎么被编码的！～</p>
+
+<ul>
+<li><a href="http://www.htmer.com/article/232.htm">输入法中全角/半角的区别以及切换方法</a></li>
+</ul>
+
+
+<p>刚学输入法的时候，就一直被“全角”和“半角”折磨着，现在终于搞明白了！</p>
+
+<h2>总结篇</h2>
+
+<p>输入，编码，显示，存储，读取，解码，输出。</p>
+
+<p>看来，不管什么东西，还是要从“操作系统”的层面去认识！</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">hustcalm</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-06T12:08:00+08:00" pubdate data-updated="true">Apr 6<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/geek/'>Geek</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+  <div class="bshare-custom icon-medium-plus"><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到Evernote" class="bshare-evernote" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span style="float: none;" class="BSHARE_COUNT bshare-share-count">7.72K</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de/" title="Previous Post: BIOS是如何被加载并执行的">&laquo; BIOS是如何被加载并执行的</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/04/30/2012-abu-roboncon-guo-nei-sai-zong-jie/" title="Next Post: 2012 ABU Roboncon 国内赛总结">2012 ABU Roboncon 国内赛总结 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>Focus on Life.
+  Focus on Technology.
+  Focus on Sports.
+  This is me,Calm.</p>
+  <p>Contact Me Via 
+  hustcalm(at)gmail.com</p>
+</section>
+<iframe frameborder="0" scrolling="no" src="http://kado.im/widget/5075993fabaa3/default.html" style="width: 100%; height: 67px; margin-bottom: 15px;" id="kadoWidgetFrame"></iframe>
+
+<section>
+<h1>Ohloh Profile</h1>
+<a href='https://www.ohloh.net/accounts/229059?ref=Detailed' target='_top'>
+<img alt='Ohloh profile for hustcalm' border='0' height='35' src='https://www.ohloh.net/accounts/229059/widgets/account_detailed.gif' width='191' />
+</a>
+</section>
+
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/bios' style='font-size: 112.0%'>BIOS(1)</a> <a href='/blog/categories/cygwin' style='font-size: 112.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 112.0%'>domain(1)</a> <a href='/blog/categories/geek' style='font-size: 136.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 124.0%'>Git(2)</a> <a href='/blog/categories/learning' style='font-size: 112.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 112.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 112.0%'>Linux(1)</a> <a href='/blog/categories/machine' style='font-size: 112.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 112.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 112.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 112.0%'>MLPR(1)</a> <a href='/blog/categories/name-com' style='font-size: 112.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 112.0%'>Network(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 112.0%'>OpenAPI(1)</a> <a href='/blog/categories/opensource' style='font-size: 136.0%'>OpenSource(3)</a> <a href='/blog/categories/programming' style='font-size: 112.0%'>Programming(1)</a> <a href='/blog/categories/robot' style='font-size: 124.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 112.0%'>SEO(1)</a> <a href='/blog/categories/sns-' style='font-size: 112.0%'>SNS,(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 136.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 136.0%'>VIM(3)</a> <a href='/blog/categories/vlc' style='font-size: 124.0%'>VLC(2)</a> <a href='/blog/categories/wordpress' style='font-size: 112.0%'>WordPress(1)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/ye-tan-sns-openapijie-ru-oauth-2-dot-0he-java-sdk/">也谈SNS OpenAPI接入-OAuth 2.0和Java SDK</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/09/firefoxli-qi-vimperatorjian-ming-gong-lue/">Firefox利器Vimperator简明攻略</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/11/ji-ubuntu-slash-ubuntukylin-13-dot-04-fa-bu-pai-dui-ji-zhu-chi-gan-xiang/">记Ubuntu/UbuntuKylin 13.04 发布派对及主持感想</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/06/vimshi-yi-zhong-tai-du/">Vim是一种态度</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/05/chu-shi-go-erlang-dart/">初识Go-Erlang-Dart</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Weibo</h1>
+  <ul id="weibo">
+    <li>
+      <iframe 
+        width="100%" 
+        height="550" 
+        class="share_self" 
+        frameborder="0" 
+        scrolling="no" 
+        src="http://widget.weibo.com/weiboshow/index.php?
+        width=0&
+        height=550&
+        ptype=1&
+        speed=0&
+        skin=&
+        isTitle=0&
+        noborder=1&
+        isWeibo=1&
+        isFans=&
+        uid=1236738912&
+        verifier=8e94b428">
+      </iframe>
+    </li>
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/licalmer?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/licalmer">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+<h2>Douban Show</h2>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/hustcalm/?show=wishlist&amp;select=random&amp;n=9&amp;columns=3"></script>
+</div>
+</section>
+
+
+<section>
+<h1>Flag Counter</h1>
+ <a href="http://s01.flagcounter.com/more/5Vzn"><img src="http://s01.flagcounter.com/count/5Vzn/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a><br><a href="http://flagcounter.com/">free counters</a> 
+</section>
+
+
+<section>
+    <h1>Friends Link</h1>
+    <p><a href="http://ikimi.net">KIMI YANG</a></p>
+    <p><a href="http://blug.chinalug.org/">BLUG</a></p>
+    <p><a href="http://www.open-open.com/">开源资讯</a></p>
+</section>
+
+
+
+<section>
+<h1>CC License</h1>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />Except where otherwise noted,content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - hustcalm -
+  <span class="credit">Powered by <a href="https://github.com">Github</a> & <a href="http://octopress.org">Octopress</a> & <a href="www.cygwin.com">Cygwin</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'welcometopandorasboxwhy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.me/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts/';
+        var disqus_url = 'http://hustcalm.me/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

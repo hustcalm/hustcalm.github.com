@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Git | Welcome to Pandora's Box(Why)]]></title>
+  <link href="http://hustcalm.me/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2013-06-23T22:25:59+08:00</updated>
+  <id>http://hustcalm.me/</id>
+  <author>
+    <name><![CDATA[hustcalm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[git和github的哲学和艺术]]></title>
+    <link href="http://hustcalm.me/blog/2013/03/02/githe-githubde-zhe-xue-he-yi-zhu/"/>
+    <updated>2013-03-02T11:27:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/03/02/githe-githubde-zhe-xue-he-yi-zhu</id>
+    <content type="html"><![CDATA[<p>用git和github也有一段时间了，不过还是处于菜鸟阶段。基本上git涉及到version control的方方面面，而github就是程序员的集体智慧结晶和开源社会的伟大力量的体现了。</p>
+
+<p>下面给出一些链接，涉及到git和github的入门，github的哲学，基于github和octopress搭建博客，git workflow，希望对大家有用。</p>
+
+<ul>
+<li><a href="http://www.yangzhiping.com/tech/git.html">Git与Github入门资料</a></li>
+<li><a href="http://www.yangzhiping.com/tech/octopress.html">octopress-像黑客一样写博客</a></li>
+<li><a href="http://www.yangzhiping.com/tech/github.html#q5">如何高效利用GitHub</a></li>
+<li><a href="http://scottchacon.com/2011/08/31/github-flow.html">GitHub Flow</a></li>
+<li><a href="https://sandofsky.com/blog/git-workflow.html">Understanding the Git Workflow</a></li>
+<li><a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></li>
+</ul>
+
+
+<p>Watch and Learn:)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[git的global config和repo config]]></title>
+    <link href="http://hustcalm.me/blog/2012/10/23/gitde-globle-confighe-repo-config/"/>
+    <updated>2012-10-23T18:26:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2012/10/23/gitde-globle-confighe-repo-config</id>
+    <content type="html"><![CDATA[<p>相比于CVS，SVN，现在越来越喜欢Git了，下面说说Git的全局配置，即global config以及代码库级别的配置，即repo config。</p>
+
+<h2>Global Config</h2>
+
+<p>git的全局配置，存储在$HOME/.gitconfig这个文件里面，对当前用户的所有git repo有效。</p>
+
+<h3>基本配置</h3>
+
+<pre><code>git config --global user.name yourname
+git config --global user.email youremail
+</code></pre>
+
+<h3>默认编辑器</h3>
+
+<pre><code>git config --global core.editor vim
+</code></pre>
+
+<h3>默认merge/diff工具</h3>
+
+<p>设置后需要通过difftool和mergetool启动。</p>
+
+<pre><code>git config --global diff.tool vimdiff
+git config --global difftool.prompt false
+</code></pre>
+
+<h3>Alias设置别名</h3>
+
+<p>通过别名设置，提高操作效率。</p>
+
+<!--more-->
+
+
+<p>分支切换</p>
+
+<pre><code>git config --global alias.br branch
+git br
+</code></pre>
+
+<p>查看日志</p>
+
+<pre><code>git config --global alias.last log --pretty=oneline -1 HEAD
+git last
+</code></pre>
+
+<p>设置difftool</p>
+
+<pre><code>git config --global alias.df difftool
+git df
+</code></pre>
+
+<p>提交代码</p>
+
+<pre><code>git config --global alias.cm commit
+</code></pre>
+
+<p>查看版本库状态</p>
+
+<pre><code>git config --global alias.st status
+</code></pre>
+
+<p>查看远程版本库</p>
+
+<pre><code>git config --global alias.re remote
+</code></pre>
+
+<h2>Repo Config</h2>
+
+<p>repo级别的配置，存储在仓库目录的.git/config文件中，可以覆盖全局信息。如果用不同的用户名和邮箱参加不同的项目，这里设置即可，还包括
+不同项目git使用习惯的一些不同。
+配置命令如下：</p>
+
+<pre><code>git config user.name yournewname
+git config user.email yournewemail
+</code></pre>
+
+<p>git本身也会存储远程仓库以及分支列表等信息：</p>
+
+<pre><code>cat .git/config
+</code></pre>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="http://f2e.us/wiki/git-config.html#!/">Frank Xu</a></li>
+<li><a href="http://www.kernel.org/pub/software/scm/git/docs/git-config.html">git-config</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

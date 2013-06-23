@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>初识Go-Erlang-Dart - Welcome to Pandora's Box(Why)</title>
+  <meta name="author" content="hustcalm">
+
+  
+  <meta name="description" content="Preface 今天Beijing GDG的活动是编程语言沙龙，一口气了解了3种对我来说比较陌生的编程语言(Go, Erlang和Dart），感觉心情比较舒爽，感谢GDG的分享(@许士伟，@连城，@韩国恺，@各位组织者）。趁着脑子还有点热，写点东西谈谈自己的想法吧:-) Go 跟Unix很有缘分， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hustcalm.me/blog/2013/05/05/chu-shi-go-erlang-dart/">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Welcome to Pandora's Box(Why)" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Welcome to Pandora's Box(Why)</a></h1>
+  
+    <h2>Hustcalm的个人博客！</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:hustcalm.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">初识Go-Erlang-Dart</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-05T21:38:00+08:00" pubdate data-updated="true">May 5<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Preface</h2>
+
+<p>今天Beijing GDG的活动是编程语言沙龙，一口气了解了3种对我来说比较陌生的编程语言(Go, Erlang和Dart），感觉心情比较舒爽，感谢GDG的分享(@许士伟，@连城，@韩国恺，@各位组织者）。趁着脑子还有点热，写点东西谈谈自己的想法吧:-)</p>
+
+<h2>Go</h2>
+
+<p>跟Unix很有缘分，因为打造Go语言的那些大牛曾经参与过Unix操作系统的开发，C语言在Bell实验室内部的时候，他们也是最早的受众用户吧；后来，Plan 9操作系统的开发，他们也在其列，可惜Plan 9没火起来（在Unix编程艺术里面得知，Unix有一个低迷期，不知道是不是跟当时的大环境有关系）。然后，Unix中的精髓，在Go语言中体现为连接和组合，本质上还是管道和文本话协议吧，按照我的理解。</p>
+
+<!--more-->
+
+
+<p>讲师@许士伟，是七牛云存储的CEO，他们的产品是用Go打造的，在生产环境下经受得起考验，是对Go本身的最佳证明了。本来编程语言的Topic就不太好讲，许老师没有把重点放在实战上，而是就哲学层面展开叙述，主要讨论“连接和组合”是如何在Go中体现的，以及为何说Go是多种编程范式的。听了这个演讲，并不能马上上手Go，但是对于引发我们对编程语言设计哲学的思考是很有好处的。Go在刚推出的时候，主打自己是System Programming级别的，现在貌似是主打自己是作为通用语言设计的，也许是感觉自己的设计理念优秀吧，我个人研究不多，不敢妄加评论。目前Go的GC有停顿的现象，被某些反对者所诟病，不过，相信其GC会在后续的版本中得以增强！</p>
+
+<p>等把《Unix编程艺术》读完了，再回过头来看看Go的设计，应该启发更大:-)</p>
+
+<h2>Erlang</h2>
+
+<p>很大程度上，今天是冲着Erlang去的，这学期的《多处理器系统编程》听得云里雾里，想看看有实际工程经验的人对应对“并发”会如何阐述。而今天不妄此行，讲师@连城显然对于Erlang有比较多的研究，从Erlang的历史，到核心理念和设计，以及OTP，涉及到很多有意思的东西。而从苛刻的电信生产环境中催生的Erlang，容错性和并发能力都是超一流的，其核心，在我看来是Isolate的理念以及消息传递的机制。故障隔离可以保证整个系统不会由于局部的罢工而停止运转，有效的故障隔离和修复，把复杂的系统分离开来，上层的hypervisor只执行简单的逻辑，以最大程度保证其逻辑的正确性，而实际的worker进程受到hypervisor的管辖，执行真正的处理任务，出了故障可以被hypervisor隔离或者修复（比如进程状态重置，又想起了七龙珠里面的那个boss了，连城的那个比喻很贴切）。讲到这里的时候，我很自然地联想到了Soalris的FMA（Fault Manager Architecutre，S10引入的新特性），其核心也是故障隔离以及自己修复（通过更换FRU或者重启Service，这里会跟SMF发生交互）。进程的通信不是简单的“共享内存”，而是拷贝式的消息传递，这里理解得不是很深入，就不多说了。</p>
+
+<p>非SMP VM，64 bit，16GB RAM可以轻松跑700万进程，Erlang天然的并发处理能力可想而知，而这都是源于其优良的设计吧！之后讲到了Functional Programming的东西，简单说了Erlang对函数式编程的支持；后来的OTP，回忆不起来太多内容了，我的理解是，这是一个通用的，很nb的并行编程框架！忘了GC了，相对于JVM和Go的VM，Erlang的VM的GC实现算法更加高效，不过没怎么听懂&#8230;</p>
+
+<p>时间关系，跳过了Q&amp;A环节，只能会后去问我的问题，“Erlang的设计在多处理器以及多核方面是如何考虑的？”。在Erlang出现的年代，多处理器还不太流行，因此对多处理器和多核的支持应该最近才添加进去。容易想到，有Erlang VM在中间，进程的调度全权尤其搞定，因此对于多处理器和多核的支持应该也是在VM那里下文章吧，具体不是很清楚，如果也是Isolate的原则+拷贝式消息传递，是不是Lockfree的呢？</p>
+
+<p> 合影的时候，一个豆瓣的开发者（做平台的）简单给我讲了下Erlang对于多处理器和多核的支持，后来借机，问了些豆瓣的信息:-) 对那位帅哥说声感谢:-)</p>
+
+<h2>Dart</h2>
+
+<p>2009年才对外公布的语言，Chrome V8团队的新作，新的Dart VM比V8快了50%，而据Dart VM的作者说，Dart的速度应该是JavaScript的两倍（如果不准确，请韩老师指正）。</p>
+
+<p>Dart应该是提供了Web开发的整个Stack了，从编程语言，到运行环境VM，调试环境Dartium（Chrome+Dart VM），再到Dart Editor(IDE)，一站式服务了:-) 不仅如此，还提供了dart2js，在于不支持Dart的环境中，可以编译成JavaScript运行，而且提供Source Map。感觉加以时日，Dart应该会超越JavaScript，受到web开发者的追捧！</p>
+
+<p>韩老师介绍了Dart的很多feature，对OO的支持，数据和行为的一致性(不知道这样描述是否准确），getter/setter,语法本身的易上手（尽量采用大家已经熟悉的语法规则）。时间原因，韩老师讲的比较快，现在回忆不了太多了，等拿到了slides，自己再消化一下:-)</p>
+
+<h2>Conclusion</h2>
+
+<p>总体来讲，今天的编程语言沙龙让自己受益颇多，在C/C++，Java之外，大大拓展了自己的视野，也再一次坚定了自己尽快学习一门Functional Programming Language的决心！</p>
+
+<p>再次感谢GDG的精彩活动，期待下一次技术分享会！自己作为一个学生，要努力接触并吸收新知识，有一天能够站在GDG的讲台上，给大家带来有趣有用的分享：-）</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">hustcalm</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-05T21:38:00+08:00" pubdate data-updated="true">May 5<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/programming/'>Programming</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+  <div class="bshare-custom icon-medium-plus"><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到Evernote" class="bshare-evernote" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span style="float: none;" class="BSHARE_COUNT bshare-share-count">7.72K</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/05/01/acronyms-in-debian/" title="Previous Post: Acronyms in Debian">&laquo; Acronyms in Debian</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/05/06/vimshi-yi-zhong-tai-du/" title="Next Post: Vim是一种态度">Vim是一种态度 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>Focus on Life.
+  Focus on Technology.
+  Focus on Sports.
+  This is me,Calm.</p>
+  <p>Contact Me Via 
+  hustcalm(at)gmail.com</p>
+</section>
+<iframe frameborder="0" scrolling="no" src="http://kado.im/widget/5075993fabaa3/default.html" style="width: 100%; height: 67px; margin-bottom: 15px;" id="kadoWidgetFrame"></iframe>
+
+<section>
+<h1>Ohloh Profile</h1>
+<a href='https://www.ohloh.net/accounts/229059?ref=Detailed' target='_top'>
+<img alt='Ohloh profile for hustcalm' border='0' height='35' src='https://www.ohloh.net/accounts/229059/widgets/account_detailed.gif' width='191' />
+</a>
+</section>
+
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/bios' style='font-size: 112.0%'>BIOS(1)</a> <a href='/blog/categories/cygwin' style='font-size: 112.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 112.0%'>domain(1)</a> <a href='/blog/categories/geek' style='font-size: 136.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 124.0%'>Git(2)</a> <a href='/blog/categories/learning' style='font-size: 112.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 112.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 112.0%'>Linux(1)</a> <a href='/blog/categories/machine' style='font-size: 112.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 112.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 112.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 112.0%'>MLPR(1)</a> <a href='/blog/categories/name-com' style='font-size: 112.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 112.0%'>Network(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 112.0%'>OpenAPI(1)</a> <a href='/blog/categories/opensource' style='font-size: 136.0%'>OpenSource(3)</a> <a href='/blog/categories/programming' style='font-size: 112.0%'>Programming(1)</a> <a href='/blog/categories/robot' style='font-size: 124.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 112.0%'>SEO(1)</a> <a href='/blog/categories/sns-' style='font-size: 112.0%'>SNS,(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 136.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 136.0%'>VIM(3)</a> <a href='/blog/categories/vlc' style='font-size: 124.0%'>VLC(2)</a> <a href='/blog/categories/wordpress' style='font-size: 112.0%'>WordPress(1)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/ye-tan-sns-openapijie-ru-oauth-2-dot-0he-java-sdk/">也谈SNS OpenAPI接入-OAuth 2.0和Java SDK</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/09/firefoxli-qi-vimperatorjian-ming-gong-lue/">Firefox利器Vimperator简明攻略</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/11/ji-ubuntu-slash-ubuntukylin-13-dot-04-fa-bu-pai-dui-ji-zhu-chi-gan-xiang/">记Ubuntu/UbuntuKylin 13.04 发布派对及主持感想</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/06/vimshi-yi-zhong-tai-du/">Vim是一种态度</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/05/chu-shi-go-erlang-dart/">初识Go-Erlang-Dart</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Weibo</h1>
+  <ul id="weibo">
+    <li>
+      <iframe 
+        width="100%" 
+        height="550" 
+        class="share_self" 
+        frameborder="0" 
+        scrolling="no" 
+        src="http://widget.weibo.com/weiboshow/index.php?
+        width=0&
+        height=550&
+        ptype=1&
+        speed=0&
+        skin=&
+        isTitle=0&
+        noborder=1&
+        isWeibo=1&
+        isFans=&
+        uid=1236738912&
+        verifier=8e94b428">
+      </iframe>
+    </li>
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/licalmer?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/licalmer">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+<h2>Douban Show</h2>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/hustcalm/?show=wishlist&amp;select=random&amp;n=9&amp;columns=3"></script>
+</div>
+</section>
+
+
+<section>
+<h1>Flag Counter</h1>
+ <a href="http://s01.flagcounter.com/more/5Vzn"><img src="http://s01.flagcounter.com/count/5Vzn/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a><br><a href="http://flagcounter.com/">free counters</a> 
+</section>
+
+
+<section>
+    <h1>Friends Link</h1>
+    <p><a href="http://ikimi.net">KIMI YANG</a></p>
+    <p><a href="http://blug.chinalug.org/">BLUG</a></p>
+    <p><a href="http://www.open-open.com/">开源资讯</a></p>
+</section>
+
+
+
+<section>
+<h1>CC License</h1>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />Except where otherwise noted,content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - hustcalm -
+  <span class="credit">Powered by <a href="https://github.com">Github</a> & <a href="http://octopress.org">Octopress</a> & <a href="www.cygwin.com">Cygwin</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'welcometopandorasboxwhy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.me/blog/2013/05/05/chu-shi-go-erlang-dart/';
+        var disqus_url = 'http://hustcalm.me/blog/2013/05/05/chu-shi-go-erlang-dart/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
