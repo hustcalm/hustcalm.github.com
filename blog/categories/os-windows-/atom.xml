@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Linux | Welcome to Pandora's Box(Why)]]></title>
-  <link href="http://hustcalm.me/blog/categories/linux/atom.xml" rel="self"/>
+  <title><![CDATA[Category: OS,Windows, | Welcome to Pandora's Box(Why)]]></title>
+  <link href="http://hustcalm.me/blog/categories/os-windows-/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
   <updated>2013-07-01T21:52:37+08:00</updated>
   <id>http://hustcalm.me/</id>
@@ -193,69 +193,6 @@ sudo reboot
 <p>多系统的安装，重点是理解了多系统并存的基本概念，也就是分区和启动项的管理，可以折腾的东西有很多，大家可以根据个人喜好选择自己的方案！需要提醒大家的是，对分区要谨慎操作，数据无价！</p>
 
 <p>全文完，写这篇文章更多是自己的一个小总结，如果对大家有所帮助就再好不过了，有问题随时可以讨论:-)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Acronyms in Debian]]></title>
-    <link href="http://hustcalm.me/blog/2013/05/01/acronyms-in-debian/"/>
-    <updated>2013-05-01T23:27:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/05/01/acronyms-in-debian</id>
-    <content type="html"><![CDATA[<p>Some acronyms in Debian world, confusing at first sight, hope this article can do some help:-)</p>
-
-<h2>Roles</h2>
-
-<ul>
-<li>DPL: Debian Project Leader</li>
-<li>DD: Debian Developer</li>
-<li>DM: Debian Maintainer</li>
-</ul>
-
-
-<h2>Bugs</h2>
-
-<ul>
-<li>RFP: Request For Packaging</li>
-<li>RFS: Request For Sponsor</li>
-<li>ITP: Intent To Packagge</li>
-</ul>
-
-
-<!--more-->
-
-
-<ul>
-<li>RFH: Request For Help</li>
-<li>RFA: Request For Adoption</li>
-<li>O: Orphan</li>
-<li>ITA: Intent To Adoption</li>
-<li>WNPP: Work-Needing and Prospective Packages</li>
-</ul>
-
-
-<h2>Others</h2>
-
-<ul>
-<li>FTBFS: Failed To Build From Source</li>
-<li>NMU: Non-Maintainer Upload</li>
-<li>NM Process: New Maintainer Process</li>
-<li>QA: Quality Assurance</li>
-<li>i18n, i10n, m17n : internationalization, localization, multilingualization</li>
-<li>.d.o: .debian.org</li>
-<li>CVE: Common Vulnerabilities and Exposures</li>
-<li>LP: launchpad</li>
-</ul>
-
-
-<h2>4Fun</h2>
-
-<ul>
-<li>IMHO: In My Humble Opinion</li>
-<li>LOL: Laughing Out Loud</li>
-</ul>
-
-
-<p>If you have any to share, do leave a comment and I will add them to the article:-)</p>
 ]]></content>
   </entry>
   
