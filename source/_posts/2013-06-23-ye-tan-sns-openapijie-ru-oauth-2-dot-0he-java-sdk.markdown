@@ -3,7 +3,7 @@ layout: post
 title: "也谈SNS OpenAPI接入-OAuth 2.0和Java SDK"
 date: 2013-06-23 21:10
 comments: true
-categories: SNS, OpenAPI
+categories: SNS OpenAPI
 ---
 由于一个项目的需求，开始接触开放平台的API，已完成客户端的用户接入。参考了一些OpenAPI的相关文章后，开始动手封装国内的几大主流开放平台的Java SDK，下面谈一谈我在封装过程中的体会，也算是对自己工作的一个小结。
 

@@ -3,7 +3,7 @@ layout: post
 title: "由安装Windows 8.1谈起，Linux和Windows多系统的安装以及分区和启动项的管理"
 date: 2013-07-01 10:54
 comments: true
-categories: OS,Windows, Linux
+categories: OS Windows Linux
 ---
 想想自己的Windows XP从09年寒假买了联想的小Y之后就一直在用，期间换过不少次系统，短时间用过Windows 7,也曾经在自己硬盘上安装了Windows + 4个Linux，还包括一个不成功的尝试，在小Y上尝鲜Mac OS X。大四做机器人比赛，由于开发的需要一直不敢折腾自己的电脑（很多开发工具只在Windows XP上表现良好，尤其是一些驱动），读了研究生后，启动越来越慢的XP成了一块心病，无奈懒于折腾，也习惯了XP下的一些工具和操作，当然更不能舍弃Windows这个领好的PC游戏平台！极品和仙剑，到了Linux只能止步了。
 
