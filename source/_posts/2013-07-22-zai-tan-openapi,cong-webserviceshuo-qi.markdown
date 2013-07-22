@@ -21,6 +21,7 @@ categories: SNS OpenAPI Cloud Web
 *   REST：REpresentation State Transfer，Web Service的一种架构，设计理念和HTTP协议有异曲同工之妙。
 
 下面给出几个链接，供大家一起研究：
+
 *   [Web Service实践之REST vs RPC](http://www.cnblogs.com/mindsbook/archive/2009/11/17/web_service_RESTvsRPC.html)
 *   [OpenAPI出现、起源与现状（连载一）](http://oplatform.org/archives/23)
 *   [OpenAPI出现、起源与现状（连载二）](http://oplatform.org/archives/24)
