@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-07-03T23:13:33+08:00</updated>
+  <updated>2013-07-22T21:47:34+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[再谈OpenAPI，从WebService说起]]></title>
+    <link href="http://hustcalm.me/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/"/>
+    <updated>2013-07-22T20:51:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/07/22/zai-tan-openapi,cong-webserviceshuo-qi</id>
+    <content type="html"><![CDATA[<p>最近对<a href="https://github.com/hustcalm/SNS-Shim">SNS-Shim</a>做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解，同时也激起了对服务提供商如何向开发者提供易用可靠的OpenAPI服务进行研究的好奇心。简单来说，开发者只需要关注如何“使用”，了解了基本的授权流程后，接下来只要按照API进行网络请求即可（使用服务提供商的SDK是最直接的，也可以自己根据相应的请求规范自己实现请求接口，因为本质上都是向某个URL发起HTTP请求）。而作为服务提供商则要考虑开放平台的建设问题了，这里面涉及到各种关于集群，高并发，大数据，分布式处理的东西（这个时候再看OAuth什么的，只是其中的一个小实现细节）。</p>
+
+<!--more-->
+
+
+<p>从整个大的层面看开放平台，是服务提供商将自身的一部分业务和服务以Web Service的形式开放出去（比较早的貌似是Yahoo搜索，开发者可以利用其API进行搜索），比较典型的有Facebook，Twitter，Flickr，Google Map，Amazon，Youtube等等。而国内的开放平台的建设和发展也是最近几年的事情，目前几大SNS站点，腾讯，阿里巴巴旗下的淘宝等，豆瓣都顺应潮流推出了自己的平台。不管是跟风也好，炒作也罢，抑或是背后的业务需求，各位大佬们都要面临开放平台的建设问题，从技术角度来考虑，有REST和类RPC两种选择。</p>
+
+<p>由于本身认识有限，就不泼墨了，简单说说Web Service常见的几个概念，然后给出几个好文的链接。
+*   Web Service：直观理解，通过Web向外部提供服务。
+*   RPC：Remote Procedure Call，远程过程调用，客户端像服务器端发起一个请求（携带方法和参数），服务器处理后返回结果给客户端。
+*   XML-RPC：基于XML的RPC，也就是客户端和服务器之间消息传递的格式是基于XML的，标准化的XML解析实现数据交换。
+*   SOA：Service Oriented Architecture，面向服务架构，适应Web Service开发的一种架构，请自行Google。
+*   SOAP：Simple Object Access Protocal，对XML-RPC的改进和拓展，却不尽人意。
+*   REST：REpresentation State Transfer，Web Service的一种架构，设计理念和HTTP协议有异曲同工之妙。</p>
+
+<p>下面给出几个链接，供大家一起研究：
+*   <a href="http://www.cnblogs.com/mindsbook/archive/2009/11/17/web_service_RESTvsRPC.html">Web Service实践之REST vs RPC</a>
+*   <a href="http://oplatform.org/archives/23">OpenAPI出现、起源与现状（连载一）</a>
+*   <a href="http://oplatform.org/archives/24">OpenAPI出现、起源与现状（连载二）</a>
+*   <a href="http://www.cnblogs.com/liuxiaojun/archive/2010/08/30/openapi.html">OpenAPI系列文章-如何构建一个OpenAPI平台</a>
+*   <a href="http://openapi.codeplex.com/">OpenAPI-Open API Platform 一个开源的OpenAPI平台</a>
+*   <a href="http://www.infoq.com/cn/articles/open-api-practice">Open API分析、实践和思索-阿里 放翁</a></p>
+
+<p>感觉<a href="http://blog.csdn.net/cenwenchu79">放翁</a>的文章分析很透彻，他CSDN上也有很多关于开放平台的好文章，建议大家阅读！</p>
+
+<p>刚才又发现一篇不错的post<a href="http://www.blogjava.net/BlueDavy/archive/2009/04/28/267970.html">网站架构相关PPT、文章整理（更新于2009-7-15）</a>，作者是放翁的同事。</p>
+
+<p>感觉有好多东西需要学习，不过很喜欢这种感觉。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[由安装Windows 8.1谈起，Linux和Windows多系统的安装以及分区和启动项的管理]]></title>
@@ -1228,38 +1264,6 @@ not, of course, search the bug tracker, if you confirm this is a new bug ,report
 <p>效果请看<a href="http://wordpress-hustcalm.rhcloud.com">笔者的知识分享站点</a>.</p>
 
 <p>Enjoy auto blogging and knowledge sharring；）</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用PortableApps.com制作自己的U3盘，实现PC Anywhere]]></title>
-    <link href="http://hustcalm.me/blog/2012/10/24/shi-yong-portableapps-dot-comzhi-zuo-zi-ji-de-u3pan-%2Cshi-xian-pc-anywhere/"/>
-    <updated>2012-10-24T23:55:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2012/10/24/shi-yong-portableapps-dot-comzhi-zuo-zi-ji-de-u3pan-,shi-xian-pc-anywhere</id>
-    <content type="html"><![CDATA[<p>现在绿化软件的方法层出不穷，主流的云端软件平台以及ThinAPP基本都是在一个SandBox中运行软件，实现所谓的绿色化。今天向大家推荐一款绿色软件平台<a href="http://portableapps.com">PortableApps.com</a>，具体实现机理没有研究，不过使用起来觉得较好，关于是可以安装到U盘中随身携带，碰到了脾气不好的电脑，很有可能就派上用场了，呵呵:)</p>
-
-<!--more-->
-
-
-<p>具体如何安装什么的，就不罗嗦了，标准的Windows软件的安装和使用方法，目前<a href="http://portableapps.com">PortableApps.com</a>支持所有的Windows系列系统以及Linux下的Wine，下面只给出链接，想用的朋友自行下载安装折腾吧:)</p>
-
-<ul>
-<li><a href="http://portableapps.com">PortableApps.com的官方主页</a>     <br/>
-其下载链接是在<a href="http://sourceforge.net">SourceForge</a>上的，有可能需要梯子，如果有困难，可以移步别处下载。</li>
-<li><a href="http://portableapps.com/development">PortableApps.Development</a>       <br/>
-教你怎么制作自己的绿色软件，当然是符合一定规范的，这里有可以折腾的地方。</li>
-<li><a href="http://www.portableappc.com">PortableApps.com的中文站点</a>     <br/>
-这里有一些比较大型软件的绿化，比如QQ，迅雷，WPS等等，有需要的朋友就有福啦:)而官方站点通常是一些国外的软件，而且基本上都是比较轻量级的。</li>
-<li><a href="http://www.portableappc.com/guide">PortableApps.com的中文开发指引</a>   <br/>
-个人认为这个开发指引还是比较赞的，可以给没有多少软件开发功底的同学一个制作软件的机会，有开发基础的也可以学习下PortableApps.com的软件格式约定。</li>
-<li><a href="http://portableappz.blogspot.com">PortableAppZ</a>      <br/>
-这是一个山寨版，相比于官方的只提供开源软件，PortableAppZ提供很多常用的软件，不过访问blogspot比较困难，希望的朋友自己想办法吧&#8230;</li>
-</ul>
-
-
-<p>除了这个，我特别喜欢微软收购的一个公司开发的一个工具套件<a href="http://www.systeminternals.com">SystemInternals</a>，把它作为系统system32目录下系统工具的一个补充，没有用的朋友可以试试。</p>
-
-<p><strong>有更好的办法或者很酷的绿化软件的方法，请留言分享:)</strong></p>
 ]]></content>
   </entry>
   

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: WordPress - Welcome to Pandora's Box(Why)</title>
+  <title>再谈OpenAPI，从WebService说起 - Welcome to Pandora's Box(Why)</title>
   <meta name="author" content="hustcalm">
 
   
-  <meta name="description" content="Category: WordPress">
+  <meta name="description" content="最近对SNS-Shim做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hustcalm.meblog/categories/wordpress/">
+  <link rel="canonical" href="http://hustcalm.me/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -64,36 +64,121 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: WordPress</h1>
+    
+      <h1 class="entry-title">再谈OpenAPI，从WebService说起</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-22T20:51:00+08:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>最近对<a href="https://github.com/hustcalm/SNS-Shim">SNS-Shim</a>做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解，同时也激起了对服务提供商如何向开发者提供易用可靠的OpenAPI服务进行研究的好奇心。简单来说，开发者只需要关注如何“使用”，了解了基本的授权流程后，接下来只要按照API进行网络请求即可（使用服务提供商的SDK是最直接的，也可以自己根据相应的请求规范自己实现请求接口，因为本质上都是向某个URL发起HTTP请求）。而作为服务提供商则要考虑开放平台的建设问题了，这里面涉及到各种关于集群，高并发，大数据，分布式处理的东西（这个时候再看OAuth什么的，只是其中的一个小实现细节）。</p>
 
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/blog/2012/10/30/yong-ifttthe-openshiftda-jian-yong-yu-zhi-shi-gong-xiang-de-wordpressbo-ke/">用ifttt和Openshift搭建用于知识共享的Wordpress博客</a></h1>
-<time datetime="2012-10-30T10:18:00+08:00" pubdate><span class='month'>Oct</span> <span class='day'>30</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/wordpress/'>WordPress</a></span>
-</footer>
+<!--more-->
 
 
-</article>
+<p>从整个大的层面看开放平台，是服务提供商将自身的一部分业务和服务以Web Service的形式开放出去（比较早的貌似是Yahoo搜索，开发者可以利用其API进行搜索），比较典型的有Facebook，Twitter，Flickr，Google Map，Amazon，Youtube等等。而国内的开放平台的建设和发展也是最近几年的事情，目前几大SNS站点，腾讯，阿里巴巴旗下的淘宝等，豆瓣都顺应潮流推出了自己的平台。不管是跟风也好，炒作也罢，抑或是背后的业务需求，各位大佬们都要面临开放平台的建设问题，从技术角度来考虑，有REST和类RPC两种选择。</p>
 
+<p>由于本身认识有限，就不泼墨了，简单说说Web Service常见的几个概念，然后给出几个好文的链接。
+*   Web Service：直观理解，通过Web向外部提供服务。
+*   RPC：Remote Procedure Call，远程过程调用，客户端像服务器端发起一个请求（携带方法和参数），服务器处理后返回结果给客户端。
+*   XML-RPC：基于XML的RPC，也就是客户端和服务器之间消息传递的格式是基于XML的，标准化的XML解析实现数据交换。
+*   SOA：Service Oriented Architecture，面向服务架构，适应Web Service开发的一种架构，请自行Google。
+*   SOAP：Simple Object Access Protocal，对XML-RPC的改进和拓展，却不尽人意。
+*   REST：REpresentation State Transfer，Web Service的一种架构，设计理念和HTTP协议有异曲同工之妙。</p>
+
+<p>下面给出几个链接，供大家一起研究：
+*   <a href="http://www.cnblogs.com/mindsbook/archive/2009/11/17/web_service_RESTvsRPC.html">Web Service实践之REST vs RPC</a>
+*   <a href="http://oplatform.org/archives/23">OpenAPI出现、起源与现状（连载一）</a>
+*   <a href="http://oplatform.org/archives/24">OpenAPI出现、起源与现状（连载二）</a>
+*   <a href="http://www.cnblogs.com/liuxiaojun/archive/2010/08/30/openapi.html">OpenAPI系列文章-如何构建一个OpenAPI平台</a>
+*   <a href="http://openapi.codeplex.com/">OpenAPI-Open API Platform 一个开源的OpenAPI平台</a>
+*   <a href="http://www.infoq.com/cn/articles/open-api-practice">Open API分析、实践和思索-阿里 放翁</a></p>
+
+<p>感觉<a href="http://blog.csdn.net/cenwenchu79">放翁</a>的文章分析很透彻，他CSDN上也有很多关于开放平台的好文章，建议大家阅读！</p>
+
+<p>刚才又发现一篇不错的post<a href="http://www.blogjava.net/BlueDavy/archive/2009/04/28/267970.html">网站架构相关PPT、文章整理（更新于2009-7-15）</a>，作者是放翁的同事。</p>
+
+<p>感觉有好多东西需要学习，不过很喜欢这种感觉。</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">hustcalm</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-22T20:51:00+08:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cloud/'>Cloud</a>, <a class='category' href='/blog/categories/openapi/'>OpenAPI</a>, <a class='category' href='/blog/categories/sns/'>SNS</a>, <a class='category' href='/blog/categories/web/'>Web</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+  <div class="bshare-custom icon-medium-plus"><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到Evernote" class="bshare-evernote" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span style="float: none;" class="BSHARE_COUNT bshare-share-count">7.72K</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/07/01/you-an-zhuang-windows-8-dot-1tan-qi-%2Clinuxhe-windowsduo-xi-tong-de-an-zhuang-yi-ji-fen-qu-he-qi-dong-xiang-de-guan-li/" title="Previous Post: 由安装Windows 8.1谈起，Linux和Windows多系统的安装以及分区和启动项的管理">&laquo; 由安装Windows 8.1谈起，Linux和Windows多系统的安装以及分区和启动项的管理</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -231,7 +316,10 @@
       var disqus_shortname = 'welcometopandorasboxwhy';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.me/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/';
+        var disqus_url = 'http://hustcalm.me/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
