@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cloud | Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/blog/categories/cloud/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-07-22T21:47:34+08:00</updated>
+  <updated>2013-07-22T21:49:51+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -33,13 +33,17 @@
 *   SOAP：Simple Object Access Protocal，对XML-RPC的改进和拓展，却不尽人意。
 *   REST：REpresentation State Transfer，Web Service的一种架构，设计理念和HTTP协议有异曲同工之妙。</p>
 
-<p>下面给出几个链接，供大家一起研究：
-*   <a href="http://www.cnblogs.com/mindsbook/archive/2009/11/17/web_service_RESTvsRPC.html">Web Service实践之REST vs RPC</a>
-*   <a href="http://oplatform.org/archives/23">OpenAPI出现、起源与现状（连载一）</a>
-*   <a href="http://oplatform.org/archives/24">OpenAPI出现、起源与现状（连载二）</a>
-*   <a href="http://www.cnblogs.com/liuxiaojun/archive/2010/08/30/openapi.html">OpenAPI系列文章-如何构建一个OpenAPI平台</a>
-*   <a href="http://openapi.codeplex.com/">OpenAPI-Open API Platform 一个开源的OpenAPI平台</a>
-*   <a href="http://www.infoq.com/cn/articles/open-api-practice">Open API分析、实践和思索-阿里 放翁</a></p>
+<p>下面给出几个链接，供大家一起研究：</p>
+
+<ul>
+<li><a href="http://www.cnblogs.com/mindsbook/archive/2009/11/17/web_service_RESTvsRPC.html">Web Service实践之REST vs RPC</a></li>
+<li><a href="http://oplatform.org/archives/23">OpenAPI出现、起源与现状（连载一）</a></li>
+<li><a href="http://oplatform.org/archives/24">OpenAPI出现、起源与现状（连载二）</a></li>
+<li><a href="http://www.cnblogs.com/liuxiaojun/archive/2010/08/30/openapi.html">OpenAPI系列文章-如何构建一个OpenAPI平台</a></li>
+<li><a href="http://openapi.codeplex.com/">OpenAPI-Open API Platform 一个开源的OpenAPI平台</a></li>
+<li><a href="http://www.infoq.com/cn/articles/open-api-practice">Open API分析、实践和思索-阿里 放翁</a></li>
+</ul>
+
 
 <p>感觉<a href="http://blog.csdn.net/cenwenchu79">放翁</a>的文章分析很透彻，他CSDN上也有很多关于开放平台的好文章，建议大家阅读！</p>
 
