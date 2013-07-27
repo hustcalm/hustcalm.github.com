@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>从开源硬件Arduino，Raspberry Pi，BeagleBone说起 - Welcome to Pandora's Box(Why)</title>
+  <meta name="author" content="hustcalm">
+
+  
+  <meta name="description" content="最近“硬件复兴”了，“嵌入式”又重获新生，在移动互联网创业领域“粉墨登场”。想想本科的51单片机经历，在Dian嵌入式项目组的DSP经历，ABU机器人比赛的控制组经历，还有零星地把玩过ARM和FPGA的经历，忍不住写下此文，谈谈自己对开源硬件的看法。 大四做完机器人就没有再怎么接触硬件了， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hustcalm.me/blog/2013/07/27/cong-kai-yuan-ying-jian-arduino%2Craspberry-pi%2Cbeagleboneshuo-qi/">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Welcome to Pandora's Box(Why)" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Welcome to Pandora's Box(Why)</a></h1>
+  
+    <h2>Hustcalm的个人博客！</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:hustcalm.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">从开源硬件Arduino，Raspberry Pi，BeagleBone说起</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-27T14:32:00+08:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>最近“硬件复兴”了，“嵌入式”又重获新生，在移动互联网创业领域“粉墨登场”。想想本科的51单片机经历，在<a href="http://www.dian.org.cn">Dian</a>嵌入式项目组的DSP经历，ABU机器人比赛的控制组经历，还有零星地把玩过ARM和FPGA的经历，忍不住写下此文，谈谈自己对开源硬件的看法。</p>
+
+<p>大四做完机器人就没有再怎么接触硬件了，最近OpenDrone小组需要调试四旋翼的电调，帮了一点小忙又燃起了自己对嵌入式的热情（想想我们的智能手机不就是一个典型的嵌入式产品么？只是没有开源硬件板在硬件方面的可玩性高）。前两天的一次OpenDrone聚会，有幸去了<a href="http://www.dfrobot.com.cn">DFRobot</a>北京分公司，一进入他们的工作室就有一种莫名的久违感，是因为那么多的电子元件摆放地杂杂乱乱却又充满生机么？（东七楼的嵌一，启明的704和502都是有这种感觉的啊！）在那里看了3D打印机的演示(forked from <a href="http://www.ultimaker.com">Ultimaker</a>)，深切感受到那些“高端的技术”其实就在我们身边！</p>
+
+<!--more-->
+
+
+<h3>Arduino小车</h3>
+
+<p>回到实验室，开始看之前没看完的两篇文章，其中一篇<a href="http://blog.knownsec.com/2012/02/%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B9%8B%E6%97%85%EF%BC%9A%E5%BD%93arduino%E9%81%87%E4%B8%8Aandroid/">机器人之旅：当Arduino于遇上Android</a>非常科普，比较适合有一定硬件基础的人阅读，之后一辆Arduino小车的思路就非常明晰了。当即对照作者给出的硬件清单开始淘宝之旅，下面给出一个参考：</p>
+
+<ul>
+<li>机器人小车底盘套件（底盘+电机+车轮，2WD参考价149￥，4WD参考价198￥)</li>
+<li>Arduino主控板（入门级别的UNO，70￥左右）</li>
+<li>马达驱动板（一般都是L293双路电机驱动板，60￥左右）</li>
+<li>扩展接口板（Arduino Xbee传感器扩展板V5看起来不错，含RS485无线传输蓝牙接口，45￥）</li>
+<li>Bluetootch V3蓝牙串口模块（与上面的扩展接口板协同工作实现蓝牙传输，65￥）</li>
+<li>LiPo电池（购买2S，即7.4v电压输出的，79￥）</li>
+<li>平衡充充电器（淘宝上差价比较大，主要是做工有差别，150￥左右的感觉比较靠谱）</li>
+</ul>
+
+
+<p>这一套总共下来是600￥左右。想想都想哭了，如果买来元器件自己做，至少可以少花一半钱吧！</p>
+
+<h3>Beaglebone和GSOC的那些事</h3>
+
+<p>提起Beaglebone就又爱又恨啊，今年申请GSOC把宝压在了他家，结果申请准备做得不够充分，竞争过于激烈，自己就酱油了。不过在申请过程中多少对Beaglebone有了一定的了解，对板载资源以及软件支持有了一定的了解，尤其是boneScript（基于node.js）。Beagle相对于Arduino功能强大很多，显得多少有些重量级了，对Linux发行版的支持良好，外围传感器的通信都是标准的driver访问，有完善的TCP/IP支持。感觉Beagle一直在拿来跟Raspberry Pi对比，有很强的竞争态势。其背后财大气粗的TI在业内的号召力也非同小可，在社区建设和技术支持上应该会越来越好。</p>
+
+<h3>Raspberry Pi，迷你计算机？</h3>
+
+<p>也许这不是第一台所谓的迷你计算机，但确是当下最流行的mini PC，可谓大红大紫。完整的接口支持，操作系统支持，较强的硬件配置使其当之无愧跟PC无异，这时不禁感叹，从Bill Gates的PC梦到如今的mini PC，个人计算机已经从消费级别到了DIY级别了。不过这种mini PC对于普通消费者也许没有那么大的吸引力，Geek和各位发烧友才会因其而激动不起。</p>
+
+<h3>下一站，UDOO？</h3>
+
+<p>在<a href="http://www.kickstarter.com">kickstarter</a>上仅仅10天就募得20万美元，其吸引力不言而喻。单单是4核ARM的PC就够潮了（话说回来，支持HDMI输出的IPhone和Android机，再稍加改造，是不是也可以叫做mini PC了呢？）。</p>
+
+<blockquote><p>UDOO属于开源硬件的一部分，搭载ARM i.MX6 Freescale处理器，主板上同时还带有一颗Arduino DUE出品的ARM SAM3X处理器，能够满足Android和Linux操作系统的性能需求。 其尺寸非常小，只有11cm x 8.5m，功耗也低。</p>
+
+<p>UDOO为开发者提供灵活的开发环境，可以提供Android、Linux、ArduinoTM、Google ADK开发平台，同时其强大的性能还能参与最新的“物联网”开发。通过更换Micro SD，用户可以在数秒之内切换Android和Linux，非常便捷。</p></blockquote>
+
+<h3>开源硬件和移动互联网</h3>
+
+<p>继IPhone开创了智能手机的新纪元，Android创造了开源上的商业奇迹，Arduino使得开源硬件渐渐深入人心，移动互联网又迎来了一种新的创业模识-“硬件创业”，相比于成本低廉，竞争激烈的软件创业，从硬件出发构建有趣的嵌入式设备和应用必将大火（至少会有不少小企业来玩，目前国内很多xxRobot单单是靠出售一些自制的主控板，扩展板，小型机其人就可以活得不错吧，而稍显高端的可穿戴设备是大势所趋了，目前Google Class引领风骚，智能手表研究大热）。再扯远点，在国内半死半活的“互联网”也可以趁机出来攒人气，往智能家居那里拼命靠还是比较靠谱的！</p>
+
+<p>所以想创业的朋友们，不妨考虑从开源硬件入手，其入门的门槛不比开发App高多少，开源硬件平台已经比较成熟了，接下来是应用疯涨期。</p>
+
+<h3>他们说</h3>
+
+<ul>
+<li><a href="http://www.csdn.net/article/2013-05-02/2815109-ArduinoUno-vs-BeagleBone-vs-RaspberryPi/1">三大主流开源硬件对比：Arduino vs BeagleBone vs Raspberry Pi</a></li>
+<li><a href="http://www.csdn.net/article/2013-05-02/2815109-ArduinoUno-vs-BeagleBone-vs-RaspberryPi/2">三大主流开源硬件对比：如何选择平台</a></li>
+<li><a href="http://tech2ipo.com/59224">忘了树莓派，UDOO才是Geek最爱</a></li>
+</ul>
+
+
+<p>The End!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">hustcalm</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-27T14:32:00+08:00" pubdate data-updated="true">Jul 27<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/arduino/'>Arduino</a>, <a class='category' href='/blog/categories/embedded/'>Embedded</a>, <a class='category' href='/blog/categories/openhardware/'>OpenHardware</a>, <a class='category' href='/blog/categories/startup/'>Startup</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+  <div class="bshare-custom icon-medium-plus"><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到Evernote" class="bshare-evernote" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span style="float: none;" class="BSHARE_COUNT bshare-share-count">7.72K</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/" title="Previous Post: 再谈OpenAPI，从WebService说起">&laquo; 再谈OpenAPI，从WebService说起</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>Focus on Life.
+  Focus on Technology.
+  Focus on Sports.
+  This is me,Calm.</p>
+  <p>Contact Me Via 
+  hustcalm(at)gmail.com</p>
+</section>
+<iframe frameborder="0" scrolling="no" src="http://kado.im/widget/5075993fabaa3/default.html" style="width: 100%; height: 67px; margin-bottom: 15px;" id="kadoWidgetFrame"></iframe>
+
+<section>
+<h1>Ohloh Profile</h1>
+<a href='https://www.ohloh.net/accounts/229059?ref=Detailed' target='_top'>
+<img alt='Ohloh profile for hustcalm' border='0' height='35' src='https://www.ohloh.net/accounts/229059/widgets/account_detailed.gif' width='191' />
+</a>
+</section>
+
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/arduino' style='font-size: 112.0%'>Arduino(1)</a> <a href='/blog/categories/bios' style='font-size: 112.0%'>BIOS(1)</a> <a href='/blog/categories/cloud' style='font-size: 112.0%'>Cloud(1)</a> <a href='/blog/categories/cygwin' style='font-size: 112.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 112.0%'>domain(1)</a> <a href='/blog/categories/embedded' style='font-size: 112.0%'>Embedded(1)</a> <a href='/blog/categories/geek' style='font-size: 136.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 124.0%'>Git(2)</a> <a href='/blog/categories/learning' style='font-size: 112.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 112.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 124.0%'>Linux(2)</a> <a href='/blog/categories/machine' style='font-size: 112.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 112.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 112.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 112.0%'>MLPR(1)</a> <a href='/blog/categories/name-com' style='font-size: 112.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 112.0%'>Network(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 124.0%'>OpenAPI(2)</a> <a href='/blog/categories/openhardware' style='font-size: 112.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 136.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 112.0%'>OS(1)</a> <a href='/blog/categories/programming' style='font-size: 112.0%'>Programming(1)</a> <a href='/blog/categories/robot' style='font-size: 124.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 112.0%'>SEO(1)</a> <a href='/blog/categories/sns' style='font-size: 124.0%'>SNS(2)</a> <a href='/blog/categories/startup' style='font-size: 112.0%'>Startup(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 136.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 136.0%'>VIM(3)</a> <a href='/blog/categories/vlc' style='font-size: 124.0%'>VLC(2)</a> <a href='/blog/categories/web' style='font-size: 112.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 112.0%'>WordPress(1)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/27/cong-kai-yuan-ying-jian-arduino%2Craspberry-pi%2Cbeagleboneshuo-qi/">从开源硬件Arduino，Raspberry Pi，BeagleBone说起</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/">再谈OpenAPI，从WebService说起</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/01/you-an-zhuang-windows-8-dot-1tan-qi-%2Clinuxhe-windowsduo-xi-tong-de-an-zhuang-yi-ji-fen-qu-he-qi-dong-xiang-de-guan-li/">由安装Windows 8.1谈起，Linux和Windows多系统的安装以及分区和启动项的管理</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/23/ye-tan-sns-openapijie-ru-oauth-2-dot-0he-java-sdk/">也谈SNS OpenAPI接入-OAuth 2.0和Java SDK</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/09/firefoxli-qi-vimperatorjian-ming-gong-lue/">Firefox利器Vimperator简明攻略</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Weibo</h1>
+  <ul id="weibo">
+    <li>
+      <iframe 
+        width="100%" 
+        height="550" 
+        class="share_self" 
+        frameborder="0" 
+        scrolling="no" 
+        src="http://widget.weibo.com/weiboshow/index.php?
+        width=0&
+        height=550&
+        ptype=1&
+        speed=0&
+        skin=&
+        isTitle=0&
+        noborder=1&
+        isWeibo=1&
+        isFans=&
+        uid=1236738912&
+        verifier=8e94b428">
+      </iframe>
+    </li>
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/licalmer?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/licalmer">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+<h2>Douban Show</h2>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/hustcalm/?show=wishlist&amp;select=random&amp;n=9&amp;columns=3"></script>
+</div>
+</section>
+
+
+<section>
+<h1>Flag Counter</h1>
+ <a href="http://s01.flagcounter.com/more/5Vzn"><img src="http://s01.flagcounter.com/count/5Vzn/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a><br><a href="http://flagcounter.com/">free counters</a> 
+</section>
+
+
+<section>
+    <h1>Friends Link</h1>
+    <p><a href="http://ikimi.net">KIMI YANG</a></p>
+    <p><a href="http://blug.chinalug.org/">BLUG</a></p>
+    <p><a href="http://www.open-open.com/">开源资讯</a></p>
+</section>
+
+
+
+<section>
+<h1>CC License</h1>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />Except where otherwise noted,content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - hustcalm -
+  <span class="credit">Powered by <a href="https://github.com">Github</a> & <a href="http://octopress.org">Octopress</a> & <a href="www.cygwin.com">Cygwin</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'welcometopandorasboxwhy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.me/blog/2013/07/27/cong-kai-yuan-ying-jian-arduino%2Craspberry-pi%2Cbeagleboneshuo-qi/';
+        var disqus_url = 'http://hustcalm.me/blog/2013/07/27/cong-kai-yuan-ying-jian-arduino%2Craspberry-pi%2Cbeagleboneshuo-qi/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

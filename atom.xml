@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-07-22T21:49:51+08:00</updated>
+  <updated>2013-07-27T16:55:28+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[从开源硬件Arduino，Raspberry Pi，BeagleBone说起]]></title>
+    <link href="http://hustcalm.me/blog/2013/07/27/cong-kai-yuan-ying-jian-arduino%2Craspberry-pi%2Cbeagleboneshuo-qi/"/>
+    <updated>2013-07-27T14:32:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/07/27/cong-kai-yuan-ying-jian-arduino,raspberry-pi,beagleboneshuo-qi</id>
+    <content type="html"><![CDATA[<p>最近“硬件复兴”了，“嵌入式”又重获新生，在移动互联网创业领域“粉墨登场”。想想本科的51单片机经历，在<a href="http://www.dian.org.cn">Dian</a>嵌入式项目组的DSP经历，ABU机器人比赛的控制组经历，还有零星地把玩过ARM和FPGA的经历，忍不住写下此文，谈谈自己对开源硬件的看法。</p>
+
+<p>大四做完机器人就没有再怎么接触硬件了，最近OpenDrone小组需要调试四旋翼的电调，帮了一点小忙又燃起了自己对嵌入式的热情（想想我们的智能手机不就是一个典型的嵌入式产品么？只是没有开源硬件板在硬件方面的可玩性高）。前两天的一次OpenDrone聚会，有幸去了<a href="http://www.dfrobot.com.cn">DFRobot</a>北京分公司，一进入他们的工作室就有一种莫名的久违感，是因为那么多的电子元件摆放地杂杂乱乱却又充满生机么？（东七楼的嵌一，启明的704和502都是有这种感觉的啊！）在那里看了3D打印机的演示(forked from <a href="http://www.ultimaker.com">Ultimaker</a>)，深切感受到那些“高端的技术”其实就在我们身边！</p>
+
+<!--more-->
+
+
+<h3>Arduino小车</h3>
+
+<p>回到实验室，开始看之前没看完的两篇文章，其中一篇<a href="http://blog.knownsec.com/2012/02/%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B9%8B%E6%97%85%EF%BC%9A%E5%BD%93arduino%E9%81%87%E4%B8%8Aandroid/">机器人之旅：当Arduino于遇上Android</a>非常科普，比较适合有一定硬件基础的人阅读，之后一辆Arduino小车的思路就非常明晰了。当即对照作者给出的硬件清单开始淘宝之旅，下面给出一个参考：</p>
+
+<ul>
+<li>机器人小车底盘套件（底盘+电机+车轮，2WD参考价149￥，4WD参考价198￥)</li>
+<li>Arduino主控板（入门级别的UNO，70￥左右）</li>
+<li>马达驱动板（一般都是L293双路电机驱动板，60￥左右）</li>
+<li>扩展接口板（Arduino Xbee传感器扩展板V5看起来不错，含RS485无线传输蓝牙接口，45￥）</li>
+<li>Bluetootch V3蓝牙串口模块（与上面的扩展接口板协同工作实现蓝牙传输，65￥）</li>
+<li>LiPo电池（购买2S，即7.4v电压输出的，79￥）</li>
+<li>平衡充充电器（淘宝上差价比较大，主要是做工有差别，150￥左右的感觉比较靠谱）</li>
+</ul>
+
+
+<p>这一套总共下来是600￥左右。想想都想哭了，如果买来元器件自己做，至少可以少花一半钱吧！</p>
+
+<h3>Beaglebone和GSOC的那些事</h3>
+
+<p>提起Beaglebone就又爱又恨啊，今年申请GSOC把宝压在了他家，结果申请准备做得不够充分，竞争过于激烈，自己就酱油了。不过在申请过程中多少对Beaglebone有了一定的了解，对板载资源以及软件支持有了一定的了解，尤其是boneScript（基于node.js）。Beagle相对于Arduino功能强大很多，显得多少有些重量级了，对Linux发行版的支持良好，外围传感器的通信都是标准的driver访问，有完善的TCP/IP支持。感觉Beagle一直在拿来跟Raspberry Pi对比，有很强的竞争态势。其背后财大气粗的TI在业内的号召力也非同小可，在社区建设和技术支持上应该会越来越好。</p>
+
+<h3>Raspberry Pi，迷你计算机？</h3>
+
+<p>也许这不是第一台所谓的迷你计算机，但确是当下最流行的mini PC，可谓大红大紫。完整的接口支持，操作系统支持，较强的硬件配置使其当之无愧跟PC无异，这时不禁感叹，从Bill Gates的PC梦到如今的mini PC，个人计算机已经从消费级别到了DIY级别了。不过这种mini PC对于普通消费者也许没有那么大的吸引力，Geek和各位发烧友才会因其而激动不起。</p>
+
+<h3>下一站，UDOO？</h3>
+
+<p>在<a href="http://www.kickstarter.com">kickstarter</a>上仅仅10天就募得20万美元，其吸引力不言而喻。单单是4核ARM的PC就够潮了（话说回来，支持HDMI输出的IPhone和Android机，再稍加改造，是不是也可以叫做mini PC了呢？）。</p>
+
+<blockquote><p>UDOO属于开源硬件的一部分，搭载ARM i.MX6 Freescale处理器，主板上同时还带有一颗Arduino DUE出品的ARM SAM3X处理器，能够满足Android和Linux操作系统的性能需求。 其尺寸非常小，只有11cm x 8.5m，功耗也低。</p>
+
+<p>UDOO为开发者提供灵活的开发环境，可以提供Android、Linux、ArduinoTM、Google ADK开发平台，同时其强大的性能还能参与最新的“物联网”开发。通过更换Micro SD，用户可以在数秒之内切换Android和Linux，非常便捷。</p></blockquote>
+
+<h3>开源硬件和移动互联网</h3>
+
+<p>继IPhone开创了智能手机的新纪元，Android创造了开源上的商业奇迹，Arduino使得开源硬件渐渐深入人心，移动互联网又迎来了一种新的创业模识-“硬件创业”，相比于成本低廉，竞争激烈的软件创业，从硬件出发构建有趣的嵌入式设备和应用必将大火（至少会有不少小企业来玩，目前国内很多xxRobot单单是靠出售一些自制的主控板，扩展板，小型机其人就可以活得不错吧，而稍显高端的可穿戴设备是大势所趋了，目前Google Class引领风骚，智能手表研究大热）。再扯远点，在国内半死半活的“互联网”也可以趁机出来攒人气，往智能家居那里拼命靠还是比较靠谱的！</p>
+
+<p>所以想创业的朋友们，不妨考虑从开源硬件入手，其入门的门槛不比开发App高多少，开源硬件平台已经比较成熟了，接下来是应用疯涨期。</p>
+
+<h3>他们说</h3>
+
+<ul>
+<li><a href="http://www.csdn.net/article/2013-05-02/2815109-ArduinoUno-vs-BeagleBone-vs-RaspberryPi/1">三大主流开源硬件对比：Arduino vs BeagleBone vs Raspberry Pi</a></li>
+<li><a href="http://www.csdn.net/article/2013-05-02/2815109-ArduinoUno-vs-BeagleBone-vs-RaspberryPi/2">三大主流开源硬件对比：如何选择平台</a></li>
+<li><a href="http://tech2ipo.com/59224">忘了树莓派，UDOO才是Geek最爱</a></li>
+</ul>
+
+
+<p>The End!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[再谈OpenAPI，从WebService说起]]></title>
@@ -1228,46 +1292,6 @@ not, of course, search the bug tracker, if you confirm this is a new bug ,report
 
 
 <p><strong>Hope you enjoy the life with the Opensource Community:)</strong></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[用ifttt和Openshift搭建用于知识共享的Wordpress博客]]></title>
-    <link href="http://hustcalm.me/blog/2012/10/30/yong-ifttthe-openshiftda-jian-yong-yu-zhi-shi-gong-xiang-de-wordpressbo-ke/"/>
-    <updated>2012-10-30T10:18:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2012/10/30/yong-ifttthe-openshiftda-jian-yong-yu-zhi-shi-gong-xiang-de-wordpressbo-ke</id>
-    <content type="html"><![CDATA[<p>笔者一直通过RSS订阅了解一些行业信息并且看一些比较好玩的东西，比如<a href="http://www.iplaysoft.com/">异次元软件世界</a>什么的:)用了很长一段时间的QQ邮箱的阅读空间，整理了很多的收藏和分享以及自己的Tag Cloud，无奈，QQ邮箱的阅读空间除了对<a href="http://weibo.com/u/1236738912">Weibo</a>比较友好以外，跟其它产品的交互比较弱，给QQ团队发建议希望他们能够提供导出Tag的功能，没人搭理:(</p>
-
-<p>Anyway，现在转到Google Reader下了，把QQ邮箱的阅读空间的RSS导出到OPML文件，之后导入到GReader。</p>
-
-<p>分享是学习的一大乐趣，之前一直是把好文分享到微博或者Delicious，现在萌生了把自己的订阅再挑选一些值得玩味的文章自动更新到blog的想法。互联网的神奇使得我的这个想法很快就实现了，主要用到的服务如下：</p>
-
-<!--more-->
-
-
-<ul>
-<li><p><a href="http://www.ifttt.com">ifttt</a>
-实现GReader星标文章自动post到WordPress站点。</p></li>
-<li><p><a href="http://openshift.redhat.com">Openshift</a>
-提供Wordpress站点的托管。</p></li>
-<li><p><a href="http://wordpress.org">WordPress</a>
-不解释。用到了一些插件：</p></li>
-</ul>
-
-
-<p><strong>Akismet</strong> 用于处理垃圾评论。</p>
-
-<p><strong>Auto Describe Taxonomies</strong> 自动生成文章的tag和category。</p>
-
-<p><strong>Efficient Related Posts</strong> 显示相关文章。</p>
-
-<p><strong>WP Limit Posts Automatically</strong> 显示文章摘要而不是全文。</p>
-
-<p><strong>WTI Like Post</strong> 实现文章的“thumbs up“和”thumbs down“功能。</p>
-
-<p>效果请看<a href="http://wordpress-hustcalm.rhcloud.com">笔者的知识分享站点</a>.</p>
-
-<p>Enjoy auto blogging and knowledge sharring；）</p>
 ]]></content>
   </entry>
   

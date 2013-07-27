@@ -197,15 +197,21 @@
         <lastmod>2013-07-22T21:49:43+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://hustcalm.me/blog/2013/07/27/cong-kai-yuan-ying-jian-arduino%2Craspberry-pi%2Cbeagleboneshuo-qi/
+        </loc>
+        <lastmod>2013-07-27T16:53:43+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://hustcalm.me/about/</loc>
         <lastmod>2013-06-22T17:17:29+08:00</lastmod>
     </url>
     <url>
         <loc>http://hustcalm.me/blog/archives/</loc>
-        <lastmod>2013-07-22T21:49:43+08:00</lastmod>
+        <lastmod>2013-07-27T16:53:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://hustcalm.me/</loc>
-        <lastmod>2013-07-22T21:49:43+08:00</lastmod>
+        <lastmod>2013-07-27T16:53:43+08:00</lastmod>
     </url>
 </urlset>
