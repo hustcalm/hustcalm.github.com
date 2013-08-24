@@ -1,0 +1,46 @@
+---
+layout: post
+title: "小记Fedora 19 Release Party和Barcamp Beijing August"
+date: 2013-08-24 09:47
+comments: true
+categories: Linux Fedora Barcamp Speaking
+---
+离这两个活动已经过去一周的时间了，总觉得应该写点什么，那就以这篇“小记”来叙述吧。
+
+Fedora一直以来被冠以edge bleeding的称号，尝鲜者的最爱，自己从Ubuntu 9.04开始使用Linux，便一直与其无缘，现在想想，确是有一些遗憾的（具体说不上来为啥，也许自己总是希望小众一些，Fedora在国内的用户确实不是太多，至少相比于Ubuntu来说是这样的，有限的CentOS使用经历告诉我，这是一款值得使用的Linux发行版）。Fedora 19,代号“薛定谔的猫”，作为第一款“原生”支持3D打印的操作系统，让人眼前一亮。
+
+Barcamp对我来说则陌生很多，在活动的前两天才得知消息，告诉我的人说是“一个充满各种创意制作的聚会”，而实际上“这里是一个充满各种创意演讲的地方”。具体的信息，大家移步[Barcamp官方网站](http://www.barcamp-beijing.com/)吧。
+
+<!--more-->
+
+## Fedora 19 Release Party
+这次RP，主要有三个议题，涉及Cloud Computing，System Trace，3D Printing。
+
+### OpenShift & Cloud
+演讲人Gerard Braad（@gbraad），Fedora 大使委员会成员，亚太地区区域导师，Fedora社区和开源社区的活跃演讲者，致力于Fedora品牌的推广。
+
+OpenShift算是一种PaaS，演讲者先是就虚拟化的一些基本概念进行阐述（虚拟化的分类，典型的技术，比如KVM，LXC等），再谈到OpenStack的基本架构，之后涉及OpenShift的架构。新的概念不多，而且讲解非常深入浅出，非常适合云计算入门。
+
+### SystemTap Introduction
+演讲人Robin Lee（李瑞彬），供职于北京蓝汛 (ChinaCache)。在 Fedora 项目中是 packager 的角色，致力于提高自由软件的质量和整合度。
+
+SystemTap 是 Linux 下的可编程的通用系统跟踪工具，可进行侵入式跟踪，可用于内核态和用户态跟踪及代码注入。在 Linux 实现了大致相当于 DTrace 的功能。其语法由 AWK 语言发展出来。本次分享主要介绍了SystemTap 的基本语法和一些使用举例，最后生成火焰图（Flame Graph）的例子还是很酷的。
+
+这是个纯技术话题，不多说了，我比较好奇的是Trace实现的底层原理，在网上查了下，以下两篇文章很不错：
+
+*   [systemtap原理及使用](http://blog.csdn.net/wudongxu/article/details/6345481)
+*   [ linux系统分析工具续-SystemTap和火焰图（Flame Graph）](http://xuclv.blog.51cto.com/5503169/1184517)
+
+### 3D Printing at Fedora 19
+演讲人Tong Hui（@tonghuix），开源软件与开源硬件的布道者，开源嵌入式培训导师，GNOME 基金会成员，北京GNOME用户组成员。
+
+这个演讲的信息量比较大，演讲者从3D打印机的历史开始说起，谈到了3D打印的现状以及常用技术，并且简单分析了技术实现，最后结合Fedora进行了真机演示（DFRobot公司的3D打印机）。
+
+我的理解是，3D打印机是嵌入式技术，3维建模技术，材料学的完美结合！
+
+## Barcamp Beijing August
+聚会地点在Microsoft Research Asia一层，主要参与人员是国际友人，国际友人的友人，还有众多的ABC。God，谁让他们的英语都那么native呢！
+
+这一天比较大的收获是，体验了Barcamp的活动形式（Speech & QA），见识了演讲者的无限魅力（I really mean it!），获取了一些“创新”思维。其它的觉得表达不出来了（因为在会上，有一种略微的不适感，难以融入到老外的圈子里面去），大家等下次Barcamp的时候自己去体会吧！
+
+会不会有一天也在Barcamp上演讲？（Who TM knows，可能性不大，看自己了！）。
