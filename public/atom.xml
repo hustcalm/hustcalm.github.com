@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-08-24T10:40:55+08:00</updated>
+  <updated>2013-09-06T11:03:39+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[POSIX threads-多线程编程初步]]></title>
+    <link href="http://hustcalm.me/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu/"/>
+    <updated>2013-09-06T10:24:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu</id>
+    <content type="html"><![CDATA[<p>学习，总是要深入进去才是好的。</p>
+
+<p>由于多摄像头视频处理的需要，这两天“正式学习”了多线程编程，切入点是POSIX的pthread库。不管承认与否，在进程之后的线程，对软件开发有非常深远的影响。本质上的算法+数据，我个人的理解是，线程是在算法上做的改进（也就是对于整个作业，如何合理地切分，符合CPU和操作系统的工作习惯，也就是在比较小的开销下完成任务），相比于进程而言，由于多个线程都在同一个memory space，因此线程间通信以及创建线程的overhead都比进程小了不少，业内也把thread称为LWP（Light Wight Process）。</p>
+
+<!--more-->
+
+
+<p>多线程好处多多，容易让人头痛的便是线程的“同步”问题，也就是大家常说的互斥访问“临界区资源”，常用的方法就是，mutex，条件变量，信号量等。</p>
+
+<p>学习的过程中，主要就线程的创建，终结，join，detach，参数传递，mutex的使用，条件变量和信号量的使用进行了实际的编码练习，剩下的关于调度策略，优先级，线程本地变量等还需要进一步学习。参考了一些精华文章，自己把写的demo放到了github上了。这不是一篇tutorial，所以就不具体说技术细节了，大家去看下面给出的链接和demo吧。</p>
+
+<h3>学习资源链接</h3>
+
+<ul>
+<li><a href="https://computing.llnl.gov/tutorials/pthreads/">POSIX Threads Programming Tutorial From Lawrence Livermore National Laboratory</a></li>
+<li><a href="http://randu.org/tutorials/threads/">Multithreaded Programming (POSIX pthreads Tutorial)</a></li>
+<li><a href="http://codebase.eu/tutorial/posix-threads-c/index.php">Creating multi-threaded C++ code</a></li>
+<li><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html">POSIX thread (pthread) libraries</a></li>
+<li><a href="http://www.ibm.com/developerworks/library/l-posix1/index.html">POSIX threads explained-A simple and nimble tool for memory sharing</a></li>
+<li><a href="http://www.tutorialspoint.com/operating_system/os_multi_threading.htm">Operating System - Multi-Threading</a></li>
+<li><a href="http://pubs.opengroup.org/onlinepubs/7908799/xsh/pthread.h.html">&lt;pthread.h></a></li>
+</ul>
+
+
+<h3>Demo</h3>
+
+<ul>
+<li><a href="https://github.com/hustcalm/POSIX-Threads-Beginner-s-Guide">POSIX-Threads-Beginner-s-Guide</a></li>
+</ul>
+
+
+<p>之后还是要系统地学习一下OS，MIT的6.828是一个不错的起点！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[小记Fedora 19 Release Party和Barcamp Beijing August]]></title>
@@ -1351,37 +1391,6 @@ controller”，才能访问内存。那么代码在哪里执行呢？有个“�
 <p>加入了OpenDrone小组，希望能在这里找到乐趣:)</p>
 
 <p>Safe and sound, finally I got what I want.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello Octopress From Ubuntu 12.04]]></title>
-    <link href="http://hustcalm.me/blog/2012/11/24/hello-octopress-from-ubuntu-12-dot-04/"/>
-    <updated>2012-11-24T01:00:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2012/11/24/hello-octopress-from-ubuntu-12-dot-04</id>
-    <content type="html"><![CDATA[<p>今天又把Octopress博客安了一个新家，Windows XP下虚拟出来的Ubuntu 12.04.想想从Cygwin上开始建立博客，后来到Ubuntu 11.04上维护，现在又搭一个新窝，自己都佩服自己的折腾能力了:)</p>
-
-<p>遇到的主要问题，除了<code>posix-spawn</code>，竟然还有<code>openssl</code>，随之而来的依赖缺失，mkmf，编译的时候又输给了路径问题，Ubuntu本身带着1.8.7的<code>ruby</code>，而现在我的Octopress使用<code>1.9.3-p194</code>，并且用了<code>rbenv</code>和<code>ruby-build</code>进行版本管理，这给编译<code>openssl</code>的时候带来一个困扰，直接在<code>ext/openssl</code>下运行<code>ruby
-extconf.rb</code>的话生成的Makefile是依赖系统的1.8.7的，因为直接执行<code>ruby</code>，由于路径设置问题，运行的是系统的Ruby，而不是我们自己安装的，所以这里需要小心，通过<code>~/.rbenv/versions/1.9.3-p194/bin/ruby extconf.rb</code>解决问题。</p>
-
-<p>参考的链接有以下，感谢他们：</p>
-
-<!--more-->
-
-
-<ul>
-<li><a href="http://www.360doc.com/content/12/0216/16/1016783_187128091.shtml">为已经存在的github Octopress配置本地环境</a></li>
-<li><a href="http://madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a></li>
-<li><a href="http://ns2.beta4better.org/2012/01/octopress-no-such-file-to-load-zlib-or-openssl.html">Octopress:no such file to load:zlib,openssl</a></li>
-<li><a href="http://blog.csdn.net/dqatsh/article/details/2125089">ubuntu下安装ruby后openssl找不到的问题</a></li>
-<li><a href="http://www.myexception.cn/ruby-rails/665543.html">in &#8216;require&#8217;:no such file to load -openssl (LoadError)</a></li>
-<li><a href="http://www.linuxdiyf.com/viewarticle.php?id=68545">安装ruby-debug-base是mkmf(LoadError)问题的解决办法</a></li>
-</ul>
-
-
-<p>暂时就这么多了，发现有问题才比较有意思。</p>
-
-<p>如果你在设置Octopress的时候有任何疑问，欢迎和我讨论:)</p>
 ]]></content>
   </entry>
   
