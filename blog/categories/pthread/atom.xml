@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: pthread | Welcome to Pandora's Box(Why)]]></title>
+  <link href="http://hustcalm.me/blog/categories/pthread/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2013-09-06T11:00:52+08:00</updated>
+  <id>http://hustcalm.me/</id>
+  <author>
+    <name><![CDATA[hustcalm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[POSIX threads-多线程编程初步]]></title>
+    <link href="http://hustcalm.me/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu/"/>
+    <updated>2013-09-06T10:24:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu</id>
+    <content type="html"><![CDATA[<p>学习，总是要深入进去才是好的。由于多摄像头视频处理的需要，这两天“正式学习”了多线程编程，切入点是POSIX的pthread库。不管承认与否，在进程之后的线程，对软件开发有非常深远的影响。本质上的算法+数据，我个人的理解是，线程是在算法上做的改进（也就是对于整个作业，如何合理地切分，符合CPU和操作系统的工作习惯，也就是在比较小的开销下完成任务），相比于进程而言，由于多个线程都在同一个memory space，因此线程间通信以及创建线程的overhead都比进程小了不少，业内也把thread称为LWP（Light Wight Process）。</p>
+
+<!--more-->
+
+
+<p>多线程好处多多，容易让人头痛的便是线程的“同步”问题，也就是大家常说的互斥访问“临界区资源”，常用的方法就是，mutex，条件变量，信号量等。</p>
+
+<p>学习的过程中，主要就线程的创建，终结，join，detach，参数传递，mutex的使用，条件变量和信号量的使用进行了实际的编码练习，剩下的关于调度策略，优先级，线程本地变量等还需要进一步学习。参考了一些精华文章，自己把写的demo放到了github上了。这不是一篇tutorial，所以就不具体说技术细节了，大家去看下面给出的链接和demo吧。</p>
+
+<h3>学习资源链接</h3>
+
+<ul>
+<li><a href="https://computing.llnl.gov/tutorials/pthreads/">POSIX Threads Programming Tutorial From Lawrence Livermore National Laboratory</a></li>
+<li><a href="http://randu.org/tutorials/threads/">Multithreaded Programming (POSIX pthreads Tutorial)</a></li>
+<li><a href="http://codebase.eu/tutorial/posix-threads-c/index.php">Creating multi-threaded C++ code</a></li>
+<li><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html">POSIX thread (pthread) libraries</a></li>
+<li><a href="http://www.ibm.com/developerworks/library/l-posix1/index.html">POSIX threads explained-A simple and nimble tool for memory sharing</a></li>
+<li><a href="http://www.tutorialspoint.com/operating_system/os_multi_threading.htm">Operating System - Multi-Threading</a></li>
+<li><a href="http://pubs.opengroup.org/onlinepubs/7908799/xsh/pthread.h.html">&lt;pthread.h></a></li>
+</ul>
+
+
+<h3>Demo</h3>
+
+<ul>
+<li><a href="https://github.com/hustcalm/POSIX-Threads-Beginner-s-Guide">POSIX-Threads-Beginner-s-Guide</a></li>
+</ul>
+
+
+<p>之后还是要系统地学习一下OS，MIT的6.828是一个不错的起点！</p>
+]]></content>
+  </entry>
+  
+</feed>
