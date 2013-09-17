@@ -9,7 +9,7 @@
   <meta name="author" content="hustcalm">
 
   
-  <meta name="description" content="想想自己的Windows XP从09年寒假买了联想的小Y之后就一直在用，期间换过不少次系统，短时间用过Windows 7,也曾经在自己硬盘上安装了Windows + 4个Linux，还包括一个不成功的尝试，在小Y上尝鲜Mac OS X。大四做机器人比赛，由于开发的需要一直不敢折腾自己的电脑（ &hellip;">
+  <meta name="description" content="最近对SNS-Shim做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/">再谈OpenAPI，从WebService说起</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-22T20:51:00+08:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2013</time>
+        
+         | <a href="/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近对<a href="https://github.com/hustcalm/SNS-Shim">SNS-Shim</a>做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解，同时也激起了对服务提供商如何向开发者提供易用可靠的OpenAPI服务进行研究的好奇心。简单来说，开发者只需要关注如何“使用”，了解了基本的授权流程后，接下来只要按照API进行网络请求即可（使用服务提供商的SDK是最直接的，也可以自己根据相应的请求规范自己实现请求接口，因为本质上都是向某个URL发起HTTP请求）。而作为服务提供商则要考虑开放平台的建设问题了，这里面涉及到各种关于集群，高并发，大数据，分布式处理的东西（这个时候再看OAuth什么的，只是其中的一个小实现细节）。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -288,68 +331,6 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/06/vimshi-yi-zhong-tai-du/">Vim是一种态度</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-06T20:30:00+08:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/05/06/vimshi-yi-zhong-tai-du/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>想想接触VIM也有段时间了，一直比较半调子，从没认真看过vimtutor，倒是东拼西凑，到处画斋:-)</p>
-
-<p>目前自己把VIM的使用分为三个层次：</p>
-
-<h2>菜鸟</h2>
-
-<p>这个阶段，要能够用VIM工作，评判标准是能否用VIM完成基本的编辑工作，需要消化以下两篇文章：
-*   <a href="http://linuxtoy.org/archives/efficient-editing-with-vim.html">高效率编辑器VIM-操作篇，非常适合VIM新手</a>
-*   <a href="http://coolshell.cn/articles/5426.html">简明Vim练级攻略</a></p>
-
-<h2>高手</h2>
-
-<p>作为高手，VIM已经用起来得心应手，IDE什么的都不care了，插件安装和DIY信手拈来，参考以下链接：</p>
-
-<h3>打造一个IDE</h3>
-
-<ul>
-<li><a href="http://blog.csdn.net/wooin/article/details/1858917">手把手教你把Vim改装成一个IDE编程环境</a></li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/05/06/vimshi-yi-zhong-tai-du/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -382,11 +363,15 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/arduino' style='font-size: 112.0%'>Arduino(1)</a> <a href='/blog/categories/barcamp' style='font-size: 112.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 112.0%'>BIOS(1)</a> <a href='/blog/categories/cloud' style='font-size: 112.0%'>Cloud(1)</a> <a href='/blog/categories/cygwin' style='font-size: 112.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 112.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 112.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 112.0%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 112.0%'>Fedora(1)</a> <a href='/blog/categories/geek' style='font-size: 136.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 124.0%'>Git(2)</a> <a href='/blog/categories/learning' style='font-size: 112.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 112.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 136.0%'>Linux(3)</a> <a href='/blog/categories/machine' style='font-size: 112.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 112.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 112.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 112.0%'>MLPR(1)</a> <a href='/blog/categories/name-com' style='font-size: 112.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 112.0%'>Network(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 124.0%'>OpenAPI(2)</a> <a href='/blog/categories/openhardware' style='font-size: 112.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 136.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 112.0%'>OS(1)</a> <a href='/blog/categories/posix' style='font-size: 112.0%'>POSIX(1)</a> <a href='/blog/categories/programming' style='font-size: 112.0%'>Programming(1)</a> <a href='/blog/categories/pthread' style='font-size: 112.0%'>pthread(1)</a> <a href='/blog/categories/robot' style='font-size: 124.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 112.0%'>SEO(1)</a> <a href='/blog/categories/sns' style='font-size: 124.0%'>SNS(2)</a> <a href='/blog/categories/speaking' style='font-size: 112.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 112.0%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 112.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 136.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 136.0%'>VIM(3)</a> <a href='/blog/categories/vlc' style='font-size: 124.0%'>VLC(2)</a> <a href='/blog/categories/web' style='font-size: 112.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 112.0%'>WordPress(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/arduino' style='font-size: 112.0%'>Arduino(1)</a> <a href='/blog/categories/barcamp' style='font-size: 112.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 112.0%'>BIOS(1)</a> <a href='/blog/categories/cloud' style='font-size: 112.0%'>Cloud(1)</a> <a href='/blog/categories/cygwin' style='font-size: 112.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 112.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 112.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 112.0%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 112.0%'>Fedora(1)</a> <a href='/blog/categories/geek' style='font-size: 136.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 124.0%'>Git(2)</a> <a href='/blog/categories/learning' style='font-size: 112.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 112.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 136.0%'>Linux(3)</a> <a href='/blog/categories/machine' style='font-size: 112.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 112.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 112.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 124.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 112.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 112.0%'>Network(1)</a> <a href='/blog/categories/nlp' style='font-size: 112.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 124.0%'>OpenAPI(2)</a> <a href='/blog/categories/openhardware' style='font-size: 112.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 136.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 112.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 112.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 112.0%'>POSIX(1)</a> <a href='/blog/categories/programming' style='font-size: 112.0%'>Programming(1)</a> <a href='/blog/categories/pthread' style='font-size: 112.0%'>pthread(1)</a> <a href='/blog/categories/robot' style='font-size: 124.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 112.0%'>SEO(1)</a> <a href='/blog/categories/sns' style='font-size: 124.0%'>SNS(2)</a> <a href='/blog/categories/speaking' style='font-size: 112.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 112.0%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 112.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 136.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 136.0%'>VIM(3)</a> <a href='/blog/categories/vlc' style='font-size: 124.0%'>VLC(2)</a> <a href='/blog/categories/web' style='font-size: 112.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 112.0%'>WordPress(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/17/a-li-ji-zhu-da-jiang-tang-hu-lian-wang-ying-xiao-tui-yan-ji-zhu-zhuan-chang-xiao-jie/">阿里技术大讲堂-互联网营销推广技术专场小结</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu/">POSIX threads-多线程编程初步</a>
@@ -402,10 +387,6 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
     
       <li class="post">
         <a href="/blog/2013/07/27/cong-kai-yuan-ying-jian-arduino%2Craspberry-pi%2Cbeagleboneshuo-qi/">从开源硬件Arduino，Raspberry Pi，BeagleBone说起</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/">再谈OpenAPI，从WebService说起</a>
       </li>
     
   </ul>

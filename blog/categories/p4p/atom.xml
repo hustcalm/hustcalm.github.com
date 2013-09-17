@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: P4P | Welcome to Pandora's Box(Why)]]></title>
+  <link href="http://hustcalm.me/blog/categories/p4p/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2013-09-17T20:27:18+08:00</updated>
+  <id>http://hustcalm.me/</id>
+  <author>
+    <name><![CDATA[hustcalm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[阿里技术大讲堂-互联网营销推广技术专场小结]]></title>
+    <link href="http://hustcalm.me/blog/2013/09/17/a-li-ji-zhu-da-jiang-tang-hu-lian-wang-ying-xiao-tui-yan-ji-zhu-zhuan-chang-xiao-jie/"/>
+    <updated>2013-09-17T18:28:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/09/17/a-li-ji-zhu-da-jiang-tang-hu-lian-wang-ying-xiao-tui-yan-ji-zhu-zhuan-chang-xiao-jie</id>
+    <content type="html"><![CDATA[<p>利用上个周末的两天时间，参加了“阿里技术大讲堂”，主题是“互联网营销技术”，各位讲师都是“阿里妈妈”的人，且个个身怀绝技。个人虽然对这个领域很陌生，但还是跑去参加了，一是想领略一下阿里的技术，而是想感受一下阿里的人。现在想想，不虚此行，用一篇小结整理一下学到的东西，梳理自己思路的同时，希望能给大家带来些有效信息。</p>
+
+<hr />
+
+<h2>认识下P4P</h2>
+
+<p>搜索P4P得到比较多的检索结果是一种基于P2P的传输技术，全称为<a href="http://en.wikipedia.org/wiki/Proactive_network_Provider_Participation_for_P2P">Proactive network provider participation for P2P</a>。而在广告领域，需要解释为Pay for Performance，遗憾的是没能在维基百科上找到权威定义，不过各大电商和互联网公司的推广和广告系统，都会提到P4P这个词。想了解更多，搜索“淘宝P4P”或者“阿里巴巴P4P”会得到一些有效信息。一言以蔽之，就是“高效而精准的广告投放”。</p>
+
+<!--more-->
+
+
+<hr />
+
+<h2>技术专场要点</h2>
+
+<p>两天的课程一直在做笔记，先面根据课程先后把一些要点分享出来，不会特别详细，给出一些关键词，感兴趣的可以自己查阅资料展开学习！</p>
+
+<hr />
+
+<h3>互联网营销概述-云雀</h3>
+
+<p>广告投放的计费方式分为，cpt/cpc/cps/cpa/cpm等，具体解释可以参考<a href="http://blog.sina.com.cn/s/blog_68d723030100xwwg.html">CPM CPT CPC CPA CPS在网络营销中是什么意思？</a>.</p>
+
+<p>互联网营销的参与方，商家，User，Publisher，营销平台，其中“平台”是所有参与者的纽带，有了“平台”，其它玩家才有得玩。把参与方搞清楚，对于理解后续的整个营销平台架构很关键。</p>
+
+<p>目前主要的营销产品形式：</p>
+
+<ul>
+<li>Sponsored Search</li>
+</ul>
+
+
+<p>目前最核心的收益来源，竞价逻辑采用GSP（Generalized Second Price），但是面临一些问题。</p>
+
+<ul>
+<li>定向营销</li>
+</ul>
+
+
+<p>比如Google Adsense，百度网盟，技术上使用cookie实现。</p>
+
+<ul>
+<li>展示营销</li>
+</ul>
+
+
+<p>属于non-guaranteed类型的营销。</p>
+
+<ul>
+<li>RTB（Real Time Biding）</li>
+</ul>
+
+
+<p>即实时竞价，实现的核心系统是Ad Exchange Server。</p>
+
+<hr />
+
+<h3>大规模高并发的营销系统架构-超明</h3>
+
+<p>主要讲了查询系统和更新系统，其中实时更新采用Storm实时流式计算系统，而全量更新采用Hadoop分布式计算系统。</p>
+
+<p>在业务逻辑方面，主要讲述了：</p>
+
+<ul>
+<li>出价与竞价体系（GSP）</li>
+<li>过滤（实现个性化投放）</li>
+<li>Bucket机制（不同算法和策略的验证）</li>
+<li>插件化（框架与业务分离，不同业务解耦合）</li>
+<li>ranking模型（漏斗式，由简单到复杂）</li>
+<li>分级查询（分布式）</li>
+<li>实时数据采集</li>
+<li>数据分发</li>
+<li>大数据（Hadoop，Storm，MPI）</li>
+<li>分离（数据节点与检索节点分离）</li>
+<li>移步处理（未来的方向，目前正在尝试中）</li>
+</ul>
+
+
+<hr />
+
+<h3>搜索营销触发技术-翔羽</h3>
+
+<p>也就是搜索营销的Matching技术，主要解决的问题：</p>
+
+<ul>
+<li>用户查询意图理解</li>
+<li>推广语义，信息扩充</li>
+<li>用户和客户信息不对称和流量分配</li>
+</ul>
+
+
+<p>三段式架构下的技术问题分解：</p>
+
+<ul>
+<li>Query改写</li>
+</ul>
+
+
+<p>主要是Query分析，改写和相似度计算。</p>
+
+<ul>
+<li>Bid-Ads</li>
+</ul>
+
+
+<p>包括Ads分析，Bid-Ads索引优化，Bid-Ads排序。</p>
+
+<ul>
+<li>初选</li>
+</ul>
+
+
+<p>Matching的不同levels，Term-Phrase-Word Sense-Topic-Structure，典型的NLP吧。</p>
+
+<p>最后讲了一下模糊匹配。</p>
+
+<hr />
+
+<h3>搜索营销中的点击率预估：算法和系统-治平</h3>
+
+<p>创意排序和ECPM排序中的核心问题是CTR预估，即点击率预估，解决的方法是大规模机器学习。</p>
+
+<p>主要的挑战包括，线下海量数据的处理，线下服务的高并发，QPS达到了1W-10W级别，实时性在1ms！</p>
+
+<p>未来努力的方向还是个性化和实时化！</p>
+
+<hr />
+
+<h3>行为定向技术-王睿</h3>
+
+<p>深入检出，幽默风趣，是王总的风格，说的话几乎句句是干货。</p>
+
+<p>定向算法需要解决的问题，本质上，是对创意信息，浏览者信息和场景信息的排序。</p>
+
+<p>两个Query如何比较相似性？（根据Query对应的商品计算）。</p>
+
+<p>后来讲到了定向维度（裸数据的维度达到了千亿的级别，预处理之后是十亿的级别，好吓人）和RTB，可能听得比较起劲，记得东西少了:-(。</p>
+
+<hr />
+
+<h3>展示营销技术-Tanx架构-澄观</h3>
+
+<p>主要就阿里妈妈研发的Tanx系统展开，首先还是缕清楚参与方，具体交互可以参考<img src="http://contest.ipinyou.com/cn/images/tw.jpg" alt="下图" />。</p>
+
+<p>而ADX市场，主要分析了Google，Tecent，Baidu和Ali。</p>
+
+<p>系统架构方面，主要包括：</p>
+
+<ul>
+<li>用户交互</li>
+<li>推广计划</li>
+<li>管理系统</li>
+<li>Business Platform(BP)</li>
+<li>ECPM Tanx</li>
+<li>Logs</li>
+<li>Algorithms</li>
+<li>Reports</li>
+</ul>
+
+
+<p>具体技术的展开：</p>
+
+<ul>
+<li>bidrequest包含的信息</li>
+</ul>
+
+
+<p>浏览者信息，网页信息，创意信息。</p>
+
+<ul>
+<li>QPS控制</li>
+</ul>
+
+
+<p>DSP的系统负载能力各不相同;QPS可以控制到分钟的粒度;基于DSP的错误率，QPS自动调整;集群机器的扩展和临时缩减控制。</p>
+
+<ul>
+<li>大流量高并发通信技术</li>
+</ul>
+
+
+<p>竞价流量规模翻N倍;减少网络通信量，压缩，托管等;挖掘单机极致吞吐量和连接数libevent和nginx的灵活应用。</p>
+
+<ul>
+<li>Cookie Mapping</li>
+</ul>
+
+
+<p>从安全角度出发，Cookie不能跨域共享，将不同域的不同ID关联起来，就形成了Cookie Mapping技术。具体设计到几十亿的KV存储（采用Tair引擎），Cookie的托管服务以及DSP流量预选。</p>
+
+<hr />
+
+<h3>展示营销的定向算法与竞价算法介绍-芍药</h3>
+
+<p>特别活泼可爱的一个讲师，讲解的思路很清晰。</p>
+
+<p>首先还是从大面上认识一下，非搜索广告 VS. 搜索广告，展示营销的特点，展示营销的分类（Guaranteed Delivery &amp;&amp; Non-Guaranteed Delivery）。</p>
+
+<p>在关于展示营销系统的参与方的讲解上，通过对三方（媒体，客户，用户）进行属性的描述非常直观。</p>
+
+<p>定向算法这边，主要是分类，采用了SVM，解决的问题就是如何选择用户兴趣点的维度以及怎么样将用户和其兴趣点关联。</p>
+
+<p>而竞价算法解决的是，如何在不同的位置，给不同的用户展示合适的广告？这里又是Tanx解决的问题了，主要用到的技术就是HDFS，Map/Reduce，MPI。</p>
+
+<p>而在客户工具这里，阿里也越来越关注流量提供方和广告投放方，毕竟他们才是拿钱的主啊:-)</p>
+
+<hr />
+
+<h3>DSP系统架构-墨魂</h3>
+
+<p>DSP（Demand-Side Platform），即需求方平台。</p>
+
+<p>实时定向系统架构：</p>
+
+<ul>
+<li>投放平台</li>
+<li>特征扩展</li>
+<li>信息检索</li>
+</ul>
+
+
+<p>这里讲得比较多，主要有倒排，and和or查询，迭代查询机制，Cache机制，数据更新机制。</p>
+
+<ul>
+<li>实时竞价</li>
+</ul>
+
+
+<p>Tanx again。</p>
+
+<hr />
+
+<h3>RTB技术介绍-则成</h3>
+
+<p>虽然是纯技术，但是这一讲很有意思。</p>
+
+<ul>
+<li>Why RTB？</li>
+</ul>
+
+
+<p>实时竞价，是一种利用第三方技术在数以百万计的网站上针对每一个用户展示行为进行评估以及出价的竞价技术。</p>
+
+<ul>
+<li>RTB Mechanisms</li>
+</ul>
+
+
+<p>在几十个毫秒内，找对人，投对商品。</p>
+
+<p>大概步骤：</p>
+
+<p>   1.用户访问网页</p>
+
+<p>   2.流量竞拍要求</p>
+
+<p>   3.海量用户数据进行价值判断与出价</p>
+
+<p>   4.广告交易市场竞拍</p>
+
+<p>   5.获得广告位投放机会</p>
+
+<ul>
+<li>RTB的特点</li>
+</ul>
+
+
+<p>   1.粒度为每个PV级别的拍卖</p>
+
+<p>   2.交易平台以CPM方式向获胜DSP收费</p>
+
+<p>   3.Vickrey拍卖（封闭拍卖，价高者得，第二价格扣费）</p>
+
+<p>   4.对每个bidder，最优策略是按照自己对商品的价值来报价（后来的理论分析很优美）</p>
+
+<ul>
+<li>Bidding Algorithms</li>
+</ul>
+
+
+<p>   1.md6.com（DSP公司）的竞价算法</p>
+
+<p>   2.Yahoo的Bid Star Tree</p>
+
+<p>   3.Alimama的报价模型之一，Golden Filter</p>
+
+<hr />
+
+<h3>推荐技术及在营销推广中的应用-小致</h3>
+
+<p>讲得很技术，pure technical.</p>
+
+<p>首先介绍了淘宝数据，按照“行为”，“场景”和“内容信息”分类。</p>
+
+<p>之后进入正题，开始讲“推荐算法”。涵盖的内容：</p>
+
+<ul>
+<li>Item CF（协同过滤）</li>
+</ul>
+
+
+<p>主要说到了Jaccard/ModJaccard以及Cosine/WbCosine。</p>
+
+<ul>
+<li>内容相似度</li>
+</ul>
+
+
+<p>Minhash，解决“冷启动”的问题。</p>
+
+<ul>
+<li>融合算法</li>
+</ul>
+
+
+<p>模拟退火，单纯形，GBDT/LR之类的。</p>
+
+<p>评价指标主要提到了Auc，Recall，Coverage，都是机器学习的东西了。</p>
+
+<p>最后的推荐形式，讲了“相似推荐”，“搭配推荐”和“实时推荐”。</p>
+
+<hr />
+
+<h2>总结</h2>
+
+<p>两天的课程，算是对互联网营销入了门。对很多专业术语有了了解，对现有的系统架构有了皮毛的认识，而对于机器学习，数据挖掘，自然语言处理的威力有了更加清晰的定位。在“做东西的过程中学习”，是现在非常赞成的“学习方法”，虽然两天的技术讲堂没有“做东西”，但是来自一线的阿里讲师们，用自己的实际经历将心得传授给大家，也是一种非常好的学习方式！感谢阿里在技术讲堂上的努力，阿里高校技术联盟今年也开始在计算所试点了（自动化所明年应该会到位），感谢各位讲师！</p>
+
+<p>无意中发现了一个RTB的比赛，链接在<a href="http://contest.ipinyou.com/cn/index.shtml">这里</a>，感兴趣的同学不妨一试:-)</p>
+]]></content>
+  </entry>
+  
+</feed>
