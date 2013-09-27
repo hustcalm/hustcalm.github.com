@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: CV | Welcome to Pandora's Box(Why)]]></title>
+  <link href="http://hustcalm.me/blog/categories/cv/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2013-09-27T21:16:35+08:00</updated>
+  <id>http://hustcalm.me/</id>
+  <author>
+    <name><![CDATA[hustcalm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[PTAM Compilation On Linux-HowTo]]></title>
+    <link href="http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto/"/>
+    <updated>2013-09-27T19:50:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto</id>
+    <content type="html"><![CDATA[<p>The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god's sake) ! I struggled to get it done on my Linux Mint 15 with totally failure:-(</p>
+
+<p>However I made it with just pulling the bleeding edge libs(I mean TooN,libCVD and Gvars3) from github, add a header file <code>&lt;unistd.h&gt;</code> to <code>Tracker.cc</code>, edit the <code>Makefile</code> about the linker flags(I will tell the details below), and I absolutely think that 'share my experience to you' is my duty.</p>
+
+<p>I succeeded on <strong>Linux Mint 15</strong> and <strong>Ubuntu 12.04</strong>, other distros won't be hard either:-)</p>
+
+<!--more-->
+
+
+<p>Now, let's start the journey!</p>
+
+<h2>Installation the required dependencies</h2>
+
+<p><strong>Note the versions of the installed packages may differ from distros and versions of the same distro, just choose the ones suitable for you!</strong></p>
+
+<h3>Build Tools</h3>
+
+<pre><code>sudo apt-get update
+sudo apt-get install build-essential cmake pkg-config
+</code></pre>
+
+<h3>Boost for C++</h3>
+
+<pre><code>sudo apt-get install libboost-dev libboost-doc
+</code></pre>
+
+<h3>Low level libraries for Linear Algebra</h3>
+
+<pre><code>sudo apt-get install liblapack-dev libblas-dev
+</code></pre>
+
+<h3>Image I/O &amp;&amp; Camera Driver</h3>
+
+<pre><code>sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev libv4l-dev 
+</code></pre>
+
+<h3>Video I/O &amp;&amp; Codec &amp;&amp; Display</h3>
+
+<pre><code>sudo apt-get install libavcodec-dev libavformat-dev libavutil-dev libpostproc-dev libswscale-dev libavdevice-dev libsdl-dev
+sudo apt-get install libgtk2.0-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev 
+</code></pre>
+
+<h3>OpenGL</h3>
+
+<pre><code>sudo apt-get install mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev
+</code></pre>
+
+<h2>Installation of OpenCV</h2>
+
+<pre><code>cd thePathYouWant
+wget http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.6.1/opencv-2.4.6.1.tar.gz
+tar zxvf opencv-2.4.6.1.tar.gz
+cd opencv-2.4.6.1/
+mkdir release 
+cd release
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+make
+sudo make install
+</code></pre>
+
+<p>You may want to alert the system about the new installed OpenCV libs,</p>
+
+<pre><code>vi /etc/ld.so.conf
+add `include /usr/local/lib`
+sudo ldconfig
+</code></pre>
+
+<p>Do this if you mannualy install other libraries when running into problems(as libcvd and Gvars3 discussed below).</p>
+
+<p>After this, <strong>OpenCV dependencies can now be linked with simply: <code>pkg-config opencv --cflags --libs</code></strong></p>
+
+<p>Really cool, huh?</p>
+
+<h2>Installation of TooN &amp;&amp; libCVD &amp;&amp; Gvars3</h2>
+
+<p>You may want to get the source code by just pulling from github like this:</p>
+
+<pre><code>#!/bin/bash
+echo " Now pulling TooN..."
+git clone git://github.com/edrosten/TooN.git
+echo " TooN done for good!"
+
+echo " Now pulling libcvd..."
+git clone git://github.com/edrosten/libcvd.git
+echo " libcvd done for good!"
+
+echo " Now pulling gvars3..."
+git clone git://github.com/edrosten/gvars.git
+echo " gvars3 done for good!"
+
+echo " All done."
+</code></pre>
+
+<p>If this confuses you, just download the package like this:</p>
+
+<pre><code>cd thePathYouWant
+wget http://www.edwardrosten.com/cvd/TooN-2.1.tar.gz
+wget http://www.edwardrosten.com/cvd/libcvd-20121025.tar.gz
+wget http://www.edwardrosten.com/cvd/gvars-3.0.tar.gz
+</code></pre>
+
+<p><strong>Note the versions may differ as time goes by, use git if you can</strong> Or just look at this <a href="http://www.edwardrosten.com/cvd/toon.html">link</a> for more details.</p>
+
+<p>Also remember <strong>do refer to the README files when you try to install the libraries</strong>, cause they really do help in some manner:-)</p>
+
+<h3>TooN</h3>
+
+<p>Just header files, easy to install huh?</p>
+
+<pre><code>./configure &amp;&amp; make &amp;&amp; sudo make install
+</code></pre>
+
+<h3>libCVD</h3>
+
+<p>Remember that libCVD really needs TooN, or you will get stuck when trying to compile PTAM:-(</p>
+
+<p>The steps I used is like this:</p>
+
+<pre><code>./configure --without-ffmpeg --without-v4l1buffer --without-dc1394v1 --without-dc1394v2
+make
+sudo make install
+</code></pre>
+
+<p>If you run into problems, check the output of <code>./configure</code> carefully, they will give you some hints:-)</p>
+
+<h3>Gvars3</h3>
+
+<p>This is also easy, like this:</p>
+
+<pre><code>./configure --disable-widgets
+make
+make install
+</code></pre>
+
+<h3>Make the libs work</h3>
+
+<pre><code>sudo ldconfig
+</code></pre>
+
+<h2>Compilation of PTAM</h2>
+
+<p>Now comes the real part of our journey, refer to the README.txt file for details.</p>
+
+<h3>Copy the appropriate platform build files</h3>
+
+<pre><code>cd PTAM
+cp Build/Linux/* .
+</code></pre>
+
+<h3>Edit the Makefile to reference custom include or linker paths</h3>
+
+<pre><code>LINKFLAGS = -L /usr/local/lib -lGvars3 -lcvd -lGLU -lGL -llapack
+</code></pre>
+
+<p><code>/usr/local/lib</code> is my custom linker path.</p>
+
+<h3>Make the Video Source right</h3>
+
+<ul>
+<li>VideoSource_Linux_DV.cc</li>
+<li>VideoSource_Linux_V4L.cc</li>
+<li>VideoSource_Linux_Gstreamer_File.cc</li>
+<li>VideoSource_Linux_OpenCV.cc</li>
+</ul>
+
+
+<p>The first two are for camera capturing and the last twos are shipped with <a href="https://github.com/BeLioN-github/PTAM">BeLioN-github/PTAM</a> and can be used to serve images from video files.</p>
+
+<h3>Make</h3>
+
+<p>Probably an error will popup, like "error, <code>usleep</code> was not declared in this scope", easily add</p>
+
+<pre><code>#include &lt;unistd.h&gt;
+</code></pre>
+
+<p>to <code>Tracker.cc</code> and you are done:-)</p>
+
+<p>Just</p>
+
+<pre><code>make
+</code></pre>
+
+<p>and enjoy!</p>
+
+<h2>Acknowledgement</h2>
+
+<p>Definitely special thanks will go to <a href="http://www.robots.ox.ac.uk/~gk/">Georg Klein</a>, the author and PTAM! Good job, Georg!</p>
+
+<p>I also refered to several posts while struggling,</p>
+
+<ul>
+<li><a href="http://hhfighting.blog.163.com/blog/static/55700323201242524213235/">ubuntu11.10下安装PTAMM</a></li>
+<li><a href="http://www.edwardrosten.com/cvd/toon.html">TooN: Tom's Object-oriented numerics library</a></li>
+<li><a href="http://code.google.com/p/qt-opencv-multithreaded/wiki/Documentation">qt-opencv-multithreaded</a></li>
+<li><a href="http://docs.opencv.org/trunk/doc/tutorials/introduction/linux_install/linux_install.html">OpenCV Tutorials-Installation in Linux</a></li>
+</ul>
+
+
+<p>Hope this post will do some help and if you find any mistake in my blog, please do <strong>leave your comment or drop me a line:-)</strong></p>
+]]></content>
+  </entry>
+  
+</feed>

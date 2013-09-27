@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>PTAM Compilation On Linux-HowTo - Welcome to Pandora's Box(Why)</title>
+  <meta name="author" content="hustcalm">
+
+  
+  <meta name="description" content="The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god&#8217;s sake) ! I struggled to get &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto/">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Welcome to Pandora's Box(Why)" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Welcome to Pandora's Box(Why)</a></h1>
+  
+    <h2>Hustcalm的个人博客！</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:hustcalm.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">PTAM Compilation on Linux-HowTo</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-27T19:50:00+08:00" pubdate data-updated="true">Sep 27<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god&#8217;s sake) ! I struggled to get it done on my Linux Mint 15 with totally failure:-(</p>
+
+<p>However I made it with just pulling the bleeding edge libs(I mean TooN,libCVD and Gvars3) from github, add a header file <code>&lt;unistd.h&gt;</code> to <code>Tracker.cc</code>, edit the <code>Makefile</code> about the linker flags(I will tell the details below), and I absolutely think that &#8216;share my experience to you&#8217; is my duty.</p>
+
+<p>I succeeded on <strong>Linux Mint 15</strong> and <strong>Ubuntu 12.04</strong>, other distros won&#8217;t be hard either:-)</p>
+
+<!--more-->
+
+
+<p>Now, let&#8217;s start the journey!</p>
+
+<h2>Installation the required dependencies</h2>
+
+<p><strong>Note the versions of the installed packages may differ from distros and versions of the same distro, just choose the ones suitable for you!</strong></p>
+
+<h3>Build Tools</h3>
+
+<pre><code>sudo apt-get update
+sudo apt-get install build-essential cmake pkg-config
+</code></pre>
+
+<h3>Boost for C++</h3>
+
+<pre><code>sudo apt-get install libboost-dev libboost-doc
+</code></pre>
+
+<h3>Low level libraries for Linear Algebra</h3>
+
+<pre><code>sudo apt-get install liblapack-dev libblas-dev
+</code></pre>
+
+<h3>Image I/O &amp;&amp; Camera Driver</h3>
+
+<pre><code>sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev libv4l-dev 
+</code></pre>
+
+<h3>Video I/O &amp;&amp; Codec &amp;&amp; Display</h3>
+
+<pre><code>sudo apt-get install libavcodec-dev libavformat-dev libavutil-dev libpostproc-dev libswscale-dev libavdevice-dev libsdl-dev
+sudo apt-get install libgtk2.0-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev 
+</code></pre>
+
+<h3>OpenGL</h3>
+
+<pre><code>sudo apt-get install mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev
+</code></pre>
+
+<h2>Installation of OpenCV</h2>
+
+<pre><code>cd thePathYouWant
+wget http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.6.1/opencv-2.4.6.1.tar.gz
+tar zxvf opencv-2.4.6.1.tar.gz
+cd opencv-2.4.6.1/
+mkdir release 
+cd release
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+make
+sudo make install
+</code></pre>
+
+<p>You may want to alert the system about the new installed OpenCV libs,</p>
+
+<pre><code>vi /etc/ld.so.conf
+add `include /usr/local/lib`
+sudo ldconfig
+</code></pre>
+
+<p>Do this if you mannualy install other libraries when running into problems(as libcvd and Gvars3 discussed below).</p>
+
+<p>After this, <strong>OpenCV dependencies can now be linked with simply: <code>pkg-config opencv --cflags --libs</code></strong></p>
+
+<p>Really cool, huh?</p>
+
+<h2>Installation of TooN &amp;&amp; libCVD &amp;&amp; Gvars3</h2>
+
+<p>You may want to get the source code by just pulling from github like this:</p>
+
+<pre><code>#!/bin/bash
+echo " Now pulling TooN..."
+git clone git://github.com/edrosten/TooN.git
+echo " TooN done for good!"
+
+echo " Now pulling libcvd..."
+git clone git://github.com/edrosten/libcvd.git
+echo " libcvd done for good!"
+
+echo " Now pulling gvars3..."
+git clone git://github.com/edrosten/gvars.git
+echo " gvars3 done for good!"
+
+echo " All done."
+</code></pre>
+
+<p>If this confuses you, just download the package like this:</p>
+
+<pre><code>cd thePathYouWant
+wget http://www.edwardrosten.com/cvd/TooN-2.1.tar.gz
+wget http://www.edwardrosten.com/cvd/libcvd-20121025.tar.gz
+wget http://www.edwardrosten.com/cvd/gvars-3.0.tar.gz
+</code></pre>
+
+<p><strong>Note the versions may differ as time goes by, use git if you can</strong> Or just look at this <a href="http://www.edwardrosten.com/cvd/toon.html">link</a> for more details.</p>
+
+<p>Also remember <strong>do refer to the README files when you try to install the libraries</strong>, cause they really do help in some manner:-)</p>
+
+<h3>TooN</h3>
+
+<p>Just header files, easy to install huh?</p>
+
+<pre><code>./configure &amp;&amp; make &amp;&amp; sudo make install
+</code></pre>
+
+<h3>libCVD</h3>
+
+<p>Remember that libCVD really needs TooN, or you will get stuck when trying to compile PTAM:-(</p>
+
+<p>The steps I used is like this:</p>
+
+<pre><code>./configure --without-ffmpeg --without-v4l1buffer --without-dc1394v1 --without-dc1394v2
+make
+sudo make install
+</code></pre>
+
+<p>If you run into problems, check the output of <code>./configure</code> carefully, they will give you some hints:-)</p>
+
+<h3>Gvars3</h3>
+
+<p>This is also easy, like this:</p>
+
+<pre><code>./configure --disable-widgets
+make
+make install
+</code></pre>
+
+<h3>Make the libs work</h3>
+
+<pre><code>sudo ldconfig
+</code></pre>
+
+<h2>Compilation of PTAM</h2>
+
+<p>Now comes the real part of our journey, refer to the README.txt file for details.</p>
+
+<h3>Copy the appropriate platform build files</h3>
+
+<pre><code>cd PTAM
+cp Build/Linux/* .
+</code></pre>
+
+<h3>Edit the Makefile to reference custom include or linker paths</h3>
+
+<pre><code>LINKFLAGS = -L /usr/local/lib -lGvars3 -lcvd -lGLU -lGL -llapack
+</code></pre>
+
+<p><code>/usr/local/lib</code> is my custom linker path.</p>
+
+<h3>Make the Video Source right</h3>
+
+<ul>
+<li>VideoSource_Linux_DV.cc</li>
+<li>VideoSource_Linux_V4L.cc</li>
+<li>VideoSource_Linux_Gstreamer_File.cc</li>
+<li>VideoSource_Linux_OpenCV.cc</li>
+</ul>
+
+
+<p>The first two are for camera capturing and the last twos are shipped with <a href="https://github.com/BeLioN-github/PTAM">BeLioN-github/PTAM</a> and can be used to serve images from video files.</p>
+
+<h3>Make</h3>
+
+<p>Probably an error will popup, like &#8220;error, <code>usleep</code> was not declared in this scope&#8221;, easily add</p>
+
+<pre><code>#include &lt;unistd.h&gt;
+</code></pre>
+
+<p>to <code>Tracker.cc</code> and you are done:-)</p>
+
+<p>Just</p>
+
+<pre><code>make
+</code></pre>
+
+<p>and enjoy!</p>
+
+<h2>Acknowledgement</h2>
+
+<p>Definitely special thanks will go to <a href="http://www.robots.ox.ac.uk/~gk/">Georg Klein</a>, the author and PTAM! Good job, Georg!</p>
+
+<p>I also refered to several posts while struggling,</p>
+
+<ul>
+<li><a href="http://hhfighting.blog.163.com/blog/static/55700323201242524213235/">ubuntu11.10下安装PTAMM</a></li>
+<li><a href="http://www.edwardrosten.com/cvd/toon.html">TooN: Tom&#8217;s Object-oriented numerics library</a></li>
+<li><a href="http://code.google.com/p/qt-opencv-multithreaded/wiki/Documentation">qt-opencv-multithreaded</a></li>
+<li><a href="http://docs.opencv.org/trunk/doc/tutorials/introduction/linux_install/linux_install.html">OpenCV Tutorials-Installation in Linux</a></li>
+</ul>
+
+
+<p>Hope this post will do some help and if you find any mistake in my blog, please do <strong>leave your comment or drop me a line:-)</strong></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">hustcalm</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-27T19:50:00+08:00" pubdate data-updated="true">Sep 27<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ar/'>AR</a>, <a class='category' href='/blog/categories/cv/'>CV</a>, <a class='category' href='/blog/categories/ptam/'>PTAM</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+  <div class="bshare-custom icon-medium-plus"><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到Evernote" class="bshare-evernote" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span style="float: none;" class="BSHARE_COUNT bshare-share-count">7.72K</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/09/17/a-li-ji-zhu-da-jiang-tang-hu-lian-wang-ying-xiao-tui-yan-ji-zhu-zhuan-chang-xiao-jie/" title="Previous Post: 阿里技术大讲堂-互联网营销推广技术专场小结">&laquo; 阿里技术大讲堂-互联网营销推广技术专场小结</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>Focus on Life.
+  Focus on Technology.
+  Focus on Sports.
+  This is me,Calm.</p>
+  <p>Contact Me Via 
+  hustcalm(at)gmail.com</p>
+</section>
+<iframe frameborder="0" scrolling="no" src="http://kado.im/widget/5075993fabaa3/default.html" style="width: 100%; height: 67px; margin-bottom: 15px;" id="kadoWidgetFrame"></iframe>
+
+<section>
+<h1>Ohloh Profile</h1>
+<a href='https://www.ohloh.net/accounts/229059?ref=Detailed' target='_top'>
+<img alt='Ohloh profile for hustcalm' border='0' height='35' src='https://www.ohloh.net/accounts/229059/widgets/account_detailed.gif' width='191' />
+</a>
+</section>
+
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/ar' style='font-size: 112.0%'>AR(1)</a> <a href='/blog/categories/arduino' style='font-size: 112.0%'>Arduino(1)</a> <a href='/blog/categories/barcamp' style='font-size: 112.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 112.0%'>BIOS(1)</a> <a href='/blog/categories/cloud' style='font-size: 112.0%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 112.0%'>CV(1)</a> <a href='/blog/categories/cygwin' style='font-size: 112.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 112.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 112.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 112.0%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 112.0%'>Fedora(1)</a> <a href='/blog/categories/geek' style='font-size: 136.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 124.0%'>Git(2)</a> <a href='/blog/categories/learning' style='font-size: 112.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 112.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 136.0%'>Linux(3)</a> <a href='/blog/categories/machine' style='font-size: 112.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 112.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 112.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 124.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 112.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 112.0%'>Network(1)</a> <a href='/blog/categories/nlp' style='font-size: 112.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 124.0%'>OpenAPI(2)</a> <a href='/blog/categories/openhardware' style='font-size: 112.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 136.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 112.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 112.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 112.0%'>POSIX(1)</a> <a href='/blog/categories/programming' style='font-size: 112.0%'>Programming(1)</a> <a href='/blog/categories/ptam' style='font-size: 112.0%'>PTAM(1)</a> <a href='/blog/categories/pthread' style='font-size: 112.0%'>pthread(1)</a> <a href='/blog/categories/robot' style='font-size: 124.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 112.0%'>SEO(1)</a> <a href='/blog/categories/sns' style='font-size: 124.0%'>SNS(2)</a> <a href='/blog/categories/speaking' style='font-size: 112.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 112.0%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 112.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 136.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 136.0%'>VIM(3)</a> <a href='/blog/categories/vlc' style='font-size: 124.0%'>VLC(2)</a> <a href='/blog/categories/web' style='font-size: 112.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 112.0%'>WordPress(1)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/27/ptam-compilation-on-linux-howto/">PTAM Compilation On Linux-HowTo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/17/a-li-ji-zhu-da-jiang-tang-hu-lian-wang-ying-xiao-tui-yan-ji-zhu-zhuan-chang-xiao-jie/">阿里技术大讲堂-互联网营销推广技术专场小结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu/">POSIX threads-多线程编程初步</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/24/xiao-ji-fedora-19-release-partyhe-barcamp-beijing-august/">小记Fedora 19 Release Party和Barcamp Beijing August</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/10/ba-yue-sheng-hu-huan-you-ji-jian-dan-gong-lue/">八月圣湖环游记-简单攻略</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Weibo</h1>
+  <ul id="weibo">
+    <li>
+      <iframe 
+        width="100%" 
+        height="550" 
+        class="share_self" 
+        frameborder="0" 
+        scrolling="no" 
+        src="http://widget.weibo.com/weiboshow/index.php?
+        width=0&
+        height=550&
+        ptype=1&
+        speed=0&
+        skin=&
+        isTitle=0&
+        noborder=1&
+        isWeibo=1&
+        isFans=&
+        uid=1236738912&
+        verifier=8e94b428">
+      </iframe>
+    </li>
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/licalmer?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/licalmer">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+<h2>Douban Show</h2>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/hustcalm/?show=wishlist&amp;select=random&amp;n=9&amp;columns=3"></script>
+</div>
+</section>
+
+
+<section>
+<h1>Flag Counter</h1>
+ <a href="http://s01.flagcounter.com/more/5Vzn"><img src="http://s01.flagcounter.com/count/5Vzn/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a><br><a href="http://flagcounter.com/">free counters</a> 
+</section>
+
+
+<section>
+    <h1>Friends Link</h1>
+    <p><a href="http://ikimi.net">KIMI YANG</a></p>
+    <p><a href="http://blug.chinalug.org/">北京Linux用户组</a></p>
+    <p><a href="http://www.open-open.com/">开源资讯</a></p>
+    <p><a href="http://www.lupaworld.com/">LUPA开源社区</a></p>
+    <p><a href="http://www.bjgug.org/">北京GNOME用户组</a></p>
+</section>
+
+
+
+<section>
+<h1>CC License</h1>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />Except where otherwise noted,content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - hustcalm -
+  <span class="credit">Powered by <a href="https://github.com">Github</a> & <a href="http://octopress.org">Octopress</a> & <a href="www.cygwin.com">Cygwin</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'welcometopandorasboxwhy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto/';
+        var disqus_url = 'http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
