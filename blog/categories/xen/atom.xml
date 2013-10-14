@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Xen | Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/blog/categories/xen/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-10-14T17:47:38+08:00</updated>
+  <updated>2013-10-14T18:52:43+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -106,6 +106,8 @@ NM_CONTROLLED=no
 BRIDGE=xenbr0
 </code></pre>
 
+<p><strong>For static IP configuration, please refer to Xen wiki page!</strong></p>
+
 <p>Then, make the configuration work:</p>
 
 <pre><code>service network restart
@@ -180,6 +182,8 @@ lvcreate -L 30G -n archlinux vg_centos6
 
 <p>I got bridge working for me as described in above section.</p>
 
+<p>For choosing other modes, you can modify <code>/etc/xen/xend-config.sxp</code> or explicitly passing as parameters when creating DomUs.</p>
+
 <h3>Let DomUs fly</h3>
 
 <h4>Debian</h4>
@@ -236,7 +240,7 @@ xl create -c arch.cfg
 
 <p>Using the <code>virt-install</code> method:</p>
 
-<pre><code>virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://tel.mirrors.163.com/fedora/releases/19/Fedora/x86_64/os/ --os-type linux --accelerate --nographics
+<pre><code>virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://mirrors.163.com/fedora/releases/19/Fedora/x86_64/os/ --os-type linux --accelerate --nographics --network=bridge:xenbr0
 </code></pre>
 
 <p>Or you can download the ISO file first, then issuing your own httpd locally, thus making it:</p>
@@ -246,7 +250,7 @@ yum -y install httpd
 service httpd start
 ln -s /mnt/fedora /var/www/html
 service iptables stop
-virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://your.http.server.ip.address.here/ --os-type linux --accelerate --nographics
+virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://your.http.server.ip.address.here/ --os-type linux --accelerate --nographics --network=bridge:xenbr0
 </code></pre>
 
 <p>Remember this is for full Fedora installation, if you are using a netinst, you need to copy all the files to /var/www/html instead of creating a symbolic link and modify the .treeinfo file. No warrants here, since I did't try it myself.</p>
