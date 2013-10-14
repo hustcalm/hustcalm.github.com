@@ -184,6 +184,7 @@ Remember this is for full Fedora installation, if you are using a netinst, you n
 *   [Archlinux 简明安装指南](http://www.cnblogs.com/hseagle/p/3299713.html)
 *   [archlinux （2012.12.01-dual） i686 硬盘安装](http://blog.csdn.net/holdsky/article/details/8497764)
 *   [Xen](http://en.wikipedia.org/wiki/Xen)
-
+*   [Choice of Toolstacks](http://wiki.xen.org/wiki/Choice_of_Toolstacks)
+*   [XL vs Xend Feature Comparison](http://wiki.xen.org/wiki/XL_vs_Xend_Feature_Comparison)
 ------
 I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:-)
