@@ -70,6 +70,8 @@ And for ifcfg-eth0:
     #BOOTPROTO=dhcp
     BRIDGE=xenbr0
 
+**For static IP configuration, please refer to Xen wiki page!**
+
 Then, make the configuration work:
     service network restart
 If you got errors such as `error:check cable`, do this manualy:
@@ -120,6 +122,8 @@ Three networking modes are provided and choose one according to your own network
 
 I got bridge working for me as described in above section.
 
+For choosing other modes, you can modify `/etc/xen/xend-config.sxp` or explicitly passing as parameters when creating DomUs.
+
 ### Let DomUs fly
 #### Debian
 I choose debian7.1 netinst.iso due to my poor bandwidth,
@@ -156,14 +160,14 @@ Again I got Fedora-20-Alpha-x86_64-netinst.iso by issuing:
 However, nightmares begin since I want to install it using the Debian way. `xl` just fails to boot normally but `virt-install` does the job.
 
 Using the `virt-install` method:
-    virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://tel.mirrors.163.com/fedora/releases/19/Fedora/x86_64/os/ --os-type linux --accelerate --nographics
+    virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://mirrors.163.com/fedora/releases/19/Fedora/x86_64/os/ --os-type linux --accelerate --nographics --network=bridge:xenbr0
 Or you can download the ISO file first, then issuing your own httpd locally, thus making it:
     mount -o loop /path/to/fedora.iso /mnt/fedora
     yum -y install httpd
     service httpd start
     ln -s /mnt/fedora /var/www/html
     service iptables stop
-    virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://your.http.server.ip.address.here/ --os-type linux --accelerate --nographics
+    virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://your.http.server.ip.address.here/ --os-type linux --accelerate --nographics --network=bridge:xenbr0
 
 Remember this is for full Fedora installation, if you are using a netinst, you need to copy all the files to /var/www/html instead of creating a symbolic link and modify the .treeinfo file. No warrants here, since I did't try it myself.
 
