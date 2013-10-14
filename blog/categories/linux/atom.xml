@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-10-09T10:50:32+08:00</updated>
+  <updated>2013-10-14T16:58:27+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -12,6 +12,272 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Playing with Xen under Centos6.4 to build your own VPS]]></title>
+    <link href="http://hustcalm.me/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps/"/>
+    <updated>2013-10-14T10:28:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps</id>
+    <content type="html"><![CDATA[<p>Believe it or not, we are under an age called Cloud Computing.</p>
+
+<p>I used to be curious about VPS(Virtual Private Server), how they work, how to build them, etc. As far as I know, AWS, GCE or whatever else solutions depend heavily on Virtualization Technologies and AWS is definitly playing with Xen currently.</p>
+
+<p>I would like very much to have a trial for building my own VPS and blow are my steps doing it. You may need to read some basic wikis about Xen, <a href="http://wiki.xen.org/wiki/Xen_Overview">Xen Overview</a> and <a href="http://wiki.xen.org/wiki/Xen_Beginners_Guide">Xen Beginners Guide</a> should do some help:-)</p>
+
+<!--more-->
+
+
+<h2>Getting a working Dom0 on Centos6.4</h2>
+
+<h3>Install Centos</h3>
+
+<p>Use whatever way you like, remember a <strong>minimal install</strong> is recommended.</p>
+
+<h3>Install Xen</h3>
+
+<p>Thanks to <strong>Xen4Centos</strong> Project, we can get Xen installed in several simple commands(log in as root).</p>
+
+<pre><code>yum -y update
+yum install centos-release-xen
+yum install xen
+/usr/bin/grub-bootxen.sh
+reboot
+</code></pre>
+
+<p>After your machine comes to alive, simply type:</p>
+
+<pre><code>uname -r
+xl list
+</code></pre>
+
+<p>to verify that Xen Dom0 is running.</p>
+
+<h3>Config network</h3>
+
+<p>I use DHCP to get a valid IP for my box and there is a trick if you can't ping each other when two machinea are in the same LAN(probably the routing table is not working for you and just delete the record from your routing table).</p>
+
+<p>As me, for example, my laptop got a IP, say 192.168.0.10 and my VPS got 192.168.0.11, but they can't talk to each:-(</p>
+
+<p>First, check your routing table,</p>
+
+<pre><code>route
+</code></pre>
+
+<p>Then, delete the record that is evil,</p>
+
+<pre><code>route del -net 192.168.0.0 netmask 255.255.255.0
+</code></pre>
+
+<p><strong>Please substitute the parameters to suite your own networking</strong>.</p>
+
+<p>After that, ping each other,</p>
+
+<pre><code>ping 192.168.0.11
+</code></pre>
+
+<p>to verify the networking is good to go.</p>
+
+<p>In order to give our DomUs valid IPs, we may use a network bridge, do as follows:</p>
+
+<pre><code>yum -y install bridge-utils
+cp /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-xenbr0
+</code></pre>
+
+<p>My modified and working scripts look like this, for ifcfg-xenbr0:</p>
+
+<pre><code>DEVICE=xenbr0
+#HWADDR=00:24:E8:46:CC:C9
+TYPE=bridge
+#UUID=ff0ab497-0303-4dc3-b6f3-4a6cbd90466b
+ONBOOT=yes
+NM_CONTROLLED=no
+BOOTPROTO=dhcp
+</code></pre>
+
+<p>And for ifcfg-eth0:</p>
+
+<pre><code>DEVICE=eth0
+HWADDR=00:24:E8:46:CC:C9
+TYPE=Ethernet
+UUID=ff0ab497-0303-4dc3-b6f3-4a6cbd90466b
+ONBOOT=yes
+NM_CONTROLLED=no
+#BOOTPROTO=dhcp
+BRIDGE=xenbr0
+</code></pre>
+
+<p>Then, make the configuration work:</p>
+
+<pre><code>service network restart
+</code></pre>
+
+<p>If you got errors such as <code>error:check cable</code>, do this manualy:</p>
+
+<pre><code>ifup xenbr0
+</code></pre>
+
+<p>Verify it works by issuing:</p>
+
+<pre><code>ifconfig xenbr0
+</code></pre>
+
+<h3>Diable SELinux</h3>
+
+<p>Honestly speaking, I don't know WTF the real reason to do this, but people say <code>SELinux can really interfere with Xen</code>.</p>
+
+<pre><code>sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+setenforce 0
+</code></pre>
+
+<p>You are good to go with a damn working Dom0 and congratulations!</p>
+
+<h2>Bringing Your DomUs Up</h2>
+
+<p>It's up to you to use PV or HVM, personally, I prefer to PV due to higher performance. But if you want a Windows(and other OS whose kernel can't be modified), HVM is your only choice.</p>
+
+<p>As for me, I want 3 DomUs, namely Debian, Fedora and Arch Linux.</p>
+
+<h3>Xen4Cli or Xen4Libvirt</h3>
+
+<p>Xen4Cli(xm and xl, currently xm deprecated) are intended for advanced users looking to hand setup the network, the backing filestore and the xen environment. While Xen4Libvirt are for newbies looking for the easiest install path.</p>
+
+<p>I prefer <code>xl</code> since I want to know what exactly is happening, and <code>xl</code> works for Debian and Arch Linux. However for Fedora, <code>Libvert</code> seems to be the right way(using <code>virt-install</code>).</p>
+
+<p>To install Libvirt,</p>
+
+<pre><code>yum install libvirt python-virtinst libvirt-daemon-xen
+</code></pre>
+
+<p>After the install, restart your Dom0 machine.</p>
+
+<h3>File or LVM based backend</h3>
+
+<p>Since Centos6.4 is shipped perfectly with LVM and also the default partition schema using LVM during OS Installation, I prefer <code>LVM</code>.</p>
+
+<p>As for me, I do the following:</p>
+
+<pre><code>lvresize -L -200G vg_centos6/lv_home -r
+lvcreate -L 30G -n fedora vg_centos6
+lvcreate -L 30G -n debian vg_centos6
+lvcreate -L 30G -n archlinux vg_centos6
+</code></pre>
+
+<p>Then verify the Logical Volumes using:</p>
+
+<pre><code>lvdisplay
+</code></pre>
+
+<p>Or</p>
+
+<pre><code>lvs
+</code></pre>
+
+<p>If you are not familiar with LVM, search Google for a good tutorial first.</p>
+
+<h3>Bridge, Routing or NAT</h3>
+
+<p>Three networking modes are provided and choose one according to your own networking environment.</p>
+
+<p>I got bridge working for me as described in above section.</p>
+
+<h3>Let DomUs fly</h3>
+
+<h4>Debian</h4>
+
+<p>I choose debian7.1 netinst.iso due to my poor bandwidth,</p>
+
+<pre><code>wget -c http://mirrors.sohu.com/debian-cd/7.1.0/amd64/iso-cd/debian-7.1.0-amd64-netinst.iso
+mount -o loop /path/to/debian-7.1.0-amd64-netinst.iso /mnt/debian
+cp /mnt/debian/install.amd/xen/debian.cfg /etc/xen/
+cd /etc/xen/
+vi debian.cfg  ## Make modifications according to the comments
+xl create -c debian.cfg
+</code></pre>
+
+<p>Then install Debian as a very normal one.</p>
+
+<h4>Arch Linux</h4>
+
+<p>I download archlinux-2013.10.01-dual.iso by issuing:</p>
+
+<pre><code>wget http://mirrors.sohu.com/archlinux/iso/latest/archlinux-2013.10.01-dual.iso
+</code></pre>
+
+<p>Then create a arch.cfg file in <code>/etc/xen/</code> similar like:</p>
+
+<pre><code># Refer to https://wiki.archlinux.org/index.php/Xen#Configuring_a_paravirtualized_.28PV.29_Arch_domU
+
+name = "arch"
+kernel = "/mnt/arch/arch/boot/x86_64/vmlinuz"
+ramdisk = "/mnt/arch/arch/boot/x86_64/archiso.img"
+extra = "archisobasedir=arch archisolabel=ARCH_201310"
+memory = 512
+disk = [ "phy:/dev/vg_centos6/archlinux,sda1,w", "file:/root/isos/arch/archlinux-2013.10.01-dual.iso,sdb,r" ]
+vif = [ '' ]
+</code></pre>
+
+<p>After that, bring the DomU up by:</p>
+
+<pre><code>mount /path/to/archlinux-2013.10.01-dual.iso /mnt/arch
+cd /etc/xen/
+xl create -c arch.cfg
+</code></pre>
+
+<p>Install your Arch Linux as you like since it's really a highly customized distro.</p>
+
+<h4>Fedora</h4>
+
+<p>Again I got Fedora-20-Alpha-x86_64-netinst.iso by issuing:</p>
+
+<pre><code>wget http://download.fedoraproject.org/pub/fedora/linux/releases/test/20-Alpha/Fedora/x86_64/iso/Fedora-20-Alpha-x86_64-netinst.iso
+</code></pre>
+
+<p>However, nightmares begin since I want to install it using the Debian way. <code>xl</code> just fails to boot normally but <code>virt-install</code> does the job.</p>
+
+<p>Using the <code>virt-install</code> method:</p>
+
+<pre><code>virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://tel.mirrors.163.com/fedora/releases/19/Fedora/x86_64/os/ --os-type linux --accelerate --nographics
+</code></pre>
+
+<p>Or you can download the ISO file first, then issuing your own httpd locally, thus making it:</p>
+
+<pre><code>mount -o loop /path/to/fedora.iso /mnt/fedora
+yum -y install httpd
+service httpd start
+ln -s /mnt/fedora /var/www/html
+service iptables stop
+virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://your.http.server.ip.address.here/ --os-type linux --accelerate --nographics
+</code></pre>
+
+<p>Remember this is for full Fedora installation, if you are using a netinst, you need to copy all the files to /var/www/html instead of creating a symbolic link and modify the .treeinfo file. No warrants here, since I did't try it myself.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="http://wiki.centos.org/HowTos/Xen/Xen4QuickStart">Xen4 CentOS6 QuickStart</a></li>
+<li><a href="http://wiki.centos.org/HowTos/Xen/Xen4QuickStart/Xen4Libvirt">Xen4 Libvirt for CentOS 6</a></li>
+<li><a href="http://drewsymo.com/cloud-computing/install-xen-on-centos-and-create-a-fedora-debian-vm/">Install Xen 4 with Libvirt / XL on CentOS 6 (2013)</a></li>
+<li><a href="http://www.howtoforge.com/virtualization-with-xen-on-centos-6.2-x86_64-paravirtualization-and-hardware-virtualization">Virtualization With Xen On CentOS 6.2 (x86_64) (Paravirtualization &amp; Hardware Virtualization)</a></li>
+<li><a href="http://wiki.xen.org/wiki/Xen_Configuration_File_Options">Xen Configuration File Options</a></li>
+<li><a href="http://xenbits.xen.org/docs/unstable/man/xl.cfg.5.html">XL Domain Configuration File Syntax</a></li>
+<li><a href="http://wiki.xen.org/wiki/Network_Configuration_Examples_(Xen_4.1%2B">Network Configuration Examples (Xen 4.1+)</a>)</li>
+<li><a href="http://wiki.xen.org/wiki/Debian_Guest_Installation_Using_Debian_Installer">Debian Guest Installation Using Debian Installer</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Xen">Xen For Arch Linux Wiki page</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Installation_Guide">Arch Linux Installation Guide</a></li>
+<li><a href="http://bderzhavets.wordpress.com/2009/01/10/install-fedora-10-pv-domu-at-xen-331-centos-52-dom0-xen-330-intrepid-server-dom0-novells-xen-inified-kernel-via-local-apache-mirror/">Install Fedora 10 PV DomU at Xen 3.3.1 CentOS 5.2 Dom0 &amp; Xen 3.3.0 Intrepid Server Dom0 (Novell’s Xen-ified Kernel) via local Apache Mirror</a></li>
+<li><a href="https://lists.fedoraproject.org/pipermail/xen/2012-November/005938.html">Installing a domU without virt-install Fedora-xen</a></li>
+<li><a href="http://www.centos.bz/2012/03/centos-6-install-deploy-xen/">CentOS 6安装配置Xen</a></li>
+<li><a href="http://www.cnblogs.com/hseagle/p/3299713.html">Archlinux 简明安装指南</a></li>
+<li><a href="http://blog.csdn.net/holdsky/article/details/8497764">archlinux （2012.12.01-dual） i686 硬盘安装</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Xen">Xen</a></li>
+</ul>
+
+
+<hr />
+
+<p>I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:-)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[小记Fedora 19 Release Party和Barcamp Beijing August]]></title>
