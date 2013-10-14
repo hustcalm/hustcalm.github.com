@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Xen | Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/blog/categories/xen/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-10-14T16:58:27+08:00</updated>
+  <updated>2013-10-14T17:47:38+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -270,6 +270,12 @@ virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fed
 <li><a href="http://www.cnblogs.com/hseagle/p/3299713.html">Archlinux 简明安装指南</a></li>
 <li><a href="http://blog.csdn.net/holdsky/article/details/8497764">archlinux （2012.12.01-dual） i686 硬盘安装</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Xen">Xen</a></li>
+<li><a href="http://wiki.xen.org/wiki/Choice_of_Toolstacks">Choice of Toolstacks</a>
+
+<ul>
+<li><a href="http://wiki.xen.org/wiki/XL_vs_Xend_Feature_Comparison">XL vs Xend Feature Comparison</a></li>
+</ul>
+</li>
 </ul>
 
 
