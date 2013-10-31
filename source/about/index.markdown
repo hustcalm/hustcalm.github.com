@@ -13,5 +13,5 @@ footer: true
 作为一名屌丝程序员，尽管我不觉得自己是一名程序员，呃:-D。自然喜欢Free的东西（都是Linux教给我们的啊:-):-)）。明白了Website的Stack后，不再对免费的Hosting抱有幻想，因此燃起了对VPS的热情（Dedicated Server就别想了，亲），狠狠地鄙视了一把虚拟主机。相中傲游主机后，下手晚了，悲剧。再比较几家VPS服务商，完美主义作祟，相中了Linode家的，而此时再次显出出屌丝程序员的特质，木有钱！！！
  想起"像黑客一样写文章"的Octopress以及大火的Github，准备先安家于此，正式开始懒人的Blog生涯，记录些技术点滴，分享写生活琐事。<del>目前准备入手个域名，观望中...</del>目前域名hustcalm.me，购自name.com，推荐大家使用他家的服务。
 
-本站由Github、Octopress以及Ubuntu（已经舍弃了Cygwin）强力驱动。
+本站由Github、Octopress以及Linux（已经舍弃了Cygwin）强力驱动。
 
