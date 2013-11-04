@@ -9,7 +9,7 @@
   <meta name="author" content="hustcalm">
 
   
-  <meta name="description" content="离这两个活动已经过去一周的时间了，总觉得应该写点什么，那就以这篇“小记”来叙述吧。 Fedora一直以来被冠以edge bleeding的称号，尝鲜者的最爱，自己从Ubuntu 9.04开始使用Linux，便一直与其无缘，现在想想，确是有一些遗憾的（具体说不上来为啥，也许自己总是希望小众一些， &hellip;">
+  <meta name="description" content="学习，总是要深入进去才是好的。 由于多摄像头视频处理的需要，这两天“正式学习”了多线程编程，切入点是POSIX的pthread库。不管承认与否，在进程之后的线程，对软件开发有非常深远的影响。本质上的算法+数据，我个人的理解是，线程是在算法上做的改进（也就是对于整个作业，如何合理地切分， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu/">POSIX Threads-多线程编程初步</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-06T10:24:00+08:00" pubdate data-updated="true">Sep 6<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>学习，总是要深入进去才是好的。</p>
+
+<p>由于多摄像头视频处理的需要，这两天“正式学习”了多线程编程，切入点是POSIX的pthread库。不管承认与否，在进程之后的线程，对软件开发有非常深远的影响。本质上的算法+数据，我个人的理解是，线程是在算法上做的改进（也就是对于整个作业，如何合理地切分，符合CPU和操作系统的工作习惯，也就是在比较小的开销下完成任务），相比于进程而言，由于多个线程都在同一个memory space，因此线程间通信以及创建线程的overhead都比进程小了不少，业内也把thread称为LWP（Light Wight Process）。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -256,51 +301,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/01/you-an-zhuang-windows-8-dot-1tan-qi-%2Clinuxhe-windowsduo-xi-tong-de-an-zhuang-yi-ji-fen-qu-he-qi-dong-xiang-de-guan-li/">由安装Windows 8.1谈起，Linux和Windows多系统的安装以及分区和启动项的管理</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-01T10:54:00+08:00" pubdate data-updated="true">Jul 1<span>st</span>, 2013</time>
-        
-         | <a href="/blog/2013/07/01/you-an-zhuang-windows-8-dot-1tan-qi-%2Clinuxhe-windowsduo-xi-tong-de-an-zhuang-yi-ji-fen-qu-he-qi-dong-xiang-de-guan-li/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>想想自己的Windows XP从09年寒假买了联想的小Y之后就一直在用，期间换过不少次系统，短时间用过Windows 7,也曾经在自己硬盘上安装了Windows + 4个Linux，还包括一个不成功的尝试，在小Y上尝鲜Mac OS X。大四做机器人比赛，由于开发的需要一直不敢折腾自己的电脑（很多开发工具只在Windows XP上表现良好，尤其是一些驱动），读了研究生后，启动越来越慢的XP成了一块心病，无奈懒于折腾，也习惯了XP下的一些工具和操作，当然更不能舍弃Windows这个领好的PC游戏平台！极品和仙剑，到了Linux只能止步了。</p>
-
-<p>不过5分钟的开机启动实在是忍无可忍了，恰巧最近几天，微软放出了Windows 8.1的预览版本（叫做Windows Blue，我猜想，微软内部发布Windows的相关人员可能也喜欢看海贼王，里面的All Blue是一片神奇的海域啊，看看Windows 8.1安装过程中的鱼，更让人浮想联翩了），在把自己的Ubuntu 11.04果断替换为Linux Mint 15 RC 之后，这次再把Windows XP替换为Windows 8.1预览版！</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/07/01/you-an-zhuang-windows-8-dot-1tan-qi-%2Clinuxhe-windowsduo-xi-tong-de-an-zhuang-yi-ji-fen-qu-he-qi-dong-xiang-de-guan-li/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -333,11 +333,15 @@
 
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/ar' style='font-size: 112.0%'>AR(1)</a> <a href='/blog/categories/arduino' style='font-size: 112.0%'>Arduino(1)</a> <a href='/blog/categories/barcamp' style='font-size: 112.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 112.0%'>BIOS(1)</a> <a href='/blog/categories/centos' style='font-size: 112.0%'>Centos(1)</a> <a href='/blog/categories/cloud' style='font-size: 112.0%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 112.0%'>CV(1)</a> <a href='/blog/categories/cygwin' style='font-size: 112.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 112.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 112.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 112.0%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 112.0%'>Fedora(1)</a> <a href='/blog/categories/geek' style='font-size: 136.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 124.0%'>Git(2)</a> <a href='/blog/categories/learning' style='font-size: 112.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 112.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 148.0%'>Linux(4)</a> <a href='/blog/categories/machine' style='font-size: 112.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 112.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 112.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 124.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 112.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 112.0%'>Network(1)</a> <a href='/blog/categories/nlp' style='font-size: 112.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 124.0%'>OpenAPI(2)</a> <a href='/blog/categories/openhardware' style='font-size: 112.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 136.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 112.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 112.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 112.0%'>POSIX(1)</a> <a href='/blog/categories/programming' style='font-size: 112.0%'>Programming(1)</a> <a href='/blog/categories/ptam' style='font-size: 112.0%'>PTAM(1)</a> <a href='/blog/categories/pthread' style='font-size: 112.0%'>pthread(1)</a> <a href='/blog/categories/robot' style='font-size: 124.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 112.0%'>SEO(1)</a> <a href='/blog/categories/sfd' style='font-size: 112.0%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 124.0%'>SNS(2)</a> <a href='/blog/categories/speaking' style='font-size: 112.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 112.0%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 112.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 136.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 136.0%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 112.0%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 124.0%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 112.0%'>VPS(1)</a> <a href='/blog/categories/web' style='font-size: 112.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 112.0%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 112.0%'>Xen(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/ar' style='font-size: 112.0%'>AR(1)</a> <a href='/blog/categories/arduino' style='font-size: 112.0%'>Arduino(1)</a> <a href='/blog/categories/barcamp' style='font-size: 112.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 112.0%'>BIOS(1)</a> <a href='/blog/categories/centos' style='font-size: 124.0%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 112.0%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 112.0%'>CV(1)</a> <a href='/blog/categories/cygwin' style='font-size: 112.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 112.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 112.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 112.0%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 112.0%'>Fedora(1)</a> <a href='/blog/categories/geek' style='font-size: 136.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 124.0%'>Git(2)</a> <a href='/blog/categories/learning' style='font-size: 112.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 112.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(5)</a> <a href='/blog/categories/machine' style='font-size: 112.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 112.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 112.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 124.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 112.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 112.0%'>Network(1)</a> <a href='/blog/categories/nlp' style='font-size: 112.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 124.0%'>OpenAPI(2)</a> <a href='/blog/categories/openhardware' style='font-size: 112.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 136.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 112.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 112.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 112.0%'>POSIX(1)</a> <a href='/blog/categories/programming' style='font-size: 112.0%'>Programming(1)</a> <a href='/blog/categories/ptam' style='font-size: 112.0%'>PTAM(1)</a> <a href='/blog/categories/pthread' style='font-size: 112.0%'>pthread(1)</a> <a href='/blog/categories/robot' style='font-size: 124.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 112.0%'>SEO(1)</a> <a href='/blog/categories/sfd' style='font-size: 112.0%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 124.0%'>SNS(2)</a> <a href='/blog/categories/speaking' style='font-size: 112.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 112.0%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 112.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 136.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 136.0%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 112.0%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 124.0%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 112.0%'>VPS(1)</a> <a href='/blog/categories/web' style='font-size: 112.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 112.0%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 112.0%'>Xen(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way/">Install CentOS 6.4 minial with Grub2 and a USB Stick - The Simple Way</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps/">Playing with Xen under Centos6.4 to build your own VPS</a>
@@ -353,10 +357,6 @@
     
       <li class="post">
         <a href="/blog/2013/09/17/a-li-ji-zhu-da-jiang-tang-hu-lian-wang-ying-xiao-tui-yan-ji-zhu-zhuan-chang-xiao-jie/">阿里技术大讲堂-互联网营销推广技术专场小结</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu/">POSIX threads-多线程编程初步</a>
       </li>
     
   </ul>

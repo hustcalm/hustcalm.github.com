@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Centos | Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/blog/categories/centos/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-10-14T18:52:43+08:00</updated>
+  <updated>2013-11-04T17:54:04+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -12,6 +12,96 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Install CentOS 6.4 minial with Grub2 and a USB Stick - The Simple Way]]></title>
+    <link href="http://hustcalm.me/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way/"/>
+    <updated>2013-11-04T17:08:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way</id>
+    <content type="html"><![CDATA[<p>What a shame that I failed over and over to just install CentOS 6.4 minimal to my Desktop PC!!!</p>
+
+<p>I got a broken Ubuntu 12.04 on my hand with a working Grub2, cheers:-) Also, I luckily have a 4 GB USB stick(who esle dosen't,kidding).</p>
+
+<h2>The Goal</h2>
+
+<p>Install CentOS 6.4 minial with Grub2 and a single USB stick, making no bootable USB stick, but do some tricks with the ISO file instead.</p>
+
+<!--more-->
+
+
+<h2>Preparation</h2>
+
+<p>In a nutshell, we need a working Grub(or other bootloaders, I use Grub2), a USB Stick with a vfat or ext2 partition and CentOS ISO file.</p>
+
+<h3>Bootloader</h3>
+
+<p>As I have a broken Ubuntu 12.04 and a already working Grub2, I would just go on.</p>
+
+<p>However, you have many choices due to your OS. Such as:</p>
+
+<ul>
+<li>Grub Legacy</li>
+<li>Grub4dos</li>
+<li>EasyBCD</li>
+</ul>
+
+
+<h3>ISO</h3>
+
+<p>Download it from a mirror that's close enough to you. Check out the <a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">Mirror List</a> and I choose <a href="http://mirrors.163.com/centos/6.4/isos/x86_64/">mirrors.163.com</a>.</p>
+
+<p>Save the <code>CentOS-6.4-x86_64-minimal.iso</code> to your hard drive.</p>
+
+<h3>USB Stick</h3>
+
+<p>According to the CentOS wiki, the installer will recognize ext2 or vfat. I choose vfat in my case.</p>
+
+<p>My device on my Linuxmint shows /dev/sdb and the partition shows /dev/sdb1. Just ensure that you have a VFAT partition, other things don't matter too much really.</p>
+
+<p>To play with device and partitions, you can use <code>fdisk</code> and <code>mkfs.*</code> or other tools that you favor.</p>
+
+<h3>Extract Files</h3>
+
+<p>I put the ISO file under <code>~/Downloads</code>. And I follow the instructions below:</p>
+
+<pre><code>mkdir /mnt/centos
+sudo mount -o loop -t iso9660 ~/Downloads/CentOS-6.4-x86_64-minimal.iso /mnt/centos
+mkdir /mnt/usbdisk
+mount /dev/sdb1 /mnt/usbdisk
+cp -r /mnt/centos/isolinux /mnt/centos/images /mnt/usbdisk
+sudo umount /mnt/centos
+cp ~/Downloads/CentOS-6.4-x86_64-minimal.iso /mnt/usbdisk
+sudo umount /mnt/usbdisk
+</code></pre>
+
+<p>After this, we have <code>CentOS-6.4-x86_64-minimal.iso</code>,<code>isolinux</code> and <code>images</code> on our USB Stick.</p>
+
+<h2>Installation</h2>
+
+<p>Now use Grub2 to boot into CentOS installation environment and complete the installation. I have a SATA hard disk locally and do remember <strong>CentOS installer will make your local hard disk to sdb or sdc, but not sda. The USB Stick will be sda during the installation.</strong></p>
+
+<p>To enter Grub2 command line, press <code>SHIFT</code> when your PC boots, or you may miss the menu entry due to <strong>HIDDEN_TIMEOUT</strong> configruration. Then press <code>c</code> to get a command line.</p>
+
+<p>Then follow the instructions below, you may adjust a little to suit your own PC.</p>
+
+<pre><code>linux (hd1,msdos1)/isolinux/vmlinuz
+initrd (hd1,msdos1)/isolinux/initrd.img
+boot
+</code></pre>
+
+<p>When you prompt to select <code>Installation Method</code>, use <code>Hard Drive</code> and select <code>sda1</code>, follow the routine procedures and you are done:-)</p>
+
+<p><strong>I tried <code>URL Method</code> but failed, either <code>mirrors.163.com</code> nor <code>mirrors.sohu.com</code> would work:-(</strong></p>
+
+<h2>Summary</h2>
+
+<p>All the essentials reside in Grub2 and isolinux or you may say bootloader and ISO stuff. Check them out and deep it for deep is the best way to solve varies of problems related to boot, installation and rescue.</p>
+
+<p>You may install by other methods, CD-ROW, bootable USB Stick or whatever you like.</p>
+
+<p>Enjoy the struggling and enjoy the gain!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Playing with Xen under Centos6.4 to build your own VPS]]></title>
