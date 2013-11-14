@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box(Why)]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-11-14T16:50:53+08:00</updated>
+  <updated>2013-11-14T17:11:28+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -84,7 +84,7 @@ For all other cases, use urllib*(note that <code>urllib and urllib2</code> have 
 
 <p>They actually do the same things utilizing HTTP/HTTPs and other network protocals like FTP, typically we can call them <code>HTTP client library</code>.</p>
 
-<p>If <code>httplib</code> can&#8217;t fullfil your need(as if you need the <code>Redirects</code> feature), consider switching to <code>httplib2</code> then.</p>
+<p>If <code>httplib</code> can&#8217;t fulfill your need(as if you need the <code>Redirects</code> feature), consider switching to <code>httplib2</code> then.</p>
 
 <p>To make things simpler, I&#8217;d rather using <code>httplib2</code> as my default <code>HTTP client library</code> for Python.</p>
 
