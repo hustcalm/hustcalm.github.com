@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Network | Welcome to Pandora's Box(Why)]]></title>
-  <link href="http://hustcalm.me/blog/categories/network/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Python | Welcome to Pandora's Box(Why)]]></title>
+  <link href="http://hustcalm.me/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
   <updated>2013-11-14T16:50:53+08:00</updated>
   <id>http://hustcalm.me/</id>
@@ -122,17 +122,6 @@ For all other cases, use urllib*(note that <code>urllib and urllib2</code> have 
 <li><a href="http://www.zacwitte.com/resolving-http-redirects-in-python">Resolving HTTP Redirects in Python</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Many thanks to CMCC &amp; CMCC-EDU]]></title>
-    <link href="http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/"/>
-    <updated>2012-09-26T00:43:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu</id>
-    <content type="html"><![CDATA[<h2>Wireless NetWork is nice  of CMCC</h2>
-
-<p>Even got stuck by CAS's policy about bandwidth limit, prefered to use CMCC wireless network though some times there is no speed.</p>
 ]]></content>
   </entry>
   

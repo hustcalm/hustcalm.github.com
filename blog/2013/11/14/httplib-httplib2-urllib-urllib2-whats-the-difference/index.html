@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Welcome to Pandora's Box(Why)</title>
+  <title>httplib httplib2 urllib urllib2-what's the difference - Welcome to Pandora's Box(Why)</title>
   <meta name="author" content="hustcalm">
 
   
-  <meta name="description" content="现在绿化软件的方法层出不穷，主流的云端软件平台以及ThinAPP基本都是在一个SandBox中运行软件，实现所谓的绿色化。今天向大家推荐一款绿色软件平台PortableApps.com，具体实现机理没有研究，不过使用起来觉得较好，关于是可以安装到U盘中随身携带，碰到了脾气不好的电脑， &hellip;">
+  <meta name="description" content="Lots of people may got confused by the Python modules- httplib, httplib2, urllib, urllib2. Judge from their names, we may prefer the *2 module &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hustcalm.me/blog/page/7/">
+  <link rel="canonical" href="http://hustcalm.me/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -63,15 +63,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/10/24/shi-yong-portableapps-dot-comzhi-zuo-zi-ji-de-u3pan-%2Cshi-xian-pc-anywhere/">使用PortableApps.com制作自己的U3盘，实现PC Anywhere</a></h1>
+      <h1 class="entry-title">Httplib Httplib2 Urllib Urllib2-what's the Difference</h1>
     
     
       <p class="meta">
@@ -87,206 +84,130 @@
   
 
 
-<time datetime="2012-10-24T23:55:00+08:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
+<time datetime="2013-11-14T11:24:00+08:00" pubdate data-updated="true">Nov 14<span>th</span>, 2013</time>
         
-         | <a href="/blog/2012/10/24/shi-yong-portableapps-dot-comzhi-zuo-zi-ji-de-u3pan-%2Cshi-xian-pc-anywhere/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>现在绿化软件的方法层出不穷，主流的云端软件平台以及ThinAPP基本都是在一个SandBox中运行软件，实现所谓的绿色化。今天向大家推荐一款绿色软件平台<a href="http://portableapps.com">PortableApps.com</a>，具体实现机理没有研究，不过使用起来觉得较好，关于是可以安装到U盘中随身携带，碰到了脾气不好的电脑，很有可能就派上用场了，呵呵:)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/24/shi-yong-portableapps-dot-comzhi-zuo-zi-ji-de-u3pan-%2Cshi-xian-pc-anywhere/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/">盘点我知道的代码托管站点：Code Hosting Website</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-24T23:13:00+08:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/#disqus_thread">Comments</a>
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>伴随着开源运动的发展，源码托管站点越来越流行了，提供托管服务的同时，大大促进了开源社区的交流并且加速了源码的共享和更新，下面罗列下我所知道的提供源码托管服务的站点，供大家参考。</p>
+<div class="entry-content"><p>Lots of people may got confused by the Python modules- <code>httplib, httplib2, urllib, urllib2</code>. Judge from their names, we may prefer the *2 module because they may be version 2 of the module and should work better. Maybe you are right for some degree(as for the httplib).</p>
+
+<p>However, things are a little bit complicated which needs a brief explanation indeed.</p>
+
+<!--more-->
+
+
+<h2>What&#8217;s the claim</h2>
+
+<p>First, let&#8217;s see what a specified module&#8217;s aim. I will quote from the official site:-)</p>
+
+<h3>httplib</h3>
+
+<p><a href="http://docs.python.org/2/library/httplib.html">Here</a> is a link from <code>The Python Standard Library</code> for <code>Python 2.7.6</code>.</p>
+
+<pre><code>This module defines classes which implement the client side of the HTTP and HTTPS protocols. 
+It is normally not used directly — the module urllib uses it to handle URLs that use HTTP and HTTPS.
+</code></pre>
+
+<h3>httplib2</h3>
+
+<p><a href="https://code.google.com/p/httplib2/">This</a> is the official website hosted on <code>Google Code</code>. It claims:</p>
+
+<pre><code>A comprehensive HTTP client library that supports many features left out of other HTTP libraries.
+</code></pre>
+
+<p>and the <code>Project Goal</code>:</p>
+
+<pre><code>To become a worthy addition to the standard Python library.
+</code></pre>
+
+<p>It features <code>HTTP and HTTPS</code>, <code>Keep-Alive</code>, <code>Authentication</code>(support <em>Digest</em>, <em>Basic</em>, <em>WSSE</em>, <em>HMAC Digest</em> and <em>Google Account Authentication</em>), <code>Caching</code>, <code>All Methods</code>, <code>Redirects</code>, <code>Compression</code>, <code>Lost update support</code> and <code>Unit Tested</code>.</p>
+
+<h3>urllib</h3>
+
+<p>Quote from <a href="http://docs.python.org/2/library/urllib.html">here</a>:</p>
+
+<pre><code>This module provides a high-level interface for fetching data across the World Wide Web. 
+In particular, the urlopen() function is similar to the built-in function open(), but accepts Universal Resource Locators (URLs) instead of filenames.  
+Some restrictions apply — it can only open URLs for reading, and no seek operations are available.
+</code></pre>
+
+<h3>urllib2</h3>
+
+<p><a href="http://docs.python.org/2/library/urllib2.html">The Standard Python Library</a> stats that:</p>
+
+<pre><code>The urllib2 module defines functions and classes which help in opening URLs (mostly HTTP) in a complex world — basic and digest authentication, redirections, cookies and more.
+It's an extensible library for opening URLs.
+</code></pre>
+
+<h2>What&#8217;s the difference</h2>
+
+<h3>httplib<em> and urllib</em></h3>
+
+<p><code>urllib/urllib2</code> is built on top of <code>httplib</code>. It offers more features than writing to <code>httplib</code> directly.
+However, <code>httplib</code> gives you finer control over the underlying connections.</p>
+
+<p>If you&#8217;re dealing solely with HTTP/HTTPs and need access to HTTP specific stuff, use httplib.
+For all other cases, use urllib*(note that <code>urllib and urllib2</code> have different capabilities, thus are always used together).</p>
+
+<h3>httplib and httplib2</h3>
+
+<p>Basically, httplib2 is <code>Google's python httplib implementation</code> but much more powerful.</p>
+
+<p>They actually do the same things utilizing HTTP/HTTPs and other network protocals like FTP, typically we can call them <code>HTTP client library</code>.</p>
+
+<p>If <code>httplib</code> can&#8217;t fullfil your need(as if you need the <code>Redirects</code> feature), consider switching to <code>httplib2</code> then.</p>
+
+<p>To make things simpler, I&#8217;d rather using <code>httplib2</code> as my default <code>HTTP client library</code> for Python.</p>
+
+<h3>urllib and urllib2</h3>
+
+<p>Quote from this post <a href="http://www.hacksparrow.com/python-difference-between-urllib-and-urllib2.html">Python: difference between urllib and urllib2</a>:</p>
+
+<p><code>urllib</code> and <code>urllib2</code> are both Python modules that do URL request related stuff but offer different functionalities. Their two most significant differences are listed below:</p>
 
 <ul>
-<li><p><a href="http://sourceforge.net">SourceForge</a>     <br/>
-我最早知道的源码托管站点，上面托管了很多有名的项目和软件，现在很多开源软件的下载链接来自于<a href="http://sourceforge.net">SourceForge</a>，比如Python的一些扩展依赖包，编译VLC所需的很多contrib，vim插件需要的ctags以及cscope等等。GFW曾对其不友好，前段时间由于国内用户在其上托管了过多垃圾站点而遭到了<a href="http://sourceforge.net">SourceForge</a>的反封锁。由于其比较有历史，很多协同开发用SVN甚至CVS多一些。</p></li>
-<li><p><a href="http://code.google.com">GoogleCode</a>       </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/23/gitde-globle-confighe-repo-config/">Git的global Config和repo Config</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-23T18:26:00+08:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/23/gitde-globle-confighe-repo-config/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>相比于CVS，SVN，现在越来越喜欢Git了，下面说说Git的全局配置，即global config以及代码库级别的配置，即repo config。</p>
-
-<h2>Global Config</h2>
-
-<p>git的全局配置，存储在$HOME/.gitconfig这个文件里面，对当前用户的所有git repo有效。</p>
-
-<h3>基本配置</h3>
-
-<pre><code>git config --global user.name yourname
-git config --global user.email youremail
-</code></pre>
-
-<h3>默认编辑器</h3>
-
-<pre><code>git config --global core.editor vim
-</code></pre>
-
-<h3>默认merge/diff工具</h3>
-
-<p>设置后需要通过difftool和mergetool启动。</p>
-
-<pre><code>git config --global diff.tool vimdiff
-git config --global difftool.prompt false
-</code></pre>
-
-<h3>Alias设置别名</h3>
-
-<p>通过别名设置，提高操作效率。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/23/gitde-globle-confighe-repo-config/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/">2012年亚太大学生机器人大赛CCTV视频汇总</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-23T17:55:00+08:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>央视终于在CCTV7播出了2012年亚太大学生机器人大赛的国内选拔赛的视频以及国际赛视频，现在把视频链接整理如下，方便各位Roboconer以及热爱机器人的朋友查看。</p>
-
-<ul>
-<li><a href="http://tv.cntv.cn/videoset/C39764">央视比赛视频列表链接</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121015100904">《2012年亚太大学生机器人大赛国内选拔活动 初试锋芒》</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121016100798">《2012年亚太大学生机器人大赛国内选拔活动 独门秘笈》</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121017101086">《2012年亚太大学生机器人大赛国内选拔活动 侠路相逢》</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121018100886">《2012年亚太大学生机器人大赛国内选拔活动 出奇制胜》</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121019100811">《2012年亚太大学生机器人大赛国内选拔活动 巅峰对决》</a></li>
-<li><a href="http://tv.cntv.cn/video/C39764/20121020100533">《2012年亚太大学生机器人大赛国内选拔活动 智者无敌（香港总决赛）》</a></li>
+<li><code>urllib2</code> can accept a Request object to set the headers for a URL request, urllib accepts only a URL. That means, you cannot masquerade your User Agent string etc.</li>
+<li><code>urllib</code> provides the urlencode method which is used for the generation of GET query strings, urllib2 doesn&#8217;t have such a function. This is one of the reasons why urllib is often used along with urllib2.</li>
 </ul>
 
 
-<p>Anyway,thx to CCTV!   <br/>
-<strong>Hust Go and China Go!</strong></p>
+<p><strong>Note</strong>:</p>
+
+<p>The urllib module has been split into parts and renamed in Python 3 to <code>urllib.request</code>, <code>urllib.parse</code>, and <code>urllib.error</code>. The 2to3 tool will automatically adapt imports when converting your sources to Python 3. Also note that the urllib.urlopen() function has been removed in Python 3 in favor of urllib2.urlopen().</p>
+
+<h2>Usage</h2>
+
+<ul>
+<li><a href="http://docs.python.org/2.7/howto/urllib2.html#urlerror">HOWTO Fetch Internet Resources Using urllib2</a></li>
+<li><a href="http://www.pythonforbeginners.com/python-on-the-web/how-to-use-urllib2-in-python/">How to use urllib2 in Python</a></li>
+<li><a href="http://adchoices.sinaapp.com/topic/47/python-%E6%A8%A1%E5%9D%97-httplib-urllib%E5%92%8Curllib2%E7%9A%84%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95">python 模块：httplib、urllib和urllib2的简单用法</a></li>
+<li><a href="http://zhuoqiang.me/python-urllib2-usage.html">Python 标准库 urllib2 的使用细节</a></li>
+<li><a href="http://httplib2.googlecode.com/hg/doc/html/libhttplib2.html">httplib2 v0.4 documentation</a></li>
+</ul>
+
+
+<h2>Reference</h2>
+
+<ul>
+<li><a href="http://www.hacksparrow.com/python-difference-between-urllib-and-urllib2.html">Python: difference between urllib and urllib2</a></li>
+<li><a href="http://www.zacwitte.com/resolving-http-redirects-in-python">Resolving HTTP Redirects in Python</a></li>
+</ul>
+
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/">Ubuntu桌面管理器Unity快捷键大全</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">hustcalm</span></span>
+
+      
 
 
 
@@ -298,37 +219,45 @@ git config --global difftool.prompt false
   
 
 
-<time datetime="2012-10-21T10:24:00+08:00" pubdate data-updated="true">Oct 21<span>st</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
+<time datetime="2013-11-14T11:24:00+08:00" pubdate data-updated="true">Nov 14<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/network/'>Network</a>, <a class='category' href='/blog/categories/python/'>Python</a>
+  
+</span>
 
 
-  <div class="entry-content"><p>在Windows下用惯了TotalCommander了，结合Windows本身的资源管理器，会使工作的效率有质的飞跃，如果要投个票，这个软件必须是Life Changing的:) 在Linux下的桌面管理器很多，重量级的经典的Gnome和KDE，以及很多轻量级的桌面管理器，Ubuntu开发团队为用户提供了他们自家的Unity，个人觉得还是非常好用的:) <br/>
-下面这篇文章来自<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">askubuntu</a>，这里除了一个比较全面的回答外，还有不少的cheatsheet提供下载，有png的，pdf的，还有源文件SVG的，如果喜欢，大家可以移步到<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">原文</a>。也可以通过本文下面部分的链接查看或者下载。    </div>
+    </p>
+    
+      <div class="sharing">
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/">Read on &rarr;</a>
-    </footer>
   
-
-
-    </article>
   
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/8/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-    <a class="next" href="/blog/page/6/">Newer &rarr;</a>
-    
-  </div>
+  <div class="bshare-custom icon-medium-plus"><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到Evernote" class="bshare-evernote" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span style="float: none;" class="BSHARE_COUNT bshare-share-count">7.72K</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+  
 </div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way/" title="Previous Post: Install CentOS 6.4 minial with Grub2 and a USB Stick - The Simple Way">&laquo; Install CentOS 6.4 minial with Grub2 and a USB Stick - The Simple Way</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -358,7 +287,7 @@ git config --global difftool.prompt false
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/">httplib httplib2 urllib urllib2-what&#8217;s the difference</a>
+        <a href="/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/">httplib httplib2 urllib urllib2-what's the difference</a>
       </li>
     
       <li class="post">
@@ -450,6 +379,7 @@ git config --global difftool.prompt false
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -464,7 +394,10 @@ git config --global difftool.prompt false
       var disqus_shortname = 'welcometopandorasboxwhy';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.me/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/';
+        var disqus_url = 'http://hustcalm.me/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
