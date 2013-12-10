@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: POSIX | Welcome to Pandora's Box(Why)]]></title>
+  <title><![CDATA[Category: POSIX | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/posix/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-11-14T17:11:28+08:00</updated>
+  <updated>2013-12-10T20:52:58+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
