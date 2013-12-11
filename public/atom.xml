@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-12-10T20:52:58+08:00</updated>
+  <updated>2013-12-11T08:36:33+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Notes about IEEE 1394 AVT Cameras - FirePackage and OpenCV]]></title>
+    <link href="http://hustcalm.me/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv/"/>
+    <updated>2013-12-10T21:10:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv</id>
+    <content type="html"><![CDATA[<p>I&#8217;m trying to make AVT 1394 Cameras work with OpenCV using the standard <code>VideoCapture</code> recently but got no luck. Briefly speaking, OpenCV&#8217;s support for camera input are <code>Operating System</code> and <code>Device Driver</code> aware.</p>
+
+<p>In this post, I will give some basic related concepts related to Firewire(aka IEEE 1394) and AVT software packages, also OpenCV&#8217;s <code>VideoCapture</code> workflow.</p>
+
+<!--more-->
+
+
+<hr />
+
+<h3>FireWire</h3>
+
+<p>Aka <a href="http://en.wikipedia.org/wiki/IEEE_1394">IEEE 1394</a>, it&#8217;s a serial bus interface standard for high-speed communications and isochronous real-time data transfer, developed by <code>Apple</code> in early 1990s and called <code>FireWire</code>. The main competitor nowadays is <code>USB</code>.</p>
+
+<p>For the official introduction part, you can refer to the wikipedia link above, I want to address two points here.</p>
+
+<h4>Standards and versions</h4>
+
+<p>The most used must be <code>1394a</code> and <code>1394b</code>, and to make things work, do pay some attention to your <code>1394 Host Controller</code>.</p>
+
+<p>Unlike USB and USB 2.0, the physical interface between 1394a and 1394b is significantly different. As such, users will need to acquire cables with a 1394a (4-pin or 6-pin) connector on one end and a 1394b (9-pin) connector on the other. And a 1394a device would work connecting to a 1394b bus whereas one would fail vice versa.</p>
+
+<h4>Pins of connector</h4>
+
+<p>As for <code>1394a</code> and <code>1394b</code>, there are three kinds of connectors used: 4-pin, 6-pin and 9-pin. Hence there are kinds of cables connecting different styles of connectors list blow:</p>
+
+<p><img src="http://connector.pinouts.ru/diagram/firewire_cable.gif" alt="FireWire Plug Connector at the cable" />.</p>
+
+<p>Luck is you may get whatever cable to fullfil your need as long as you are connecting your device to a right bus.</p>
+
+<p>For more details about the interface pinout, read this article <a href="http://pinouts.ru/Slots/ieee1394_pinout.shtml">FireWire (IEEE1394) bus interface pinout</a>.</p>
+
+<hr />
+
+<h3>AVT Cameras</h3>
+
+<p><a href="http://www.alliedvisiontec.com">AVT</a> does manufacture so many cameras and provide great technical support. It&#8217;s kind of a choice for you to choose between the software packages,seriously speaking.</p>
+
+<h4>AVT Software Selector</h4>
+
+<p>Now they are focusing on <a href="http://www.alliedvisiontec.com/apac/products/software/vimba-sdk.html">VIMBA</a> and maintain it actively.</p>
+
+<p>However for the legacy ones, like <code>FirePackage</code>, <code>Universal Package</code>, etc, look into this link <a href="http://www.alliedvisiontec.com/de/produkte/legacy.html">Legacy Software (SDKs, Apps, Adapters, and Interfaces)</a>.</p>
+
+<p>To select the software that suits you, refer to these links:</p>
+
+<ul>
+<li><a href="http://www.alliedvisiontec.com/apac/support/downloads/software.html">AVT Software Support</a></li>
+<li><a href="http://1stvision.com/avt_downloads.htm">AVT Software Downloads for AVT Cameras</a></li>
+<li><a href="http://www.alliedvisiontec.com/fileadmin/content/PDF/Software/AVT_software/AVT_software_stuff/AVTSoftwareSelectorGuide_v3.3.0.pdf">AVT Software Selector Guide</a></li>
+</ul>
+
+
+<h4>Inside FirePackage</h4>
+
+<p>Although called legacy SDKs, FirePackage is widely used currently. For the main idea, you can give quick glimps for the documentation after installation and get a basic knowledge of <code>FireClass</code>, <code>FireCtrl</code>, <code>FireGrab</code> and <code>FireStack</code>.</p>
+
+<p>For the package architecture,see this:
+<img src="http://hustcalm.me/images/blog_images/architecture_of_AVT_FirePackage.png"></p>
+
+<h4>AVT and OpenCV</h4>
+
+<p>Bad luck that we can&#8217;t use AVT cameras just with <code>VideoCapture</code> because that the cameras might use a device driver that OpenCV can&#8217;t talk to.</p>
+
+<p>However if your camera compliants with <a href="http://www.cs.cmu.edu/~iwan/1394/">CMU 1394 Digital Camera Driver</a>, probably you will be happy again:-)</p>
+
+<hr />
+
+<h3>OpenCV and Cameras</h3>
+
+<p>Quote from this post <a href="https://pixhawk.ethz.ch/tutorials/camera/getting_started">Getting Started with OpenCV capturing</a>.</p>
+
+<blockquote><p>  Currently two camera interfaces can be used on Windows: Video for Windows (VFW) and Matrox Imaging Library (MIL) and two on Linux: Video for Linux(V4L) and IEEE1394. For the latter there exists two implemented interfaces (CvCaptureCAM_DC1394_CPP and CvCapture_DC1394V2).</p></blockquote>
+
+<p>Generaly speaking, your camera would probably work if it is <code>VFW</code> or <code>MIL</code> compliant under Windows or it suits to standard <code>V4L</code> or <code>IEEE1394</code> driver model.</p>
+
+<p>But if not, you can even sub-class the <code>VideoCapture</code> class, and implement your camera driver to make it work seamlessly with OpenCV.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[httplib httplib2 urllib urllib2-what's the difference]]></title>
@@ -2173,110 +2257,6 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 <h3>12、              待补充</h3>
 
 <p><strong>言胜于行，执行力，执行力！</strong></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[彻底搞懂字符集和字符编码(Cooked from other posts)]]></title>
-    <link href="http://hustcalm.me/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts/"/>
-    <updated>2013-04-06T12:08:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts</id>
-    <content type="html"><![CDATA[<p>ASCII,ANSI,Unicode,UTF-8,BOM,UCS,GB2312,GBK,GB18030,BIG5,Code Page&#8230; Blabla&#8230;</p>
-
-<p>对于以上概念，你是否都理解了呢？下面，带着大家彻底搞懂字符集和字符编码的相关知识。我是读了别人的posts，然后cook出来，整理思路，所以需要大家边读边仔细阅读相应的post哦～</p>
-
-<h2>入门篇</h2>
-
-<p>首先，简单了解一下。</p>
-
-<ul>
-<li><a href="http://www.imkevinyang.com/2009/02/%E5%AD%97%E7%AC%A6%E7%BC%96%E8%A7%A3%E7%A0%81%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88ascii%EF%BC%8Cansi%EF%BC%8Cunicode%EF%BC%8Cutf-8%E5%8C%BA%E5%88%AB%EF%BC%89.html">字符编解码的故事（ASCII，ANSI，Unicode，Utf-8区别）</a></li>
-</ul>
-
-
-<p>这篇文章，以类似《明朝那些事儿》的文笔，向大家介绍了”编码“的简史。</p>
-
-<ul>
-<li><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编码笔记：ASCII，Unicode和UTF-8</a></li>
-</ul>
-
-
-<p>阮一峰的博客，重点描述了ASCII和Unicode，并强调“<strong>UTF-8是Unicode的实现方式之一</strong>”，Little endian和Big endian的典故也说到了。跟上篇文章一样，适合入门。</p>
-
-<h2>初级篇</h2>
-
-<p>入门之后，需要搞清楚究竟“字符集”和“字符编码”是什么东东。</p>
-
-<!--more-->
-
-
-<ul>
-<li><a href="http://www.iteye.com/topic/97803">深入了解字符集和编码</a></li>
-</ul>
-
-
-<p>这篇文章，给出了“字符集”和“字符编码”的“<strong>定义</strong>”，并对ANSI编码有了比较合理的解释（使用2个字节来代表一个字符的各种汉字延伸编码方式，称为ANSI编码。 在简体中文系统下，ANSI编码代表GB2312编码，在日文操作系统下，ANSI编码代表JIS编码。 ）这里也提到了BOM的概念，在“<strong>编程语言与编码</strong>”那里描述了编程语言对于内部字符串是如何进行编码的。</p>
-
-<h2>中级篇</h2>
-
-<p>在基本了解了“字符集”和“字符编码”是什么东东后，让我们再仔细看看主流的“字符集和编码”。</p>
-
-<ul>
-<li><a href="http://space.itpub.net/55022/viewspace-713849">各种字符集和编码详解</a></li>
-</ul>
-
-
-<p>本文也是按照“<strong>字符编码的历程</strong>”来展开，ASCII，ISO8859-1，GB2312，GBK，GB18030，BIG5，UCS，Unicode都说到了。而在编码方面，重点说了UTF-8，UTF-16，UTF-32，UTF-7。此外，提到了MIME（多用途网际邮件扩充协议），是现在邮件编码方式的主流，其中定义了两种编码方法Base64和QP（Quote-Pritable）。</p>
-
-<h2>高级篇</h2>
-
-<p>下面，更加细致地了解下“编码”是如何存储的，以及分析下优缺点。</p>
-
-<ul>
-<li><a href="http://www.cnblogs.com/skynet/archive/2011/05/03/2035105.html">字符集和字符编码（Charset &amp; Encoding）</a></li>
-</ul>
-
-
-<p>本文知识点比较系统，在看了以上的文章后，可以“<strong>系统</strong>”地整理下思路了。本文在描述了“ASCII字符集&amp;编码&#8221;,&#8221;GBXXXX字符集&amp;编码”以及“BIG5字符集&amp;编码”后，提出了“<strong>伟大的创想Unicode</strong>”。之后，又说到了“互联网传输”的编码问题，Accept-Charset/Accept-Encoding/Accept-Language/Content-Type/Content-Encoding/Content-Language。</p>
-
-<h2>拾遗篇</h2>
-
-<p>了解“<strong>字符集</strong>”和“<strong>字符编码</strong>”的主线了，可能还对一些常见的概念疑惑。下面的链接就一些概念进行了简明的解释。</p>
-
-<ul>
-<li><a href="http://bbs.chinaunix.net/thread-3610023-1-1.html">中文字符编码标准+Unicode+Code Page</a></li>
-</ul>
-
-
-<p>这里是想重点了解“<strong>Code Page</strong>”的，跟操作系统的实现有关。</p>
-
-<ul>
-<li><a href="http://en.wikipedia.org/wiki/Code_page">Code page</a></li>
-</ul>
-
-
-<p>Code page is another term for character encoding. It consists of a table of values that describes the character set for a particular language. The term code page originated from IBM&#8217;s EBCDIC-based mainframe systems,[1] but many vendors use this term including Microsoft, SAP,[2] and Oracle Corporation.[3] Vendors often allocate their own code page number to a character encoding, even if it is better known by another name (for example UTF-8 character encoding has code page numbers 1208 at
-IBM, 65001 at Microsoft, 4110 at SAP).</p>
-
-<ul>
-<li><a href="http://hi.baidu.com/kumosheng/item/0864400782d3df7abfe97e87">区位码和内码，外码，国标码</a></li>
-</ul>
-
-
-<p>我国“技术专家”的智慧结晶！看看汉字是怎么被编码的！～</p>
-
-<ul>
-<li><a href="http://www.htmer.com/article/232.htm">输入法中全角/半角的区别以及切换方法</a></li>
-</ul>
-
-
-<p>刚学输入法的时候，就一直被“全角”和“半角”折磨着，现在终于搞明白了！</p>
-
-<h2>总结篇</h2>
-
-<p>输入，编码，显示，存储，读取，解码，输出。</p>
-
-<p>看来，不管什么东西，还是要从“操作系统”的层面去认识！</p>
 ]]></content>
   </entry>
   
