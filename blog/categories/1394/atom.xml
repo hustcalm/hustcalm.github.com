@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 1394 | Welcome to Pandora's Box]]></title>
+  <link href="http://hustcalm.me/blog/categories/1394/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2013-12-11T08:36:33+08:00</updated>
+  <id>http://hustcalm.me/</id>
+  <author>
+    <name><![CDATA[hustcalm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Notes about IEEE 1394 AVT Cameras - FirePackage and OpenCV]]></title>
+    <link href="http://hustcalm.me/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv/"/>
+    <updated>2013-12-10T21:10:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv</id>
+    <content type="html"><![CDATA[<p>I'm trying to make AVT 1394 Cameras work with OpenCV using the standard <code>VideoCapture</code> recently but got no luck. Briefly speaking, OpenCV's support for camera input are <code>Operating System</code> and <code>Device Driver</code> aware.</p>
+
+<p>In this post, I will give some basic related concepts related to Firewire(aka IEEE 1394) and AVT software packages, also OpenCV's <code>VideoCapture</code> workflow.</p>
+
+<!--more-->
+
+
+<hr />
+
+<h3>FireWire</h3>
+
+<p>Aka <a href="http://en.wikipedia.org/wiki/IEEE_1394">IEEE 1394</a>, it's a serial bus interface standard for high-speed communications and isochronous real-time data transfer, developed by <code>Apple</code> in early 1990s and called <code>FireWire</code>. The main competitor nowadays is <code>USB</code>.</p>
+
+<p>For the official introduction part, you can refer to the wikipedia link above, I want to address two points here.</p>
+
+<h4>Standards and versions</h4>
+
+<p>The most used must be <code>1394a</code> and <code>1394b</code>, and to make things work, do pay some attention to your <code>1394 Host Controller</code>.</p>
+
+<p>Unlike USB and USB 2.0, the physical interface between 1394a and 1394b is significantly different. As such, users will need to acquire cables with a 1394a (4-pin or 6-pin) connector on one end and a 1394b (9-pin) connector on the other. And a 1394a device would work connecting to a 1394b bus whereas one would fail vice versa.</p>
+
+<h4>Pins of connector</h4>
+
+<p>As for <code>1394a</code> and <code>1394b</code>, there are three kinds of connectors used: 4-pin, 6-pin and 9-pin. Hence there are kinds of cables connecting different styles of connectors list blow:</p>
+
+<p><img src="http://connector.pinouts.ru/diagram/firewire_cable.gif" alt="FireWire Plug Connector at the cable" />.</p>
+
+<p>Luck is you may get whatever cable to fullfil your need as long as you are connecting your device to a right bus.</p>
+
+<p>For more details about the interface pinout, read this article <a href="http://pinouts.ru/Slots/ieee1394_pinout.shtml">FireWire (IEEE1394) bus interface pinout</a>.</p>
+
+<hr />
+
+<h3>AVT Cameras</h3>
+
+<p><a href="http://www.alliedvisiontec.com">AVT</a> does manufacture so many cameras and provide great technical support. It's kind of a choice for you to choose between the software packages,seriously speaking.</p>
+
+<h4>AVT Software Selector</h4>
+
+<p>Now they are focusing on <a href="http://www.alliedvisiontec.com/apac/products/software/vimba-sdk.html">VIMBA</a> and maintain it actively.</p>
+
+<p>However for the legacy ones, like <code>FirePackage</code>, <code>Universal Package</code>, etc, look into this link <a href="http://www.alliedvisiontec.com/de/produkte/legacy.html">Legacy Software (SDKs, Apps, Adapters, and Interfaces)</a>.</p>
+
+<p>To select the software that suits you, refer to these links:</p>
+
+<ul>
+<li><a href="http://www.alliedvisiontec.com/apac/support/downloads/software.html">AVT Software Support</a></li>
+<li><a href="http://1stvision.com/avt_downloads.htm">AVT Software Downloads for AVT Cameras</a></li>
+<li><a href="http://www.alliedvisiontec.com/fileadmin/content/PDF/Software/AVT_software/AVT_software_stuff/AVTSoftwareSelectorGuide_v3.3.0.pdf">AVT Software Selector Guide</a></li>
+</ul>
+
+
+<h4>Inside FirePackage</h4>
+
+<p>Although called legacy SDKs, FirePackage is widely used currently. For the main idea, you can give quick glimps for the documentation after installation and get a basic knowledge of <code>FireClass</code>, <code>FireCtrl</code>, <code>FireGrab</code> and <code>FireStack</code>.</p>
+
+<p>For the package architecture,see this:
+<img src="/images/blog_images/architecture_of_AVT_FirePackage.png"></p>
+
+<h4>AVT and OpenCV</h4>
+
+<p>Bad luck that we can't use AVT cameras just with <code>VideoCapture</code> because that the cameras might use a device driver that OpenCV can't talk to.</p>
+
+<p>However if your camera compliants with <a href="http://www.cs.cmu.edu/~iwan/1394/">CMU 1394 Digital Camera Driver</a>, probably you will be happy again:-)</p>
+
+<hr />
+
+<h3>OpenCV and Cameras</h3>
+
+<p>Quote from this post <a href="https://pixhawk.ethz.ch/tutorials/camera/getting_started">Getting Started with OpenCV capturing</a>.</p>
+
+<blockquote><p>  Currently two camera interfaces can be used on Windows: Video for Windows (VFW) and Matrox Imaging Library (MIL) and two on Linux: Video for Linux(V4L) and IEEE1394. For the latter there exists two implemented interfaces (CvCaptureCAM_DC1394_CPP and CvCapture_DC1394V2).</p></blockquote>
+
+<p>Generaly speaking, your camera would probably work if it is <code>VFW</code> or <code>MIL</code> compliant under Windows or it suits to standard <code>V4L</code> or <code>IEEE1394</code> driver model.</p>
+
+<p>But if not, you can even sub-class the <code>VideoCapture</code> class, and implement your camera driver to make it work seamlessly with OpenCV.</p>
+]]></content>
+  </entry>
+  
+</feed>
