@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-12-11T08:57:25+08:00</updated>
+  <updated>2014-01-10T10:42:56+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -12,6 +12,258 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Getting Started with Qt and Qt Creator]]></title>
+    <link href="http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator/"/>
+    <updated>2014-01-02T15:42:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator</id>
+    <content type="html"><![CDATA[<p>Recently I'm doing a project for the Lab and choose C++ as the programming language, but for the Framework, I considered MFC and Qt at first but choose Qt without hesitation as soon as I recalled the pains when I tried to play with MFC. In short, MFC is just showing too much to the developer and looks a little annoying and more complicated(C++ itself is complicated enough).</p>
+
+<p>To be clear, I did not try Qt before either and totally new to it. But after two months, I wrote a running application which can deal with Cameras, IMU and Inclinometer, also a 6DOF controller. Besides, we have multithreading in it and multiply timers are running simultaneously. To summarize what I have learned and also share my experience to you is the desire to write this post.</p>
+
+<!--more-->
+
+
+<p>I also find that Qt Creator is really cool with the plugin <code>FakeVim</code> enabled(It is installed by default ,at least in my Qt Creator 2.8.1 Windows version), a light wight IDE with powerful abilities! So in this post, after talking about how to get started with Qt, I will give some appreciations to Qt Creator:-)</p>
+
+<hr />
+
+<h3>Beginning with Qt</h3>
+
+<h4>Get to know Qt</h4>
+
+<p>It's essentially a GUI toolkit when fist designed, but after years of development, it has evolved into a framework which is cross platform and popular.</p>
+
+<p>For official introduction, visit <a href="http://qt-project.org/">Qt Project</a>.</p>
+
+<h4>Choosing the way that you use</h4>
+
+<p>I will not talk about the versions ,like 5.x or 4.x. Let's say something about the <code>prebuilt-binaries</code> and <code>source code</code>.</p>
+
+<p>If you choose to build from scratch, it would take a bit of time to do that since Qt is big enough. If using the built binaries, do look at the related compilor, for Windows, you got options for VS 2008, VS 2010, VS 2012 and MinGW stuff. If you are using VS 2008(in my case), choosing this file <a href="http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-win-opensource-4.8.5-vs2008.exe">Qt libraries 4.8.5 for Windows (VS 2008, 235 MB)</a>, just for an example,then probably you are good to go when you build your project with VS 2008 as the backend.</p>
+
+<p>For Qt Creator, I prefer to use the perbuilt one too, but if you want to install some specified plugins, build from source code may be needed.</p>
+
+<h4>A good book would help a lot</h4>
+
+<p>I read the book <code>C++ GUI Programming with Qt 4(2nd Edition)</code> not because it's the best book for Qt, just because that we got one Chinese version copy of the book in our Lab. I went through the first 3 chapters and the appendix(mainly to know more about <code>qmake</code>), then referenced other chapters while I got problems when coding.</p>
+
+<p>For the comment that I wrote for the book, you can find it <a href="http://book.douban.com/review/6489896/">here</a>.</p>
+
+<p>However, this book is recommended as the official Qt book. You may want to try it out yourself and make your own judge, if you find another excellent book, do let me know:-)</p>
+
+<h4>See what the official says</h4>
+
+<p>For the official tutorials, you can refer to their website, like:</p>
+
+<ul>
+<li><a href="http://qt-project.org/doc/qt-5/gettingstarted.html">Getting Started with Qt</a></li>
+<li><a href="http://qt-project.org/doc/qt-4.8/how-to-learn-qt.html">How to Learn Qt</a></li>
+<li><a href="http://qt-project.org/doc/qt-4.7/how-to-learn-qt.html">How to Learn Qt</a></li>
+</ul>
+
+
+<p>You may notice that each Qt version got their own getting started web page, however, don't bother, checkout them all and pick the brilliant part that suits yourself.</p>
+
+<p>As time goes by, there may be new links and the listed links would be out of date. Go to the official website and find the real links then.</p>
+
+<hr />
+
+<h3>Qt Creator as your Swiss Army Knife</h3>
+
+<p>Yes, it is just an IDE, compared with Eclipse, it's dedicated to Qt and C++(Not exactly, it supports Android and even BlackBerry development), so much light-wighted. However, it's flexible and with lots of plugins, see <a href="http://qt-project.org/wiki/Qt_Creator_Plug-in_Gallery">Qt Creator Plugin Gallery</a>.</p>
+
+<p>As I'm not expert to Qt Creator either, I will give several examples here.</p>
+
+<h4>FakeVim</h4>
+
+<p>Default shipped with Qt Creator, I'm really excited when I find it. Support external <code>.vimrc</code> and give you almost the native vim experience.</p>
+
+<p>I used the default <code>FakeVim</code> key bindings, they are just as same as the official vim, besides that, you may use other short cuts provided by Qt Creator, among them, <code>F2</code> for following the symbol under cursor and <code>F4</code> for switching header and souce file are the most frequently used. For generating source code tags, it's well cared by a background process, however when got large source files, I suffered for temporary <code>Not Responding</code>.</p>
+
+<p>For quick view of the options:
+<img src="/images/blog_images/qt_creator-fakevim.png"></p>
+
+<h4>Doxygen</h4>
+
+<p>This plugin uses the standard <a href="http://www.doxygen.org">Doxygen</a> as the backend and give useful utilities for documenting the whole project or a file or a class, function. variable, whatever.</p>
+
+<p>The following links really help a lot:o</p>
+
+<ul>
+<li><a href="https://facwiki.cs.byu.edu/HCMI/index.php/Using_doxygen_with_Qt_Creator">Using doxygen with Qt Creator</a></li>
+<li><a href="http://dev.kofee.org/projects/qtcreator-doxygen/wiki">QtCreator-Doxygen</a></li>
+</ul>
+
+
+<h4>Version Control</h4>
+
+<p>Qt Creator makes it really easy for integrating with version control tools, an image will tell everything:
+<img src="/images/blog_images/qt_creator-versioncontrol.png"></p>
+
+<hr />
+
+<p>Hope this post do a little help for your getting started with Qt Programming:-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C/C++-不死的精灵]]></title>
+    <link href="http://hustcalm.me/blog/2013/12/21/c-slash-c-plus-plus-bu-si-de-jing-ling/"/>
+    <updated>2013-12-21T13:18:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2013/12/21/c-slash-c-plus-plus-bu-si-de-jing-ling</id>
+    <content type="html"><![CDATA[<p>看了《C专家编程》和《Essential C++》后，对C/C++的好奇愈加强烈。作为平台级别的语言，很多操作系统都是基于C/C++构建的，因此要想学好C/C++，我觉得对系统底层的了解是必须的，至少对于一个真正的Programmer需要做到如此。总有一些言论，说现在C/C++程序员都成稀有群体了，现在大家都去玩简单易学的Python，甚至时髦小众的Golang了。呜呼，我想说，C/C++伴我们一路走来，作为不死之精灵，还将陪我们走一段很长的路。</p>
+
+<!--more-->
+
+
+<h3>前言</h3>
+
+<p>不管是业界惯性也罢，语言本身也好，我觉得这个世界对C/C++的需求是巨大的。底层的操作系统不说，对效率要求极高的游戏产品，大型科学计算程序，都是C/C++的绝佳用武之地。Java提供的JNI机制，一个是从平台本地化考虑，另外一个很大程度上是从效率上考虑的吧。Windows Phone的开发以C#作为GUI主要语言，底层的component大多基于C++编译出来的lib。OOP虽然早在Ada，Smalltalk就被引入，不过真正带给产业届震撼的应该是在C++被发明出来以后。当然这跟一些业界巨头的选择不无关系，比如Microsoft选择了C++作为自己的底层开发语言。</p>
+
+<p>写这篇文章，实则是想让自己整理一下学习的思路，如果能给读者带来一些启发，定倍感荣幸了。从C/C++说起，牵涉到底层的OS实现，Compilor实现，语言本身的描述，CRT，glibc之类的概念，以及ISO标准，Windows API，system call之流。缕清楚了底层的复杂机制，在写C/C++程序的时候会更加成竹在胸了，实现和调试上都会更有针对性和效率。而谈到应用程序的设计，则需要用到各种各样的库，在这些库之上构建程序的功能逻辑，这本质上算是代码重用了。话说回来，在整个计算机开发界，我觉得人类就是不断地向高层抽象，从机器代码到汇编，再到编译型的C/C++语言，动态解释性语言，再往后肯定会有更抽象的语言出现，也许那个时候，人类不是自己编程了，而是计算机自己编程，而人类只需要告诉它需要完成什么任务就行了。Ok，就暂时YY到这里。</p>
+
+<p>既然是整理思路的文章，我准备按照自底向上的方式，进行一些简单的讨论，中间参考了大量的已有博文，我会简单总结一下博文的精神，如果想自己消化，就请移步原文了。</p>
+
+<hr />
+
+<h3>C/C++，Compilor， OS，CRT，Standard Library，API之我见</h3>
+
+<p>感觉很难有几个程序员可以很快把这个几个概念说清楚。这些东东都很有历史，所以一路伴随计算机走来的人会有比较深入的了解。在引入讨论前，我先谈谈自己的体会。</p>
+
+<p>从计算机说起，它到底是个什么东东？A magic Box？Yes，but No！本质上来说，都是“开关”，几个”开关“可以构成”逻辑“，而”逻辑“的”组合“可以做事了。而这个开关的实现就跟技术水平有关系了。最开始的”开关”是用机械装置实现的，到后来是电子管，再到后来是ASIC和VLSI了。</p>
+
+<p>而计算机最核心的部件就属“CPU”了，真正的worker就是它。而CPU的设计也相对单纯，它只负责如实地访问相应的寄存器存取数据，并且取指后执行指令。为了运行逻辑复杂的大型程序，则需要外部存储的辅助，那就是RAM了。而为了持久化，就又需要Hard Disk的帮忙。</p>
+
+<p>所以计算机本身就是一堆电子元器件的组合，但是想做出可以工作的，有用的计算机，其中的细节都是很专业的事情。</p>
+
+<h4>C/C++</h4>
+
+<p>语言本身是一种标准或者描述，说明语言有哪些要素，能够实现哪些功能等等，因此它本身可以在比较短的篇幅内讲完，所以C语言之父Ritchie的著作《The C Programming Language》只有不到200页。</p>
+
+<h4>Compilor</h4>
+
+<p>真正实现语言特性和功能的是编译器，由于语言本身的描述有些地方不是特别死板，或者很多地方跟所用的平台有关系，编译器在实现的时候也会有略微的差异。举个最直观的例子，Microsoft的MSVC和GNU的gcc，甚至SUN的cc，对你写的同一份C/C++源代码会有自身的一些特殊处理。</p>
+
+<p>说到了编译器，就再说一下抽象层这个事情吧。大家可能都知道，最开始的编程使用机器语言，后来到了汇编语言，由汇编器完成中间的翻译工作。后来出现了高级语言，比如C语言（其实在之前有很多其它的语言，C语言不是最早却是最成功的），这个时候由编译器把源代码处理后编译成汇编代码，再由汇编器翻译成机器代码。至于之后的动态语言，比如Python，也是先要使用一种语言实现一个解释器，然后再通过这个解释器来运行用户的脚本或者代码。居于中间的另外一种语言形式可以拿Java举例子，它本身具有静态语言和动态语言的特点，而这一切都是由JVM（Java Virtual Machine）带来的。</p>
+
+<p>纵观几种语言形态，可以发现一种典型的分层结构，源代码->（中间代码）-> 汇编代码 -> 机器代码。 扯一句淡，“任何的软件问题，都可以通过增加一层抽象层解决”。呵呵。</p>
+
+<h4>OS</h4>
+
+<p>提到Operating System（OS），大多数人可能很快想到Windows，Linux，Mac OS之类，会有少部分专业人员可能会直接想到Kernel。拿Linux来说，它本身就是指代一个操作系统内核的，说到Linux系统，则更为正式的称呼是GNU/Linux，而大家平常用的是各种Linux发行版（Linux Distro）。</p>
+
+<p>OS做了什么？概括地来说，它是用户和硬件资源之间的一个接口，如果只有一个裸机放在用户面前，它本身是没有多少用处的（如果你想在它上面编辑一个文本文档，估计要自己写不少代码先），这个时候需要一个中间层，它能够替代用户管理裸机的各种硬件和资源，呈现给用户一个友好的，可用的，可操作的界面（嗯，就是图形用户界面或者终端界面了）。</p>
+
+<p>那问题来了。OS是用什么写的？最开始的Linux是用C语言和内嵌汇编写的，现代的Windows是用C++写的，至于最开始Multics等鼻祖，我个人推测应该是纯汇编或者使用比较早期的高级语言吧（B语言？）。</p>
+
+<p>那操作系统作为资源总管，需要提供相应的应用程序接口（API）给用户程序使用啊，否则操作系统只管资源，不让大家用，岂有此理！这就是传说中的系统调用（system call）？而且访问资源的时候，用户程序也不能胡来，那就分个界限吧，这就是我们常说的用户态和内核态（User space &amp;&amp; Kernel Space）？对应于CPU的目态和管态？</p>
+
+<p>然而，切换是有开销的。</p>
+
+<h4>CRT</h4>
+
+<p>通俗地来说，应该讲讲Run Time。拿C语言来说，你的程序是从main开始执行的吗？从用户的角度来看，是的;但是从操作系统的角度，不是的。在你的程序能够正常工作之前，有太多的工作需要做，这就是runtime library需要负责的事情，大体上主要是I/O初始化以及内存的分配等等。</p>
+
+<p>这又与应用程序的装载产生了联系，具体的细节一时半会也讲不清楚了。</p>
+
+<h4>Stanard Library</h4>
+
+<p>有了runtime library后，比如说有了C运行时，那么你用C语言写的代码，经过编译链接之后，可以正常运行，但前提是你必须使用C运行时提供的一些函数接口以及你自定义的一些函数接口。然而，在我们的日常事务处理中，有太多的操作是重复性的，可以被抽象出来给大家使用的，这就是语言标准库的由来？在遵循语言标准的基础之上，把一组常用的，通用的操作通过高效的实现写成接口库供用户调用。这无疑对生产力是一个巨大的提升，因为这样一来，你不必再去花心思想着如何去打开一个文件的实现细节了，你只需要用标准库的fopen即可。</p>
+
+<p>像C语言的&lt;stdio.h>，&lt;stdlib.h>就是标准函数库提供的头文件。C++则在兼容C语言的基础之上有自己的标准库，还有大名鼎鼎的STL（Standard Template Library，已经被纳入C++标准）。</p>
+
+<h4>API</h4>
+
+<p>即应用程序接口（Application Interface），然而它本身也是一个普适的概念。在分层的软件架构中，下层提供给上层的接口都可以统称为API（我的个人理解）。</p>
+
+<p>再泛化地来讲，可能需要大家认真去琢磨Interface这个概念了（硬件上，软件上，面向对象上，等等）。</p>
+
+<hr />
+
+<h3>看看他们怎么说</h3>
+
+<p>网上关于CRT，Standard Library，OS的综合讨论并不太多，这里我挑几个典型的分析，简单概括一下原作者的看法。如果跟原文的意思有出入，请原作者包涵啦:-)</p>
+
+<h4><a href="http://www.codeproject.com/Articles/22642/What-Every-Computer-Programmer-Should-Know-About-W#ContentsofC++StandardLibrary">What Every Computer Programmer Should Know About Windows API, CRT, and the Standard C++ Library</a></h4>
+
+<p>一篇深入浅出的文章，虽然是以Windows平台为例，但是读者大可以举一反三，先来看张作者给出的图片：</p>
+
+<p><img src="/images/blog_images/relationship-between-windowsAPI-CRT-and-C++StandardLibrary.png"></p>
+
+<p>典型的分层架构，清晰明了，虽然还有很多细节值得商榷，但是直观上的理解却是可以这样的。</p>
+
+<p>之后作者还提到了Unicode的细节处理，C++标准库，跨平台，代码复用（静态链接 VS 动态链接）等，是一篇搞清基本概念的入门好文！</p>
+
+<p>读英文有困难的同学，可以移步本文的中文版<a href="http://www.cnblogs.com/menggucaoyuan/archive/2011/06/09/2075910.html">程序员应该知道的关于Windows API、CRT和STL二三事</a>。</p>
+
+<h4><a href="http://blog.csdn.net/lvan100/article/details/7687359">Windows API和C运行时库CRT的关系</a></h4>
+
+<p>感觉本文的作者总是在纠结于<code>先有鸡还是先有蛋</code>的问题，而且对多平台的理解不够深入，更多的是被Windows这个平台限制住了。</p>
+
+<p>C语言本身肯定是与平台无关的，当它跟平台有关的时候就是各个操作系统厂商实现C语言编译器和运行时以及标准库的时候了。操作系统本身用什么写都是可以的，因为最终都要编制成二进制的机器代码，而在开发操作系统的时候用到什么库之类的，则要依赖于开发操作系统本身的平台支持了。又回到了那个问题，在没有出现高级语言之前，大部分软件组件肯定是前辈们用汇编搞定，包括C语言编译器（当然也可能是其它的初级高级语言），一旦实现了成套的基础设施（编译器，链接器，装载器等），再利用这些构建工具去制造现代的软件就是顺理成章的事情了。</p>
+
+<p>这里大家需要搞清楚的是，不管你的源代码写的是什么，计算机只认识机器代码，更加严格的是0和1。</p>
+
+<h4><a href="http://www.cnblogs.com/chio/archive/2007/11/26/972152.html">C Runtime Library来历, API, MFC, ATL关系</a></h4>
+
+<p>在转贴关于C Runtime Library之前的讨论感觉像是在鬼扯，<code>CRT原先是指Microsoft开发的C Runtime Library，用于操作系统的开发及运行</code>，看到这一句，基本注定以下的讨论可以停止了。</p>
+
+<p>分割线下面的关于一些基本概念的解释有一定的可取之处，大家直接看分割线下面的即可，否则被上面那一部分耽误了！</p>
+
+<h4><a href="http://www.cnblogs.com/aguncn/archive/2012/11/12/2766520.html">我自己关于C语言，编译器，标准库，GUN glibc,CRT ，API之类的理解。</a></h4>
+
+<p>作者本人好像对这些概念也停留在一知半解的状态，因此上面的就当看看即可。下面的链接比较有可取之处，给出了C/C++标准库和运行时库的一些链接，首先是标准（出自ISO），之后分别给出了Microsoft和GNU的实现。</p>
+
+<p>如果把文章那些有用的链接抽取出来，这篇文章就不用看了。有用的链接我在下面的资源整理中会给出原出处。</p>
+
+<p><strong>总结：</strong></p>
+
+<p>总得看来，第一篇文章的分析较有说服力，用词专业，对概念的解释也很清晰，但是作为入门级别的文章很难再把问题说得更加具体;而后面的文章的个人见解部分实在不敢恭维，而有用的部分大多又是转载其它文章的只言片语，因此不推荐大家看。</p>
+
+<p>如果想弄清楚以上的概念和相互的关系，大家不必翻箱倒柜找各种文章了，直接看《程序员的自我修养-链接，装载与库》这本书好了。《程序员的自我修养》把程序的结构，编译，链接，装载，运行时之类的概念进行了深入的剖析，并且附带很生动的例子，中间还不时穿插编程中可能困惑你好久的小问题。写这篇文章的时候，我看完了第一部分，暂时跳过了第二，第三部分，正在看第四部分，感觉此书是深入理解系统底层奥秘的绝佳捷径！</p>
+
+<hr />
+
+<h3>C/C++资源一览</h3>
+
+<p>正如C++之父Stroustrup所鼓励的，用库去扩展语言，而保持语言本身的简洁。所以除了C++标准库以外，出现了大量的第三方库，涉及程序开发的各个领域，可谓是百花齐放！</p>
+
+<p>下面给出几个比较好的链接，每一个都值得大家阅读。</p>
+
+<ul>
+<li><a href="http://blog.csdn.net/netlinux/article/details/6700505">C/C++ 类库开发库参考</a></li>
+<li><a href="http://www.kuqin.com/language/20090215/35005.html">C++资源之不完全导引</a></li>
+<li><a href="http://blog.csdn.net/oanqoanq/article/details/7169291"> C++著名程序库的比较和学习经验</a></li>
+<li><a href="http://www.kuqin.com/language/20090215/35004.html">C++开源跨平台类库及在VC++.net中应用的配置</a></li>
+</ul>
+
+
+<hr />
+
+<h3>如何学习C/C++</h3>
+
+<p>跟任何一门编程语言一样，大量的练习是必不可少的，但是在练习开始之前，我觉得首先要找到一个比较高效的方法。根据我个人的经验，比较好的学习方式是：</p>
+
+<ul>
+<li><p>找到一个学习的需求，为了学习而学习可能只会走马观花，如果实在没有什么需求，那就从写一个实用的小软件开始吧。</p></li>
+<li><p>找到正确的入门书籍，谭老师的那本书我是强烈不推荐的，推荐看C语言三剑客《C和指针》，《C陷阱和缺陷》和《C专家编程》。C++的话，个人觉得《Essential C++》适合入门，C++ Primer适合当成参考书籍，其它的《Effective C++》等还没看过，不敢乱说。</p></li>
+<li><p>边看边练，加深理解，拿指针为例，一定在从对应的内存关系去理解，就会感觉很自然，它不过是一个整形变量，指代一个内容地址而已;而变量本身就是某一个内存地址的抽象表示嘛。而不管指针的指针，还是什么，顺着下去也就比较好理解了，只是关系繁杂的时候需要仔细缕清楚。</p></li>
+<li><p>基本熟悉之后，可以去试试一些框架，比如Qt，体会一下框架是如何在C++之上给开发者抽象了一层应用开发层的。</p></li>
+<li><p>后面的，自行发挥想象力吧:-)</p></li>
+</ul>
+
+
+<hr />
+
+<p><strong>综述：</strong></p>
+
+<p>再次强调一下，写本文的目的，实则是想整理一下自己的思路，便于后面的深入学习。在参考各种文章的时候发现了一些瑕疵，忍不住再经过一反思考后评论一番，免得更多的人被误导。当然本人的水平也十分有限，行文很有可能有很多不到之处甚至错误，一些评论可能也有失偏颇。</p>
+
+<p>如果发现了本文有哪些不足或者可以改进的地方，请留下评论或者联系我。如果本文可以帮助到你，请你把一些有用的地方传播给他人，以期帮助到更多的人！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[初识Go-Erlang-Dart]]></title>

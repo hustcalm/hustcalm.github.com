@@ -9,7 +9,7 @@
   <meta name="author" content="hustcalm">
 
   
-  <meta name="description" content="很久之前就听说了CreativeCommons License，并且看到很多博客站点上也在此License下授权，因此想在自己的Octopress上添加CC License。 我添加的是非商业化使用，自由分享修改的授权，即NonCommercial-ShareAlike。 &hellip;">
+  <meta name="description" content="现在越来越觉得自己离不开Linux了，也越来越离不开VIM了，虽然一直有想学习下Emacs的心思，不过学习曲线太陡峭了，准备细水常流了～之前在windows下使用cygwin，配置VIM用的是.vim_runtime，作者是用svn管理的。今天再去看，发现作者也把自己的. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +67,141 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">使用git和github来管理vim配置和插件</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-20T16:29:00+08:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>现在越来越觉得自己离不开Linux了，也越来越离不开VIM了，虽然一直有想学习下Emacs的心思，不过学习曲线太陡峭了，准备细水常流了～之前在windows下使用cygwin，配置VIM用的是<code>.vim_runtime</code>，作者是用svn管理的。今天再去看，发现作者也把自己的.vimrc以及整个配置都迁移到了github上，因此参考了<a href="http://blog.pkufranky.com/2011/11/%E4%BD%BF%E7%94%A8git%E5%92%8Cgithub%E6%9D%A5%E7%AE%A1%E7%90%86vim%E9%85%8D%E7%BD%AE%E5%92%8C%E6%8F%92%E4%BB%B6">这篇文章</a>。请作者原谅我使用了一样的题目～  <br/>
+文章的目标为：</p>
+
+<ul>
+<li><p>将vim的配置文件使用git管理，并托管到github上</p></li>
+<li><p>通过github来安装和更新vim plugin</p></li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/">Cross Complile VLC for Windows on Ubuntu How to and Trouble Shooting</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-19T11:53:00+08:00" pubdate data-updated="true">Oct 19<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Obtain the toolchain</h2>
+
+<p>I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly rely on official guide on <a href="http://www.wiki.videolan.org/Win32Compile">Win32Compile-VideoLANWiki</a>.      To get the toolchain, I just run <code>apt-get install gcc-mingw32 mingw32-binutils</code>.And also the development tools,run <code>apt-get install lua automake autoconf autopoint libtool make gettext pkg-config git subversion cmake cvs zip p7zip nsis bzip2</code>.     </div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/19/cross-complile-vlc-for-windows-on-ubuntu-how-to-and-trouble-shooting/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/">Machine Learning工具包PMTK3的简单解析</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-16T23:47:00+08:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近学习《机器学习》云里雾里的，很多时候不知道老师在说什么，参考书买的是Kevin P. Murphy的《Machine Learning:A Probabilistic Perspective》，一共上下两卷，打印版本的共50大洋。作者除了书之外，还在google code上维护了与书本同步的工具包代码和数据，叫做PMTK3，主页地址<a href="code.google.com/p/pmtk3">PMTK3 on Google Code</a>。
+具体的解释大家可以看Project Home的官方介绍，PMTK是</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -165,137 +300,6 @@ Code you get from [Flag Counter](www.flagcounter.com)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/16/kai-shi-shi-yong-bsharehe-doubanzai-octopressshang/">开始使用Bshare和Douban在Octopress上</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-16T01:24:00+08:00" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/16/kai-shi-shi-yong-bsharehe-doubanzai-octopressshang/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天对自己的Octopress站点进行了一些小的更新，主要包括替换tag_cloud的显示为category_cloud，增加了Douban的侧边栏，增加了Bshare的文章分享。    <br/>
-其中category_cloud，自己目前使用：</p>
-
-<pre><code>git@github.com:hustcalm/octopress-category-list.git
-</code></pre>
-
-<p>具体用法可以看README.md。     <br/>
-Douban的侧边栏采用经典的source/<em>includes/custom/asides以及</em>config.yml的方法,豆瓣收藏秀的代码获取在<a href="www.douban.com/service/badgemaker">豆瓣收藏秀</a>。<br/>
-如何增加Bshare，参考了文章<a href="shanewfx.github.com/blog/2012/08/13/improve-blog-theme/">Octopress主题改造</a>，Bshare官方链接<a href="http://www.bshare.cn">Bshare</a>。<br/>
-Done.:)</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/">Successfully Compiled VLC 2.0.3 Under Ubuntu 11.04</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-13T22:18:00+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>With Instructions On <a href="wiki.videolan.org/UnixCompile">UnixCompile</a> and <a href="wiki.videolan.org/User:J-b#VLC_configure_line">User:J-b</a>, I compile VLC successfully on Ubuntu 11.04.</p>
-
-<p>But trouble is there are some libraries missiing or version too old, and can&#8217;t figure it out too clear now. Also after make complete,Got an error&#8221;No Plugins found! Check your VLC installation&#8221; when attempt to run vlc with in bin, but runs fine with ./vlc-static.</p>
-
-<p>Anyway it is a good start to dig into VLC further:)</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/">Ubuntu下检出Cygwin搭建的Octopress遇到的问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-13T19:37:00+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“<em>deploy”对应的是remote_master branch即可。    <br/>
-而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。     <br/>
-可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。     <br/>
-而现在写文章先不管Octopress了，只管</em>deploy。    <br/>
-唉，郁闷:(。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -328,11 +332,23 @@ Done.:)</p>
 
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 112.0%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 112.0%'>AR(1)</a> <a href='/blog/categories/arduino' style='font-size: 112.0%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 112.0%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 112.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 112.0%'>BIOS(1)</a> <a href='/blog/categories/centos' style='font-size: 124.0%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 112.0%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 112.0%'>CV(1)</a> <a href='/blog/categories/cygwin' style='font-size: 112.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 112.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 112.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 112.0%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 112.0%'>Fedora(1)</a> <a href='/blog/categories/geek' style='font-size: 136.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 124.0%'>Git(2)</a> <a href='/blog/categories/learning' style='font-size: 112.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 112.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(5)</a> <a href='/blog/categories/machine' style='font-size: 112.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 112.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 112.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 124.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 112.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 124.0%'>Network(2)</a> <a href='/blog/categories/nlp' style='font-size: 112.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 124.0%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 112.0%'>OpenCV(1)</a> <a href='/blog/categories/openhardware' style='font-size: 112.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 136.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 112.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 112.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 112.0%'>POSIX(1)</a> <a href='/blog/categories/programming' style='font-size: 112.0%'>Programming(1)</a> <a href='/blog/categories/ptam' style='font-size: 112.0%'>PTAM(1)</a> <a href='/blog/categories/pthread' style='font-size: 112.0%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 112.0%'>Python(1)</a> <a href='/blog/categories/robot' style='font-size: 124.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 112.0%'>SEO(1)</a> <a href='/blog/categories/sfd' style='font-size: 112.0%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 124.0%'>SNS(2)</a> <a href='/blog/categories/speaking' style='font-size: 112.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 112.0%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 112.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 136.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 136.0%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 112.0%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 124.0%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 112.0%'>VPS(1)</a> <a href='/blog/categories/web' style='font-size: 112.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 112.0%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 112.0%'>Xen(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 110.0%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 110.0%'>AR(1)</a> <a href='/blog/categories/arduino' style='font-size: 110.0%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 110.0%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 110.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 110.0%'>BIOS(1)</a> <a href='/blog/categories/c-c-' style='font-size: 120.0%'>C/C++(2)</a> <a href='/blog/categories/centos' style='font-size: 120.0%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 110.0%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 110.0%'>CV(1)</a> <a href='/blog/categories/cygwin' style='font-size: 110.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 110.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 110.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 110.0%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 110.0%'>Fedora(1)</a> <a href='/blog/categories/geek' style='font-size: 130.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 120.0%'>Git(2)</a> <a href='/blog/categories/learning' style='font-size: 110.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 110.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 130.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(6)</a> <a href='/blog/categories/machine' style='font-size: 110.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 110.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 110.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 120.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 110.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 120.0%'>Network(2)</a> <a href='/blog/categories/nlp' style='font-size: 110.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 150.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 120.0%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 110.0%'>OpenCV(1)</a> <a href='/blog/categories/openhardware' style='font-size: 110.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 130.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 110.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 110.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 110.0%'>POSIX(1)</a> <a href='/blog/categories/programming' style='font-size: 130.0%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 110.0%'>PTAM(1)</a> <a href='/blog/categories/pthread' style='font-size: 110.0%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 110.0%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 110.0%'>Qt(1)</a> <a href='/blog/categories/robot' style='font-size: 120.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 110.0%'>SEO(1)</a> <a href='/blog/categories/sfd' style='font-size: 110.0%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 120.0%'>SNS(2)</a> <a href='/blog/categories/speaking' style='font-size: 110.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 110.0%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 110.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 130.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 130.0%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 110.0%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 120.0%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 110.0%'>VPS(1)</a> <a href='/blog/categories/web' style='font-size: 110.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 110.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 110.0%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 110.0%'>Xen(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/06/linux-getting-started-methodologies-and-practices/">Linux Getting Started - Methodologies and Practices</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/02/getting-started-with-qt-and-qt-creator/">Getting Started with Qt and Qt Creator</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/21/c-slash-c-plus-plus-bu-si-de-jing-ling/">C/C++-不死的精灵</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv/">Notes about IEEE 1394 AVT Cameras - FirePackage and OpenCV</a>
@@ -340,18 +356,6 @@ Done.:)</p>
     
       <li class="post">
         <a href="/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/">httplib httplib2 urllib urllib2-what&#8217;s the difference</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way/">Install CentOS 6.4 minial with Grub2 and a USB Stick - The Simple Way</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps/">Playing with Xen under Centos6.4 to build your own VPS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/10/09/sfd2013zhong-ke-yuan-zhan-huo-dong-xiao-jie/">SFD2013中科院站活动小结</a>
       </li>
     
   </ul>
@@ -431,7 +435,7 @@ Done.:)</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - hustcalm -
+  Copyright &copy; 2014 - hustcalm -
   <span class="credit">Powered by <a href="https://github.com">Github</a> & <a href="http://octopress.org">Octopress</a> & <a href="www.cygwin.com">Cygwin</a></span>
 </p>
 

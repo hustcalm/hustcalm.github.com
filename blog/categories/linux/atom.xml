@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2013-12-11T08:57:25+08:00</updated>
+  <updated>2014-01-10T10:42:56+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -12,6 +12,118 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Linux Getting Started - Methodologies and Practices]]></title>
+    <link href="http://hustcalm.me/blog/2014/01/06/linux-getting-started-methodologies-and-practices/"/>
+    <updated>2014-01-06T22:22:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/01/06/linux-getting-started-methodologies-and-practices</id>
+    <content type="html"><![CDATA[<p>This is basically a topic that I gave to <a href="http://blog-ossclub.rhcloud.com/">Open-CAS</a> group members as a technique share. Since I have known Linux for over 4 years and heavily used it for 2 years more or less, I find myself realy attracted by it.</p>
+
+<p>Also I want others to have the chance to live with a better OS(Unix and Linux, also Mac OS of course), so it's a good time to take the good points out of my mind and let more people know.</p>
+
+<p>It's good to learn from each other especially when there are problems to solve. So I put my mind at a <code>github</code> repo called <a href="https://github.com/hustcalm/linux-getting-started">linux-getting-started</a> and hope that others would join me to make this repo more useful.</p>
+
+<!--more-->
+
+
+<h3>What's in this repo</h3>
+
+<p>Currently, I'm addressing two aspects for <code>Linux Getting Started</code>, namely <code>Methodologies</code> and <code>Practices</code>. I know these are really big words, but they just fit here since I want to tell people <code>how to learn</code> not just <code>what to learn</code>.</p>
+
+<h4>Methodologies</h4>
+
+<p>Know what you are gonna do before you step out. Basically, for Linux beginners, the first step that I recommend is <code>install a Linux distro that you like</code>. Then just <code>use it</code> before you want to know everything about it(seems that no one will never ever). It's an OS after all, you use it for your daily job and solve your problems, not a magic software that just plays magic.</p>
+
+<p>A good book would give you a real quick start, I have divided the books into three levels:</p>
+
+<ul>
+<li>[Beginner]</li>
+</ul>
+
+
+<p>Newbies who just get to know Linux - Learn how to live with shell</p>
+
+<ul>
+<li>[Developer]</li>
+</ul>
+
+
+<p>Experienced programmers especially for C/C++ guys - get used to Linux Platform</p>
+
+<ul>
+<li>[Next]</li>
+</ul>
+
+
+<p>Ones who will dive deeper into the most complicated but fun part - Kernel and Driver</p>
+
+<p><strong>In one word, use it, learn it, dive into it!</strong></p>
+
+<h4>Practices</h4>
+
+<p>Using and Reading will give a quite well understanding for Linux, but not enough for mastering it. To become <code>real Linux users or developers</code>, remember <code>never leave your eyes off the screen and your fingers off your keyboard</code>, practice will just make perfect things and a great Linuxer, believe me:-)</p>
+
+<p>I address two technical parts currently in this repo, <code>Shell Scripting</code> and <code>Makefile</code>. Other parts will definitely added as long as I maintain this repo.</p>
+
+<h5>Shell Scripting</h5>
+
+<p>Before beginning with <code>Shell Scripting</code>, I suppose you have already been familiar with varies of commands or utilities in shell.</p>
+
+<p>To be straight, <code>shell</code> itself is a program which will interpret user's commands or instructions, convert them to <code>system calls</code> or other things that OS can understand. So basically speaking, <code>shell</code> is the interface between <code>user</code> and <code>OS Kernel</code>.</p>
+
+<p>As a script language, it has its own variables, functions and flow control statements, also it features many other stuff which will ease much pain for system administration but maybe worse if not used properly. When we are writing shell scripts, we are actually dealing with processes and interprocess communication, each process would do its job and we can use <code>pipe</code>, <code>socket</code>, <code>named-pipes</code> or <code>file</code> to let them talk to each other.</p>
+
+<p>You can definitely play some magic with shell scripting by choosing your favorite shell, like <code>Bash</code>, <code>Ksh</code>, <code>Zsh</code>, etc.</p>
+
+<h5>Makefile</h5>
+
+<p>As you get to know <code>shell</code>, you are ready to know something about <code>makefile</code>. Before that, I will talk about <code>make</code>, <code>autotools</code> first.</p>
+
+<p>When we are trying to build a big project, no one want to invoke every single compiling commands by hand which is annoying but also error prone. Here comes <code>make</code> to figure out this problem. So when you download a package with source code, to build it, simply type:</p>
+
+<pre><code>make
+sudo make install
+</code></pre>
+
+<p>Then you are done!</p>
+
+<p>Is this that easy? Reality will really disappoint us, because the user's OS or environment always will not be consistent with the developer's. So <code>make</code> does not easy the pain for buiding a package or software from scratch, but making it easier to manage a big project.</p>
+
+<p>So what's the solution? Here comes the <code>Autotools</code>, which will generate <code>makefiles</code> automatically according to the configuration of your system. Like you got a third party library A, and one package needs the library for one feature, <code>Autotools</code> will take care of whether you got the library installed, if yes, then build the package with the feature enabled, or just disable it otherwise.</p>
+
+<p>Cool, isn't it? Yes for the users, but maybe no for the developers, I mean all the pain will be transfered to the developers since they got to write <code>Autotools</code> scripts to make things right. Just another wrapper to give a good, cross-platform and generic solution? Some people would quite agree with this opinion.</p>
+
+<p>Thanks to the <code>Autotools</code>, people are getting used to:</p>
+
+<pre><code>./configure
+make
+sudo make install
+</code></pre>
+
+<p>There are many others excellent build systems or tools out there, like <code>CMake</code>, <code>QMake</code>, <code>Scons</code>, <code>Ninja</code> ,etc. Go and try them out!</p>
+
+<hr />
+
+<h3>Where is the slide</h3>
+
+<p>Honestly speaking, the slide is just a chain which helps me to make a clear topic. So you will not find it big, just about 15 pages, however to spread all the sparking mind, you will find it's really a <code>big one</code> again.</p>
+
+<p>If you want, download the slide at <a href="https://github.com/hustcalm/linux-getting-started/blob/master/linux-getting-started-%40hustcalm.pdf">here</a>.</p>
+
+<hr />
+
+<h3>What if I want to see something else</h3>
+
+<p>Cool, buddy, I do hope that we can maintain this repo together and help more people to get started with Linux. So you are welcome to add interesting topics or useful links or good references or books to this repo.</p>
+
+<p>You may either <code>fork</code> this <a href="https://github.com/hustcalm/linux-getting-started">repo</a>, add something interesting, then <code>pull request</code> to me.</p>
+
+<p>Or you can just add what you want to know to the <code>wishList</code> file after <code>fork</code>, maybe shortly I will add stuff about the topic that you care about.</p>
+
+<p>Help others, help yourself:-)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Install CentOS 6.4 minial with Grub2 and a USB Stick - The Simple Way]]></title>
@@ -615,69 +727,6 @@ sudo reboot
 <p>多系统的安装，重点是理解了多系统并存的基本概念，也就是分区和启动项的管理，可以折腾的东西有很多，大家可以根据个人喜好选择自己的方案！需要提醒大家的是，对分区要谨慎操作，数据无价！</p>
 
 <p>全文完，写这篇文章更多是自己的一个小总结，如果对大家有所帮助就再好不过了，有问题随时可以讨论:-)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Acronyms in Debian]]></title>
-    <link href="http://hustcalm.me/blog/2013/05/01/acronyms-in-debian/"/>
-    <updated>2013-05-01T23:27:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/05/01/acronyms-in-debian</id>
-    <content type="html"><![CDATA[<p>Some acronyms in Debian world, confusing at first sight, hope this article can do some help:-)</p>
-
-<h2>Roles</h2>
-
-<ul>
-<li>DPL: Debian Project Leader</li>
-<li>DD: Debian Developer</li>
-<li>DM: Debian Maintainer</li>
-</ul>
-
-
-<h2>Bugs</h2>
-
-<ul>
-<li>RFP: Request For Packaging</li>
-<li>RFS: Request For Sponsor</li>
-<li>ITP: Intent To Packagge</li>
-</ul>
-
-
-<!--more-->
-
-
-<ul>
-<li>RFH: Request For Help</li>
-<li>RFA: Request For Adoption</li>
-<li>O: Orphan</li>
-<li>ITA: Intent To Adoption</li>
-<li>WNPP: Work-Needing and Prospective Packages</li>
-</ul>
-
-
-<h2>Others</h2>
-
-<ul>
-<li>FTBFS: Failed To Build From Source</li>
-<li>NMU: Non-Maintainer Upload</li>
-<li>NM Process: New Maintainer Process</li>
-<li>QA: Quality Assurance</li>
-<li>i18n, i10n, m17n : internationalization, localization, multilingualization</li>
-<li>.d.o: .debian.org</li>
-<li>CVE: Common Vulnerabilities and Exposures</li>
-<li>LP: launchpad</li>
-</ul>
-
-
-<h2>4Fun</h2>
-
-<ul>
-<li>IMHO: In My Humble Opinion</li>
-<li>LOL: Laughing Out Loud</li>
-</ul>
-
-
-<p>If you have any to share, do leave a comment and I will add them to the article:-)</p>
 ]]></content>
   </entry>
   
