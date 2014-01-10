@@ -12,7 +12,9 @@ categories: OpenSource
 And today I want to simply talk about how to get startted on Open Source Community.
 ## Knowing about Workflow
 Right, we should start here.You want to get involed, you got to know the game rules and how the work is done. Basically,most open source projects have their version control system, their bug trackers, their mailing lists, their IRC channels and their wiki of courese, maybe they also have a forum.
+
 <!--more-->
+
 Do read about the wiki pages and I think you should get on feet after that.
 
 ## Get familiar

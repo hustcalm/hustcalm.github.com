@@ -6,7 +6,9 @@ comments: true
 categories: Geek
 ---
 现在绿化软件的方法层出不穷，主流的云端软件平台以及ThinAPP基本都是在一个SandBox中运行软件，实现所谓的绿色化。今天向大家推荐一款绿色软件平台[PortableApps.com](http://portableapps.com)，具体实现机理没有研究，不过使用起来觉得较好，关于是可以安装到U盘中随身携带，碰到了脾气不好的电脑，很有可能就派上用场了，呵呵:)
+
 <!--more-->
+
 具体如何安装什么的，就不罗嗦了，标准的Windows软件的安装和使用方法，目前[PortableApps.com](http://portableapps.com)支持所有的Windows系列系统以及Linux下的Wine，下面只给出链接，想用的朋友自行下载安装折腾吧:)     
 
 *   [PortableApps.com的官方主页](http://portableapps.com)       

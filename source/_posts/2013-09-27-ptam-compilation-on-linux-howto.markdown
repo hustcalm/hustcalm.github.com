@@ -10,6 +10,7 @@ The README.txt file shipped with the newest PTAM source code is really old (the 
 However I made it with just pulling the bleeding edge libs(I mean TooN,libCVD and Gvars3) from github, add a header file `<unistd.h>` to `Tracker.cc`, edit the `Makefile` about the linker flags(I will tell the details below), and I absolutely think that 'share my experience to you' is my duty.
 
 I succeeded on **Linux Mint 15** and **Ubuntu 12.04**, other distros won't be hard either:-)
+
 <!--more-->
 
 Now, let's start the journey!

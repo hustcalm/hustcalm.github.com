@@ -11,7 +11,9 @@ categories: Octopress
 extconf.rb`的话生成的Makefile是依赖系统的1.8.7的，因为直接执行`ruby`，由于路径设置问题，运行的是系统的Ruby，而不是我们自己安装的，所以这里需要小心，通过`~/.rbenv/versions/1.9.3-p194/bin/ruby extconf.rb`解决问题。
 
 参考的链接有以下，感谢他们：
+
 <!--more-->
+
 *   [为已经存在的github Octopress配置本地环境](http://www.360doc.com/content/12/0216/16/1016783_187128091.shtml)
 *   [在Cygwin中搭建Octopress环境](http://madeye.me/2011/12/17/setup-octopress-on-windows)
 *   [Octopress:no such file to load:zlib,openssl](http://ns2.beta4better.org/2012/01/octopress-no-such-file-to-load-zlib-or-openssl.html)

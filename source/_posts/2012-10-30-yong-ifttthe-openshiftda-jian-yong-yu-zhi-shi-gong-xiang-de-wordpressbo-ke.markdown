@@ -10,7 +10,9 @@ categories: WordPress
 Anyway，现在转到Google Reader下了，把QQ邮箱的阅读空间的RSS导出到OPML文件，之后导入到GReader。
 
 分享是学习的一大乐趣，之前一直是把好文分享到微博或者Delicious，现在萌生了把自己的订阅再挑选一些值得玩味的文章自动更新到blog的想法。互联网的神奇使得我的这个想法很快就实现了，主要用到的服务如下：
+
 <!--more-->
+
 *   [ifttt](http://www.ifttt.com)
 实现GReader星标文章自动post到WordPress站点。
 

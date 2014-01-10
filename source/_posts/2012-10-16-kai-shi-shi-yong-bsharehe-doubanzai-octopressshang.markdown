@@ -9,6 +9,6 @@ categories: Octopress
 其中category_cloud，自己目前使用：		
 	git@github.com:hustcalm/octopress-category-list.git
 具体用法可以看README.md。		
-Douban的侧边栏采用经典的source/_includes/custom/asides以及_config.yml的方法,豆瓣收藏秀的代码获取在[豆瓣收藏秀](www.douban.com/service/badgemaker)。	
-如何增加Bshare，参考了文章[Octopress主题改造](shanewfx.github.com/blog/2012/08/13/improve-blog-theme/)，Bshare官方链接[Bshare](http://www.bshare.cn)。	
+Douban的侧边栏采用经典的source/_includes/custom/asides以及_config.yml的方法,豆瓣收藏秀的代码获取在[豆瓣收藏秀](http://www.douban.com/service/badgemaker)。	
+如何增加Bshare，参考了文章[Octopress主题改造](http://shanewfx.github.com/blog/2012/08/13/improve-blog-theme/)，Bshare官方链接[Bshare](http://www.bshare.cn)。	
 Done.:)

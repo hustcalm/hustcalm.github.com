@@ -19,7 +19,7 @@ categories: Life
 占据了很多时间应该属于VLC播放器开发团队的事情吧，作为一个网络协作开发的团队，前期的代价很高，目前整个仍在磨合期，不过相信一定会越走越好。
 
 ### 关于Linux
-大一的时候就开始接触了Linux，在Dian也有很多的Linux高手，最近发现自己的Linux技能马马虎虎，需要加强实践能力。个人感觉centos作为服务器，对用户很有好，至少从我知道的Unix的哲学来看，比较符合Unix的传统，Ubuntu的Server没有怎么用过，但是Canonical的过多改进反而会让系统管理员无所适从。Red Hat在全球服务器市场的地位真不是盖的。之后还是要从APUE什么的出发，以不变应万变。
+大一的时候就开始接触了Linux，在Dian也有很多的Linux高手，最近发现自己的Linux技能马马虎虎，需要加强实践能力。个人感觉centos作为服务器，对用户很友好，至少从我知道的Unix的哲学来看，比较符合Unix的传统，Ubuntu的Server没有怎么用过，但是Canonical的过多改进反而会让系统管理员无所适从。Red Hat在全球服务器市场的地位真不是盖的。之后还是要从APUE什么的出发，以不变应万变。
 
 ### VLC中文社区
 在centos上花了半天时间搭建的[VLC中文社区](http://vlcchina.org)是VLC中国开发团队走出的社区化的第一步，现在还很不成熟，典型的LAMP架构，由drupal驱动，相关的服务器端支持，用的最省事的yum安装，今后准备加上Nginx跟Apache协同做Server，Profile必须尽快做下，访问速度现在不堪忍受。作为一个出发点，向[VideoLAN](http://videolan.org)看齐！

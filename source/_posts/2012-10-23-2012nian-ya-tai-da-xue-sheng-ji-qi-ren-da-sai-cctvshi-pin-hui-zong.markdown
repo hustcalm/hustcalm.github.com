@@ -15,5 +15,6 @@ categories: Robot
 *   [《2012年亚太大学生机器人大赛国内选拔活动 巅峰对决》](http://tv.cntv.cn/video/C39764/20121019100811)
 *   [《2012年亚太大学生机器人大赛国内选拔活动 智者无敌（香港总决赛）》](http://tv.cntv.cn/video/C39764/20121020100533)
 
-Anyway,thx to CCTV!     
+Anyway, thx to CCTV!     
+
 **Hust Go and China Go!**

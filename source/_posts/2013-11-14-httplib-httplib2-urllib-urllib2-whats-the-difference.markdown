@@ -5,7 +5,7 @@ date: 2013-11-14 11:24
 comments: true
 categories: Python Network
 ---
-Lots of people may got confused by the Python modules- `httplib, httplib2, urllib, urllib2`. Judge from their names, we may prefer the *2 module because they may be version 2 of the module and should work better. Maybe you are right for some degree(as for the httplib). 
+Lots of people may got confused by the Python modules- `httplib, httplib2, urllib, urllib2`. Judge from their names, we may prefer the x2 module because they may be version 2 of the module and should work better. Maybe you are right for some degree(as for the httplib). 
 
 However, things are a little bit complicated which needs a brief explanation indeed.
 
@@ -43,12 +43,12 @@ Quote from [here](http://docs.python.org/2/library/urllib.html):
     It's an extensible library for opening URLs.
 
 ## What's the difference
-### httplib* and urllib*
+### httplibx and urllibx
 `urllib/urllib2` is built on top of `httplib`. It offers more features than writing to `httplib` directly.
 However, `httplib` gives you finer control over the underlying connections.
 
 If you're dealing solely with HTTP/HTTPs and need access to HTTP specific stuff, use httplib.
-For all other cases, use urllib*(note that `urllib and urllib2` have different capabilities, thus are always used together).
+For all other cases, use urllibx(note that `urllib and urllib2` have different capabilities, thus are always used together).
 
 ### httplib and httplib2
 Basically, httplib2 is `Google's python httplib implementation` but much more powerful.

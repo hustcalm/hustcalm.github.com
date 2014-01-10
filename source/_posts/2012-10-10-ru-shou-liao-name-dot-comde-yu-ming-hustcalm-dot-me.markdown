@@ -28,4 +28,4 @@ www.hustcalm.me 207.97.227.245
 稍等一会，就可以访问hustcalm.me了。
 
 感觉Name.com家的服务还是很快的。另外，在注册域名的时候默认附带一个收费的whois privacy，不知道是干啥的，但是买了下来。
-官方文章请参考[Deploying to Github Pages](octopress.org/docs/deploying/github)
+官方文章请参考[Deploying to Github Pages](http://octopress.org/docs/deploying/github)

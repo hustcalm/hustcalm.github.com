@@ -13,7 +13,9 @@ UbuntuKylin开发团队和Ubuntu中国社区携手Beijing GNOME用户组举办�
 
 ### 演讲内容
 Anthony主要就Ubuntu的特点进行了简单的描述，并介绍了最新发布的13.04版本的亮点。之后把重点放在了UbuntuKylin项目上，包括开发背景，特性，已经完成的工作以及接下来的计划。
+
 <!--more-->
+
 按照我的理解，UbuntuKylin可以说成是并列于KUbuntu，LUbuntu等的flavor，也可以说成是Ubuntu在中国的本地化。Ubuntu一直致力于用户体验方面，Unity愈发成熟，在整个Linux世界里拥有不少用户。
 
 媒体再怎么质疑也好，开源世界里代码会说话，我们完全看得到UbuntuKylin开发团队的努力和成绩。祝UbuntuKylin在国内越走越好，也希望出现更多的UbuntuKylin，作为一个开发者，可以在launchpad上关注项目的进展，如果感兴趣，一起参与blueprint的讨论，fix一些bug，或者贡献一些代码还是很cool的:-)

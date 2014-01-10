@@ -10,7 +10,10 @@ categories: OpenSource
 *   [SourceForge](http://sourceforge.net)       
 我最早知道的源码托管站点，上面托管了很多有名的项目和软件，现在很多开源软件的下载链接来自于[SourceForge](http://sourceforge.net)，比如Python的一些扩展依赖包，编译VLC所需的很多contrib，vim插件需要的ctags以及cscope等等。GFW曾对其不友好，前段时间由于国内用户在其上托管了过多垃圾站点而遭到了[SourceForge](http://sourceforge.net)的反封锁。由于其比较有历史，很多协同开发用SVN甚至CVS多一些。
 
-*   [GoogleCode](http://code.google.com)       <!--more--> 
+*   [GoogleCode](http://code.google.com)       
+
+<!--more--> 
+
 大名鼎鼎的Google出品，界面简洁，并结合了[Google Developers](http://developers.google.com)，上面也有不少的知名项目，我最近用的PMTK3（机器学习的工具包）就是托管在其上的，但好像一直以来[GoogleCode](http://code.google.com)都不是特别火，我也不知道原因。版本控制方面，全面支持SVN,Git,Mercurial等等，我个人比较信赖Google的服务。
 
 *   [BitBucket](https://bitbucket.org)      

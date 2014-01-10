@@ -8,6 +8,7 @@ categories: VLC
 ## Obtain the toolchain ##
 I just compile VLC2.0.3 for windows with Ubuntu 11.04 and want to share the compiling process and some trouble shooting.I mainly rely on official guide on [Win32Compile-VideoLANWiki](http://www.wiki.videolan.org/Win32Compile).		To get the toolchain, I just run `apt-get install gcc-mingw32 mingw32-binutils`.And also the development tools,run `apt-get install lua automake autoconf autopoint libtool make gettext pkg-config git subversion cmake cvs zip p7zip nsis bzip2`.		<!--more-->	
 After that I got my Host triplet,`i586-mingw32msvc` for Windows 32-bits, using the Mingw32 toolchain.
+
 ## Get the source code ##
 If you want to use an official release, as I did, just run:
 	wget ftp://ftp.videolan.org/pub/videolan/vlc/2.0.3/vlc-2.0.3.tar.xz
@@ -17,6 +18,7 @@ If you are using the Git development version, you must do a bootstrap to generat
 	git clone git://git.videolan.org/vlc.git
 	cd vlc
 	./bootstrap
+
 ## Prepare 3rd party libraries ##
 I got the prebuilt libraries by running:
 	mkdir -p contrib/win32
@@ -31,19 +33,26 @@ If you got a lot time to burn and enjoy compiling the contribs yourself,you may 
 	../bootstrap --host=i586-mingw32msvc
 	make fetch
 	make
+
 ## Go Back ##
 	cd -
+
 ## Bootstrap ##
 	./bootstrap
+
 ## Configure ##
 	mkdir win32 && cd win32
 	../extras/package/win32/configure.sh --host=i586-mingw32msvc
 you can get a lot of information with `../configure -- help | less`.
+
 ## Building VLC ##
 	make
+
 ## Packaging VLC ##
 I just run
+
 	make package-win32
+
 and got an auto-installer generated with NSIS and also a zip package and 7zip package.		
 If everything goes well,congratulations,you have got your own compiled VLC for windows,but always there will be some minor problems.The list below is what I got:	
 	
@@ -72,5 +81,6 @@ I simply browse avcodec.c and add declarations to avcodec.h by referencing this 
 
 ### no such language file *.nsh ###
 Just read extras/package/win32/vlc.win32.nsi and delete the lines about languages,then you can successfully make the nsis work but if you want your VLC playing with locales perfectly, you'd better add the languages mannually.	
-**The End.Feel free to contact me if you got any problem about compiling:)**
+
+**The End. Feel free to contact me if you got any problem about compiling:)**
 
