@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -20,20 +20,20 @@
     <id>http://hustcalm.me/blog/2014/01/06/linux-getting-started-methodologies-and-practices</id>
     <content type="html"><![CDATA[<p>This is basically a topic that I gave to <a href="http://blog-ossclub.rhcloud.com/">Open-CAS</a> group members as a technique share. Since I have known Linux for over 4 years and heavily used it for 2 years more or less, I find myself realy attracted by it.</p>
 
-<p>Also I want others to have the chance to live with a better OS(Unix and Linux, also Mac OS of course), so it&#8217;s a good time to take the good points out of my mind and let more people know.</p>
+<p>Also I want others to have the chance to live with a better OS(Unix and Linux, also Mac OS of course), so it&rsquo;s a good time to take the good points out of my mind and let more people know.</p>
 
-<p>It&#8217;s good to learn from each other especially when there are problems to solve. So I put my mind at a <code>github</code> repo called <a href="https://github.com/hustcalm/linux-getting-started">linux-getting-started</a> and hope that others would join me to make this repo more useful.</p>
+<p>It&rsquo;s good to learn from each other especially when there are problems to solve. So I put my mind at a <code>github</code> repo called <a href="https://github.com/hustcalm/linux-getting-started">linux-getting-started</a> and hope that others would join me to make this repo more useful.</p>
 
 <!--more-->
 
 
-<h3>What&#8217;s in this repo</h3>
+<h3>What&rsquo;s in this repo</h3>
 
-<p>Currently, I&#8217;m addressing two aspects for <code>Linux Getting Started</code>, namely <code>Methodologies</code> and <code>Practices</code>. I know these are really big words, but they just fit here since I want to tell people <code>how to learn</code> not just <code>what to learn</code>.</p>
+<p>Currently, I&rsquo;m addressing two aspects for <code>Linux Getting Started</code>, namely <code>Methodologies</code> and <code>Practices</code>. I know these are really big words, but they just fit here since I want to tell people <code>how to learn</code> not just <code>what to learn</code>.</p>
 
 <h4>Methodologies</h4>
 
-<p>Know what you are gonna do before you step out. Basically, for Linux beginners, the first step that I recommend is <code>install a Linux distro that you like</code>. Then just <code>use it</code> before you want to know everything about it(seems that no one will never ever). It&#8217;s an OS after all, you use it for your daily job and solve your problems, not a magic software that just plays magic.</p>
+<p>Know what you are gonna do before you step out. Basically, for Linux beginners, the first step that I recommend is <code>install a Linux distro that you like</code>. Then just <code>use it</code> before you want to know everything about it(seems that no one will never ever). It&rsquo;s an OS after all, you use it for your daily job and solve your problems, not a magic software that just plays magic.</p>
 
 <p>A good book would give you a real quick start, I have divided the books into three levels:</p>
 
@@ -42,27 +42,27 @@
 </ul>
 
 
-<p>Newbies who just get to know Linux - Learn how to live with shell</p>
+<p>Newbies who just get to know Linux &ndash; Learn how to live with shell</p>
 
 <ul>
 <li>[Developer]</li>
 </ul>
 
 
-<p>Experienced programmers especially for C/C++ guys - get used to Linux Platform</p>
+<p>Experienced programmers especially for C/C++ guys &ndash; get used to Linux Platform</p>
 
 <ul>
 <li>[Next]</li>
 </ul>
 
 
-<p>Ones who will dive deeper into the most complicated but fun part - Kernel and Driver</p>
+<p>Ones who will dive deeper into the most complicated but fun part &ndash; Kernel and Driver</p>
 
 <p><strong>In one word, use it, learn it, dive into it!</strong></p>
 
 <h4>Practices</h4>
 
-<p>Using and Reading will give a quite well understanding for Linux, but not enough for mastering it. To become <code>real Linux users or developers</code>, remember <code>never leave your eyes off the screen and your fingers off your keyboard</code>, practice will just make perfect things and a great Linuxer, believe me:-)</p>
+<p>Using and Reading will give a quite well understanding for Linux, but not enough for mastering it. To become <code>real Linux users or developers</code>, remember <code>never leave your eyes off the screen and your fingers off your keyboard</code>, practice will just make perfect things and a great Linuxer, believe me:&ndash;)</p>
 
 <p>I address two technical parts currently in this repo, <code>Shell Scripting</code> and <code>Makefile</code>. Other parts will definitely added as long as I maintain this repo.</p>
 
@@ -70,7 +70,7 @@
 
 <p>Before beginning with <code>Shell Scripting</code>, I suppose you have already been familiar with varies of commands or utilities in shell.</p>
 
-<p>To be straight, <code>shell</code> itself is a program which will interpret user&#8217;s commands or instructions, convert them to <code>system calls</code> or other things that OS can understand. So basically speaking, <code>shell</code> is the interface between <code>user</code> and <code>OS Kernel</code>.</p>
+<p>To be straight, <code>shell</code> itself is a program which will interpret user&rsquo;s commands or instructions, convert them to <code>system calls</code> or other things that OS can understand. So basically speaking, <code>shell</code> is the interface between <code>user</code> and <code>OS Kernel</code>.</p>
 
 <p>As a script language, it has its own variables, functions and flow control statements, also it features many other stuff which will ease much pain for system administration but maybe worse if not used properly. When we are writing shell scripts, we are actually dealing with processes and interprocess communication, each process would do its job and we can use <code>pipe</code>, <code>socket</code>, <code>named-pipes</code> or <code>file</code> to let them talk to each other.</p>
 
@@ -88,11 +88,11 @@ sudo make install
 
 <p>Then you are done!</p>
 
-<p>Is this that easy? Reality will really disappoint us, because the user&#8217;s OS or environment always will not be consistent with the developer&#8217;s. So <code>make</code> does not easy the pain for buiding a package or software from scratch, but making it easier to manage a big project.</p>
+<p>Is this that easy? Reality will really disappoint us, because the user&rsquo;s OS or environment always will not be consistent with the developer&rsquo;s. So <code>make</code> does not easy the pain for buiding a package or software from scratch, but making it easier to manage a big project.</p>
 
-<p>So what&#8217;s the solution? Here comes the <code>Autotools</code>, which will generate <code>makefiles</code> automatically according to the configuration of your system. Like you got a third party library A, and one package needs the library for one feature, <code>Autotools</code> will take care of whether you got the library installed, if yes, then build the package with the feature enabled, or just disable it otherwise.</p>
+<p>So what&rsquo;s the solution? Here comes the <code>Autotools</code>, which will generate <code>makefiles</code> automatically according to the configuration of your system. Like you got a third party library A, and one package needs the library for one feature, <code>Autotools</code> will take care of whether you got the library installed, if yes, then build the package with the feature enabled, or just disable it otherwise.</p>
 
-<p>Cool, isn&#8217;t it? Yes for the users, but maybe no for the developers, I mean all the pain will be transfered to the developers since they got to write <code>Autotools</code> scripts to make things right. Just another wrapper to give a good, cross-platform and generic solution? Some people would quite agree with this opinion.</p>
+<p>Cool, isn&rsquo;t it? Yes for the users, but maybe no for the developers, I mean all the pain will be transfered to the developers since they got to write <code>Autotools</code> scripts to make things right. Just another wrapper to give a good, cross-platform and generic solution? Some people would quite agree with this opinion.</p>
 
 <p>Thanks to the <code>Autotools</code>, people are getting used to:</p>
 
@@ -107,7 +107,7 @@ sudo make install
 
 <h3>Where is the slide</h3>
 
-<p>Honestly speaking, the slide is just a chain which helps me to make a clear topic. So you will not find it big, just about 15 pages, however to spread all the sparking mind, you will find it&#8217;s really a <code>big one</code> again.</p>
+<p>Honestly speaking, the slide is just a chain which helps me to make a clear topic. So you will not find it big, just about 15 pages, however to spread all the sparking mind, you will find it&rsquo;s really a <code>big one</code> again.</p>
 
 <p>If you want, download the slide at <a href="https://github.com/hustcalm/linux-getting-started/blob/master/linux-getting-started-%40hustcalm.pdf">here</a>.</p>
 
@@ -121,23 +121,23 @@ sudo make install
 
 <p>Or you can just add what you want to know to the <code>wishList</code> file after <code>fork</code>, maybe shortly I will add stuff about the topic that you care about.</p>
 
-<p>Help others, help yourself:-)</p>
+<p>Help others, help yourself:&ndash;)</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Getting Started with Qt and Qt Creator]]></title>
+    <title type="html"><![CDATA[Getting Started With Qt and Qt Creator]]></title>
     <link href="http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator/"/>
     <updated>2014-01-02T15:42:00+08:00</updated>
     <id>http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator</id>
-    <content type="html"><![CDATA[<p>Recently I&#8217;m doing a project for the Lab and choose C++ as the programming language, but for the Framework, I considered MFC and Qt at first but choose Qt without hesitation as soon as I recalled the pains when I tried to play with MFC. In short, MFC is just showing too much to the developer and looks a little annoying and more complicated(C++ itself is complicated enough).</p>
+    <content type="html"><![CDATA[<p>Recently I&rsquo;m doing a project for the Lab and choose C++ as the programming language, but for the Framework, I considered MFC and Qt at first but choose Qt without hesitation as soon as I recalled the pains when I tried to play with MFC. In short, MFC is just showing too much to the developer and looks a little annoying and more complicated(C++ itself is complicated enough).</p>
 
 <p>To be clear, I did not try Qt before either and totally new to it. But after two months, I wrote a running application which can deal with Cameras, IMU and Inclinometer, also a 6DOF controller. Besides, we have multithreading in it and multiply timers are running simultaneously. To summarize what I have learned and also share my experience to you is the desire to write this post.</p>
 
 <!--more-->
 
 
-<p>I also find that Qt Creator is really cool with the plugin <code>FakeVim</code> enabled(It is installed by default ,at least in my Qt Creator 2.8.1 Windows version), a light wight IDE with powerful abilities! So in this post, after talking about how to get started with Qt, I will give some appreciations to Qt Creator:-)</p>
+<p>I also find that Qt Creator is really cool with the plugin <code>FakeVim</code> enabled(It is installed by default ,at least in my Qt Creator 2.8.1 Windows version), a light wight IDE with powerful abilities! So in this post, after talking about how to get started with Qt, I will give some appreciations to Qt Creator:&ndash;)</p>
 
 <hr />
 
@@ -145,13 +145,13 @@ sudo make install
 
 <h4>Get to know Qt</h4>
 
-<p>It&#8217;s essentially a GUI toolkit when fist designed, but after years of development, it has evolved into a framework which is cross platform and popular.</p>
+<p>It&rsquo;s essentially a GUI toolkit when fist designed, but after years of development, it has evolved into a framework which is cross platform and popular.</p>
 
 <p>For official introduction, visit <a href="http://qt-project.org/">Qt Project</a>.</p>
 
 <h4>Choosing the way that you use</h4>
 
-<p>I will not talk about the versions ,like 5.x or 4.x. Let&#8217;s say something about the <code>prebuilt-binaries</code> and <code>source code</code>.</p>
+<p>I will not talk about the versions ,like 5.x or 4.x. Let&rsquo;s say something about the <code>prebuilt-binaries</code> and <code>source code</code>.</p>
 
 <p>If you choose to build from scratch, it would take a bit of time to do that since Qt is big enough. If using the built binaries, do look at the related compilor, for Windows, you got options for VS 2008, VS 2010, VS 2012 and MinGW stuff. If you are using VS 2008(in my case), choosing this file <a href="http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-win-opensource-4.8.5-vs2008.exe">Qt libraries 4.8.5 for Windows (VS 2008, 235 MB)</a>, just for an example,then probably you are good to go when you build your project with VS 2008 as the backend.</p>
 
@@ -159,11 +159,11 @@ sudo make install
 
 <h4>A good book would help a lot</h4>
 
-<p>I read the book <code>C++ GUI Programming with Qt 4(2nd Edition)</code> not because it&#8217;s the best book for Qt, just because that we got one Chinese version copy of the book in our Lab. I went through the first 3 chapters and the appendix(mainly to know more about <code>qmake</code>), then referenced other chapters while I got problems when coding.</p>
+<p>I read the book <code>C++ GUI Programming with Qt 4(2nd Edition)</code> not because it&rsquo;s the best book for Qt, just because that we got one Chinese version copy of the book in our Lab. I went through the first 3 chapters and the appendix(mainly to know more about <code>qmake</code>), then referenced other chapters while I got problems when coding.</p>
 
 <p>For the comment that I wrote for the book, you can find it <a href="http://book.douban.com/review/6489896/">here</a>.</p>
 
-<p>However, this book is recommended as the official Qt book. You may want to try it out yourself and make your own judge, if you find another excellent book, do let me know:-)</p>
+<p>However, this book is recommended as the official Qt book. You may want to try it out yourself and make your own judge, if you find another excellent book, do let me know:&ndash;)</p>
 
 <h4>See what the official says</h4>
 
@@ -176,7 +176,7 @@ sudo make install
 </ul>
 
 
-<p>You may notice that each Qt version got their own getting started web page, however, don&#8217;t bother, checkout them all and pick the brilliant part that suits yourself.</p>
+<p>You may notice that each Qt version got their own getting started web page, however, don&rsquo;t bother, checkout them all and pick the brilliant part that suits yourself.</p>
 
 <p>As time goes by, there may be new links and the listed links would be out of date. Go to the official website and find the real links then.</p>
 
@@ -184,15 +184,15 @@ sudo make install
 
 <h3>Qt Creator as your Swiss Army Knife</h3>
 
-<p>Yes, it is just an IDE, compared with Eclipse, it&#8217;s dedicated to Qt and C++(Not exactly, it supports Android and even BlackBerry development), so much light-wighted. However, it&#8217;s flexible and with lots of plugins, see <a href="http://qt-project.org/wiki/Qt_Creator_Plug-in_Gallery">Qt Creator Plugin Gallery</a>.</p>
+<p>Yes, it is just an IDE, compared with Eclipse, it&rsquo;s dedicated to Qt and C++(Not exactly, it supports Android and even BlackBerry development), so much light-wighted. However, it&rsquo;s flexible and with lots of plugins, see <a href="http://qt-project.org/wiki/Qt_Creator_Plug-in_Gallery">Qt Creator Plugin Gallery</a>.</p>
 
-<p>As I&#8217;m not expert to Qt Creator either, I will give several examples here.</p>
+<p>As I&rsquo;m not expert to Qt Creator either, I will give several examples here.</p>
 
 <h4>FakeVim</h4>
 
-<p>Default shipped with Qt Creator, I&#8217;m really excited when I find it. Support external <code>.vimrc</code> and give you almost the native vim experience.</p>
+<p>Default shipped with Qt Creator, I&rsquo;m really excited when I find it. Support external <code>.vimrc</code> and give you almost the native vim experience.</p>
 
-<p>I used the default <code>FakeVim</code> key bindings, they are just as same as the official vim, besides that, you may use other short cuts provided by Qt Creator, among them, <code>F2</code> for following the symbol under cursor and <code>F4</code> for switching header and souce file are the most frequently used. For generating source code tags, it&#8217;s well cared by a background process, however when got large source files, I suffered for temporary <code>Not Responding</code>.</p>
+<p>I used the default <code>FakeVim</code> key bindings, they are just as same as the official vim, besides that, you may use other short cuts provided by Qt Creator, among them, <code>F2</code> for following the symbol under cursor and <code>F4</code> for switching header and souce file are the most frequently used. For generating source code tags, it&rsquo;s well cared by a background process, however when got large source files, I suffered for temporary <code>Not Responding</code>.</p>
 
 <p>For quick view of the options:
 <img src="http://hustcalm.me/images/blog_images/qt_creator-fakevim.png"></p>
@@ -216,7 +216,7 @@ sudo make install
 
 <hr />
 
-<p>Hope this post do a little help for your getting started with Qt Programming:-)</p>
+<p>Hope this post do a little help for your getting started with Qt Programming:&ndash;)</p>
 ]]></content>
   </entry>
   
@@ -260,7 +260,7 @@ sudo make install
 
 <p>说到了编译器，就再说一下抽象层这个事情吧。大家可能都知道，最开始的编程使用机器语言，后来到了汇编语言，由汇编器完成中间的翻译工作。后来出现了高级语言，比如C语言（其实在之前有很多其它的语言，C语言不是最早却是最成功的），这个时候由编译器把源代码处理后编译成汇编代码，再由汇编器翻译成机器代码。至于之后的动态语言，比如Python，也是先要使用一种语言实现一个解释器，然后再通过这个解释器来运行用户的脚本或者代码。居于中间的另外一种语言形式可以拿Java举例子，它本身具有静态语言和动态语言的特点，而这一切都是由JVM（Java Virtual Machine）带来的。</p>
 
-<p>纵观几种语言形态，可以发现一种典型的分层结构，源代码->（中间代码）-> 汇编代码 -> 机器代码。 扯一句淡，“任何的软件问题，都可以通过增加一层抽象层解决”。呵呵。</p>
+<p>纵观几种语言形态，可以发现一种典型的分层结构，源代码->（中间代码）-> 汇编代码 &ndash;> 机器代码。 扯一句淡，“任何的软件问题，都可以通过增加一层抽象层解决”。呵呵。</p>
 
 <h4>OS</h4>
 
@@ -296,7 +296,7 @@ sudo make install
 
 <h3>看看他们怎么说</h3>
 
-<p>网上关于CRT，Standard Library，OS的综合讨论并不太多，这里我挑几个典型的分析，简单概括一下原作者的看法。如果跟原文的意思有出入，请原作者包涵啦:-)</p>
+<p>网上关于CRT，Standard Library，OS的综合讨论并不太多，这里我挑几个典型的分析，简单概括一下原作者的看法。如果跟原文的意思有出入，请原作者包涵啦:&ndash;)</p>
 
 <h4><a href="http://www.codeproject.com/Articles/22642/What-Every-Computer-Programmer-Should-Know-About-W#ContentsofC++StandardLibrary">What Every Computer Programmer Should Know About Windows API, CRT, and the Standard C++ Library</a></h4>
 
@@ -363,7 +363,7 @@ sudo make install
 <li><p>找到正确的入门书籍，谭老师的那本书我是强烈不推荐的，推荐看C语言三剑客《C和指针》，《C陷阱和缺陷》和《C专家编程》。C++的话，个人觉得《Essential C++》适合入门，C++ Primer适合当成参考书籍，其它的《Effective C++》等还没看过，不敢乱说。</p></li>
 <li><p>边看边练，加深理解，拿指针为例，一定在从对应的内存关系去理解，就会感觉很自然，它不过是一个整形变量，指代一个内容地址而已;而变量本身就是某一个内存地址的抽象表示嘛。而不管指针的指针，还是什么，顺着下去也就比较好理解了，只是关系繁杂的时候需要仔细缕清楚。</p></li>
 <li><p>基本熟悉之后，可以去试试一些框架，比如Qt，体会一下框架是如何在C++之上给开发者抽象了一层应用开发层的。</p></li>
-<li><p>后面的，自行发挥想象力吧:-)</p></li>
+<li><p>后面的，自行发挥想象力吧:&ndash;)</p></li>
 </ul>
 
 
@@ -378,13 +378,13 @@ sudo make install
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Notes about IEEE 1394 AVT Cameras - FirePackage and OpenCV]]></title>
+    <title type="html"><![CDATA[Notes About IEEE 1394 AVT Cameras - FirePackage and OpenCV]]></title>
     <link href="http://hustcalm.me/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv/"/>
     <updated>2013-12-10T21:10:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv</id>
-    <content type="html"><![CDATA[<p>I&#8217;m trying to make AVT 1394 Cameras work with OpenCV using the standard <code>VideoCapture</code> recently but got no luck. Briefly speaking, OpenCV&#8217;s support for camera input are <code>Operating System</code> and <code>Device Driver</code> aware.</p>
+    <content type="html"><![CDATA[<p>I&rsquo;m trying to make AVT 1394 Cameras work with OpenCV using the standard <code>VideoCapture</code> recently but got no luck. Briefly speaking, OpenCV&rsquo;s support for camera input are <code>Operating System</code> and <code>Device Driver</code> aware.</p>
 
-<p>In this post, I will give some basic related concepts related to Firewire(aka IEEE 1394) and AVT software packages, also OpenCV&#8217;s <code>VideoCapture</code> workflow.</p>
+<p>In this post, I will give some basic related concepts related to Firewire(aka IEEE 1394) and AVT software packages, also OpenCV&rsquo;s <code>VideoCapture</code> workflow.</p>
 
 <!--more-->
 
@@ -393,7 +393,7 @@ sudo make install
 
 <h3>FireWire</h3>
 
-<p>Aka <a href="http://en.wikipedia.org/wiki/IEEE_1394">IEEE 1394</a>, it&#8217;s a serial bus interface standard for high-speed communications and isochronous real-time data transfer, developed by <code>Apple</code> in early 1990s and called <code>FireWire</code>. The main competitor nowadays is <code>USB</code>.</p>
+<p>Aka <a href="http://en.wikipedia.org/wiki/IEEE_1394">IEEE 1394</a>, it&rsquo;s a serial bus interface standard for high-speed communications and isochronous real-time data transfer, developed by <code>Apple</code> in early 1990s and called <code>FireWire</code>. The main competitor nowadays is <code>USB</code>.</p>
 
 <p>For the official introduction part, you can refer to the wikipedia link above, I want to address two points here.</p>
 
@@ -417,7 +417,7 @@ sudo make install
 
 <h3>AVT Cameras</h3>
 
-<p><a href="http://www.alliedvisiontec.com">AVT</a> does manufacture so many cameras and provide great technical support. It&#8217;s kind of a choice for you to choose between the software packages,seriously speaking.</p>
+<p><a href="http://www.alliedvisiontec.com">AVT</a> does manufacture so many cameras and provide great technical support. It&rsquo;s kind of a choice for you to choose between the software packages,seriously speaking.</p>
 
 <h4>AVT Software Selector</h4>
 
@@ -443,9 +443,9 @@ sudo make install
 
 <h4>AVT and OpenCV</h4>
 
-<p>Bad luck that we can&#8217;t use AVT cameras just with <code>VideoCapture</code> because that the cameras might use a device driver that OpenCV can&#8217;t talk to.</p>
+<p>Bad luck that we can&rsquo;t use AVT cameras just with <code>VideoCapture</code> because that the cameras might use a device driver that OpenCV can&rsquo;t talk to.</p>
 
-<p>However if your camera compliants with <a href="http://www.cs.cmu.edu/~iwan/1394/">CMU 1394 Digital Camera Driver</a>, probably you will be happy again:-)</p>
+<p>However if your camera compliants with <a href="http://www.cs.cmu.edu/~iwan/1394/">CMU 1394 Digital Camera Driver</a>, probably you will be happy again:&ndash;)</p>
 
 <hr />
 
@@ -462,7 +462,7 @@ sudo make install
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[httplib httplib2 urllib urllib2-what's the difference]]></title>
+    <title type="html"><![CDATA[Httplib Httplib2 Urllib Urllib2-what's the Difference]]></title>
     <link href="http://hustcalm.me/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/"/>
     <updated>2013-11-14T11:24:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference</id>
@@ -473,9 +473,9 @@ sudo make install
 <!--more-->
 
 
-<h2>What&#8217;s the claim</h2>
+<h2>What&rsquo;s the claim</h2>
 
-<p>First, let&#8217;s see what a specified module&#8217;s aim. I will quote from the official site:-)</p>
+<p>First, let&rsquo;s see what a specified module&rsquo;s aim. I will quote from the official site:&ndash;)</p>
 
 <h3>httplib</h3>
 
@@ -516,14 +516,14 @@ Some restrictions apply — it can only open URLs for reading, and no seek opera
 It's an extensible library for opening URLs.
 </code></pre>
 
-<h2>What&#8217;s the difference</h2>
+<h2>What&rsquo;s the difference</h2>
 
 <h3>httplibx and urllibx</h3>
 
 <p><code>urllib/urllib2</code> is built on top of <code>httplib</code>. It offers more features than writing to <code>httplib</code> directly.
 However, <code>httplib</code> gives you finer control over the underlying connections.</p>
 
-<p>If you&#8217;re dealing solely with HTTP/HTTPs and need access to HTTP specific stuff, use httplib.
+<p>If you&rsquo;re dealing solely with HTTP/HTTPs and need access to HTTP specific stuff, use httplib.
 For all other cases, use urllibx(note that <code>urllib and urllib2</code> have different capabilities, thus are always used together).</p>
 
 <h3>httplib and httplib2</h3>
@@ -532,9 +532,9 @@ For all other cases, use urllibx(note that <code>urllib and urllib2</code> have 
 
 <p>They actually do the same things utilizing HTTP/HTTPs and other network protocals like FTP, typically we can call them <code>HTTP client library</code>.</p>
 
-<p>If <code>httplib</code> can&#8217;t fulfill your need(as if you need the <code>Redirects</code> feature), consider switching to <code>httplib2</code> then.</p>
+<p>If <code>httplib</code> can&rsquo;t fulfill your need(as if you need the <code>Redirects</code> feature), consider switching to <code>httplib2</code> then.</p>
 
-<p>To make things simpler, I&#8217;d rather using <code>httplib2</code> as my default <code>HTTP client library</code> for Python.</p>
+<p>To make things simpler, I&rsquo;d rather using <code>httplib2</code> as my default <code>HTTP client library</code> for Python.</p>
 
 <h3>urllib and urllib2</h3>
 
@@ -544,7 +544,7 @@ For all other cases, use urllibx(note that <code>urllib and urllib2</code> have 
 
 <ul>
 <li><code>urllib2</code> can accept a Request object to set the headers for a URL request, urllib accepts only a URL. That means, you cannot masquerade your User Agent string etc.</li>
-<li><code>urllib</code> provides the urlencode method which is used for the generation of GET query strings, urllib2 doesn&#8217;t have such a function. This is one of the reasons why urllib is often used along with urllib2.</li>
+<li><code>urllib</code> provides the urlencode method which is used for the generation of GET query strings, urllib2 doesn&rsquo;t have such a function. This is one of the reasons why urllib is often used along with urllib2.</li>
 </ul>
 
 
@@ -574,13 +574,13 @@ For all other cases, use urllibx(note that <code>urllib and urllib2</code> have 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Install CentOS 6.4 minial with Grub2 and a USB Stick - The Simple Way]]></title>
+    <title type="html"><![CDATA[Install CentOS 6.4 Minial With Grub2 and a USB Stick - the Simple Way]]></title>
     <link href="http://hustcalm.me/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way/"/>
     <updated>2013-11-04T17:08:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way</id>
     <content type="html"><![CDATA[<p>What a shame that I failed over and over to just install CentOS 6.4 minimal to my Desktop PC!!!</p>
 
-<p>I got a broken Ubuntu 12.04 on my hand with a working Grub2, cheers:-) Also, I luckily have a 4 GB USB stick(who esle dosen&#8217;t,kidding).</p>
+<p>I got a broken Ubuntu 12.04 on my hand with a working Grub2, cheers:&ndash;) Also, I luckily have a 4 GB USB stick(who esle dosen&rsquo;t,kidding).</p>
 
 <h2>The Goal</h2>
 
@@ -608,7 +608,7 @@ For all other cases, use urllibx(note that <code>urllib and urllib2</code> have 
 
 <h3>ISO</h3>
 
-<p>Download it from a mirror that&#8217;s close enough to you. Check out the <a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">Mirror List</a> and I choose <a href="http://mirrors.163.com/centos/6.4/isos/x86_64/">mirrors.163.com</a>.</p>
+<p>Download it from a mirror that&rsquo;s close enough to you. Check out the <a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">Mirror List</a> and I choose <a href="http://mirrors.163.com/centos/6.4/isos/x86_64/">mirrors.163.com</a>.</p>
 
 <p>Save the <code>CentOS-6.4-x86_64-minimal.iso</code> to your hard drive.</p>
 
@@ -616,7 +616,7 @@ For all other cases, use urllibx(note that <code>urllib and urllib2</code> have 
 
 <p>According to the CentOS wiki, the installer will recognize ext2 or vfat. I choose vfat in my case.</p>
 
-<p>My device on my Linuxmint shows /dev/sdb and the partition shows /dev/sdb1. Just ensure that you have a VFAT partition, other things don&#8217;t matter too much really.</p>
+<p>My device on my Linuxmint shows /dev/sdb and the partition shows /dev/sdb1. Just ensure that you have a VFAT partition, other things don&rsquo;t matter too much really.</p>
 
 <p>To play with device and partitions, you can use <code>fdisk</code> and <code>mkfs.*</code> or other tools that you favor.</p>
 
@@ -649,9 +649,9 @@ initrd (hd1,msdos1)/isolinux/initrd.img
 boot
 </code></pre>
 
-<p>When you prompt to select <code>Installation Method</code>, use <code>Hard Drive</code> and select <code>sda1</code>, follow the routine procedures and you are done:-)</p>
+<p>When you prompt to select <code>Installation Method</code>, use <code>Hard Drive</code> and select <code>sda1</code>, follow the routine procedures and you are done:&ndash;)</p>
 
-<p><strong>I tried <code>URL Method</code> but failed, either <code>mirrors.163.com</code> nor <code>mirrors.sohu.com</code> would work:-(</strong></p>
+<p><strong>I tried <code>URL Method</code> but failed, either <code>mirrors.163.com</code> nor <code>mirrors.sohu.com</code> would work:&ndash;(</strong></p>
 
 <h2>Summary</h2>
 
@@ -664,7 +664,7 @@ boot
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Playing with Xen under Centos6.4 to build your own VPS]]></title>
+    <title type="html"><![CDATA[Playing With Xen Under Centos6.4 to Build Your Own VPS]]></title>
     <link href="http://hustcalm.me/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps/"/>
     <updated>2013-10-14T10:28:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps</id>
@@ -672,7 +672,7 @@ boot
 
 <p>I used to be curious about VPS(Virtual Private Server), how they work, how to build them, etc. As far as I know, AWS, GCE or whatever else solutions depend heavily on Virtualization Technologies and AWS is definitly playing with Xen currently.</p>
 
-<p>I would like very much to have a trial for building my own VPS and blow are my steps doing it. You may need to read some basic wikis about Xen, <a href="http://wiki.xen.org/wiki/Xen_Overview">Xen Overview</a> and <a href="http://wiki.xen.org/wiki/Xen_Beginners_Guide">Xen Beginners Guide</a> should do some help:-)</p>
+<p>I would like very much to have a trial for building my own VPS and blow are my steps doing it. You may need to read some basic wikis about Xen, <a href="http://wiki.xen.org/wiki/Xen_Overview">Xen Overview</a> and <a href="http://wiki.xen.org/wiki/Xen_Beginners_Guide">Xen Beginners Guide</a> should do some help:&ndash;)</p>
 
 <!--more-->
 
@@ -704,9 +704,9 @@ xl list
 
 <h3>Config network</h3>
 
-<p>I use DHCP to get a valid IP for my box and there is a trick if you can&#8217;t ping each other when two machinea are in the same LAN(probably the routing table is not working for you and just delete the record from your routing table).</p>
+<p>I use DHCP to get a valid IP for my box and there is a trick if you can&rsquo;t ping each other when two machinea are in the same LAN(probably the routing table is not working for you and just delete the record from your routing table).</p>
 
-<p>As me, for example, my laptop got a IP, say 192.168.0.10 and my VPS got 192.168.0.11, but they can&#8217;t talk to each:-(</p>
+<p>As me, for example, my laptop got a IP, say 192.168.0.10 and my VPS got 192.168.0.11, but they can&rsquo;t talk to each:&ndash;(</p>
 
 <p>First, check your routing table,</p>
 
@@ -775,7 +775,7 @@ BRIDGE=xenbr0
 
 <h3>Diable SELinux</h3>
 
-<p>Honestly speaking, I don&#8217;t know WTF the real reason to do this, but people say <code>SELinux can really interfere with Xen</code>.</p>
+<p>Honestly speaking, I don&rsquo;t know WTF the real reason to do this, but people say <code>SELinux can really interfere with Xen</code>.</p>
 
 <pre><code>sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 setenforce 0
@@ -785,7 +785,7 @@ setenforce 0
 
 <h2>Bringing Your DomUs Up</h2>
 
-<p>It&#8217;s up to you to use PV or HVM, personally, I prefer to PV due to higher performance. But if you want a Windows(and other OS whose kernel can&#8217;t be modified), HVM is your only choice.</p>
+<p>It&rsquo;s up to you to use PV or HVM, personally, I prefer to PV due to higher performance. But if you want a Windows(and other OS whose kernel can&rsquo;t be modified), HVM is your only choice.</p>
 
 <p>As for me, I want 3 DomUs, namely Debian, Fedora and Arch Linux.</p>
 
@@ -877,7 +877,7 @@ cd /etc/xen/
 xl create -c arch.cfg
 </code></pre>
 
-<p>Install your Arch Linux as you like since it&#8217;s really a highly customized distro.</p>
+<p>Install your Arch Linux as you like since it&rsquo;s really a highly customized distro.</p>
 
 <h4>Fedora</h4>
 
@@ -903,7 +903,7 @@ service iptables stop
 virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://your.http.server.ip.address.here/ --os-type linux --accelerate --nographics --network=bridge:xenbr0
 </code></pre>
 
-<p>Remember this is for full Fedora installation, if you are using a netinst, you need to copy all the files to /var/www/html instead of creating a symbolic link and modify the .treeinfo file. No warrants here, since I did&#8217;t try it myself.</p>
+<p>Remember this is for full Fedora installation, if you are using a netinst, you need to copy all the files to /var/www/html instead of creating a symbolic link and modify the .treeinfo file. No warrants here, since I did&rsquo;t try it myself.</p>
 
 <h2>References</h2>
 
@@ -935,7 +935,7 @@ virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fed
 
 <hr />
 
-<p>I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:-)</p>
+<p>I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:&ndash;)</p>
 ]]></content>
   </entry>
   
@@ -1048,20 +1048,20 @@ virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fed
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[PTAM Compilation On Linux-HowTo]]></title>
+    <title type="html"><![CDATA[PTAM Compilation on Linux-HowTo]]></title>
     <link href="http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto/"/>
     <updated>2013-09-27T19:50:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto</id>
-    <content type="html"><![CDATA[<p>The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god&#8217;s sake) ! I struggled to get it done on my Linux Mint 15 with totally failure:-(</p>
+    <content type="html"><![CDATA[<p>The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god&rsquo;s sake) ! I struggled to get it done on my Linux Mint 15 with totally failure:&ndash;(</p>
 
-<p>However I made it with just pulling the bleeding edge libs(I mean TooN,libCVD and Gvars3) from github, add a header file <code>&lt;unistd.h&gt;</code> to <code>Tracker.cc</code>, edit the <code>Makefile</code> about the linker flags(I will tell the details below), and I absolutely think that &#8216;share my experience to you&#8217; is my duty.</p>
+<p>However I made it with just pulling the bleeding edge libs(I mean TooN,libCVD and Gvars3) from github, add a header file <code>&lt;unistd.h&gt;</code> to <code>Tracker.cc</code>, edit the <code>Makefile</code> about the linker flags(I will tell the details below), and I absolutely think that &lsquo;share my experience to you&rsquo; is my duty.</p>
 
-<p>I succeeded on <strong>Linux Mint 15</strong> and <strong>Ubuntu 12.04</strong>, other distros won&#8217;t be hard either:-)</p>
+<p>I succeeded on <strong>Linux Mint 15</strong> and <strong>Ubuntu 12.04</strong>, other distros won&rsquo;t be hard either:&ndash;)</p>
 
 <!--more-->
 
 
-<p>Now, let&#8217;s start the journey!</p>
+<p>Now, let&rsquo;s start the journey!</p>
 
 <h2>Installation the required dependencies</h2>
 
@@ -1155,7 +1155,7 @@ wget http://www.edwardrosten.com/cvd/gvars-3.0.tar.gz
 
 <p><strong>Note the versions may differ as time goes by, use git if you can</strong> Or just look at this <a href="http://www.edwardrosten.com/cvd/toon.html">link</a> for more details.</p>
 
-<p>Also remember <strong>do refer to the README files when you try to install the libraries</strong>, cause they really do help in some manner:-)</p>
+<p>Also remember <strong>do refer to the README files when you try to install the libraries</strong>, cause they really do help in some manner:&ndash;)</p>
 
 <h3>TooN</h3>
 
@@ -1166,7 +1166,7 @@ wget http://www.edwardrosten.com/cvd/gvars-3.0.tar.gz
 
 <h3>libCVD</h3>
 
-<p>Remember that libCVD really needs TooN, or you will get stuck when trying to compile PTAM:-(</p>
+<p>Remember that libCVD really needs TooN, or you will get stuck when trying to compile PTAM:&ndash;(</p>
 
 <p>The steps I used is like this:</p>
 
@@ -1175,7 +1175,7 @@ make
 sudo make install
 </code></pre>
 
-<p>If you run into problems, check the output of <code>./configure</code> carefully, they will give you some hints:-)</p>
+<p>If you run into problems, check the output of <code>./configure</code> carefully, they will give you some hints:&ndash;)</p>
 
 <h3>Gvars3</h3>
 
@@ -1222,12 +1222,12 @@ cp Build/Linux/* .
 
 <h3>Make</h3>
 
-<p>Probably an error will popup, like &#8220;error, <code>usleep</code> was not declared in this scope&#8221;, easily add</p>
+<p>Probably an error will popup, like &ldquo;error, <code>usleep</code> was not declared in this scope&rdquo;, easily add</p>
 
 <pre><code>#include &lt;unistd.h&gt;
 </code></pre>
 
-<p>to <code>Tracker.cc</code> and you are done:-)</p>
+<p>to <code>Tracker.cc</code> and you are done:&ndash;)</p>
 
 <p>Just</p>
 
@@ -1244,13 +1244,13 @@ cp Build/Linux/* .
 
 <ul>
 <li><a href="http://hhfighting.blog.163.com/blog/static/55700323201242524213235/">ubuntu11.10下安装PTAMM</a></li>
-<li><a href="http://www.edwardrosten.com/cvd/toon.html">TooN: Tom&#8217;s Object-oriented numerics library</a></li>
+<li><a href="http://www.edwardrosten.com/cvd/toon.html">TooN: Tom&rsquo;s Object-oriented numerics library</a></li>
 <li><a href="http://code.google.com/p/qt-opencv-multithreaded/wiki/Documentation">qt-opencv-multithreaded</a></li>
 <li><a href="http://docs.opencv.org/trunk/doc/tutorials/introduction/linux_install/linux_install.html">OpenCV Tutorials-Installation in Linux</a></li>
 </ul>
 
 
-<p>Hope this post will do some help and if you find any mistake in my blog, please do <strong>leave your comment or drop me a line:-)</strong></p>
+<p>Hope this post will do some help and if you find any mistake in my blog, please do <strong>leave your comment or drop me a line:&ndash;)</strong></p>
 ]]></content>
   </entry>
   
@@ -1395,7 +1395,7 @@ cp Build/Linux/* .
 
 <p>两个Query如何比较相似性？（根据Query对应的商品计算）。</p>
 
-<p>后来讲到了定向维度（裸数据的维度达到了千亿的级别，预处理之后是十亿的级别，好吓人）和RTB，可能听得比较起劲，记得东西少了:-(。</p>
+<p>后来讲到了定向维度（裸数据的维度达到了千亿的级别，预处理之后是十亿的级别，好吓人）和RTB，可能听得比较起劲，记得东西少了:&ndash;(。</p>
 
 <hr />
 
@@ -1463,7 +1463,7 @@ cp Build/Linux/* .
 
 <p>而竞价算法解决的是，如何在不同的位置，给不同的用户展示合适的广告？这里又是Tanx解决的问题了，主要用到的技术就是HDFS，Map/Reduce，MPI。</p>
 
-<p>而在客户工具这里，阿里也越来越关注流量提供方和广告投放方，毕竟他们才是拿钱的主啊:-)</p>
+<p>而在客户工具这里，阿里也越来越关注流量提供方和广告投放方，毕竟他们才是拿钱的主啊:&ndash;)</p>
 
 <hr />
 
@@ -1586,12 +1586,12 @@ cp Build/Linux/* .
 
 <p>两天的课程，算是对互联网营销入了门。对很多专业术语有了了解，对现有的系统架构有了皮毛的认识，而对于机器学习，数据挖掘，自然语言处理的威力有了更加清晰的定位。在“做东西的过程中学习”，是现在非常赞成的“学习方法”，虽然两天的技术讲堂没有“做东西”，但是来自一线的阿里讲师们，用自己的实际经历将心得传授给大家，也是一种非常好的学习方式！感谢阿里在技术讲堂上的努力，阿里高校技术联盟今年也开始在计算所试点了（自动化所明年应该会到位），感谢各位讲师！</p>
 
-<p>无意中发现了一个RTB的比赛，链接在<a href="http://contest.ipinyou.com/cn/index.shtml">这里</a>，感兴趣的同学不妨一试:-)</p>
+<p>无意中发现了一个RTB的比赛，链接在<a href="http://contest.ipinyou.com/cn/index.shtml">这里</a>，感兴趣的同学不妨一试:&ndash;)</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[POSIX threads-多线程编程初步]]></title>
+    <title type="html"><![CDATA[POSIX Threads-多线程编程初步]]></title>
     <link href="http://hustcalm.me/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu/"/>
     <updated>2013-09-06T10:24:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu</id>
@@ -1614,7 +1614,7 @@ cp Build/Linux/* .
 <li><a href="http://codebase.eu/tutorial/posix-threads-c/index.php">Creating multi-threaded C++ code</a></li>
 <li><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html">POSIX thread (pthread) libraries</a></li>
 <li><a href="http://www.ibm.com/developerworks/library/l-posix1/index.html">POSIX threads explained-A simple and nimble tool for memory sharing</a></li>
-<li><a href="http://www.tutorialspoint.com/operating_system/os_multi_threading.htm">Operating System - Multi-Threading</a></li>
+<li><a href="http://www.tutorialspoint.com/operating_system/os_multi_threading.htm">Operating System &ndash; Multi-Threading</a></li>
 <li><a href="http://pubs.opengroup.org/onlinepubs/7908799/xsh/pthread.h.html">&lt;pthread.h></a></li>
 </ul>
 
@@ -1716,7 +1716,7 @@ cp Build/Linux/* .
 <li><a href="http://www.mafengwo.cn/i/741974.html">带你去环青海湖(骑行全攻略，内附海量图片)</a></li>
 <li><a href="http://lvyou.elong.com/4680403/tour/a077t73d.html">攻略_我的环青海湖三天攻略</a></li>
 <li><a href="http://www.mafengwo.cn/i/1304396.html">青海湖骑行杂记-鑫鑫自行车俱乐部</a></li>
-<li><a href="http://www.dongfanghong.com.cn/bbs/viewthread.php?tid=291791&amp;highlight=%BB%B7%BA%FE">6月风雪环湖&#8211;青海湖（图片狂来袭）顺便介绍一家租车俱乐部给大家</a></li>
+<li><a href="http://www.dongfanghong.com.cn/bbs/viewthread.php?tid=291791&amp;highlight=%BB%B7%BA%FE">6月风雪环湖&mdash;青海湖（图片狂来袭）顺便介绍一家租车俱乐部给大家</a></li>
 </ul>
 
 
@@ -1798,7 +1798,7 @@ cp Build/Linux/* .
 
 <p>不夸张地说，有飞流直下三千尺的感觉，最后的20多公里是让人舒爽的下坡和开阔的美景（蒙古包，草原，牛羊马）。一路上的云变化多端，惹人喜爱！</p>
 
-<p>之后的之后，我们回到了西海镇，环湖圆满结束！而在离镇子不远处的一个小饰品店，我们分别买了绿松石和狼牙，然后就没有然后了&#8230;</p>
+<p>之后的之后，我们回到了西海镇，环湖圆满结束！而在离镇子不远处的一个小饰品店，我们分别买了绿松石和狼牙，然后就没有然后了&hellip;</p>
 
 <h2>简单总结</h2>
 
@@ -1940,7 +1940,7 @@ cp Build/Linux/* .
 <!--more-->
 
 
-<p>借着这个机会，再次总结一下关于多系统共存的一些基本问题，更多是给读者一些核心概念，关于某些具体操作，Google会给出更好的答案！Let&#8217;s Go！</p>
+<p>借着这个机会，再次总结一下关于多系统共存的一些基本问题，更多是给读者一些核心概念，关于某些具体操作，Google会给出更好的答案！Let&rsquo;s Go！</p>
 
 <h2>那些年我们用过的Windows XP</h2>
 
@@ -2020,7 +2020,7 @@ cp Build/Linux/* .
 
 <p>以下的关键词，应该是安装Linux和Windows多系统的时候出现频率比较高的，根据个人的理解，罗列如下：</p>
 
-<p>分区管理，MBR，引导分区，启动项管理，Grub，Grub Legacy，Grub2，Grub4Dos，ntloader，BootManager，BCD，EasyBCD，Windows PE，SliTaz，Puppy Linux，系统维护盘，U 盘系统，光盘启动，ISO，刻录&#8230;</p>
+<p>分区管理，MBR，引导分区，启动项管理，Grub，Grub Legacy，Grub2，Grub4Dos，ntloader，BootManager，BCD，EasyBCD，Windows PE，SliTaz，Puppy Linux，系统维护盘，U 盘系统，光盘启动，ISO，刻录&hellip;</p>
 
 <h2>系统安装实例</h2>
 
@@ -2107,7 +2107,7 @@ sudo reboot
 
 <p>多系统的安装，重点是理解了多系统并存的基本概念，也就是分区和启动项的管理，可以折腾的东西有很多，大家可以根据个人喜好选择自己的方案！需要提醒大家的是，对分区要谨慎操作，数据无价！</p>
 
-<p>全文完，写这篇文章更多是自己的一个小总结，如果对大家有所帮助就再好不过了，有问题随时可以讨论:-)</p>
+<p>全文完，写这篇文章更多是自己的一个小总结，如果对大家有所帮助就再好不过了，有问题随时可以讨论:&ndash;)</p>
 ]]></content>
   </entry>
   
@@ -2185,7 +2185,7 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 
 <p>请参考<a href="https://github.com/hustcalm/vimperator">Vimperator On Github</a>.</p>
 
-<p>有任何问题，欢迎留言讨论！如果觉得Vimperator不够极客，可以拿Pentadactyl玩玩:-)</p>
+<p>有任何问题，欢迎留言讨论！如果觉得Vimperator不够极客，可以拿Pentadactyl玩玩:&ndash;)</p>
 ]]></content>
   </entry>
   
@@ -2211,7 +2211,7 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 
 <p>按照我的理解，UbuntuKylin可以说成是并列于KUbuntu，LUbuntu等的flavor，也可以说成是Ubuntu在中国的本地化。Ubuntu一直致力于用户体验方面，Unity愈发成熟，在整个Linux世界里拥有不少用户。</p>
 
-<p>媒体再怎么质疑也好，开源世界里代码会说话，我们完全看得到UbuntuKylin开发团队的努力和成绩。祝UbuntuKylin在国内越走越好，也希望出现更多的UbuntuKylin，作为一个开发者，可以在launchpad上关注项目的进展，如果感兴趣，一起参与blueprint的讨论，fix一些bug，或者贡献一些代码还是很cool的:-)</p>
+<p>媒体再怎么质疑也好，开源世界里代码会说话，我们完全看得到UbuntuKylin开发团队的努力和成绩。祝UbuntuKylin在国内越走越好，也希望出现更多的UbuntuKylin，作为一个开发者，可以在launchpad上关注项目的进展，如果感兴趣，一起参与blueprint的讨论，fix一些bug，或者贡献一些代码还是很cool的:&ndash;)</p>
 
 <h2>WPS for UbuntuKylin的进展及计划</h2>
 
@@ -2235,11 +2235,11 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 
 <h3>演讲内容</h3>
 
-<p>周鼎作为UT的作者估计被很多Ubuntu用户熟知，今天有机会听他讲述UT开发过程中的“酸甜苦辣”感到很高兴:-)</p>
+<p>周鼎作为UT的作者估计被很多Ubuntu用户熟知，今天有机会听他讲述UT开发过程中的“酸甜苦辣”感到很高兴:&ndash;)</p>
 
 <p>从2007年开始开发第一个版本，文件夹式的版本管理，到后来的SVN，Git；从单一的功能，到“瑞士军刀”；从C到Python；从google code到launchpad；从功能驱动到设计驱动；从“默默无闻”到“登上头版头条”。6年的开发经历，周鼎向我们展示了一个十分励志的故事，只要你想，够努力，你觉能实现自己想要的！而在开发过程中，周鼎也很好地诠释了“干中学”的理念，即一边实际开发，一边学习，学以致用，这也恰恰是“Dian团队的核心之一”！</p>
 
-<p>去看一下UT的source code应该能学到不少东西:-) 虽然目前UT已经进入了维护阶段，但是增加一些小的feature或者enhancement还是需要的～</p>
+<p>去看一下UT的source code应该能学到不少东西:&ndash;) 虽然目前UT已经进入了维护阶段，但是增加一些小的feature或者enhancement还是需要的～</p>
 
 <h2>Seafile项目</h2>
 
@@ -2249,7 +2249,7 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 
 <h2>演讲内容</h2>
 
-<p>Seafile 是一个开源的文件协作与同步平台。演讲者主要介绍了Seafile 的功能特性，技术架构以及发展历程。同其它的类似平台相比，有很多亮点，具体的由于协调会场的原因没有听到很多，不过感觉这款产品值得一试，至少去看看源码，学习下同步算法还是很ok的:-)</p>
+<p>Seafile 是一个开源的文件协作与同步平台。演讲者主要介绍了Seafile 的功能特性，技术架构以及发展历程。同其它的类似平台相比，有很多亮点，具体的由于协调会场的原因没有听到很多，不过感觉这款产品值得一试，至少去看看源码，学习下同步算法还是很ok的:&ndash;)</p>
 
 <h2>Ubuntu Phone/Tablet</h2>
 
@@ -2271,9 +2271,9 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 
 <ul>
 <li>预则立，之前一定要搞清楚活动整体流程，时间安排，环节中关键点，总体上的把握是成功的一半</li>
-<li>控制节奏，会场的场面一定要hold住，今天观众的热情异常高涨（是因为T恤太漂亮了吗:-))，第二场的演讲超时比较严重，所以后面比较严格地控制了提问环节的时间</li>
+<li>控制节奏，会场的场面一定要hold住，今天观众的热情异常高涨（是因为T恤太漂亮了吗:&ndash;))，第二场的演讲超时比较严重，所以后面比较严格地控制了提问环节的时间</li>
 <li>及时沟通，随机应变是必须的，不过遇到那不准的东西，最好找活动组织者及时交流，做出最正确的决策!</li>
-<li>不要紧张，我说给自己听的:-)</li>
+<li>不要紧张，我说给自己听的:&ndash;)</li>
 </ul>
 
 
@@ -2290,7 +2290,7 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
     <link href="http://hustcalm.me/blog/2013/05/06/vimshi-yi-zhong-tai-du/"/>
     <updated>2013-05-06T20:30:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/05/06/vimshi-yi-zhong-tai-du</id>
-    <content type="html"><![CDATA[<p>想想接触VIM也有段时间了，一直比较半调子，从没认真看过vimtutor，倒是东拼西凑，到处画斋:-)</p>
+    <content type="html"><![CDATA[<p>想想接触VIM也有段时间了，一直比较半调子，从没认真看过vimtutor，倒是东拼西凑，到处画斋:&ndash;)</p>
 
 <p>目前自己把VIM的使用分为三个层次：</p>
 
@@ -2327,8 +2327,8 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 <h3>用git和github管理自己的Vim环境</h3>
 
 <ul>
-<li><a href="https://github.com/amix/vimrc">amix/vimrc - The Ultimate vimrc</a></li>
-<li><a href="https://github.com/hustcalm/vimrc">hustcalm/vimrc - The Ultimate vimrc+</a></li>
+<li><a href="https://github.com/amix/vimrc">amix/vimrc &ndash; The Ultimate vimrc</a></li>
+<li><a href="https://github.com/hustcalm/vimrc">hustcalm/vimrc &ndash; The Ultimate vimrc+</a></li>
 </ul>
 
 
@@ -2336,7 +2336,7 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 
 <p>骨灰级别的，可以随心地为自己的VIM写一些扩展，分享优秀的plugin给他人使用，参考一下大神的文章吧：
 *   <a href="http://brainacle.com/how-to-write-vim-plugins-with-python.html">How To Write Vim Plugins With Python</a>
-*   <a href="http://vim.wikia.com/wiki/How_to_write_a_plugin">How to write a plugin - From Vim wikia</a>
+*   <a href="http://vim.wikia.com/wiki/How_to_write_a_plugin">How to write a plugin &ndash; From Vim wikia</a>
 *   <a href="http://stevelosh.com/blog/2011/09/writing-vim-plugins/">Writing Vim Plugins</a></p>
 
 <p>自己不谦虚地说，算是半个高手，不过努力方向，必然是骨灰！</p>
