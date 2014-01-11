@@ -105,8 +105,8 @@
 </code></pre>
 
 <p>具体用法可以看README.md。     <br/>
-Douban的侧边栏采用经典的source/<em>includes/custom/asides以及</em>config.yml的方法,豆瓣收藏秀的代码获取在<a href="www.douban.com/service/badgemaker">豆瓣收藏秀</a>。<br/>
-如何增加Bshare，参考了文章<a href="shanewfx.github.com/blog/2012/08/13/improve-blog-theme/">Octopress主题改造</a>，Bshare官方链接<a href="http://www.bshare.cn">Bshare</a>。<br/>
+Douban的侧边栏采用经典的source/<em>includes/custom/asides以及</em>config.yml的方法,豆瓣收藏秀的代码获取在<a href="http://www.douban.com/service/badgemaker">豆瓣收藏秀</a>。 <br/>
+如何增加Bshare，参考了文章<a href="http://shanewfx.github.com/blog/2012/08/13/improve-blog-theme/">Octopress主题改造</a>，Bshare官方链接<a href="http://www.bshare.cn">Bshare</a>。 <br/>
 Done.:)</p>
 </div>
   
@@ -145,7 +145,7 @@ Done.:)</p>
   </header>
 
 
-  <div class="entry-content"><p>With Instructions On <a href="wiki.videolan.org/UnixCompile">UnixCompile</a> and <a href="wiki.videolan.org/User:J-b#VLC_configure_line">User:J-b</a>, I compile VLC successfully on Ubuntu 11.04.</p>
+  <div class="entry-content"><p>With Instructions On <a href="http://wiki.videolan.org/UnixCompile">UnixCompile</a> and <a href="http://wiki.videolan.org/User:J-b#VLC_configure_line">User:J-b</a>, I compile VLC successfully on Ubuntu 11.04.</p>
 
 <p>But trouble is there are some libraries missiing or version too old, and can&#8217;t figure it out too clear now. Also after make complete,Got an error&#8221;No Plugins found! Check your VLC installation&#8221; when attempt to run vlc with in bin, but runs fine with ./vlc-static.</p>
 
@@ -189,7 +189,7 @@ Done.:)</p>
 
   <div class="entry-content"><p>原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“<em>deploy”对应的是remote_master branch即可。    <br/>
 而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。     <br/>
-可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。     <br/>
+可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="http://madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。      <br/>
 而现在写文章先不管Octopress了，只管</em>deploy。    <br/>
 唉，郁闷:(。</p>
 </div>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-10T10:42:56+08:00</updated>
+  <updated>2014-01-11T11:49:48+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -50,11 +50,14 @@ extconf.rb</code>的话生成的Makefile是依赖系统的1.8.7的，因为直�
     <updated>2012-10-16T12:42:00+08:00</updated>
     <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license</id>
     <content type="html"><![CDATA[<p>很久之前就听说了CreativeCommons License，并且看到很多博客站点上也在此License下授权，因此想在自己的Octopress上添加CC License。   <br/>
-我添加的是非商业化使用，自由分享修改的授权，即NonCommercial-ShareAlike。      <br/>
-具体的添加步骤也是经典的添加侧边栏，只是需要去<a href="creativecommons.org/choose">官方站点</a>选择自己需要的协议，拿到代码。相信玩Octopress
-的朋友可以轻松搞定:)     <br/>
-Enjoy Creating on Internet:)      <br/>
-One For All,All For One.</p>
+我添加的是非商业化使用，自由分享修改的授权，即NonCommercial-ShareAlike。</p>
+
+<p>具体的添加步骤也是经典的添加侧边栏，只是需要去<a href="http://creativecommons.org/choose">官方站点</a>选择自己需要的协议，拿到代码。相信玩Octopress
+的朋友可以轻松搞定:)</p>
+
+<p>Enjoy Creating on Internet:)</p>
+
+<p>One For All,All For One.</p>
 ]]></content>
   </entry>
   
@@ -63,7 +66,7 @@ One For All,All For One.</p>
     <link href="http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/"/>
     <updated>2012-10-16T11:19:00+08:00</updated>
     <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan</id>
-    <content type="html"><![CDATA[<p>今天为自己的Octopress博客添加了访问者统计工具，<a href="www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。      <br/>
+    <content type="html"><![CDATA[<p>今天为自己的Octopress博客添加了访问者统计工具，<a href="http://www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。   <br/>
 拿到了代码后，添加到侧边栏，在custom/asides添加flag_counter.html，然后在_config.yml中开启即可，其中flag_counter.html的格式如下：</p>
 
 <pre><code>      
@@ -79,10 +82,13 @@ Code you get from [Flag Counter](www.flagcounter.com)
 <pre><code>flag_counter: true  
 </code></pre>
 
-<p>      <br/>
-为了在本博文中显示flag_counter.html的第一行和最后一行的开关语句，特意额外添加了一组<code>if Tag</code>，Markdown，囧～      <br/>
-因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon...解决方案参考了<a href="code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a>       <br/>
-<em>Enjoy your Flag Counter:)</em></p>
+<p></p>
+
+<p>为了在本博文中显示flag_counter.html的第一行和最后一行的开关语句，特意额外添加了一组<code>if Tag</code>，Markdown，囧～</p>
+
+<p>因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon...解决方案参考了<a href="http://code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a></p>
+
+<p><strong>Enjoy your Flag Counter:)</strong></p>
 ]]></content>
   </entry>
   
@@ -98,8 +104,8 @@ Code you get from [Flag Counter](www.flagcounter.com)
 </code></pre>
 
 <p>具体用法可以看README.md。     <br/>
-Douban的侧边栏采用经典的source/<em>includes/custom/asides以及</em>config.yml的方法,豆瓣收藏秀的代码获取在<a href="www.douban.com/service/badgemaker">豆瓣收藏秀</a>。<br/>
-如何增加Bshare，参考了文章<a href="shanewfx.github.com/blog/2012/08/13/improve-blog-theme/">Octopress主题改造</a>，Bshare官方链接<a href="http://www.bshare.cn">Bshare</a>。<br/>
+Douban的侧边栏采用经典的source/<em>includes/custom/asides以及</em>config.yml的方法,豆瓣收藏秀的代码获取在<a href="http://www.douban.com/service/badgemaker">豆瓣收藏秀</a>。 <br/>
+如何增加Bshare，参考了文章<a href="http://shanewfx.github.com/blog/2012/08/13/improve-blog-theme/">Octopress主题改造</a>，Bshare官方链接<a href="http://www.bshare.cn">Bshare</a>。 <br/>
 Done.:)</p>
 ]]></content>
   </entry>
@@ -111,7 +117,7 @@ Done.:)</p>
     <id>http://hustcalm.me/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti</id>
     <content type="html"><![CDATA[<p>原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“<em>deploy”对应的是remote_master branch即可。    <br/>
 而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。     <br/>
-可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。     <br/>
+可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="http://madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。      <br/>
 而现在写文章先不管Octopress了，只管</em>deploy。    <br/>
 唉，郁闷:(。</p>
 ]]></content>

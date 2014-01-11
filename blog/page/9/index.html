@@ -98,8 +98,9 @@
   </header>
 
 
-  <div class="entry-content"><p>现在越来越觉得自己离不开Linux了，也越来越离不开VIM了，虽然一直有想学习下Emacs的心思，不过学习曲线太陡峭了，准备细水常流了～之前在windows下使用cygwin，配置VIM用的是<code>.vim_runtime</code>，作者是用svn管理的。今天再去看，发现作者也把自己的.vimrc以及整个配置都迁移到了github上，因此参考了<a href="http://blog.pkufranky.com/2011/11/%E4%BD%BF%E7%94%A8git%E5%92%8Cgithub%E6%9D%A5%E7%AE%A1%E7%90%86vim%E9%85%8D%E7%BD%AE%E5%92%8C%E6%8F%92%E4%BB%B6">这篇文章</a>。请作者原谅我使用了一样的题目～  <br/>
-文章的目标为：</p>
+  <div class="entry-content"><p>现在越来越觉得自己离不开Linux了，也越来越离不开VIM了，虽然一直有想学习下Emacs的心思，不过学习曲线太陡峭了，准备细水常流了～之前在windows下使用cygwin，配置VIM用的是<code>.vim_runtime</code>，作者是用svn管理的。今天再去看，发现作者也把自己的.vimrc以及整个配置都迁移到了github上，因此参考了<a href="http://blog.pkufranky.com/2011/11/%E4%BD%BF%E7%94%A8git%E5%92%8Cgithub%E6%9D%A5%E7%AE%A1%E7%90%86vim%E9%85%8D%E7%BD%AE%E5%92%8C%E6%8F%92%E4%BB%B6">这篇文章</a>。请作者原谅我使用了一样的题目～</p>
+
+<p>文章的目标为：</p>
 
 <ul>
 <li><p>将vim的配置文件使用git管理，并托管到github上</p></li>
@@ -191,8 +192,9 @@
   </header>
 
 
-  <div class="entry-content"><p>最近学习《机器学习》云里雾里的，很多时候不知道老师在说什么，参考书买的是Kevin P. Murphy的《Machine Learning:A Probabilistic Perspective》，一共上下两卷，打印版本的共50大洋。作者除了书之外，还在google code上维护了与书本同步的工具包代码和数据，叫做PMTK3，主页地址<a href="code.google.com/p/pmtk3">PMTK3 on Google Code</a>。
-具体的解释大家可以看Project Home的官方介绍，PMTK是</div>
+  <div class="entry-content"><p>最近学习《机器学习》云里雾里的，很多时候不知道老师在说什么，参考书买的是Kevin P. Murphy的《Machine Learning:A Probabilistic Perspective》，一共上下两卷，打印版本的共50大洋。作者除了书之外，还在google code上维护了与书本同步的工具包代码和数据，叫做PMTK3，主页地址<a href="http://code.google.com/p/pmtk3">PMTK3 on Google Code</a>。</p>
+
+<p>具体的解释大家可以看Project Home的官方介绍，PMTK是</div>
   
   
     <footer>
@@ -234,11 +236,14 @@
 
 
   <div class="entry-content"><p>很久之前就听说了CreativeCommons License，并且看到很多博客站点上也在此License下授权，因此想在自己的Octopress上添加CC License。   <br/>
-我添加的是非商业化使用，自由分享修改的授权，即NonCommercial-ShareAlike。      <br/>
-具体的添加步骤也是经典的添加侧边栏，只是需要去<a href="creativecommons.org/choose">官方站点</a>选择自己需要的协议，拿到代码。相信玩Octopress
-的朋友可以轻松搞定:)     <br/>
-Enjoy Creating on Internet:)      <br/>
-One For All,All For One.</p>
+我添加的是非商业化使用，自由分享修改的授权，即NonCommercial-ShareAlike。</p>
+
+<p>具体的添加步骤也是经典的添加侧边栏，只是需要去<a href="http://creativecommons.org/choose">官方站点</a>选择自己需要的协议，拿到代码。相信玩Octopress
+的朋友可以轻松搞定:)</p>
+
+<p>Enjoy Creating on Internet:)</p>
+
+<p>One For All,All For One.</p>
 </div>
   
   
@@ -276,7 +281,7 @@ One For All,All For One.</p>
   </header>
 
 
-  <div class="entry-content"><p>今天为自己的Octopress博客添加了访问者统计工具，<a href="www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。      <br/>
+  <div class="entry-content"><p>今天为自己的Octopress博客添加了访问者统计工具，<a href="http://www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。   <br/>
 拿到了代码后，添加到侧边栏，在custom/asides添加flag_counter.html，然后在_config.yml中开启即可，其中flag_counter.html的格式如下：</p>
 
 <pre><code>&lt;section&gt;       
@@ -290,9 +295,11 @@ Code you get from [Flag Counter](www.flagcounter.com)
 <pre><code>flag_counter: true  
 </code></pre>
 
-<p>为了在本博文中显示flag_counter.html的第一行和最后一行的开关语句，特意额外添加了一组<code>if Tag</code>，Markdown，囧～      <br/>
-因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon&#8230;解决方案参考了<a href="code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a>       <br/>
-<em>Enjoy your Flag Counter:)</em></p>
+<p>为了在本博文中显示flag_counter.html的第一行和最后一行的开关语句，特意额外添加了一组<code>if Tag</code>，Markdown，囧～</p>
+
+<p>因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon&#8230;解决方案参考了<a href="http://code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a></p>
+
+<p><strong>Enjoy your Flag Counter:)</strong></p>
 </div>
   
   

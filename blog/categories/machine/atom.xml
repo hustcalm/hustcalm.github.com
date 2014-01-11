@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Machine | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/machine/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-10T10:42:56+08:00</updated>
+  <updated>2014-01-11T11:49:48+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -18,13 +18,19 @@
     <link href="http://hustcalm.me/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/"/>
     <updated>2012-10-16T23:47:00+08:00</updated>
     <id>http://hustcalm.me/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi</id>
-    <content type="html"><![CDATA[<p>最近学习《机器学习》云里雾里的，很多时候不知道老师在说什么，参考书买的是Kevin P. Murphy的《Machine Learning:A Probabilistic Perspective》，一共上下两卷，打印版本的共50大洋。作者除了书之外，还在google code上维护了与书本同步的工具包代码和数据，叫做PMTK3，主页地址<a href="code.google.com/p/pmtk3">PMTK3 on Google Code</a>。
-具体的解释大家可以看Project Home的官方介绍，PMTK是<!--more-->一组Matlab/Octave的函数集合，主要由Matt Dunham，Kevin Murphy编写维护，blabla...作者把主项目，数据，以及额外的工具包支持分成了三个Project托管在Google Code上，其它两个是<a href="code.google.com/p/pmtkdata">PMTKData</a>以及<a href="code.google.com/p/pmtksupport">PMTKSupport</a>。  <br/>
-下载了PMTK后的第一步是运行initPmtk3，主要执行的是下载依赖的package from <code>pmtksupport.googlecode.com</code>到pmtk3/pmtksupportCopy目录。把所有的包下完并解压缩，其中下载用perl（如果有的话）或者urlwrite，解压用unzip。其实也可以实现离线安装，即提前下载好所有的package，人工复制到pmtksupportCopy目录即可。悲剧的是，官方并没有提供一个离线压缩包，google code上只提供了SVN检出，也罢，其实实质也是下载，这个时候可以直接把package检出到pmtksupportCopy目录，方便以后直接<code>svn update</code>，当然也可以checkout到其它目录，然后人工复制。      <br/>
-第二步是运行testPmtk3，主要执行了几个Demo，这个时候需要数据支持，因此脚本会触发网络链接去google code上下载数据包，同样的办法，我们也可以用SVN检出，拷贝过去即可。      <br/>
-最后，runDemos，官方说运行时间比较长，我觉得是因为下载数据包占用了大量时间，如果提前把数据准备好，放到相应的pmtkdataCopy目录，时间会缩短不少，我没有实际运行，估计也就十分钟左右吧，当然还要看你的电脑配置了。   <br/>
-PMTK3的整个工具包有很强的学习意义，Machine Learning自然不必多说，也是学习Matlab的好教材，自己研读作者的代码，可以发现代码的简洁和严谨。目前，这个项目还在维护中，而且作者在做Python的Port，希望之后自己能在这方面榜上点忙。    <br/>
-机器学习，模式识别，人工智能，数据挖掘。任重道远，路漫漫修远兮！</p>
+    <content type="html"><![CDATA[<p>最近学习《机器学习》云里雾里的，很多时候不知道老师在说什么，参考书买的是Kevin P. Murphy的《Machine Learning:A Probabilistic Perspective》，一共上下两卷，打印版本的共50大洋。作者除了书之外，还在google code上维护了与书本同步的工具包代码和数据，叫做PMTK3，主页地址<a href="http://code.google.com/p/pmtk3">PMTK3 on Google Code</a>。</p>
+
+<p>具体的解释大家可以看Project Home的官方介绍，PMTK是<!--more-->一组Matlab/Octave的函数集合，主要由Matt Dunham，Kevin Murphy编写维护，blabla...作者把主项目，数据，以及额外的工具包支持分成了三个Project托管在Google Code上，其它两个是<a href="http://code.google.com/p/pmtkdata">PMTKData</a>以及<a href="http://code.google.com/p/pmtksupport">PMTKSupport</a>。</p>
+
+<p>下载了PMTK后的第一步是运行initPmtk3，主要执行的是下载依赖的package from <code>pmtksupport.googlecode.com</code>到pmtk3/pmtksupportCopy目录。把所有的包下完并解压缩，其中下载用perl（如果有的话）或者urlwrite，解压用unzip。其实也可以实现离线安装，即提前下载好所有的package，人工复制到pmtksupportCopy目录即可。悲剧的是，官方并没有提供一个离线压缩包，google code上只提供了SVN检出，也罢，其实实质也是下载，这个时候可以直接把package检出到pmtksupportCopy目录，方便以后直接<code>svn update</code>，当然也可以checkout到其它目录，然后人工复制。</p>
+
+<p>第二步是运行testPmtk3，主要执行了几个Demo，这个时候需要数据支持，因此脚本会触发网络链接去google code上下载数据包，同样的办法，我们也可以用SVN检出，拷贝过去即可。</p>
+
+<p>最后，runDemos，官方说运行时间比较长，我觉得是因为下载数据包占用了大量时间，如果提前把数据准备好，放到相应的pmtkdataCopy目录，时间会缩短不少，我没有实际运行，估计也就十分钟左右吧，当然还要看你的电脑配置了。</p>
+
+<p>PMTK3的整个工具包有很强的学习意义，Machine Learning自然不必多说，也是学习Matlab的好教材，自己研读作者的代码，可以发现代码的简洁和严谨。目前，这个项目还在维护中，而且作者在做Python的Port，希望之后自己能在这方面榜上点忙。</p>
+
+<p>机器学习，模式识别，人工智能，数据挖掘。任重道远，路漫漫修远兮！</p>
 ]]></content>
   </entry>
   

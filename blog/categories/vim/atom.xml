@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VIM | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-10T10:42:56+08:00</updated>
+  <updated>2014-01-11T11:49:48+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -80,8 +80,9 @@
     <id>http://hustcalm.me/blog/2012/10/20/githubshang-de-zhong-ji-vimrc</id>
     <content type="html"><![CDATA[<p>相比于上面的<a href="/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/">文章</a>,这个方案合适懒人，只需要clone作者的repo然后install即可，方便但是减少了DIY的乐趣。作者amix也是.vim_runtime的作者，方便起见，我fork了<a href="https://github.com/amix/vimrc">amix/vimrc</a>，以后就可以在此基础上打造自己的.vim_runtime了～</p>
 
-<p>具体如何使用，请直接访问我的repo<a href="https://github.com/hustcalm/vimrc">hustcalm/vimrc</a>.<br/>
-Enjoy your Ultimate vimrc:)</p>
+<p>具体如何使用，请直接访问我的repo<a href="https://github.com/hustcalm/vimrc">hustcalm/vimrc</a>.</p>
+
+<p>Enjoy your Ultimate vimrc:)</p>
 ]]></content>
   </entry>
   
@@ -90,8 +91,9 @@ Enjoy your Ultimate vimrc:)</p>
     <link href="http://hustcalm.me/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian/"/>
     <updated>2012-10-20T16:29:00+08:00</updated>
     <id>http://hustcalm.me/blog/2012/10/20/shi-yong-githe-githublai-guan-li-vimpei-zhi-he-cha-jian</id>
-    <content type="html"><![CDATA[<p>现在越来越觉得自己离不开Linux了，也越来越离不开VIM了，虽然一直有想学习下Emacs的心思，不过学习曲线太陡峭了，准备细水常流了～之前在windows下使用cygwin，配置VIM用的是<code>.vim_runtime</code>，作者是用svn管理的。今天再去看，发现作者也把自己的.vimrc以及整个配置都迁移到了github上，因此参考了<a href="http://blog.pkufranky.com/2011/11/%E4%BD%BF%E7%94%A8git%E5%92%8Cgithub%E6%9D%A5%E7%AE%A1%E7%90%86vim%E9%85%8D%E7%BD%AE%E5%92%8C%E6%8F%92%E4%BB%B6">这篇文章</a>。请作者原谅我使用了一样的题目～  <br/>
-文章的目标为：</p>
+    <content type="html"><![CDATA[<p>现在越来越觉得自己离不开Linux了，也越来越离不开VIM了，虽然一直有想学习下Emacs的心思，不过学习曲线太陡峭了，准备细水常流了～之前在windows下使用cygwin，配置VIM用的是<code>.vim_runtime</code>，作者是用svn管理的。今天再去看，发现作者也把自己的.vimrc以及整个配置都迁移到了github上，因此参考了<a href="http://blog.pkufranky.com/2011/11/%E4%BD%BF%E7%94%A8git%E5%92%8Cgithub%E6%9D%A5%E7%AE%A1%E7%90%86vim%E9%85%8D%E7%BD%AE%E5%92%8C%E6%8F%92%E4%BB%B6">这篇文章</a>。请作者原谅我使用了一样的题目～</p>
+
+<p>文章的目标为：</p>
 
 <ul>
 <li><p>将vim的配置文件使用git管理，并托管到github上</p></li>
@@ -170,14 +172,16 @@ call pathogen#infect()
 
 <h3>从github安装其它plugin</h3>
 
-<p>过程类似安装vim-pathogen，也可以使用<a href="https://github.com/pkufranky/vimconf/blob/master/github-plugin-install.sh">pkufranky在github的脚本</a>来简化安装。<br/>
-比如安装或更新 <code>https://github.com/hallison/vim-markdow</code></p>
+<p>过程类似安装vim-pathogen，也可以使用<a href="https://github.com/pkufranky/vimconf/blob/master/github-plugin-install.sh">pkufranky在github的脚本</a>来简化安装。</p>
+
+<p>比如安装或更新 <code>https://github.com/hallison/vim-markdow</code></p>
 
 <pre><code>sh github-plugin-install.sh hallison/vim-markdown
 </code></pre>
 
-<p>脚本会根据bundle下对应目录是否存在，决定是否安装或者跟新。  <br/>
-Done:)</p>
+<p>脚本会根据bundle下对应目录是否存在，决定是否安装或者跟新。</p>
+
+<p>Done:)</p>
 ]]></content>
   </entry>
   

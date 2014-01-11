@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-10T10:42:56+08:00</updated>
+  <updated>2014-01-11T11:49:48+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -115,8 +115,14 @@
     <updated>2012-10-21T10:24:00+08:00</updated>
     <id>http://hustcalm.me/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan</id>
     <content type="html"><![CDATA[<p>在Windows下用惯了TotalCommander了，结合Windows本身的资源管理器，会使工作的效率有质的飞跃，如果要投个票，这个软件必须是Life Changing的:) 在Linux下的桌面管理器很多，重量级的经典的Gnome和KDE，以及很多轻量级的桌面管理器，Ubuntu开发团队为用户提供了他们自家的Unity，个人觉得还是非常好用的:) <br/>
-下面这篇文章来自<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">askubuntu</a>，这里除了一个比较全面的回答外，还有不少的cheatsheet提供下载，有png的，pdf的，还有源文件SVG的，如果喜欢，大家可以移步到<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">原文</a>。也可以通过本文下面部分的链接查看或者下载。    <!--more-->
-首先请阅读一下两个post，熟悉Unity的界面元素以及键盘上特殊快捷键的分布：</p>
+下面这篇文章来自<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">askubuntu</a>，这里除了一个比较全面的回答外，还有不少的cheatsheet提供下载，有png的，pdf的，还有源文件SVG的，如果喜欢，大家可以移步到<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">原文</a>。也可以通过本文下面部分的链接查看或者下载。</p>
+
+<!--more-->
+
+
+<p></p>
+
+<p>首先请阅读一下两个post，熟悉Unity的界面元素以及键盘上特殊快捷键的分布：</p>
 
 <ul>
 <li><ol>
@@ -124,21 +130,21 @@
 </ol>
 </li>
 <li><ol>
-<li><a href="http://www.askubuntu.com/questions/19558/what-are-the-meta-super-and-hyper-keys">什么是meta，super，hyper键</a>
+<li><a href="http://www.askubuntu.com/questions/19558/what-are-the-meta-super-and-hyper-keys">什么是meta，super，hyper键</a></li>
+</ol>
+</li>
+</ul>
+
 
 <h2>比较官方全面的回答</h2>
 
 <h3>键盘快捷键</h3>
 
-在12.04版本的Unity中，长按<code>Super</code>键，可以得到一个快捷键的列表提示。
+<p>在12.04版本的Unity中，长按<code>Super</code>键，可以得到一个快捷键的列表提示。</p>
 
 <h3>Launcher</h3>
 
-<p>blablabla...</p></li>
-</ol>
-</li>
-</ul>
-
+<p>blablabla...</p>
 
 <h2>cheatsheet的链接</h2>
 
@@ -161,7 +167,7 @@
     <id>http://hustcalm.me/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti</id>
     <content type="html"><![CDATA[<p>原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“<em>deploy”对应的是remote_master branch即可。    <br/>
 而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。     <br/>
-可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。     <br/>
+可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="http://madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。      <br/>
 而现在写文章先不管Octopress了，只管</em>deploy。    <br/>
 唉，郁闷:(。</p>
 ]]></content>

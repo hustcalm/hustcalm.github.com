@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Network | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/network/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-10T10:42:56+08:00</updated>
+  <updated>2014-01-11T11:49:48+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -18,7 +18,7 @@
     <link href="http://hustcalm.me/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/"/>
     <updated>2013-11-14T11:24:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference</id>
-    <content type="html"><![CDATA[<p>Lots of people may got confused by the Python modules- <code>httplib, httplib2, urllib, urllib2</code>. Judge from their names, we may prefer the *2 module because they may be version 2 of the module and should work better. Maybe you are right for some degree(as for the httplib).</p>
+    <content type="html"><![CDATA[<p>Lots of people may got confused by the Python modules- <code>httplib, httplib2, urllib, urllib2</code>. Judge from their names, we may prefer the x2 module because they may be version 2 of the module and should work better. Maybe you are right for some degree(as for the httplib).</p>
 
 <p>However, things are a little bit complicated which needs a brief explanation indeed.</p>
 
@@ -70,13 +70,13 @@ It's an extensible library for opening URLs.
 
 <h2>What's the difference</h2>
 
-<h3>httplib<em> and urllib</em></h3>
+<h3>httplibx and urllibx</h3>
 
 <p><code>urllib/urllib2</code> is built on top of <code>httplib</code>. It offers more features than writing to <code>httplib</code> directly.
 However, <code>httplib</code> gives you finer control over the underlying connections.</p>
 
 <p>If you're dealing solely with HTTP/HTTPs and need access to HTTP specific stuff, use httplib.
-For all other cases, use urllib*(note that <code>urllib and urllib2</code> have different capabilities, thus are always used together).</p>
+For all other cases, use urllibx(note that <code>urllib and urllib2</code> have different capabilities, thus are always used together).</p>
 
 <h3>httplib and httplib2</h3>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: License | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/license/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-10T10:42:56+08:00</updated>
+  <updated>2014-01-11T11:49:48+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -19,11 +19,14 @@
     <updated>2012-10-16T12:42:00+08:00</updated>
     <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license</id>
     <content type="html"><![CDATA[<p>很久之前就听说了CreativeCommons License，并且看到很多博客站点上也在此License下授权，因此想在自己的Octopress上添加CC License。   <br/>
-我添加的是非商业化使用，自由分享修改的授权，即NonCommercial-ShareAlike。      <br/>
-具体的添加步骤也是经典的添加侧边栏，只是需要去<a href="creativecommons.org/choose">官方站点</a>选择自己需要的协议，拿到代码。相信玩Octopress
-的朋友可以轻松搞定:)     <br/>
-Enjoy Creating on Internet:)      <br/>
-One For All,All For One.</p>
+我添加的是非商业化使用，自由分享修改的授权，即NonCommercial-ShareAlike。</p>
+
+<p>具体的添加步骤也是经典的添加侧边栏，只是需要去<a href="http://creativecommons.org/choose">官方站点</a>选择自己需要的协议，拿到代码。相信玩Octopress
+的朋友可以轻松搞定:)</p>
+
+<p>Enjoy Creating on Internet:)</p>
+
+<p>One For All,All For One.</p>
 ]]></content>
   </entry>
   

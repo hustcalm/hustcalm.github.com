@@ -95,7 +95,7 @@
   </header>
 
 
-<div class="entry-content"><p>今天为自己的Octopress博客添加了访问者统计工具，<a href="www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。      <br/>
+<div class="entry-content"><p>今天为自己的Octopress博客添加了访问者统计工具，<a href="http://www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。   <br/>
 拿到了代码后，添加到侧边栏，在custom/asides添加flag_counter.html，然后在_config.yml中开启即可，其中flag_counter.html的格式如下：</p>
 
 <pre><code>&lt;section&gt;       
@@ -109,9 +109,11 @@ Code you get from [Flag Counter](www.flagcounter.com)
 <pre><code>flag_counter: true  
 </code></pre>
 
-<p>为了在本博文中显示flag_counter.html的第一行和最后一行的开关语句，特意额外添加了一组<code>if Tag</code>，Markdown，囧～      <br/>
-因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon&#8230;解决方案参考了<a href="code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a>       <br/>
-<em>Enjoy your Flag Counter:)</em></p>
+<p>为了在本博文中显示flag_counter.html的第一行和最后一行的开关语句，特意额外添加了一组<code>if Tag</code>，Markdown，囧～</p>
+
+<p>因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon&#8230;解决方案参考了<a href="http://code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a></p>
+
+<p><strong>Enjoy your Flag Counter:)</strong></p>
 </div>
 
 
