@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -35,7 +35,7 @@
 
 <p>按照我的理解，UbuntuKylin可以说成是并列于KUbuntu，LUbuntu等的flavor，也可以说成是Ubuntu在中国的本地化。Ubuntu一直致力于用户体验方面，Unity愈发成熟，在整个Linux世界里拥有不少用户。</p>
 
-<p>媒体再怎么质疑也好，开源世界里代码会说话，我们完全看得到UbuntuKylin开发团队的努力和成绩。祝UbuntuKylin在国内越走越好，也希望出现更多的UbuntuKylin，作为一个开发者，可以在launchpad上关注项目的进展，如果感兴趣，一起参与blueprint的讨论，fix一些bug，或者贡献一些代码还是很cool的:-)</p>
+<p>媒体再怎么质疑也好，开源世界里代码会说话，我们完全看得到UbuntuKylin开发团队的努力和成绩。祝UbuntuKylin在国内越走越好，也希望出现更多的UbuntuKylin，作为一个开发者，可以在launchpad上关注项目的进展，如果感兴趣，一起参与blueprint的讨论，fix一些bug，或者贡献一些代码还是很cool的:&ndash;)</p>
 
 <h2>WPS for UbuntuKylin的进展及计划</h2>
 
@@ -59,11 +59,11 @@
 
 <h3>演讲内容</h3>
 
-<p>周鼎作为UT的作者估计被很多Ubuntu用户熟知，今天有机会听他讲述UT开发过程中的“酸甜苦辣”感到很高兴:-)</p>
+<p>周鼎作为UT的作者估计被很多Ubuntu用户熟知，今天有机会听他讲述UT开发过程中的“酸甜苦辣”感到很高兴:&ndash;)</p>
 
 <p>从2007年开始开发第一个版本，文件夹式的版本管理，到后来的SVN，Git；从单一的功能，到“瑞士军刀”；从C到Python；从google code到launchpad；从功能驱动到设计驱动；从“默默无闻”到“登上头版头条”。6年的开发经历，周鼎向我们展示了一个十分励志的故事，只要你想，够努力，你觉能实现自己想要的！而在开发过程中，周鼎也很好地诠释了“干中学”的理念，即一边实际开发，一边学习，学以致用，这也恰恰是“Dian团队的核心之一”！</p>
 
-<p>去看一下UT的source code应该能学到不少东西:-) 虽然目前UT已经进入了维护阶段，但是增加一些小的feature或者enhancement还是需要的～</p>
+<p>去看一下UT的source code应该能学到不少东西:&ndash;) 虽然目前UT已经进入了维护阶段，但是增加一些小的feature或者enhancement还是需要的～</p>
 
 <h2>Seafile项目</h2>
 
@@ -73,7 +73,7 @@
 
 <h2>演讲内容</h2>
 
-<p>Seafile 是一个开源的文件协作与同步平台。演讲者主要介绍了Seafile 的功能特性，技术架构以及发展历程。同其它的类似平台相比，有很多亮点，具体的由于协调会场的原因没有听到很多，不过感觉这款产品值得一试，至少去看看源码，学习下同步算法还是很ok的:-)</p>
+<p>Seafile 是一个开源的文件协作与同步平台。演讲者主要介绍了Seafile 的功能特性，技术架构以及发展历程。同其它的类似平台相比，有很多亮点，具体的由于协调会场的原因没有听到很多，不过感觉这款产品值得一试，至少去看看源码，学习下同步算法还是很ok的:&ndash;)</p>
 
 <h2>Ubuntu Phone/Tablet</h2>
 
@@ -95,9 +95,9 @@
 
 <ul>
 <li>预则立，之前一定要搞清楚活动整体流程，时间安排，环节中关键点，总体上的把握是成功的一半</li>
-<li>控制节奏，会场的场面一定要hold住，今天观众的热情异常高涨（是因为T恤太漂亮了吗:-))，第二场的演讲超时比较严重，所以后面比较严格地控制了提问环节的时间</li>
+<li>控制节奏，会场的场面一定要hold住，今天观众的热情异常高涨（是因为T恤太漂亮了吗:&ndash;))，第二场的演讲超时比较严重，所以后面比较严格地控制了提问环节的时间</li>
 <li>及时沟通，随机应变是必须的，不过遇到那不准的东西，最好找活动组织者及时交流，做出最正确的决策!</li>
-<li>不要紧张，我说给自己听的:-)</li>
+<li>不要紧张，我说给自己听的:&ndash;)</li>
 </ul>
 
 
@@ -144,7 +144,7 @@
 
 <h3>Launcher</h3>
 
-<p>blablabla...</p>
+<p>blablabla&hellip;</p>
 
 <h2>cheatsheet的链接</h2>
 

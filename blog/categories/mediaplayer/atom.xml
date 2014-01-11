@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MediaPlayer | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/mediaplayer/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -20,7 +20,7 @@
     <id>http://hustcalm.me/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04</id>
     <content type="html"><![CDATA[<p>With Instructions On <a href="http://wiki.videolan.org/UnixCompile">UnixCompile</a> and <a href="http://wiki.videolan.org/User:J-b#VLC_configure_line">User:J-b</a>, I compile VLC successfully on Ubuntu 11.04.</p>
 
-<p>But trouble is there are some libraries missiing or version too old, and can't figure it out too clear now. Also after make complete,Got an error"No Plugins found! Check your VLC installation" when attempt to run vlc with in bin, but runs fine with ./vlc-static.</p>
+<p>But trouble is there are some libraries missiing or version too old, and can&rsquo;t figure it out too clear now. Also after make complete,Got an error"No Plugins found! Check your VLC installation" when attempt to run vlc with in bin, but runs fine with ./vlc-static.</p>
 
 <p>Anyway it is a good start to dig into VLC further:)</p>
 ]]></content>

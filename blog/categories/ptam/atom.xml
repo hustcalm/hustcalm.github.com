@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PTAM | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/ptam/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -18,16 +18,16 @@
     <link href="http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto/"/>
     <updated>2013-09-27T19:50:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto</id>
-    <content type="html"><![CDATA[<p>The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god's sake) ! I struggled to get it done on my Linux Mint 15 with totally failure:-(</p>
+    <content type="html"><![CDATA[<p>The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god&rsquo;s sake) ! I struggled to get it done on my Linux Mint 15 with totally failure:&ndash;(</p>
 
-<p>However I made it with just pulling the bleeding edge libs(I mean TooN,libCVD and Gvars3) from github, add a header file <code>&lt;unistd.h&gt;</code> to <code>Tracker.cc</code>, edit the <code>Makefile</code> about the linker flags(I will tell the details below), and I absolutely think that 'share my experience to you' is my duty.</p>
+<p>However I made it with just pulling the bleeding edge libs(I mean TooN,libCVD and Gvars3) from github, add a header file <code>&lt;unistd.h&gt;</code> to <code>Tracker.cc</code>, edit the <code>Makefile</code> about the linker flags(I will tell the details below), and I absolutely think that &lsquo;share my experience to you&rsquo; is my duty.</p>
 
-<p>I succeeded on <strong>Linux Mint 15</strong> and <strong>Ubuntu 12.04</strong>, other distros won't be hard either:-)</p>
+<p>I succeeded on <strong>Linux Mint 15</strong> and <strong>Ubuntu 12.04</strong>, other distros won&rsquo;t be hard either:&ndash;)</p>
 
 <!--more-->
 
 
-<p>Now, let's start the journey!</p>
+<p>Now, let&rsquo;s start the journey!</p>
 
 <h2>Installation the required dependencies</h2>
 
@@ -121,7 +121,7 @@ wget http://www.edwardrosten.com/cvd/gvars-3.0.tar.gz
 
 <p><strong>Note the versions may differ as time goes by, use git if you can</strong> Or just look at this <a href="http://www.edwardrosten.com/cvd/toon.html">link</a> for more details.</p>
 
-<p>Also remember <strong>do refer to the README files when you try to install the libraries</strong>, cause they really do help in some manner:-)</p>
+<p>Also remember <strong>do refer to the README files when you try to install the libraries</strong>, cause they really do help in some manner:&ndash;)</p>
 
 <h3>TooN</h3>
 
@@ -132,7 +132,7 @@ wget http://www.edwardrosten.com/cvd/gvars-3.0.tar.gz
 
 <h3>libCVD</h3>
 
-<p>Remember that libCVD really needs TooN, or you will get stuck when trying to compile PTAM:-(</p>
+<p>Remember that libCVD really needs TooN, or you will get stuck when trying to compile PTAM:&ndash;(</p>
 
 <p>The steps I used is like this:</p>
 
@@ -141,7 +141,7 @@ make
 sudo make install
 </code></pre>
 
-<p>If you run into problems, check the output of <code>./configure</code> carefully, they will give you some hints:-)</p>
+<p>If you run into problems, check the output of <code>./configure</code> carefully, they will give you some hints:&ndash;)</p>
 
 <h3>Gvars3</h3>
 
@@ -188,12 +188,12 @@ cp Build/Linux/* .
 
 <h3>Make</h3>
 
-<p>Probably an error will popup, like "error, <code>usleep</code> was not declared in this scope", easily add</p>
+<p>Probably an error will popup, like &ldquo;error, <code>usleep</code> was not declared in this scope&rdquo;, easily add</p>
 
 <pre><code>#include &lt;unistd.h&gt;
 </code></pre>
 
-<p>to <code>Tracker.cc</code> and you are done:-)</p>
+<p>to <code>Tracker.cc</code> and you are done:&ndash;)</p>
 
 <p>Just</p>
 
@@ -210,13 +210,13 @@ cp Build/Linux/* .
 
 <ul>
 <li><a href="http://hhfighting.blog.163.com/blog/static/55700323201242524213235/">ubuntu11.10下安装PTAMM</a></li>
-<li><a href="http://www.edwardrosten.com/cvd/toon.html">TooN: Tom's Object-oriented numerics library</a></li>
+<li><a href="http://www.edwardrosten.com/cvd/toon.html">TooN: Tom&rsquo;s Object-oriented numerics library</a></li>
 <li><a href="http://code.google.com/p/qt-opencv-multithreaded/wiki/Documentation">qt-opencv-multithreaded</a></li>
 <li><a href="http://docs.opencv.org/trunk/doc/tutorials/introduction/linux_install/linux_install.html">OpenCV Tutorials-Installation in Linux</a></li>
 </ul>
 
 
-<p>Hope this post will do some help and if you find any mistake in my blog, please do <strong>leave your comment or drop me a line:-)</strong></p>
+<p>Hope this post will do some help and if you find any mistake in my blog, please do <strong>leave your comment or drop me a line:&ndash;)</strong></p>
 ]]></content>
   </entry>
   

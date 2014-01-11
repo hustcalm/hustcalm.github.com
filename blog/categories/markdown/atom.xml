@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Markdown | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/markdown/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -31,11 +31,11 @@
 
 <blockquote><p>Write a quote with <code>Ctrl + Q</code></p></blockquote>
 
-<p>No matter what you're working on, you'll have quick access to Markdown syntax with handy keyboard shortcuts and toolbar buttons.</p>
+<p>No matter what you&rsquo;re working on, you&rsquo;ll have quick access to Markdown syntax with handy keyboard shortcuts and toolbar buttons.</p>
 
 <h2>See your changes instantly with LivePreview</h2>
 
-<p>Don't guess if your <a href="http://markdownpad.com">hyperlink syntax</a> is correct; LivePreview will show you exactly what your document looks like every time you press a key.</p>
+<p>Don&rsquo;t guess if your <a href="http://markdownpad.com">hyperlink syntax</a> is correct; LivePreview will show you exactly what your document looks like every time you press a key.</p>
 
 <h2>Make it your own</h2>
 

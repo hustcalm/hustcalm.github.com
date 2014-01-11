@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Windows | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/windows/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -25,7 +25,7 @@
 <!--more-->
 
 
-<p>借着这个机会，再次总结一下关于多系统共存的一些基本问题，更多是给读者一些核心概念，关于某些具体操作，Google会给出更好的答案！Let's Go！</p>
+<p>借着这个机会，再次总结一下关于多系统共存的一些基本问题，更多是给读者一些核心概念，关于某些具体操作，Google会给出更好的答案！Let&rsquo;s Go！</p>
 
 <h2>那些年我们用过的Windows XP</h2>
 
@@ -105,7 +105,7 @@
 
 <p>以下的关键词，应该是安装Linux和Windows多系统的时候出现频率比较高的，根据个人的理解，罗列如下：</p>
 
-<p>分区管理，MBR，引导分区，启动项管理，Grub，Grub Legacy，Grub2，Grub4Dos，ntloader，BootManager，BCD，EasyBCD，Windows PE，SliTaz，Puppy Linux，系统维护盘，U 盘系统，光盘启动，ISO，刻录...</p>
+<p>分区管理，MBR，引导分区，启动项管理，Grub，Grub Legacy，Grub2，Grub4Dos，ntloader，BootManager，BCD，EasyBCD，Windows PE，SliTaz，Puppy Linux，系统维护盘，U 盘系统，光盘启动，ISO，刻录&hellip;</p>
 
 <h2>系统安装实例</h2>
 
@@ -192,7 +192,7 @@ sudo reboot
 
 <p>多系统的安装，重点是理解了多系统并存的基本概念，也就是分区和启动项的管理，可以折腾的东西有很多，大家可以根据个人喜好选择自己的方案！需要提醒大家的是，对分区要谨慎操作，数据无价！</p>
 
-<p>全文完，写这篇文章更多是自己的一个小总结，如果对大家有所帮助就再好不过了，有问题随时可以讨论:-)</p>
+<p>全文完，写这篇文章更多是自己的一个小总结，如果对大家有所帮助就再好不过了，有问题随时可以讨论:&ndash;)</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -33,7 +33,7 @@ extconf.rb</code>的话生成的Makefile是依赖系统的1.8.7的，因为直�
 <li><a href="http://madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a></li>
 <li><a href="http://ns2.beta4better.org/2012/01/octopress-no-such-file-to-load-zlib-or-openssl.html">Octopress:no such file to load:zlib,openssl</a></li>
 <li><a href="http://blog.csdn.net/dqatsh/article/details/2125089">ubuntu下安装ruby后openssl找不到的问题</a></li>
-<li><a href="http://www.myexception.cn/ruby-rails/665543.html">in 'require':no such file to load -openssl (LoadError)</a></li>
+<li><a href="http://www.myexception.cn/ruby-rails/665543.html">in &lsquo;require&rsquo;:no such file to load -openssl (LoadError)</a></li>
 <li><a href="http://www.linuxdiyf.com/viewarticle.php?id=68545">安装ruby-debug-base是mkmf(LoadError)问题的解决办法</a></li>
 </ul>
 
@@ -86,7 +86,7 @@ Code you get from [Flag Counter](www.flagcounter.com)
 
 <p>为了在本博文中显示flag_counter.html的第一行和最后一行的开关语句，特意额外添加了一组<code>if Tag</code>，Markdown，囧～</p>
 
-<p>因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon...解决方案参考了<a href="http://code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a></p>
+<p>因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon&hellip;解决方案参考了<a href="http://code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a></p>
 
 <p><strong>Enjoy your Flag Counter:)</strong></p>
 ]]></content>

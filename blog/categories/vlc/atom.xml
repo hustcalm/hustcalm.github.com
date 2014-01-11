@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VLC | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/vlc/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -95,9 +95,9 @@ If everything goes well,congratulations,you have got your own compiled VLC for w
 
 <ul>
 <li><p>liblibbluray_plugin.la No such file or directory</p></li>
-<li><p>dialos/preferences.hpp expected unqualified-id before 'char'</p></li>
+<li><p>dialos/preferences.hpp expected unqualified-id before &lsquo;char&rsquo;</p></li>
 <li><p>error:implicit declaration of av_free,av_malloc,av_realloc</p></li>
-<li><p>can't find some language files *.nsh while making nsis installer</p></li>
+<li><p>can&rsquo;t find some language files *.nsh while making nsis installer</p></li>
 </ul>
 
 
@@ -105,9 +105,9 @@ If everything goes well,congratulations,you have got your own compiled VLC for w
 
 <h3>liblibbluray_plugin.la</h3>
 
-<p>To be honest, I just avoid this by losing my VLC playing bluray discs with --disable-bluray passing to configure.</p>
+<p>To be honest, I just avoid this by losing my VLC playing bluray discs with &mdash;disable-bluray passing to configure.</p>
 
-<h3>qt compiling about expected unqualified-id before 'char'</h3>
+<h3>qt compiling about expected unqualified-id before &lsquo;char&rsquo;</h3>
 
 <pre><code>In file included from dialogs_provider.cpp:42:0:
 dialogs/preferences.hpp: At global scope:
@@ -123,7 +123,7 @@ I solved this problem by referencing this [link](http://forum.videolan.org/view&
 
 <h3>no such language file *.nsh</h3>
 
-<p>Just read extras/package/win32/vlc.win32.nsi and delete the lines about languages,then you can successfully make the nsis work but if you want your VLC playing with locales perfectly, you'd better add the languages mannually.</p>
+<p>Just read extras/package/win32/vlc.win32.nsi and delete the lines about languages,then you can successfully make the nsis work but if you want your VLC playing with locales perfectly, you&rsquo;d better add the languages mannually.</p>
 
 <p><strong>The End. Feel free to contact me if you got any problem about compiling:)</strong></p>
 ]]></content>
@@ -136,7 +136,7 @@ I solved this problem by referencing this [link](http://forum.videolan.org/view&
     <id>http://hustcalm.me/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04</id>
     <content type="html"><![CDATA[<p>With Instructions On <a href="http://wiki.videolan.org/UnixCompile">UnixCompile</a> and <a href="http://wiki.videolan.org/User:J-b#VLC_configure_line">User:J-b</a>, I compile VLC successfully on Ubuntu 11.04.</p>
 
-<p>But trouble is there are some libraries missiing or version too old, and can't figure it out too clear now. Also after make complete,Got an error"No Plugins found! Check your VLC installation" when attempt to run vlc with in bin, but runs fine with ./vlc-static.</p>
+<p>But trouble is there are some libraries missiing or version too old, and can&rsquo;t figure it out too clear now. Also after make complete,Got an error"No Plugins found! Check your VLC installation" when attempt to run vlc with in bin, but runs fine with ./vlc-static.</p>
 
 <p>Anyway it is a good start to dig into VLC further:)</p>
 ]]></content>

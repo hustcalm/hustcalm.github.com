@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SEO | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/seo/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -38,7 +38,7 @@ Code you get from [Flag Counter](www.flagcounter.com)
 
 <p>为了在本博文中显示flag_counter.html的第一行和最后一行的开关语句，特意额外添加了一组<code>if Tag</code>，Markdown，囧～</p>
 
-<p>因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon...解决方案参考了<a href="http://code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a></p>
+<p>因为，在<code>rake generate</code>的时候遇到了Liquid Exceptioon&hellip;解决方案参考了<a href="http://code.google.com/p/liquid-markup/source/browse/trunk/lib/liquid/block.rb?r=2">源码</a></p>
 
 <p><strong>Enjoy your Flag Counter:)</strong></p>
 ]]></content>

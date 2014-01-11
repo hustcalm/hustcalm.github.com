@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -20,20 +20,20 @@
     <id>http://hustcalm.me/blog/2014/01/06/linux-getting-started-methodologies-and-practices</id>
     <content type="html"><![CDATA[<p>This is basically a topic that I gave to <a href="http://blog-ossclub.rhcloud.com/">Open-CAS</a> group members as a technique share. Since I have known Linux for over 4 years and heavily used it for 2 years more or less, I find myself realy attracted by it.</p>
 
-<p>Also I want others to have the chance to live with a better OS(Unix and Linux, also Mac OS of course), so it's a good time to take the good points out of my mind and let more people know.</p>
+<p>Also I want others to have the chance to live with a better OS(Unix and Linux, also Mac OS of course), so it&rsquo;s a good time to take the good points out of my mind and let more people know.</p>
 
-<p>It's good to learn from each other especially when there are problems to solve. So I put my mind at a <code>github</code> repo called <a href="https://github.com/hustcalm/linux-getting-started">linux-getting-started</a> and hope that others would join me to make this repo more useful.</p>
+<p>It&rsquo;s good to learn from each other especially when there are problems to solve. So I put my mind at a <code>github</code> repo called <a href="https://github.com/hustcalm/linux-getting-started">linux-getting-started</a> and hope that others would join me to make this repo more useful.</p>
 
 <!--more-->
 
 
-<h3>What's in this repo</h3>
+<h3>What&rsquo;s in this repo</h3>
 
-<p>Currently, I'm addressing two aspects for <code>Linux Getting Started</code>, namely <code>Methodologies</code> and <code>Practices</code>. I know these are really big words, but they just fit here since I want to tell people <code>how to learn</code> not just <code>what to learn</code>.</p>
+<p>Currently, I&rsquo;m addressing two aspects for <code>Linux Getting Started</code>, namely <code>Methodologies</code> and <code>Practices</code>. I know these are really big words, but they just fit here since I want to tell people <code>how to learn</code> not just <code>what to learn</code>.</p>
 
 <h4>Methodologies</h4>
 
-<p>Know what you are gonna do before you step out. Basically, for Linux beginners, the first step that I recommend is <code>install a Linux distro that you like</code>. Then just <code>use it</code> before you want to know everything about it(seems that no one will never ever). It's an OS after all, you use it for your daily job and solve your problems, not a magic software that just plays magic.</p>
+<p>Know what you are gonna do before you step out. Basically, for Linux beginners, the first step that I recommend is <code>install a Linux distro that you like</code>. Then just <code>use it</code> before you want to know everything about it(seems that no one will never ever). It&rsquo;s an OS after all, you use it for your daily job and solve your problems, not a magic software that just plays magic.</p>
 
 <p>A good book would give you a real quick start, I have divided the books into three levels:</p>
 
@@ -42,27 +42,27 @@
 </ul>
 
 
-<p>Newbies who just get to know Linux - Learn how to live with shell</p>
+<p>Newbies who just get to know Linux &ndash; Learn how to live with shell</p>
 
 <ul>
 <li>[Developer]</li>
 </ul>
 
 
-<p>Experienced programmers especially for C/C++ guys - get used to Linux Platform</p>
+<p>Experienced programmers especially for C/C++ guys &ndash; get used to Linux Platform</p>
 
 <ul>
 <li>[Next]</li>
 </ul>
 
 
-<p>Ones who will dive deeper into the most complicated but fun part - Kernel and Driver</p>
+<p>Ones who will dive deeper into the most complicated but fun part &ndash; Kernel and Driver</p>
 
 <p><strong>In one word, use it, learn it, dive into it!</strong></p>
 
 <h4>Practices</h4>
 
-<p>Using and Reading will give a quite well understanding for Linux, but not enough for mastering it. To become <code>real Linux users or developers</code>, remember <code>never leave your eyes off the screen and your fingers off your keyboard</code>, practice will just make perfect things and a great Linuxer, believe me:-)</p>
+<p>Using and Reading will give a quite well understanding for Linux, but not enough for mastering it. To become <code>real Linux users or developers</code>, remember <code>never leave your eyes off the screen and your fingers off your keyboard</code>, practice will just make perfect things and a great Linuxer, believe me:&ndash;)</p>
 
 <p>I address two technical parts currently in this repo, <code>Shell Scripting</code> and <code>Makefile</code>. Other parts will definitely added as long as I maintain this repo.</p>
 
@@ -70,7 +70,7 @@
 
 <p>Before beginning with <code>Shell Scripting</code>, I suppose you have already been familiar with varies of commands or utilities in shell.</p>
 
-<p>To be straight, <code>shell</code> itself is a program which will interpret user's commands or instructions, convert them to <code>system calls</code> or other things that OS can understand. So basically speaking, <code>shell</code> is the interface between <code>user</code> and <code>OS Kernel</code>.</p>
+<p>To be straight, <code>shell</code> itself is a program which will interpret user&rsquo;s commands or instructions, convert them to <code>system calls</code> or other things that OS can understand. So basically speaking, <code>shell</code> is the interface between <code>user</code> and <code>OS Kernel</code>.</p>
 
 <p>As a script language, it has its own variables, functions and flow control statements, also it features many other stuff which will ease much pain for system administration but maybe worse if not used properly. When we are writing shell scripts, we are actually dealing with processes and interprocess communication, each process would do its job and we can use <code>pipe</code>, <code>socket</code>, <code>named-pipes</code> or <code>file</code> to let them talk to each other.</p>
 
@@ -88,11 +88,11 @@ sudo make install
 
 <p>Then you are done!</p>
 
-<p>Is this that easy? Reality will really disappoint us, because the user's OS or environment always will not be consistent with the developer's. So <code>make</code> does not easy the pain for buiding a package or software from scratch, but making it easier to manage a big project.</p>
+<p>Is this that easy? Reality will really disappoint us, because the user&rsquo;s OS or environment always will not be consistent with the developer&rsquo;s. So <code>make</code> does not easy the pain for buiding a package or software from scratch, but making it easier to manage a big project.</p>
 
-<p>So what's the solution? Here comes the <code>Autotools</code>, which will generate <code>makefiles</code> automatically according to the configuration of your system. Like you got a third party library A, and one package needs the library for one feature, <code>Autotools</code> will take care of whether you got the library installed, if yes, then build the package with the feature enabled, or just disable it otherwise.</p>
+<p>So what&rsquo;s the solution? Here comes the <code>Autotools</code>, which will generate <code>makefiles</code> automatically according to the configuration of your system. Like you got a third party library A, and one package needs the library for one feature, <code>Autotools</code> will take care of whether you got the library installed, if yes, then build the package with the feature enabled, or just disable it otherwise.</p>
 
-<p>Cool, isn't it? Yes for the users, but maybe no for the developers, I mean all the pain will be transfered to the developers since they got to write <code>Autotools</code> scripts to make things right. Just another wrapper to give a good, cross-platform and generic solution? Some people would quite agree with this opinion.</p>
+<p>Cool, isn&rsquo;t it? Yes for the users, but maybe no for the developers, I mean all the pain will be transfered to the developers since they got to write <code>Autotools</code> scripts to make things right. Just another wrapper to give a good, cross-platform and generic solution? Some people would quite agree with this opinion.</p>
 
 <p>Thanks to the <code>Autotools</code>, people are getting used to:</p>
 
@@ -107,7 +107,7 @@ sudo make install
 
 <h3>Where is the slide</h3>
 
-<p>Honestly speaking, the slide is just a chain which helps me to make a clear topic. So you will not find it big, just about 15 pages, however to spread all the sparking mind, you will find it's really a <code>big one</code> again.</p>
+<p>Honestly speaking, the slide is just a chain which helps me to make a clear topic. So you will not find it big, just about 15 pages, however to spread all the sparking mind, you will find it&rsquo;s really a <code>big one</code> again.</p>
 
 <p>If you want, download the slide at <a href="https://github.com/hustcalm/linux-getting-started/blob/master/linux-getting-started-%40hustcalm.pdf">here</a>.</p>
 
@@ -121,7 +121,7 @@ sudo make install
 
 <p>Or you can just add what you want to know to the <code>wishList</code> file after <code>fork</code>, maybe shortly I will add stuff about the topic that you care about.</p>
 
-<p>Help others, help yourself:-)</p>
+<p>Help others, help yourself:&ndash;)</p>
 ]]></content>
   </entry>
   
@@ -132,7 +132,7 @@ sudo make install
     <id>http://hustcalm.me/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way</id>
     <content type="html"><![CDATA[<p>What a shame that I failed over and over to just install CentOS 6.4 minimal to my Desktop PC!!!</p>
 
-<p>I got a broken Ubuntu 12.04 on my hand with a working Grub2, cheers:-) Also, I luckily have a 4 GB USB stick(who esle dosen't,kidding).</p>
+<p>I got a broken Ubuntu 12.04 on my hand with a working Grub2, cheers:&ndash;) Also, I luckily have a 4 GB USB stick(who esle dosen&rsquo;t,kidding).</p>
 
 <h2>The Goal</h2>
 
@@ -160,7 +160,7 @@ sudo make install
 
 <h3>ISO</h3>
 
-<p>Download it from a mirror that's close enough to you. Check out the <a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">Mirror List</a> and I choose <a href="http://mirrors.163.com/centos/6.4/isos/x86_64/">mirrors.163.com</a>.</p>
+<p>Download it from a mirror that&rsquo;s close enough to you. Check out the <a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">Mirror List</a> and I choose <a href="http://mirrors.163.com/centos/6.4/isos/x86_64/">mirrors.163.com</a>.</p>
 
 <p>Save the <code>CentOS-6.4-x86_64-minimal.iso</code> to your hard drive.</p>
 
@@ -168,7 +168,7 @@ sudo make install
 
 <p>According to the CentOS wiki, the installer will recognize ext2 or vfat. I choose vfat in my case.</p>
 
-<p>My device on my Linuxmint shows /dev/sdb and the partition shows /dev/sdb1. Just ensure that you have a VFAT partition, other things don't matter too much really.</p>
+<p>My device on my Linuxmint shows /dev/sdb and the partition shows /dev/sdb1. Just ensure that you have a VFAT partition, other things don&rsquo;t matter too much really.</p>
 
 <p>To play with device and partitions, you can use <code>fdisk</code> and <code>mkfs.*</code> or other tools that you favor.</p>
 
@@ -201,9 +201,9 @@ initrd (hd1,msdos1)/isolinux/initrd.img
 boot
 </code></pre>
 
-<p>When you prompt to select <code>Installation Method</code>, use <code>Hard Drive</code> and select <code>sda1</code>, follow the routine procedures and you are done:-)</p>
+<p>When you prompt to select <code>Installation Method</code>, use <code>Hard Drive</code> and select <code>sda1</code>, follow the routine procedures and you are done:&ndash;)</p>
 
-<p><strong>I tried <code>URL Method</code> but failed, either <code>mirrors.163.com</code> nor <code>mirrors.sohu.com</code> would work:-(</strong></p>
+<p><strong>I tried <code>URL Method</code> but failed, either <code>mirrors.163.com</code> nor <code>mirrors.sohu.com</code> would work:&ndash;(</strong></p>
 
 <h2>Summary</h2>
 
@@ -224,7 +224,7 @@ boot
 
 <p>I used to be curious about VPS(Virtual Private Server), how they work, how to build them, etc. As far as I know, AWS, GCE or whatever else solutions depend heavily on Virtualization Technologies and AWS is definitly playing with Xen currently.</p>
 
-<p>I would like very much to have a trial for building my own VPS and blow are my steps doing it. You may need to read some basic wikis about Xen, <a href="http://wiki.xen.org/wiki/Xen_Overview">Xen Overview</a> and <a href="http://wiki.xen.org/wiki/Xen_Beginners_Guide">Xen Beginners Guide</a> should do some help:-)</p>
+<p>I would like very much to have a trial for building my own VPS and blow are my steps doing it. You may need to read some basic wikis about Xen, <a href="http://wiki.xen.org/wiki/Xen_Overview">Xen Overview</a> and <a href="http://wiki.xen.org/wiki/Xen_Beginners_Guide">Xen Beginners Guide</a> should do some help:&ndash;)</p>
 
 <!--more-->
 
@@ -256,9 +256,9 @@ xl list
 
 <h3>Config network</h3>
 
-<p>I use DHCP to get a valid IP for my box and there is a trick if you can't ping each other when two machinea are in the same LAN(probably the routing table is not working for you and just delete the record from your routing table).</p>
+<p>I use DHCP to get a valid IP for my box and there is a trick if you can&rsquo;t ping each other when two machinea are in the same LAN(probably the routing table is not working for you and just delete the record from your routing table).</p>
 
-<p>As me, for example, my laptop got a IP, say 192.168.0.10 and my VPS got 192.168.0.11, but they can't talk to each:-(</p>
+<p>As me, for example, my laptop got a IP, say 192.168.0.10 and my VPS got 192.168.0.11, but they can&rsquo;t talk to each:&ndash;(</p>
 
 <p>First, check your routing table,</p>
 
@@ -327,7 +327,7 @@ BRIDGE=xenbr0
 
 <h3>Diable SELinux</h3>
 
-<p>Honestly speaking, I don't know WTF the real reason to do this, but people say <code>SELinux can really interfere with Xen</code>.</p>
+<p>Honestly speaking, I don&rsquo;t know WTF the real reason to do this, but people say <code>SELinux can really interfere with Xen</code>.</p>
 
 <pre><code>sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 setenforce 0
@@ -337,7 +337,7 @@ setenforce 0
 
 <h2>Bringing Your DomUs Up</h2>
 
-<p>It's up to you to use PV or HVM, personally, I prefer to PV due to higher performance. But if you want a Windows(and other OS whose kernel can't be modified), HVM is your only choice.</p>
+<p>It&rsquo;s up to you to use PV or HVM, personally, I prefer to PV due to higher performance. But if you want a Windows(and other OS whose kernel can&rsquo;t be modified), HVM is your only choice.</p>
 
 <p>As for me, I want 3 DomUs, namely Debian, Fedora and Arch Linux.</p>
 
@@ -429,7 +429,7 @@ cd /etc/xen/
 xl create -c arch.cfg
 </code></pre>
 
-<p>Install your Arch Linux as you like since it's really a highly customized distro.</p>
+<p>Install your Arch Linux as you like since it&rsquo;s really a highly customized distro.</p>
 
 <h4>Fedora</h4>
 
@@ -455,7 +455,7 @@ service iptables stop
 virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://your.http.server.ip.address.here/ --os-type linux --accelerate --nographics --network=bridge:xenbr0
 </code></pre>
 
-<p>Remember this is for full Fedora installation, if you are using a netinst, you need to copy all the files to /var/www/html instead of creating a symbolic link and modify the .treeinfo file. No warrants here, since I did't try it myself.</p>
+<p>Remember this is for full Fedora installation, if you are using a netinst, you need to copy all the files to /var/www/html instead of creating a symbolic link and modify the .treeinfo file. No warrants here, since I did&rsquo;t try it myself.</p>
 
 <h2>References</h2>
 
@@ -487,7 +487,7 @@ virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fed
 
 <hr />
 
-<p>I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:-)</p>
+<p>I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:&ndash;)</p>
 ]]></content>
   </entry>
   
@@ -559,7 +559,7 @@ virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fed
 <!--more-->
 
 
-<p>借着这个机会，再次总结一下关于多系统共存的一些基本问题，更多是给读者一些核心概念，关于某些具体操作，Google会给出更好的答案！Let's Go！</p>
+<p>借着这个机会，再次总结一下关于多系统共存的一些基本问题，更多是给读者一些核心概念，关于某些具体操作，Google会给出更好的答案！Let&rsquo;s Go！</p>
 
 <h2>那些年我们用过的Windows XP</h2>
 
@@ -639,7 +639,7 @@ virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fed
 
 <p>以下的关键词，应该是安装Linux和Windows多系统的时候出现频率比较高的，根据个人的理解，罗列如下：</p>
 
-<p>分区管理，MBR，引导分区，启动项管理，Grub，Grub Legacy，Grub2，Grub4Dos，ntloader，BootManager，BCD，EasyBCD，Windows PE，SliTaz，Puppy Linux，系统维护盘，U 盘系统，光盘启动，ISO，刻录...</p>
+<p>分区管理，MBR，引导分区，启动项管理，Grub，Grub Legacy，Grub2，Grub4Dos，ntloader，BootManager，BCD，EasyBCD，Windows PE，SliTaz，Puppy Linux，系统维护盘，U 盘系统，光盘启动，ISO，刻录&hellip;</p>
 
 <h2>系统安装实例</h2>
 
@@ -726,7 +726,7 @@ sudo reboot
 
 <p>多系统的安装，重点是理解了多系统并存的基本概念，也就是分区和启动项的管理，可以折腾的东西有很多，大家可以根据个人喜好选择自己的方案！需要提醒大家的是，对分区要谨慎操作，数据无价！</p>
 
-<p>全文完，写这篇文章更多是自己的一个小总结，如果对大家有所帮助就再好不过了，有问题随时可以讨论:-)</p>
+<p>全文完，写这篇文章更多是自己的一个小总结，如果对大家有所帮助就再好不过了，有问题随时可以讨论:&ndash;)</p>
 ]]></content>
   </entry>
   

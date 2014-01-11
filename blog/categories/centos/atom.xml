@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Centos | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/centos/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -20,7 +20,7 @@
     <id>http://hustcalm.me/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way</id>
     <content type="html"><![CDATA[<p>What a shame that I failed over and over to just install CentOS 6.4 minimal to my Desktop PC!!!</p>
 
-<p>I got a broken Ubuntu 12.04 on my hand with a working Grub2, cheers:-) Also, I luckily have a 4 GB USB stick(who esle dosen't,kidding).</p>
+<p>I got a broken Ubuntu 12.04 on my hand with a working Grub2, cheers:&ndash;) Also, I luckily have a 4 GB USB stick(who esle dosen&rsquo;t,kidding).</p>
 
 <h2>The Goal</h2>
 
@@ -48,7 +48,7 @@
 
 <h3>ISO</h3>
 
-<p>Download it from a mirror that's close enough to you. Check out the <a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">Mirror List</a> and I choose <a href="http://mirrors.163.com/centos/6.4/isos/x86_64/">mirrors.163.com</a>.</p>
+<p>Download it from a mirror that&rsquo;s close enough to you. Check out the <a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">Mirror List</a> and I choose <a href="http://mirrors.163.com/centos/6.4/isos/x86_64/">mirrors.163.com</a>.</p>
 
 <p>Save the <code>CentOS-6.4-x86_64-minimal.iso</code> to your hard drive.</p>
 
@@ -56,7 +56,7 @@
 
 <p>According to the CentOS wiki, the installer will recognize ext2 or vfat. I choose vfat in my case.</p>
 
-<p>My device on my Linuxmint shows /dev/sdb and the partition shows /dev/sdb1. Just ensure that you have a VFAT partition, other things don't matter too much really.</p>
+<p>My device on my Linuxmint shows /dev/sdb and the partition shows /dev/sdb1. Just ensure that you have a VFAT partition, other things don&rsquo;t matter too much really.</p>
 
 <p>To play with device and partitions, you can use <code>fdisk</code> and <code>mkfs.*</code> or other tools that you favor.</p>
 
@@ -89,9 +89,9 @@ initrd (hd1,msdos1)/isolinux/initrd.img
 boot
 </code></pre>
 
-<p>When you prompt to select <code>Installation Method</code>, use <code>Hard Drive</code> and select <code>sda1</code>, follow the routine procedures and you are done:-)</p>
+<p>When you prompt to select <code>Installation Method</code>, use <code>Hard Drive</code> and select <code>sda1</code>, follow the routine procedures and you are done:&ndash;)</p>
 
-<p><strong>I tried <code>URL Method</code> but failed, either <code>mirrors.163.com</code> nor <code>mirrors.sohu.com</code> would work:-(</strong></p>
+<p><strong>I tried <code>URL Method</code> but failed, either <code>mirrors.163.com</code> nor <code>mirrors.sohu.com</code> would work:&ndash;(</strong></p>
 
 <h2>Summary</h2>
 
@@ -112,7 +112,7 @@ boot
 
 <p>I used to be curious about VPS(Virtual Private Server), how they work, how to build them, etc. As far as I know, AWS, GCE or whatever else solutions depend heavily on Virtualization Technologies and AWS is definitly playing with Xen currently.</p>
 
-<p>I would like very much to have a trial for building my own VPS and blow are my steps doing it. You may need to read some basic wikis about Xen, <a href="http://wiki.xen.org/wiki/Xen_Overview">Xen Overview</a> and <a href="http://wiki.xen.org/wiki/Xen_Beginners_Guide">Xen Beginners Guide</a> should do some help:-)</p>
+<p>I would like very much to have a trial for building my own VPS and blow are my steps doing it. You may need to read some basic wikis about Xen, <a href="http://wiki.xen.org/wiki/Xen_Overview">Xen Overview</a> and <a href="http://wiki.xen.org/wiki/Xen_Beginners_Guide">Xen Beginners Guide</a> should do some help:&ndash;)</p>
 
 <!--more-->
 
@@ -144,9 +144,9 @@ xl list
 
 <h3>Config network</h3>
 
-<p>I use DHCP to get a valid IP for my box and there is a trick if you can't ping each other when two machinea are in the same LAN(probably the routing table is not working for you and just delete the record from your routing table).</p>
+<p>I use DHCP to get a valid IP for my box and there is a trick if you can&rsquo;t ping each other when two machinea are in the same LAN(probably the routing table is not working for you and just delete the record from your routing table).</p>
 
-<p>As me, for example, my laptop got a IP, say 192.168.0.10 and my VPS got 192.168.0.11, but they can't talk to each:-(</p>
+<p>As me, for example, my laptop got a IP, say 192.168.0.10 and my VPS got 192.168.0.11, but they can&rsquo;t talk to each:&ndash;(</p>
 
 <p>First, check your routing table,</p>
 
@@ -215,7 +215,7 @@ BRIDGE=xenbr0
 
 <h3>Diable SELinux</h3>
 
-<p>Honestly speaking, I don't know WTF the real reason to do this, but people say <code>SELinux can really interfere with Xen</code>.</p>
+<p>Honestly speaking, I don&rsquo;t know WTF the real reason to do this, but people say <code>SELinux can really interfere with Xen</code>.</p>
 
 <pre><code>sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 setenforce 0
@@ -225,7 +225,7 @@ setenforce 0
 
 <h2>Bringing Your DomUs Up</h2>
 
-<p>It's up to you to use PV or HVM, personally, I prefer to PV due to higher performance. But if you want a Windows(and other OS whose kernel can't be modified), HVM is your only choice.</p>
+<p>It&rsquo;s up to you to use PV or HVM, personally, I prefer to PV due to higher performance. But if you want a Windows(and other OS whose kernel can&rsquo;t be modified), HVM is your only choice.</p>
 
 <p>As for me, I want 3 DomUs, namely Debian, Fedora and Arch Linux.</p>
 
@@ -317,7 +317,7 @@ cd /etc/xen/
 xl create -c arch.cfg
 </code></pre>
 
-<p>Install your Arch Linux as you like since it's really a highly customized distro.</p>
+<p>Install your Arch Linux as you like since it&rsquo;s really a highly customized distro.</p>
 
 <h4>Fedora</h4>
 
@@ -343,7 +343,7 @@ service iptables stop
 virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://your.http.server.ip.address.here/ --os-type linux --accelerate --nographics --network=bridge:xenbr0
 </code></pre>
 
-<p>Remember this is for full Fedora installation, if you are using a netinst, you need to copy all the files to /var/www/html instead of creating a symbolic link and modify the .treeinfo file. No warrants here, since I did't try it myself.</p>
+<p>Remember this is for full Fedora installation, if you are using a netinst, you need to copy all the files to /var/www/html instead of creating a symbolic link and modify the .treeinfo file. No warrants here, since I did&rsquo;t try it myself.</p>
 
 <h2>References</h2>
 
@@ -375,7 +375,7 @@ virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fed
 
 <hr />
 
-<p>I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:-)</p>
+<p>I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:&ndash;)</p>
 ]]></content>
   </entry>
   

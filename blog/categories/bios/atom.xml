@@ -4,7 +4,7 @@
   <title><![CDATA[Category: BIOS | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/bios/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -53,14 +53,14 @@ controller”，才能访问内存。那么代码在哪里执行呢？有个“�
 </ul>
 
 
-<p>When the processor comes out of reset, it begins executing instructions at a fixed address in memory, called the "reset vector". The BIOS flash chip is mapped to this address in memory. The processor simply starts executing instructions from this address.</p>
+<p>When the processor comes out of reset, it begins executing instructions at a fixed address in memory, called the &ldquo;reset vector&rdquo;. The BIOS flash chip is mapped to this address in memory. The processor simply starts executing instructions from this address.</p>
 
-<p>The "Boot Block" refers to the BIOS code starting at the reset vector (plus a few JMPs). This is executed directly from ROM (memory controller isn't up yet), so it is very slow.</p>
+<p>The &ldquo;Boot Block&rdquo; refers to the BIOS code starting at the reset vector (plus a few JMPs). This is executed directly from ROM (memory controller isn&rsquo;t up yet), so it is very slow.</p>
 
 <p>The BIOS Boot Block generally does the following:</p>
 
 <ul>
-<li>1.Initialize the memory controller. (If you get a "memory not detected" beep code from a motherboard, it happens here.)</li>
+<li>1.Initialize the memory controller. (If you get a &ldquo;memory not detected&rdquo; beep code from a motherboard, it happens here.)</li>
 <li>2.Perform a checksum on the Compressed Area to make sure the rest of the BIOS is free of corruption.</li>
 <li>3.Jump into a Recovery Mode if any corruption is detected.</li>
 <li>4.If the checksum passes, decompress the rest of the BIOS into RAM somewhere (typically below the 1MB boundary).</li>
@@ -68,7 +68,7 @@ controller”，才能访问内存。那么代码在哪里执行呢？有个“�
 </ul>
 
 
-<p>A long road to go...</p>
+<p>A long road to go&hellip;</p>
 ]]></content>
   </entry>
   

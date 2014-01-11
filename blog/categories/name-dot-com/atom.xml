@@ -2,9 +2,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: name.com | Welcome to Pandora's Box]]></title>
-  <link href="http://hustcalm.me/blog/categories/name-com/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/blog/categories/name-dot-com/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -27,11 +27,11 @@
 <!--more-->
 
 
-<p>echo "hustcalm.me" >> ~/blog/octopress/source/CNAME</p>
+<p>echo &ldquo;hustcalm.me&rdquo; >> ~/blog/octopress/source/CNAME</p>
 
 <p>git add .</p>
 
-<p>git commit -a -m 'add custom domain CNAME configuration'</p>
+<p>git commit -a -m &lsquo;add custom domain CNAME configuration&rsquo;</p>
 
 <p>git push origin source</p>
 

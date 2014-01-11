@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Geek | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/geek/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -54,7 +54,7 @@
 
 <p>请参考<a href="https://github.com/hustcalm/vimperator">Vimperator On Github</a>.</p>
 
-<p>有任何问题，欢迎留言讨论！如果觉得Vimperator不够极客，可以拿Pentadactyl玩玩:-)</p>
+<p>有任何问题，欢迎留言讨论！如果觉得Vimperator不够极客，可以拿Pentadactyl玩玩:&ndash;)</p>
 ]]></content>
   </entry>
   
@@ -63,7 +63,7 @@
     <link href="http://hustcalm.me/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts/"/>
     <updated>2013-04-06T12:08:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts</id>
-    <content type="html"><![CDATA[<p>ASCII,ANSI,Unicode,UTF-8,BOM,UCS,GB2312,GBK,GB18030,BIG5,Code Page... Blabla...</p>
+    <content type="html"><![CDATA[<p>ASCII,ANSI,Unicode,UTF-8,BOM,UCS,GB2312,GBK,GB18030,BIG5,Code Page&hellip; Blabla&hellip;</p>
 
 <p>对于以上概念，你是否都理解了呢？下面，带着大家彻底搞懂字符集和字符编码的相关知识。我是读了别人的posts，然后cook出来，整理思路，所以需要大家边读边仔细阅读相应的post哦～</p>
 
@@ -119,7 +119,7 @@
 </ul>
 
 
-<p>本文知识点比较系统，在看了以上的文章后，可以“<strong>系统</strong>”地整理下思路了。本文在描述了“ASCII字符集&amp;编码","GBXXXX字符集&amp;编码”以及“BIG5字符集&amp;编码”后，提出了“<strong>伟大的创想Unicode</strong>”。之后，又说到了“互联网传输”的编码问题，Accept-Charset/Accept-Encoding/Accept-Language/Content-Type/Content-Encoding/Content-Language。</p>
+<p>本文知识点比较系统，在看了以上的文章后，可以“<strong>系统</strong>”地整理下思路了。本文在描述了“ASCII字符集&amp;编码",&ldquo;GBXXXX字符集&amp;编码”以及“BIG5字符集&amp;编码”后，提出了“<strong>伟大的创想Unicode</strong>”。之后，又说到了“互联网传输”的编码问题，Accept-Charset/Accept-Encoding/Accept-Language/Content-Type/Content-Encoding/Content-Language。</p>
 
 <h2>拾遗篇</h2>
 
@@ -137,7 +137,7 @@
 </ul>
 
 
-<p>Code page is another term for character encoding. It consists of a table of values that describes the character set for a particular language. The term code page originated from IBM's EBCDIC-based mainframe systems,[1] but many vendors use this term including Microsoft, SAP,[2] and Oracle Corporation.[3] Vendors often allocate their own code page number to a character encoding, even if it is better known by another name (for example UTF-8 character encoding has code page numbers 1208 at
+<p>Code page is another term for character encoding. It consists of a table of values that describes the character set for a particular language. The term code page originated from IBM&rsquo;s EBCDIC-based mainframe systems,[1] but many vendors use this term including Microsoft, SAP,[2] and Oracle Corporation.[3] Vendors often allocate their own code page number to a character encoding, even if it is better known by another name (for example UTF-8 character encoding has code page numbers 1208 at
 IBM, 65001 at Microsoft, 4110 at SAP).</p>
 
 <ul>
@@ -184,7 +184,7 @@ IBM, 65001 at Microsoft, 4110 at SAP).</p>
 <li><a href="http://www.portableappc.com/guide">PortableApps.com的中文开发指引</a>   <br/>
 个人认为这个开发指引还是比较赞的，可以给没有多少软件开发功底的同学一个制作软件的机会，有开发基础的也可以学习下PortableApps.com的软件格式约定。</li>
 <li><a href="http://portableappz.blogspot.com">PortableAppZ</a>      <br/>
-这是一个山寨版，相比于官方的只提供开源软件，PortableAppZ提供很多常用的软件，不过访问blogspot比较困难，希望的朋友自己想办法吧...</li>
+这是一个山寨版，相比于官方的只提供开源软件，PortableAppZ提供很多常用的软件，不过访问blogspot比较困难，希望的朋友自己想办法吧&hellip;</li>
 </ul>
 
 

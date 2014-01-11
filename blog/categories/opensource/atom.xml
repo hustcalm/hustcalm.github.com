@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OpenSource | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/opensource/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -33,7 +33,7 @@
     <link href="http://hustcalm.me/blog/2012/11/02/a-stupid-tutorial-on-starting-contribution-to-opensource-software/"/>
     <updated>2012-11-02T16:32:00+08:00</updated>
     <id>http://hustcalm.me/blog/2012/11/02/a-stupid-tutorial-on-starting-contribution-to-opensource-software</id>
-    <content type="html"><![CDATA[<p><strong>Anyone</strong> who's not a nerd can get on boat after this stupid tutorial, I guess.     <br/>
+    <content type="html"><![CDATA[<p><strong>Anyone</strong> who&rsquo;s not a nerd can get on boat after this stupid tutorial, I guess.     <br/>
 <strong>All</strong> you need is passion before contributing to An Open Source Project and some learning about their workflow maybe.   <br/>
 <strong>Open Source</strong> projects need help and every project owner does know this. Besides writing code, they got lots of to do, finding and reporting bugs, do documentation, answer questions on forums or IRC channels, some translation, etc.</p>
 
@@ -52,28 +52,28 @@
 
 <p>As soon as you know how is everyting being done, you may start to think about to do something. So how to start? Suscribe their mailing lists, go around the forums, to introduce yourself on IRC and just show up to let people know you:)If you are a coder, then go to the bug tracker system, doing some easy hacks to get to know the whole world.</p>
 
-<p>What? Don't know any code or sth? Don't worry, try to do some translation if possible or just use the software and see if everyting is going ok. If
+<p>What? Don&rsquo;t know any code or sth? Don&rsquo;t worry, try to do some translation if possible or just use the software and see if everyting is going ok. If
 not, of course, search the bug tracker, if you confirm this is a new bug ,report it and describe it as the way other people do.</p>
 
-<p>Maybe several days later, people will know you and appreciate your contribution. If not, don't get depressed, just hang on and your efforts will pay.</p>
+<p>Maybe several days later, people will know you and appreciate your contribution. If not, don&rsquo;t get depressed, just hang on and your efforts will pay.</p>
 
 <p>Of course get no happy? Switch to a new project as you like:)</p>
 
 <h2>Do Thins Right</h2>
 
-<p>Let's say you have been enjoying involed in the project and maybe it's time to do something more. But remember everything must be obey the game rules:)</p>
+<p>Let&rsquo;s say you have been enjoying involed in the project and maybe it&rsquo;s time to do something more. But remember everything must be obey the game rules:)</p>
 
-<p>Make patches and submit it to the developers(of course via emails) and be caution don't make any unnecessary minor changes.</p>
+<p>Make patches and submit it to the developers(of course via emails) and be caution don&rsquo;t make any unnecessary minor changes.</p>
 
 <h2>New ideas</h2>
 
-<p>As you are doing more and more contribution, maybe you got some good ideas to enhence the project。Don't hesitate to write the maintainer of the project and get feedback about your thoughts, let other people know it and discuss if it is worth it.</p>
+<p>As you are doing more and more contribution, maybe you got some good ideas to enhence the project。Don&rsquo;t hesitate to write the maintainer of the project and get feedback about your thoughts, let other people know it and discuss if it is worth it.</p>
 
 <h2>Help others</h2>
 
-<p>You know what? You have earned much knowledge about the project after some strugellings though. Sure you would be happy to help the newbies to get on track. So don't be mean to ask questions and reply emails if you can.</p>
+<p>You know what? You have earned much knowledge about the project after some strugellings though. Sure you would be happy to help the newbies to get on track. So don&rsquo;t be mean to ask questions and reply emails if you can.</p>
 
-<h2>What's Next</h2>
+<h2>What&rsquo;s Next</h2>
 
 <p>As you have completely got knowledge about contributing to Open Source Project, you are free to broaden your horizon now. Choose some other projects that interest you or even get your own project open sourced and enjoy the cooperation with people from every corner in the world:)</p>
 

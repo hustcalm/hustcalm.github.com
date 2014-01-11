@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Network | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/network/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -25,9 +25,9 @@
 <!--more-->
 
 
-<h2>What's the claim</h2>
+<h2>What&rsquo;s the claim</h2>
 
-<p>First, let's see what a specified module's aim. I will quote from the official site:-)</p>
+<p>First, let&rsquo;s see what a specified module&rsquo;s aim. I will quote from the official site:&ndash;)</p>
 
 <h3>httplib</h3>
 
@@ -68,14 +68,14 @@ Some restrictions apply — it can only open URLs for reading, and no seek opera
 It's an extensible library for opening URLs.
 </code></pre>
 
-<h2>What's the difference</h2>
+<h2>What&rsquo;s the difference</h2>
 
 <h3>httplibx and urllibx</h3>
 
 <p><code>urllib/urllib2</code> is built on top of <code>httplib</code>. It offers more features than writing to <code>httplib</code> directly.
 However, <code>httplib</code> gives you finer control over the underlying connections.</p>
 
-<p>If you're dealing solely with HTTP/HTTPs and need access to HTTP specific stuff, use httplib.
+<p>If you&rsquo;re dealing solely with HTTP/HTTPs and need access to HTTP specific stuff, use httplib.
 For all other cases, use urllibx(note that <code>urllib and urllib2</code> have different capabilities, thus are always used together).</p>
 
 <h3>httplib and httplib2</h3>
@@ -84,9 +84,9 @@ For all other cases, use urllibx(note that <code>urllib and urllib2</code> have 
 
 <p>They actually do the same things utilizing HTTP/HTTPs and other network protocals like FTP, typically we can call them <code>HTTP client library</code>.</p>
 
-<p>If <code>httplib</code> can't fulfill your need(as if you need the <code>Redirects</code> feature), consider switching to <code>httplib2</code> then.</p>
+<p>If <code>httplib</code> can&rsquo;t fulfill your need(as if you need the <code>Redirects</code> feature), consider switching to <code>httplib2</code> then.</p>
 
-<p>To make things simpler, I'd rather using <code>httplib2</code> as my default <code>HTTP client library</code> for Python.</p>
+<p>To make things simpler, I&rsquo;d rather using <code>httplib2</code> as my default <code>HTTP client library</code> for Python.</p>
 
 <h3>urllib and urllib2</h3>
 
@@ -96,7 +96,7 @@ For all other cases, use urllibx(note that <code>urllib and urllib2</code> have 
 
 <ul>
 <li><code>urllib2</code> can accept a Request object to set the headers for a URL request, urllib accepts only a URL. That means, you cannot masquerade your User Agent string etc.</li>
-<li><code>urllib</code> provides the urlencode method which is used for the generation of GET query strings, urllib2 doesn't have such a function. This is one of the reasons why urllib is often used along with urllib2.</li>
+<li><code>urllib</code> provides the urlencode method which is used for the generation of GET query strings, urllib2 doesn&rsquo;t have such a function. This is one of the reasons why urllib is often used along with urllib2.</li>
 </ul>
 
 
@@ -132,7 +132,7 @@ For all other cases, use urllibx(note that <code>urllib and urllib2</code> have 
     <id>http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu</id>
     <content type="html"><![CDATA[<h2>Wireless NetWork is nice  of CMCC</h2>
 
-<p>Even got stuck by CAS's policy about bandwidth limit, prefered to use CMCC wireless network though some times there is no speed.</p>
+<p>Even got stuck by CAS&rsquo;s policy about bandwidth limit, prefered to use CMCC wireless network though some times there is no speed.</p>
 ]]></content>
   </entry>
   

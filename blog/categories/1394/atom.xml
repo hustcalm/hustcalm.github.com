@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 1394 | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/1394/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -18,9 +18,9 @@
     <link href="http://hustcalm.me/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv/"/>
     <updated>2013-12-10T21:10:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv</id>
-    <content type="html"><![CDATA[<p>I'm trying to make AVT 1394 Cameras work with OpenCV using the standard <code>VideoCapture</code> recently but got no luck. Briefly speaking, OpenCV's support for camera input are <code>Operating System</code> and <code>Device Driver</code> aware.</p>
+    <content type="html"><![CDATA[<p>I&rsquo;m trying to make AVT 1394 Cameras work with OpenCV using the standard <code>VideoCapture</code> recently but got no luck. Briefly speaking, OpenCV&rsquo;s support for camera input are <code>Operating System</code> and <code>Device Driver</code> aware.</p>
 
-<p>In this post, I will give some basic related concepts related to Firewire(aka IEEE 1394) and AVT software packages, also OpenCV's <code>VideoCapture</code> workflow.</p>
+<p>In this post, I will give some basic related concepts related to Firewire(aka IEEE 1394) and AVT software packages, also OpenCV&rsquo;s <code>VideoCapture</code> workflow.</p>
 
 <!--more-->
 
@@ -29,7 +29,7 @@
 
 <h3>FireWire</h3>
 
-<p>Aka <a href="http://en.wikipedia.org/wiki/IEEE_1394">IEEE 1394</a>, it's a serial bus interface standard for high-speed communications and isochronous real-time data transfer, developed by <code>Apple</code> in early 1990s and called <code>FireWire</code>. The main competitor nowadays is <code>USB</code>.</p>
+<p>Aka <a href="http://en.wikipedia.org/wiki/IEEE_1394">IEEE 1394</a>, it&rsquo;s a serial bus interface standard for high-speed communications and isochronous real-time data transfer, developed by <code>Apple</code> in early 1990s and called <code>FireWire</code>. The main competitor nowadays is <code>USB</code>.</p>
 
 <p>For the official introduction part, you can refer to the wikipedia link above, I want to address two points here.</p>
 
@@ -53,7 +53,7 @@
 
 <h3>AVT Cameras</h3>
 
-<p><a href="http://www.alliedvisiontec.com">AVT</a> does manufacture so many cameras and provide great technical support. It's kind of a choice for you to choose between the software packages,seriously speaking.</p>
+<p><a href="http://www.alliedvisiontec.com">AVT</a> does manufacture so many cameras and provide great technical support. It&rsquo;s kind of a choice for you to choose between the software packages,seriously speaking.</p>
 
 <h4>AVT Software Selector</h4>
 
@@ -79,9 +79,9 @@
 
 <h4>AVT and OpenCV</h4>
 
-<p>Bad luck that we can't use AVT cameras just with <code>VideoCapture</code> because that the cameras might use a device driver that OpenCV can't talk to.</p>
+<p>Bad luck that we can&rsquo;t use AVT cameras just with <code>VideoCapture</code> because that the cameras might use a device driver that OpenCV can&rsquo;t talk to.</p>
 
-<p>However if your camera compliants with <a href="http://www.cs.cmu.edu/~iwan/1394/">CMU 1394 Digital Camera Driver</a>, probably you will be happy again:-)</p>
+<p>However if your camera compliants with <a href="http://www.cs.cmu.edu/~iwan/1394/">CMU 1394 Digital Camera Driver</a>, probably you will be happy again:&ndash;)</p>
 
 <hr />
 

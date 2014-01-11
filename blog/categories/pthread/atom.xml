@@ -4,7 +4,7 @@
   <title><![CDATA[Category: pthread | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/pthread/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -37,7 +37,7 @@
 <li><a href="http://codebase.eu/tutorial/posix-threads-c/index.php">Creating multi-threaded C++ code</a></li>
 <li><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html">POSIX thread (pthread) libraries</a></li>
 <li><a href="http://www.ibm.com/developerworks/library/l-posix1/index.html">POSIX threads explained-A simple and nimble tool for memory sharing</a></li>
-<li><a href="http://www.tutorialspoint.com/operating_system/os_multi_threading.htm">Operating System - Multi-Threading</a></li>
+<li><a href="http://www.tutorialspoint.com/operating_system/os_multi_threading.htm">Operating System &ndash; Multi-Threading</a></li>
 <li><a href="http://pubs.opengroup.org/onlinepubs/7908799/xsh/pthread.h.html">&lt;pthread.h></a></li>
 </ul>
 

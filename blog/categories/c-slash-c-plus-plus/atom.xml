@@ -2,9 +2,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: C/C++ | Welcome to Pandora's Box]]></title>
-  <link href="http://hustcalm.me/blog/categories/c-c-/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/blog/categories/c-slash-c-plus-plus/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T11:49:48+08:00</updated>
+  <updated>2014-01-11T20:05:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -18,14 +18,14 @@
     <link href="http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator/"/>
     <updated>2014-01-02T15:42:00+08:00</updated>
     <id>http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator</id>
-    <content type="html"><![CDATA[<p>Recently I'm doing a project for the Lab and choose C++ as the programming language, but for the Framework, I considered MFC and Qt at first but choose Qt without hesitation as soon as I recalled the pains when I tried to play with MFC. In short, MFC is just showing too much to the developer and looks a little annoying and more complicated(C++ itself is complicated enough).</p>
+    <content type="html"><![CDATA[<p>Recently I&rsquo;m doing a project for the Lab and choose C++ as the programming language, but for the Framework, I considered MFC and Qt at first but choose Qt without hesitation as soon as I recalled the pains when I tried to play with MFC. In short, MFC is just showing too much to the developer and looks a little annoying and more complicated(C++ itself is complicated enough).</p>
 
 <p>To be clear, I did not try Qt before either and totally new to it. But after two months, I wrote a running application which can deal with Cameras, IMU and Inclinometer, also a 6DOF controller. Besides, we have multithreading in it and multiply timers are running simultaneously. To summarize what I have learned and also share my experience to you is the desire to write this post.</p>
 
 <!--more-->
 
 
-<p>I also find that Qt Creator is really cool with the plugin <code>FakeVim</code> enabled(It is installed by default ,at least in my Qt Creator 2.8.1 Windows version), a light wight IDE with powerful abilities! So in this post, after talking about how to get started with Qt, I will give some appreciations to Qt Creator:-)</p>
+<p>I also find that Qt Creator is really cool with the plugin <code>FakeVim</code> enabled(It is installed by default ,at least in my Qt Creator 2.8.1 Windows version), a light wight IDE with powerful abilities! So in this post, after talking about how to get started with Qt, I will give some appreciations to Qt Creator:&ndash;)</p>
 
 <hr />
 
@@ -33,13 +33,13 @@
 
 <h4>Get to know Qt</h4>
 
-<p>It's essentially a GUI toolkit when fist designed, but after years of development, it has evolved into a framework which is cross platform and popular.</p>
+<p>It&rsquo;s essentially a GUI toolkit when fist designed, but after years of development, it has evolved into a framework which is cross platform and popular.</p>
 
 <p>For official introduction, visit <a href="http://qt-project.org/">Qt Project</a>.</p>
 
 <h4>Choosing the way that you use</h4>
 
-<p>I will not talk about the versions ,like 5.x or 4.x. Let's say something about the <code>prebuilt-binaries</code> and <code>source code</code>.</p>
+<p>I will not talk about the versions ,like 5.x or 4.x. Let&rsquo;s say something about the <code>prebuilt-binaries</code> and <code>source code</code>.</p>
 
 <p>If you choose to build from scratch, it would take a bit of time to do that since Qt is big enough. If using the built binaries, do look at the related compilor, for Windows, you got options for VS 2008, VS 2010, VS 2012 and MinGW stuff. If you are using VS 2008(in my case), choosing this file <a href="http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-win-opensource-4.8.5-vs2008.exe">Qt libraries 4.8.5 for Windows (VS 2008, 235 MB)</a>, just for an example,then probably you are good to go when you build your project with VS 2008 as the backend.</p>
 
@@ -47,11 +47,11 @@
 
 <h4>A good book would help a lot</h4>
 
-<p>I read the book <code>C++ GUI Programming with Qt 4(2nd Edition)</code> not because it's the best book for Qt, just because that we got one Chinese version copy of the book in our Lab. I went through the first 3 chapters and the appendix(mainly to know more about <code>qmake</code>), then referenced other chapters while I got problems when coding.</p>
+<p>I read the book <code>C++ GUI Programming with Qt 4(2nd Edition)</code> not because it&rsquo;s the best book for Qt, just because that we got one Chinese version copy of the book in our Lab. I went through the first 3 chapters and the appendix(mainly to know more about <code>qmake</code>), then referenced other chapters while I got problems when coding.</p>
 
 <p>For the comment that I wrote for the book, you can find it <a href="http://book.douban.com/review/6489896/">here</a>.</p>
 
-<p>However, this book is recommended as the official Qt book. You may want to try it out yourself and make your own judge, if you find another excellent book, do let me know:-)</p>
+<p>However, this book is recommended as the official Qt book. You may want to try it out yourself and make your own judge, if you find another excellent book, do let me know:&ndash;)</p>
 
 <h4>See what the official says</h4>
 
@@ -64,7 +64,7 @@
 </ul>
 
 
-<p>You may notice that each Qt version got their own getting started web page, however, don't bother, checkout them all and pick the brilliant part that suits yourself.</p>
+<p>You may notice that each Qt version got their own getting started web page, however, don&rsquo;t bother, checkout them all and pick the brilliant part that suits yourself.</p>
 
 <p>As time goes by, there may be new links and the listed links would be out of date. Go to the official website and find the real links then.</p>
 
@@ -72,15 +72,15 @@
 
 <h3>Qt Creator as your Swiss Army Knife</h3>
 
-<p>Yes, it is just an IDE, compared with Eclipse, it's dedicated to Qt and C++(Not exactly, it supports Android and even BlackBerry development), so much light-wighted. However, it's flexible and with lots of plugins, see <a href="http://qt-project.org/wiki/Qt_Creator_Plug-in_Gallery">Qt Creator Plugin Gallery</a>.</p>
+<p>Yes, it is just an IDE, compared with Eclipse, it&rsquo;s dedicated to Qt and C++(Not exactly, it supports Android and even BlackBerry development), so much light-wighted. However, it&rsquo;s flexible and with lots of plugins, see <a href="http://qt-project.org/wiki/Qt_Creator_Plug-in_Gallery">Qt Creator Plugin Gallery</a>.</p>
 
-<p>As I'm not expert to Qt Creator either, I will give several examples here.</p>
+<p>As I&rsquo;m not expert to Qt Creator either, I will give several examples here.</p>
 
 <h4>FakeVim</h4>
 
-<p>Default shipped with Qt Creator, I'm really excited when I find it. Support external <code>.vimrc</code> and give you almost the native vim experience.</p>
+<p>Default shipped with Qt Creator, I&rsquo;m really excited when I find it. Support external <code>.vimrc</code> and give you almost the native vim experience.</p>
 
-<p>I used the default <code>FakeVim</code> key bindings, they are just as same as the official vim, besides that, you may use other short cuts provided by Qt Creator, among them, <code>F2</code> for following the symbol under cursor and <code>F4</code> for switching header and souce file are the most frequently used. For generating source code tags, it's well cared by a background process, however when got large source files, I suffered for temporary <code>Not Responding</code>.</p>
+<p>I used the default <code>FakeVim</code> key bindings, they are just as same as the official vim, besides that, you may use other short cuts provided by Qt Creator, among them, <code>F2</code> for following the symbol under cursor and <code>F4</code> for switching header and souce file are the most frequently used. For generating source code tags, it&rsquo;s well cared by a background process, however when got large source files, I suffered for temporary <code>Not Responding</code>.</p>
 
 <p>For quick view of the options:
 <img src="/images/blog_images/qt_creator-fakevim.png"></p>
@@ -104,7 +104,7 @@
 
 <hr />
 
-<p>Hope this post do a little help for your getting started with Qt Programming:-)</p>
+<p>Hope this post do a little help for your getting started with Qt Programming:&ndash;)</p>
 ]]></content>
   </entry>
   
@@ -148,7 +148,7 @@
 
 <p>说到了编译器，就再说一下抽象层这个事情吧。大家可能都知道，最开始的编程使用机器语言，后来到了汇编语言，由汇编器完成中间的翻译工作。后来出现了高级语言，比如C语言（其实在之前有很多其它的语言，C语言不是最早却是最成功的），这个时候由编译器把源代码处理后编译成汇编代码，再由汇编器翻译成机器代码。至于之后的动态语言，比如Python，也是先要使用一种语言实现一个解释器，然后再通过这个解释器来运行用户的脚本或者代码。居于中间的另外一种语言形式可以拿Java举例子，它本身具有静态语言和动态语言的特点，而这一切都是由JVM（Java Virtual Machine）带来的。</p>
 
-<p>纵观几种语言形态，可以发现一种典型的分层结构，源代码->（中间代码）-> 汇编代码 -> 机器代码。 扯一句淡，“任何的软件问题，都可以通过增加一层抽象层解决”。呵呵。</p>
+<p>纵观几种语言形态，可以发现一种典型的分层结构，源代码->（中间代码）-> 汇编代码 &ndash;> 机器代码。 扯一句淡，“任何的软件问题，都可以通过增加一层抽象层解决”。呵呵。</p>
 
 <h4>OS</h4>
 
@@ -184,7 +184,7 @@
 
 <h3>看看他们怎么说</h3>
 
-<p>网上关于CRT，Standard Library，OS的综合讨论并不太多，这里我挑几个典型的分析，简单概括一下原作者的看法。如果跟原文的意思有出入，请原作者包涵啦:-)</p>
+<p>网上关于CRT，Standard Library，OS的综合讨论并不太多，这里我挑几个典型的分析，简单概括一下原作者的看法。如果跟原文的意思有出入，请原作者包涵啦:&ndash;)</p>
 
 <h4><a href="http://www.codeproject.com/Articles/22642/What-Every-Computer-Programmer-Should-Know-About-W#ContentsofC++StandardLibrary">What Every Computer Programmer Should Know About Windows API, CRT, and the Standard C++ Library</a></h4>
 
@@ -251,7 +251,7 @@
 <li><p>找到正确的入门书籍，谭老师的那本书我是强烈不推荐的，推荐看C语言三剑客《C和指针》，《C陷阱和缺陷》和《C专家编程》。C++的话，个人觉得《Essential C++》适合入门，C++ Primer适合当成参考书籍，其它的《Effective C++》等还没看过，不敢乱说。</p></li>
 <li><p>边看边练，加深理解，拿指针为例，一定在从对应的内存关系去理解，就会感觉很自然，它不过是一个整形变量，指代一个内容地址而已;而变量本身就是某一个内存地址的抽象表示嘛。而不管指针的指针，还是什么，顺着下去也就比较好理解了，只是关系繁杂的时候需要仔细缕清楚。</p></li>
 <li><p>基本熟悉之后，可以去试试一些框架，比如Qt，体会一下框架是如何在C++之上给开发者抽象了一层应用开发层的。</p></li>
-<li><p>后面的，自行发挥想象力吧:-)</p></li>
+<li><p>后面的，自行发挥想象力吧:&ndash;)</p></li>
 </ul>
 
 

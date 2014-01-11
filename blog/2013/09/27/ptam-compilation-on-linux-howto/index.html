@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>PTAM Compilation On Linux-HowTo - Welcome to Pandora's Box</title>
+  <title>PTAM Compilation on Linux-HowTo - Welcome to Pandora's Box</title>
   <meta name="author" content="hustcalm">
 
   
-  <meta name="description" content="The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god&#8217;s sake) ! I struggled to get &hellip;">
+  <meta name="description" content="The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god&rsquo;s sake) ! I struggled to get &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,13 +18,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto/">
-  <link href="/favicon.ico" rel="icon">
+  <link rel="canonical" href="http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto">
+  <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Welcome to Pandora's Box" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -88,23 +89,24 @@
 
 <time datetime="2013-09-27T19:50:00+08:00" pubdate data-updated="true">Sep 27<span>th</span>, 2013</time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://hustcalm.me">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god&#8217;s sake) ! I struggled to get it done on my Linux Mint 15 with totally failure:-(</p>
+<div class="entry-content"><p>The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god&rsquo;s sake) ! I struggled to get it done on my Linux Mint 15 with totally failure:&ndash;(</p>
 
-<p>However I made it with just pulling the bleeding edge libs(I mean TooN,libCVD and Gvars3) from github, add a header file <code>&lt;unistd.h&gt;</code> to <code>Tracker.cc</code>, edit the <code>Makefile</code> about the linker flags(I will tell the details below), and I absolutely think that &#8216;share my experience to you&#8217; is my duty.</p>
+<p>However I made it with just pulling the bleeding edge libs(I mean TooN,libCVD and Gvars3) from github, add a header file <code>&lt;unistd.h&gt;</code> to <code>Tracker.cc</code>, edit the <code>Makefile</code> about the linker flags(I will tell the details below), and I absolutely think that &lsquo;share my experience to you&rsquo; is my duty.</p>
 
-<p>I succeeded on <strong>Linux Mint 15</strong> and <strong>Ubuntu 12.04</strong>, other distros won&#8217;t be hard either:-)</p>
+<p>I succeeded on <strong>Linux Mint 15</strong> and <strong>Ubuntu 12.04</strong>, other distros won&rsquo;t be hard either:&ndash;)</p>
 
 <!--more-->
 
 
-<p>Now, let&#8217;s start the journey!</p>
+<p>Now, let&rsquo;s start the journey!</p>
 
 <h2>Installation the required dependencies</h2>
 
@@ -198,7 +200,7 @@ wget http://www.edwardrosten.com/cvd/gvars-3.0.tar.gz
 
 <p><strong>Note the versions may differ as time goes by, use git if you can</strong> Or just look at this <a href="http://www.edwardrosten.com/cvd/toon.html">link</a> for more details.</p>
 
-<p>Also remember <strong>do refer to the README files when you try to install the libraries</strong>, cause they really do help in some manner:-)</p>
+<p>Also remember <strong>do refer to the README files when you try to install the libraries</strong>, cause they really do help in some manner:&ndash;)</p>
 
 <h3>TooN</h3>
 
@@ -209,7 +211,7 @@ wget http://www.edwardrosten.com/cvd/gvars-3.0.tar.gz
 
 <h3>libCVD</h3>
 
-<p>Remember that libCVD really needs TooN, or you will get stuck when trying to compile PTAM:-(</p>
+<p>Remember that libCVD really needs TooN, or you will get stuck when trying to compile PTAM:&ndash;(</p>
 
 <p>The steps I used is like this:</p>
 
@@ -218,7 +220,7 @@ make
 sudo make install
 </code></pre>
 
-<p>If you run into problems, check the output of <code>./configure</code> carefully, they will give you some hints:-)</p>
+<p>If you run into problems, check the output of <code>./configure</code> carefully, they will give you some hints:&ndash;)</p>
 
 <h3>Gvars3</h3>
 
@@ -265,12 +267,12 @@ cp Build/Linux/* .
 
 <h3>Make</h3>
 
-<p>Probably an error will popup, like &#8220;error, <code>usleep</code> was not declared in this scope&#8221;, easily add</p>
+<p>Probably an error will popup, like &ldquo;error, <code>usleep</code> was not declared in this scope&rdquo;, easily add</p>
 
 <pre><code>#include &lt;unistd.h&gt;
 </code></pre>
 
-<p>to <code>Tracker.cc</code> and you are done:-)</p>
+<p>to <code>Tracker.cc</code> and you are done:&ndash;)</p>
 
 <p>Just</p>
 
@@ -287,13 +289,13 @@ cp Build/Linux/* .
 
 <ul>
 <li><a href="http://hhfighting.blog.163.com/blog/static/55700323201242524213235/">ubuntu11.10下安装PTAMM</a></li>
-<li><a href="http://www.edwardrosten.com/cvd/toon.html">TooN: Tom&#8217;s Object-oriented numerics library</a></li>
+<li><a href="http://www.edwardrosten.com/cvd/toon.html">TooN: Tom&rsquo;s Object-oriented numerics library</a></li>
 <li><a href="http://code.google.com/p/qt-opencv-multithreaded/wiki/Documentation">qt-opencv-multithreaded</a></li>
 <li><a href="http://docs.opencv.org/trunk/doc/tutorials/introduction/linux_install/linux_install.html">OpenCV Tutorials-Installation in Linux</a></li>
 </ul>
 
 
-<p>Hope this post will do some help and if you find any mistake in my blog, please do <strong>leave your comment or drop me a line:-)</strong></p>
+<p>Hope this post will do some help and if you find any mistake in my blog, please do <strong>leave your comment or drop me a line:&ndash;)</strong></p>
 </div>
 
 
@@ -331,9 +333,6 @@ cp Build/Linux/* .
       <div class="sharing">
   
   
-  
-  
-  <div class="bshare-custom icon-medium-plus"><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到Evernote" class="bshare-evernote" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span style="float: none;" class="BSHARE_COUNT bshare-share-count">7.72K</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
   
 </div>
 
@@ -390,7 +389,7 @@ cp Build/Linux/* .
       </li>
     
       <li class="post">
-        <a href="/blog/2014/01/02/getting-started-with-qt-and-qt-creator/">Getting Started with Qt and Qt Creator</a>
+        <a href="/blog/2014/01/02/getting-started-with-qt-and-qt-creator/">Getting Started With Qt and Qt Creator</a>
       </li>
     
       <li class="post">
@@ -398,11 +397,11 @@ cp Build/Linux/* .
       </li>
     
       <li class="post">
-        <a href="/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv/">Notes about IEEE 1394 AVT Cameras - FirePackage and OpenCV</a>
+        <a href="/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv/">Notes About IEEE 1394 AVT Cameras - FirePackage and OpenCV</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/">httplib httplib2 urllib urllib2-what's the difference</a>
+        <a href="/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/">Httplib Httplib2 Urllib Urllib2-what's the Difference</a>
       </li>
     
   </ul>
@@ -501,7 +500,7 @@ cp Build/Linux/* .
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -517,7 +516,7 @@ cp Build/Linux/* .
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
