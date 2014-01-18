@@ -7,7 +7,7 @@ categories: Latex Presentation
 ---
 People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? `PPT` would be the first choice to majority of people. For web developers, they would produce their slides in `HTML + javascript`? And for researchers or people in academic area, will they use `Latex` or the popular `beamer` class?
 
-<!--more->
+<!--more-->
 
 We do have kinds of approaches to make us slids work, but what is the awesome way? To be awesome, I mean the sides should look nice, easy to control its typeset and should maintain the same when playing at different devices or different software. Of course, the way to write your slide could be awesome too:-)
 
