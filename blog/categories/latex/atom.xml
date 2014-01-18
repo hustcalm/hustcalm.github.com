@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Latex | Welcome to Pandora's Box]]></title>
+  <link href="http://hustcalm.me/blog/categories/latex/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2014-01-18T21:00:25+08:00</updated>
+  <id>http://hustcalm.me/</id>
+  <author>
+    <name><![CDATA[hustcalm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Making your slides the awesome way]]></title>
+    <link href="http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way.markdown/"/>
+    <updated>2014-01-12T00:08:45+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way.markdown</id>
+    <content type="html"><![CDATA[<p>People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? <code>PPT</code> would be the first choice to majority of people. For web developers, they would produce their slides in <code>HTML + javascript</code>? And for researchers or people in academic area, will they use <code>Latex</code> or the popular <code>beamer</code> class?</p>
+
+<p>We do have kinds of approaches to make us slids work, but what is the awesome way? To be awesome, I mean the sides should look nice, easy to control its typeset and should maintain the same when playing at different devices or different software. Of course, the way to write your slide could be awesome too:&ndash;)</p>
+
+<p>I will simply go through what choices that we have, what&rsquo;s the advantage disadvantage, and finally choose the way that you think is awesome to you.</p>
+
+<h3>Choices for making slides</h3>
+
+<h3>Awesome way for making slides</h3>
+
+<h3>Choose your awesome way</h3>
+
+<p>Links:</p>
+
+<ul>
+<li><a href="http://jeromyanglim.blogspot.com/2010/08/getting-started-with-beamer-tips-and.html">Getting Started with Beamer: Tips and Tricks for LaTeX Presentations</a></li>
+<li><a href="http://www.productivescholar.com/2008/03/15/how-to-use-the-latex-beamer-class-for-great-looking-presentations/">How-To Use the LaTeX Beamer Class for Great-Looking Presentations</a></li>
+<li><p><a href="http://lucatrevisan.wordpress.com/2010/11/18/presenting-a-beamer-talk-the-right-way/">Presenting a Beamer Talk the Right Way</a></p></li>
+<li><p><a href="http://www.math-linux.com/latex-26/How-to-make-a-presentation-with">How to make a presentation with Latex &ndash; Introduction to Beamer</a></p></li>
+<li><a href="http://www.uncg.edu/cmp/reu/presentations/Charles%20Batts%20-%20Beamer%20Tutorial.pdf">A Beamer Tutorial in Beamer</a></li>
+<li><a href="http://www.tug.org/pracjourn/2005-4/mertz/mertz.pdf">Beamer by Example</a></li>
+<li><a href="http://www.informatik.uni-freiburg.de/~frank/ENG/latex-course/latex-course-3/latex-course-3_en.html">examples of beamer class</a></li>
+<li><a href="http://heather.cs.ucdavis.edu/~matloff/beamer.html">Norm Matloff&rsquo;s Quick Tutorial on the Beamer Package for Slide Making in LaTeX</a></li>
+<li><a href="http://www.math.umbc.edu/~rouben/beamer/quickstart.html">A Beamer Quickstart</a></li>
+<li><p><a href="http://zrno.fsb.hr/katedra/download/materijali/1082.pdf">Beamer Class Tutorial &ndash; Warsaw University of Technology</a></p></li>
+<li><p><a href="http://readingsml.blogspot.com/2009/11/keynote-vs-powerpoint-vs-beamer.html">Keynote vs. Powerpoint vs. Beamer</a></p></li>
+<li><a href="http://johnmacfarlane.net/pandoc/demo/example9/producing-slide-shows-with-pandoc.html">Producing slide shows with Pandoc</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

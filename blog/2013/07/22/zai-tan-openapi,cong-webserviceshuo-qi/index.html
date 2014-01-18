@@ -9,7 +9,7 @@
   <meta name="author" content="hustcalm">
 
   
-  <meta name="description" content="最近对SNS-Shim做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解， &hellip;">
+  <meta name="description" content="最近对SNS-Shim做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。 在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,20 +97,28 @@
   </header>
 
 
-<div class="entry-content"><p>最近对<a href="https://github.com/hustcalm/SNS-Shim">SNS-Shim</a>做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解，同时也激起了对服务提供商如何向开发者提供易用可靠的OpenAPI服务进行研究的好奇心。简单来说，开发者只需要关注如何“使用”，了解了基本的授权流程后，接下来只要按照API进行网络请求即可（使用服务提供商的SDK是最直接的，也可以自己根据相应的请求规范自己实现请求接口，因为本质上都是向某个URL发起HTTP请求）。而作为服务提供商则要考虑开放平台的建设问题了，这里面涉及到各种关于集群，高并发，大数据，分布式处理的东西（这个时候再看OAuth什么的，只是其中的一个小实现细节）。</p>
+<div class="entry-content"><p>最近对<a href="https://github.com/hustcalm/SNS-Shim">SNS-Shim</a>做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。</p>
+
+<p>在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解，同时也激起了对服务提供商如何向开发者提供易用可靠的OpenAPI服务进行研究的好奇心。简单来说，开发者只需要关注如何“使用”，了解了基本的授权流程后，接下来只要按照API进行网络请求即可（使用服务提供商的SDK是最直接的，也可以自己根据相应的请求规范自己实现请求接口，因为本质上都是向某个URL发起HTTP请求）。</p>
+
+<p>而作为服务提供商则要考虑开放平台的建设问题了，这里面涉及到各种关于集群，高并发，大数据，分布式处理的东西（这个时候再看OAuth什么的，只是其中的一个小实现细节）。</p>
 
 <!--more-->
 
 
 <p>从整个大的层面看开放平台，是服务提供商将自身的一部分业务和服务以Web Service的形式开放出去（比较早的貌似是Yahoo搜索，开发者可以利用其API进行搜索），比较典型的有Facebook，Twitter，Flickr，Google Map，Amazon，Youtube等等。而国内的开放平台的建设和发展也是最近几年的事情，目前几大SNS站点，腾讯，阿里巴巴旗下的淘宝等，豆瓣都顺应潮流推出了自己的平台。不管是跟风也好，炒作也罢，抑或是背后的业务需求，各位大佬们都要面临开放平台的建设问题，从技术角度来考虑，有REST和类RPC两种选择。</p>
 
-<p>由于本身认识有限，就不泼墨了，简单说说Web Service常见的几个概念，然后给出几个好文的链接。
-*   Web Service：直观理解，通过Web向外部提供服务。
-*   RPC：Remote Procedure Call，远程过程调用，客户端像服务器端发起一个请求（携带方法和参数），服务器处理后返回结果给客户端。
-*   XML-RPC：基于XML的RPC，也就是客户端和服务器之间消息传递的格式是基于XML的，标准化的XML解析实现数据交换。
-*   SOA：Service Oriented Architecture，面向服务架构，适应Web Service开发的一种架构，请自行Google。
-*   SOAP：Simple Object Access Protocal，对XML-RPC的改进和拓展，却不尽人意。
-*   REST：REpresentation State Transfer，Web Service的一种架构，设计理念和HTTP协议有异曲同工之妙。</p>
+<p>由于本身认识有限，就不泼墨了，简单说说Web Service常见的几个概念，然后给出几个好文的链接。</p>
+
+<ul>
+<li>Web Service：直观理解，通过Web向外部提供服务。</li>
+<li>RPC：Remote Procedure Call，远程过程调用，客户端向服务器端发起一个请求（携带方法和参数），服务器处理后返回结果给客户端。</li>
+<li>XML-RPC：基于XML的RPC，也就是客户端和服务器之间消息传递的格式是基于XML的，标准化的XML解析实现数据交换。</li>
+<li>SOA：Service Oriented Architecture，面向服务架构，适应Web Service开发的一种架构，请自行Google。</li>
+<li>SOAP：Simple Object Access Protocol，对XML-RPC的改进和拓展，却不尽人意。</li>
+<li>REST：REpresentation State Transfer，Web Service的一种架构，设计理念和HTTP协议有异曲同工之妙。</li>
+</ul>
+
 
 <p>下面给出几个链接，供大家一起研究：</p>
 
@@ -211,11 +219,15 @@
 
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 110.0%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 110.0%'>AR(1)</a> <a href='/blog/categories/arduino' style='font-size: 110.0%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 110.0%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 110.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 110.0%'>BIOS(1)</a> <a href='/blog/categories/c-c-' style='font-size: 120.0%'>C/C++(2)</a> <a href='/blog/categories/centos' style='font-size: 120.0%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 110.0%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 110.0%'>CV(1)</a> <a href='/blog/categories/cygwin' style='font-size: 110.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 110.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 110.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 110.0%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 110.0%'>Fedora(1)</a> <a href='/blog/categories/geek' style='font-size: 130.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 120.0%'>Git(2)</a> <a href='/blog/categories/learning' style='font-size: 110.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 110.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 130.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(6)</a> <a href='/blog/categories/machine' style='font-size: 110.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 110.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 110.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 120.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 110.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 120.0%'>Network(2)</a> <a href='/blog/categories/nlp' style='font-size: 110.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 150.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 120.0%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 110.0%'>OpenCV(1)</a> <a href='/blog/categories/openhardware' style='font-size: 110.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 130.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 110.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 110.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 110.0%'>POSIX(1)</a> <a href='/blog/categories/programming' style='font-size: 130.0%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 110.0%'>PTAM(1)</a> <a href='/blog/categories/pthread' style='font-size: 110.0%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 110.0%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 110.0%'>Qt(1)</a> <a href='/blog/categories/robot' style='font-size: 120.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 110.0%'>SEO(1)</a> <a href='/blog/categories/sfd' style='font-size: 110.0%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 120.0%'>SNS(2)</a> <a href='/blog/categories/speaking' style='font-size: 110.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 110.0%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 110.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 130.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 130.0%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 110.0%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 120.0%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 110.0%'>VPS(1)</a> <a href='/blog/categories/web' style='font-size: 110.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 110.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 110.0%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 110.0%'>Xen(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 110.0%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 110.0%'>AR(1)</a> <a href='/blog/categories/arduino' style='font-size: 110.0%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 110.0%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 110.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 110.0%'>BIOS(1)</a> <a href='/blog/categories/c-c-' style='font-size: 120.0%'>C/C++(2)</a> <a href='/blog/categories/centos' style='font-size: 120.0%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 110.0%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 110.0%'>CV(1)</a> <a href='/blog/categories/cygwin' style='font-size: 110.0%'>Cygwin(1)</a> <a href='/blog/categories/domain' style='font-size: 110.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 110.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 110.0%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 110.0%'>Fedora(1)</a> <a href='/blog/categories/geek' style='font-size: 130.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 120.0%'>Git(2)</a> <a href='/blog/categories/latex' style='font-size: 110.0%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 110.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 110.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 130.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(6)</a> <a href='/blog/categories/machine' style='font-size: 110.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 110.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 110.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 120.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 110.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 120.0%'>Network(2)</a> <a href='/blog/categories/nlp' style='font-size: 110.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 150.0%'>Octopress(5)</a> <a href='/blog/categories/openapi' style='font-size: 120.0%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 110.0%'>OpenCV(1)</a> <a href='/blog/categories/openhardware' style='font-size: 110.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 130.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 110.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 110.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 110.0%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 110.0%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 130.0%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 110.0%'>PTAM(1)</a> <a href='/blog/categories/pthread' style='font-size: 110.0%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 110.0%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 110.0%'>Qt(1)</a> <a href='/blog/categories/robot' style='font-size: 120.0%'>Robot(2)</a> <a href='/blog/categories/seo' style='font-size: 110.0%'>SEO(1)</a> <a href='/blog/categories/sfd' style='font-size: 110.0%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 120.0%'>SNS(2)</a> <a href='/blog/categories/speaking' style='font-size: 110.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 110.0%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 110.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 130.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 130.0%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 110.0%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 120.0%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 110.0%'>VPS(1)</a> <a href='/blog/categories/web' style='font-size: 110.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 110.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 110.0%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 110.0%'>Xen(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/12/making-your-slides-the-awesome-way.markdown/">Making Your Slides the Awesome Way</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/01/06/linux-getting-started-methodologies-and-practices/">Linux Getting Started - Methodologies and Practices</a>
@@ -231,10 +243,6 @@
     
       <li class="post">
         <a href="/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv/">Notes About IEEE 1394 AVT Cameras - FirePackage and OpenCV</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/">Httplib Httplib2 Urllib Urllib2-what's the Difference</a>
       </li>
     
   </ul>
