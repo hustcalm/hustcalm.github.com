@@ -6,18 +6,23 @@ comments: true
 categories: SNS OpenAPI Cloud Web
 ---
 
-最近对[SNS-Shim](https://github.com/hustcalm/SNS-Shim)做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解，同时也激起了对服务提供商如何向开发者提供易用可靠的OpenAPI服务进行研究的好奇心。简单来说，开发者只需要关注如何“使用”，了解了基本的授权流程后，接下来只要按照API进行网络请求即可（使用服务提供商的SDK是最直接的，也可以自己根据相应的请求规范自己实现请求接口，因为本质上都是向某个URL发起HTTP请求）。而作为服务提供商则要考虑开放平台的建设问题了，这里面涉及到各种关于集群，高并发，大数据，分布式处理的东西（这个时候再看OAuth什么的，只是其中的一个小实现细节）。
+最近对[SNS-Shim](https://github.com/hustcalm/SNS-Shim)做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。
+
+在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解，同时也激起了对服务提供商如何向开发者提供易用可靠的OpenAPI服务进行研究的好奇心。简单来说，开发者只需要关注如何“使用”，了解了基本的授权流程后，接下来只要按照API进行网络请求即可（使用服务提供商的SDK是最直接的，也可以自己根据相应的请求规范自己实现请求接口，因为本质上都是向某个URL发起HTTP请求）。
+
+而作为服务提供商则要考虑开放平台的建设问题了，这里面涉及到各种关于集群，高并发，大数据，分布式处理的东西（这个时候再看OAuth什么的，只是其中的一个小实现细节）。
 
 <!--more-->
 
 从整个大的层面看开放平台，是服务提供商将自身的一部分业务和服务以Web Service的形式开放出去（比较早的貌似是Yahoo搜索，开发者可以利用其API进行搜索），比较典型的有Facebook，Twitter，Flickr，Google Map，Amazon，Youtube等等。而国内的开放平台的建设和发展也是最近几年的事情，目前几大SNS站点，腾讯，阿里巴巴旗下的淘宝等，豆瓣都顺应潮流推出了自己的平台。不管是跟风也好，炒作也罢，抑或是背后的业务需求，各位大佬们都要面临开放平台的建设问题，从技术角度来考虑，有REST和类RPC两种选择。
 
 由于本身认识有限，就不泼墨了，简单说说Web Service常见的几个概念，然后给出几个好文的链接。
+
 *   Web Service：直观理解，通过Web向外部提供服务。
-*   RPC：Remote Procedure Call，远程过程调用，客户端像服务器端发起一个请求（携带方法和参数），服务器处理后返回结果给客户端。
+*   RPC：Remote Procedure Call，远程过程调用，客户端向服务器端发起一个请求（携带方法和参数），服务器处理后返回结果给客户端。
 *   XML-RPC：基于XML的RPC，也就是客户端和服务器之间消息传递的格式是基于XML的，标准化的XML解析实现数据交换。
 *   SOA：Service Oriented Architecture，面向服务架构，适应Web Service开发的一种架构，请自行Google。
-*   SOAP：Simple Object Access Protocal，对XML-RPC的改进和拓展，却不尽人意。
+*   SOAP：Simple Object Access Protocol，对XML-RPC的改进和拓展，却不尽人意。
 *   REST：REpresentation State Transfer，Web Service的一种架构，设计理念和HTTP协议有异曲同工之妙。
 
 下面给出几个链接，供大家一起研究：
