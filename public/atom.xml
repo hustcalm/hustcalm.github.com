@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-11T20:05:25+08:00</updated>
+  <updated>2014-01-18T21:00:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Making Your Slides the Awesome Way]]></title>
+    <link href="http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way.markdown/"/>
+    <updated>2014-01-12T00:08:45+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way.markdown</id>
+    <content type="html"><![CDATA[People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? `PPT` would be the first choice to majority of people. For web developers, they would produce their slides in `HTML + javascript`? And for researchers or people in academic area, will they use `Latex` or the popular `beamer` class?
+
+We do have kinds of approaches to make us slids work, but what is the awesome way? To be awesome, I mean the sides should look nice, easy to control its typeset and should maintain the same when playing at different devices or different software. Of course, the way to write your slide could be awesome too:-)
+
+I will simply go through what choices that we have, what's the advantage disadvantage, and finally choose the way that you think is awesome to you.
+
+### Choices for making slides
+
+### Awesome way for making slides
+
+### Choose your awesome way
+
+Links:
+
+*   [Getting Started with Beamer: Tips and Tricks for LaTeX Presentations](http://jeromyanglim.blogspot.com/2010/08/getting-started-with-beamer-tips-and.html)
+*   [How-To Use the LaTeX Beamer Class for Great-Looking Presentations](http://www.productivescholar.com/2008/03/15/how-to-use-the-latex-beamer-class-for-great-looking-presentations/)
+*   [Presenting a Beamer Talk the Right Way](http://lucatrevisan.wordpress.com/2010/11/18/presenting-a-beamer-talk-the-right-way/)
+
+*   [How to make a presentation with Latex - Introduction to Beamer](http://www.math-linux.com/latex-26/How-to-make-a-presentation-with)
+*   [A Beamer Tutorial in Beamer](http://www.uncg.edu/cmp/reu/presentations/Charles%20Batts%20-%20Beamer%20Tutorial.pdf)
+*   [Beamer by Example](http://www.tug.org/pracjourn/2005-4/mertz/mertz.pdf)
+*   [examples of beamer class](http://www.informatik.uni-freiburg.de/~frank/ENG/latex-course/latex-course-3/latex-course-3_en.html)
+*   [Norm Matloff's Quick Tutorial on the Beamer Package for Slide Making in LaTeX](http://heather.cs.ucdavis.edu/~matloff/beamer.html)
+*   [A Beamer Quickstart](http://www.math.umbc.edu/~rouben/beamer/quickstart.html)
+*   [Beamer Class Tutorial - Warsaw University of Technology](http://zrno.fsb.hr/katedra/download/materijali/1082.pdf)
+
+*   [Keynote vs. Powerpoint vs. Beamer](http://readingsml.blogspot.com/2009/11/keynote-vs-powerpoint-vs-beamer.html)
+*   [Producing slide shows with Pandoc](http://johnmacfarlane.net/pandoc/demo/example9/producing-slide-shows-with-pandoc.html)
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Linux Getting Started - Methodologies and Practices]]></title>
@@ -1893,20 +1929,28 @@ cp Build/Linux/* .
     <link href="http://hustcalm.me/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/"/>
     <updated>2013-07-22T20:51:00+08:00</updated>
     <id>http://hustcalm.me/blog/2013/07/22/zai-tan-openapi,cong-webserviceshuo-qi</id>
-    <content type="html"><![CDATA[<p>最近对<a href="https://github.com/hustcalm/SNS-Shim">SNS-Shim</a>做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解，同时也激起了对服务提供商如何向开发者提供易用可靠的OpenAPI服务进行研究的好奇心。简单来说，开发者只需要关注如何“使用”，了解了基本的授权流程后，接下来只要按照API进行网络请求即可（使用服务提供商的SDK是最直接的，也可以自己根据相应的请求规范自己实现请求接口，因为本质上都是向某个URL发起HTTP请求）。而作为服务提供商则要考虑开放平台的建设问题了，这里面涉及到各种关于集群，高并发，大数据，分布式处理的东西（这个时候再看OAuth什么的，只是其中的一个小实现细节）。</p>
+    <content type="html"><![CDATA[<p>最近对<a href="https://github.com/hustcalm/SNS-Shim">SNS-Shim</a>做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。</p>
+
+<p>在开发的过程中，自己对OpenAPI的工作原理有了进一步的理解，同时也激起了对服务提供商如何向开发者提供易用可靠的OpenAPI服务进行研究的好奇心。简单来说，开发者只需要关注如何“使用”，了解了基本的授权流程后，接下来只要按照API进行网络请求即可（使用服务提供商的SDK是最直接的，也可以自己根据相应的请求规范自己实现请求接口，因为本质上都是向某个URL发起HTTP请求）。</p>
+
+<p>而作为服务提供商则要考虑开放平台的建设问题了，这里面涉及到各种关于集群，高并发，大数据，分布式处理的东西（这个时候再看OAuth什么的，只是其中的一个小实现细节）。</p>
 
 <!--more-->
 
 
 <p>从整个大的层面看开放平台，是服务提供商将自身的一部分业务和服务以Web Service的形式开放出去（比较早的貌似是Yahoo搜索，开发者可以利用其API进行搜索），比较典型的有Facebook，Twitter，Flickr，Google Map，Amazon，Youtube等等。而国内的开放平台的建设和发展也是最近几年的事情，目前几大SNS站点，腾讯，阿里巴巴旗下的淘宝等，豆瓣都顺应潮流推出了自己的平台。不管是跟风也好，炒作也罢，抑或是背后的业务需求，各位大佬们都要面临开放平台的建设问题，从技术角度来考虑，有REST和类RPC两种选择。</p>
 
-<p>由于本身认识有限，就不泼墨了，简单说说Web Service常见的几个概念，然后给出几个好文的链接。
-*   Web Service：直观理解，通过Web向外部提供服务。
-*   RPC：Remote Procedure Call，远程过程调用，客户端像服务器端发起一个请求（携带方法和参数），服务器处理后返回结果给客户端。
-*   XML-RPC：基于XML的RPC，也就是客户端和服务器之间消息传递的格式是基于XML的，标准化的XML解析实现数据交换。
-*   SOA：Service Oriented Architecture，面向服务架构，适应Web Service开发的一种架构，请自行Google。
-*   SOAP：Simple Object Access Protocal，对XML-RPC的改进和拓展，却不尽人意。
-*   REST：REpresentation State Transfer，Web Service的一种架构，设计理念和HTTP协议有异曲同工之妙。</p>
+<p>由于本身认识有限，就不泼墨了，简单说说Web Service常见的几个概念，然后给出几个好文的链接。</p>
+
+<ul>
+<li>Web Service：直观理解，通过Web向外部提供服务。</li>
+<li>RPC：Remote Procedure Call，远程过程调用，客户端向服务器端发起一个请求（携带方法和参数），服务器处理后返回结果给客户端。</li>
+<li>XML-RPC：基于XML的RPC，也就是客户端和服务器之间消息传递的格式是基于XML的，标准化的XML解析实现数据交换。</li>
+<li>SOA：Service Oriented Architecture，面向服务架构，适应Web Service开发的一种架构，请自行Google。</li>
+<li>SOAP：Simple Object Access Protocol，对XML-RPC的改进和拓展，却不尽人意。</li>
+<li>REST：REpresentation State Transfer，Web Service的一种架构，设计理念和HTTP协议有异曲同工之妙。</li>
+</ul>
+
 
 <p>下面给出几个链接，供大家一起研究：</p>
 
@@ -2282,66 +2326,6 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 <p>今天的活动总体上还是很成功的，大约300人到场，现场气氛活跃，互动环节也相对充分。感谢活动组织者（@Anthony Wong, @Jack Yu, @Jun Ma, @Jonas Zhang)，感谢各位分享者(@Anthony, @Chizhong Jin, @TualatriX, @Jiaqiang Xu)，感谢开源协会的各位兄弟（@Bone, @Jinliang, @Yilun, @Xianbin），感谢我的女朋友（@Sanny,感谢你陪我一起练习串词，感谢你担负起了活动的签到接待工作)，感谢到场的各位朋友！</p>
 
 <p>相信UbuntuKylin会走出自己的路，期待以后更加精彩的活动！</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Vim是一种态度]]></title>
-    <link href="http://hustcalm.me/blog/2013/05/06/vimshi-yi-zhong-tai-du/"/>
-    <updated>2013-05-06T20:30:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/05/06/vimshi-yi-zhong-tai-du</id>
-    <content type="html"><![CDATA[<p>想想接触VIM也有段时间了，一直比较半调子，从没认真看过vimtutor，倒是东拼西凑，到处画斋:&ndash;)</p>
-
-<p>目前自己把VIM的使用分为三个层次：</p>
-
-<h2>菜鸟</h2>
-
-<p>这个阶段，要能够用VIM工作，评判标准是能否用VIM完成基本的编辑工作，需要消化以下两篇文章：
-*   <a href="http://linuxtoy.org/archives/efficient-editing-with-vim.html">高效率编辑器VIM-操作篇，非常适合VIM新手</a>
-*   <a href="http://coolshell.cn/articles/5426.html">简明Vim练级攻略</a></p>
-
-<h2>高手</h2>
-
-<p>作为高手，VIM已经用起来得心应手，IDE什么的都不care了，插件安装和DIY信手拈来，参考以下链接：</p>
-
-<h3>打造一个IDE</h3>
-
-<ul>
-<li><a href="http://blog.csdn.net/wooin/article/details/1858917">手把手教你把Vim改装成一个IDE编程环境</a></li>
-</ul>
-
-
-<!--more-->
-
-
-<p>来自“池建强的BLOG”的系列文章，作者还在更新中：</p>
-
-<ul>
-<li><a href="http://www.cnblogs.com/chijianqiang/archive/2012/10/30/vim-1.html">谁说Vim不是IDE？（一)</a></li>
-<li><a href="http://www.cnblogs.com/chijianqiang/archive/2012/10/31/vim-2.html">谁说Vim不是IDE？（二)</a></li>
-<li><a href="http://www.cnblogs.com/chijianqiang/archive/2012/11/06/vim-3.html">谁说Vim不是IDE？（三)</a></li>
-<li><a href="http://www.cnblogs.com/chijianqiang/archive/2012/12/17/vim-4.html">谁说Vim不是IDE？（四)</a></li>
-</ul>
-
-
-<h3>用git和github管理自己的Vim环境</h3>
-
-<ul>
-<li><a href="https://github.com/amix/vimrc">amix/vimrc &ndash; The Ultimate vimrc</a></li>
-<li><a href="https://github.com/hustcalm/vimrc">hustcalm/vimrc &ndash; The Ultimate vimrc+</a></li>
-</ul>
-
-
-<h2>骨灰</h2>
-
-<p>骨灰级别的，可以随心地为自己的VIM写一些扩展，分享优秀的plugin给他人使用，参考一下大神的文章吧：
-*   <a href="http://brainacle.com/how-to-write-vim-plugins-with-python.html">How To Write Vim Plugins With Python</a>
-*   <a href="http://vim.wikia.com/wiki/How_to_write_a_plugin">How to write a plugin &ndash; From Vim wikia</a>
-*   <a href="http://stevelosh.com/blog/2011/09/writing-vim-plugins/">Writing Vim Plugins</a></p>
-
-<p>自己不谦虚地说，算是半个高手，不过努力方向，必然是骨灰！</p>
-
-<p><strong>Go, Vim; Go, Vimperator!</strong></p>
 ]]></content>
   </entry>
   
