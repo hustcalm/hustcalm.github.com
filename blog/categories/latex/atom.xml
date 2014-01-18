@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-18T22:13:37+08:00</updated>
+  <updated>2014-01-18T22:17:01+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -20,7 +20,8 @@
     <id>http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way</id>
     <content type="html"><![CDATA[<p>People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? <code>PPT</code> would be the first choice to majority of people. For web developers, they would produce their slides in <code>HTML + javascript</code>? And for researchers or people in academic area, will they use <code>Latex</code> or the popular <code>beamer</code> class?</p>
 
-<p><!--more-></p>
+<!--more-->
+
 
 <p>We do have kinds of approaches to make us slids work, but what is the awesome way? To be awesome, I mean the sides should look nice, easy to control its typeset and should maintain the same when playing at different devices or different software. Of course, the way to write your slide could be awesome too:&ndash;)</p>
 
