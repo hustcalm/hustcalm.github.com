@@ -8,7 +8,8 @@ title: Welcome to Pandora's Box
 #subtitle: Blog For Life!
 #subtitle: Hustcalm的个人博客！
 subtitle: Keep It Simple, Stupid!
-author: hustcalm
+#author: hustcalm
+author: Lihang Li
 simple_search: http://google.com/search
 description:
 
@@ -96,7 +97,7 @@ google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-googleplus_user: +LihangLi
+googleplus_user: 103479323169088059584
 googleplus_hidden: false
 
 # Pinboard

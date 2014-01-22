@@ -13,6 +13,7 @@ We do have kinds of approaches to make us slids work, but what is the awesome wa
 
 I will simply go through what choices that we have, what's the advantage disadvantage, and finally choose the way that you think is awesome to you.
 
+------------------------------
 ### Choices for making slides
 
 #### The normal way - PPT
@@ -21,15 +22,18 @@ I will simply go through what choices that we have, what's the advantage disadva
 
 #### Awesome way using Latex - beamer
 
+------------------------------
 ### Awesome way for making slides
 
 To me, the awesome would be to use `HTML + CSS` or `beamer`. Why? Simply because they are cross platform naturely and it's really flexible when creating slides by writing plain markup files or something like that.
 
+------------------------------
 ### Choose your awesome way
 
 Most of the times, you will find the ways or methods are not the essential things, the contents and the way you represent is the key. So just choose the right way for you, making it your awesome way. I believe everyone will make a perfect job once he gets skillful enough.
 
-Links:
+------------------------------
+### Reference Links
 
 *   [Getting Started with Beamer: Tips and Tricks for LaTeX Presentations](http://jeromyanglim.blogspot.com/2010/08/getting-started-with-beamer-tips-and.html)
 *   [How-To Use the LaTeX Beamer Class for Great-Looking Presentations](http://www.productivescholar.com/2008/03/15/how-to-use-the-latex-beamer-class-for-great-looking-presentations/)
