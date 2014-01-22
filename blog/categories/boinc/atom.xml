@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: BOINC | Welcome to Pandora's Box]]></title>
+  <link href="http://hustcalm.me/blog/categories/boinc/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2014-01-22T11:02:23+08:00</updated>
+  <id>http://hustcalm.me/</id>
+  <author>
+    <name><![CDATA[hustcalm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Simply Get BOINC Running On CentOS 6.4 and Earn XRP]]></title>
+    <link href="http://hustcalm.me/blog/2014/01/22/simply-get-boinc-running-on-centos-6-dot-4-and-earn-xrp/"/>
+    <updated>2014-01-22T08:56:56+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/01/22/simply-get-boinc-running-on-centos-6-dot-4-and-earn-xrp</id>
+    <content type="html"><![CDATA[<p>Recently I got to know <a href="http://boinc.berkeley.edu">BOINC</a> from a friend and find it funny to play with. <code>BOINC</code> is an open-source software platform for computing using volunteered resources, which means that people can donate their computing resources to varies of research projects through it. <code>BOINC</code> is an acronym for <code>Berkeley Open Infrastructure for Network Computing</code>. See <a href="http://boinc.berkeley.edu">their website</a> for more details.</p>
+
+<!--more-->
+
+
+<p>However, <code>BOINC</code> has the client side and the server side, in order to let people know what projects they can contribute to, how about their statistics and rankings, etc, we have <a href="http://worldcommunitygrid.org">World Community Grid</a>, namely the server side. <strong>World Community Grid(WCG)</strong> is an effort to create the world&rsquo;s largest public computing grid to tackle scientific research projects that benefit humanity, Launched on November 16, 2004, it is funded and operated by IBM with client
+software currently available for Windows, Linux, Mac OS X and FreeBSD operating systems. Here for the client software, it is the <code>BOINC</code> we refered above. For <strong>WCG</strong> itself, go to <a href="http://worldcommunitygrid.org">their website</a> and also see <a href="http://www.ibm.com/smarterplanet/us/en/business_analytics/article/wcg.html">this article from IBM</a>.</p>
+
+<p>Basically, people just donate their computing resources for free, but we can also donate for good. Here comes the <a href="https://www.computingforgood.org">Computing for Good</a> brought by <a href="http://ripple.com">rippleLabs</a>. They are giving away XRP in exchange for donating computing power to scientific research via World Community Grid. Anyone with an Internet-connected computer or Android device can participate.</p>
+
+<p>So we are going to earn XRP for donating our computing power, for me, on a <code>DELL Optiplex 960</code> running <code>CentOS 6.4 x86_64</code>. Here goes the steps.</p>
+
+<hr />
+
+<h3>Register for World Community Grid</h3>
+
+<p>Go to <a href="http://worldcommunitygrid.org">World Community Grid</a> and click <code>Join Today!</code>, or just click <a href="http://www.worldcommunitygrid.org/reg/viewRegister.do">here</a> for direct portal. Complete the registration form and you are ready to go. For the software, you may download according to your operating system from here, or go to <code>BOINC</code>. I will give installation details in the next section.</p>
+
+<p><strong>After your registration, login and go to settings, then join the team <code>Ripple Labs</code>.</strong></p>
+
+<hr />
+
+<h3>Get BOINC Running</h3>
+
+<p>I will be detailed for my <code>CentOS 6.4 x86_64</code>, for others, refer to <a href="http://boinc.berkeley.edu/wiki/User_manual">BOINC User Mannual</a>.</p>
+
+<h4>Check your repos</h4>
+
+<pre><code>ls -al /etc/yum.repos.d/
+</code></pre>
+
+<h4>Add EPEL repo</h4>
+
+<pre><code>wget http://download.fedoraproject.org/pub/epel/x86_64/epel-release-6-8.noarch.rpm
+sudo rpm -ivh epel-release-6-8.noarch.rpm
+sudo rmp --import /etc/pki/rpm-gpg/RMP-GPG-KEY-EPEL-6
+yum clean all
+yum list
+</code></pre>
+
+<h4>Install BOINC using yum</h4>
+
+<p>Below is the version for Terminal guys, for more details you may want to refer to <a href="http://boinc.berkeley.edu/wiki/Installing_BOINC_on_Fedora">Installing BOINC on Fedora</a>.</p>
+
+<p>The <code>boinc-manger</code> is your case if you prefer using GUI for interfacing, however if working under Terminal, <code>boinc-client</code> is enough. I will install both here:</p>
+
+<pre><code>su -c 'yum install boinc-client boinc-manager'
+</code></pre>
+
+<p>Make it an auto-start service:</p>
+
+<pre><code>chkconfig boinc-client on
+</code></pre>
+
+<p>Verify the installation:</p>
+
+<pre><code>ps aux | grep boinc
+</code></pre>
+
+<p>See what has been installed:</p>
+
+<pre><code>which boinc_client | xargs file
+which boinc        | xargs file
+which boinccmd     | xargs file
+which boinc_gui    | xargs file
+which boincmgr     | xargs file
+</code></pre>
+
+<p>For help:</p>
+
+<pre><code>man boinc
+man boinccmd
+man boincmgr
+</code></pre>
+
+<p>Set up your accounts:</p>
+
+<pre><code>sudo usrmod -G boinc -a your_username
+sudo chmod g+rw /var/lib/boinc
+sudo chmod g+rw /var/lib/boinc/*.*
+sudo ln -s /var/lib/boinc/gui_rpc_auth.cfg ~/gui_rpc_auth.cfg
+</code></pre>
+
+<p>Finally, <strong>logout and login again</strong> to renew your groupship and permission to /var/lib/boinc.</p>
+
+<h4>Attach WCG project to BOINC</h4>
+
+<pre><code>boinccmd --project_attach http://www.worldcommunitygrid.org/ YOUR_ACCOUNT_KEY
+boinccmd update
+</code></pre>
+
+<p><code>YOUR_ACCOUNT_KEY</code> can be found at your <code>WCG Profile</code>.</p>
+
+<h4>Check the BOINC status</h4>
+
+<pre><code>boinccmd --get_state
+</code></pre>
+
+<hr />
+
+<h3>Register Ripple Wallet</h3>
+
+<p>Go to <a href="https://ripple.com">ripple website</a> and register a wallet. Do remember the related keys for security.</p>
+
+<hr />
+
+<h3>Connect your WCG and Ripple Wallet</h3>
+
+<p>Finally, go to <a href="https://www.computingforgood.org">Computing for Good</a> and get your <code>WCG</code> and <code>Ripple Wallet</code> connected.</p>
+
+<p>Just click <code>REGISTER</code>, the guide will get you done very soon, all you need to do is to provide the specified <code>wallet address</code> and <code>WCG account</code>.</p>
+
+<hr />
+
+<p>Happy digging and contributing:&ndash;)</p>
+]]></content>
+  </entry>
+  
+</feed>
