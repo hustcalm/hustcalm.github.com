@@ -5,7 +5,7 @@ date: 2014-01-12 00:08:45 +0800
 comments: true
 categories: Latex Presentation
 ---
-People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? `PPT` would be the first choice to majority of people. For web developers, they would produce their slides in `HTML + javascript`? And for researchers or people in academic area, will they use `Latex` or the popular `beamer` class?
+People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? `PPT` would be the first choice to majority of people. For web developers, they would produce their slides in `HTML + CSS + Javascript`? And for researchers or people in academic area, will they use `Latex` or the popular `beamer` class?
 
 <!--more-->
 
@@ -15,9 +15,19 @@ I will simply go through what choices that we have, what's the advantage disadva
 
 ### Choices for making slides
 
+#### The normal way - PPT
+
+#### Cool way utilizing browser - HTML + CSS
+
+#### Awesome way using Latex - beamer
+
 ### Awesome way for making slides
 
+To me, the awesome would be to use `HTML + CSS` or `beamer`. Why? Simply because they are cross platform naturely and it's really flexible when creating slides by writing plain markup files or something like that.
+
 ### Choose your awesome way
+
+Most of the times, you will find the ways or methods are not the essential things, the contents and the way you represent is the key. So just choose the right way for you, making it your awesome way. I believe everyone will make a perfect job once he gets skillful enough.
 
 Links:
 
@@ -35,3 +45,8 @@ Links:
 
 *   [Keynote vs. Powerpoint vs. Beamer](http://readingsml.blogspot.com/2009/11/keynote-vs-powerpoint-vs-beamer.html)
 *   [Producing slide shows with Pandoc](http://johnmacfarlane.net/pandoc/demo/example9/producing-slide-shows-with-pandoc.html)
+
+*   [How to Create Presentation Slides with HTML and CSS](http://net.tutsplus.com/tutorials/html-css-techniques/how-to-create-presentation-slides-with-html-and-css-2/)
+
+*   [5 Principles For Making PowerPoint Slides With Impact - 1](http://www.forbes.com/sites/allbusiness/2013/11/25/7-principles-for-making-powerpoint-slides-with-impact/)
+*   [5 Principles For Making PowerPoint Slides With Impact - 2](http://www.forbes.com/sites/allbusiness/2013/11/25/7-principles-for-making-powerpoint-slides-with-impact/2/)

@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-18T22:43:30+08:00</updated>
+  <updated>2014-01-22T11:04:48+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[hustcalm]]></name>
@@ -14,11 +14,134 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Simply Get BOINC Running on CentOS 6.4 and Earn XRP]]></title>
+    <link href="http://hustcalm.me/blog/2014/01/22/simply-get-boinc-running-on-centos-6-dot-4-and-earn-xrp/"/>
+    <updated>2014-01-22T08:56:56+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/01/22/simply-get-boinc-running-on-centos-6-dot-4-and-earn-xrp</id>
+    <content type="html"><![CDATA[<p>Recently I got to know <a href="http://boinc.berkeley.edu">BOINC</a> from a friend and find it funny to play with. <code>BOINC</code> is an open-source software platform for computing using volunteered resources, which means that people can donate their computing resources to varies of research projects through it. <code>BOINC</code> is an acronym for <code>Berkeley Open Infrastructure for Network Computing</code>. See <a href="http://boinc.berkeley.edu">their website</a> for more details.</p>
+
+<!--more-->
+
+
+<p>However, <code>BOINC</code> has the client side and the server side, in order to let people know what projects they can contribute to, how about their statistics and rankings, etc, we have <a href="http://worldcommunitygrid.org">World Community Grid</a>, namely the server side. <strong>World Community Grid(WCG)</strong> is an effort to create the world&rsquo;s largest public computing grid to tackle scientific research projects that benefit humanity, Launched on November 16, 2004, it is funded and operated by IBM with client
+software currently available for Windows, Linux, Mac OS X and FreeBSD operating systems. Here for the client software, it is the <code>BOINC</code> we refered above. For <strong>WCG</strong> itself, go to <a href="http://worldcommunitygrid.org">their website</a> and also see <a href="http://www.ibm.com/smarterplanet/us/en/business_analytics/article/wcg.html">this article from IBM</a>.</p>
+
+<p>Basically, people just donate their computing resources for free, but we can also donate for good. Here comes the <a href="https://www.computingforgood.org">Computing for Good</a> brought by <a href="http://ripple.com">rippleLabs</a>. They are giving away XRP in exchange for donating computing power to scientific research via World Community Grid. Anyone with an Internet-connected computer or Android device can participate.</p>
+
+<p>So we are going to earn XRP for donating our computing power, for me, on a <code>DELL Optiplex 960</code> running <code>CentOS 6.4 x86_64</code>. Here goes the steps.</p>
+
+<hr />
+
+<h3>Register for World Community Grid</h3>
+
+<p>Go to <a href="http://worldcommunitygrid.org">World Community Grid</a> and click <code>Join Today!</code>, or just click <a href="http://www.worldcommunitygrid.org/reg/viewRegister.do">here</a> for direct portal. Complete the registration form and you are ready to go. For the software, you may download according to your operating system from here, or go to <code>BOINC</code>. I will give installation details in the next section.</p>
+
+<p><strong>After your registration, login and go to settings, then join the team <code>Ripple Labs</code>.</strong></p>
+
+<hr />
+
+<h3>Get BOINC Running</h3>
+
+<p>I will be detailed for my <code>CentOS 6.4 x86_64</code>, for others, refer to <a href="http://boinc.berkeley.edu/wiki/User_manual">BOINC User Mannual</a>.</p>
+
+<h4>Check your repos</h4>
+
+<pre><code>ls -al /etc/yum.repos.d/
+</code></pre>
+
+<h4>Add EPEL repo</h4>
+
+<pre><code>wget http://download.fedoraproject.org/pub/epel/x86_64/epel-release-6-8.noarch.rpm
+sudo rpm -ivh epel-release-6-8.noarch.rpm
+sudo rmp --import /etc/pki/rpm-gpg/RMP-GPG-KEY-EPEL-6
+yum clean all
+yum list
+</code></pre>
+
+<h4>Install BOINC using yum</h4>
+
+<p>Below is the version for Terminal guys, for more details you may want to refer to <a href="http://boinc.berkeley.edu/wiki/Installing_BOINC_on_Fedora">Installing BOINC on Fedora</a>.</p>
+
+<p>The <code>boinc-manger</code> is your case if you prefer using GUI for interfacing, however if working under Terminal, <code>boinc-client</code> is enough. I will install both here:</p>
+
+<pre><code>su -c 'yum install boinc-client boinc-manager'
+</code></pre>
+
+<p>Make it an auto-start service:</p>
+
+<pre><code>chkconfig boinc-client on
+</code></pre>
+
+<p>Verify the installation:</p>
+
+<pre><code>ps aux | grep boinc
+</code></pre>
+
+<p>See what has been installed:</p>
+
+<pre><code>which boinc_client | xargs file
+which boinc        | xargs file
+which boinccmd     | xargs file
+which boinc_gui    | xargs file
+which boincmgr     | xargs file
+</code></pre>
+
+<p>For help:</p>
+
+<pre><code>man boinc
+man boinccmd
+man boincmgr
+</code></pre>
+
+<p>Set up your accounts:</p>
+
+<pre><code>sudo usrmod -G boinc -a your_username
+sudo chmod g+rw /var/lib/boinc
+sudo chmod g+rw /var/lib/boinc/*.*
+sudo ln -s /var/lib/boinc/gui_rpc_auth.cfg ~/gui_rpc_auth.cfg
+</code></pre>
+
+<p>Finally, <strong>logout and login again</strong> to renew your groupship and permission to /var/lib/boinc.</p>
+
+<h4>Attach WCG project to BOINC</h4>
+
+<pre><code>boinccmd --project_attach http://www.worldcommunitygrid.org/ YOUR_ACCOUNT_KEY
+boinccmd update
+</code></pre>
+
+<p><code>YOUR_ACCOUNT_KEY</code> can be found at your <code>WCG Profile</code>.</p>
+
+<h4>Check the BOINC status</h4>
+
+<pre><code>boinccmd --get_state
+</code></pre>
+
+<hr />
+
+<h3>Register Ripple Wallet</h3>
+
+<p>Go to <a href="https://ripple.com">ripple website</a> and register a wallet. Do remember the related keys for security.</p>
+
+<hr />
+
+<h3>Connect your WCG and Ripple Wallet</h3>
+
+<p>Finally, go to <a href="https://www.computingforgood.org">Computing for Good</a> and get your <code>WCG</code> and <code>Ripple Wallet</code> connected.</p>
+
+<p>Just click <code>REGISTER</code>, the guide will get you done very soon, all you need to do is to provide the specified <code>wallet address</code> and <code>WCG account</code>.</p>
+
+<hr />
+
+<p>Happy digging and contributing:&ndash;)</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Making Your Slides the Awesome Way]]></title>
     <link href="http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way/"/>
     <updated>2014-01-12T00:08:45+08:00</updated>
     <id>http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way</id>
-    <content type="html"><![CDATA[<p>People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? <code>PPT</code> would be the first choice to majority of people. For web developers, they would produce their slides in <code>HTML + javascript</code>? And for researchers or people in academic area, will they use <code>Latex</code> or the popular <code>beamer</code> class?</p>
+    <content type="html"><![CDATA[<p>People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? <code>PPT</code> would be the first choice to majority of people. For web developers, they would produce their slides in <code>HTML + CSS + Javascript</code>? And for researchers or people in academic area, will they use <code>Latex</code> or the popular <code>beamer</code> class?</p>
 
 <!--more-->
 
@@ -29,9 +152,19 @@
 
 <h3>Choices for making slides</h3>
 
+<h4>The normal way &ndash; PPT</h4>
+
+<h4>Cool way utilizing browser &ndash; HTML + CSS</h4>
+
+<h4>Awesome way using Latex &ndash; beamer</h4>
+
 <h3>Awesome way for making slides</h3>
 
+<p>To me, the awesome would be to use <code>HTML + CSS</code> or <code>beamer</code>. Why? Simply because they are cross platform naturely and it&rsquo;s really flexible when creating slides by writing plain markup files or something like that.</p>
+
 <h3>Choose your awesome way</h3>
+
+<p>Most of the times, you will find the ways or methods are not the essential things, the contents and the way you represent is the key. So just choose the right way for you, making it your awesome way. I believe everyone will make a perfect job once he gets skillful enough.</p>
 
 <p>Links:</p>
 
@@ -47,7 +180,10 @@
 <li><a href="http://www.math.umbc.edu/~rouben/beamer/quickstart.html">A Beamer Quickstart</a></li>
 <li><p><a href="http://zrno.fsb.hr/katedra/download/materijali/1082.pdf">Beamer Class Tutorial &ndash; Warsaw University of Technology</a></p></li>
 <li><p><a href="http://readingsml.blogspot.com/2009/11/keynote-vs-powerpoint-vs-beamer.html">Keynote vs. Powerpoint vs. Beamer</a></p></li>
-<li><a href="http://johnmacfarlane.net/pandoc/demo/example9/producing-slide-shows-with-pandoc.html">Producing slide shows with Pandoc</a></li>
+<li><p><a href="http://johnmacfarlane.net/pandoc/demo/example9/producing-slide-shows-with-pandoc.html">Producing slide shows with Pandoc</a></p></li>
+<li><p><a href="http://net.tutsplus.com/tutorials/html-css-techniques/how-to-create-presentation-slides-with-html-and-css-2/">How to Create Presentation Slides with HTML and CSS</a></p></li>
+<li><p><a href="http://www.forbes.com/sites/allbusiness/2013/11/25/7-principles-for-making-powerpoint-slides-with-impact/">5 Principles For Making PowerPoint Slides With Impact &ndash; 1</a></p></li>
+<li><a href="http://www.forbes.com/sites/allbusiness/2013/11/25/7-principles-for-making-powerpoint-slides-with-impact/2/">5 Principles For Making PowerPoint Slides With Impact &ndash; 2</a></li>
 </ul>
 
 ]]></content>
@@ -2234,102 +2370,6 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 <p>请参考<a href="https://github.com/hustcalm/vimperator">Vimperator On Github</a>.</p>
 
 <p>有任何问题，欢迎留言讨论！如果觉得Vimperator不够极客，可以拿Pentadactyl玩玩:&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[记Ubuntu/UbuntuKylin 13.04 发布派对及主持感想]]></title>
-    <link href="http://hustcalm.me/blog/2013/05/11/ji-ubuntu-slash-ubuntukylin-13-dot-04-fa-bu-pai-dui-ji-zhu-chi-gan-xiang/"/>
-    <updated>2013-05-11T23:16:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/05/11/ji-ubuntu-slash-ubuntukylin-13-dot-04-fa-bu-pai-dui-ji-zhu-chi-gan-xiang</id>
-    <content type="html"><![CDATA[<p>UbuntuKylin开发团队和Ubuntu中国社区携手Beijing GNOME用户组举办的Ubuntu/UbuntuKylin 13.04发布派对北京站成功进行！作为今天的主持人，今天给自己打70分，还需要多多努力。不过开源社区的氛围很好，到场观众的热情都很高涨！活动一直从下午14：00进行到下午18：00，中场休息了5分钟。下面简单记录一下活动现场的点滴以及作为主持人的一点感悟！</p>
-
-<h2>Ubuntu/UbuntuKylin特性及后续计划</h2>
-
-<h3>演讲者：Anthony Wong</h3>
-
-<p>热爱自由软件，曾参与 Debian 计划，99年成为 Debian 开发者，过往于新华 Linux 及 SUSE 负责发行版开发，目前在 Canonical 公司从事 Ubuntu OEM 定制版的驱动和硬件支持的开发管理，并多方面协助 UbuntuKylin 项目的开发及管理。</p>
-
-<h3>演讲内容</h3>
-
-<p>Anthony主要就Ubuntu的特点进行了简单的描述，并介绍了最新发布的13.04版本的亮点。之后把重点放在了UbuntuKylin项目上，包括开发背景，特性，已经完成的工作以及接下来的计划。</p>
-
-<!--more-->
-
-
-<p>按照我的理解，UbuntuKylin可以说成是并列于KUbuntu，LUbuntu等的flavor，也可以说成是Ubuntu在中国的本地化。Ubuntu一直致力于用户体验方面，Unity愈发成熟，在整个Linux世界里拥有不少用户。</p>
-
-<p>媒体再怎么质疑也好，开源世界里代码会说话，我们完全看得到UbuntuKylin开发团队的努力和成绩。祝UbuntuKylin在国内越走越好，也希望出现更多的UbuntuKylin，作为一个开发者，可以在launchpad上关注项目的进展，如果感兴趣，一起参与blueprint的讨论，fix一些bug，或者贡献一些代码还是很cool的:&ndash;)</p>
-
-<h2>WPS for UbuntuKylin的进展及计划</h2>
-
-<h3>演讲者：金持重</h3>
-
-<p>WPS架构师之一，WPS for Linux研发负责人，2010年开始提出并执行WPS qt迁移，2012年开始负责WPS for Linux开发。</p>
-
-<h3>演讲内容</h3>
-
-<p>更多的，演讲者分享的是WPS for Linux方面的东西，关于UbuntuKylin的内容没有展开。上来的一张版本更迭图，道出了WPS for Linux开发的“辛酸历程”。之后演讲者就开发中遇到的一些难点展开讲述，主要集中在语言和工具以及操作系统支持上，比如dephil的空头支票式承诺，Mircrosoft旗下”臃肿“的MFC，之前程序框架的某些局限等等。在幽默的表述中，我们可以听出开发之艰难，不由得让大家对这个“3人团队”肃然起敬！</p>
-
-<p>为了证明WPS for Linux不是在“抄袭”LibreOffice，金持重先生进行了现场演示，博得阵阵掌声！</p>
-
-<p>目前“8人团队”仍然在努力前行，经历风雨后，初见彩虹了，不过，前面的道路会更加坎坷！相信他们能行！</p>
-
-<h2>Ubuntu Tweak的开发历程</h2>
-
-<h3>演讲者：TualatriX</h3>
-
-<p>Ubuntu用户兼开发者，爱好编程和上网，热衷于自由软件的应用与开发。在校期间开发了Ubuntu Tweak，国内外拥有大量用户。</p>
-
-<h3>演讲内容</h3>
-
-<p>周鼎作为UT的作者估计被很多Ubuntu用户熟知，今天有机会听他讲述UT开发过程中的“酸甜苦辣”感到很高兴:&ndash;)</p>
-
-<p>从2007年开始开发第一个版本，文件夹式的版本管理，到后来的SVN，Git；从单一的功能，到“瑞士军刀”；从C到Python；从google code到launchpad；从功能驱动到设计驱动；从“默默无闻”到“登上头版头条”。6年的开发经历，周鼎向我们展示了一个十分励志的故事，只要你想，够努力，你觉能实现自己想要的！而在开发过程中，周鼎也很好地诠释了“干中学”的理念，即一边实际开发，一边学习，学以致用，这也恰恰是“Dian团队的核心之一”！</p>
-
-<p>去看一下UT的source code应该能学到不少东西:&ndash;) 虽然目前UT已经进入了维护阶段，但是增加一些小的feature或者enhancement还是需要的～</p>
-
-<h2>Seafile项目</h2>
-
-<h3>演讲者：徐家强</h3>
-
-<p>Seafile 项目创始人之一，海文互知网络技术有限公司联合创始人，之前在 EMC 工作过，毕业于清华大学。</p>
-
-<h2>演讲内容</h2>
-
-<p>Seafile 是一个开源的文件协作与同步平台。演讲者主要介绍了Seafile 的功能特性，技术架构以及发展历程。同其它的类似平台相比，有很多亮点，具体的由于协调会场的原因没有听到很多，不过感觉这款产品值得一试，至少去看看源码，学习下同步算法还是很ok的:&ndash;)</p>
-
-<h2>Ubuntu Phone/Tablet</h2>
-
-<h3>演讲者：Jane</h3>
-
-<p>Canonical公司现任CEO，不多说了，大家自行Google。</p>
-
-<h3>演讲内容</h3>
-
-<p>Ubuntu Phone/Tablet的特性，BlaBla。感觉Canonical的野心还是很大的，想基于Ubuntu建立一个大的生态圈，横跨Desktop，Server，Mobile（Phone and Tablet）。目前都还在开发中，等真机发布后再做讨论吧。</p>
-
-<h2>闪电Show</h2>
-
-<p>这个环节有三个参会者分享了自己的一些开发心得，涉及到gnome扩展插件开发，Weibo客户端开发，debian的bootstrap编译和启动。</p>
-
-<h2>主持感想</h2>
-
-<p>第一次当开源社区的主持人（也是为数不多地当活动的主持人:-p)，总结几个小条吧：</p>
-
-<ul>
-<li>预则立，之前一定要搞清楚活动整体流程，时间安排，环节中关键点，总体上的把握是成功的一半</li>
-<li>控制节奏，会场的场面一定要hold住，今天观众的热情异常高涨（是因为T恤太漂亮了吗:&ndash;))，第二场的演讲超时比较严重，所以后面比较严格地控制了提问环节的时间</li>
-<li>及时沟通，随机应变是必须的，不过遇到那不准的东西，最好找活动组织者及时交流，做出最正确的决策!</li>
-<li>不要紧张，我说给自己听的:&ndash;)</li>
-</ul>
-
-
-<h2>总结</h2>
-
-<p>今天的活动总体上还是很成功的，大约300人到场，现场气氛活跃，互动环节也相对充分。感谢活动组织者（@Anthony Wong, @Jack Yu, @Jun Ma, @Jonas Zhang)，感谢各位分享者(@Anthony, @Chizhong Jin, @TualatriX, @Jiaqiang Xu)，感谢开源协会的各位兄弟（@Bone, @Jinliang, @Yilun, @Xianbin），感谢我的女朋友（@Sanny,感谢你陪我一起练习串词，感谢你担负起了活动的签到接待工作)，感谢到场的各位朋友！</p>
-
-<p>相信UbuntuKylin会走出自己的路，期待以后更加精彩的活动！</p>
 ]]></content>
   </entry>
   
