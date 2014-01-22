@@ -112,7 +112,7 @@ disqus_short_name: welcometopandorasboxwhy
 disqus_show_comment_count: true
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-47357842-1
 
 # Facebook Like
 facebook_like: false 
@@ -132,4 +132,5 @@ license_enable: true
 #Ohloh Profile
 ohloh_profile: true
 
+#Friends Link
 friends_link: true
