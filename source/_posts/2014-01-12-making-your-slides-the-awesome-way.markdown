@@ -5,6 +5,7 @@ date: 2014-01-12 00:08:45 +0800
 comments: true
 categories: Latex Presentation
 ---
+
 People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? `PPT` would be the first choice to majority of people. For web developers, they would produce their slides in `HTML + CSS + Javascript`? And for researchers or people in academic area, will they use `Latex` or the popular `beamer` class?
 
 <!--more-->
@@ -17,6 +18,7 @@ I will simply go through what choices that we have, what's the advantage disadva
 ### Choices for making slides
 
 #### The normal way - PPT or Keynote
+
 I bet that this is the most adaptive way for people to get presentations done. On Windows and Linux, we use Office, specifically speaking the `Powerpoint` or `Impress` shipped with LibreOffice.
 
 On Mac, people use `Keynote` a lot.
@@ -26,6 +28,7 @@ I won't make it long, see this for a fabulous discussion at:
 *   [Keynote vs. Powerpoint vs. Beamer](http://readingsml.blogspot.com/2009/11/keynote-vs-powerpoint-vs-beamer.html)
 
 #### Cool way utilizing browser - HTML + CSS
+
 Yes, yes, we only need Browers and Terminals for our computer, right? Exaggerated enough, but browsers are really doing everything for us, including showing the slides, go to [slideshare](http://www.slideshare.net) for a vivid experience. However, the slides showed on `slideshare` is powered by `Flash`, so do others who provide similar services.
 
 No Flash, let's see how to make slides using just `HTML` and `CSS`.
@@ -35,6 +38,7 @@ A good tutorial goes here:
 *   [How to Create Presentation Slides with HTML and CSS](http://net.tutsplus.com/tutorials/html-css-techniques/how-to-create-presentation-slides-with-html-and-css-2/)
 
 #### Awesome way using Latex - beamer
+
 Geek enough, but maybe mostly used by hackers and researchers, Latex - beamer is definitely awesome. It's like you are composing a literature when writing your slides.
 
 For getting started with Latex - beamer, See:
@@ -63,7 +67,6 @@ Most of the times, you will find the ways or methods are not the essential thing
 
 ------------------------------
 ### Other Useful Links
-
 
 *   [Producing slide shows with Pandoc](http://johnmacfarlane.net/pandoc/demo/example9/producing-slide-shows-with-pandoc.html)
 
