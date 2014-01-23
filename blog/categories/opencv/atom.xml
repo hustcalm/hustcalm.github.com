@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OpenCV | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/opencv/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-23T23:50:09+08:00</updated>
+  <updated>2014-01-24T00:41:25+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,72 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Installing OpenCV on Mac OS X - 10 Minutes Tutorial]]></title>
+    <link href="http://hustcalm.me/blog/2014/01/24/installing-opencv-on-mac-os-x-10-minutes-tutorial/"/>
+    <updated>2014-01-24T00:03:00+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/01/24/installing-opencv-on-mac-os-x-10-minutes-tutorial</id>
+    <content type="html"><![CDATA[<p>A simple tutorial to get OpenCV set up on Mac OS X. I get this done on my Macbook Pro with Mavericks OS. Luckily enough, you will success following the instructions blow.</p>
+
+<hr />
+
+<h3>Prerequisites</h3>
+
+<h4>Source Code</h4>
+
+<p>You can download the source code from <a href="http://opencv.org/">OpenCV Official Site</a>, I prefer to pull the source using <code>git</code> however.</p>
+
+<pre><code>git clone https://github.com/Itseez/opencv.git
+</code></pre>
+
+<!--more-->
+
+
+<h4>Build Tools</h4>
+
+<p>I use <a href="http://brew.sh/">Homebrew</a> as my package manager, to install <code>Homebrew</code>, use:</p>
+
+<pre><code>ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+</code></pre>
+
+<p>After brew installed, get <code>CMake</code> by:</p>
+
+<pre><code>brew install cmake
+</code></pre>
+
+<hr />
+
+<h3>Build and Install OpenCV</h3>
+
+<p>Now the recipes are ready, let&rsquo;s cook:</p>
+
+<pre><code>cd opencv
+mkdir build
+cd build
+cmake -G "Unix Makefiles" ..
+make -j8
+sudo make install
+</code></pre>
+
+<hr />
+
+<h3>Verify Installation</h3>
+
+<p>Let&rsquo;s rock by building a simple sample:</p>
+
+<pre><code>cd opencv/samples/cpp
+g++ edge.cpp -o edge `pkg-config --cflags --libs opencv`
+./edge
+</code></pre>
+
+<p>You should see a window pop up and demo the <code>Canny edge detection</code>.</p>
+
+<hr />
+
+<p>Happy playing with OpenCV, drop me a line if you got problems.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Notes about IEEE 1394 AVT Cameras - FirePackage and OpenCV]]></title>
