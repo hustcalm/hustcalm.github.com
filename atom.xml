@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-23T19:00:03+08:00</updated>
+  <updated>2014-01-23T23:50:09+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Know Your Website Better Using Google Webmaster Tools, Analytics and Authorship]]></title>
+    <link href="http://hustcalm.me/blog/2014/01/23/know-your-website-better-using-google-webmaster-tools-analytics-and-authorship/"/>
+    <updated>2014-01-23T19:05:43+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/01/23/know-your-website-better-using-google-webmaster-tools-analytics-and-authorship</id>
+    <content type="html"><![CDATA[<p>I happened to get to know <code>Google Webmaster Tools</code>, <code>Google Analytics</code> and <code>Google Authorship Markup</code> when I try to tweak my <code>Octopress</code> website. Found that Google is really doing lots of interesting things for our websites, I will share some useful tips and links here.</p>
+
+<hr />
+
+<h3>Google Webmaster Tools</h3>
+
+<p>Go to <a href="http://www.google.com/webmasters/">Official Webmasters</a> to get started, first try to look around to know what <code>Webmasters</code> aims to do. After that, login to <a href="https://www.google.com/webmasters/tools">Webmaster Tools</a> , add your website by clicking <code>Add Website</code>, then verify the website according to the hints.</p>
+
+<!--more-->
+
+
+<p>As long as you have claimed the owership of your website, you can see the dashboard for detailed information. You can submit your <code>sitemap</code>, see the <code>search query</code> statistics, the status of your website.</p>
+
+<p>Explore more to find something more exciting:&ndash;)</p>
+
+<p>To be more professional, see <a href="https://support.google.com/webmasters/answer/35769?hl=en">Webmaster Guidelines</a>.</p>
+
+<hr />
+
+<h3>Google Analytics</h3>
+
+<p>Even better, <a href="http://www.google.com/analytics/">Google Analytics</a> will let you know every single click from users to your website. See <a href="http://www.google.com/analytics/features/index.html">Analytics features</a> for complete lists to know what <code>Analytics</code> can do. Initially set up for commercial use or marketing promotion, we can adapt this technique to our personal website.</p>
+
+<p>Also, look carefully about <code>your website report</code>, I bet you will find something interesting. For developers, there are <a href="https://developers.google.com/analytics/devguides/?csw=1">Developer Guides &amp; Reference for Google Analytics</a>.</p>
+
+<hr />
+
+<h3>Google Authorship</h3>
+
+<p>Well, it would be cool to attribute the article or post to its author, <a href="https://plus.google.com/authorship">Google Authorship</a> is the one who helps.</p>
+
+<p>See the professional article <a href="http://searchengineland.com/the-definitive-guide-to-google-authorship-markup-123218">The Definitive Guide To Google Authorship Markup</a> for details. To test if you have successfully set your authorship, use <a href="www.google.com/webmasters/tools/richsnippets">Google Structured Data Testing
+Tool</a>.</p>
+
+<p>As for me, I verified my authorship through my Email related to my domain bought from <a href="https://name.com">name.com</a>. Simple Enable <code>Email Service</code> through the domain dashboard, you can set up a forward Email for your owned domain Email address.</p>
+
+<hr />
+
+<h3>Google FeedBurner</h3>
+
+<p><a href="http://feedburner.google.com">FeedBurner</a> is a service for <code>RSS</code> subscribe. It&rsquo;s flexible enough and ease your pain when switching domains.</p>
+
+<p>After you add your blog to feedburner, it supports <code>RSS readers</code> by default. So if you want your readers to subscribe through their Emails, go to your feeds and click <code>Publicize</code>, then click <code>Email Subscriptions</code>, down the page to click <code>Active</code> to make the service alive.</p>
+
+<p>See other tabs of your feeds, there are really lots of for you to tweak and play with.</p>
+
+<hr />
+
+<p>When you find blogging more interesting and part of your life, it&rsquo;s time to give an eye for your website status and traffic. I used to blog for just expressing myself, but now I also tend to write something that readers would enjoy.</p>
+
+<p>Hope this post would get you to know with the Google tools that you can use and make you a better blogger:&ndash;)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Simply Get BOINC Running on CentOS 6.4 and Earn XRP]]></title>
@@ -2361,51 +2420,6 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 <h2>更多信息</h2>
 
 <p>我在github上托管了一个项目<a href="https://github.com/hustcalm/SNS-Shim">SNS-Shim</a>，封装了新浪微博，QQ互联，人人网，豆瓣，网易微博的Java SDK，而且给出了各大开发平台以及OAuth的相关链接，大家可以参考讨论！</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Firefox利器Vimperator简明攻略]]></title>
-    <link href="http://hustcalm.me/blog/2013/06/09/firefoxli-qi-vimperatorjian-ming-gong-lue/"/>
-    <updated>2013-06-09T12:13:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/06/09/firefoxli-qi-vimperatorjian-ming-gong-lue</id>
-    <content type="html"><![CDATA[<p>使用Vimperator也有那么一段时间了，着实再次发现CLI的强大和美好，关键是脱离鼠标后，浏览体验大大增强。正如大部分使用者只会使用一个软件大概20%的功能，我觉得我只是在使用Vimperator 10%的功能，不过这10%已经足以应对普通的需求。</p>
-
-<p>正如Vimperator的原始开发者之一，后来另起炉灶开发了Pentadactyl所说，Vimperator更加注重易用性和效率，而Pentadactyl是专门为geek打造。本攻略适合入门级geek，因为Vimperator的学习曲线还是有那么一点陡的（至少得先对VIM比较熟悉）。然而，本文试图去繁就简，给出核心的一些操作，如果需要更加深入的指导，请参考Vimperator的帮助文件或者我托管在Github上的一个<a href="https://github.com/hustcalm/vimperator">Repository</a>。</p>
-
-<h3>核心操作</h3>
-
-<ul>
-<li><code>o</code> Open new link in current tab</li>
-<li><code>t</code> Open new link in new tab, also you can input keywords for search</li>
-<li><code>Tab</code>  select the candinates recycly</li>
-<li><code>f</code> Follow hint and open link in current tab, also very useful for locating user input forms</li>
-<li><code>F</code> Follow hint and open link in new tab</li>
-<li><code>gi</code> Locate the input form quickly</li>
-<li><code>Ctrl + A</code>  Move cursor to the beginning of the line in insert mode</li>
-<li><code>Ctrl + E</code>  Move cursor to the end of the line in insert mode</li>
-<li><code>Ctrl + U</code>  Delete the characters before cursor in insert mode</li>
-<li><code>Ctrl + K</code>  Delete the characters after cursor in insert mode</li>
-<li><code>gt</code> Jump to right tab</li>
-<li><code>gT</code> Jump to left tab</li>
-<li><code>g0</code> Jump to first tab</li>
-<li><code>g$</code> Jump to last tab</li>
-<li><code>H</code>  Navigate back</li>
-<li><code>L</code>  Navigate forward</li>
-<li><code>d</code>  Close current tab</li>
-<li><code>u</code>  Undo and reopen the lastest closed tab</li>
-<li><code>/</code>  Search in current page</li>
-<li><code>?</code>  Search in current page reversely</li>
-<li><code>:</code>  Command mode</li>
-<li><code>;c</code> Follow hint and open the right click menu(also called the contextual menu) for links</li>
-</ul>
-
-
-<h3>详细参考</h3>
-
-<p>请参考<a href="https://github.com/hustcalm/vimperator">Vimperator On Github</a>.</p>
-
-<p>有任何问题，欢迎留言讨论！如果觉得Vimperator不够极客，可以拿Pentadactyl玩玩:&ndash;)</p>
 ]]></content>
   </entry>
   
