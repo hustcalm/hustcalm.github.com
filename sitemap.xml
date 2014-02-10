@@ -295,16 +295,22 @@
         <lastmod>2014-01-24T00:40:37+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/
+        </loc>
+        <lastmod>2014-02-10T15:51:23+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://hustcalm.me/about/</loc>
         <lastmod>2014-01-11T16:32:09+08:00</lastmod>
     </url>
     <url>
         <loc>http://hustcalm.me/blog/archives/</loc>
-        <lastmod>2014-01-24T00:40:37+08:00</lastmod>
+        <lastmod>2014-02-10T15:51:23+08:00</lastmod>
     </url>
     <url>
         <loc>http://hustcalm.me/</loc>
-        <lastmod>2014-01-24T00:40:37+08:00</lastmod>
+        <lastmod>2014-02-10T15:51:23+08:00</lastmod>
     </url>
     <url>
         <loc>http://hustcalm.me/robots.txt</loc>

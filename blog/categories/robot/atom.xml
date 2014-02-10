@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Robot | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/robot/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-01-25T19:03:25+08:00</updated>
+  <updated>2014-02-10T15:51:40+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Review of BeagleBone Robotic Projects - From a Technical Perspective]]></title>
+    <link href="http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/"/>
+    <updated>2014-02-10T11:07:55+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m lucky to be a reviewer for the book <code>Beaglebone Robotic Projects</code> few months ago released by <a href="http://www.packtpub.com/">PACKT</a>. And I&rsquo;d like to recommend this book to readers who would like to play with <code>Beagle</code> for a while and start their own robotic projects. Below I&rsquo;ll talk a little bit about this book from a technical perspective.</p>
+
+<!--more-->
+
+
+<p>First of all, here is the cover of <a href="http://www.packtpub.com/beaglebone-robotic-projects/book">BeagleBone Robotic Projects</a>:</p>
+
+<p><a href="http://www.packtpub.com/beaglebone-robotic-projects/book"><img src="/images/blog_images/books/9329OT_BeagleBone_Robotic_Projects_cov.jpg"></a></p>
+
+<h3>What you will learn from this book</h3>
+
+<h4>What is BeagleBone Black</h4>
+
+<p>As a <code>mini PC</code> or something, it is compared to <code>Raspberry Pi</code> sometimes. Some people would play with them as toys, some would like to do some amazing projects. It is a typical representative of <code>open source hardware</code>! And it runs the incredible <code>Linux</code>. Chapter 1 will guide you through to get your BeagleBone to work with a fully functioning desktop.</p>
+
+<h4>Talk with BeagleBone Black through programming</h4>
+
+<p>To be able to get started with BeagleBone and do what you want, some background in <code>Linux</code>, <code>Python</code> and <code>Programming</code> will be required. The 2nd chapter of the book will show you the basic Linux commands, brief tutorial for Python, etc.</p>
+
+<h4>Simple speech recognition and make the robot speak</h4>
+
+<p>Chapter 3 shows us how to make your robot speak as a robot utilizing <code>eSpeak</code> and how to do simple speech recognition using <code>PocketSphnix</code>. Also to test the <code>USB sound device</code>, we use <code>AlsaMixer</code> built upon <code>ALSA</code> libraries.</p>
+
+<h4>Use camera as the Robot&rsquo;s eyes</h4>
+
+<p>In chapter 4, the book first shows how to connect a USB camera to BeagleBone and viewing the images with <code>GUVCViewer</code>. After that is guide for installing a full-featured vision library &ndash; <code>OpenCV</code>. Then is a demo for detecting colored objects using <code>OpenCV</code>.</p>
+
+<h4>Make it run by using Servos and Motors</h4>
+
+<p>Chapter 5 will tell you how to make a <code>wheeled</code> robot and chapter 6 will show how a <code>legged</code> robot is made. The instructions for hooking up the wires and demos for controlling the servos and motors would definitely help a lot.</p>
+
+<h4>Sense the environment to make some intelligence</h4>
+
+<p>For avoiding obstables, we use a <code>USB sonar sensor</code> in chapter 7, or people will call it <code>ultrasonic sensor</code>. And for letting your robot know where it is, the book shows how to use a <code>GPS</code> module in chapter 9.</p>
+
+<h4>Remote control for more fun</h4>
+
+<p>Chapter 8 shows how to hook up a <code>LCD</code> display to your BeagleBone and control your robot with a <code>2.4GHz Keyboard</code>. Just imagine how it would be fun to see your robot running around whereas you just sitting there.</p>
+
+<h4>Impossible is nothing</h4>
+
+<p>Want something more? Chapter 10 will teach you how to integrate all the parts and skills covered in previous chapters to make a whole system. For more fun, chapter 11 is a good starting point. Want a sailing robot, flying robot or a submarine robot? This chapter will help a lot.</p>
+
+<hr />
+
+<h3>Highlights</h3>
+
+<p>For the highlights of the book, I want to say that it covers a lot for a typical <code>embedded system</code> and will be very helpful tutorials for hobbiests to get started with their robotic projects. Not only hardware, but also open source software are widely used, instructions are clear and easy to read. To summarize,</p>
+
+<ul>
+<li>You will know basic Linux through this book</li>
+<li>Python will be your handy programming language for doing robotic projects</li>
+<li>Getting to know various useful software packages(eSpeak, PocketSphinx, OpenCV, GUVCViewer, etc)</li>
+<li>Know the actuators for typical robots(servos and motors)</li>
+<li>Have a basic understanding of sensors(ultrasonic, camera, GPS, etc)</li>
+<li>Good starting point to make something big(multicopter maybe)</li>
+</ul>
+
+
+<hr />
+
+<p>In a word, you may as well give the book a try and hope it can help:&ndash;)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2012 ABU Roboncon 国内赛总结]]></title>
