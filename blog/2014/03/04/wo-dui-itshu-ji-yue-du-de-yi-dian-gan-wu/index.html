@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ubuntu下检出Cygwin搭建的Octopress遇到的问题 - Welcome to Pandora's Box</title>
+  <title>我对IT书籍阅读的一点感悟 - Welcome to Pandora's Box</title>
   <meta name="author" content="Lihang Li">
 
   
-  <meta name="description" content="原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“deploy”对应的是remote_master branch即可。 而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“， &hellip;">
+  <meta name="description" content="最近读书比较多，想着尽快把自己的短板补一补，读的过程中有点自己的感悟，发现IT书籍也是口味各异，都能跟文学书籍类比一下了，在此扯淡几句，图个乐子。 要是说文学书籍，大家可能会想到“散文”，“议论文”，“记叙文”，“诗歌”，“回忆录”之类的。而说到IT书籍，诸如编程语言，操作系统，嵌入式， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hustcalm.me/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti">
+  <link rel="canonical" href="http://hustcalm.me/blog/2014/03/04/wo-dui-itshu-ji-yue-du-de-yi-dian-gan-wu">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/KISS-hustcalm" rel="alternate" title="Welcome to Pandora's Box" type="application/atom+xml">
@@ -87,7 +87,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ubuntu下检出Cygwin搭建的Octopress遇到的问题</h1>
+      <h1 class="entry-title">我对IT书籍阅读的一点感悟</h1>
     
     
       <p class="meta">
@@ -103,7 +103,7 @@
   
 
 
-<time datetime="2012-10-13T19:37:00+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
+<time datetime="2014-03-04T09:54:25+08:00" pubdate data-updated="true">Mar 4<span>th</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://hustcalm.me">Comments</a>
@@ -113,11 +113,63 @@
   </header>
 
 
-<div class="entry-content"><p>原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“<em>deploy”对应的是remote_master branch即可。    <br/>
-而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。     <br/>
-可问题是，Cygwin搭建的Octopress会出现问题，具体请参考链接<a href="http://madeye.me/2011/12/17/setup-octopress-on-windows">在Cygwin中搭建Octopress环境</a>，主要是posix-spawn的问题，修改Gemfile.lock以及gems下面的albino.rb即可，可以Ubuntu不存在这种问题，因此需要隔离这一修改，最直观的是想把Gemfile放到.gitignore里面去，不管它了。另外，如果更新Octopress的话，Ruby的版本也会有所变化，我的策略是直接修改.rbenv-version，不理会版本的更新，当然也可以用.gitignore实现。      <br/>
-而现在写文章先不管Octopress了，只管</em>deploy。    <br/>
-唉，郁闷:(。</p>
+<div class="entry-content"><p>最近读书比较多，想着尽快把自己的短板补一补，读的过程中有点自己的感悟，发现IT书籍也是口味各异，都能跟文学书籍类比一下了，在此扯淡几句，图个乐子。</p>
+
+<p>要是说文学书籍，大家可能会想到“散文”，“议论文”，“记叙文”，“诗歌”，“回忆录”之类的。而说到IT书籍，诸如编程语言，操作系统，嵌入式，Web开发框架，设计模式，面向对象等等之类的书可能会立马涌上心头。当下电子书给传统的纸质书造成了很大的冲击，在这种情况下，更要合理地调整自己的阅读习惯。在琳琅满目的书籍面前，每个人都面临选择，该购买哪本书，如何在有限的时间内吸收书中的精华，达到自己的阅读目的？下面就我自己的阅读经历分析一下以上问题。</p>
+
+<!--more-->
+
+
+<hr />
+
+<h3>充分调研再选书，优先经典，适合自己</h3>
+
+<p>现在的出版行业已经发达到“是个人都能出书”的地步了。所以在对某一类的书或者某本特别的书产生阅读欲望的时候，一定先要仔细评估一下，经过评估后才会买到对自己来说有价值的书，避免“被作者误导”。在学习方面，如果你不确定，我还是建议向“权威”学习，尤其是在计算机行业，同样是讲C++的书，我会毫不犹豫地优先选择“C++之父”的著作，他发明了C++，相比而言当然更有资格讲解并传授给他人。</p>
+
+<p>既然说是IT书籍了，那就从技术书籍入手。举个例子，你想入门C语言了，怎么办？本科的时候，大家都知道“谭浩强”了，但是那本书很大程度上是被选择的，而不是我们自愿的。现在大家都有了独立思考的能力，自然会去Google搜索一下“C语言入门书籍”，看一些高质量的帖子，再问问身边一些C语言水平还可以的同学或者同事，基本上就可以甄别出什么才是“真正的C语言入门书籍”或者“C语言学习书籍”。基本上大家应该都比较推崇C语言三驾马车，即《C和指针》，《C陷阱和缺陷》，《C专家编程》。而这三本书又风格各异，虽然都是讲C语言的，但是就入门来说，《C和指针》当属首选，它讲解比较系统，循序渐进，初学者容易接受；而《C专家编程》正如书名所说，比较适合进阶学习；而对于《C陷阱和缺陷》，我个人感觉比较适合查漏补缺。</p>
+
+<p>以上提到的三本书应该都是“C语言学习”领域还算经典的书，而最经典的莫过于“C语言之父”的《The C
+Programming》，为啥不推荐这个小手册呢？虽说要靠近经典，但是也要因地制宜，“C语言”本身的核心是其编译器，而“C语言之父”的经典书籍是对语言本身的规范说明，类似产品说明书，我想给编译器开发者看比较合适，而对于试图学习如何使用这门语言的新手显然不是特别合适（当然也有例外，计算机背景特别强，编程天赋良好的人也许看看这本书就足够了）。</p>
+
+<p>计算机本身是美国的专利，因此很多书籍开始都是“英文书籍”，社会发展到如今，主流的计算机书籍已经都有了“中译本”，那么读原版还是译本？这要看个人，英文功底允许的话，强烈推荐看原版，很多专业词汇在原著中表达地更加自然，有助于对技术本身的理解；英文跟不太上的话，看中译本也无妨，但是要提前做好思维上的准备，不要被译者的一些主观理解误导了（这种情况肯定存在，但好在不是很多）。</p>
+
+<p>好了，我们定下了选择书籍的基调，如果有的选，就要“经典”的，甚至说“正统”的，耐心阅读，基本上可以把某一个领域的技术涵盖完全；一定要避免读了好几本烂书，没学到知识反而被误导了不少，就本科的C语言学习来说，这种情况是存在着的。尽量读英文原版，尽管不想承认，IT技术是被美国支配的，习惯阅读英文资料可以在一定程度上减少信息传播的延迟。</p>
+
+<p>有了这个基调之后，我们还要选择“适合自己”的书籍，这在《Essential C++》的作者序言中也得到了有力的支撑，作者试图找一本能够“快速入门”Perl的小书，并强调存在这么一本小书是多么地必要。总的来讲，我觉得“适合自己”的书需要符合你的“阅读目的”。如果是想深入研究，那么买一本透彻讲解的书再好不过，比如《C++
+Primer》；而为了快速上手，解决实际问题，那么一本小小的“handbook”可能就是你要找的；假如不太想偏技术，喜欢看看哲学讨论，那么看看“ESR”的书还是不错的。</p>
+
+<p>选择正是你的品味的体现，相信随着阅读量的增大，你的阅读品味也会随之提高，并且更加适合自己。</p>
+
+<p>时间是宝贵的，不要把它浪费在“一本烂书”上。</p>
+
+<hr />
+
+<h3>正确的阅读方法会事半功倍</h3>
+
+<p>我们已经选好了书，是不是已经迫不及待地想开始阅读旅程？很多时候，我们不是缺书，我们是没有找到“正确且适合自己的”阅读方法。</p>
+
+<p>有些人喜欢一口气图个痛快，有些人喜欢按部就班一天读一小段，而有些人直捣黄龙，找自己最关心的那一部分细细品味。是不是有点读文学书籍的意思了？就像文章开头说的，IT书籍也是风格各异，不同的书适合不同的读法，同时阅读方法需要紧密地和你的“阅读目的”联系起来。通读也好，略读也罢，只求书中之精华能为我所用，达到融会贯通之境界。</p>
+
+<p>IT书籍大体可分为“工具入门类”，“理论原理类”，“实战经验总结类”，“技术文集类”，“面试备战类”等等。先说一些“散文”类的，比如Paul
+Graham的《黑客与画家》，此类书是其多年的文章荟萃而成，因此非常适合跳读，找到自己感兴趣的略读；对于“工具入门”，比如语言入门，软件使用入门，最好按部就班，一步一个脚印地踏实学习，才能修成正果；而对于“实战”类，实际操作才是王道；“理论原理”则需要仔细琢磨，慢慢推敲，理解其原理后需要能够举一反三，解决实际问题；而“面试”类书籍，在我看来尽可以当成快餐书籍，短时间内研读。</p>
+
+<p>在这里举个例子吧，比如你要学习Linux，想找一些参考书籍，比如《Running Linux》，《Linux In a Nutshell》，《The Linux Command Line》，《Advanced Linux Programming》之类的。那么这四本书的阅读方法一定是不同的，拿《Running
+Linux》来说，它全书分为四个部分，包括“Linux使用”，“系统管理”，“Linux编程”和“Linux服务器”。阅读的时候选自己想读的部分即可，即当成“参考书”。而后面两本更甚，《Linux In a Nutshell》就像是一个Linux的“字典”或者“百科全书”，《The Linux Command Line》相对精简，但也重“参考”。相反，《ALP》则专注开发，适合系统地学习。</p>
+
+<p>说到这里，再补充一下“书籍选择”的问题吧，更多的是在“电子书籍”和“纸质书籍”之间的折中。我个人觉得“电子书”一定是未来的大方向，符合现代生活节奏和生活理念。我个人的策略是，对于工具类和参考类的书籍，尽量用电子版，一来参考起来十分方便，在文件中搜索即可，二来不费钱也不占地方（目前来看，很多IT书籍存在不用出纸质版的必要的嫌疑，它们的出版很可能是由于工业惯性）。而对于经典的原理类书籍，需要仔细推敲，则买回来纸质版仔细研读是最合适不过的了。
+而对于任何一本书，我比较推荐从大体上先有一个宏观的认识，即浏览一下书籍的目录结构，掌握书籍的脉络和行文风格，看看是否符合自己的学习习惯，如果不符合，大可以自己调整看的顺序，对于《程序员的自我修养》这本书，我个人的阅读顺序为4，1，2，3。前言我也是非常推荐大家看的，从这里面可以比较准确地把握作者在书中试图表达什么以及其成书的目的。每每阅读书的前言，我都会觉得很有意思，比如正在阅读的《松本行弘的程序世界》一书，就能切身感受到作者的幽默。</p>
+
+<p>读书自然是抱着自己的目的的，时刻不要忘记了，你阅读是为了什么，带着问题去阅读，去思考，取其精华。单纯地享受阅读的乐趣，我也是不反对的，有时我就是这样的吧。</p>
+
+<hr />
+
+<h3>善于总结，让知识沉淀</h3>
+
+<p>选了书，读了书，不能就这么算了。你的时间投入需要得到应有的回报，而阅读一本书最好的回报无异于“知识转化，为我所用”。大多数情况下，由人类的记忆特性决定的，阅读过程中的一些体会和醍醐灌顶，冷却一段时间后便又无影无踪。因此，阅读之后是一定要写点什么的，最好是边读边写，一边阅读一边记笔记会一定程度影响阅读速度，但是效率奇高。如果是纸质书，也可以直接在书上记下自己的心得和理解，阅读之后再写个书评，效果更佳。</p>
+
+<p>还有一点就是在有可能的情况下，多跟身边的人交流阅读心得，我觉得“读书会”是一个很好的方式，无奈当下生活节奏过快，线下的“读书会”难以组织，那么线上的一些评论网站就是不二的选择了。我个人目前比较推荐豆瓣读书，我的个人读书页面在<a href="http://book.douban.com/people/hustcalm/">这里</a>。</p>
+
+<p>这两天读了“多看阅读”上一本小书，叫做“独立博客”，由简书出品，虽然有点广告性质，但是里面独立博主的一些感想很有启发性。当下大环境下，独立博客更像是互联网中的孤岛，是博主自娱自乐的地方。希望在我的自娱自乐中能够带给大家一些帮助，如果你能到达我的孤岛的话:&ndash;)</p>
 </div>
 
 
@@ -140,12 +192,12 @@
   
 
 
-<time datetime="2012-10-13T19:37:00+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2012</time>
+<time datetime="2014-03-04T09:54:25+08:00" pubdate data-updated="true">Mar 4<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/cygwin/'>Cygwin</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>
+    <a class='category' href='/blog/categories/books/'>Books</a>
   
 </span>
 
@@ -161,10 +213,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/10/10/ru-shou-liao-name-dot-comde-yu-ming-hustcalm-dot-me/" title="Previous Post: 入手了name.com的域名hustcalm.me">&laquo; 入手了name.com的域名hustcalm.me</a>
+        <a class="basic-alignment left" href="/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/" title="Previous Post: Review of BeagleBone Robotic Projects - From a Technical Perspective">&laquo; Review of BeagleBone Robotic Projects - From a Technical Perspective</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/" title="Next Post: Successfully Compiled VLC 2.0.3 Under Ubuntu 11.04">Successfully Compiled VLC 2.0.3 Under Ubuntu 11.04 &raquo;</a>
       
     </p>
   </footer>
@@ -316,8 +366,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://hustcalm.me/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/';
-        var disqus_url = 'http://hustcalm.me/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/';
+        var disqus_identifier = 'http://hustcalm.me/blog/2014/03/04/wo-dui-itshu-ji-yue-du-de-yi-dian-gan-wu/';
+        var disqus_url = 'http://hustcalm.me/blog/2014/03/04/wo-dui-itshu-ji-yue-du-de-yi-dian-gan-wu/';
         var disqus_script = 'embed.js';
       
     (function () {

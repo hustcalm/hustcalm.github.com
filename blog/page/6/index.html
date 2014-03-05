@@ -9,7 +9,8 @@
   <meta name="author" content="Lihang Li">
 
   
-  <meta name="description" content="Preface 今天Beijing GDG的活动是编程语言沙龙，一口气了解了3种对我来说比较陌生的编程语言(Go, Erlang和Dart），感觉心情比较舒爽，感谢GDG的分享(@许士伟，@连城，@韩国恺，@各位组织者）。趁着脑子还有点热，写点东西谈谈自己的想法吧:&ndash;) Go &hellip;">
+  <meta name="description" content="想想接触VIM也有段时间了，一直比较半调子，从没认真看过vimtutor，倒是东拼西凑，到处画斋:&ndash;) 目前自己把VIM的使用分为三个层次： 菜鸟 这个阶段，要能够用VIM工作，评判标准是能否用VIM完成基本的编辑工作，需要消化以下两篇文章：
+* 高效率编辑器VIM-操作篇， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +85,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/06/vimshi-yi-zhong-tai-du/">Vim是一种态度</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-06T20:30:00+08:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
+        
+           | <a href="/blog/2013/05/06/vimshi-yi-zhong-tai-du/#disqus_thread"
+             data-disqus-identifier="http://hustcalm.me/blog/2013/05/06/vimshi-yi-zhong-tai-du/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>想想接触VIM也有段时间了，一直比较半调子，从没认真看过vimtutor，倒是东拼西凑，到处画斋:&ndash;)</p>
+
+<p>目前自己把VIM的使用分为三个层次：</p>
+
+<h2>菜鸟</h2>
+
+<p>这个阶段，要能够用VIM工作，评判标准是能否用VIM完成基本的编辑工作，需要消化以下两篇文章：
+*   <a href="http://linuxtoy.org/archives/efficient-editing-with-vim.html">高效率编辑器VIM-操作篇，非常适合VIM新手</a>
+*   <a href="http://coolshell.cn/articles/5426.html">简明Vim练级攻略</a></p>
+
+<h2>高手</h2>
+
+<p>作为高手，VIM已经用起来得心应手，IDE什么的都不care了，插件安装和DIY信手拈来，参考以下链接：</p>
+
+<h3>打造一个IDE</h3>
+
+<ul>
+<li><a href="http://blog.csdn.net/wooin/article/details/1858917">手把手教你把Vim改装成一个IDE编程环境</a></li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/05/06/vimshi-yi-zhong-tai-du/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -317,61 +381,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de/">BIOS是如何被加载并执行的</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-13T22:32:00+08:00" pubdate data-updated="true">Mar 13<span>th</span>, 2013</time>
-        
-           | <a href="/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de/#disqus_thread"
-             data-disqus-identifier="http://hustcalm.me/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近在上杨立祥老师的《操作系统高级教程I》，主要讲述Linux 0.11是如何被加载到内存，并且开始接管计算机。那么系统是如何被加载并执行的呢？</p>
-
-<p>基本上分为三步：</p>
-
-<ul>
-<li>（1）启动BIOS，准备实模式下的中断向量表和中断服务程序</li>
-<li>（2）从启动盘加载操作系统到内存，加载操作系统程序的工作，由第一步准备好的中断服务程序完成</li>
-<li>（3）为执行32位的main函数做过渡工作</li>
-</ul>
-
-
-<p>杨老师的书中，在BIOS启动之后的讲解都很清楚，唯一在BIOS启动那里，有点“犹抱琵琶半遮面”的感觉。我个人的理解是，整个计算机里面只有处理器（也就是CPU）可以“干活”，所以BIOS的启动肯定需要CPU的参与，那么指令执行的地方在哪里呢？本质上，指令执行都是在CPU的寄存器和运算单元那里完成的，为了完成复杂的运算，需要保存很多数据，所以需要内存访问的支持。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -404,11 +413,15 @@
 
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 110.0%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 110.0%'>AR(1)</a> <a href='/blog/categories/arduino' style='font-size: 110.0%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 110.0%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 110.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 110.0%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 110.0%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 110.0%'>Books(1)</a> <a href='/blog/categories/c-c-' style='font-size: 120.0%'>C/C++(2)</a> <a href='/blog/categories/centos' style='font-size: 120.0%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 110.0%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 110.0%'>CV(1)</a> <a href='/blog/categories/cygwin' style='font-size: 110.0%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 110.0%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 110.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 110.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 110.0%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 110.0%'>Fedora(1)</a> <a href='/blog/categories/geek' style='font-size: 130.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 120.0%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 110.0%'>Google(1)</a> <a href='/blog/categories/latex' style='font-size: 110.0%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 110.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 110.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 130.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(6)</a> <a href='/blog/categories/mac' style='font-size: 110.0%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 110.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 110.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 110.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 120.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 110.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 120.0%'>Network(2)</a> <a href='/blog/categories/nlp' style='font-size: 110.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 120.0%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 120.0%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 110.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 130.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 110.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 110.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 110.0%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 110.0%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 130.0%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 110.0%'>PTAM(1)</a> <a href='/blog/categories/pthread' style='font-size: 110.0%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 110.0%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 110.0%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 110.0%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 130.0%'>Robot(3)</a> <a href='/blog/categories/seo' style='font-size: 120.0%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 110.0%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 120.0%'>SNS(2)</a> <a href='/blog/categories/speaking' style='font-size: 110.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 110.0%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 110.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 130.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 130.0%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 110.0%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 120.0%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 110.0%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 110.0%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 110.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 110.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 110.0%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 110.0%'>Xen(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 110.0%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 110.0%'>AR(1)</a> <a href='/blog/categories/arduino' style='font-size: 110.0%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 110.0%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 110.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 110.0%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 110.0%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 120.0%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 120.0%'>C/C++(2)</a> <a href='/blog/categories/centos' style='font-size: 120.0%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 110.0%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 110.0%'>CV(1)</a> <a href='/blog/categories/cygwin' style='font-size: 110.0%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 110.0%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 110.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 110.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 110.0%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 110.0%'>Fedora(1)</a> <a href='/blog/categories/geek' style='font-size: 130.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 120.0%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 110.0%'>Google(1)</a> <a href='/blog/categories/latex' style='font-size: 110.0%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 110.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 110.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 130.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(6)</a> <a href='/blog/categories/mac' style='font-size: 110.0%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 110.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 110.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 110.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 120.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 110.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 120.0%'>Network(2)</a> <a href='/blog/categories/nlp' style='font-size: 110.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 160.0%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 120.0%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 120.0%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 110.0%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 130.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 110.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 110.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 110.0%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 110.0%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 130.0%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 110.0%'>PTAM(1)</a> <a href='/blog/categories/pthread' style='font-size: 110.0%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 110.0%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 110.0%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 110.0%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 130.0%'>Robot(3)</a> <a href='/blog/categories/seo' style='font-size: 120.0%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 110.0%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 120.0%'>SNS(2)</a> <a href='/blog/categories/speaking' style='font-size: 110.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 110.0%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 110.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 130.0%'>Ubuntu(3)</a> <a href='/blog/categories/vim' style='font-size: 130.0%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 110.0%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 120.0%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 110.0%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 110.0%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 110.0%'>Web(1)</a> <a href='/blog/categories/windows' style='font-size: 110.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 110.0%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 110.0%'>Xen(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/04/wo-dui-itshu-ji-yue-du-de-yi-dian-gan-wu/">我对IT书籍阅读的一点感悟</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/">Review of BeagleBone Robotic Projects - From a Technical Perspective</a>
@@ -424,10 +437,6 @@
     
       <li class="post">
         <a href="/blog/2014/01/22/simply-get-boinc-running-on-centos-6-dot-4-and-earn-xrp/">Simply Get BOINC Running on CentOS 6.4 and Earn XRP</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/12/making-your-slides-the-awesome-way/">Making Your Slides the Awesome Way</a>
       </li>
     
   </ul>
