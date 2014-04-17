@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Socket | Welcome to Pandora's Box]]></title>
+  <link href="http://hustcalm.me/blog/categories/socket/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2014-04-17T21:33:05+08:00</updated>
+  <id>http://hustcalm.me/</id>
+  <author>
+    <name><![CDATA[Lihang Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[What is socket anyway?]]></title>
+    <link href="http://hustcalm.me/blog/2014/04/17/what-is-socket-anyway/"/>
+    <updated>2014-04-17T21:05:06+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/04/17/what-is-socket-anyway</id>
+    <content type="html"><![CDATA[<p>I bet you&rsquo;ve heard of <code>socket</code> for a while, but do you really know what is a <code>socket</code>?</p>
+
+<p>This post is a quick getting-started for figuring out the basic concepts of socket and hopefully enpowers you to begin writing simple network programming snippets. It aims to bootstrap your understanding to socket and network programming and serves as a good starting point to truth. From definition to practice and deep into research, let&rsquo;s start the venture!</p>
+
+<!--more-->
+
+
+<h2>The definition</h2>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Berkeley_sockets">Berkeley sockets</a></li>
+</ul>
+
+
+<p>Let history and standards tell everything.</p>
+
+<h2>Unix or Internet</h2>
+
+<ul>
+<li><a href="http://lists.freebsd.org/pipermail/freebsd-performance/2005-February/001143.html">unix domain sockets vs. internet sockets</a></li>
+</ul>
+
+
+<p>See what the freebsd gurus say.</p>
+
+<h2>Unix socket deeper</h2>
+
+<ul>
+<li><a href="http://www.thomasstover.com/uds.html">Demystifying Unix Domain Sockets</a></li>
+</ul>
+
+
+<p>Code tells the truth.</p>
+
+<h2>Network Programming Go</h2>
+
+<ul>
+<li><a href="http://beej.us/guide/bgnet/output/html/singlepage/bgnet.html">Beej&rsquo;s Guide to Network Programming Using Internet Sockets</a></li>
+</ul>
+
+
+<p>Practices make best.</p>
+
+<h2>What&rsquo;s Next</h2>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/176409/how-to-build-a-simple-http-server-in-c">How to Build a simple HTTP server in C</a></li>
+</ul>
+
+
+<p>Wonder how to implement a HTTP server, like <code>Apache</code> or <code>Nginx</code>, you&rsquo;d better implement a simple, stupid but your own one.</p>
+
+<ul>
+<li><a href="http://www.kegel.com/c10k.html">The C10K problem</a></li>
+</ul>
+
+
+<p>Well, this is really where it hurts. Catch up with the paper, conquer it or give up early!</p>
+]]></content>
+  </entry>
+  
+</feed>
