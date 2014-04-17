@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Many Thanks to CMCC &amp; CMCC-EDU - Welcome to Pandora's Box</title>
+  <title>Build PTAM on Fedora 20 the Easy Way - 10 Minutes Tutorial - Welcome to Pandora's Box</title>
   <meta name="author" content="Lihang Li">
 
   
-  <meta name="description" content="Wireless NetWork is nice of CMCC Even got stuck by CAS&rsquo;s policy about bandwidth limit, prefered to use CMCC wireless network though some times &hellip;">
+  <meta name="description" content="It&rsquo;s been a while since the last post PTAM Compilation on Linux-HowTo about playing with PTAM. And now Isis Innovation has released the source &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu">
+  <link rel="canonical" href="http://hustcalm.me/blog/2014/04/17/build-ptam-on-fedora-20-the-easy-way-10-minutes-tutorial">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/KISS-hustcalm" rel="alternate" title="Welcome to Pandora's Box" type="application/atom+xml">
@@ -87,7 +87,7 @@
   
   <header>
     
-      <h1 class="entry-title">Many Thanks to CMCC &amp; CMCC-EDU</h1>
+      <h1 class="entry-title">Build PTAM on Fedora 20 the Easy Way - 10 Minutes Tutorial</h1>
     
     
       <p class="meta">
@@ -103,7 +103,7 @@
   
 
 
-<time datetime="2012-09-26T00:43:00+08:00" pubdate data-updated="true">Sep 26<span>th</span>, 2012</time>
+<time datetime="2014-04-17T19:21:41+08:00" pubdate data-updated="true">Apr 17<span>th</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://hustcalm.me">Comments</a>
@@ -113,9 +113,101 @@
   </header>
 
 
-<div class="entry-content"><h2>Wireless NetWork is nice  of CMCC</h2>
+<div class="entry-content"><p>It&rsquo;s been a while since the last post <a href="http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto/">PTAM Compilation on Linux-HowTo</a> about playing with PTAM. And now Isis Innovation has released the source code under GPLv3 and put it on <a href="https://github.com/Oxford-PTAM/PTAM-GPL">Github</a>.</p>
 
-<p>Even got stuck by CAS&rsquo;s policy about bandwidth limit, prefered to use CMCC wireless network though some times there is no speed.</p>
+<p>Last time, we demostrate detailed instructions on how to get PTAM running on Debian derived systems(Linux Mint 15 and Ubuntu 12.04), now I want talk about building the source code on Fedora 20. It won&rsquo;t be long, since I just want to talk about the key components, thus the mandatory dependencies(<strong>TooN, libCVD, Gvars3, OpenGL, libjpeg, libpng, libtiff</strong>, etc).</p>
+
+<!--more-->
+
+
+<p>As the PTAM source code use the GNU autoconf tools, so the typical way to install is <code>./configure &amp;&amp; make &amp;&amp; sudo make install</code>, however, to make sure that certain third libs are correctly configured and can found when running <code>configure</code>, you may want to have a look at the output after <code>configure</code> and install any key dependency which is missed.</p>
+
+<p>Whenever you are not sure, see the <strong>Official Website</strong> for sure!!!</p>
+
+<h2>Install Dependencies</h2>
+
+<h3>TooN</h3>
+
+<p><a href="http://www.edwardrosten.com/cvd/toon.html">TooN</a> is a numerics library used by libCVD. Since they are just a bundle of header files, installation is trivial.</p>
+
+<pre><code>sudo yum install liblapack-devel
+sudo yum install libblas-devel
+
+./configure &amp;&amp; make &amp;&amp; sudo make install
+</code></pre>
+
+<h3>libCVD</h3>
+
+<p><a href="http://www.edwardrosten.com/cvd/">libCVD</a> is a very portable and high performance C++ library for computer vision, image, and video processing.</p>
+
+<p>This is the key component for building PTAM, thus should be careful. Make sure you installed OpenGL correctly, also for the video source, if you are using a UVC webcam, check if <code>v4l2</code> is working. Or if you are using a IEEE1394 camera, get libxx1394 series libs installed which can drive your camera. For Image I/O, always have libjpeg, libpng and libtiff.</p>
+
+<p>See the output after running <code>configure</code> and ensure all the options related are OK.</p>
+
+<pre><code>sudo yum install freeglut-devel
+
+./configure
+
+make
+
+sudo make install
+</code></pre>
+
+<h3>GVars3</h3>
+
+<p><a href="http://www.edwardrosten.com/cvd/gvars3.html">GVars3</a> is a configuration library which integrates well with TooN. Not much to worry when buiding.</p>
+
+<pre><code>./configure &amp;&amp; make &amp;&amp; sudo make install
+</code></pre>
+
+<h2>Build PTAM</h2>
+
+<h3>Run ldconfig</h3>
+
+<p>The libs built above may reside in <code>/usr/local/lib</code> when using the default directorys in their Makefiles, to make the system aware of the newly installed libs.</p>
+
+<pre><code>sudo vi /etc/ld.so.conf
+add /usr/local/lib to the file
+sudo ldconfig
+</code></pre>
+
+<h3>Prepare for Makefile</h3>
+
+<pre><code>cd the_PTAM_Directory
+cp Build/Linux/* .
+vi Makefile
+add -lGLU -lGL -llapack to the linker commands
+</code></pre>
+
+<h3>Fix usleep declaration</h3>
+
+<pre><code>vi Tracker.cc
+add #include &lt;unistd.h&gt; to the first line
+</code></pre>
+
+<h3>Build</h3>
+
+<pre><code>make
+</code></pre>
+
+<p>If nothing wrong, you are done!</p>
+
+<h2>Run PTAM</h2>
+
+<p>Simply invoke <code>CameraCalibrator</code> to calibrate your camera. Then invoke <code>PTAM</code> for real fun.</p>
+
+<p>If you use UVC webcam using <code>v4l2</code>, you may want to install:</p>
+
+<pre><code>sudo yum install v4l-utils
+</code></pre>
+
+<p>Use <code>v4l2-ctl</code> to play with your camera.</p>
+
+<h2>Trouble Shooting</h2>
+
+<p>As the orinigal <a href="http://www.robots.ox.ac.uk/~gk/PTAM/README.txt">README.txt</a> says, PTAM works well with Nvidia display card, I got <code>Segmentation Fault as soon as ... got video source</code> as I&rsquo;m using a display card shipped with an Intel motherboard.</p>
+
+<p>However, I think the root cause is that the display card driver does not know how to handle the color space coming from the webcam, so I&rsquo;m planning to deep into the mechanism and try to find out why. <a href="http://ewokrampage.wordpress.com/troubleshooting-faq/">George Klein</a> says that a nvidia display card and driver combo works fine after all.</p>
 </div>
 
 
@@ -138,12 +230,12 @@
   
 
 
-<time datetime="2012-09-26T00:43:00+08:00" pubdate data-updated="true">Sep 26<span>th</span>, 2012</time>
+<time datetime="2014-04-17T19:21:41+08:00" pubdate data-updated="true">Apr 17<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/network/'>Network</a>
+    <a class='category' href='/blog/categories/ar/'>AR</a>, <a class='category' href='/blog/categories/cv/'>CV</a>, <a class='category' href='/blog/categories/fedora/'>Fedora</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/ptam/'>PTAM</a>
   
 </span>
 
@@ -156,10 +248,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/08/16/hello-github/" title="Previous Post: Hello GitHub">&laquo; Hello GitHub</a>
+        <a class="basic-alignment left" href="/blog/2014/03/04/wo-dui-itshu-ji-yue-du-de-yi-dian-gan-wu/" title="Previous Post: 我对IT书籍阅读的一点感悟">&laquo; 我对IT书籍阅读的一点感悟</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/10/08/simple-syntax-of-markdown/" title="Next Post: Simple Syntax of Markdown">Simple Syntax of Markdown &raquo;</a>
       
     </p>
   </footer>
@@ -311,8 +401,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/';
-        var disqus_url = 'http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/';
+        var disqus_identifier = 'http://hustcalm.me/blog/2014/04/17/build-ptam-on-fedora-20-the-easy-way-10-minutes-tutorial/';
+        var disqus_url = 'http://hustcalm.me/blog/2014/04/17/build-ptam-on-fedora-20-the-easy-way-10-minutes-tutorial/';
         var disqus_script = 'embed.js';
       
     (function () {
