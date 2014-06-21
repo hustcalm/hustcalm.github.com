@@ -1,0 +1,1042 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Look Inside Mongoose - an Easy to Use Web Server Implementation - Welcome to Pandora's Box</title>
+  <meta name="author" content="Lihang Li">
+
+  
+  <meta name="description" content="I come across with Network Programming recently and find it really charming. Afer reading the book &ldquo;Advanced Linux Programming&rdquo;, I&rsquo; &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hustcalm.me/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/KISS-hustcalm" rel="alternate" title="Welcome to Pandora's Box" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+
+<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--Ref to google plus profile to display authorship in google search result -->
+<link ref="me" href="https://plus.google.com/u/0/103479323169088059584?rel=author">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47357842-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+<h1><a href="/">Welcome to Pandora's Box</a>(<a href="/about">Why</a>)</h1>
+  
+    <h2>Keep It Simple, Stupid!</h2>
+  
+</hgroup>
+
+<a href="https://github.com/hustcalm"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/KISS-hustcalm" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:hustcalm.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Look Inside Mongoose - an Easy to Use Web Server Implementation</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-09T20:22:54+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://hustcalm.me">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I come across with Network Programming recently and find it really charming. Afer reading the book &ldquo;Advanced Linux Programming&rdquo;, I&rsquo;m more curious about how to implement a basic http server or web server.</p>
+
+<p>The source code of chapter 11 of &ldquo;ALP&rdquo; does tell the key idea, thus communicating through sockets between client and server, for HTTP compliance, just implement the HTTP protocal(<a href="https://tools.ietf.org/html/rfc2616">RFC
+2616</a>). To know the things better, I&rsquo;d like to know how to implement a core and basic HTTP server. You may know &lsquo;Apache&rsquo;, &lsquo;NginX&rsquo; and &lsquo;Lighttpd&rsquo; for a while, and they do lead the main tread. Basically, they are heavy enough to begin to know a basic HTTP server implementation.</p>
+
+<!--more-->
+
+
+<p>After googling around, I find <a href="http://stackoverflow.com/questions/176409/how-to-build-a-simple-http-server-in-c">this link on stackoverflow</a> is valuable and a good starting point to follow. From there, I decide to dig into <a href="https://code.google.com/p/mongoose/">mongoose</a>. To walk through what mongoose does and provides, I will present some comments of core source code.</p>
+
+<h2>Be aware of the Protocal Stack</h2>
+
+<p>Many people get confused by <code>HTTP</code>, <code>FTP</code>, <code>TCP/IP</code>, <code>SMTP</code>, etc. To get all these stuff clear of your head, do please spend several miniutes to learn the <code>Internet communication model</code>, like the <code>OSI 7-layer model</code> or the <code>TCP/IP 4-layer model</code>.</p>
+
+<p>Once you know the <code>phsical</code>, <code>data-link</code>, <code>network</code>, <code>transportation</code>, <code>application</code> what&rsquo;s all about, trust me, you will find all the confused words gone:&ndash;)</p>
+
+<h2>HTTP Basics</h2>
+
+<p>A web server, basicly implements the <code>HTTP</code> protocol to define how <code>the client interacts with the server</code>, thus enabling the communication of varies of devices. But aware that <code>HTTP</code> is an application protocol, built upon <code>TCP/IP</code> which handles the real transportation of data, in the perspective of programming, that is <code>Socket</code>.</p>
+
+<p>Give the references a shot:</p>
+
+<ul>
+<li><a href="http://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html">HTTP(HyperText Transfer Protocol) Basics</a></li>
+<li><a href="http://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177">HTTP: The Protocol Every Web Developer Must Know</a></li>
+<li><a href="http://www.jmarshall.com/easy/http/">HTTP Made Really Easy</a></li>
+<li><a href="http://www.slideshare.net/sanjoysanyal/http-basics">HTTP basics &ndash; slideshare</a></li>
+</ul>
+
+
+<h2>Socket Basics</h2>
+
+<p>In a word, <code>socket</code> is the <code>API</code> of <code>TCP/IP</code> provided to programmers.
+See my blog <a href="http://hustcalm.me/blog/2014/04/17/what-is-socket-anyway/">What Is Socket Anyway?</a>.</p>
+
+<h2>Cross Platform development concerns</h2>
+
+<p>Wow, <code>Mongoose</code> works on Windows, Mac, UNIX/Linux, iPhone, Android eCos, QNX and many other platforms, what an amazing software!</p>
+
+<p>Well, the basic idea behind <code>cross platform development</code> is to abstract another layer to adapt to the different implementations to the same task on different <code>OS and platforms</code>, my personal understanding, sorry:&ndash;)</p>
+
+<p>When you see the source code of <code>Mongoose</code>, be prepared to come across with lots of <code>#ifdef</code> and <code>#ifndef</code>, etc. Things got really complicated when dealing with <code>cross platform development</code>, there are even specifed books and literatures talking about it.</p>
+
+<p>OK I&rsquo;m also newbie to this, so please <code>RTFSC</code>.</p>
+
+<h2>HTTP features kept in mind</h2>
+
+<p>As an <code>embedded</code> web server, <code>Mongoose</code> needs not to implement everything, just the core functionalities, however really powerful enough. Like <code>CGI, SSI, SSL, Digest auth, Websocket, WEbDAV, Resumed download, URL rewrite, file blacklist, Custom error pages, Virtual hosts, IP-based ACL, Windows service</code>, even <code>Lua Server Pages</code>.</p>
+
+<p>As <code>HTTP</code> is an application protocol, so every feature is really related to the description in the <code>RFC</code>s along with many more extensions like <a href="http://datatracker.ietf.org/doc/rfc2818/">HTTPS &ndash; HTTP over TLS</a>.</p>
+
+<p>Though many heavy web servers like <code>Apache</code> or <code>Nginx</code> does not implement everything of <code>HTTP</code>, so <code>keep it simple and work</code>.</p>
+
+<h2>The programming paradigm</h2>
+
+<p>There is not any <code>class</code> defined in <code>Mongoose</code>, though it can be compiled using <code>C++</code>, so the source code is <code>pure C</code> actually. The underlying dirty work will be handled by <a href="https://github.com/cesanta/net_skeleton">net_skeleton</a>, like the <code>management of socket connections</code> and <code>sending and receiving data packets</code>.</p>
+
+<p>To be clear, <code>object</code> is implemented through the use of <code>struct</code>, like <code>mg_server</code>, <code>mg_connection</code>. Get a good knowledge of <code>C programming language</code> before you decide to dig into <code>Mongoose</code>, period.</p>
+
+<h2>I/O Models to know</h2>
+
+<p><code>Blocking I/O</code> or <code>Asynchronous I/O</code>?</p>
+
+<p>See the following references for good:</p>
+
+<ul>
+<li><a href="http://www.madwizard.org/programming/tutorials/netcpp/5">NetworkingCPP &ndash; I/O Models</a></li>
+<li><a href="http://www.kegel.com/c10k.html">The C10K problem</a></li>
+<li><a href="http://www.ibm.com/developerworks/linux/library/l-async/">Boost application performance using asynchronous I/O</a></li>
+</ul>
+
+
+<p><code>Mongoose</code> is using the traditional <code>select()</code>, serving many clients with each thread, and using nonblocking I/O as illustrated in the function <code>ns_server_poll</code> implemented in <code>net_skeleton</code>.</p>
+
+<h2>The core of Mongoose</h2>
+
+<p>Let the journey begin!</p>
+
+<h3>Net Skeleton</h3>
+
+<p>Quote from <a href="https://github.com/cesanta/net_skeleton">here</a>:</p>
+
+<blockquote><p>Net Skeleton is a networking library written in C. It provides easy to use event-driven interface that allows to implement network protocols or scalable network applications with little effort. Net Skeleton releives developers from the burden of network programming complexity and let them concentrate on the logic. Net Skeleton saves time and money.</p></blockquote>
+
+<figure class='code'><figcaption><span>Core interfaces provided by net_skeleton</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">void</span> <span class="nf">ns_server_free</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">ns_server_poll</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="n">milli</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">ns_server_wakeup</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">ns_server_wakeup_ex</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="n">ns_callback_t</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">ns_iterate</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="n">ns_callback_t</span> <span class="n">cb</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">param</span><span class="p">);</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="nf">ns_add_sock</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="n">sock_t</span> <span class="n">sock</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">p</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">ns_bind</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">addr</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">ns_set_ssl_cert</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ssl_cert</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">ns_set_ssl_ca_cert</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ssl_ca_cert</span><span class="p">);</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="nf">ns_connect</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">host</span><span class="p">,</span>
+</span><span class='line'>                                 <span class="kt">int</span> <span class="n">port</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ssl</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">connection_param</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">ns_send</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">ns_printf</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="p">...);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">ns_vprintf</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="kt">va_list</span> <span class="n">ap</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Utility functions</span>
+</span><span class='line'><span class="kt">void</span> <span class="o">*</span><span class="nf">ns_start_thread</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="p">),</span> <span class="kt">void</span> <span class="o">*</span><span class="n">p</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">ns_socketpair</span><span class="p">(</span><span class="n">sock_t</span> <span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">ns_socketpair2</span><span class="p">(</span><span class="n">sock_t</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="kt">int</span> <span class="n">sock_type</span><span class="p">);</span>  <span class="c1">// SOCK_STREAM or SOCK_DGRAM</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">ns_set_close_on_exec</span><span class="p">(</span><span class="n">sock_t</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">ns_sock_to_str</span><span class="p">(</span><span class="n">sock_t</span> <span class="n">sock</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">ns_hexdump</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="kt">int</span> <span class="n">dst_len</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Core data structures used in net_skeleton</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">struct</span> <span class="n">ns_server</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="o">*</span><span class="n">server_data</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">sock_t</span> <span class="n">listening_sock</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="n">active_connections</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">ns_callback_t</span> <span class="n">callback</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">SSL_CTX</span> <span class="o">*</span><span class="n">ssl_ctx</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">SSL_CTX</span> <span class="o">*</span><span class="n">client_ssl_ctx</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">sock_t</span> <span class="n">ctl</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">struct</span> <span class="n">ns_connection</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="n">prev</span><span class="p">,</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="n">server</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">sock_t</span> <span class="n">sock</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">union</span> <span class="n">socket_address</span> <span class="n">sa</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">iobuf</span> <span class="n">recv_iobuf</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">iobuf</span> <span class="n">send_iobuf</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">SSL</span> <span class="o">*</span><span class="n">ssl</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="o">*</span><span class="n">connection_data</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">time_t</span> <span class="n">last_io_time</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">;</span>
+</span><span class='line'><span class="cp">#define NSF_FINISHED_SENDING_DATA   (1 &lt;&lt; 0)</span>
+</span><span class='line'><span class="cp">#define NSF_BUFFER_BUT_DONT_SEND    (1 &lt;&lt; 1)</span>
+</span><span class='line'><span class="cp">#define NSF_SSL_HANDSHAKE_DONE      (1 &lt;&lt; 2)</span>
+</span><span class='line'><span class="cp">#define NSF_CONNECTING              (1 &lt;&lt; 3)</span>
+</span><span class='line'><span class="cp">#define NSF_CLOSE_IMMEDIATELY       (1 &lt;&lt; 4)</span>
+</span><span class='line'><span class="cp">#define NSF_ACCEPTED                (1 &lt;&lt; 5)</span>
+</span><span class='line'><span class="cp">#define NSF_WANT_READ               (1 &lt;&lt; 6)</span>
+</span><span class='line'><span class="cp">#define NSF_WANT_WRITE              (1 &lt;&lt; 7)</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#define NSF_USER_1                  (1 &lt;&lt; 26)</span>
+</span><span class='line'><span class="cp">#define NSF_USER_2                  (1 &lt;&lt; 27)</span>
+</span><span class='line'><span class="cp">#define NSF_USER_3                  (1 &lt;&lt; 28)</span>
+</span><span class='line'><span class="cp">#define NSF_USER_4                  (1 &lt;&lt; 29)</span>
+</span><span class='line'><span class="cp">#define NSF_USER_5                  (1 &lt;&lt; 30)</span>
+</span><span class='line'><span class="cp">#define NSF_USER_6                  (1 &lt;&lt; 31)</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Data structures and interfaces for I/O used for sending and receiving data</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">struct</span> <span class="n">iobuf</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">size_t</span> <span class="n">len</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">size_t</span> <span class="n">size</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">iobuf_init</span><span class="p">(</span><span class="k">struct</span> <span class="n">iobuf</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">initial_size</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">iobuf_free</span><span class="p">(</span><span class="k">struct</span> <span class="n">iobuf</span> <span class="o">*</span><span class="p">);</span>
+</span><span class='line'><span class="kt">size_t</span> <span class="nf">iobuf_append</span><span class="p">(</span><span class="k">struct</span> <span class="n">iobuf</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">data_size</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">iobuf_remove</span><span class="p">(</span><span class="k">struct</span> <span class="n">iobuf</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">data_size</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Event handling in net_skeleton</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="c1">// Net skeleton interface</span>
+</span><span class='line'><span class="c1">// Events. Meaning of event parameter (evp) is given in the comment.</span>
+</span><span class='line'><span class="k">enum</span> <span class="n">ns_event</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">NS_POLL</span><span class="p">,</span>     <span class="c1">// Sent to each connection on each call to ns_server_poll()</span>
+</span><span class='line'>  <span class="n">NS_ACCEPT</span><span class="p">,</span>   <span class="c1">// New connection accept()-ed. union socket_address *remote_addr</span>
+</span><span class='line'>  <span class="n">NS_CONNECT</span><span class="p">,</span>  <span class="c1">// connect() succeeded or failed. int *success_status</span>
+</span><span class='line'>  <span class="n">NS_RECV</span><span class="p">,</span>     <span class="c1">// Data has benn received. int *num_bytes</span>
+</span><span class='line'>  <span class="n">NS_SEND</span><span class="p">,</span>     <span class="c1">// Data has been written to a socket. int *num_bytes</span>
+</span><span class='line'>  <span class="n">NS_CLOSE</span>     <span class="c1">// Connection is closed. NULL</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Callback function (event handler) prototype, must be defined by user.</span>
+</span><span class='line'><span class="c1">// Net skeleton will call event handler, passing events defined above.</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">ns_connection</span><span class="p">;</span>
+</span><span class='line'><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="n">ns_callback_t</span><span class="p">)(</span><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">enum</span> <span class="n">ns_event</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">evp</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Besides the interfaces provieded, there are lots of <code>private</code> functions to make everything possible, these are all implemented in <code>net_skeleton.c</code> as <code>static</code> functions.</p>
+
+<h3>Mongoose</h3>
+
+<p>Well, here finally comes the main character! As the dirty work has been done by <code>net_skeleton</code>, <code>mongoose</code> can focus on the real job.</p>
+
+<figure class='code'><figcaption><span>Core interfaces of mongoose</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="c1">// Server management functions</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="nf">mg_create_server</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">server_param</span><span class="p">,</span> <span class="n">mg_handler_t</span> <span class="n">handler</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">mg_destroy_server</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">**</span><span class="p">);</span>
+</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">mg_set_option</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">opt</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">val</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">mg_poll_server</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="n">milliseconds</span><span class="p">);</span>
+</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="nf">mg_get_valid_option_names</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">mg_get_option</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="n">server</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">mg_set_listening_socket</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sock</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">mg_get_listening_socket</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">mg_iterate_over_connections</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">,</span> <span class="n">mg_handler_t</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">mg_wakeup_server</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">);</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="nf">mg_connect</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Connection management functions</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">mg_send_status</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="n">status_code</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">mg_send_header</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">val</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">mg_send_data</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">int</span> <span class="n">data_len</span><span class="p">);</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">mg_printf_data</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">mg_websocket_write</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="n">opcode</span><span class="p">,</span>
+</span><span class='line'>                       <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">data_len</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Deprecated in favor of mg_send_* interface</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">mg_write</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">mg_printf</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="n">conn</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="p">...);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">mg_get_header</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">);</span>
+</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">mg_get_mime_type</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">default_mime_type</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">mg_get_var</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="n">conn</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">var_name</span><span class="p">,</span>
+</span><span class='line'>               <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">buf_len</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">mg_parse_header</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">hdr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">var_name</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">mg_parse_multipart</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">buf_len</span><span class="p">,</span>
+</span><span class='line'>                       <span class="kt">char</span> <span class="o">*</span><span class="n">var_name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">var_name_len</span><span class="p">,</span>
+</span><span class='line'>                       <span class="kt">char</span> <span class="o">*</span><span class="n">file_name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">file_name_len</span><span class="p">,</span>
+</span><span class='line'>                       <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">data</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">data_len</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Utility functions</span>
+</span><span class='line'><span class="kt">void</span> <span class="o">*</span><span class="nf">mg_start_thread</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="p">),</span> <span class="kt">void</span> <span class="o">*</span><span class="n">param</span><span class="p">);</span>
+</span><span class='line'><span class="kt">char</span> <span class="o">*</span><span class="nf">mg_md5</span><span class="p">(</span><span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="p">...);</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">mg_authorize_digest</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span><span class="n">fp</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">struct</span> <span class="n">mg_expansion</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">keyword</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">handler</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="kt">void</span> <span class="nf">mg_template</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">text</span><span class="p">,</span>
+</span><span class='line'>                 <span class="k">struct</span> <span class="n">mg_expansion</span> <span class="o">*</span><span class="n">expansions</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Core data structures</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="c1">// This structure contains information about HTTP request.</span>
+</span><span class='line'><span class="k">struct</span> <span class="n">mg_connection</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">request_method</span><span class="p">;</span> <span class="c1">// &quot;GET&quot;, &quot;POST&quot;, etc</span>
+</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">uri</span><span class="p">;</span>            <span class="c1">// URL-decoded URI</span>
+</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">http_version</span><span class="p">;</span>   <span class="c1">// E.g. &quot;1.0&quot;, &quot;1.1&quot;</span>
+</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">query_string</span><span class="p">;</span>   <span class="c1">// URL part after &#39;?&#39;, not including &#39;?&#39;, or NULL</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">remote_ip</span><span class="p">[</span><span class="mi">48</span><span class="p">];</span>         <span class="c1">// Max IPv6 string length is 45 characters</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">local_ip</span><span class="p">[</span><span class="mi">48</span><span class="p">];</span>          <span class="c1">// Local IP address</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">remote_port</span><span class="p">;</span> <span class="c1">// Client&#39;s port</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">local_port</span><span class="p">;</span>  <span class="c1">// Local port number</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">num_headers</span><span class="p">;</span>            <span class="c1">// Number of HTTP headers</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">mg_header</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>         <span class="c1">// HTTP header name</span>
+</span><span class='line'>    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">value</span><span class="p">;</span>        <span class="c1">// HTTP header value</span>
+</span><span class='line'>  <span class="p">}</span> <span class="n">http_headers</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">content</span><span class="p">;</span>              <span class="c1">// POST (or websocket message) data, or NULL</span>
+</span><span class='line'>  <span class="kt">size_t</span> <span class="n">content_len</span><span class="p">;</span>         <span class="c1">// Data length</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">is_websocket</span><span class="p">;</span>           <span class="c1">// Connection is a websocket connection</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">status_code</span><span class="p">;</span>            <span class="c1">// HTTP status code for HTTP error handler</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">wsbits</span><span class="p">;</span>                 <span class="c1">// First byte of the websocket frame</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="o">*</span><span class="n">server_param</span><span class="p">;</span>         <span class="c1">// Parameter passed to mg_add_uri_handler()</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="o">*</span><span class="n">connection_param</span><span class="p">;</span>     <span class="c1">// Placeholder for connection-specific data</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="o">*</span><span class="n">callback_param</span><span class="p">;</span>       <span class="c1">// Needed by mg_iterate_over_connections()</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">struct</span> <span class="n">mg_server</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">ns_server</span> <span class="n">ns_server</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">union</span> <span class="n">socket_address</span> <span class="n">lsa</span><span class="p">;</span>   <span class="c1">// Listening socket address</span>
+</span><span class='line'>  <span class="n">mg_handler_t</span> <span class="n">event_handler</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">config_options</span><span class="p">[</span><span class="n">NUM_OPTIONS</span><span class="p">];</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Local endpoint representation</span>
+</span><span class='line'><span class="k">union</span> <span class="n">endpoint</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>                     <span class="c1">// Opened regular local file</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="n">nc</span><span class="p">;</span>   <span class="c1">// CGI or proxy-&gt;target connection</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Event handling</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">enum</span> <span class="n">mg_event</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">MG_POLL</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>  <span class="c1">// Callback return value is ignored</span>
+</span><span class='line'>  <span class="n">MG_CONNECT</span><span class="p">,</span>     <span class="c1">// If callback returns MG_FALSE, connect fails</span>
+</span><span class='line'>  <span class="n">MG_AUTH</span><span class="p">,</span>        <span class="c1">// If callback returns MG_FALSE, authentication fails</span>
+</span><span class='line'>  <span class="n">MG_REQUEST</span><span class="p">,</span>     <span class="c1">// If callback returns MG_FALSE, Mongoose continues with req</span>
+</span><span class='line'>  <span class="n">MG_REPLY</span><span class="p">,</span>       <span class="c1">// If callback returns MG_FALSE, Mongoose closes connection</span>
+</span><span class='line'>  <span class="n">MG_CLOSE</span><span class="p">,</span>       <span class="c1">// Connection is closed, callback return value is ignored</span>
+</span><span class='line'>  <span class="n">MG_LUA</span><span class="p">,</span>         <span class="c1">// Called before LSP page invoked</span>
+</span><span class='line'>  <span class="n">MG_HTTP_ERROR</span>   <span class="c1">// If callback returns MG_FALSE, Mongoose continues with err</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">mg_handler_t</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">enum</span> <span class="n">mg_event</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Find something? Yes, <code>mongoose</code> is heavily using the underlying <code>net_skeleton</code>, as <code>ns_server</code> in <code>mg_server</code> suggests.</p>
+
+<p>Or look at this:</p>
+
+<figure class='code'><figcaption><span>Mongoose is just a wrapper for application built upon net_skeleton?</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">int</span> <span class="nf">mg_poll_server</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="n">server</span><span class="p">,</span> <span class="kt">int</span> <span class="n">milliseconds</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="k">return</span> <span class="n">ns_server_poll</span><span class="p">(</span><span class="o">&amp;</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ns_server</span><span class="p">,</span> <span class="n">milliseconds</span><span class="p">);</span>
+</span><span class='line'> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To be really aware of what is heppening under the hood, the functions below is the key:</p>
+
+<figure class='code'><figcaption><span>The key functions to implement the basic web server</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">ns_add_to_set</span><span class="p">(</span><span class="n">sock_t</span> <span class="n">sock</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">set</span><span class="p">,</span> <span class="n">sock_t</span> <span class="o">*</span><span class="n">max_fd</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="k">if</span> <span class="p">(</span><span class="n">sock</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>     <span class="n">FD_SET</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">set</span><span class="p">);</span>
+</span><span class='line'>     <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">max_fd</span> <span class="o">==</span> <span class="n">INVALID_SOCKET</span> <span class="o">||</span> <span class="n">sock</span> <span class="o">&gt;</span> <span class="o">*</span><span class="n">max_fd</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>       <span class="o">*</span><span class="n">max_fd</span> <span class="o">=</span> <span class="n">sock</span><span class="p">;</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>   <span class="p">}</span>
+</span><span class='line'> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">ns_server_poll</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="n">server</span><span class="p">,</span> <span class="kt">int</span> <span class="n">milli</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="n">conn</span><span class="p">,</span> <span class="o">*</span><span class="n">tmp_conn</span><span class="p">;</span>
+</span><span class='line'>   <span class="k">struct</span> <span class="n">timeval</span> <span class="n">tv</span><span class="p">;</span>
+</span><span class='line'>   <span class="n">fd_set</span> <span class="n">read_set</span><span class="p">,</span> <span class="n">write_set</span><span class="p">;</span>
+</span><span class='line'>   <span class="kt">int</span> <span class="n">num_active_connections</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>   <span class="n">sock_t</span> <span class="n">max_fd</span> <span class="o">=</span> <span class="n">INVALID_SOCKET</span><span class="p">;</span>
+</span><span class='line'>   <span class="kt">time_t</span> <span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">if</span> <span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">listening_sock</span> <span class="o">==</span> <span class="n">INVALID_SOCKET</span> <span class="o">&amp;&amp;</span>
+</span><span class='line'>       <span class="n">server</span><span class="o">-&gt;</span><span class="n">active_connections</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">read_set</span><span class="p">);</span>
+</span><span class='line'>   <span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">write_set</span><span class="p">);</span>
+</span><span class='line'>   <span class="n">ns_add_to_set</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">listening_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max_fd</span><span class="p">);</span>
+</span><span class='line'>   <span class="n">ns_add_to_set</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ctl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max_fd</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">for</span> <span class="p">(</span><span class="n">conn</span> <span class="o">=</span> <span class="n">server</span><span class="o">-&gt;</span><span class="n">active_connections</span><span class="p">;</span> <span class="n">conn</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">tmp_conn</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>     <span class="n">tmp_conn</span> <span class="o">=</span> <span class="n">conn</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+</span><span class='line'>     <span class="n">ns_call</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">NS_POLL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">current_time</span><span class="p">);</span>
+</span><span class='line'>     <span class="n">ns_add_to_set</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max_fd</span><span class="p">);</span>
+</span><span class='line'>     <span class="k">if</span> <span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_CONNECTING</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>       <span class="n">ns_add_to_set</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">write_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max_fd</span><span class="p">);</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>     <span class="k">if</span> <span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">send_iobuf</span><span class="p">.</span><span class="n">len</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_BUFFER_BUT_DONT_SEND</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>       <span class="n">ns_add_to_set</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">write_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max_fd</span><span class="p">);</span>
+</span><span class='line'>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_CLOSE_IMMEDIATELY</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>       <span class="n">ns_close_conn</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>   <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">tv</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">=</span> <span class="n">milli</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">;</span>
+</span><span class='line'><span class="n">tv</span><span class="p">.</span><span class="n">tv_usec</span> <span class="o">=</span> <span class="p">(</span><span class="n">milli</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">select</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span> <span class="n">max_fd</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">write_set</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'> <span class="c1">// Accept new connections</span>
+</span><span class='line'> <span class="k">if</span> <span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">listening_sock</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span> <span class="o">&amp;&amp;</span>
+</span><span class='line'>     <span class="n">FD_ISSET</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">listening_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>   <span class="c1">// We&#39;re not looping here, and accepting just one connection at</span>
+</span><span class='line'>   <span class="c1">// a time. The reason is that eCos does not respect non-blocking</span>
+</span><span class='line'>   <span class="c1">// flag on a listening socket and hangs in a loop.</span>
+</span><span class='line'>   <span class="k">if</span> <span class="p">((</span><span class="n">conn</span> <span class="o">=</span> <span class="n">accept_conn</span><span class="p">(</span><span class="n">server</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>     <span class="n">conn</span><span class="o">-&gt;</span><span class="n">last_io_time</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">;</span>
+</span><span class='line'>   <span class="p">}</span>
+</span><span class='line'> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'> <span class="c1">// Read possible wakeup calls</span>
+</span><span class='line'> <span class="k">if</span> <span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ctl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span> <span class="o">&amp;&amp;</span>
+</span><span class='line'>     <span class="n">FD_ISSET</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ctl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>   <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+</span><span class='line'>   <span class="n">recv</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ctl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>   <span class="n">send</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ctl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span><span class='line'> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="n">conn</span> <span class="o">=</span> <span class="n">server</span><span class="o">-&gt;</span><span class="n">active_connections</span><span class="p">;</span> <span class="n">conn</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">tmp_conn</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>       <span class="n">tmp_conn</span> <span class="o">=</span> <span class="n">conn</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+</span><span class='line'>       <span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>         <span class="n">conn</span><span class="o">-&gt;</span><span class="n">last_io_time</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">;</span>
+</span><span class='line'>         <span class="n">ns_read_from_socket</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
+</span><span class='line'>       <span class="p">}</span>
+</span><span class='line'>       <span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">write_set</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>         <span class="k">if</span> <span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_CONNECTING</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>           <span class="n">ns_read_from_socket</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
+</span><span class='line'>         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_BUFFER_BUT_DONT_SEND</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>           <span class="n">conn</span><span class="o">-&gt;</span><span class="n">last_io_time</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">;</span>
+</span><span class='line'>           <span class="n">ns_write_to_socket</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
+</span><span class='line'>         <span class="p">}</span>
+</span><span class='line'>       <span class="p">}</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>   <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">for</span> <span class="p">(</span><span class="n">conn</span> <span class="o">=</span> <span class="n">server</span><span class="o">-&gt;</span><span class="n">active_connections</span><span class="p">;</span> <span class="n">conn</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">tmp_conn</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>     <span class="n">tmp_conn</span> <span class="o">=</span> <span class="n">conn</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+</span><span class='line'>     <span class="n">num_active_connections</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'>     <span class="k">if</span> <span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_CLOSE_IMMEDIATELY</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>       <span class="n">ns_close_conn</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>   <span class="p">}</span>
+</span><span class='line'>   <span class="c1">//DBG((&quot;%d active connections&quot;, num_active_connections));</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="k">return</span> <span class="n">num_active_connections</span><span class="p">;</span>
+</span><span class='line'> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Feel something? Go dig yourself for much more fun:&ndash;)</p>
+
+<h2>Good References</h2>
+
+<ul>
+<li><a href="http://tinyhttpd.sourceforge.net/">tinyhttpd</a></li>
+<li><a href="http://www.ibm.com/developerworks/systems/library/es-nweb/#icomments">nweb: a tiny, safe Web server (static pages only)</a></li>
+<li><a href="https://users.cs.jmu.edu/bernstdh/web/common/lectures/slides_http-server-example_java.php">Design and Implementation of an HTTP Server in Java</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Lihang Li</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-09T20:22:54+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/http/'>HTTP</a>, <a class='category' href='/blog/categories/network/'>Network</a>, <a class='category' href='/blog/categories/web/'>Web</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="bshare-custom"><a title="分享到豆瓣" class="bshare-douban"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到微信" class="bshare-weixin"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT
+        bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid=a717dd31-3443-4991-9738-c5f0e418bd1a&amp;pophcol=2&amp;lang=zh"></script><a class="bshareDiv" onclick="javascript:return false;"></a><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/04/wo-dui-itshu-ji-yue-du-de-yi-dian-gan-wu/" title="Previous Post: 我对IT书籍阅读的一点感悟">&laquo; 我对IT书籍阅读的一点感悟</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/04/17/build-ptam-on-fedora-20-the-easy-way-10-minutes-tutorial/" title="Next Post: Build PTAM on Fedora 20 the easy way - 10 Minutes Tutorial">Build PTAM on Fedora 20 the easy way - 10 Minutes Tutorial &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>Focus on Life.
+  Focus on Technology.
+  Focus on Sports.
+  This is me,Calm.</p>
+  <p>Contact Me Via 
+  hustcalm(at)gmail.com</p>
+</section>
+<iframe frameborder="0" scrolling="no" src="http://kado.im/widget/5075993fabaa3/default.html" style="width: 100%; height: 67px; margin-bottom: 15px;" id="kadoWidgetFrame"></iframe>
+
+<section>
+<h1>Ohloh Profile</h1>
+<a href='https://www.ohloh.net/accounts/229059?ref=Detailed' target='_top'>
+<img alt='Ohloh profile for hustcalm' border='0' height='35' src='https://www.ohloh.net/accounts/229059/widgets/account_detailed.gif' width='191' />
+</a>
+</section>
+
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 108.57142857142857%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 117.14285714285714%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 108.57142857142857%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 108.57142857142857%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 108.57142857142857%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 108.57142857142857%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 108.57142857142857%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 117.14285714285714%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 117.14285714285714%'>C/C++(2)</a> <a href='/blog/categories/centos' style='font-size: 117.14285714285714%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 108.57142857142857%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 117.14285714285714%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 108.57142857142857%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 108.57142857142857%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 108.57142857142857%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 108.57142857142857%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 108.57142857142857%'>Embedded(1)</a> <a href='/blog/categories/fedora' style='font-size: 117.14285714285714%'>Fedora(2)</a> <a href='/blog/categories/geek' style='font-size: 125.71428571428572%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 117.14285714285714%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 108.57142857142857%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 108.57142857142857%'>HTTP(1)</a> <a href='/blog/categories/latex' style='font-size: 108.57142857142857%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 108.57142857142857%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 108.57142857142857%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 125.71428571428572%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(7)</a> <a href='/blog/categories/mac' style='font-size: 108.57142857142857%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 108.57142857142857%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 108.57142857142857%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 108.57142857142857%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 117.14285714285714%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 108.57142857142857%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 125.71428571428572%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 108.57142857142857%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 151.42857142857144%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 117.14285714285714%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 117.14285714285714%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 108.57142857142857%'>OpenHardware(1)</a> <a href='/blog/categories/opensource' style='font-size: 125.71428571428572%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 108.57142857142857%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 108.57142857142857%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 108.57142857142857%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 108.57142857142857%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 125.71428571428572%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 117.14285714285714%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 108.57142857142857%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 108.57142857142857%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 108.57142857142857%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 108.57142857142857%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 125.71428571428572%'>Robot(3)</a> <a href='/blog/categories/seo' style='font-size: 117.14285714285714%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 108.57142857142857%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 117.14285714285714%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 108.57142857142857%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 108.57142857142857%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 108.57142857142857%'>Startup(1)</a> <a href='/blog/categories/travel' style='font-size: 108.57142857142857%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 125.71428571428572%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 108.57142857142857%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 125.71428571428572%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 108.57142857142857%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 117.14285714285714%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 108.57142857142857%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 108.57142857142857%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 117.14285714285714%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 108.57142857142857%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 108.57142857142857%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 108.57142857142857%'>Xen(1)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/17/what-is-socket-anyway/">What Is Socket Anyway?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/17/build-ptam-on-fedora-20-the-easy-way-10-minutes-tutorial/">Build PTAM on Fedora 20 the Easy Way - 10 Minutes Tutorial</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation/">Look Inside Mongoose - an Easy to Use Web Server Implementation</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/04/wo-dui-itshu-ji-yue-du-de-yi-dian-gan-wu/">我对IT书籍阅读的一点感悟</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/">Review of BeagleBone Robotic Projects - From a Technical Perspective</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Weibo</h1>
+  <ul id="weibo">
+    <li>
+      <iframe 
+        width="100%" 
+        height="550" 
+        class="share_self" 
+        frameborder="0" 
+        scrolling="no" 
+        src="http://widget.weibo.com/weiboshow/index.php?
+        width=0&
+        height=550&
+        ptype=1&
+        speed=0&
+        skin=&
+        isTitle=0&
+        noborder=1&
+        isWeibo=1&
+        isFans=&
+        uid=1236738912&
+        verifier=8e94b428">
+      </iframe>
+    </li>
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/licalmer?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/licalmer">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+<h2>Douban Show</h2>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/hustcalm/?show=wishlist&amp;select=random&amp;n=9&amp;columns=3"></script>
+</div>
+</section>
+
+
+<section>
+<h1>Flag Counter</h1>
+ <a href="http://s01.flagcounter.com/more/5Vzn"><img src="http://s01.flagcounter.com/count/5Vzn/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a><br><a href="http://flagcounter.com/">free counters</a> 
+</section>
+
+
+<section>
+    <h1>Friends Link</h1>
+    <p><a href="http://blog-ossclub.rhcloud.com/">中科院开源软件协会</a></p>
+    <p><a href="http://blug.chinalug.org/">北京Linux用户组</a></p>
+    <p><a href="http://www.bjgug.org/">北京GNOME用户组</a></p>
+    <p><a href="http://www.lupaworld.com/">LUPA开源社区</a></p>
+    <p><a href="http://www.open-open.com/">开源资讯</a></p>
+    <p><a href="http://ikimi.net">KIMI YANG</a></p>
+</section>
+
+
+
+<section>
+<h1>CC License</h1>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />Except where otherwise noted,content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Lihang Li -
+  <span class="credit">Powered by <a href="https://github.com">Github</a> & <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'welcometopandorasboxwhy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.me/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation/';
+        var disqus_url = 'http://hustcalm.me/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

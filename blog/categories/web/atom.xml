@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-04-17T21:33:05+08:00</updated>
+  <updated>2014-06-21T15:28:21+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,477 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Look inside mongoose - an easy to use web server implementation]]></title>
+    <link href="http://hustcalm.me/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation/"/>
+    <updated>2014-04-09T20:22:54+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation</id>
+    <content type="html"><![CDATA[<p>I come across with Network Programming recently and find it really charming. Afer reading the book &ldquo;Advanced Linux Programming&rdquo;, I&rsquo;m more curious about how to implement a basic http server or web server.</p>
+
+<p>The source code of chapter 11 of &ldquo;ALP&rdquo; does tell the key idea, thus communicating through sockets between client and server, for HTTP compliance, just implement the HTTP protocal(<a href="https://tools.ietf.org/html/rfc2616">RFC
+2616</a>). To know the things better, I&rsquo;d like to know how to implement a core and basic HTTP server. You may know &lsquo;Apache&rsquo;, &lsquo;NginX&rsquo; and &lsquo;Lighttpd&rsquo; for a while, and they do lead the main tread. Basically, they are heavy enough to begin to know a basic HTTP server implementation.</p>
+
+<!--more-->
+
+
+<p>After googling around, I find <a href="http://stackoverflow.com/questions/176409/how-to-build-a-simple-http-server-in-c">this link on stackoverflow</a> is valuable and a good starting point to follow. From there, I decide to dig into <a href="https://code.google.com/p/mongoose/">mongoose</a>. To walk through what mongoose does and provides, I will present some comments of core source code.</p>
+
+<h2>Be aware of the Protocal Stack</h2>
+
+<p>Many people get confused by <code>HTTP</code>, <code>FTP</code>, <code>TCP/IP</code>, <code>SMTP</code>, etc. To get all these stuff clear of your head, do please spend several miniutes to learn the <code>Internet communication model</code>, like the <code>OSI 7-layer model</code> or the <code>TCP/IP 4-layer model</code>.</p>
+
+<p>Once you know the <code>phsical</code>, <code>data-link</code>, <code>network</code>, <code>transportation</code>, <code>application</code> what&rsquo;s all about, trust me, you will find all the confused words gone:&ndash;)</p>
+
+<h2>HTTP Basics</h2>
+
+<p>A web server, basicly implements the <code>HTTP</code> protocol to define how <code>the client interacts with the server</code>, thus enabling the communication of varies of devices. But aware that <code>HTTP</code> is an application protocol, built upon <code>TCP/IP</code> which handles the real transportation of data, in the perspective of programming, that is <code>Socket</code>.</p>
+
+<p>Give the references a shot:</p>
+
+<ul>
+<li><a href="http://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html">HTTP(HyperText Transfer Protocol) Basics</a></li>
+<li><a href="http://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177">HTTP: The Protocol Every Web Developer Must Know</a></li>
+<li><a href="http://www.jmarshall.com/easy/http/">HTTP Made Really Easy</a></li>
+<li><a href="http://www.slideshare.net/sanjoysanyal/http-basics">HTTP basics &ndash; slideshare</a></li>
+</ul>
+
+
+<h2>Socket Basics</h2>
+
+<p>In a word, <code>socket</code> is the <code>API</code> of <code>TCP/IP</code> provided to programmers.
+See my blog <a href="http://hustcalm.me/blog/2014/04/17/what-is-socket-anyway/">What Is Socket Anyway?</a>.</p>
+
+<h2>Cross Platform development concerns</h2>
+
+<p>Wow, <code>Mongoose</code> works on Windows, Mac, UNIX/Linux, iPhone, Android eCos, QNX and many other platforms, what an amazing software!</p>
+
+<p>Well, the basic idea behind <code>cross platform development</code> is to abstract another layer to adapt to the different implementations to the same task on different <code>OS and platforms</code>, my personal understanding, sorry:&ndash;)</p>
+
+<p>When you see the source code of <code>Mongoose</code>, be prepared to come across with lots of <code>#ifdef</code> and <code>#ifndef</code>, etc. Things got really complicated when dealing with <code>cross platform development</code>, there are even specifed books and literatures talking about it.</p>
+
+<p>OK I&rsquo;m also newbie to this, so please <code>RTFSC</code>.</p>
+
+<h2>HTTP features kept in mind</h2>
+
+<p>As an <code>embedded</code> web server, <code>Mongoose</code> needs not to implement everything, just the core functionalities, however really powerful enough. Like <code>CGI, SSI, SSL, Digest auth, Websocket, WEbDAV, Resumed download, URL rewrite, file blacklist, Custom error pages, Virtual hosts, IP-based ACL, Windows service</code>, even <code>Lua Server Pages</code>.</p>
+
+<p>As <code>HTTP</code> is an application protocol, so every feature is really related to the description in the <code>RFC</code>s along with many more extensions like <a href="http://datatracker.ietf.org/doc/rfc2818/">HTTPS &ndash; HTTP over TLS</a>.</p>
+
+<p>Though many heavy web servers like <code>Apache</code> or <code>Nginx</code> does not implement everything of <code>HTTP</code>, so <code>keep it simple and work</code>.</p>
+
+<h2>The programming paradigm</h2>
+
+<p>There is not any <code>class</code> defined in <code>Mongoose</code>, though it can be compiled using <code>C++</code>, so the source code is <code>pure C</code> actually. The underlying dirty work will be handled by <a href="https://github.com/cesanta/net_skeleton">net_skeleton</a>, like the <code>management of socket connections</code> and <code>sending and receiving data packets</code>.</p>
+
+<p>To be clear, <code>object</code> is implemented through the use of <code>struct</code>, like <code>mg_server</code>, <code>mg_connection</code>. Get a good knowledge of <code>C programming language</code> before you decide to dig into <code>Mongoose</code>, period.</p>
+
+<h2>I/O Models to know</h2>
+
+<p><code>Blocking I/O</code> or <code>Asynchronous I/O</code>?</p>
+
+<p>See the following references for good:</p>
+
+<ul>
+<li><a href="http://www.madwizard.org/programming/tutorials/netcpp/5">NetworkingCPP &ndash; I/O Models</a></li>
+<li><a href="http://www.kegel.com/c10k.html">The C10K problem</a></li>
+<li><a href="http://www.ibm.com/developerworks/linux/library/l-async/">Boost application performance using asynchronous I/O</a></li>
+</ul>
+
+
+<p><code>Mongoose</code> is using the traditional <code>select()</code>, serving many clients with each thread, and using nonblocking I/O as illustrated in the function <code>ns_server_poll</code> implemented in <code>net_skeleton</code>.</p>
+
+<h2>The core of Mongoose</h2>
+
+<p>Let the journey begin!</p>
+
+<h3>Net Skeleton</h3>
+
+<p>Quote from <a href="https://github.com/cesanta/net_skeleton">here</a>:</p>
+
+<blockquote><p>Net Skeleton is a networking library written in C. It provides easy to use event-driven interface that allows to implement network protocols or scalable network applications with little effort. Net Skeleton releives developers from the burden of network programming complexity and let them concentrate on the logic. Net Skeleton saves time and money.</p></blockquote>
+
+<p>``` c Core interfaces provided by net_skeleton
+void ns_server_free(struct ns_server <em>);
+int ns_server_poll(struct ns_server </em>, int milli);
+void ns_server_wakeup(struct ns_server <em>);
+void ns_server_wakeup_ex(struct ns_server </em>, ns_callback_t, void <em>, size_t);
+void ns_iterate(struct ns_server </em>, ns_callback_t cb, void <em>param);
+struct ns_connection </em>ns_add_sock(struct ns_server <em>, sock_t sock, void </em>p);</p>
+
+<p>int ns_bind(struct ns_server <em>, const char </em>addr);
+int ns_set_ssl_cert(struct ns_server <em>, const char </em>ssl_cert);
+int ns_set_ssl_ca_cert(struct ns_server <em>, const char </em>ssl_ca_cert);
+struct ns_connection <em>ns_connect(struct ns_server </em>, const char *host,</p>
+
+<pre><code>                             int port, int ssl, void *connection_param);
+</code></pre>
+
+<p>int ns_send(struct ns_connection <em>, const void </em>buf, int len);
+int ns_printf(struct ns_connection <em>, const char </em>fmt, &hellip;);
+int ns_vprintf(struct ns_connection <em>, const char </em>fmt, va_list ap);</p>
+
+<p>// Utility functions
+void <em>ns_start_thread(void </em>(<em>f)(void </em>), void <em>p);
+int ns_socketpair(sock_t [2]);
+int ns_socketpair2(sock_t [2], int sock_type);  // SOCK_STREAM or SOCK_DGRAM
+void ns_set_close_on_exec(sock_t);
+void ns_sock_to_str(sock_t sock, char </em>buf, size_t len, int flags);
+int ns_hexdump(const void <em>buf, int len, char </em>dst, int dst_len);
+```</p>
+
+<p>``` c Core data structures used in net_skeleton
+struct ns_server {
+  void <em>server_data;
+  sock_t listening_sock;
+  struct ns_connection </em>active_connections;
+  ns_callback_t callback;
+  SSL_CTX <em>ssl_ctx;
+  SSL_CTX </em>client_ssl_ctx;
+  sock_t ctl[2];
+};</p>
+
+<p>struct ns_connection {
+  struct ns_connection <em>prev, </em>next;
+  struct ns_server <em>server;
+  sock_t sock;
+  union socket_address sa;
+  struct iobuf recv_iobuf;
+  struct iobuf send_iobuf;
+  SSL </em>ssl;
+  void *connection_data;
+  time_t last_io_time;
+  unsigned int flags;</p>
+
+<h1>define NSF_FINISHED_SENDING_DATA   (1 &lt;&lt; 0)</h1>
+
+<h1>define NSF_BUFFER_BUT_DONT_SEND    (1 &lt;&lt; 1)</h1>
+
+<h1>define NSF_SSL_HANDSHAKE_DONE      (1 &lt;&lt; 2)</h1>
+
+<h1>define NSF_CONNECTING              (1 &lt;&lt; 3)</h1>
+
+<h1>define NSF_CLOSE_IMMEDIATELY       (1 &lt;&lt; 4)</h1>
+
+<h1>define NSF_ACCEPTED                (1 &lt;&lt; 5)</h1>
+
+<h1>define NSF_WANT_READ               (1 &lt;&lt; 6)</h1>
+
+<h1>define NSF_WANT_WRITE              (1 &lt;&lt; 7)</h1>
+
+<h1>define NSF_USER_1                  (1 &lt;&lt; 26)</h1>
+
+<h1>define NSF_USER_2                  (1 &lt;&lt; 27)</h1>
+
+<h1>define NSF_USER_3                  (1 &lt;&lt; 28)</h1>
+
+<h1>define NSF_USER_4                  (1 &lt;&lt; 29)</h1>
+
+<h1>define NSF_USER_5                  (1 &lt;&lt; 30)</h1>
+
+<h1>define NSF_USER_6                  (1 &lt;&lt; 31)</h1>
+
+<p>};
+```</p>
+
+<p>``` c Data structures and interfaces for I/O used for sending and receiving data
+struct iobuf {
+  char *buf;
+  size_t len;
+  size_t size;
+};</p>
+
+<p>void iobuf_init(struct iobuf <em>, size_t initial_size);
+void iobuf_free(struct iobuf </em>);
+size_t iobuf_append(struct iobuf <em>, const void </em>data, size_t data_size);
+void iobuf_remove(struct iobuf *, size_t data_size);
+```</p>
+
+<p>``` c Event handling in net_skeleton
+// Net skeleton interface
+// Events. Meaning of event parameter (evp) is given in the comment.
+enum ns_event {
+  NS_POLL,     // Sent to each connection on each call to ns_server_poll()
+  NS_ACCEPT,   // New connection accept()-ed. union socket_address <em>remote_addr
+  NS_CONNECT,  // connect() succeeded or failed. int </em>success_status
+  NS_RECV,     // Data has benn received. int <em>num_bytes
+  NS_SEND,     // Data has been written to a socket. int </em>num_bytes
+  NS_CLOSE     // Connection is closed. NULL
+};</p>
+
+<p>// Callback function (event handler) prototype, must be defined by user.
+// Net skeleton will call event handler, passing events defined above.
+struct ns_connection;
+typedef void (<em>ns_callback_t)(struct ns_connection </em>, enum ns_event, void *evp);
+```</p>
+
+<p>Besides the interfaces provieded, there are lots of <code>private</code> functions to make everything possible, these are all implemented in <code>net_skeleton.c</code> as <code>static</code> functions.</p>
+
+<h3>Mongoose</h3>
+
+<p>Well, here finally comes the main character! As the dirty work has been done by <code>net_skeleton</code>, <code>mongoose</code> can focus on the real job.</p>
+
+<p>``` c Core interfaces of mongoose
+// Server management functions
+struct mg_server <em>mg_create_server(void </em>server_param, mg_handler_t handler);
+void mg_destroy_server(struct mg_server <strong>);
+const char <em>mg_set_option(struct mg_server </em>, const char <em>opt, const char </em>val);
+int mg_poll_server(struct mg_server *, int milliseconds);
+const char </strong>mg_get_valid_option_names(void);
+const char <em>mg_get_option(const struct mg_server </em>server, const char <em>name);
+void mg_set_listening_socket(struct mg_server </em>, int sock);
+int mg_get_listening_socket(struct mg_server <em>);
+void mg_iterate_over_connections(struct mg_server </em>, mg_handler_t, void <em>);
+void mg_wakeup_server(struct mg_server </em>);
+struct mg_connection <em>mg_connect(struct mg_server </em>, const char *, int, int);</p>
+
+<p>// Connection management functions
+void mg_send_status(struct mg_connection <em>, int status_code);
+void mg_send_header(struct mg_connection </em>, const char <em>name, const char </em>val);
+void mg_send_data(struct mg_connection <em>, const void </em>data, int data_len);
+void mg_printf_data(struct mg_connection <em>, const char </em>format, &hellip;);</p>
+
+<p>int mg_websocket_write(struct mg_connection *, int opcode,</p>
+
+<pre><code>                   const char *data, size_t data_len);
+</code></pre>
+
+<p>// Deprecated in favor of mg_send_<em> interface
+int mg_write(struct mg_connection </em>, const void <em>buf, int len);
+int mg_printf(struct mg_connection </em>conn, const char *fmt, &hellip;);</p>
+
+<p>const char <em>mg_get_header(const struct mg_connection </em>, const char <em>name);
+const char </em>mg_get_mime_type(const char <em>name, const char </em>default_mime_type);
+int mg_get_var(const struct mg_connection <em>conn, const char </em>var_name,</p>
+
+<pre><code>           char *buf, size_t buf_len);
+</code></pre>
+
+<p>int mg_parse_header(const char <em>hdr, const char </em>var_name, char <em>buf, size_t);
+int mg_parse_multipart(const char </em>buf, int buf_len,</p>
+
+<pre><code>                   char *var_name, int var_name_len,
+                   char *file_name, int file_name_len,
+                   const char **data, int *data_len);
+</code></pre>
+
+<p>// Utility functions
+void <em>mg_start_thread(void </em>(<em>func)(void </em>), void <em>param);
+char </em>mg_md5(char buf[33], &hellip;);
+int mg_authorize_digest(struct mg_connection <em>c, FILE </em>fp);</p>
+
+<p>struct mg_expansion {
+  const char <em>keyword;
+  void (</em>handler)(struct mg_connection <em>);
+};
+void mg_template(struct mg_connection </em>, const char *text,</p>
+
+<pre><code>             struct mg_expansion *expansions);
+</code></pre>
+
+<p>```</p>
+
+<p>``` c Core data structures
+// This structure contains information about HTTP request.
+struct mg_connection {
+  const char <em>request_method; // &ldquo;GET&rdquo;, &ldquo;POST&rdquo;, etc
+  const char </em>uri;            // URL-decoded URI
+  const char <em>http_version;   // E.g. &ldquo;1.0&rdquo;, &ldquo;1.1&rdquo;
+  const char </em>query_string;   // URL part after &lsquo;?&rsquo;, not including &lsquo;?&rsquo;, or NULL</p>
+
+<p>  char remote_ip[48];         // Max IPv6 string length is 45 characters
+  char local_ip[48];          // Local IP address
+  unsigned short remote_port; // Client&rsquo;s port
+  unsigned short local_port;  // Local port number</p>
+
+<p>  int num_headers;            // Number of HTTP headers
+  struct mg_header {</p>
+
+<pre><code>const char *name;         // HTTP header name
+const char *value;        // HTTP header value
+</code></pre>
+
+<p>  } http_headers[30];</p>
+
+<p>  char *content;              // POST (or websocket message) data, or NULL
+  size_t content_len;         // Data length</p>
+
+<p>  int is_websocket;           // Connection is a websocket connection
+  int status_code;            // HTTP status code for HTTP error handler
+  int wsbits;                 // First byte of the websocket frame
+  void <em>server_param;         // Parameter passed to mg_add_uri_handler()
+  void </em>connection_param;     // Placeholder for connection-specific data
+  void *callback_param;       // Needed by mg_iterate_over_connections()
+};</p>
+
+<p>struct mg_server {
+  struct ns_server ns_server;
+  union socket_address lsa;   // Listening socket address
+  mg_handler_t event_handler;
+  char *config_options[NUM_OPTIONS];
+};</p>
+
+<p>// Local endpoint representation
+union endpoint {
+  int fd;                     // Opened regular local file
+  struct ns_connection *nc;   // CGI or proxy->target connection
+};
+```</p>
+
+<p><code>c Event handling
+enum mg_event {
+  MG_POLL = 100,  // Callback return value is ignored
+  MG_CONNECT,     // If callback returns MG_FALSE, connect fails
+  MG_AUTH,        // If callback returns MG_FALSE, authentication fails
+  MG_REQUEST,     // If callback returns MG_FALSE, Mongoose continues with req
+  MG_REPLY,       // If callback returns MG_FALSE, Mongoose closes connection
+  MG_CLOSE,       // Connection is closed, callback return value is ignored
+  MG_LUA,         // Called before LSP page invoked
+  MG_HTTP_ERROR   // If callback returns MG_FALSE, Mongoose continues with err
+};
+typedef int (*mg_handler_t)(struct mg_connection *, enum mg_event);
+</code></p>
+
+<p>Find something? Yes, <code>mongoose</code> is heavily using the underlying <code>net_skeleton</code>, as <code>ns_server</code> in <code>mg_server</code> suggests.</p>
+
+<p>Or look at this:</p>
+
+<p><code>c Mongoose is just a wrapper for application built upon net_skeleton?
+int mg_poll_server(struct mg_server *server, int milliseconds) {
+   return ns_server_poll(&amp;server-&gt;ns_server, milliseconds);
+ }
+</code></p>
+
+<p>To be really aware of what is heppening under the hood, the functions below is the key:</p>
+
+<p>``` c The key functions to implement the basic web server
+static void ns_add_to_set(sock_t sock, fd_set <em>set, sock_t </em>max_fd) {
+   if (sock != INVALID_SOCKET) {</p>
+
+<pre><code> FD_SET(sock, set);
+ if (*max_fd == INVALID_SOCKET || sock &gt; *max_fd) {
+   *max_fd = sock;
+ }
+</code></pre>
+
+<p>   }
+ }</p>
+
+<p>int ns_server_poll(struct ns_server <em>server, int milli) {
+   struct ns_connection </em>conn, *tmp_conn;
+   struct timeval tv;
+   fd_set read_set, write_set;
+   int num_active_connections = 0;
+   sock_t max_fd = INVALID_SOCKET;
+   time_t current_time = time(NULL);</p>
+
+<p>   if (server->listening_sock == INVALID_SOCKET &amp;&amp;</p>
+
+<pre><code>   server-&gt;active_connections == NULL) return 0;
+</code></pre>
+
+<p>   FD_ZERO(&amp;read_set);
+   FD_ZERO(&amp;write_set);
+   ns_add_to_set(server->listening_sock, &amp;read_set, &amp;max_fd);
+   ns_add_to_set(server->ctl[1], &amp;read_set, &amp;max_fd);</p>
+
+<p>   for (conn = server->active_connections; conn != NULL; conn = tmp_conn) {</p>
+
+<pre><code> tmp_conn = conn-&gt;next;
+ ns_call(conn, NS_POLL, &amp;current_time);
+ ns_add_to_set(conn-&gt;sock, &amp;read_set, &amp;max_fd);
+ if (conn-&gt;flags &amp; NSF_CONNECTING) {
+   ns_add_to_set(conn-&gt;sock, &amp;write_set, &amp;max_fd);
+ }
+ if (conn-&gt;send_iobuf.len &gt; 0 &amp;&amp; !(conn-&gt;flags &amp; NSF_BUFFER_BUT_DONT_SEND)) {
+   ns_add_to_set(conn-&gt;sock, &amp;write_set, &amp;max_fd);
+ } else if (conn-&gt;flags &amp; NSF_CLOSE_IMMEDIATELY) {
+   ns_close_conn(conn);
+ }
+</code></pre>
+
+<p>   }</p>
+
+<p>tv.tv_sec = milli / 1000;
+tv.tv_usec = (milli % 1000) * 1000;</p>
+
+<p>if (select((int) max_fd + 1, &amp;read_set, &amp;write_set, NULL, &amp;tv) > 0) {
+ // Accept new connections
+ if (server->listening_sock != INVALID_SOCKET &amp;&amp;</p>
+
+<pre><code> FD_ISSET(server-&gt;listening_sock, &amp;read_set)) {
+</code></pre>
+
+<p>   // We&rsquo;re not looping here, and accepting just one connection at
+   // a time. The reason is that eCos does not respect non-blocking
+   // flag on a listening socket and hangs in a loop.
+   if ((conn = accept_conn(server)) != NULL) {</p>
+
+<pre><code> conn-&gt;last_io_time = current_time;
+</code></pre>
+
+<p>   }
+ }</p>
+
+<p> // Read possible wakeup calls
+ if (server->ctl[1] != INVALID_SOCKET &amp;&amp;</p>
+
+<pre><code> FD_ISSET(server-&gt;ctl[1], &amp;read_set)) {
+</code></pre>
+
+<p>   unsigned char ch;
+   recv(server->ctl[1], &amp;ch, 1, 0);
+   send(server->ctl[1], &amp;ch, 1, 0);
+ }</p>
+
+<p>for (conn = server->active_connections; conn != NULL; conn = tmp_conn) {</p>
+
+<pre><code>   tmp_conn = conn-&gt;next;
+   if (FD_ISSET(conn-&gt;sock, &amp;read_set)) {
+     conn-&gt;last_io_time = current_time;
+     ns_read_from_socket(conn);
+   }
+   if (FD_ISSET(conn-&gt;sock, &amp;write_set)) {
+     if (conn-&gt;flags &amp; NSF_CONNECTING) {
+       ns_read_from_socket(conn);
+     } else if (!(conn-&gt;flags &amp; NSF_BUFFER_BUT_DONT_SEND)) {
+       conn-&gt;last_io_time = current_time;
+       ns_write_to_socket(conn);
+     }
+   }
+ }
+</code></pre>
+
+<p>   }</p>
+
+<p>   for (conn = server->active_connections; conn != NULL; conn = tmp_conn) {</p>
+
+<pre><code> tmp_conn = conn-&gt;next;
+ num_active_connections++;
+ if (conn-&gt;flags &amp; NSF_CLOSE_IMMEDIATELY) {
+   ns_close_conn(conn);
+ }
+</code></pre>
+
+<p>   }
+   //DBG((&ldquo;%d active connections&rdquo;, num_active_connections));</p>
+
+<p>   return num_active_connections;
+ }
+```</p>
+
+<p>Feel something? Go dig yourself for much more fun:&ndash;)</p>
+
+<h2>Good References</h2>
+
+<ul>
+<li><a href="http://tinyhttpd.sourceforge.net/">tinyhttpd</a></li>
+<li><a href="http://www.ibm.com/developerworks/systems/library/es-nweb/#icomments">nweb: a tiny, safe Web server (static pages only)</a></li>
+<li><a href="https://users.cs.jmu.edu/bernstdh/web/common/lectures/slides_http-server-example_java.php">Design and Implementation of an HTTP Server in Java</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[再谈OpenAPI，从WebService说起]]></title>
