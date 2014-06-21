@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-06-21T15:28:21+08:00</updated>
+  <updated>2014-06-21T20:09:58+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,71 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Review of Raspberry Pi Robotic Projects - From a Technical Perspective]]></title>
+    <link href="http://hustcalm.me/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective/"/>
+    <updated>2014-06-21T19:15:15+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective</id>
+    <content type="html"><![CDATA[<p>After being the reviewer for the <a href="http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/">BeagleBone Robotic Projects</a>, I&rsquo;m honored to be the reviewer for another book about robotic projects named <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotic Projects</a>. I will go no further to talk about the differences about <code>BeagleBone</code> and <code>Raspberry Pi</code>, all I know is that they are both cool and amazing. To start to play with <code>Raspberry Pi</code>, I suggest that you
+can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects</a> as an option.</p>
+
+<p>In this post, I will give you a very quick overview of the book and tell why it&rsquo;s worth it.</p>
+
+<!--more-->
+
+
+<h4>Getting Started with Raspberry Pi</h4>
+
+<p>Have no idea what is really <code>Raspberry Pi</code>? Well, just treat it as your <code>Mini Computer</code>. The truth is, it got almost everything what a PC should be equipped with. What&rsquo;s more, it runs Linux which means you can do tons of things with it!</p>
+
+<p>Yes, yes, <code>Raspberry Pi</code> is leading the <code>open hardware community</code> somehow, people design, manufacture, develop and play. Geeks use it for their geek life!</p>
+
+<p>In <strong>chapter 1</strong>, you will be informed the hardware and software of <code>Raspberry Pi</code> and begin to be friends with her.</p>
+
+<h4>Programming Raspberry Pi</h4>
+
+<p>As you want to make <code>Raspberry Pi</code> do something really amazing, you should know how to talk to her. Well, you program to talk. So in <strong>chapter 2</strong>, we will show you how to get comfortable with the way <code>talking(programming)</code>. Besides to knowing <code>Linux</code>, use <code>Python</code> and <code>C/C++</code> is cool:&ndash;)</p>
+
+<h4>Providing Speech Input and Output</h4>
+
+<p>What? You want to talk to her, really. I mean by <code>speaking</code>. Well, that should not be problem. Let&rsquo;s give our robot <code>ears</code> and <code>mouth</code>. <strong>Chapter 3</strong> will show you how to use <code>PocketSphinx</code> to accept your voice commands and utilize <code>Espeak</code> to make <code>Raspberry Pi</code> talk in a robot voice.</p>
+
+<h4>Adding Vision to Raspberry Pi</h4>
+
+<p>How can a beautiful girl be blind! So to make <code>Rasberry Pi</code> see the amazing world, <strong>chapter 4</strong> will tell you how to connect the USB cemara to <code>Raspberry Pi</code> and begin to use <code>OpenCV</code>, which is a fully featured vision library to detect colored objects.</p>
+
+<h4>Creating Mobile Robots on Wheels</h4>
+
+<p>Let&rsquo;s roll! To see the beatiful world around, we need to make our robot able to move. <strong>Chapter 5</strong> will show you how to add motor controller to <code>Raspberry Pi</code> and let her run at free will.</p>
+
+<h4>Making the Unit Very Mobile &ndash; Controlling the Movement of a Robot with Legs</h4>
+
+<p>A girl should really walk, doesn&rsquo;t it? No problem, <strong>chapter 6</strong> tells how to get started with <code>servos</code> and make your mobile platform truly mobile just as a person.</p>
+
+<h4>Avoiding Obstacles Using Sensors</h4>
+
+<p>Oh, there is a wall in front, danger! Don&rsquo;t worry, our <code>Raspberry Pi</code> knows everything and will avoid it easily. <strong>Chapter 7</strong> shows how to use an <code>infrared sensor</code> and <code>USB sonar sensor</code> with <code>Raspberry Pi</code>, also how to use a <code>servo</code> to move a single sensor to make our sening range large enough.</p>
+
+<h4>Going Truly Mobile &ndash; The Remote Control of Your Robot</h4>
+
+<p>You will not always be around with your <code>Raspberry Pi</code>, right? To make sure your <code>Pi</code> is always with you, <strong>Chapter 8</strong> demonstrates how to connect wireless devices to <code>Pi</code> thus enabling us to talk to her remotely. Use a <code>wireless USB keyboard</code>, or <code>a wireless LAN</code> or <code>a ZigBee device</code>, choose as you like.</p>
+
+<h4>Using a GPS Receiver to Locate Your Robot</h4>
+
+<p>No one wants to be told that his <code>Raspberry Pi</code> is lost. Fortunately, we got <code>GPS</code> nowadays for almost free. Connecting <code>Raspberry Pi</code> to a <code>GPS</code> device and accessing the <code>GPS</code> programmatically is mainly covered in <strong>chapter 9</strong>.</p>
+
+<h4>System Dynamics</h4>
+
+<p>Get tired with so much coding for each dedicated task? <strong>Chaper 10</strong> will free you from hell by creating a general control structure. Also you can enable complex functionalities by using the structure of the <code>Robot Operating System</code>.</p>
+
+<h4>By Land, Sea, and Air</h4>
+
+<p>Maybe you don&rsquo;t just want a <code>Raspbery Pi</code>, you really want is a <code>Quadrotor</code>, or a <code>submarine</code> or a <code>mini ship</code>! Nothing is impossible, <strong>Chapter 11</strong> will be a good starting point to creat something really amazing.</p>
+
+<p>I hope that you like <code>Raspberry Pi</code> and the book will do some good. Happy playing and hakcing with <code>Raspberry Pi</code>!!!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Build PTAM on Fedora 20 the easy way - 10 Minutes Tutorial]]></title>
@@ -591,62 +656,6 @@ virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fed
 <hr />
 
 <p>I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[小记Fedora 19 Release Party和Barcamp Beijing August]]></title>
-    <link href="http://hustcalm.me/blog/2013/08/24/xiao-ji-fedora-19-release-partyhe-barcamp-beijing-august/"/>
-    <updated>2013-08-24T09:47:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/08/24/xiao-ji-fedora-19-release-partyhe-barcamp-beijing-august</id>
-    <content type="html"><![CDATA[<p>离这两个活动已经过去一周的时间了，总觉得应该写点什么，那就以这篇“小记”来叙述吧。</p>
-
-<p>Fedora一直以来被冠以edge bleeding的称号，尝鲜者的最爱，自己从Ubuntu 9.04开始使用Linux，便一直与其无缘，现在想想，确是有一些遗憾的（具体说不上来为啥，也许自己总是希望小众一些，Fedora在国内的用户确实不是太多，至少相比于Ubuntu来说是这样的，有限的CentOS使用经历告诉我，这是一款值得使用的Linux发行版）。Fedora 19,代号“薛定谔的猫”，作为第一款“原生”支持3D打印的操作系统，让人眼前一亮。</p>
-
-<p>Barcamp对我来说则陌生很多，在活动的前两天才得知消息，告诉我的人说是“一个充满各种创意制作的聚会”，而实际上“这里是一个充满各种创意演讲的地方”。具体的信息，大家移步<a href="http://www.barcamp-beijing.com/">Barcamp官方网站</a>吧。</p>
-
-<!--more-->
-
-
-<h2>Fedora 19 Release Party</h2>
-
-<p>这次RP，主要有三个议题，涉及Cloud Computing，System Trace，3D Printing。</p>
-
-<h3>OpenShift &amp; Cloud</h3>
-
-<p>演讲人Gerard Braad（@gbraad），Fedora 大使委员会成员，亚太地区区域导师，Fedora社区和开源社区的活跃演讲者，致力于Fedora品牌的推广。</p>
-
-<p>OpenShift算是一种PaaS，演讲者先是就虚拟化的一些基本概念进行阐述（虚拟化的分类，典型的技术，比如KVM，LXC等），再谈到OpenStack的基本架构，之后涉及OpenShift的架构。新的概念不多，而且讲解非常深入浅出，非常适合云计算入门。</p>
-
-<h3>SystemTap Introduction</h3>
-
-<p>演讲人Robin Lee（李瑞彬），供职于北京蓝汛 (ChinaCache)。在 Fedora 项目中是 packager 的角色，致力于提高自由软件的质量和整合度。</p>
-
-<p>SystemTap 是 Linux 下的可编程的通用系统跟踪工具，可进行侵入式跟踪，可用于内核态和用户态跟踪及代码注入。在 Linux 实现了大致相当于 DTrace 的功能。其语法由 AWK 语言发展出来。本次分享主要介绍了SystemTap 的基本语法和一些使用举例，最后生成火焰图（Flame Graph）的例子还是很酷的。</p>
-
-<p>这是个纯技术话题，不多说了，我比较好奇的是Trace实现的底层原理，在网上查了下，以下两篇文章很不错：</p>
-
-<ul>
-<li><a href="http://blog.csdn.net/wudongxu/article/details/6345481">systemtap原理及使用</a></li>
-<li><a href="http://xuclv.blog.51cto.com/5503169/1184517"> linux系统分析工具续-SystemTap和火焰图（Flame Graph）</a></li>
-</ul>
-
-
-<h3>3D Printing at Fedora 19</h3>
-
-<p>演讲人Tong Hui（@tonghuix），开源软件与开源硬件的布道者，开源嵌入式培训导师，GNOME 基金会成员，北京GNOME用户组成员。</p>
-
-<p>这个演讲的信息量比较大，演讲者从3D打印机的历史开始说起，谈到了3D打印的现状以及常用技术，并且简单分析了技术实现，最后结合Fedora进行了真机演示（DFRobot公司的3D打印机）。</p>
-
-<p>我的理解是，3D打印机是嵌入式技术，3维建模技术，材料学的完美结合！</p>
-
-<h2>Barcamp Beijing August</h2>
-
-<p>聚会地点在Microsoft Research Asia一层，主要参与人员是国际友人，国际友人的友人，还有众多的ABC。God，谁让他们的英语都那么native呢！</p>
-
-<p>这一天比较大的收获是，体验了Barcamp的活动形式（Speech &amp; QA），见识了演讲者的无限魅力（I really mean it!），获取了一些“创新”思维。其它的觉得表达不出来了（因为在会上，有一种略微的不适感，难以融入到老外的圈子里面去），大家等下次Barcamp的时候自己去体会吧！</p>
-
-<p>会不会有一天也在Barcamp上演讲？（Who TM knows，可能性不大，看自己了！）。</p>
 ]]></content>
   </entry>
   

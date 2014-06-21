@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-06-21T15:28:21+08:00</updated>
+  <updated>2014-06-21T20:09:58+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,71 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Review of Raspberry Pi Robotic Projects - From a Technical Perspective]]></title>
+    <link href="http://hustcalm.me/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective/"/>
+    <updated>2014-06-21T19:15:15+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective</id>
+    <content type="html"><![CDATA[<p>After being the reviewer for the <a href="http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/">BeagleBone Robotic Projects</a>, I&rsquo;m honored to be the reviewer for another book about robotic projects named <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotic Projects</a>. I will go no further to talk about the differences about <code>BeagleBone</code> and <code>Raspberry Pi</code>, all I know is that they are both cool and amazing. To start to play with <code>Raspberry Pi</code>, I suggest that you
+can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects</a> as an option.</p>
+
+<p>In this post, I will give you a very quick overview of the book and tell why it&rsquo;s worth it.</p>
+
+<!--more-->
+
+
+<h4>Getting Started with Raspberry Pi</h4>
+
+<p>Have no idea what is really <code>Raspberry Pi</code>? Well, just treat it as your <code>Mini Computer</code>. The truth is, it got almost everything what a PC should be equipped with. What&rsquo;s more, it runs Linux which means you can do tons of things with it!</p>
+
+<p>Yes, yes, <code>Raspberry Pi</code> is leading the <code>open hardware community</code> somehow, people design, manufacture, develop and play. Geeks use it for their geek life!</p>
+
+<p>In <strong>chapter 1</strong>, you will be informed the hardware and software of <code>Raspberry Pi</code> and begin to be friends with her.</p>
+
+<h4>Programming Raspberry Pi</h4>
+
+<p>As you want to make <code>Raspberry Pi</code> do something really amazing, you should know how to talk to her. Well, you program to talk. So in <strong>chapter 2</strong>, we will show you how to get comfortable with the way <code>talking(programming)</code>. Besides to knowing <code>Linux</code>, use <code>Python</code> and <code>C/C++</code> is cool:&ndash;)</p>
+
+<h4>Providing Speech Input and Output</h4>
+
+<p>What? You want to talk to her, really. I mean by <code>speaking</code>. Well, that should not be problem. Let&rsquo;s give our robot <code>ears</code> and <code>mouth</code>. <strong>Chapter 3</strong> will show you how to use <code>PocketSphinx</code> to accept your voice commands and utilize <code>Espeak</code> to make <code>Raspberry Pi</code> talk in a robot voice.</p>
+
+<h4>Adding Vision to Raspberry Pi</h4>
+
+<p>How can a beautiful girl be blind! So to make <code>Rasberry Pi</code> see the amazing world, <strong>chapter 4</strong> will tell you how to connect the USB cemara to <code>Raspberry Pi</code> and begin to use <code>OpenCV</code>, which is a fully featured vision library to detect colored objects.</p>
+
+<h4>Creating Mobile Robots on Wheels</h4>
+
+<p>Let&rsquo;s roll! To see the beatiful world around, we need to make our robot able to move. <strong>Chapter 5</strong> will show you how to add motor controller to <code>Raspberry Pi</code> and let her run at free will.</p>
+
+<h4>Making the Unit Very Mobile &ndash; Controlling the Movement of a Robot with Legs</h4>
+
+<p>A girl should really walk, doesn&rsquo;t it? No problem, <strong>chapter 6</strong> tells how to get started with <code>servos</code> and make your mobile platform truly mobile just as a person.</p>
+
+<h4>Avoiding Obstacles Using Sensors</h4>
+
+<p>Oh, there is a wall in front, danger! Don&rsquo;t worry, our <code>Raspberry Pi</code> knows everything and will avoid it easily. <strong>Chapter 7</strong> shows how to use an <code>infrared sensor</code> and <code>USB sonar sensor</code> with <code>Raspberry Pi</code>, also how to use a <code>servo</code> to move a single sensor to make our sening range large enough.</p>
+
+<h4>Going Truly Mobile &ndash; The Remote Control of Your Robot</h4>
+
+<p>You will not always be around with your <code>Raspberry Pi</code>, right? To make sure your <code>Pi</code> is always with you, <strong>Chapter 8</strong> demonstrates how to connect wireless devices to <code>Pi</code> thus enabling us to talk to her remotely. Use a <code>wireless USB keyboard</code>, or <code>a wireless LAN</code> or <code>a ZigBee device</code>, choose as you like.</p>
+
+<h4>Using a GPS Receiver to Locate Your Robot</h4>
+
+<p>No one wants to be told that his <code>Raspberry Pi</code> is lost. Fortunately, we got <code>GPS</code> nowadays for almost free. Connecting <code>Raspberry Pi</code> to a <code>GPS</code> device and accessing the <code>GPS</code> programmatically is mainly covered in <strong>chapter 9</strong>.</p>
+
+<h4>System Dynamics</h4>
+
+<p>Get tired with so much coding for each dedicated task? <strong>Chaper 10</strong> will free you from hell by creating a general control structure. Also you can enable complex functionalities by using the structure of the <code>Robot Operating System</code>.</p>
+
+<h4>By Land, Sea, and Air</h4>
+
+<p>Maybe you don&rsquo;t just want a <code>Raspbery Pi</code>, you really want is a <code>Quadrotor</code>, or a <code>submarine</code> or a <code>mini ship</code>! Nothing is impossible, <strong>Chapter 11</strong> will be a good starting point to creat something really amazing.</p>
+
+<p>I hope that you like <code>Raspberry Pi</code> and the book will do some good. Happy playing and hakcing with <code>Raspberry Pi</code>!!!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What Is Socket Anyway?]]></title>
@@ -2935,46 +3000,6 @@ cp Build/Linux/* .
 <p>两天的课程，算是对互联网营销入了门。对很多专业术语有了了解，对现有的系统架构有了皮毛的认识，而对于机器学习，数据挖掘，自然语言处理的威力有了更加清晰的定位。在“做东西的过程中学习”，是现在非常赞成的“学习方法”，虽然两天的技术讲堂没有“做东西”，但是来自一线的阿里讲师们，用自己的实际经历将心得传授给大家，也是一种非常好的学习方式！感谢阿里在技术讲堂上的努力，阿里高校技术联盟今年也开始在计算所试点了（自动化所明年应该会到位），感谢各位讲师！</p>
 
 <p>无意中发现了一个RTB的比赛，链接在<a href="http://contest.ipinyou.com/cn/index.shtml">这里</a>，感兴趣的同学不妨一试:&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[POSIX Threads-多线程编程初步]]></title>
-    <link href="http://hustcalm.me/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu/"/>
-    <updated>2013-09-06T10:24:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu</id>
-    <content type="html"><![CDATA[<p>学习，总是要深入进去才是好的。</p>
-
-<p>由于多摄像头视频处理的需要，这两天“正式学习”了多线程编程，切入点是POSIX的pthread库。不管承认与否，在进程之后的线程，对软件开发有非常深远的影响。本质上的算法+数据，我个人的理解是，线程是在算法上做的改进（也就是对于整个作业，如何合理地切分，符合CPU和操作系统的工作习惯，也就是在比较小的开销下完成任务），相比于进程而言，由于多个线程都在同一个memory space，因此线程间通信以及创建线程的overhead都比进程小了不少，业内也把thread称为LWP（Light Wight Process）。</p>
-
-<!--more-->
-
-
-<p>多线程好处多多，容易让人头痛的便是线程的“同步”问题，也就是大家常说的互斥访问“临界区资源”，常用的方法就是，mutex，条件变量，信号量等。</p>
-
-<p>学习的过程中，主要就线程的创建，终结，join，detach，参数传递，mutex的使用，条件变量和信号量的使用进行了实际的编码练习，剩下的关于调度策略，优先级，线程本地变量等还需要进一步学习。参考了一些精华文章，自己把写的demo放到了github上了。这不是一篇tutorial，所以就不具体说技术细节了，大家去看下面给出的链接和demo吧。</p>
-
-<h3>学习资源链接</h3>
-
-<ul>
-<li><a href="https://computing.llnl.gov/tutorials/pthreads/">POSIX Threads Programming Tutorial From Lawrence Livermore National Laboratory</a></li>
-<li><a href="http://randu.org/tutorials/threads/">Multithreaded Programming (POSIX pthreads Tutorial)</a></li>
-<li><a href="http://codebase.eu/tutorial/posix-threads-c/index.php">Creating multi-threaded C++ code</a></li>
-<li><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html">POSIX thread (pthread) libraries</a></li>
-<li><a href="http://www.ibm.com/developerworks/library/l-posix1/index.html">POSIX threads explained-A simple and nimble tool for memory sharing</a></li>
-<li><a href="http://www.tutorialspoint.com/operating_system/os_multi_threading.htm">Operating System &ndash; Multi-Threading</a></li>
-<li><a href="http://pubs.opengroup.org/onlinepubs/7908799/xsh/pthread.h.html">&lt;pthread.h></a></li>
-</ul>
-
-
-<h3>Demo</h3>
-
-<ul>
-<li><a href="https://github.com/hustcalm/POSIX-Threads-Beginner-s-Guide">POSIX-Threads-Beginner-s-Guide</a></li>
-</ul>
-
-
-<p>之后还是要系统地学习一下OS，MIT的6.828是一个不错的起点！</p>
 ]]></content>
   </entry>
   
