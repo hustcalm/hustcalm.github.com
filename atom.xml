@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-06-21T20:09:58+08:00</updated>
+  <updated>2014-07-27T20:35:38+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,552 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 3]]></title>
+    <link href="http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3/"/>
+    <updated>2014-07-27T19:34:52+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3</id>
+    <content type="html"><![CDATA[<h3>CSDN开源夏令营 &ndash; 第三周工作总结</h3>
+
+<p>这一周主要实现了“set trace-buffer-size”实现的数据通信部分，即完成了GDB和KGTP的数据交互部分，下面简单分析一下实现。在说代码实现之前，还是简单地回顾一下，如何摸清KGTP的脉络。</p>
+
+<h4>1. 如何跟踪KGTP</h4>
+
+<p>我的平台是Fedora，步骤如下：</p>
+
+<pre><code>make D=1
+sudo insmod gtp.ko
+sudo gdb /usr/lib/debug/lib/modules/3.14.8-200.fc20.x86_64/vmlinux -ex 'target remote /sys/kernel/debug/gtp'
+</code></pre>
+
+<!--more-->
+
+
+<p>此时，进入了gdb的console，可以通过gdb的commands和KGTP通信了。观察KGTP的一个重要的手段则是看printk的信息，由于编译时使用了“make D=1”，因此对应KGTP的代码，比如：</p>
+
+<pre><code> #ifdef GTP_DEBUG                                                                                            
+     printk(GTP_DEBUG "gtp_gdbrsp_qtbuffer\n");                                                              
+ #endif    
+</code></pre>
+
+<p>查看这些的方式则是使用“journalctl -k”，方便起见可以只查看末尾的部分信息，比如“journalctl -k -n 100”，在我的本地输出的部分信息如下：</p>
+
+<pre><code>Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qAttached
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qOffsets
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: g
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: m0,1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_m: addr = 0x0 len = 1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: m0,1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_m: addr = 0x0 len = 1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qSymbol::
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qTStatus
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_qT: Status
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qTfP
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_qT: fP
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>根据以上信息，可以顺藤摸瓜找到相应被调用的函数，从而屡清楚程序的执行逻辑，这对于理解KGTP的工作原理是非常有帮助的。关于journalctl[1]的使用，请自行“man journalctl”。在非systemd[2]的系统下，可能还需要通过“less /var/log/”这样的方式查看内核的输出，根据你使用的Linux随机应变即可。</p>
+
+<h4>2. GDB和KGTP的通信实现</h4>
+
+<p>利用GDBRSP[3]，即GDB Remote Serial Protocol，GDB远程串行通信协议。关于Remote Serial Protocol，可以参考[4]。简单来说，用于GDB远程调试发包，但是也支持File I/O和Console[5]，而KGTP正是利用了GDBRSP对于File I/O的支持，完成GDB和KGTP的通信，在接受到GDB发送的Packet后，KGTP进行解析。而通信的介质则是通过debugfs或者其他kernel space和user space进行数据交换的接口进行的。</p>
+
+<p>具体的实现，参考gtp.c的函数 <code>gtp_init</code>，部分代码如下：</p>
+
+<pre><code> gtp_dir = debugfs_create_file("gtp", S_IRUSR | S_IWUSR, NULL,
+                   NULL, &amp;gtp_operations);
+ if (gtp_dir == NULL || gtp_dir == ERR_PTR(-ENODEV)) {
+     gtp_dir = NULL;
+     goto out;
+ }
+ gtpframe_dir = debugfs_create_file("gtpframe", S_IRUSR, NULL,
+                    NULL, &amp;gtpframe_operations);
+ if (gtpframe_dir == NULL || gtpframe_dir == ERR_PTR(-ENODEV)) {
+     gtpframe_dir = NULL;
+     goto out;
+ }
+</code></pre>
+
+<p>可以看到，使用DebugFS，建立了相应的文件节点，比如gtp，gtpframe，并且注册了相应的file operations，比如<code>gtp_oprations</code>，<code>gtpframe_operations</code>。</p>
+
+<p>拿前者为例，声明的代码如下：</p>
+
+<pre><code>static const struct file_operations gtp_operations = {
+     .owner      = THIS_MODULE,
+     .open       = gtp_open,
+     .release    = gtp_release,
+ #if (LINUX_VERSION_CODE &lt; KERNEL_VERSION(2,6,35))
+     .ioctl      = gtp_ioctl,
+ #else
+     .unlocked_ioctl = gtp_ioctl,
+     .compat_ioctl   = gtp_ioctl,
+ #endif
+     .read       = gtp_read,
+     .write      = gtp_write,
+     .poll       = gtp_poll,
+ };
+</code></pre>
+
+<p>而这其中最核心的则是<code>gtp_read</code>和<code>gtp_write</code>，其中<code>gtp_read</code>，用于GDB从KGTP读取数据（<strong>copy_to_user</strong>），gtp_write，则是KGTP从GDB接收数据（<strong>copy_from_user</strong>）。具体的代码，这里就不贴了，大家可以自行分析。</p>
+
+<p>GDB和KGTP通过GDBRSP关联，通过执行<code>target remote /sys/kernel/debug/gtp</code>实现。</p>
+
+<h4>3. 添加“set-trace-buffer-size”的通信支持</h4>
+
+<p>有了以上的理论分析和准备，我们就可以着手实现“set trace-buffer-size”命令的解析了。首先，我们需要知道这个命令对应的GDBRSP的Query Packet以及KGTP利用哪个函数对其进行解析。通过[6]和[7]，我们得知如下信息：</p>
+
+<pre><code>set circular-trace-buffer on
+set circular-trace-buffer off
+Choose whether a tracing run should use a linear or circular buffer for trace data. A linear buffer will not lose any trace data, but may fill up prematurely, while a circular buffer will discard old trace data, but it will have always room for the latest tracepoint hits.
+
+show circular-trace-buffer
+Show the current choice for the trace buffer. Note that this may not match the agent’s current buffer handling, nor is it guaranteed to match the setting that might have been in effect during a past run, for instance if you are looking at frames from a trace file.
+
+set trace-buffer-size n
+set trace-buffer-size unlimited
+Request that the target use a trace buffer of n bytes. Not all targets will honor the request; they may have a compiled-in size for the trace buffer, or some other limitation. Set to a value of unlimited or -1 to let the target use whatever size it likes. This is also the default.
+
+show trace-buffer-size
+Show the current requested size for the trace buffer. Note that this will only match the actual size if the target supports size-setting, and was able to handle the requested size. For instance, if the target can only change buffer size between runs, this variable will not reflect the change until the next run starts. Use tstatus to get a report of the actual buffer size.
+
+
+‘QTBuffer:circular:value’
+This packet directs the target to use a circular trace buffer if value is 1, or a linear buffer if the value is 0.
+
+‘QTBuffer:size:size’
+This packet directs the target to make the trace buffer be of size size if possible. A value of -1 tells the target to use whatever size it prefers.
+</code></pre>
+
+<p>嗯，有线索了，GDB执行相应地指令，则会通过GDBRSP向KGTP发送相应的Query Packet，注意到“circular-trace-buffer”和“trace-buffer-size”的Packet的格式相同。关于GDB的General Query Packet，参考[8]。<strong>Packets starting with ‘q’ are general query packets; packets starting with ‘Q’ are general set packets. General query and set packets are a semi-unified form for retrieving and sending information to and from the stub.</strong></p>
+
+<p>因此，参考“circular-trace-buffer”的实现是一个很好的突破口，所幸的是，KGTP已经实现了对其的支持。</p>
+
+<h4>4. 添加“set trace-buffer-size”的具体实现</h4>
+
+<p>根据以上分析，我们很快找到了两个关键函数，“gtp_gdbrsp_QT  ”和“gtp_gdbrsp_qtbuffer”。OK，添加对“set trace-buffer-size”的解析，代码如下：</p>
+
+<pre><code>static int
+gtp_gdbrsp_qtbuffer(char *pkg)
+{
+#ifdef GTP_DEBUG
+    printk(GTP_DEBUG "gtp_gdbrsp_qtbuffer\n");
+#endif
+
+    // Handle QTBuffer:circular:value
+    if (strncmp("circular:", pkg, 9) == 0) {
+        ULONGEST setting;
+
+        pkg += 9;
+        if (pkg[0] == '\0')
+            return -EINVAL;
+        hex2ulongest(pkg, &amp;setting);
+
+#ifdef GTP_FTRACE_RING_BUFFER
+#if (LINUX_VERSION_CODE &gt; KERNEL_VERSION(2,6,38)) \
+    || defined(GTP_SELF_RING_BUFFER)
+        gtp_circular = (int)setting;
+        if (gtp_frame)
+            ring_buffer_change_overwrite(gtp_frame, (int)setting);
+#else
+        if (gtp_circular != (int)setting)
+            gtp_circular_is_changed = 1;
+#endif
+#endif
+        gtp_circular = (int)setting;
+
+        return 0;
+    }
+    // Handle QTBuffer:size:size 
+    else if (strncmp("size:", pkg, 5) == 0) {
+
+        ULONGEST size;
+
+        pkg += 5;
+
+        if (pkg[0] == '\0')
+            return -EINVAL;
+        hex2ulongest(pkg, &amp;size);
+
+        // Handle the new ringbuffer size blow
+
+        return 0;
+    }
+
+    return 1;
+}
+</code></pre>
+
+<p>重新编译，安装模块，然后在GDB中输入“set trace-buffer-size 100”，注意这里的100是十进制的，看下“journalctl -k”的输出，啥也没有。怎么回事，上面分析的不是挺美好的吗？经过几次尝试未果，把问题定位在了GDB对于Remote Packet的处理，不会是没有enable吧？</p>
+
+<p>查看文档[9]，果然，应该使用<code>set remote set-buffer-size on</code>先使能，否则应该是直接被gdbrsp丢掉了。OK，使用<code>set trace-buffer-size 100</code>，输出：</p>
+
+<pre><code>Jul 27 07:18:45 localhost.localdomain kernel: gtp_write: QTBuffer:size:64
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:64
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>而使用<code>set trace-buffer-size unlimited</code>，输出：</p>
+
+<pre><code>Jul 27 07:19:53 localhost.localdomain kernel: gtp_write: QTBuffer:size:-1
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:-1
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>OK，至此对于“set trace-buffer-size”的通信支持就完成了，接下来需要根据用户设置的size对trace buffer做出调整，接下来的文章会说到如何实现。</p>
+
+<h4>5. 参考链接</h4>
+
+<ul>
+<li> [1] <a href="http://www.freedesktop.org/software/systemd/man/journalctl.html">http://www.freedesktop.org/software/systemd/man/journalctl.html</a></li>
+<li> [2] <a href="https://wiki.archlinux.org/index.php/systemd">https://wiki.archlinux.org/index.php/systemd</a></li>
+<li> [3] <a href="https://sourceware.org/gdb/onlinedocs/gdb/Remote-Protocol.html">https://sourceware.org/gdb/onlinedocs/gdb/Remote-Protocol.html</a></li>
+<li> [4] <a href="http://blog.csdn.net/hmsiwtv/article/details/8759129">http://blog.csdn.net/hmsiwtv/article/details/8759129</a></li>
+<li> [5] <a href="https://sourceware.org/gdb/onlinedocs/gdb/File_002dI_002fO-Remote-Protocol-Extension.html#File_002dI_002fO-Remote-Protocol-Extension">https://sourceware.org/gdb/onlinedocs/gdb/File_002dI_002fO-Remote-Protocol-Extension.html#File_002dI_002fO-Remote-Protocol-Extension</a></li>
+<li> [6] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html</a></li>
+<li> [7] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html</a></li>
+<li> [8] <a href="https://www.sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html#General-Query-Packets">https://www.sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html#General-Query-Packets</a></li>
+<li> [9] <a href="https://sourceware.org/gdb/onlinedocs/gdb/Remote-Configuration.html">https://sourceware.org/gdb/onlinedocs/gdb/Remote-Configuration.html</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 2]]></title>
+    <link href="http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2/"/>
+    <updated>2014-07-27T19:34:48+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2</id>
+    <content type="html"><![CDATA[<h3>CSDN开源夏令营 &ndash; 第二周工作总结</h3>
+
+<p>这一周在上一周对整体框架的认识和理解之上，开始全面地阅读KGTP的源代码，理解了梗概，很多细节需要再仔细研读，主要参考是其代码仓库：[1]。</p>
+
+<h4>1. KGTP的核心代码文件</h4>
+
+<p>毫无疑问，KGTP最精髓的代码都在gtp.c文件中，约13500行代码，这其中包括了与GDB的通信，具体Query Packets的处理，Trace Points的注册和删除，事件的触发，硬件断点的设置和处理，等几乎所有的KGTP核心事务。在短短1万多行代码中，体现了几乎所有Linux Kernel开发过程中会用到的features，SMP的支持，Linux的list实现，锁和同步，工作队列，tasklet，硬件和软件中断，等等。</p>
+
+<!--more-->
+
+
+<p>其它辅助文件则有：</p>
+
+<ul>
+<li> <code>gtp_rb.c</code>      KGTP自己实现的一套Ring Buffer（默认使用）</li>
+<li> <code>perf_event.c</code>  Perf的核心实现，里面也实现Ring Buffer</li>
+<li> <code>ring_buffer.c</code> Linux内核为Trace的infrastructure提供的统一的Ring Buffer实现（比如Ftrace）</li>
+</ul>
+
+
+<h4>2. KGTP核心功能实现的源码分析</h4>
+
+<p>按照数据通信流程，<strong>GDB ——>   GDBRSP ——> SYSFS ——> KGTP ——> Kernel</strong>，简单分析如下：</p>
+
+<p><code>GDBRSP</code>是Remote Serial Protocol，用于GDB远程调试发包，但是也支持File I/O和Console，而KGTP正是利用了GDBRSP对于File I/O的支持，完成GDB和KGTP的通信，在接受到GDB发送的Packet后，KGTP进行解析。而通信的介质则是通过debugfs或者其他kernel space和user space进行数据交换的接口进行（参考[2]）。</p>
+
+<p>KGTP接收到了GDB的指令后，基于Kprobes和Uprobes进行内核和用户应用程序的trace，step和watch可以基于hardware-breakpoints实现。</p>
+
+<p>KGTP自己维护了一个ring buffer的，用于Trace Frame的存储，查询及dump。</p>
+
+<h5>（1）KGTP和GDB的通信</h5>
+
+<p>核心函数：</p>
+
+<ul>
+<li> <code>gtp_init</code>    建立对应的ProcFS或者DebugFS文件结点</li>
+</ul>
+
+
+<p>以下函数利用GDBRSP完成GDB和KGTP基于packet的通信：</p>
+
+<ul>
+<li> <code>gtp_open</code></li>
+<li> <code>gtp_release</code></li>
+<li> <code>gtp_ioctl</code></li>
+<li> <code>gtp_write</code></li>
+<li> <code>gtp_read</code></li>
+<li> <code>gtp_poll</code></li>
+</ul>
+
+
+<h5>（2）KGTP对GDB数据包的处理</h5>
+
+<p><code>gtp_gdbrsp_*</code> 系列函数完成了对GDB数据包的解析和处理。</p>
+
+<p>比如：</p>
+
+<ul>
+<li> <code>gtp_gdbrsp_QT</code>        处理QT的packet</li>
+<li> <code>gtp_gdbrsp_qtstart</code>   Start Trace Experiments，注册kprobe，uprobe以及watchpoints，hardware breakpoints等，并分配存储空间</li>
+<li> <code>gtp_qdbrsp_qtstop</code>    Stop Trace Experiments，flush work queue，tasklet_kill，以及unregister在qtstart注册的所有probe points和一些回调函数</li>
+</ul>
+
+
+<p>参考的话，就是GDB的官方手册了，比如：</p>
+
+<p>GDB的<a href="https://www.sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html">Query Packet</a>.
+Packets starting with ‘q’ are general query packets; packets starting with ‘Q’ are general set packets. General query and set packets are a semi-unified form for retrieving and sending information to and from the stub.</p>
+
+<h5>（3）Tracepoints和Breakpoints的注册和删除</h5>
+
+<ul>
+<li> <code>gtp_uprobe_register</code></li>
+<li> <code>gtp_register_hwb</code></li>
+<li> <code>gtp_unregister_hwb</code></li>
+</ul>
+
+
+<h5>（4）TSV的处理</h5>
+
+<p><code>gtp_var_*</code></p>
+
+<p>可以重点看一下<code>gtp_var_special_add_all</code>。</p>
+
+<h5>（5）Ring Buffer的处理</h5>
+
+<p>这里后续再详细分析，Ring Buffer的实现也是KGTP的核心之一。</p>
+
+<h4>3. 阅读源码小技巧&amp;问题总结</h4>
+
+<p>参考<code>LXR</code>[3]，直接使用<code>Identifier Search</code>[4]，遇到不明白的宏定义，函数定义，都可以直接到Linux源码中一探究竟。</p>
+
+<p>以下是我阅读代码过程遇到的一些问题总结：</p>
+
+<p>（1）EXPORT_SYMBOL</p>
+
+<p><a href="http://stackoverflow.com/questions/9836467/whats-meaning-of-export-symbol-in-linux-kernel-code">http://stackoverflow.com/questions/9836467/whats-meaning-of-export-symbol-in-linux-kernel-code</a></p>
+
+<p><a href="http://www.linux.com/learn/linux-training/31161-the-kernel-newbie-corner-kernel-symbols-whats-available-to-your-module-what-isnt">http://www.linux.com/learn/linux-training/31161-the-kernel-newbie-corner-kernel-symbols-whats-available-to-your-module-what-isnt</a></p>
+
+<p>（2）container_of</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/kernel.h#L833">http://lxr.free-electrons.com/source/include/linux/kernel.h#L833</a></p>
+
+<pre><code>/**
+827  * container_of - cast a member of a structure out to the containing structure
+828  * @ptr:        the pointer to the member.
+829  * @type:       the type of the container struct this is embedded in.
+830  * @member:     the name of the member within the struct.
+831  *
+832  */
+833 #definecontainer_of(ptr,type, member) ({                      \
+834         const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);    \
+835         (type *)( (char *)__mptr - offsetof(type,member) );})
+</code></pre>
+
+<p>（3）kzalloc</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/slab.h#L649">http://lxr.free-electrons.com/source/include/linux/slab.h#L649</a></p>
+
+<p>（4）kmalloc</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/slab.h#L452">http://lxr.free-electrons.com/source/include/linux/slab.h#L452</a></p>
+
+<p>（5）list</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/list.h">http://lxr.free-electrons.com/source/include/linux/list.h</a></p>
+
+<p>（6）INIT_WORK</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/workqueue.h">http://lxr.free-electrons.com/source/include/linux/workqueue.h</a></p>
+
+<p>（7）vfree</p>
+
+<p><a href="http://lxr.free-electrons.com/source/mm/vmalloc.c#L1490">http://lxr.free-electrons.com/source/mm/vmalloc.c#L1490</a></p>
+
+<p>（8）preempt_disable</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/preempt.h#L38">http://lxr.free-electrons.com/source/include/linux/preempt.h#L38</a></p>
+
+<p>（9）barrier</p>
+
+<p><a href="https://www.kernel.org/doc/Documentation/memory-barriers.txt">https://www.kernel.org/doc/Documentation/memory-barriers.txt</a></p>
+
+<p>（10）local_irq_save</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/irqflags.h#L93">http://lxr.free-electrons.com/source/include/linux/irqflags.h#L93</a></p>
+
+<p>（11）notifier_block</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/notifier.h#L53">http://lxr.free-electrons.com/source/include/linux/notifier.h#L53</a></p>
+
+<p>（12）flush_workqueue</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/workqueue.c#L2641">http://lxr.free-electrons.com/source/kernel/workqueue.c#L2641</a></p>
+
+<p>（13）tasklet_kill</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/softirq.c#L566">http://lxr.free-electrons.com/source/kernel/softirq.c#L566</a></p>
+
+<p>（14）unregister_wide_hw_breakpoint</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/events/hw_breakpoint.c#L536">http://lxr.free-electrons.com/source/kernel/events/hw_breakpoint.c#L536</a></p>
+
+<p>（15）unregister_kprobe</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/kprobes.c#L1668">http://lxr.free-electrons.com/source/kernel/kprobes.c#L1668</a></p>
+
+<p>（16）wake_up_interruptible_nr</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88">http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88</a></p>
+
+<p>（17）queue_work</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88">http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88</a></p>
+
+<p>（18）rcu_read_lock</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/rcupdate.h#L798">http://lxr.free-electrons.com/source/include/linux/rcupdate.h#L798</a></p>
+
+<p>（19）tasklet_init</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/softirq.c#L555">http://lxr.free-electrons.com/source/kernel/softirq.c#L555</a></p>
+
+<p>（20）IPI</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Inter-processor_interrupt">http://en.wikipedia.org/wiki/Inter-processor_interrupt</a></p>
+
+<p>（21）register_die_notifier</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/notifier.c#L544">http://lxr.free-electrons.com/source/kernel/notifier.c#L544</a></p>
+
+<p>（22）EBUSY</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/uapi/asm-generic/errno-base.h#L19">http://lxr.free-electrons.com/source/include/uapi/asm-generic/errno-base.h#L19</a></p>
+
+<h4>4. KGTP的调试&amp;源码注释</h4>
+
+<p>编译KGTP的时候添加D=1，便以debug的方式编译，在Fedora下可以通过journalctl -k查看其输出，其中-k是指过滤Kernel信息。其它系统下可能是在/var/log之类的文件查看，总之KGTP通过内核接口printfk输出，视具体的系统不同，查看内核信息的方式也会有变化。</p>
+
+<p>关于有注释的代码，请看[5]。</p>
+
+<h4>5. 参考链接</h4>
+
+<ul>
+<li> [1] <a href="https://github.com/teawater/kgtp">https://github.com/teawater/kgtp</a></li>
+<li> [2] <a href="http://people.ee.ethz.ch/~arkeller/linux/multi/kernel_user_space_howto.html#toc1">http://people.ee.ethz.ch/~arkeller/linux/multi/kernel_user_space_howto.html#toc1</a></li>
+<li> [3] <a href="http://lxr.free-electrons.com">http://lxr.free-electrons.com</a></li>
+<li> [4] <a href="http://lxr.free-electrons.com/ident">http://lxr.free-electrons.com/ident</a></li>
+<li> [5] <a href="https://code.csdn.net/Calmdownba/kgtp/tree/comments-from-scratch">https://code.csdn.net/Calmdownba/kgtp/tree/comments-from-scratch</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 1]]></title>
+    <link href="http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-1/"/>
+    <updated>2014-07-27T19:34:45+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-1</id>
+    <content type="html"><![CDATA[<h3>CSDN开源夏令营 &ndash; 第一周工作总结</h3>
+
+<p>这一周主要对KGTP的实现进行了简单的熟悉和分析，主要参考的资料在：[1]。</p>
+
+<h4>1.什么是KGTP</h4>
+
+<p>T大把KGTP称为Linux内核中的GDB快刀，其全称是Linux kernel GDB tracepoint module，是一个灵活轻量级实时的Linux调试器和跟踪器。</p>
+
+<p>Linux的tracer infrastructure五花八门，包括Ftrace，Utrace等，建议大家参考一下这篇paper，【Ptrace, Utrace, Uprobes: Lightweight, Dynamic Tracing of User Apps】，下载链接在：[2]。Tracer在收集信息的时候不停止Linux内核，但是不能被GDB控制。</p>
+
+<!--more-->
+
+
+<p>而在调试Linux内核的时候，我们也有很多选择，比如KDB，KGDB等，Debugger将停止Linux内核，但是可以被GDB控制。</p>
+
+<p>那么KGTP做了什么事情呢？Yes，作为Tracer和Debugger的一个桥梁，从而做到不停止Linux内核，且可以被本地或者远程的GDB控制。</p>
+
+<p>目前，KGTP支持X86-32，X86-64，MIPS和ARM，支持Linux内核2.6.18到upstream，直接Android（因为Android底层仍然是Linux Kernel）。</p>
+
+<h4>2. KGTP的实现</h4>
+
+<p>KGTP的大部分trace功能基于Kprobe，而用户态应用程序的trace功能则依赖Uprobe，对于使用Kprobe的情况，使用Kprobes-optimization还可提高Kprobe的速度。</p>
+
+<p>作为Debugger和Tracer之间的桥梁，KGTP通过GDB的RSP协议与GDB通信，完成数据的交换和用户命令的解析，具体的信息可以看GDB的文档，比如：<a href="https://www.sourceware.org/gdb/onlinedocs/gdb/Remote-Protocol.html">GDB Remote-Protocol</a>。KGTP内核态和用户态的数据交换，通过DebugFS或者ProcFS暴露给用户态的GDB。在接收到相关的GDB命令数据包后，完成相关的解析工作，设置对应的Tracepoint，在用户开始trace后（tstart），开始在Ring Buffer采集数据，结束后（tstop）可以供用户查看（tfind）。</p>
+
+<p>KGTP作为一个内核module存在，只需要编译KGTP后insmod，而不需要重新编译内核，因此非常灵活，当不需要KGTP的时候，直接rmmod即可。</p>
+
+<p>KGTP的数据分析主要使用GDB，因此代码中不需要很多数据分析的部分，核心源代码文件gtp.c，仅有13000行左右。</p>
+
+<p>总结起来，KGTP是一个灵活且轻量级的实现，可以实时地对Linux进行跟踪和调试，这对于线上服务器的问题处理是非常有用的。</p>
+
+<h4>3. KGTP的hack需要具备哪些知识</h4>
+
+<p>C语言功底+一定的Linux内核开发基础，具体的点总结如下：</p>
+
+<ul>
+<li> （1）Linux内核的同步机制（锁，信号量等）</li>
+<li> （2）字符驱动程序的实现原理，主要是GDB和KGTP的通信需要用到</li>
+<li> （3）Linux内核module的编写，因此KGTP是以一个module的形式存在的</li>
+<li> （4）Linux内核的tasklet和workqueue，KGTP的后台进程是一个守护进程gtpd</li>
+<li> （5）Ring buffer的实现，Linux内核trace的RB的实现以及KGTP自身RB的实现</li>
+<li> （6）Linux tracer的实现原理，因为KGTP是基于Kprobe和Uprobe实现的</li>
+<li> （7）GDB的基本原理，尤其是GDBRSP</li>
+</ul>
+
+
+<h4>4. 如何增加对GDB命令“set trace-buffer-size”的支持</h4>
+
+<ul>
+<li> （1）实现命令包的解析，参考[3][4]</li>
+<li> （2）实现Ring Buffer数据的拷贝和其他处理（主要针对新分配缓冲区小于原有缓冲区的情况）</li>
+</ul>
+
+
+<h4>5. 如何部署KGTP</h4>
+
+<p>强烈建议采用“一键安装”的方式，KGTP提供了部署脚本[kgtp.py]，十分方便。</p>
+
+<p>Kernel需要相应地debug info，因此如果是自己编译内核，则需要：</p>
+
+<pre><code>General setup —&gt;
+[*] Kprobes
+[*] Enable loadable module support —&gt;
+Kernel hacking —&gt;
+[*] Debug Filesystem
+[*] Compile the kernel with debug info
+</code></pre>
+
+<p>如果是Distro，需要安装Linux内核调试镜像和Linux内核源码包和开发包。</p>
+
+<p>只有这样，Kernel才能被GDB加载调试。</p>
+
+<p>以Fedora为例，当完成了以上步骤后，直接</p>
+
+<pre><code>sudo gdb /usr/lib/debug/lib/modules/3.14.8-200.fc20.x86_64/vmlinux -ex 'target remote /sys/kernel/debug/gtp'
+</code></pre>
+
+<p>根据使用内核版本的不同，加载的kernel image路径会有稍许区别，比如上面的<code>3.14.8-200.fc20.x86_64</code>。</p>
+
+<p>至此，部署完毕。</p>
+
+<h4>6. 如何使用KGTP</h4>
+
+<p>请参考KGTP的使用手册，具体链接见：[5]和[6]。</p>
+
+<h4>7. 参考链接</h4>
+
+<ul>
+<li> [1] <a href="http://teawater.github.io/kgtp/index.html">http://teawater.github.io/kgtp/index.html</a></li>
+<li> [2] <a href="http://kernel.org/doc/ols/2007/ols2007v1-pages-215-224.pdf">http://kernel.org/doc/ols/2007/ols2007v1-pages-215-224.pdf</a></li>
+<li> [3] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html</a></li>
+<li> [4] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html</a></li>
+<li> [5] <a href="http://teawater.github.io/kgtp/kgtp.html">http://teawater.github.io/kgtp/kgtp.html</a></li>
+<li> [6] <a href="http://teawater.github.io/kgtp/kgtpcn.html">http://teawater.github.io/kgtp/kgtpcn.html</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Review of Raspberry Pi Robotic Projects - From a Technical Perspective]]></title>
@@ -2349,657 +2895,6 @@ virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fed
 <hr />
 
 <p>I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SFD2013中科院站活动小结]]></title>
-    <link href="http://hustcalm.me/blog/2013/10/09/sfd2013zhong-ke-yuan-zhan-huo-dong-xiao-jie/"/>
-    <updated>2013-10-09T08:53:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/10/09/sfd2013zhong-ke-yuan-zhan-huo-dong-xiao-jie</id>
-    <content type="html"><![CDATA[<p>一年一度的SFD（自由软件日）活动顺利在中科院大学雁栖湖校区举行，由于今年情况特殊，中科院站的活动推迟到了9.28，而不是官方的9.21。而在9.21当天，中科院开源协会的成员一起去清华参加了TUNA和BJGUG联合举办的SFD。作为本次活动的组织者，简单从以下几个方面总结一下。</p>
-
-<h2>什么是自由软件日（SFD）</h2>
-
-<p>说到这个问题，不得不接着问“什么是自由软件？”。其中的历史就不再一一道来了，大家去<a href="http://softwarefreedomday.org/">SFD的官网</a>看个究竟吧-:)</p>
-
-<!--more-->
-
-
-<h2>关于SFD中科院站</h2>
-
-<p>开源协会本着“自由，开放，分享”的精神，每年都会承办SFD。关于2013年活动的具体信息以及日程安排，请参考我们开源协会在SFD官网注册的活动<a href="http://wiki.softwarefreedomday.org/2013/China/Beijing/OSCLUB-CAS">wiki页面</a>。</p>
-
-<h2>活动现场</h2>
-
-<p>在Registration环节，实际注册人数为80左右，根据现场情况，到场的人数在100+。参加活动的主要为中科院大学的研一新生（包括开源协会的成员），还有TUNA，Fedora社区，BJGUG社区,北航开源俱乐部的一些朋友。</p>
-
-<p>下面以Topic为主线简单介绍一下活动现场。</p>
-
-<hr />
-
-<h3>自由软件大观-李瑞彬</h3>
-
-<p>Robin是一位程序员，Fedora 项目贡献者，致力于提高开源软件质量和宣传自由软件文化。</p>
-
-<p>Robin首先就“自由软件的基本点”开始跟大家探讨，帮助大家理解“自由软件的特点”以及“什么是自由？”。之后非常详细地给出了“流行的自由软件”列表，对于想使用自由软件的同学是一个非常好的引导。最后Robin向大家介绍了“社区文化”并鼓励大家“参与到社区中来”。</p>
-
-<hr />
-
-<h3>HTML5应用开发与FirefoxOS平台介绍-袁徐磊</h3>
-
-<p>袁徐磊毕业于清华大学计算机系，现工作于北京谋智网络技术有限公司,Firefox OS工程师，负责Firefox OS WebAPI的开发。</p>
-
-<p>袁徐磊先生代表火狐中国给大家带来了关于“FirefoxOS平台以及HTML5”的主题演讲。袁先生首先介绍了一下“火狐中国”以及“Firefox浏览器”的基本情况，现场统计“Firefox”的使用率非常高，其丰富的插件也使其“如虎添翼”，得到使用者的称道。</p>
-
-<p>后来进入技术主题，袁先生主要就“Firefox OS架构”，“WebAPI列表”，“App开发”，“开源环境与工具”给大家带来了分享，深入浅出地在短短30分钟的时间里把大家带入了“Firefox OS”的世界。后来的互动环节，提问者非常踊跃，提问环节也是对Topic没有提到的细节的一个很好的补充。</p>
-
-<p>火狐同来的工程师还有尤睿先生，在QA环节帮助大家解答疑惑。</p>
-
-<p>目前Firefox OS正在紧锣密鼓的开发中，感兴趣的同学不妨投身到社区中，贡献自己的一份力量-:)</p>
-
-<hr />
-
-<h3>浅谈云计算及其关键技术-白清杰</h3>
-
-<p>白清杰先生是一名资深开源人士，前北京GNOME用户组负责人之一。cloudstack中国
-社区管理员，2011年创建公司北京开源愿景信息技术有限公司，提供云计算解决
-方案，公司是中国开源云联盟成员之一。</p>
-
-<p>云计算目前被业界普遍认为是未来的发展趋势。
-那么云计算究竟是什么？它有哪些特点？为什么云计算被业界普遍看好？
-云计算和我们有什么关系？其中又有哪些关键技术？</p>
-
-<p>白清杰先生先从“开源”说起，“没有开源就没有我们现在的互联网时代和云计算时代”，之后以“思维导图”的形式向大家展开叙述“云计算”。从“什么是云计算”到“云计算的特点”，再到“云计算的关键技术”，白先生以清晰的思路跟大家分享了他对“云计算”的认识。</p>
-
-<p>白先生的Topic信息量很大。对于没有接触过“云计算”的同学，这是一个很好的入门。已经对“云计算”有了一定了解的同学，这是一次“梳理思路”的好机会。</p>
-
-<hr />
-
-<h3>自由软件的趋势与挑战及NITE-LPI联合认证项目-龙文选</h3>
-
-<p>龙文选先生目前在黑鸭子软件担任企业开源战略咨询师，帮助国内大中型软件企业制定和实施软件开源的战略和流程。</p>
-
-<p>龙先生主要跟大家分享了“自由软件现状，趋势及挑战”和“NITE-LPI联合认证项目”。</p>
-
-<p>从“自由开源软件”讲起，描述了“Linux简史”，“Linux在国内的企业成功案例”以及“自由软件和Linux对全球软件行业的强力驱动”。越来越多的企业开始采用Linux，开始接受社区式的开发方式，缺乏Linux和自由软件人才已经逐渐成为公司的主要挑战之一，这也是“NITE-LPI联合认证项目”的切入点。</p>
-
-<p>此“联合认证”的目的是全面推进Linux人才培养体系的建设，龙先生就项目的背景，LPI介绍，现状，高校和企业合作，LPI认证考试等给大家带来了分享。</p>
-
-<p>龙先生的演讲带领大家从大局认识开源和Linux世界，对于致力于成为Linux人才的同学是一个很好的启发。</p>
-
-<h2>活动总结</h2>
-
-<p>本次活动，从邀请嘉宾，到活动安排以及现场的布置和协调，历时近一个月（由于今年研一新生搬到了怀柔的雁栖湖校区，情况比较特殊）。</p>
-
-<p>由于从北京市过去雁栖湖校区交通不便，给嘉宾的日程协调带来了诸多不便，而活动当天的到场嘉宾都很给力，演讲内容丰富而精彩，非常感谢他们！活动地点选在雁栖湖校区，也是考虑到SFD的主要受众群体是研一新生，前期的宣传工作主要是海报的张贴，之后的活动可以考虑更加新颖的宣传方式。</p>
-
-<p>活动现场出现了一些小环节的失误（教室的MIC数量没有协调好;教室没有激光笔，给嘉宾翻slides带来不便;嘉宾的演讲时间没有控制好，存在比较严重的超时），都是今后再次举办SFD需要改进的地方。另外，活动形式，除了演讲+QA，可以考虑一些新颖的形式，比如Hackfest，Installfest，圆桌讨论等等，毕竟SFD是为了让大家一起share的活动。</p>
-
-<p>还有就是关于SFD官网的活动注册，今年比较晚申请，没能得到SFD的官方赞助，也是一个小小的遗憾。今后可以订阅SFD的mailing lists，及时注册活动并着手准备。</p>
-
-<p>总得来说，本次活动比较成功，嘉宾和听众有了比较充分的沟通和互动，大家对“自由软件”，“开源”等进行了比较深入的探讨。</p>
-
-<h2>致谢</h2>
-
-<p>感谢各位演讲嘉宾，不辞辛苦地赶到怀柔给大家带来精彩的演讲！</p>
-
-<p>感谢COPU，火狐中国以及LPI对开源协会一如既往的支持！</p>
-
-<p>感谢各位sponsor，COPU，火狐中国，LPI，Deepin Linux以及GitCafe，谢谢你们慷慨赞助！</p>
-
-<p>感谢友邻社区的大力支持，BJGUG，TUNA，Fedora社区以及北航开源俱乐部（很遗憾在活动现场没能跟大家打招呼）！</p>
-
-<p>感谢开源协会的各位志愿者，是你们促成了本次活动的成功举行，协会的新成员都很给力，你们是协会的未来！</p>
-
-<p>感谢活动的各位参与者，没有你们，本次活动会失色不少，希望你们都有所收获！</p>
-
-<hr />
-
-<p>SFD2014中科院站，大家再见！</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[PTAM Compilation on Linux-HowTo]]></title>
-    <link href="http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto/"/>
-    <updated>2013-09-27T19:50:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto</id>
-    <content type="html"><![CDATA[<p>The README.txt file shipped with the newest PTAM source code is really old (the cvs repositorys are gone for god&rsquo;s sake) ! I struggled to get it done on my Linux Mint 15 with totally failure:&ndash;(</p>
-
-<p>However I made it with just pulling the bleeding edge libs(I mean TooN,libCVD and Gvars3) from github, add a header file <code>&lt;unistd.h&gt;</code> to <code>Tracker.cc</code>, edit the <code>Makefile</code> about the linker flags(I will tell the details below), and I absolutely think that &lsquo;share my experience to you&rsquo; is my duty.</p>
-
-<p>I succeeded on <strong>Linux Mint 15</strong> and <strong>Ubuntu 12.04</strong>, other distros won&rsquo;t be hard either:&ndash;)</p>
-
-<!--more-->
-
-
-<p>Now, let&rsquo;s start the journey!</p>
-
-<h2>Installation the required dependencies</h2>
-
-<p><strong>Note the versions of the installed packages may differ from distros and versions of the same distro, just choose the ones suitable for you!</strong></p>
-
-<h3>Build Tools</h3>
-
-<pre><code>sudo apt-get update
-sudo apt-get install build-essential cmake pkg-config
-</code></pre>
-
-<h3>Boost for C++</h3>
-
-<pre><code>sudo apt-get install libboost-dev libboost-doc
-</code></pre>
-
-<h3>Low level libraries for Linear Algebra</h3>
-
-<pre><code>sudo apt-get install liblapack-dev libblas-dev
-</code></pre>
-
-<h3>Image I/O &amp;&amp; Camera Driver</h3>
-
-<pre><code>sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev libv4l-dev 
-</code></pre>
-
-<h3>Video I/O &amp;&amp; Codec &amp;&amp; Display</h3>
-
-<pre><code>sudo apt-get install libavcodec-dev libavformat-dev libavutil-dev libpostproc-dev libswscale-dev libavdevice-dev libsdl-dev
-sudo apt-get install libgtk2.0-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev 
-</code></pre>
-
-<h3>OpenGL</h3>
-
-<pre><code>sudo apt-get install mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev
-</code></pre>
-
-<h2>Installation of OpenCV</h2>
-
-<pre><code>cd thePathYouWant
-wget http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.6.1/opencv-2.4.6.1.tar.gz
-tar zxvf opencv-2.4.6.1.tar.gz
-cd opencv-2.4.6.1/
-mkdir release 
-cd release
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
-make
-sudo make install
-</code></pre>
-
-<p>You may want to alert the system about the new installed OpenCV libs,</p>
-
-<pre><code>vi /etc/ld.so.conf
-add `include /usr/local/lib`
-sudo ldconfig
-</code></pre>
-
-<p>Do this if you mannualy install other libraries when running into problems(as libcvd and Gvars3 discussed below).</p>
-
-<p>After this, <strong>OpenCV dependencies can now be linked with simply: <code>pkg-config opencv --cflags --libs</code></strong></p>
-
-<p>Really cool, huh?</p>
-
-<h2>Installation of TooN &amp;&amp; libCVD &amp;&amp; Gvars3</h2>
-
-<p>You may want to get the source code by just pulling from github like this:</p>
-
-<pre><code>#!/bin/bash
-echo " Now pulling TooN..."
-git clone git://github.com/edrosten/TooN.git
-echo " TooN done for good!"
-
-echo " Now pulling libcvd..."
-git clone git://github.com/edrosten/libcvd.git
-echo " libcvd done for good!"
-
-echo " Now pulling gvars3..."
-git clone git://github.com/edrosten/gvars.git
-echo " gvars3 done for good!"
-
-echo " All done."
-</code></pre>
-
-<p>If this confuses you, just download the package like this:</p>
-
-<pre><code>cd thePathYouWant
-wget http://www.edwardrosten.com/cvd/TooN-2.1.tar.gz
-wget http://www.edwardrosten.com/cvd/libcvd-20121025.tar.gz
-wget http://www.edwardrosten.com/cvd/gvars-3.0.tar.gz
-</code></pre>
-
-<p><strong>Note the versions may differ as time goes by, use git if you can</strong> Or just look at this <a href="http://www.edwardrosten.com/cvd/toon.html">link</a> for more details.</p>
-
-<p>Also remember <strong>do refer to the README files when you try to install the libraries</strong>, cause they really do help in some manner:&ndash;)</p>
-
-<h3>TooN</h3>
-
-<p>Just header files, easy to install huh?</p>
-
-<pre><code>./configure &amp;&amp; make &amp;&amp; sudo make install
-</code></pre>
-
-<h3>libCVD</h3>
-
-<p>Remember that libCVD really needs TooN, or you will get stuck when trying to compile PTAM:&ndash;(</p>
-
-<p>The steps I used is like this:</p>
-
-<pre><code>./configure --without-ffmpeg --without-v4l1buffer --without-dc1394v1 --without-dc1394v2
-make
-sudo make install
-</code></pre>
-
-<p>If you run into problems, check the output of <code>./configure</code> carefully, they will give you some hints:&ndash;)</p>
-
-<h3>Gvars3</h3>
-
-<p>This is also easy, like this:</p>
-
-<pre><code>./configure --disable-widgets
-make
-make install
-</code></pre>
-
-<h3>Make the libs work</h3>
-
-<pre><code>sudo ldconfig
-</code></pre>
-
-<h2>Compilation of PTAM</h2>
-
-<p>Now comes the real part of our journey, refer to the README.txt file for details.</p>
-
-<h3>Copy the appropriate platform build files</h3>
-
-<pre><code>cd PTAM
-cp Build/Linux/* .
-</code></pre>
-
-<h3>Edit the Makefile to reference custom include or linker paths</h3>
-
-<pre><code>LINKFLAGS = -L /usr/local/lib -lGvars3 -lcvd -lGLU -lGL -llapack
-</code></pre>
-
-<p><code>/usr/local/lib</code> is my custom linker path.</p>
-
-<h3>Make the Video Source right</h3>
-
-<ul>
-<li>VideoSource_Linux_DV.cc</li>
-<li>VideoSource_Linux_V4L.cc</li>
-<li>VideoSource_Linux_Gstreamer_File.cc</li>
-<li>VideoSource_Linux_OpenCV.cc</li>
-</ul>
-
-
-<p>The first two are for camera capturing and the last twos are shipped with <a href="https://github.com/BeLioN-github/PTAM">BeLioN-github/PTAM</a> and can be used to serve images from video files.</p>
-
-<h3>Make</h3>
-
-<p>Probably an error will popup, like &ldquo;error, <code>usleep</code> was not declared in this scope&rdquo;, easily add</p>
-
-<pre><code>#include &lt;unistd.h&gt;
-</code></pre>
-
-<p>to <code>Tracker.cc</code> and you are done:&ndash;)</p>
-
-<p>Just</p>
-
-<pre><code>make
-</code></pre>
-
-<p>and enjoy!</p>
-
-<h2>Acknowledgement</h2>
-
-<p>Definitely special thanks will go to <a href="http://www.robots.ox.ac.uk/~gk/">Georg Klein</a>, the author and PTAM! Good job, Georg!</p>
-
-<p>I also refered to several posts while struggling,</p>
-
-<ul>
-<li><a href="http://hhfighting.blog.163.com/blog/static/55700323201242524213235/">ubuntu11.10下安装PTAMM</a></li>
-<li><a href="http://www.edwardrosten.com/cvd/toon.html">TooN: Tom&rsquo;s Object-oriented numerics library</a></li>
-<li><a href="http://code.google.com/p/qt-opencv-multithreaded/wiki/Documentation">qt-opencv-multithreaded</a></li>
-<li><a href="http://docs.opencv.org/trunk/doc/tutorials/introduction/linux_install/linux_install.html">OpenCV Tutorials-Installation in Linux</a></li>
-</ul>
-
-
-<p>Hope this post will do some help and if you find any mistake in my blog, please do <strong>leave your comment or drop me a line:&ndash;)</strong></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[阿里技术大讲堂-互联网营销推广技术专场小结]]></title>
-    <link href="http://hustcalm.me/blog/2013/09/17/a-li-ji-zhu-da-jiang-tang-hu-lian-wang-ying-xiao-tui-yan-ji-zhu-zhuan-chang-xiao-jie/"/>
-    <updated>2013-09-17T18:28:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/09/17/a-li-ji-zhu-da-jiang-tang-hu-lian-wang-ying-xiao-tui-yan-ji-zhu-zhuan-chang-xiao-jie</id>
-    <content type="html"><![CDATA[<p>利用上个周末的两天时间，参加了“阿里技术大讲堂”，主题是“互联网营销技术”，各位讲师都是“阿里妈妈”的人，且个个身怀绝技。个人虽然对这个领域很陌生，但还是跑去参加了，一是想领略一下阿里的技术，而是想感受一下阿里的人。现在想想，不虚此行，用一篇小结整理一下学到的东西，梳理自己思路的同时，希望能给大家带来些有效信息。</p>
-
-<hr />
-
-<h2>认识下P4P</h2>
-
-<p>搜索P4P得到比较多的检索结果是一种基于P2P的传输技术，全称为<a href="http://en.wikipedia.org/wiki/Proactive_network_Provider_Participation_for_P2P">Proactive network provider participation for P2P</a>。而在广告领域，需要解释为Pay for Performance，遗憾的是没能在维基百科上找到权威定义，不过各大电商和互联网公司的推广和广告系统，都会提到P4P这个词。想了解更多，搜索“淘宝P4P”或者“阿里巴巴P4P”会得到一些有效信息。一言以蔽之，就是“高效而精准的广告投放”。</p>
-
-<!--more-->
-
-
-<hr />
-
-<h2>技术专场要点</h2>
-
-<p>两天的课程一直在做笔记，先面根据课程先后把一些要点分享出来，不会特别详细，给出一些关键词，感兴趣的可以自己查阅资料展开学习！</p>
-
-<hr />
-
-<h3>互联网营销概述-云雀</h3>
-
-<p>广告投放的计费方式分为，cpt/cpc/cps/cpa/cpm等，具体解释可以参考<a href="http://blog.sina.com.cn/s/blog_68d723030100xwwg.html">CPM CPT CPC CPA CPS在网络营销中是什么意思？</a>.</p>
-
-<p>互联网营销的参与方，商家，User，Publisher，营销平台，其中“平台”是所有参与者的纽带，有了“平台”，其它玩家才有得玩。把参与方搞清楚，对于理解后续的整个营销平台架构很关键。</p>
-
-<p>目前主要的营销产品形式：</p>
-
-<ul>
-<li>Sponsored Search</li>
-</ul>
-
-
-<p>目前最核心的收益来源，竞价逻辑采用GSP（Generalized Second Price），但是面临一些问题。</p>
-
-<ul>
-<li>定向营销</li>
-</ul>
-
-
-<p>比如Google Adsense，百度网盟，技术上使用cookie实现。</p>
-
-<ul>
-<li>展示营销</li>
-</ul>
-
-
-<p>属于non-guaranteed类型的营销。</p>
-
-<ul>
-<li>RTB（Real Time Biding）</li>
-</ul>
-
-
-<p>即实时竞价，实现的核心系统是Ad Exchange Server。</p>
-
-<hr />
-
-<h3>大规模高并发的营销系统架构-超明</h3>
-
-<p>主要讲了查询系统和更新系统，其中实时更新采用Storm实时流式计算系统，而全量更新采用Hadoop分布式计算系统。</p>
-
-<p>在业务逻辑方面，主要讲述了：</p>
-
-<ul>
-<li>出价与竞价体系（GSP）</li>
-<li>过滤（实现个性化投放）</li>
-<li>Bucket机制（不同算法和策略的验证）</li>
-<li>插件化（框架与业务分离，不同业务解耦合）</li>
-<li>ranking模型（漏斗式，由简单到复杂）</li>
-<li>分级查询（分布式）</li>
-<li>实时数据采集</li>
-<li>数据分发</li>
-<li>大数据（Hadoop，Storm，MPI）</li>
-<li>分离（数据节点与检索节点分离）</li>
-<li>移步处理（未来的方向，目前正在尝试中）</li>
-</ul>
-
-
-<hr />
-
-<h3>搜索营销触发技术-翔羽</h3>
-
-<p>也就是搜索营销的Matching技术，主要解决的问题：</p>
-
-<ul>
-<li>用户查询意图理解</li>
-<li>推广语义，信息扩充</li>
-<li>用户和客户信息不对称和流量分配</li>
-</ul>
-
-
-<p>三段式架构下的技术问题分解：</p>
-
-<ul>
-<li>Query改写</li>
-</ul>
-
-
-<p>主要是Query分析，改写和相似度计算。</p>
-
-<ul>
-<li>Bid-Ads</li>
-</ul>
-
-
-<p>包括Ads分析，Bid-Ads索引优化，Bid-Ads排序。</p>
-
-<ul>
-<li>初选</li>
-</ul>
-
-
-<p>Matching的不同levels，Term-Phrase-Word Sense-Topic-Structure，典型的NLP吧。</p>
-
-<p>最后讲了一下模糊匹配。</p>
-
-<hr />
-
-<h3>搜索营销中的点击率预估：算法和系统-治平</h3>
-
-<p>创意排序和ECPM排序中的核心问题是CTR预估，即点击率预估，解决的方法是大规模机器学习。</p>
-
-<p>主要的挑战包括，线下海量数据的处理，线下服务的高并发，QPS达到了1W-10W级别，实时性在1ms！</p>
-
-<p>未来努力的方向还是个性化和实时化！</p>
-
-<hr />
-
-<h3>行为定向技术-王睿</h3>
-
-<p>深入检出，幽默风趣，是王总的风格，说的话几乎句句是干货。</p>
-
-<p>定向算法需要解决的问题，本质上，是对创意信息，浏览者信息和场景信息的排序。</p>
-
-<p>两个Query如何比较相似性？（根据Query对应的商品计算）。</p>
-
-<p>后来讲到了定向维度（裸数据的维度达到了千亿的级别，预处理之后是十亿的级别，好吓人）和RTB，可能听得比较起劲，记得东西少了:&ndash;(。</p>
-
-<hr />
-
-<h3>展示营销技术-Tanx架构-澄观</h3>
-
-<p>主要就阿里妈妈研发的Tanx系统展开，首先还是缕清楚参与方，具体交互可以参考<img src="http://contest.ipinyou.com/cn/images/tw.jpg" alt="下图" />。</p>
-
-<p>而ADX市场，主要分析了Google，Tecent，Baidu和Ali。</p>
-
-<p>系统架构方面，主要包括：</p>
-
-<ul>
-<li>用户交互</li>
-<li>推广计划</li>
-<li>管理系统</li>
-<li>Business Platform(BP)</li>
-<li>ECPM Tanx</li>
-<li>Logs</li>
-<li>Algorithms</li>
-<li>Reports</li>
-</ul>
-
-
-<p>具体技术的展开：</p>
-
-<ul>
-<li>bidrequest包含的信息</li>
-</ul>
-
-
-<p>浏览者信息，网页信息，创意信息。</p>
-
-<ul>
-<li>QPS控制</li>
-</ul>
-
-
-<p>DSP的系统负载能力各不相同;QPS可以控制到分钟的粒度;基于DSP的错误率，QPS自动调整;集群机器的扩展和临时缩减控制。</p>
-
-<ul>
-<li>大流量高并发通信技术</li>
-</ul>
-
-
-<p>竞价流量规模翻N倍;减少网络通信量，压缩，托管等;挖掘单机极致吞吐量和连接数libevent和nginx的灵活应用。</p>
-
-<ul>
-<li>Cookie Mapping</li>
-</ul>
-
-
-<p>从安全角度出发，Cookie不能跨域共享，将不同域的不同ID关联起来，就形成了Cookie Mapping技术。具体设计到几十亿的KV存储（采用Tair引擎），Cookie的托管服务以及DSP流量预选。</p>
-
-<hr />
-
-<h3>展示营销的定向算法与竞价算法介绍-芍药</h3>
-
-<p>特别活泼可爱的一个讲师，讲解的思路很清晰。</p>
-
-<p>首先还是从大面上认识一下，非搜索广告 VS. 搜索广告，展示营销的特点，展示营销的分类（Guaranteed Delivery &amp;&amp; Non-Guaranteed Delivery）。</p>
-
-<p>在关于展示营销系统的参与方的讲解上，通过对三方（媒体，客户，用户）进行属性的描述非常直观。</p>
-
-<p>定向算法这边，主要是分类，采用了SVM，解决的问题就是如何选择用户兴趣点的维度以及怎么样将用户和其兴趣点关联。</p>
-
-<p>而竞价算法解决的是，如何在不同的位置，给不同的用户展示合适的广告？这里又是Tanx解决的问题了，主要用到的技术就是HDFS，Map/Reduce，MPI。</p>
-
-<p>而在客户工具这里，阿里也越来越关注流量提供方和广告投放方，毕竟他们才是拿钱的主啊:&ndash;)</p>
-
-<hr />
-
-<h3>DSP系统架构-墨魂</h3>
-
-<p>DSP（Demand-Side Platform），即需求方平台。</p>
-
-<p>实时定向系统架构：</p>
-
-<ul>
-<li>投放平台</li>
-<li>特征扩展</li>
-<li>信息检索</li>
-</ul>
-
-
-<p>这里讲得比较多，主要有倒排，and和or查询，迭代查询机制，Cache机制，数据更新机制。</p>
-
-<ul>
-<li>实时竞价</li>
-</ul>
-
-
-<p>Tanx again。</p>
-
-<hr />
-
-<h3>RTB技术介绍-则成</h3>
-
-<p>虽然是纯技术，但是这一讲很有意思。</p>
-
-<ul>
-<li>Why RTB？</li>
-</ul>
-
-
-<p>实时竞价，是一种利用第三方技术在数以百万计的网站上针对每一个用户展示行为进行评估以及出价的竞价技术。</p>
-
-<ul>
-<li>RTB Mechanisms</li>
-</ul>
-
-
-<p>在几十个毫秒内，找对人，投对商品。</p>
-
-<p>大概步骤：</p>
-
-<p>   1.用户访问网页</p>
-
-<p>   2.流量竞拍要求</p>
-
-<p>   3.海量用户数据进行价值判断与出价</p>
-
-<p>   4.广告交易市场竞拍</p>
-
-<p>   5.获得广告位投放机会</p>
-
-<ul>
-<li>RTB的特点</li>
-</ul>
-
-
-<p>   1.粒度为每个PV级别的拍卖</p>
-
-<p>   2.交易平台以CPM方式向获胜DSP收费</p>
-
-<p>   3.Vickrey拍卖（封闭拍卖，价高者得，第二价格扣费）</p>
-
-<p>   4.对每个bidder，最优策略是按照自己对商品的价值来报价（后来的理论分析很优美）</p>
-
-<ul>
-<li>Bidding Algorithms</li>
-</ul>
-
-
-<p>   1.md6.com（DSP公司）的竞价算法</p>
-
-<p>   2.Yahoo的Bid Star Tree</p>
-
-<p>   3.Alimama的报价模型之一，Golden Filter</p>
-
-<hr />
-
-<h3>推荐技术及在营销推广中的应用-小致</h3>
-
-<p>讲得很技术，pure technical.</p>
-
-<p>首先介绍了淘宝数据，按照“行为”，“场景”和“内容信息”分类。</p>
-
-<p>之后进入正题，开始讲“推荐算法”。涵盖的内容：</p>
-
-<ul>
-<li>Item CF（协同过滤）</li>
-</ul>
-
-
-<p>主要说到了Jaccard/ModJaccard以及Cosine/WbCosine。</p>
-
-<ul>
-<li>内容相似度</li>
-</ul>
-
-
-<p>Minhash，解决“冷启动”的问题。</p>
-
-<ul>
-<li>融合算法</li>
-</ul>
-
-
-<p>模拟退火，单纯形，GBDT/LR之类的。</p>
-
-<p>评价指标主要提到了Auc，Recall，Coverage，都是机器学习的东西了。</p>
-
-<p>最后的推荐形式，讲了“相似推荐”，“搭配推荐”和“实时推荐”。</p>
-
-<hr />
-
-<h2>总结</h2>
-
-<p>两天的课程，算是对互联网营销入了门。对很多专业术语有了了解，对现有的系统架构有了皮毛的认识，而对于机器学习，数据挖掘，自然语言处理的威力有了更加清晰的定位。在“做东西的过程中学习”，是现在非常赞成的“学习方法”，虽然两天的技术讲堂没有“做东西”，但是来自一线的阿里讲师们，用自己的实际经历将心得传授给大家，也是一种非常好的学习方式！感谢阿里在技术讲堂上的努力，阿里高校技术联盟今年也开始在计算所试点了（自动化所明年应该会到位），感谢各位讲师！</p>
-
-<p>无意中发现了一个RTB的比赛，链接在<a href="http://contest.ipinyou.com/cn/index.shtml">这里</a>，感兴趣的同学不妨一试:&ndash;)</p>
 ]]></content>
   </entry>
   

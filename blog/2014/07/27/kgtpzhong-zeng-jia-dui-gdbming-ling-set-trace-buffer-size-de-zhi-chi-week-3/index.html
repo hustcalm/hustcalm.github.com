@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 3 - Welcome to Pandora's Box</title>
+  <meta name="author" content="Lihang Li">
+
+  
+  <meta name="description" content="CSDN开源夏令营 &ndash; 第三周工作总结 这一周主要实现了“set trace-buffer-size”实现的数据通信部分，即完成了GDB和KGTP的数据交互部分，下面简单分析一下实现。在说代码实现之前，还是简单地回顾一下，如何摸清KGTP的脉络。 1. 如何跟踪KGTP &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/KISS-hustcalm" rel="alternate" title="Welcome to Pandora's Box" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+
+<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--Ref to google plus profile to display authorship in google search result -->
+<link ref="me" href="https://plus.google.com/u/0/103479323169088059584?rel=author">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47357842-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+<h1><a href="/">Welcome to Pandora's Box</a>(<a href="/about">Why</a>)</h1>
+  
+    <h2>Keep It Simple, Stupid!</h2>
+  
+</hgroup>
+
+<a href="https://github.com/hustcalm"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/KISS-hustcalm" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:hustcalm.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 3</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-27T19:34:52+08:00" pubdate data-updated="true">Jul 27<span>th</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://hustcalm.me">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3>CSDN开源夏令营 &ndash; 第三周工作总结</h3>
+
+<p>这一周主要实现了“set trace-buffer-size”实现的数据通信部分，即完成了GDB和KGTP的数据交互部分，下面简单分析一下实现。在说代码实现之前，还是简单地回顾一下，如何摸清KGTP的脉络。</p>
+
+<h4>1. 如何跟踪KGTP</h4>
+
+<p>我的平台是Fedora，步骤如下：</p>
+
+<pre><code>make D=1
+sudo insmod gtp.ko
+sudo gdb /usr/lib/debug/lib/modules/3.14.8-200.fc20.x86_64/vmlinux -ex 'target remote /sys/kernel/debug/gtp'
+</code></pre>
+
+<!--more-->
+
+
+<p>此时，进入了gdb的console，可以通过gdb的commands和KGTP通信了。观察KGTP的一个重要的手段则是看printk的信息，由于编译时使用了“make D=1”，因此对应KGTP的代码，比如：</p>
+
+<pre><code> #ifdef GTP_DEBUG                                                                                            
+     printk(GTP_DEBUG "gtp_gdbrsp_qtbuffer\n");                                                              
+ #endif    
+</code></pre>
+
+<p>查看这些的方式则是使用“journalctl -k”，方便起见可以只查看末尾的部分信息，比如“journalctl -k -n 100”，在我的本地输出的部分信息如下：</p>
+
+<pre><code>Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qAttached
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qOffsets
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: g
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: m0,1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_m: addr = 0x0 len = 1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: m0,1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_m: addr = 0x0 len = 1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qSymbol::
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qTStatus
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_qT: Status
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qTfP
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_qT: fP
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>根据以上信息，可以顺藤摸瓜找到相应被调用的函数，从而屡清楚程序的执行逻辑，这对于理解KGTP的工作原理是非常有帮助的。关于journalctl[1]的使用，请自行“man journalctl”。在非systemd[2]的系统下，可能还需要通过“less /var/log/”这样的方式查看内核的输出，根据你使用的Linux随机应变即可。</p>
+
+<h4>2. GDB和KGTP的通信实现</h4>
+
+<p>利用GDBRSP[3]，即GDB Remote Serial Protocol，GDB远程串行通信协议。关于Remote Serial Protocol，可以参考[4]。简单来说，用于GDB远程调试发包，但是也支持File I/O和Console[5]，而KGTP正是利用了GDBRSP对于File I/O的支持，完成GDB和KGTP的通信，在接受到GDB发送的Packet后，KGTP进行解析。而通信的介质则是通过debugfs或者其他kernel space和user space进行数据交换的接口进行的。</p>
+
+<p>具体的实现，参考gtp.c的函数 <code>gtp_init</code>，部分代码如下：</p>
+
+<pre><code> gtp_dir = debugfs_create_file("gtp", S_IRUSR | S_IWUSR, NULL,
+                   NULL, &amp;gtp_operations);
+ if (gtp_dir == NULL || gtp_dir == ERR_PTR(-ENODEV)) {
+     gtp_dir = NULL;
+     goto out;
+ }
+ gtpframe_dir = debugfs_create_file("gtpframe", S_IRUSR, NULL,
+                    NULL, &amp;gtpframe_operations);
+ if (gtpframe_dir == NULL || gtpframe_dir == ERR_PTR(-ENODEV)) {
+     gtpframe_dir = NULL;
+     goto out;
+ }
+</code></pre>
+
+<p>可以看到，使用DebugFS，建立了相应的文件节点，比如gtp，gtpframe，并且注册了相应的file operations，比如<code>gtp_oprations</code>，<code>gtpframe_operations</code>。</p>
+
+<p>拿前者为例，声明的代码如下：</p>
+
+<pre><code>static const struct file_operations gtp_operations = {
+     .owner      = THIS_MODULE,
+     .open       = gtp_open,
+     .release    = gtp_release,
+ #if (LINUX_VERSION_CODE &lt; KERNEL_VERSION(2,6,35))
+     .ioctl      = gtp_ioctl,
+ #else
+     .unlocked_ioctl = gtp_ioctl,
+     .compat_ioctl   = gtp_ioctl,
+ #endif
+     .read       = gtp_read,
+     .write      = gtp_write,
+     .poll       = gtp_poll,
+ };
+</code></pre>
+
+<p>而这其中最核心的则是<code>gtp_read</code>和<code>gtp_write</code>，其中<code>gtp_read</code>，用于GDB从KGTP读取数据（<strong>copy_to_user</strong>），gtp_write，则是KGTP从GDB接收数据（<strong>copy_from_user</strong>）。具体的代码，这里就不贴了，大家可以自行分析。</p>
+
+<p>GDB和KGTP通过GDBRSP关联，通过执行<code>target remote /sys/kernel/debug/gtp</code>实现。</p>
+
+<h4>3. 添加“set-trace-buffer-size”的通信支持</h4>
+
+<p>有了以上的理论分析和准备，我们就可以着手实现“set trace-buffer-size”命令的解析了。首先，我们需要知道这个命令对应的GDBRSP的Query Packet以及KGTP利用哪个函数对其进行解析。通过[6]和[7]，我们得知如下信息：</p>
+
+<pre><code>set circular-trace-buffer on
+set circular-trace-buffer off
+Choose whether a tracing run should use a linear or circular buffer for trace data. A linear buffer will not lose any trace data, but may fill up prematurely, while a circular buffer will discard old trace data, but it will have always room for the latest tracepoint hits.
+
+show circular-trace-buffer
+Show the current choice for the trace buffer. Note that this may not match the agent’s current buffer handling, nor is it guaranteed to match the setting that might have been in effect during a past run, for instance if you are looking at frames from a trace file.
+
+set trace-buffer-size n
+set trace-buffer-size unlimited
+Request that the target use a trace buffer of n bytes. Not all targets will honor the request; they may have a compiled-in size for the trace buffer, or some other limitation. Set to a value of unlimited or -1 to let the target use whatever size it likes. This is also the default.
+
+show trace-buffer-size
+Show the current requested size for the trace buffer. Note that this will only match the actual size if the target supports size-setting, and was able to handle the requested size. For instance, if the target can only change buffer size between runs, this variable will not reflect the change until the next run starts. Use tstatus to get a report of the actual buffer size.
+
+
+‘QTBuffer:circular:value’
+This packet directs the target to use a circular trace buffer if value is 1, or a linear buffer if the value is 0.
+
+‘QTBuffer:size:size’
+This packet directs the target to make the trace buffer be of size size if possible. A value of -1 tells the target to use whatever size it prefers.
+</code></pre>
+
+<p>嗯，有线索了，GDB执行相应地指令，则会通过GDBRSP向KGTP发送相应的Query Packet，注意到“circular-trace-buffer”和“trace-buffer-size”的Packet的格式相同。关于GDB的General Query Packet，参考[8]。<strong>Packets starting with ‘q’ are general query packets; packets starting with ‘Q’ are general set packets. General query and set packets are a semi-unified form for retrieving and sending information to and from the stub.</strong></p>
+
+<p>因此，参考“circular-trace-buffer”的实现是一个很好的突破口，所幸的是，KGTP已经实现了对其的支持。</p>
+
+<h4>4. 添加“set trace-buffer-size”的具体实现</h4>
+
+<p>根据以上分析，我们很快找到了两个关键函数，“gtp_gdbrsp_QT  ”和“gtp_gdbrsp_qtbuffer”。OK，添加对“set trace-buffer-size”的解析，代码如下：</p>
+
+<pre><code>static int
+gtp_gdbrsp_qtbuffer(char *pkg)
+{
+#ifdef GTP_DEBUG
+    printk(GTP_DEBUG "gtp_gdbrsp_qtbuffer\n");
+#endif
+
+    // Handle QTBuffer:circular:value
+    if (strncmp("circular:", pkg, 9) == 0) {
+        ULONGEST setting;
+
+        pkg += 9;
+        if (pkg[0] == '\0')
+            return -EINVAL;
+        hex2ulongest(pkg, &amp;setting);
+
+#ifdef GTP_FTRACE_RING_BUFFER
+#if (LINUX_VERSION_CODE &gt; KERNEL_VERSION(2,6,38)) \
+    || defined(GTP_SELF_RING_BUFFER)
+        gtp_circular = (int)setting;
+        if (gtp_frame)
+            ring_buffer_change_overwrite(gtp_frame, (int)setting);
+#else
+        if (gtp_circular != (int)setting)
+            gtp_circular_is_changed = 1;
+#endif
+#endif
+        gtp_circular = (int)setting;
+
+        return 0;
+    }
+    // Handle QTBuffer:size:size 
+    else if (strncmp("size:", pkg, 5) == 0) {
+
+        ULONGEST size;
+
+        pkg += 5;
+
+        if (pkg[0] == '\0')
+            return -EINVAL;
+        hex2ulongest(pkg, &amp;size);
+
+        // Handle the new ringbuffer size blow
+
+        return 0;
+    }
+
+    return 1;
+}
+</code></pre>
+
+<p>重新编译，安装模块，然后在GDB中输入“set trace-buffer-size 100”，注意这里的100是十进制的，看下“journalctl -k”的输出，啥也没有。怎么回事，上面分析的不是挺美好的吗？经过几次尝试未果，把问题定位在了GDB对于Remote Packet的处理，不会是没有enable吧？</p>
+
+<p>查看文档[9]，果然，应该使用<code>set remote set-buffer-size on</code>先使能，否则应该是直接被gdbrsp丢掉了。OK，使用<code>set trace-buffer-size 100</code>，输出：</p>
+
+<pre><code>Jul 27 07:18:45 localhost.localdomain kernel: gtp_write: QTBuffer:size:64
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:64
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>而使用<code>set trace-buffer-size unlimited</code>，输出：</p>
+
+<pre><code>Jul 27 07:19:53 localhost.localdomain kernel: gtp_write: QTBuffer:size:-1
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:-1
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>OK，至此对于“set trace-buffer-size”的通信支持就完成了，接下来需要根据用户设置的size对trace buffer做出调整，接下来的文章会说到如何实现。</p>
+
+<h4>5. 参考链接</h4>
+
+<ul>
+<li> [1] <a href="http://www.freedesktop.org/software/systemd/man/journalctl.html">http://www.freedesktop.org/software/systemd/man/journalctl.html</a></li>
+<li> [2] <a href="https://wiki.archlinux.org/index.php/systemd">https://wiki.archlinux.org/index.php/systemd</a></li>
+<li> [3] <a href="https://sourceware.org/gdb/onlinedocs/gdb/Remote-Protocol.html">https://sourceware.org/gdb/onlinedocs/gdb/Remote-Protocol.html</a></li>
+<li> [4] <a href="http://blog.csdn.net/hmsiwtv/article/details/8759129">http://blog.csdn.net/hmsiwtv/article/details/8759129</a></li>
+<li> [5] <a href="https://sourceware.org/gdb/onlinedocs/gdb/File_002dI_002fO-Remote-Protocol-Extension.html#File_002dI_002fO-Remote-Protocol-Extension">https://sourceware.org/gdb/onlinedocs/gdb/File_002dI_002fO-Remote-Protocol-Extension.html#File_002dI_002fO-Remote-Protocol-Extension</a></li>
+<li> [6] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html</a></li>
+<li> [7] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html</a></li>
+<li> [8] <a href="https://www.sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html#General-Query-Packets">https://www.sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html#General-Query-Packets</a></li>
+<li> [9] <a href="https://sourceware.org/gdb/onlinedocs/gdb/Remote-Configuration.html">https://sourceware.org/gdb/onlinedocs/gdb/Remote-Configuration.html</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Lihang Li</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-27T19:34:52+08:00" pubdate data-updated="true">Jul 27<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/gdb/'>GDB</a>, <a class='category' href='/blog/categories/kgtp/'>KGTP</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/tracing/'>Tracing</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="bshare-custom"><a title="分享到豆瓣" class="bshare-douban"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到微信" class="bshare-weixin"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT
+        bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid=a717dd31-3443-4991-9738-c5f0e418bd1a&amp;pophcol=2&amp;lang=zh"></script><a class="bshareDiv" onclick="javascript:return false;"></a><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2/" title="Previous Post: KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 2">&laquo; KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 2</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>Focus on Life.
+  Focus on Technology.
+  Focus on Sports.
+  This is me,Calm.</p>
+  <p>Contact Me Via 
+  hustcalm(at)gmail.com</p>
+</section>
+<iframe frameborder="0" scrolling="no" src="http://kado.im/widget/5075993fabaa3/default.html" style="width: 100%; height: 67px; margin-bottom: 15px;" id="kadoWidgetFrame"></iframe>
+
+<section>
+<h1>Ohloh Profile</h1>
+<a href='https://www.ohloh.net/accounts/229059?ref=Detailed' target='_top'>
+<img alt='Ohloh profile for hustcalm' border='0' height='35' src='https://www.ohloh.net/accounts/229059/widgets/account_detailed.gif' width='191' />
+</a>
+</section>
+
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 105.45454545454545%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 110.9090909090909%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 105.45454545454545%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 105.45454545454545%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 105.45454545454545%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 105.45454545454545%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 105.45454545454545%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 110.9090909090909%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 110.9090909090909%'>C/C++(2)</a> <a href='/blog/categories/centos' style='font-size: 110.9090909090909%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 105.45454545454545%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 110.9090909090909%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 105.45454545454545%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 105.45454545454545%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 105.45454545454545%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 105.45454545454545%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 110.9090909090909%'>Embedded(2)</a> <a href='/blog/categories/fedora' style='font-size: 110.9090909090909%'>Fedora(2)</a> <a href='/blog/categories/gdb' style='font-size: 116.36363636363636%'>GDB(3)</a> <a href='/blog/categories/geek' style='font-size: 116.36363636363636%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 110.9090909090909%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 105.45454545454545%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 105.45454545454545%'>HTTP(1)</a> <a href='/blog/categories/kgtp' style='font-size: 116.36363636363636%'>KGTP(3)</a> <a href='/blog/categories/latex' style='font-size: 105.45454545454545%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 105.45454545454545%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 105.45454545454545%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 116.36363636363636%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(11)</a> <a href='/blog/categories/mac' style='font-size: 105.45454545454545%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 105.45454545454545%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 105.45454545454545%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 105.45454545454545%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 110.9090909090909%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 105.45454545454545%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 116.36363636363636%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 105.45454545454545%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 132.72727272727272%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 110.9090909090909%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 110.9090909090909%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 110.9090909090909%'>OpenHardware(2)</a> <a href='/blog/categories/opensource' style='font-size: 116.36363636363636%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 105.45454545454545%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 105.45454545454545%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 105.45454545454545%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 105.45454545454545%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 116.36363636363636%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 110.9090909090909%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 105.45454545454545%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 105.45454545454545%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 105.45454545454545%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 105.45454545454545%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 121.81818181818181%'>Robot(4)</a> <a href='/blog/categories/seo' style='font-size: 110.9090909090909%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 105.45454545454545%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 110.9090909090909%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 105.45454545454545%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 105.45454545454545%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 105.45454545454545%'>Startup(1)</a> <a href='/blog/categories/tracing' style='font-size: 116.36363636363636%'>Tracing(3)</a> <a href='/blog/categories/travel' style='font-size: 105.45454545454545%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 116.36363636363636%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 105.45454545454545%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 116.36363636363636%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 105.45454545454545%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 110.9090909090909%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 105.45454545454545%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 105.45454545454545%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 110.9090909090909%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 105.45454545454545%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 105.45454545454545%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 105.45454545454545%'>Xen(1)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-1/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective/">Review of Raspberry Pi Robotic Projects - From a Technical Perspective</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/17/what-is-socket-anyway/">What Is Socket Anyway?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Weibo</h1>
+  <ul id="weibo">
+    <li>
+      <iframe 
+        width="100%" 
+        height="550" 
+        class="share_self" 
+        frameborder="0" 
+        scrolling="no" 
+        src="http://widget.weibo.com/weiboshow/index.php?
+        width=0&
+        height=550&
+        ptype=1&
+        speed=0&
+        skin=&
+        isTitle=0&
+        noborder=1&
+        isWeibo=1&
+        isFans=&
+        uid=1236738912&
+        verifier=8e94b428">
+      </iframe>
+    </li>
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/licalmer?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/licalmer">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+<h2>Douban Show</h2>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/hustcalm/?show=wishlist&amp;select=random&amp;n=9&amp;columns=3"></script>
+</div>
+</section>
+
+
+<section>
+<h1>Flag Counter</h1>
+ <a href="http://s01.flagcounter.com/more/5Vzn"><img src="http://s01.flagcounter.com/count/5Vzn/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a><br><a href="http://flagcounter.com/">free counters</a> 
+</section>
+
+
+<section>
+    <h1>Friends Link</h1>
+    <p><a href="http://blog-ossclub.rhcloud.com/">中科院开源软件协会</a></p>
+    <p><a href="http://blug.chinalug.org/">北京Linux用户组</a></p>
+    <p><a href="http://www.bjgug.org/">北京GNOME用户组</a></p>
+    <p><a href="http://www.lupaworld.com/">LUPA开源社区</a></p>
+    <p><a href="http://www.open-open.com/">开源资讯</a></p>
+    <p><a href="http://ikimi.net">KIMI YANG</a></p>
+</section>
+
+
+
+<section>
+<h1>CC License</h1>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />Except where otherwise noted,content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Lihang Li -
+  <span class="credit">Powered by <a href="https://github.com">Github</a> & <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'welcometopandorasboxwhy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3/';
+        var disqus_url = 'http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

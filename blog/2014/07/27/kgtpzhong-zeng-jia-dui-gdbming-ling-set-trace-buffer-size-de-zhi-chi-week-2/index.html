@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 2 - Welcome to Pandora's Box</title>
+  <meta name="author" content="Lihang Li">
+
+  
+  <meta name="description" content="CSDN开源夏令营 &ndash; 第二周工作总结 这一周在上一周对整体框架的认识和理解之上，开始全面地阅读KGTP的源代码，理解了梗概，很多细节需要再仔细研读，主要参考是其代码仓库：[1]。 1. KGTP的核心代码文件 毫无疑问，KGTP最精髓的代码都在gtp.c文件中，约13500行代码， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/KISS-hustcalm" rel="alternate" title="Welcome to Pandora's Box" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+
+<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--Ref to google plus profile to display authorship in google search result -->
+<link ref="me" href="https://plus.google.com/u/0/103479323169088059584?rel=author">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47357842-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+<h1><a href="/">Welcome to Pandora's Box</a>(<a href="/about">Why</a>)</h1>
+  
+    <h2>Keep It Simple, Stupid!</h2>
+  
+</hgroup>
+
+<a href="https://github.com/hustcalm"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/KISS-hustcalm" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:hustcalm.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 2</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-27T19:34:48+08:00" pubdate data-updated="true">Jul 27<span>th</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://hustcalm.me">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3>CSDN开源夏令营 &ndash; 第二周工作总结</h3>
+
+<p>这一周在上一周对整体框架的认识和理解之上，开始全面地阅读KGTP的源代码，理解了梗概，很多细节需要再仔细研读，主要参考是其代码仓库：[1]。</p>
+
+<h4>1. KGTP的核心代码文件</h4>
+
+<p>毫无疑问，KGTP最精髓的代码都在gtp.c文件中，约13500行代码，这其中包括了与GDB的通信，具体Query Packets的处理，Trace Points的注册和删除，事件的触发，硬件断点的设置和处理，等几乎所有的KGTP核心事务。在短短1万多行代码中，体现了几乎所有Linux Kernel开发过程中会用到的features，SMP的支持，Linux的list实现，锁和同步，工作队列，tasklet，硬件和软件中断，等等。</p>
+
+<!--more-->
+
+
+<p>其它辅助文件则有：</p>
+
+<ul>
+<li> <code>gtp_rb.c</code>      KGTP自己实现的一套Ring Buffer（默认使用）</li>
+<li> <code>perf_event.c</code>  Perf的核心实现，里面也实现Ring Buffer</li>
+<li> <code>ring_buffer.c</code> Linux内核为Trace的infrastructure提供的统一的Ring Buffer实现（比如Ftrace）</li>
+</ul>
+
+
+<h4>2. KGTP核心功能实现的源码分析</h4>
+
+<p>按照数据通信流程，<strong>GDB ——>   GDBRSP ——> SYSFS ——> KGTP ——> Kernel</strong>，简单分析如下：</p>
+
+<p><code>GDBRSP</code>是Remote Serial Protocol，用于GDB远程调试发包，但是也支持File I/O和Console，而KGTP正是利用了GDBRSP对于File I/O的支持，完成GDB和KGTP的通信，在接受到GDB发送的Packet后，KGTP进行解析。而通信的介质则是通过debugfs或者其他kernel space和user space进行数据交换的接口进行（参考[2]）。</p>
+
+<p>KGTP接收到了GDB的指令后，基于Kprobes和Uprobes进行内核和用户应用程序的trace，step和watch可以基于hardware-breakpoints实现。</p>
+
+<p>KGTP自己维护了一个ring buffer的，用于Trace Frame的存储，查询及dump。</p>
+
+<h5>（1）KGTP和GDB的通信</h5>
+
+<p>核心函数：</p>
+
+<ul>
+<li> <code>gtp_init</code>    建立对应的ProcFS或者DebugFS文件结点</li>
+</ul>
+
+
+<p>以下函数利用GDBRSP完成GDB和KGTP基于packet的通信：</p>
+
+<ul>
+<li> <code>gtp_open</code></li>
+<li> <code>gtp_release</code></li>
+<li> <code>gtp_ioctl</code></li>
+<li> <code>gtp_write</code></li>
+<li> <code>gtp_read</code></li>
+<li> <code>gtp_poll</code></li>
+</ul>
+
+
+<h5>（2）KGTP对GDB数据包的处理</h5>
+
+<p><code>gtp_gdbrsp_*</code> 系列函数完成了对GDB数据包的解析和处理。</p>
+
+<p>比如：</p>
+
+<ul>
+<li> <code>gtp_gdbrsp_QT</code>        处理QT的packet</li>
+<li> <code>gtp_gdbrsp_qtstart</code>   Start Trace Experiments，注册kprobe，uprobe以及watchpoints，hardware breakpoints等，并分配存储空间</li>
+<li> <code>gtp_qdbrsp_qtstop</code>    Stop Trace Experiments，flush work queue，tasklet_kill，以及unregister在qtstart注册的所有probe points和一些回调函数</li>
+</ul>
+
+
+<p>参考的话，就是GDB的官方手册了，比如：</p>
+
+<p>GDB的<a href="https://www.sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html">Query Packet</a>.
+Packets starting with ‘q’ are general query packets; packets starting with ‘Q’ are general set packets. General query and set packets are a semi-unified form for retrieving and sending information to and from the stub.</p>
+
+<h5>（3）Tracepoints和Breakpoints的注册和删除</h5>
+
+<ul>
+<li> <code>gtp_uprobe_register</code></li>
+<li> <code>gtp_register_hwb</code></li>
+<li> <code>gtp_unregister_hwb</code></li>
+</ul>
+
+
+<h5>（4）TSV的处理</h5>
+
+<p><code>gtp_var_*</code></p>
+
+<p>可以重点看一下<code>gtp_var_special_add_all</code>。</p>
+
+<h5>（5）Ring Buffer的处理</h5>
+
+<p>这里后续再详细分析，Ring Buffer的实现也是KGTP的核心之一。</p>
+
+<h4>3. 阅读源码小技巧&amp;问题总结</h4>
+
+<p>参考<code>LXR</code>[3]，直接使用<code>Identifier Search</code>[4]，遇到不明白的宏定义，函数定义，都可以直接到Linux源码中一探究竟。</p>
+
+<p>以下是我阅读代码过程遇到的一些问题总结：</p>
+
+<p>（1）EXPORT_SYMBOL</p>
+
+<p><a href="http://stackoverflow.com/questions/9836467/whats-meaning-of-export-symbol-in-linux-kernel-code">http://stackoverflow.com/questions/9836467/whats-meaning-of-export-symbol-in-linux-kernel-code</a></p>
+
+<p><a href="http://www.linux.com/learn/linux-training/31161-the-kernel-newbie-corner-kernel-symbols-whats-available-to-your-module-what-isnt">http://www.linux.com/learn/linux-training/31161-the-kernel-newbie-corner-kernel-symbols-whats-available-to-your-module-what-isnt</a></p>
+
+<p>（2）container_of</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/kernel.h#L833">http://lxr.free-electrons.com/source/include/linux/kernel.h#L833</a></p>
+
+<pre><code>/**
+827  * container_of - cast a member of a structure out to the containing structure
+828  * @ptr:        the pointer to the member.
+829  * @type:       the type of the container struct this is embedded in.
+830  * @member:     the name of the member within the struct.
+831  *
+832  */
+833 #definecontainer_of(ptr,type, member) ({                      \
+834         const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);    \
+835         (type *)( (char *)__mptr - offsetof(type,member) );})
+</code></pre>
+
+<p>（3）kzalloc</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/slab.h#L649">http://lxr.free-electrons.com/source/include/linux/slab.h#L649</a></p>
+
+<p>（4）kmalloc</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/slab.h#L452">http://lxr.free-electrons.com/source/include/linux/slab.h#L452</a></p>
+
+<p>（5）list</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/list.h">http://lxr.free-electrons.com/source/include/linux/list.h</a></p>
+
+<p>（6）INIT_WORK</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/workqueue.h">http://lxr.free-electrons.com/source/include/linux/workqueue.h</a></p>
+
+<p>（7）vfree</p>
+
+<p><a href="http://lxr.free-electrons.com/source/mm/vmalloc.c#L1490">http://lxr.free-electrons.com/source/mm/vmalloc.c#L1490</a></p>
+
+<p>（8）preempt_disable</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/preempt.h#L38">http://lxr.free-electrons.com/source/include/linux/preempt.h#L38</a></p>
+
+<p>（9）barrier</p>
+
+<p><a href="https://www.kernel.org/doc/Documentation/memory-barriers.txt">https://www.kernel.org/doc/Documentation/memory-barriers.txt</a></p>
+
+<p>（10）local_irq_save</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/irqflags.h#L93">http://lxr.free-electrons.com/source/include/linux/irqflags.h#L93</a></p>
+
+<p>（11）notifier_block</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/notifier.h#L53">http://lxr.free-electrons.com/source/include/linux/notifier.h#L53</a></p>
+
+<p>（12）flush_workqueue</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/workqueue.c#L2641">http://lxr.free-electrons.com/source/kernel/workqueue.c#L2641</a></p>
+
+<p>（13）tasklet_kill</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/softirq.c#L566">http://lxr.free-electrons.com/source/kernel/softirq.c#L566</a></p>
+
+<p>（14）unregister_wide_hw_breakpoint</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/events/hw_breakpoint.c#L536">http://lxr.free-electrons.com/source/kernel/events/hw_breakpoint.c#L536</a></p>
+
+<p>（15）unregister_kprobe</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/kprobes.c#L1668">http://lxr.free-electrons.com/source/kernel/kprobes.c#L1668</a></p>
+
+<p>（16）wake_up_interruptible_nr</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88">http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88</a></p>
+
+<p>（17）queue_work</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88">http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88</a></p>
+
+<p>（18）rcu_read_lock</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/rcupdate.h#L798">http://lxr.free-electrons.com/source/include/linux/rcupdate.h#L798</a></p>
+
+<p>（19）tasklet_init</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/softirq.c#L555">http://lxr.free-electrons.com/source/kernel/softirq.c#L555</a></p>
+
+<p>（20）IPI</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Inter-processor_interrupt">http://en.wikipedia.org/wiki/Inter-processor_interrupt</a></p>
+
+<p>（21）register_die_notifier</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/notifier.c#L544">http://lxr.free-electrons.com/source/kernel/notifier.c#L544</a></p>
+
+<p>（22）EBUSY</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/uapi/asm-generic/errno-base.h#L19">http://lxr.free-electrons.com/source/include/uapi/asm-generic/errno-base.h#L19</a></p>
+
+<h4>4. KGTP的调试&amp;源码注释</h4>
+
+<p>编译KGTP的时候添加D=1，便以debug的方式编译，在Fedora下可以通过journalctl -k查看其输出，其中-k是指过滤Kernel信息。其它系统下可能是在/var/log之类的文件查看，总之KGTP通过内核接口printfk输出，视具体的系统不同，查看内核信息的方式也会有变化。</p>
+
+<p>关于有注释的代码，请看[5]。</p>
+
+<h4>5. 参考链接</h4>
+
+<ul>
+<li> [1] <a href="https://github.com/teawater/kgtp">https://github.com/teawater/kgtp</a></li>
+<li> [2] <a href="http://people.ee.ethz.ch/~arkeller/linux/multi/kernel_user_space_howto.html#toc1">http://people.ee.ethz.ch/~arkeller/linux/multi/kernel_user_space_howto.html#toc1</a></li>
+<li> [3] <a href="http://lxr.free-electrons.com">http://lxr.free-electrons.com</a></li>
+<li> [4] <a href="http://lxr.free-electrons.com/ident">http://lxr.free-electrons.com/ident</a></li>
+<li> [5] <a href="https://code.csdn.net/Calmdownba/kgtp/tree/comments-from-scratch">https://code.csdn.net/Calmdownba/kgtp/tree/comments-from-scratch</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Lihang Li</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-27T19:34:48+08:00" pubdate data-updated="true">Jul 27<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/gdb/'>GDB</a>, <a class='category' href='/blog/categories/kgtp/'>KGTP</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/tracing/'>Tracing</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="bshare-custom"><a title="分享到豆瓣" class="bshare-douban"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到微信" class="bshare-weixin"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT
+        bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid=a717dd31-3443-4991-9738-c5f0e418bd1a&amp;pophcol=2&amp;lang=zh"></script><a class="bshareDiv" onclick="javascript:return false;"></a><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-1/" title="Previous Post: KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 1">&laquo; KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 1</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3/" title="Next Post: KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 3">KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 3 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>Focus on Life.
+  Focus on Technology.
+  Focus on Sports.
+  This is me,Calm.</p>
+  <p>Contact Me Via 
+  hustcalm(at)gmail.com</p>
+</section>
+<iframe frameborder="0" scrolling="no" src="http://kado.im/widget/5075993fabaa3/default.html" style="width: 100%; height: 67px; margin-bottom: 15px;" id="kadoWidgetFrame"></iframe>
+
+<section>
+<h1>Ohloh Profile</h1>
+<a href='https://www.ohloh.net/accounts/229059?ref=Detailed' target='_top'>
+<img alt='Ohloh profile for hustcalm' border='0' height='35' src='https://www.ohloh.net/accounts/229059/widgets/account_detailed.gif' width='191' />
+</a>
+</section>
+
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 105.45454545454545%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 110.9090909090909%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 105.45454545454545%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 105.45454545454545%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 105.45454545454545%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 105.45454545454545%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 105.45454545454545%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 110.9090909090909%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 110.9090909090909%'>C/C++(2)</a> <a href='/blog/categories/centos' style='font-size: 110.9090909090909%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 105.45454545454545%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 110.9090909090909%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 105.45454545454545%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 105.45454545454545%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 105.45454545454545%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 105.45454545454545%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 110.9090909090909%'>Embedded(2)</a> <a href='/blog/categories/fedora' style='font-size: 110.9090909090909%'>Fedora(2)</a> <a href='/blog/categories/gdb' style='font-size: 116.36363636363636%'>GDB(3)</a> <a href='/blog/categories/geek' style='font-size: 116.36363636363636%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 110.9090909090909%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 105.45454545454545%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 105.45454545454545%'>HTTP(1)</a> <a href='/blog/categories/kgtp' style='font-size: 116.36363636363636%'>KGTP(3)</a> <a href='/blog/categories/latex' style='font-size: 105.45454545454545%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 105.45454545454545%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 105.45454545454545%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 116.36363636363636%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(11)</a> <a href='/blog/categories/mac' style='font-size: 105.45454545454545%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 105.45454545454545%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 105.45454545454545%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 105.45454545454545%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 110.9090909090909%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 105.45454545454545%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 116.36363636363636%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 105.45454545454545%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 132.72727272727272%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 110.9090909090909%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 110.9090909090909%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 110.9090909090909%'>OpenHardware(2)</a> <a href='/blog/categories/opensource' style='font-size: 116.36363636363636%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 105.45454545454545%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 105.45454545454545%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 105.45454545454545%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 105.45454545454545%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 116.36363636363636%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 110.9090909090909%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 105.45454545454545%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 105.45454545454545%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 105.45454545454545%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 105.45454545454545%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 121.81818181818181%'>Robot(4)</a> <a href='/blog/categories/seo' style='font-size: 110.9090909090909%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 105.45454545454545%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 110.9090909090909%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 105.45454545454545%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 105.45454545454545%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 105.45454545454545%'>Startup(1)</a> <a href='/blog/categories/tracing' style='font-size: 116.36363636363636%'>Tracing(3)</a> <a href='/blog/categories/travel' style='font-size: 105.45454545454545%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 116.36363636363636%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 105.45454545454545%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 116.36363636363636%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 105.45454545454545%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 110.9090909090909%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 105.45454545454545%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 105.45454545454545%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 110.9090909090909%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 105.45454545454545%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 105.45454545454545%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 105.45454545454545%'>Xen(1)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-1/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective/">Review of Raspberry Pi Robotic Projects - From a Technical Perspective</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/17/what-is-socket-anyway/">What Is Socket Anyway?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Weibo</h1>
+  <ul id="weibo">
+    <li>
+      <iframe 
+        width="100%" 
+        height="550" 
+        class="share_self" 
+        frameborder="0" 
+        scrolling="no" 
+        src="http://widget.weibo.com/weiboshow/index.php?
+        width=0&
+        height=550&
+        ptype=1&
+        speed=0&
+        skin=&
+        isTitle=0&
+        noborder=1&
+        isWeibo=1&
+        isFans=&
+        uid=1236738912&
+        verifier=8e94b428">
+      </iframe>
+    </li>
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/licalmer?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/licalmer">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+<h2>Douban Show</h2>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/hustcalm/?show=wishlist&amp;select=random&amp;n=9&amp;columns=3"></script>
+</div>
+</section>
+
+
+<section>
+<h1>Flag Counter</h1>
+ <a href="http://s01.flagcounter.com/more/5Vzn"><img src="http://s01.flagcounter.com/count/5Vzn/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a><br><a href="http://flagcounter.com/">free counters</a> 
+</section>
+
+
+<section>
+    <h1>Friends Link</h1>
+    <p><a href="http://blog-ossclub.rhcloud.com/">中科院开源软件协会</a></p>
+    <p><a href="http://blug.chinalug.org/">北京Linux用户组</a></p>
+    <p><a href="http://www.bjgug.org/">北京GNOME用户组</a></p>
+    <p><a href="http://www.lupaworld.com/">LUPA开源社区</a></p>
+    <p><a href="http://www.open-open.com/">开源资讯</a></p>
+    <p><a href="http://ikimi.net">KIMI YANG</a></p>
+</section>
+
+
+
+<section>
+<h1>CC License</h1>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />Except where otherwise noted,content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Lihang Li -
+  <span class="credit">Powered by <a href="https://github.com">Github</a> & <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'welcometopandorasboxwhy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2/';
+        var disqus_url = 'http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

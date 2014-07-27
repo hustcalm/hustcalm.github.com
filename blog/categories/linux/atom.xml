@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-06-21T20:09:58+08:00</updated>
+  <updated>2014-07-27T20:35:38+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,552 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 3]]></title>
+    <link href="http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3/"/>
+    <updated>2014-07-27T19:34:52+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3</id>
+    <content type="html"><![CDATA[<h3>CSDN开源夏令营 &ndash; 第三周工作总结</h3>
+
+<p>这一周主要实现了“set trace-buffer-size”实现的数据通信部分，即完成了GDB和KGTP的数据交互部分，下面简单分析一下实现。在说代码实现之前，还是简单地回顾一下，如何摸清KGTP的脉络。</p>
+
+<h4>1. 如何跟踪KGTP</h4>
+
+<p>我的平台是Fedora，步骤如下：</p>
+
+<pre><code>make D=1
+sudo insmod gtp.ko
+sudo gdb /usr/lib/debug/lib/modules/3.14.8-200.fc20.x86_64/vmlinux -ex 'target remote /sys/kernel/debug/gtp'
+</code></pre>
+
+<!--more-->
+
+
+<p>此时，进入了gdb的console，可以通过gdb的commands和KGTP通信了。观察KGTP的一个重要的手段则是看printk的信息，由于编译时使用了“make D=1”，因此对应KGTP的代码，比如：</p>
+
+<pre><code> #ifdef GTP_DEBUG                                                                                            
+     printk(GTP_DEBUG "gtp_gdbrsp_qtbuffer\n");                                                              
+ #endif    
+</code></pre>
+
+<p>查看这些的方式则是使用“journalctl -k”，方便起见可以只查看末尾的部分信息，比如“journalctl -k -n 100”，在我的本地输出的部分信息如下：</p>
+
+<pre><code>Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qAttached
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qOffsets
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: g
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: m0,1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_m: addr = 0x0 len = 1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: m0,1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_m: addr = 0x0 len = 1
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qSymbol::
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qTStatus
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_qT: Status
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_write: qTfP
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_gdbrsp_qT: fP
+Jul 27 06:07:29 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>根据以上信息，可以顺藤摸瓜找到相应被调用的函数，从而屡清楚程序的执行逻辑，这对于理解KGTP的工作原理是非常有帮助的。关于journalctl[1]的使用，请自行“man journalctl”。在非systemd[2]的系统下，可能还需要通过“less /var/log/”这样的方式查看内核的输出，根据你使用的Linux随机应变即可。</p>
+
+<h4>2. GDB和KGTP的通信实现</h4>
+
+<p>利用GDBRSP[3]，即GDB Remote Serial Protocol，GDB远程串行通信协议。关于Remote Serial Protocol，可以参考[4]。简单来说，用于GDB远程调试发包，但是也支持File I/O和Console[5]，而KGTP正是利用了GDBRSP对于File I/O的支持，完成GDB和KGTP的通信，在接受到GDB发送的Packet后，KGTP进行解析。而通信的介质则是通过debugfs或者其他kernel space和user space进行数据交换的接口进行的。</p>
+
+<p>具体的实现，参考gtp.c的函数 <code>gtp_init</code>，部分代码如下：</p>
+
+<pre><code> gtp_dir = debugfs_create_file("gtp", S_IRUSR | S_IWUSR, NULL,
+                   NULL, &amp;gtp_operations);
+ if (gtp_dir == NULL || gtp_dir == ERR_PTR(-ENODEV)) {
+     gtp_dir = NULL;
+     goto out;
+ }
+ gtpframe_dir = debugfs_create_file("gtpframe", S_IRUSR, NULL,
+                    NULL, &amp;gtpframe_operations);
+ if (gtpframe_dir == NULL || gtpframe_dir == ERR_PTR(-ENODEV)) {
+     gtpframe_dir = NULL;
+     goto out;
+ }
+</code></pre>
+
+<p>可以看到，使用DebugFS，建立了相应的文件节点，比如gtp，gtpframe，并且注册了相应的file operations，比如<code>gtp_oprations</code>，<code>gtpframe_operations</code>。</p>
+
+<p>拿前者为例，声明的代码如下：</p>
+
+<pre><code>static const struct file_operations gtp_operations = {
+     .owner      = THIS_MODULE,
+     .open       = gtp_open,
+     .release    = gtp_release,
+ #if (LINUX_VERSION_CODE &lt; KERNEL_VERSION(2,6,35))
+     .ioctl      = gtp_ioctl,
+ #else
+     .unlocked_ioctl = gtp_ioctl,
+     .compat_ioctl   = gtp_ioctl,
+ #endif
+     .read       = gtp_read,
+     .write      = gtp_write,
+     .poll       = gtp_poll,
+ };
+</code></pre>
+
+<p>而这其中最核心的则是<code>gtp_read</code>和<code>gtp_write</code>，其中<code>gtp_read</code>，用于GDB从KGTP读取数据（<strong>copy_to_user</strong>），gtp_write，则是KGTP从GDB接收数据（<strong>copy_from_user</strong>）。具体的代码，这里就不贴了，大家可以自行分析。</p>
+
+<p>GDB和KGTP通过GDBRSP关联，通过执行<code>target remote /sys/kernel/debug/gtp</code>实现。</p>
+
+<h4>3. 添加“set-trace-buffer-size”的通信支持</h4>
+
+<p>有了以上的理论分析和准备，我们就可以着手实现“set trace-buffer-size”命令的解析了。首先，我们需要知道这个命令对应的GDBRSP的Query Packet以及KGTP利用哪个函数对其进行解析。通过[6]和[7]，我们得知如下信息：</p>
+
+<pre><code>set circular-trace-buffer on
+set circular-trace-buffer off
+Choose whether a tracing run should use a linear or circular buffer for trace data. A linear buffer will not lose any trace data, but may fill up prematurely, while a circular buffer will discard old trace data, but it will have always room for the latest tracepoint hits.
+
+show circular-trace-buffer
+Show the current choice for the trace buffer. Note that this may not match the agent’s current buffer handling, nor is it guaranteed to match the setting that might have been in effect during a past run, for instance if you are looking at frames from a trace file.
+
+set trace-buffer-size n
+set trace-buffer-size unlimited
+Request that the target use a trace buffer of n bytes. Not all targets will honor the request; they may have a compiled-in size for the trace buffer, or some other limitation. Set to a value of unlimited or -1 to let the target use whatever size it likes. This is also the default.
+
+show trace-buffer-size
+Show the current requested size for the trace buffer. Note that this will only match the actual size if the target supports size-setting, and was able to handle the requested size. For instance, if the target can only change buffer size between runs, this variable will not reflect the change until the next run starts. Use tstatus to get a report of the actual buffer size.
+
+
+‘QTBuffer:circular:value’
+This packet directs the target to use a circular trace buffer if value is 1, or a linear buffer if the value is 0.
+
+‘QTBuffer:size:size’
+This packet directs the target to make the trace buffer be of size size if possible. A value of -1 tells the target to use whatever size it prefers.
+</code></pre>
+
+<p>嗯，有线索了，GDB执行相应地指令，则会通过GDBRSP向KGTP发送相应的Query Packet，注意到“circular-trace-buffer”和“trace-buffer-size”的Packet的格式相同。关于GDB的General Query Packet，参考[8]。<strong>Packets starting with ‘q’ are general query packets; packets starting with ‘Q’ are general set packets. General query and set packets are a semi-unified form for retrieving and sending information to and from the stub.</strong></p>
+
+<p>因此，参考“circular-trace-buffer”的实现是一个很好的突破口，所幸的是，KGTP已经实现了对其的支持。</p>
+
+<h4>4. 添加“set trace-buffer-size”的具体实现</h4>
+
+<p>根据以上分析，我们很快找到了两个关键函数，“gtp_gdbrsp_QT  ”和“gtp_gdbrsp_qtbuffer”。OK，添加对“set trace-buffer-size”的解析，代码如下：</p>
+
+<pre><code>static int
+gtp_gdbrsp_qtbuffer(char *pkg)
+{
+#ifdef GTP_DEBUG
+    printk(GTP_DEBUG "gtp_gdbrsp_qtbuffer\n");
+#endif
+
+    // Handle QTBuffer:circular:value
+    if (strncmp("circular:", pkg, 9) == 0) {
+        ULONGEST setting;
+
+        pkg += 9;
+        if (pkg[0] == '\0')
+            return -EINVAL;
+        hex2ulongest(pkg, &amp;setting);
+
+#ifdef GTP_FTRACE_RING_BUFFER
+#if (LINUX_VERSION_CODE &gt; KERNEL_VERSION(2,6,38)) \
+    || defined(GTP_SELF_RING_BUFFER)
+        gtp_circular = (int)setting;
+        if (gtp_frame)
+            ring_buffer_change_overwrite(gtp_frame, (int)setting);
+#else
+        if (gtp_circular != (int)setting)
+            gtp_circular_is_changed = 1;
+#endif
+#endif
+        gtp_circular = (int)setting;
+
+        return 0;
+    }
+    // Handle QTBuffer:size:size 
+    else if (strncmp("size:", pkg, 5) == 0) {
+
+        ULONGEST size;
+
+        pkg += 5;
+
+        if (pkg[0] == '\0')
+            return -EINVAL;
+        hex2ulongest(pkg, &amp;size);
+
+        // Handle the new ringbuffer size blow
+
+        return 0;
+    }
+
+    return 1;
+}
+</code></pre>
+
+<p>重新编译，安装模块，然后在GDB中输入“set trace-buffer-size 100”，注意这里的100是十进制的，看下“journalctl -k”的输出，啥也没有。怎么回事，上面分析的不是挺美好的吗？经过几次尝试未果，把问题定位在了GDB对于Remote Packet的处理，不会是没有enable吧？</p>
+
+<p>查看文档[9]，果然，应该使用<code>set remote set-buffer-size on</code>先使能，否则应该是直接被gdbrsp丢掉了。OK，使用<code>set trace-buffer-size 100</code>，输出：</p>
+
+<pre><code>Jul 27 07:18:45 localhost.localdomain kernel: gtp_write: QTBuffer:size:64
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:64
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Jul 27 07:18:45 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>而使用<code>set trace-buffer-size unlimited</code>，输出：</p>
+
+<pre><code>Jul 27 07:19:53 localhost.localdomain kernel: gtp_write: QTBuffer:size:-1
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:-1
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Jul 27 07:19:53 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>OK，至此对于“set trace-buffer-size”的通信支持就完成了，接下来需要根据用户设置的size对trace buffer做出调整，接下来的文章会说到如何实现。</p>
+
+<h4>5. 参考链接</h4>
+
+<ul>
+<li> [1] <a href="http://www.freedesktop.org/software/systemd/man/journalctl.html">http://www.freedesktop.org/software/systemd/man/journalctl.html</a></li>
+<li> [2] <a href="https://wiki.archlinux.org/index.php/systemd">https://wiki.archlinux.org/index.php/systemd</a></li>
+<li> [3] <a href="https://sourceware.org/gdb/onlinedocs/gdb/Remote-Protocol.html">https://sourceware.org/gdb/onlinedocs/gdb/Remote-Protocol.html</a></li>
+<li> [4] <a href="http://blog.csdn.net/hmsiwtv/article/details/8759129">http://blog.csdn.net/hmsiwtv/article/details/8759129</a></li>
+<li> [5] <a href="https://sourceware.org/gdb/onlinedocs/gdb/File_002dI_002fO-Remote-Protocol-Extension.html#File_002dI_002fO-Remote-Protocol-Extension">https://sourceware.org/gdb/onlinedocs/gdb/File_002dI_002fO-Remote-Protocol-Extension.html#File_002dI_002fO-Remote-Protocol-Extension</a></li>
+<li> [6] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html</a></li>
+<li> [7] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html</a></li>
+<li> [8] <a href="https://www.sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html#General-Query-Packets">https://www.sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html#General-Query-Packets</a></li>
+<li> [9] <a href="https://sourceware.org/gdb/onlinedocs/gdb/Remote-Configuration.html">https://sourceware.org/gdb/onlinedocs/gdb/Remote-Configuration.html</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 2]]></title>
+    <link href="http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2/"/>
+    <updated>2014-07-27T19:34:48+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2</id>
+    <content type="html"><![CDATA[<h3>CSDN开源夏令营 &ndash; 第二周工作总结</h3>
+
+<p>这一周在上一周对整体框架的认识和理解之上，开始全面地阅读KGTP的源代码，理解了梗概，很多细节需要再仔细研读，主要参考是其代码仓库：[1]。</p>
+
+<h4>1. KGTP的核心代码文件</h4>
+
+<p>毫无疑问，KGTP最精髓的代码都在gtp.c文件中，约13500行代码，这其中包括了与GDB的通信，具体Query Packets的处理，Trace Points的注册和删除，事件的触发，硬件断点的设置和处理，等几乎所有的KGTP核心事务。在短短1万多行代码中，体现了几乎所有Linux Kernel开发过程中会用到的features，SMP的支持，Linux的list实现，锁和同步，工作队列，tasklet，硬件和软件中断，等等。</p>
+
+<!--more-->
+
+
+<p>其它辅助文件则有：</p>
+
+<ul>
+<li> <code>gtp_rb.c</code>      KGTP自己实现的一套Ring Buffer（默认使用）</li>
+<li> <code>perf_event.c</code>  Perf的核心实现，里面也实现Ring Buffer</li>
+<li> <code>ring_buffer.c</code> Linux内核为Trace的infrastructure提供的统一的Ring Buffer实现（比如Ftrace）</li>
+</ul>
+
+
+<h4>2. KGTP核心功能实现的源码分析</h4>
+
+<p>按照数据通信流程，<strong>GDB ——>   GDBRSP ——> SYSFS ——> KGTP ——> Kernel</strong>，简单分析如下：</p>
+
+<p><code>GDBRSP</code>是Remote Serial Protocol，用于GDB远程调试发包，但是也支持File I/O和Console，而KGTP正是利用了GDBRSP对于File I/O的支持，完成GDB和KGTP的通信，在接受到GDB发送的Packet后，KGTP进行解析。而通信的介质则是通过debugfs或者其他kernel space和user space进行数据交换的接口进行（参考[2]）。</p>
+
+<p>KGTP接收到了GDB的指令后，基于Kprobes和Uprobes进行内核和用户应用程序的trace，step和watch可以基于hardware-breakpoints实现。</p>
+
+<p>KGTP自己维护了一个ring buffer的，用于Trace Frame的存储，查询及dump。</p>
+
+<h5>（1）KGTP和GDB的通信</h5>
+
+<p>核心函数：</p>
+
+<ul>
+<li> <code>gtp_init</code>    建立对应的ProcFS或者DebugFS文件结点</li>
+</ul>
+
+
+<p>以下函数利用GDBRSP完成GDB和KGTP基于packet的通信：</p>
+
+<ul>
+<li> <code>gtp_open</code></li>
+<li> <code>gtp_release</code></li>
+<li> <code>gtp_ioctl</code></li>
+<li> <code>gtp_write</code></li>
+<li> <code>gtp_read</code></li>
+<li> <code>gtp_poll</code></li>
+</ul>
+
+
+<h5>（2）KGTP对GDB数据包的处理</h5>
+
+<p><code>gtp_gdbrsp_*</code> 系列函数完成了对GDB数据包的解析和处理。</p>
+
+<p>比如：</p>
+
+<ul>
+<li> <code>gtp_gdbrsp_QT</code>        处理QT的packet</li>
+<li> <code>gtp_gdbrsp_qtstart</code>   Start Trace Experiments，注册kprobe，uprobe以及watchpoints，hardware breakpoints等，并分配存储空间</li>
+<li> <code>gtp_qdbrsp_qtstop</code>    Stop Trace Experiments，flush work queue，tasklet_kill，以及unregister在qtstart注册的所有probe points和一些回调函数</li>
+</ul>
+
+
+<p>参考的话，就是GDB的官方手册了，比如：</p>
+
+<p>GDB的<a href="https://www.sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html">Query Packet</a>.
+Packets starting with ‘q’ are general query packets; packets starting with ‘Q’ are general set packets. General query and set packets are a semi-unified form for retrieving and sending information to and from the stub.</p>
+
+<h5>（3）Tracepoints和Breakpoints的注册和删除</h5>
+
+<ul>
+<li> <code>gtp_uprobe_register</code></li>
+<li> <code>gtp_register_hwb</code></li>
+<li> <code>gtp_unregister_hwb</code></li>
+</ul>
+
+
+<h5>（4）TSV的处理</h5>
+
+<p><code>gtp_var_*</code></p>
+
+<p>可以重点看一下<code>gtp_var_special_add_all</code>。</p>
+
+<h5>（5）Ring Buffer的处理</h5>
+
+<p>这里后续再详细分析，Ring Buffer的实现也是KGTP的核心之一。</p>
+
+<h4>3. 阅读源码小技巧&amp;问题总结</h4>
+
+<p>参考<code>LXR</code>[3]，直接使用<code>Identifier Search</code>[4]，遇到不明白的宏定义，函数定义，都可以直接到Linux源码中一探究竟。</p>
+
+<p>以下是我阅读代码过程遇到的一些问题总结：</p>
+
+<p>（1）EXPORT_SYMBOL</p>
+
+<p><a href="http://stackoverflow.com/questions/9836467/whats-meaning-of-export-symbol-in-linux-kernel-code">http://stackoverflow.com/questions/9836467/whats-meaning-of-export-symbol-in-linux-kernel-code</a></p>
+
+<p><a href="http://www.linux.com/learn/linux-training/31161-the-kernel-newbie-corner-kernel-symbols-whats-available-to-your-module-what-isnt">http://www.linux.com/learn/linux-training/31161-the-kernel-newbie-corner-kernel-symbols-whats-available-to-your-module-what-isnt</a></p>
+
+<p>（2）container_of</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/kernel.h#L833">http://lxr.free-electrons.com/source/include/linux/kernel.h#L833</a></p>
+
+<pre><code>/**
+827  * container_of - cast a member of a structure out to the containing structure
+828  * @ptr:        the pointer to the member.
+829  * @type:       the type of the container struct this is embedded in.
+830  * @member:     the name of the member within the struct.
+831  *
+832  */
+833 #definecontainer_of(ptr,type, member) ({                      \
+834         const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);    \
+835         (type *)( (char *)__mptr - offsetof(type,member) );})
+</code></pre>
+
+<p>（3）kzalloc</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/slab.h#L649">http://lxr.free-electrons.com/source/include/linux/slab.h#L649</a></p>
+
+<p>（4）kmalloc</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/slab.h#L452">http://lxr.free-electrons.com/source/include/linux/slab.h#L452</a></p>
+
+<p>（5）list</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/list.h">http://lxr.free-electrons.com/source/include/linux/list.h</a></p>
+
+<p>（6）INIT_WORK</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/workqueue.h">http://lxr.free-electrons.com/source/include/linux/workqueue.h</a></p>
+
+<p>（7）vfree</p>
+
+<p><a href="http://lxr.free-electrons.com/source/mm/vmalloc.c#L1490">http://lxr.free-electrons.com/source/mm/vmalloc.c#L1490</a></p>
+
+<p>（8）preempt_disable</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/preempt.h#L38">http://lxr.free-electrons.com/source/include/linux/preempt.h#L38</a></p>
+
+<p>（9）barrier</p>
+
+<p><a href="https://www.kernel.org/doc/Documentation/memory-barriers.txt">https://www.kernel.org/doc/Documentation/memory-barriers.txt</a></p>
+
+<p>（10）local_irq_save</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/irqflags.h#L93">http://lxr.free-electrons.com/source/include/linux/irqflags.h#L93</a></p>
+
+<p>（11）notifier_block</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/notifier.h#L53">http://lxr.free-electrons.com/source/include/linux/notifier.h#L53</a></p>
+
+<p>（12）flush_workqueue</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/workqueue.c#L2641">http://lxr.free-electrons.com/source/kernel/workqueue.c#L2641</a></p>
+
+<p>（13）tasklet_kill</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/softirq.c#L566">http://lxr.free-electrons.com/source/kernel/softirq.c#L566</a></p>
+
+<p>（14）unregister_wide_hw_breakpoint</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/events/hw_breakpoint.c#L536">http://lxr.free-electrons.com/source/kernel/events/hw_breakpoint.c#L536</a></p>
+
+<p>（15）unregister_kprobe</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/kprobes.c#L1668">http://lxr.free-electrons.com/source/kernel/kprobes.c#L1668</a></p>
+
+<p>（16）wake_up_interruptible_nr</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88">http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88</a></p>
+
+<p>（17）queue_work</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88">http://lxr.free-electrons.com/source/kernel/sched/wait.c#L88</a></p>
+
+<p>（18）rcu_read_lock</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/linux/rcupdate.h#L798">http://lxr.free-electrons.com/source/include/linux/rcupdate.h#L798</a></p>
+
+<p>（19）tasklet_init</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/softirq.c#L555">http://lxr.free-electrons.com/source/kernel/softirq.c#L555</a></p>
+
+<p>（20）IPI</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Inter-processor_interrupt">http://en.wikipedia.org/wiki/Inter-processor_interrupt</a></p>
+
+<p>（21）register_die_notifier</p>
+
+<p><a href="http://lxr.free-electrons.com/source/kernel/notifier.c#L544">http://lxr.free-electrons.com/source/kernel/notifier.c#L544</a></p>
+
+<p>（22）EBUSY</p>
+
+<p><a href="http://lxr.free-electrons.com/source/include/uapi/asm-generic/errno-base.h#L19">http://lxr.free-electrons.com/source/include/uapi/asm-generic/errno-base.h#L19</a></p>
+
+<h4>4. KGTP的调试&amp;源码注释</h4>
+
+<p>编译KGTP的时候添加D=1，便以debug的方式编译，在Fedora下可以通过journalctl -k查看其输出，其中-k是指过滤Kernel信息。其它系统下可能是在/var/log之类的文件查看，总之KGTP通过内核接口printfk输出，视具体的系统不同，查看内核信息的方式也会有变化。</p>
+
+<p>关于有注释的代码，请看[5]。</p>
+
+<h4>5. 参考链接</h4>
+
+<ul>
+<li> [1] <a href="https://github.com/teawater/kgtp">https://github.com/teawater/kgtp</a></li>
+<li> [2] <a href="http://people.ee.ethz.ch/~arkeller/linux/multi/kernel_user_space_howto.html#toc1">http://people.ee.ethz.ch/~arkeller/linux/multi/kernel_user_space_howto.html#toc1</a></li>
+<li> [3] <a href="http://lxr.free-electrons.com">http://lxr.free-electrons.com</a></li>
+<li> [4] <a href="http://lxr.free-electrons.com/ident">http://lxr.free-electrons.com/ident</a></li>
+<li> [5] <a href="https://code.csdn.net/Calmdownba/kgtp/tree/comments-from-scratch">https://code.csdn.net/Calmdownba/kgtp/tree/comments-from-scratch</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 1]]></title>
+    <link href="http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-1/"/>
+    <updated>2014-07-27T19:34:45+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-1</id>
+    <content type="html"><![CDATA[<h3>CSDN开源夏令营 &ndash; 第一周工作总结</h3>
+
+<p>这一周主要对KGTP的实现进行了简单的熟悉和分析，主要参考的资料在：[1]。</p>
+
+<h4>1.什么是KGTP</h4>
+
+<p>T大把KGTP称为Linux内核中的GDB快刀，其全称是Linux kernel GDB tracepoint module，是一个灵活轻量级实时的Linux调试器和跟踪器。</p>
+
+<p>Linux的tracer infrastructure五花八门，包括Ftrace，Utrace等，建议大家参考一下这篇paper，【Ptrace, Utrace, Uprobes: Lightweight, Dynamic Tracing of User Apps】，下载链接在：[2]。Tracer在收集信息的时候不停止Linux内核，但是不能被GDB控制。</p>
+
+<!--more-->
+
+
+<p>而在调试Linux内核的时候，我们也有很多选择，比如KDB，KGDB等，Debugger将停止Linux内核，但是可以被GDB控制。</p>
+
+<p>那么KGTP做了什么事情呢？Yes，作为Tracer和Debugger的一个桥梁，从而做到不停止Linux内核，且可以被本地或者远程的GDB控制。</p>
+
+<p>目前，KGTP支持X86-32，X86-64，MIPS和ARM，支持Linux内核2.6.18到upstream，直接Android（因为Android底层仍然是Linux Kernel）。</p>
+
+<h4>2. KGTP的实现</h4>
+
+<p>KGTP的大部分trace功能基于Kprobe，而用户态应用程序的trace功能则依赖Uprobe，对于使用Kprobe的情况，使用Kprobes-optimization还可提高Kprobe的速度。</p>
+
+<p>作为Debugger和Tracer之间的桥梁，KGTP通过GDB的RSP协议与GDB通信，完成数据的交换和用户命令的解析，具体的信息可以看GDB的文档，比如：<a href="https://www.sourceware.org/gdb/onlinedocs/gdb/Remote-Protocol.html">GDB Remote-Protocol</a>。KGTP内核态和用户态的数据交换，通过DebugFS或者ProcFS暴露给用户态的GDB。在接收到相关的GDB命令数据包后，完成相关的解析工作，设置对应的Tracepoint，在用户开始trace后（tstart），开始在Ring Buffer采集数据，结束后（tstop）可以供用户查看（tfind）。</p>
+
+<p>KGTP作为一个内核module存在，只需要编译KGTP后insmod，而不需要重新编译内核，因此非常灵活，当不需要KGTP的时候，直接rmmod即可。</p>
+
+<p>KGTP的数据分析主要使用GDB，因此代码中不需要很多数据分析的部分，核心源代码文件gtp.c，仅有13000行左右。</p>
+
+<p>总结起来，KGTP是一个灵活且轻量级的实现，可以实时地对Linux进行跟踪和调试，这对于线上服务器的问题处理是非常有用的。</p>
+
+<h4>3. KGTP的hack需要具备哪些知识</h4>
+
+<p>C语言功底+一定的Linux内核开发基础，具体的点总结如下：</p>
+
+<ul>
+<li> （1）Linux内核的同步机制（锁，信号量等）</li>
+<li> （2）字符驱动程序的实现原理，主要是GDB和KGTP的通信需要用到</li>
+<li> （3）Linux内核module的编写，因此KGTP是以一个module的形式存在的</li>
+<li> （4）Linux内核的tasklet和workqueue，KGTP的后台进程是一个守护进程gtpd</li>
+<li> （5）Ring buffer的实现，Linux内核trace的RB的实现以及KGTP自身RB的实现</li>
+<li> （6）Linux tracer的实现原理，因为KGTP是基于Kprobe和Uprobe实现的</li>
+<li> （7）GDB的基本原理，尤其是GDBRSP</li>
+</ul>
+
+
+<h4>4. 如何增加对GDB命令“set trace-buffer-size”的支持</h4>
+
+<ul>
+<li> （1）实现命令包的解析，参考[3][4]</li>
+<li> （2）实现Ring Buffer数据的拷贝和其他处理（主要针对新分配缓冲区小于原有缓冲区的情况）</li>
+</ul>
+
+
+<h4>5. 如何部署KGTP</h4>
+
+<p>强烈建议采用“一键安装”的方式，KGTP提供了部署脚本[kgtp.py]，十分方便。</p>
+
+<p>Kernel需要相应地debug info，因此如果是自己编译内核，则需要：</p>
+
+<pre><code>General setup —&gt;
+[*] Kprobes
+[*] Enable loadable module support —&gt;
+Kernel hacking —&gt;
+[*] Debug Filesystem
+[*] Compile the kernel with debug info
+</code></pre>
+
+<p>如果是Distro，需要安装Linux内核调试镜像和Linux内核源码包和开发包。</p>
+
+<p>只有这样，Kernel才能被GDB加载调试。</p>
+
+<p>以Fedora为例，当完成了以上步骤后，直接</p>
+
+<pre><code>sudo gdb /usr/lib/debug/lib/modules/3.14.8-200.fc20.x86_64/vmlinux -ex 'target remote /sys/kernel/debug/gtp'
+</code></pre>
+
+<p>根据使用内核版本的不同，加载的kernel image路径会有稍许区别，比如上面的<code>3.14.8-200.fc20.x86_64</code>。</p>
+
+<p>至此，部署完毕。</p>
+
+<h4>6. 如何使用KGTP</h4>
+
+<p>请参考KGTP的使用手册，具体链接见：[5]和[6]。</p>
+
+<h4>7. 参考链接</h4>
+
+<ul>
+<li> [1] <a href="http://teawater.github.io/kgtp/index.html">http://teawater.github.io/kgtp/index.html</a></li>
+<li> [2] <a href="http://kernel.org/doc/ols/2007/ols2007v1-pages-215-224.pdf">http://kernel.org/doc/ols/2007/ols2007v1-pages-215-224.pdf</a></li>
+<li> [3] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html</a></li>
+<li> [4] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html</a></li>
+<li> [5] <a href="http://teawater.github.io/kgtp/kgtp.html">http://teawater.github.io/kgtp/kgtp.html</a></li>
+<li> [6] <a href="http://teawater.github.io/kgtp/kgtpcn.html">http://teawater.github.io/kgtp/kgtpcn.html</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Review of Raspberry Pi Robotic Projects - From a Technical Perspective]]></title>
@@ -178,484 +724,6 @@ add #include &lt;unistd.h&gt; to the first line
 <p>As the orinigal <a href="http://www.robots.ox.ac.uk/~gk/PTAM/README.txt">README.txt</a> says, PTAM works well with Nvidia display card, I got <code>Segmentation Fault as soon as ... got video source</code> as I&rsquo;m using a display card shipped with an Intel motherboard.</p>
 
 <p>However, I think the root cause is that the display card driver does not know how to handle the color space coming from the webcam, so I&rsquo;m planning to deep into the mechanism and try to find out why. <a href="http://ewokrampage.wordpress.com/troubleshooting-faq/">George Klein</a> says that a nvidia display card and driver combo works fine after all.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux Getting Started - Methodologies and Practices]]></title>
-    <link href="http://hustcalm.me/blog/2014/01/06/linux-getting-started-methodologies-and-practices/"/>
-    <updated>2014-01-06T22:22:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/01/06/linux-getting-started-methodologies-and-practices</id>
-    <content type="html"><![CDATA[<p>This is basically a topic that I gave to <a href="http://blog-ossclub.rhcloud.com/">Open-CAS</a> group members as a technique share. Since I have known Linux for over 4 years and heavily used it for 2 years more or less, I find myself realy attracted by it.</p>
-
-<p>Also I want others to have the chance to live with a better OS(Unix and Linux, also Mac OS of course), so it&rsquo;s a good time to take the good points out of my mind and let more people know.</p>
-
-<p>It&rsquo;s good to learn from each other especially when there are problems to solve. So I put my mind at a <code>github</code> repo called <a href="https://github.com/hustcalm/linux-getting-started">linux-getting-started</a> and hope that others would join me to make this repo more useful.</p>
-
-<!--more-->
-
-
-<h3>What&rsquo;s in this repo</h3>
-
-<p>Currently, I&rsquo;m addressing two aspects for <code>Linux Getting Started</code>, namely <code>Methodologies</code> and <code>Practices</code>. I know these are really big words, but they just fit here since I want to tell people <code>how to learn</code> not just <code>what to learn</code>.</p>
-
-<h4>Methodologies</h4>
-
-<p>Know what you are gonna do before you step out. Basically, for Linux beginners, the first step that I recommend is <code>install a Linux distro that you like</code>. Then just <code>use it</code> before you want to know everything about it(seems that no one will never ever). It&rsquo;s an OS after all, you use it for your daily job and solve your problems, not a magic software that just plays magic.</p>
-
-<p>A good book would give you a real quick start, I have divided the books into three levels:</p>
-
-<ul>
-<li>[Beginner]</li>
-</ul>
-
-
-<p>Newbies who just get to know Linux &ndash; Learn how to live with shell</p>
-
-<ul>
-<li>[Developer]</li>
-</ul>
-
-
-<p>Experienced programmers especially for C/C++ guys &ndash; get used to Linux Platform</p>
-
-<ul>
-<li>[Next]</li>
-</ul>
-
-
-<p>Ones who will dive deeper into the most complicated but fun part &ndash; Kernel and Driver</p>
-
-<p><strong>In one word, use it, learn it, dive into it!</strong></p>
-
-<h4>Practices</h4>
-
-<p>Using and Reading will give a quite well understanding for Linux, but not enough for mastering it. To become <code>real Linux users or developers</code>, remember <code>never leave your eyes off the screen and your fingers off your keyboard</code>, practice will just make perfect things and a great Linuxer, believe me:&ndash;)</p>
-
-<p>I address two technical parts currently in this repo, <code>Shell Scripting</code> and <code>Makefile</code>. Other parts will definitely added as long as I maintain this repo.</p>
-
-<h5>Shell Scripting</h5>
-
-<p>Before beginning with <code>Shell Scripting</code>, I suppose you have already been familiar with varies of commands or utilities in shell.</p>
-
-<p>To be straight, <code>shell</code> itself is a program which will interpret user&rsquo;s commands or instructions, convert them to <code>system calls</code> or other things that OS can understand. So basically speaking, <code>shell</code> is the interface between <code>user</code> and <code>OS Kernel</code>.</p>
-
-<p>As a script language, it has its own variables, functions and flow control statements, also it features many other stuff which will ease much pain for system administration but maybe worse if not used properly. When we are writing shell scripts, we are actually dealing with processes and interprocess communication, each process would do its job and we can use <code>pipe</code>, <code>socket</code>, <code>named-pipes</code> or <code>file</code> to let them talk to each other.</p>
-
-<p>You can definitely play some magic with shell scripting by choosing your favorite shell, like <code>Bash</code>, <code>Ksh</code>, <code>Zsh</code>, etc.</p>
-
-<h5>Makefile</h5>
-
-<p>As you get to know <code>shell</code>, you are ready to know something about <code>makefile</code>. Before that, I will talk about <code>make</code>, <code>autotools</code> first.</p>
-
-<p>When we are trying to build a big project, no one want to invoke every single compiling commands by hand which is annoying but also error prone. Here comes <code>make</code> to figure out this problem. So when you download a package with source code, to build it, simply type:</p>
-
-<pre><code>make
-sudo make install
-</code></pre>
-
-<p>Then you are done!</p>
-
-<p>Is this that easy? Reality will really disappoint us, because the user&rsquo;s OS or environment always will not be consistent with the developer&rsquo;s. So <code>make</code> does not easy the pain for buiding a package or software from scratch, but making it easier to manage a big project.</p>
-
-<p>So what&rsquo;s the solution? Here comes the <code>Autotools</code>, which will generate <code>makefiles</code> automatically according to the configuration of your system. Like you got a third party library A, and one package needs the library for one feature, <code>Autotools</code> will take care of whether you got the library installed, if yes, then build the package with the feature enabled, or just disable it otherwise.</p>
-
-<p>Cool, isn&rsquo;t it? Yes for the users, but maybe no for the developers, I mean all the pain will be transfered to the developers since they got to write <code>Autotools</code> scripts to make things right. Just another wrapper to give a good, cross-platform and generic solution? Some people would quite agree with this opinion.</p>
-
-<p>Thanks to the <code>Autotools</code>, people are getting used to:</p>
-
-<pre><code>./configure
-make
-sudo make install
-</code></pre>
-
-<p>There are many others excellent build systems or tools out there, like <code>CMake</code>, <code>QMake</code>, <code>Scons</code>, <code>Ninja</code> ,etc. Go and try them out!</p>
-
-<hr />
-
-<h3>Where is the slide</h3>
-
-<p>Honestly speaking, the slide is just a chain which helps me to make a clear topic. So you will not find it big, just about 15 pages, however to spread all the sparking mind, you will find it&rsquo;s really a <code>big one</code> again.</p>
-
-<p>If you want, download the slide at <a href="https://github.com/hustcalm/linux-getting-started/blob/master/linux-getting-started-%40hustcalm.pdf">here</a>.</p>
-
-<hr />
-
-<h3>What if I want to see something else</h3>
-
-<p>Cool, buddy, I do hope that we can maintain this repo together and help more people to get started with Linux. So you are welcome to add interesting topics or useful links or good references or books to this repo.</p>
-
-<p>You may either <code>fork</code> this <a href="https://github.com/hustcalm/linux-getting-started">repo</a>, add something interesting, then <code>pull request</code> to me.</p>
-
-<p>Or you can just add what you want to know to the <code>wishList</code> file after <code>fork</code>, maybe shortly I will add stuff about the topic that you care about.</p>
-
-<p>Help others, help yourself:&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Install CentOS 6.4 minial with Grub2 and a USB Stick - The Simple Way]]></title>
-    <link href="http://hustcalm.me/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way/"/>
-    <updated>2013-11-04T17:08:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way</id>
-    <content type="html"><![CDATA[<p>What a shame that I failed over and over to just install CentOS 6.4 minimal to my Desktop PC!!!</p>
-
-<p>I got a broken Ubuntu 12.04 on my hand with a working Grub2, cheers:&ndash;) Also, I luckily have a 4 GB USB stick(who esle dosen&rsquo;t,kidding).</p>
-
-<h2>The Goal</h2>
-
-<p>Install CentOS 6.4 minial with Grub2 and a single USB stick, making no bootable USB stick, but do some tricks with the ISO file instead.</p>
-
-<!--more-->
-
-
-<h2>Preparation</h2>
-
-<p>In a nutshell, we need a working Grub(or other bootloaders, I use Grub2), a USB Stick with a vfat or ext2 partition and CentOS ISO file.</p>
-
-<h3>Bootloader</h3>
-
-<p>As I have a broken Ubuntu 12.04 and a already working Grub2, I would just go on.</p>
-
-<p>However, you have many choices due to your OS. Such as:</p>
-
-<ul>
-<li>Grub Legacy</li>
-<li>Grub4dos</li>
-<li>EasyBCD</li>
-</ul>
-
-
-<h3>ISO</h3>
-
-<p>Download it from a mirror that&rsquo;s close enough to you. Check out the <a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">Mirror List</a> and I choose <a href="http://mirrors.163.com/centos/6.4/isos/x86_64/">mirrors.163.com</a>.</p>
-
-<p>Save the <code>CentOS-6.4-x86_64-minimal.iso</code> to your hard drive.</p>
-
-<h3>USB Stick</h3>
-
-<p>According to the CentOS wiki, the installer will recognize ext2 or vfat. I choose vfat in my case.</p>
-
-<p>My device on my Linuxmint shows /dev/sdb and the partition shows /dev/sdb1. Just ensure that you have a VFAT partition, other things don&rsquo;t matter too much really.</p>
-
-<p>To play with device and partitions, you can use <code>fdisk</code> and <code>mkfs.*</code> or other tools that you favor.</p>
-
-<h3>Extract Files</h3>
-
-<p>I put the ISO file under <code>~/Downloads</code>. And I follow the instructions below:</p>
-
-<pre><code>mkdir /mnt/centos
-sudo mount -o loop -t iso9660 ~/Downloads/CentOS-6.4-x86_64-minimal.iso /mnt/centos
-mkdir /mnt/usbdisk
-mount /dev/sdb1 /mnt/usbdisk
-cp -r /mnt/centos/isolinux /mnt/centos/images /mnt/usbdisk
-sudo umount /mnt/centos
-cp ~/Downloads/CentOS-6.4-x86_64-minimal.iso /mnt/usbdisk
-sudo umount /mnt/usbdisk
-</code></pre>
-
-<p>After this, we have <code>CentOS-6.4-x86_64-minimal.iso</code>,<code>isolinux</code> and <code>images</code> on our USB Stick.</p>
-
-<h2>Installation</h2>
-
-<p>Now use Grub2 to boot into CentOS installation environment and complete the installation. I have a SATA hard disk locally and do remember <strong>CentOS installer will make your local hard disk to sdb or sdc, but not sda. The USB Stick will be sda during the installation.</strong></p>
-
-<p>To enter Grub2 command line, press <code>SHIFT</code> when your PC boots, or you may miss the menu entry due to <strong>HIDDEN_TIMEOUT</strong> configruration. Then press <code>c</code> to get a command line.</p>
-
-<p>Then follow the instructions below, you may adjust a little to suit your own PC.</p>
-
-<pre><code>linux (hd1,msdos1)/isolinux/vmlinuz
-initrd (hd1,msdos1)/isolinux/initrd.img
-boot
-</code></pre>
-
-<p>When you prompt to select <code>Installation Method</code>, use <code>Hard Drive</code> and select <code>sda1</code>, follow the routine procedures and you are done:&ndash;)</p>
-
-<p><strong>I tried <code>URL Method</code> but failed, either <code>mirrors.163.com</code> nor <code>mirrors.sohu.com</code> would work:&ndash;(</strong></p>
-
-<h2>Summary</h2>
-
-<p>All the essentials reside in Grub2 and isolinux or you may say bootloader and ISO stuff. Check them out and deep it for deep is the best way to solve varies of problems related to boot, installation and rescue.</p>
-
-<p>You may install by other methods, CD-ROW, bootable USB Stick or whatever you like.</p>
-
-<p>Enjoy the struggling and enjoy the gain!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Playing with Xen under Centos6.4 to build your own VPS]]></title>
-    <link href="http://hustcalm.me/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps/"/>
-    <updated>2013-10-14T10:28:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps</id>
-    <content type="html"><![CDATA[<p>Believe it or not, we are under an age called Cloud Computing.</p>
-
-<p>I used to be curious about VPS(Virtual Private Server), how they work, how to build them, etc. As far as I know, AWS, GCE or whatever else solutions depend heavily on Virtualization Technologies and AWS is definitly playing with Xen currently.</p>
-
-<p>I would like very much to have a trial for building my own VPS and blow are my steps doing it. You may need to read some basic wikis about Xen, <a href="http://wiki.xen.org/wiki/Xen_Overview">Xen Overview</a> and <a href="http://wiki.xen.org/wiki/Xen_Beginners_Guide">Xen Beginners Guide</a> should do some help:&ndash;)</p>
-
-<!--more-->
-
-
-<h2>Getting a working Dom0 on Centos6.4</h2>
-
-<h3>Install Centos</h3>
-
-<p>Use whatever way you like, remember a <strong>minimal install</strong> is recommended.</p>
-
-<h3>Install Xen</h3>
-
-<p>Thanks to <strong>Xen4Centos</strong> Project, we can get Xen installed in several simple commands(log in as root).</p>
-
-<pre><code>yum -y update
-yum install centos-release-xen
-yum install xen
-/usr/bin/grub-bootxen.sh
-reboot
-</code></pre>
-
-<p>After your machine comes to alive, simply type:</p>
-
-<pre><code>uname -r
-xl list
-</code></pre>
-
-<p>to verify that Xen Dom0 is running.</p>
-
-<h3>Config network</h3>
-
-<p>I use DHCP to get a valid IP for my box and there is a trick if you can&rsquo;t ping each other when two machinea are in the same LAN(probably the routing table is not working for you and just delete the record from your routing table).</p>
-
-<p>As me, for example, my laptop got a IP, say 192.168.0.10 and my VPS got 192.168.0.11, but they can&rsquo;t talk to each:&ndash;(</p>
-
-<p>First, check your routing table,</p>
-
-<pre><code>route
-</code></pre>
-
-<p>Then, delete the record that is evil,</p>
-
-<pre><code>route del -net 192.168.0.0 netmask 255.255.255.0
-</code></pre>
-
-<p><strong>Please substitute the parameters to suite your own networking</strong>.</p>
-
-<p>After that, ping each other,</p>
-
-<pre><code>ping 192.168.0.11
-</code></pre>
-
-<p>to verify the networking is good to go.</p>
-
-<p>In order to give our DomUs valid IPs, we may use a network bridge, do as follows:</p>
-
-<pre><code>yum -y install bridge-utils
-cp /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-xenbr0
-</code></pre>
-
-<p>My modified and working scripts look like this, for ifcfg-xenbr0:</p>
-
-<pre><code>DEVICE=xenbr0
-#HWADDR=00:24:E8:46:CC:C9
-TYPE=bridge
-#UUID=ff0ab497-0303-4dc3-b6f3-4a6cbd90466b
-ONBOOT=yes
-NM_CONTROLLED=no
-BOOTPROTO=dhcp
-</code></pre>
-
-<p>And for ifcfg-eth0:</p>
-
-<pre><code>DEVICE=eth0
-HWADDR=00:24:E8:46:CC:C9
-TYPE=Ethernet
-UUID=ff0ab497-0303-4dc3-b6f3-4a6cbd90466b
-ONBOOT=yes
-NM_CONTROLLED=no
-#BOOTPROTO=dhcp
-BRIDGE=xenbr0
-</code></pre>
-
-<p><strong>For static IP configuration, please refer to Xen wiki page!</strong></p>
-
-<p>Then, make the configuration work:</p>
-
-<pre><code>service network restart
-</code></pre>
-
-<p>If you got errors such as <code>error:check cable</code>, do this manualy:</p>
-
-<pre><code>ifup xenbr0
-</code></pre>
-
-<p>Verify it works by issuing:</p>
-
-<pre><code>ifconfig xenbr0
-</code></pre>
-
-<h3>Diable SELinux</h3>
-
-<p>Honestly speaking, I don&rsquo;t know WTF the real reason to do this, but people say <code>SELinux can really interfere with Xen</code>.</p>
-
-<pre><code>sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
-setenforce 0
-</code></pre>
-
-<p>You are good to go with a damn working Dom0 and congratulations!</p>
-
-<h2>Bringing Your DomUs Up</h2>
-
-<p>It&rsquo;s up to you to use PV or HVM, personally, I prefer to PV due to higher performance. But if you want a Windows(and other OS whose kernel can&rsquo;t be modified), HVM is your only choice.</p>
-
-<p>As for me, I want 3 DomUs, namely Debian, Fedora and Arch Linux.</p>
-
-<h3>Xen4Cli or Xen4Libvirt</h3>
-
-<p>Xen4Cli(xm and xl, currently xm deprecated) are intended for advanced users looking to hand setup the network, the backing filestore and the xen environment. While Xen4Libvirt are for newbies looking for the easiest install path.</p>
-
-<p>I prefer <code>xl</code> since I want to know what exactly is happening, and <code>xl</code> works for Debian and Arch Linux. However for Fedora, <code>Libvert</code> seems to be the right way(using <code>virt-install</code>).</p>
-
-<p>To install Libvirt,</p>
-
-<pre><code>yum install libvirt python-virtinst libvirt-daemon-xen
-</code></pre>
-
-<p>After the install, restart your Dom0 machine.</p>
-
-<h3>File or LVM based backend</h3>
-
-<p>Since Centos6.4 is shipped perfectly with LVM and also the default partition schema using LVM during OS Installation, I prefer <code>LVM</code>.</p>
-
-<p>As for me, I do the following:</p>
-
-<pre><code>lvresize -L -200G vg_centos6/lv_home -r
-lvcreate -L 30G -n fedora vg_centos6
-lvcreate -L 30G -n debian vg_centos6
-lvcreate -L 30G -n archlinux vg_centos6
-</code></pre>
-
-<p>Then verify the Logical Volumes using:</p>
-
-<pre><code>lvdisplay
-</code></pre>
-
-<p>Or</p>
-
-<pre><code>lvs
-</code></pre>
-
-<p>If you are not familiar with LVM, search Google for a good tutorial first.</p>
-
-<h3>Bridge, Routing or NAT</h3>
-
-<p>Three networking modes are provided and choose one according to your own networking environment.</p>
-
-<p>I got bridge working for me as described in above section.</p>
-
-<p>For choosing other modes, you can modify <code>/etc/xen/xend-config.sxp</code> or explicitly passing as parameters when creating DomUs.</p>
-
-<h3>Let DomUs fly</h3>
-
-<h4>Debian</h4>
-
-<p>I choose debian7.1 netinst.iso due to my poor bandwidth,</p>
-
-<pre><code>wget -c http://mirrors.sohu.com/debian-cd/7.1.0/amd64/iso-cd/debian-7.1.0-amd64-netinst.iso
-mount -o loop /path/to/debian-7.1.0-amd64-netinst.iso /mnt/debian
-cp /mnt/debian/install.amd/xen/debian.cfg /etc/xen/
-cd /etc/xen/
-vi debian.cfg  ## Make modifications according to the comments
-xl create -c debian.cfg
-</code></pre>
-
-<p>Then install Debian as a very normal one.</p>
-
-<h4>Arch Linux</h4>
-
-<p>I download archlinux-2013.10.01-dual.iso by issuing:</p>
-
-<pre><code>wget http://mirrors.sohu.com/archlinux/iso/latest/archlinux-2013.10.01-dual.iso
-</code></pre>
-
-<p>Then create a arch.cfg file in <code>/etc/xen/</code> similar like:</p>
-
-<pre><code># Refer to https://wiki.archlinux.org/index.php/Xen#Configuring_a_paravirtualized_.28PV.29_Arch_domU
-
-name = "arch"
-kernel = "/mnt/arch/arch/boot/x86_64/vmlinuz"
-ramdisk = "/mnt/arch/arch/boot/x86_64/archiso.img"
-extra = "archisobasedir=arch archisolabel=ARCH_201310"
-memory = 512
-disk = [ "phy:/dev/vg_centos6/archlinux,sda1,w", "file:/root/isos/arch/archlinux-2013.10.01-dual.iso,sdb,r" ]
-vif = [ '' ]
-</code></pre>
-
-<p>After that, bring the DomU up by:</p>
-
-<pre><code>mount /path/to/archlinux-2013.10.01-dual.iso /mnt/arch
-cd /etc/xen/
-xl create -c arch.cfg
-</code></pre>
-
-<p>Install your Arch Linux as you like since it&rsquo;s really a highly customized distro.</p>
-
-<h4>Fedora</h4>
-
-<p>Again I got Fedora-20-Alpha-x86_64-netinst.iso by issuing:</p>
-
-<pre><code>wget http://download.fedoraproject.org/pub/fedora/linux/releases/test/20-Alpha/Fedora/x86_64/iso/Fedora-20-Alpha-x86_64-netinst.iso
-</code></pre>
-
-<p>However, nightmares begin since I want to install it using the Debian way. <code>xl</code> just fails to boot normally but <code>virt-install</code> does the job.</p>
-
-<p>Using the <code>virt-install</code> method:</p>
-
-<pre><code>virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://mirrors.163.com/fedora/releases/19/Fedora/x86_64/os/ --os-type linux --accelerate --nographics --network=bridge:xenbr0
-</code></pre>
-
-<p>Or you can download the ISO file first, then issuing your own httpd locally, thus making it:</p>
-
-<pre><code>mount -o loop /path/to/fedora.iso /mnt/fedora
-yum -y install httpd
-service httpd start
-ln -s /mnt/fedora /var/www/html
-service iptables stop
-virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://your.http.server.ip.address.here/ --os-type linux --accelerate --nographics --network=bridge:xenbr0
-</code></pre>
-
-<p>Remember this is for full Fedora installation, if you are using a netinst, you need to copy all the files to /var/www/html instead of creating a symbolic link and modify the .treeinfo file. No warrants here, since I did&rsquo;t try it myself.</p>
-
-<h2>References</h2>
-
-<ul>
-<li><a href="http://wiki.centos.org/HowTos/Xen/Xen4QuickStart">Xen4 CentOS6 QuickStart</a></li>
-<li><a href="http://wiki.centos.org/HowTos/Xen/Xen4QuickStart/Xen4Libvirt">Xen4 Libvirt for CentOS 6</a></li>
-<li><a href="http://drewsymo.com/cloud-computing/install-xen-on-centos-and-create-a-fedora-debian-vm/">Install Xen 4 with Libvirt / XL on CentOS 6 (2013)</a></li>
-<li><a href="http://www.howtoforge.com/virtualization-with-xen-on-centos-6.2-x86_64-paravirtualization-and-hardware-virtualization">Virtualization With Xen On CentOS 6.2 (x86_64) (Paravirtualization &amp; Hardware Virtualization)</a></li>
-<li><a href="http://wiki.xen.org/wiki/Xen_Configuration_File_Options">Xen Configuration File Options</a></li>
-<li><a href="http://xenbits.xen.org/docs/unstable/man/xl.cfg.5.html">XL Domain Configuration File Syntax</a></li>
-<li><a href="http://wiki.xen.org/wiki/Network_Configuration_Examples_(Xen_4.1%2B">Network Configuration Examples (Xen 4.1+)</a>)</li>
-<li><a href="http://wiki.xen.org/wiki/Debian_Guest_Installation_Using_Debian_Installer">Debian Guest Installation Using Debian Installer</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/Xen">Xen For Arch Linux Wiki page</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/Installation_Guide">Arch Linux Installation Guide</a></li>
-<li><a href="http://bderzhavets.wordpress.com/2009/01/10/install-fedora-10-pv-domu-at-xen-331-centos-52-dom0-xen-330-intrepid-server-dom0-novells-xen-inified-kernel-via-local-apache-mirror/">Install Fedora 10 PV DomU at Xen 3.3.1 CentOS 5.2 Dom0 &amp; Xen 3.3.0 Intrepid Server Dom0 (Novell’s Xen-ified Kernel) via local Apache Mirror</a></li>
-<li><a href="https://lists.fedoraproject.org/pipermail/xen/2012-November/005938.html">Installing a domU without virt-install Fedora-xen</a></li>
-<li><a href="http://www.centos.bz/2012/03/centos-6-install-deploy-xen/">CentOS 6安装配置Xen</a></li>
-<li><a href="http://www.cnblogs.com/hseagle/p/3299713.html">Archlinux 简明安装指南</a></li>
-<li><a href="http://blog.csdn.net/holdsky/article/details/8497764">archlinux （2012.12.01-dual） i686 硬盘安装</a></li>
-<li><a href="http://en.wikipedia.org/wiki/Xen">Xen</a></li>
-<li><a href="http://wiki.xen.org/wiki/Choice_of_Toolstacks">Choice of Toolstacks</a>
-
-<ul>
-<li><a href="http://wiki.xen.org/wiki/XL_vs_Xend_Feature_Comparison">XL vs Xend Feature Comparison</a></li>
-</ul>
-</li>
-</ul>
-
-
-<hr />
-
-<p>I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:&ndash;)</p>
 ]]></content>
   </entry>
   
