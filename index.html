@@ -9,7 +9,7 @@
   <meta name="author" content="Lihang Li">
 
   
-  <meta name="description" content="CSDN开源夏令营 &ndash; 第三周工作总结 这一周主要实现了“set trace-buffer-size”实现的数据通信部分，即完成了GDB和KGTP的数据交互部分，下面简单分析一下实现。在说代码实现之前，还是简单地回顾一下，如何摸清KGTP的脉络。 1. 如何跟踪KGTP &hellip;">
+  <meta name="description" content="Coming across to ElasticSearch when preparing for the programming chanllege held by WorksApplications in Tokyo Event, and falling love with her after &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,105 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development/">Getting Started With ElasticSearch and Plugin Development</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-10T18:33:53+08:00" pubdate data-updated="true">Aug 10<span>th</span>, 2014</time>
+        
+           | <a href="/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development/#disqus_thread"
+             data-disqus-identifier="http://hustcalm.me/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Coming across to <code>ElasticSearch</code> when preparing for the programming chanllege held by WorksApplications in Tokyo Event, and falling love with her after then. Well, with no much new techonoligies involved, <code>ElasticSearch</code> is definitely a beautiful piece of software and a successful product. Claimed that with the core search engine powered by <code>Lucene</code>, providing <code>RESTful interface</code> and born as a distributed and scheme-free search oriented product, <code>ElasticSearch</code> has boosted the huge
+business of <strong>Github</strong> with billions of lines and <strong>Stackoverflow</strong> with billions of Q&amp;A.</p>
+
+<p>After digging some 101 tutorials around, I found it easy to set up <code>ES</code>(abbreviated for ElasticSearch and will use afterwards) and begin to play in 10 minutes. However, to understand what is going on underhood and what is the most tricy and interesting part, also to those who try to develop plugins to enpower <code>ES</code>, I will share something which would be useful for newbies. There are already tons of tutorials online, to same your time, please see
+<a href="https://github.com/hustcalm/elasticsearch-getting-started">elasticsearch-getting-started</a> hosted on my github for a good cheat sheet.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 4</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-10T18:33:09+08:00" pubdate data-updated="true">Aug 10<span>th</span>, 2014</time>
+        
+           | <a href="/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/#disqus_thread"
+             data-disqus-identifier="http://hustcalm.me/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>CSDN开源夏令营 &ndash; 第四周工作总结</h3>
+
+<p>本周主要是在回顾“set trace-buffer-size”完成通信的基础上，对于指定参数size的处理，比如指定-1或者unlimited的时候，在KGTP端该如何做解析，以及该如何处理此时的buffer size。同时，根据“开题报告&#8221;的进度，中期检查的任务已经完成。对Trace Buffer的实现，做了初步的调研。</p>
+
+<h4>1. GDB和KGTP通信实现的回顾</h4>
+
+<p>利用GDBRSP，即GDB Remote Serial Protocol，GDB远程串行通信协议。简单来说，用于GDB远程调试发包，但是也支持File I/O和Console，而KGTP正是利用了GDBRSP对于File I/O的支持，完成GDB和KGTP的通信，在接受到GDB发送的Packet后，KGTP进行解析。而通信的介质则是通过debugfs或者其他kernel space和user space进行数据交换的接口进行的。
+具体实现，可以参考上一篇博文[1]。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -242,99 +341,6 @@ sudo gdb /usr/lib/debug/lib/modules/3.14.8-200.fc20.x86_64/vmlinux -ex 'target r
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective/">Review of Raspberry Pi Robotic Projects - From a Technical Perspective</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-21T19:15:15+08:00" pubdate data-updated="true">Jun 21<span>st</span>, 2014</time>
-        
-           | <a href="/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective/#disqus_thread"
-             data-disqus-identifier="http://hustcalm.me/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After being the reviewer for the <a href="http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/">BeagleBone Robotic Projects</a>, I&rsquo;m honored to be the reviewer for another book about robotic projects named <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotic Projects</a>. I will go no further to talk about the differences about <code>BeagleBone</code> and <code>Raspberry Pi</code>, all I know is that they are both cool and amazing. To start to play with <code>Raspberry Pi</code>, I suggest that you
-can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects</a> as an option.</p>
-
-<p>In this post, I will give you a very quick overview of the book and tell why it&rsquo;s worth it.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/17/what-is-socket-anyway/">What Is Socket Anyway?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-17T21:05:06+08:00" pubdate data-updated="true">Apr 17<span>th</span>, 2014</time>
-        
-           | <a href="/blog/2014/04/17/what-is-socket-anyway/#disqus_thread"
-             data-disqus-identifier="http://hustcalm.me/blog/2014/04/17/what-is-socket-anyway/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I bet you&rsquo;ve heard of <code>socket</code> for a while, but do you really know what is a <code>socket</code>?</p>
-
-<p>This post is a quick getting-started for figuring out the basic concepts of socket and hopefully enpowers you to begin writing simple network programming snippets. It aims to bootstrap your understanding to socket and network programming and serves as a good starting point to truth. From definition to practice and deep into research, let&rsquo;s start the venture!</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/04/17/what-is-socket-anyway/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -365,11 +371,19 @@ can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects
 
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 105.45454545454545%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 110.9090909090909%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 105.45454545454545%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 105.45454545454545%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 105.45454545454545%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 105.45454545454545%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 105.45454545454545%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 110.9090909090909%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 110.9090909090909%'>C/C++(2)</a> <a href='/blog/categories/centos' style='font-size: 110.9090909090909%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 105.45454545454545%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 110.9090909090909%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 105.45454545454545%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 105.45454545454545%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 105.45454545454545%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 105.45454545454545%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 110.9090909090909%'>Embedded(2)</a> <a href='/blog/categories/fedora' style='font-size: 110.9090909090909%'>Fedora(2)</a> <a href='/blog/categories/gdb' style='font-size: 116.36363636363636%'>GDB(3)</a> <a href='/blog/categories/geek' style='font-size: 116.36363636363636%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 110.9090909090909%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 105.45454545454545%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 105.45454545454545%'>HTTP(1)</a> <a href='/blog/categories/kgtp' style='font-size: 116.36363636363636%'>KGTP(3)</a> <a href='/blog/categories/latex' style='font-size: 105.45454545454545%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 105.45454545454545%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 105.45454545454545%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 116.36363636363636%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(11)</a> <a href='/blog/categories/mac' style='font-size: 105.45454545454545%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 105.45454545454545%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 105.45454545454545%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 105.45454545454545%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 110.9090909090909%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 105.45454545454545%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 116.36363636363636%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 105.45454545454545%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 132.72727272727272%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 110.9090909090909%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 110.9090909090909%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 110.9090909090909%'>OpenHardware(2)</a> <a href='/blog/categories/opensource' style='font-size: 116.36363636363636%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 105.45454545454545%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 105.45454545454545%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 105.45454545454545%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 105.45454545454545%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 116.36363636363636%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 110.9090909090909%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 105.45454545454545%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 105.45454545454545%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 105.45454545454545%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 105.45454545454545%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 121.81818181818181%'>Robot(4)</a> <a href='/blog/categories/seo' style='font-size: 110.9090909090909%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 105.45454545454545%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 110.9090909090909%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 105.45454545454545%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 105.45454545454545%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 105.45454545454545%'>Startup(1)</a> <a href='/blog/categories/tracing' style='font-size: 116.36363636363636%'>Tracing(3)</a> <a href='/blog/categories/travel' style='font-size: 105.45454545454545%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 116.36363636363636%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 105.45454545454545%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 116.36363636363636%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 105.45454545454545%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 110.9090909090909%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 105.45454545454545%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 105.45454545454545%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 110.9090909090909%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 105.45454545454545%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 105.45454545454545%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 105.45454545454545%'>Xen(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 105.0%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 110.0%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 105.0%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 105.0%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 105.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 105.0%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 105.0%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 110.0%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 110.0%'>C/C++(2)</a> <a href='/blog/categories/centos' style='font-size: 110.0%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 105.0%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 110.0%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 105.0%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 105.0%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 105.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 105.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 110.0%'>Embedded(2)</a> <a href='/blog/categories/fedora' style='font-size: 110.0%'>Fedora(2)</a> <a href='/blog/categories/gdb' style='font-size: 120.0%'>GDB(4)</a> <a href='/blog/categories/geek' style='font-size: 115.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 110.0%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 105.0%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 105.0%'>HTTP(1)</a> <a href='/blog/categories/java' style='font-size: 105.0%'>Java(1)</a> <a href='/blog/categories/kgtp' style='font-size: 120.0%'>KGTP(4)</a> <a href='/blog/categories/latex' style='font-size: 105.0%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 105.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 105.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 115.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(12)</a> <a href='/blog/categories/lucence' style='font-size: 105.0%'>Lucence(1)</a> <a href='/blog/categories/mac' style='font-size: 105.0%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 105.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 105.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 105.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 110.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 105.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 115.0%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 105.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 130.0%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 110.0%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 110.0%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 110.0%'>OpenHardware(2)</a> <a href='/blog/categories/opensource' style='font-size: 115.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 105.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 105.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 105.0%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 105.0%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 115.0%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 110.0%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 105.0%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 105.0%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 105.0%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 105.0%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 120.0%'>Robot(4)</a> <a href='/blog/categories/search' style='font-size: 105.0%'>Search(1)</a> <a href='/blog/categories/seo' style='font-size: 110.0%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 105.0%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 110.0%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 105.0%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 105.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 105.0%'>Startup(1)</a> <a href='/blog/categories/tracing' style='font-size: 120.0%'>Tracing(4)</a> <a href='/blog/categories/travel' style='font-size: 105.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 115.0%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 105.0%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 115.0%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 105.0%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 110.0%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 105.0%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 105.0%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 110.0%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 105.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 105.0%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 105.0%'>Xen(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development/">Getting Started With ElasticSearch and Plugin Development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 4</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 3</a>
@@ -381,14 +395,6 @@ can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects
     
       <li class="post">
         <a href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-1/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 1</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective/">Review of Raspberry Pi Robotic Projects - From a Technical Perspective</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/17/what-is-socket-anyway/">What Is Socket Anyway?</a>
       </li>
     
   </ul>

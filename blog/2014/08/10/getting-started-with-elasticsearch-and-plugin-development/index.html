@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Getting Started With ElasticSearch and Plugin Development - Welcome to Pandora's Box</title>
+  <meta name="author" content="Lihang Li">
+
+  
+  <meta name="description" content="Coming across to ElasticSearch when preparing for the programming chanllege held by WorksApplications in Tokyo Event, and falling love with her after &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://hustcalm.me/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/KISS-hustcalm" rel="alternate" title="Welcome to Pandora's Box" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+
+<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--Ref to google plus profile to display authorship in google search result -->
+<link ref="me" href="https://plus.google.com/u/0/103479323169088059584?rel=author">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47357842-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+<h1><a href="/">Welcome to Pandora's Box</a>(<a href="/about">Why</a>)</h1>
+  
+    <h2>Keep It Simple, Stupid!</h2>
+  
+</hgroup>
+
+<a href="https://github.com/hustcalm"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/KISS-hustcalm" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:hustcalm.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Getting Started With ElasticSearch and Plugin Development</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-10T18:33:53+08:00" pubdate data-updated="true">Aug 10<span>th</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://hustcalm.me">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Coming across to <code>ElasticSearch</code> when preparing for the programming chanllege held by WorksApplications in Tokyo Event, and falling love with her after then. Well, with no much new techonoligies involved, <code>ElasticSearch</code> is definitely a beautiful piece of software and a successful product. Claimed that with the core search engine powered by <code>Lucene</code>, providing <code>RESTful interface</code> and born as a distributed and scheme-free search oriented product, <code>ElasticSearch</code> has boosted the huge
+business of <strong>Github</strong> with billions of lines and <strong>Stackoverflow</strong> with billions of Q&amp;A.</p>
+
+<p>After digging some 101 tutorials around, I found it easy to set up <code>ES</code>(abbreviated for ElasticSearch and will use afterwards) and begin to play in 10 minutes. However, to understand what is going on underhood and what is the most tricy and interesting part, also to those who try to develop plugins to enpower <code>ES</code>, I will share something which would be useful for newbies. There are already tons of tutorials online, to same your time, please see
+<a href="https://github.com/hustcalm/elasticsearch-getting-started">elasticsearch-getting-started</a> hosted on my github for a good cheat sheet.</p>
+
+<!--more-->
+
+
+<h3>Basic Concepts of ES</h3>
+
+<p>Someone got to do the dirty work when something happens so naturally and gracefully. <code>ES</code> is graceful enough to just give users <code>RESTful</code> interfaces and everything is done! You can just do <code>CRUD</code> operations as naturally as just sending some HTTP request to some urls according to some predefined rules. So, we know at this moment that, <code>RESTful</code> interfaces are a great method to bridge <code>ES</code> and <code>end users</code>. So, for the <code>CRUD</code>, what are mainly involved?</p>
+
+<p>To start with familiar concepts, let&rsquo;s go with <code>Database</code>. OK, when you get a <code>Database</code>, it is basically a container for all your data. You can create varies of <code>Tables</code> in a <code>Database</code>, for a specified <code>Table</code>, you would firstly define a scheme for it, as the first column should be <strong>_id</strong> as integer numbers, the second should be <strong>_name</strong> as strings, etc. Then in a <code>Table</code>, you would have many <code>Rows</code>, each <code>Row</code> relates to a specified <code>record</code>. If you know this well, it&rsquo;s easy to catch up
+with <code>ES</code>, after some adaptations to shift with the search engine background.</p>
+
+<p>Forget about the storage engine for good, let&rsquo;s see what is included in a <code>RESTful</code> url.</p>
+
+<h4>Index</h4>
+
+<p>An <code>index</code> is basically a <code>Table</code> to contain varies of <code>Documents</code>, here <code>Document</code> again means <code>record</code>. So basically when you do a search, you are searching on an <code>index</code> or multiple <code>indexes</code> at the same time. No trick at all here, <code>ES</code> will maintain <code>inverted index</code> for each <code>field</code> of each <code>document</code> in an <code>index</code>, also some other <code>inverted index</code> will be generated for search, so an action of search is actually matching the <code>query</code> or user input keywords with the <code>inverted index</code>
+records. For easy understanding, think it as a book, when you try to lookup a word, instead of searching for it from the very beginning page by page, just see the <code>Word Index</code> for a happy ending.</p>
+
+<h4>Type</h4>
+
+<p>Yes, <code>ES</code> can have different kinds of <code>Documents</code> in an <code>index</code>. What does that mean? In <code>MySQL</code>, can you have different kinds of <code>Records</code> in a single <code>Table</code>? Found it impossible, huh? <code>ES</code> can save you for free, here different kinds, we can also say different <code>Types</code>. Think it this way, you have many documents in an <code>index</code>, and not all the documents are the same kind, let&rsquo;s say, doc1 contains just a long text paragraph, doc2 contains another number indicating the number of
+words of one paragraph besides a long text paragraph, doc3 maybe contain another field for storing some comments and doc 4, etc. Thus we can have many kinds of <code>Documents</code> in a single <code>Index</code>, maybe each document is one kind, or there are m tpyes for n documents(n >= m). Got any idea about this?</p>
+
+<h4>Mapping</h4>
+
+<p>Claimed as <code>scheme-free</code>, the magic is really played by <code>guess</code> or <code>a default scheme framework</code>. If you try to creat an <code>index</code> and put <code>documents</code> in it, <code>ES</code> will try to construct the index according to a default manner, for example, storing the field as <code>string</code> and <code>anylyzed</code> using the default anylyzer.(An anylyzer is used to splitted a sentence or phrase into independent words, in order to let people search partial keywords in a document.) If the dafault scheme is just working good,
+you need not do anything. However, unfortunately this is not always the case, so we just mentioned that we have many <code>Types</code> of <code>Documents</code> in an <code>Index</code>, to change the way that <code>ES</code> is treating how each <code>Type</code> of <code>Document</code> is processed, we can specify a <code>Mapping</code> for each <code>Type</code>. Well, for <code>Mapping</code>, it is actually a <code>scheme</code> specified by user, isn&rsquo;t it?</p>
+
+<h4>ID</h4>
+
+<p>Well, well, finally we can put our <code>Documents</code> now. For each document, specify a <strong>ID</strong> when uploading to <code>ES</code>, such as <code>PUT /megacorp/employee/1</code> and <code>PUT /megacorp/employee/2</code>, here <code>1</code> and <code>2</code> are both <code>IDs</code>. Again for retrieving a specified document from <code>ES</code>, specify the <strong>ID</strong> also, as <code>GET /megacorp/employee/1</code>.</p>
+
+<p>OK, I think you are ready to go after being familiar with the basic concepts. Let&rsquo;s talk about something about <code>search</code>.</p>
+
+<h3>Search using ES</h3>
+
+<p>Simple and beautiful, <code>ES</code> is smart enough for basic searcing, even real-time suggestions and near real-time search is supported. So you want to search?</p>
+
+<pre><code>GET /megacorp/employee/_search
+GET /megacorp/employee/_search?q=last_name:Smith
+</code></pre>
+
+<p>Try this!</p>
+
+<p>For more sophiscated searches, try using <code>Query DSL</code>, like:</p>
+
+<pre><code>GET /megacorp/employee/_search
+{
+    "query" : {
+        "match" : {
+            "last_name" : "Smith"
+        }
+    }
+}
+</code></pre>
+
+<p>I won&rsquo;t talk too much about <code>Query DSL</code> here, go dig the <a href="http://www.elasticsearch.org/guide/en/elasticsearch/client/java-api/current/query-dsl-queries.html">ES Reference</a>.</p>
+
+<h3>Client API</h3>
+
+<p>As <code>Luncene</code> is born with <code>Java</code> blood, <code>Java</code> is the native client API for <code>ES</code>. Everything you can do with <code>RESTful</code> interfaces, you can get it done with <code>Java API</code> or other programming language bindings. However, comparing to the <code>RESTful</code> style, all the bindings suck a little especially when having to construct complicated searches or aggregations, using <code>Qeury DSL</code> is too much graceful than any <code>Client API</code>.</p>
+
+<p>The <a href="http://www.elasticsearch.org/guide/en/elasticsearch/client/">ES Reference</a> has detailed documentation on each <code>Client API</code>, go and find your own one.</p>
+
+<h3>Plugin Development</h3>
+
+<p>Well, as the development of <code>ES</code> is evolving too rapidly, I guess, the APIs and even fundamental classes are not stable enough, so for plugin development, there are not good official tutorials to follow. However, some good guys who have the training maybe, give some useful references to getting people started. Or, maybe they just hack the source code to figure out how, admirable! For <code>ES</code> plugins, there are basically two types, one is <strong>site</strong> plugin, the other is <strong>non-site</strong> plugin.</p>
+
+<h4>Site Plugin</h4>
+
+<p>As we said, all the <strong>CRUD</strong> operations can be done through <strong>RESTful</strong> interfaces, so basically speaking, a <strong>site</strong> plugin is a wrapper or delegation for easier <code>RESTful</code>, mainly focusing on the <strong>front-end</strong>. Any programming language or tools which are capable of sending and receiving of HTTP requests can be used, however <code>JavaScript</code> seems to be the most chosen one since it is so flexible and repid prototyping.</p>
+
+<p>For a great example, see <a href="http://mobz.github.io/elasticsearch-head/">ElasticSearch Head</a>.</p>
+
+<h4>Non-Site Plugin</h4>
+
+<p>As a <strong>site</strong> plugin, we are actually doing the user end work, as we are not playing with the <code>ES</code> source code or core component directly. For <strong>non-site</strong> plugin, we will write some <code>Java</code> code, inherate from some abstract classes relating to <code>Plugin</code> and <code>Module</code>.</p>
+
+<p>A <code>Plugin</code> will be instanced when loaded by <code>Plugin Manager</code> of <code>ES</code>, then the related <code>Modules</code> will be loaded, and the real job will be done through <code>Module Handlers</code>.</p>
+
+<h4>Good Example</h4>
+
+<p>For a complete reference and vivid example for plugin development, see <a href="https://github.com/hustcalm/elasticsearch-getting-started">elasticsearch-hotsearch</a> developed by <strong>Cgroups</strong> during the <strong>Tokyo Event</strong>.</p>
+
+<h3>Summary</h3>
+
+<p>For good overview and other references after reading this blog, see my github repo <a href="https://github.com/hustcalm/elasticsearch-getting-started">elasticsearch-getting-started</a>.</p>
+
+<p>We learn basic concepts of <code>ES</code> here, knowing <code>Client API</code> and <code>Plugin Development</code>, however, we don&rsquo;t cover <code>Distributed</code> and other interesting parts of <code>ES</code> here. By starting from here, I believe you are capable of digging deeper by yourself by referencing the official site and other guys&rsquo;s posts. Though the official documentation is under construction by the time when writing this post, people like you who read this post will find it no difficulty to move on:&ndash;)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Lihang Li</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-10T18:33:53+08:00" pubdate data-updated="true">Aug 10<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/lucence/'>Lucence</a>, <a class='category' href='/blog/categories/search/'>Search</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="bshare-custom"><a title="分享到豆瓣" class="bshare-douban"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到微信" class="bshare-weixin"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT
+        bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid=a717dd31-3443-4991-9738-c5f0e418bd1a&amp;pophcol=2&amp;lang=zh"></script><a class="bshareDiv" onclick="javascript:return false;"></a><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/" title="Previous Post: KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 4">&laquo; KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 4</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>Focus on Life.
+  Focus on Technology.
+  Focus on Sports.
+  This is me,Calm.</p>
+  <p>Contact Me Via 
+  hustcalm(at)gmail.com</p>
+</section>
+<iframe frameborder="0" scrolling="no" src="http://kado.im/widget/5075993fabaa3/default.html" style="width: 100%; height: 67px; margin-bottom: 15px;" id="kadoWidgetFrame"></iframe>
+
+<section>
+<h1>Ohloh Profile</h1>
+<a href='https://www.ohloh.net/accounts/229059?ref=Detailed' target='_top'>
+<img alt='Ohloh profile for hustcalm' border='0' height='35' src='https://www.ohloh.net/accounts/229059/widgets/account_detailed.gif' width='191' />
+</a>
+</section>
+
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 105.0%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 110.0%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 105.0%'>Arduino(1)</a> <a href='/blog/categories/avt' style='font-size: 105.0%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 105.0%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 105.0%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 105.0%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 110.0%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 110.0%'>C/C++(2)</a> <a href='/blog/categories/centos' style='font-size: 110.0%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 105.0%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 110.0%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 105.0%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 105.0%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 105.0%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 105.0%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 110.0%'>Embedded(2)</a> <a href='/blog/categories/fedora' style='font-size: 110.0%'>Fedora(2)</a> <a href='/blog/categories/gdb' style='font-size: 120.0%'>GDB(4)</a> <a href='/blog/categories/geek' style='font-size: 115.0%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 110.0%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 105.0%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 105.0%'>HTTP(1)</a> <a href='/blog/categories/java' style='font-size: 105.0%'>Java(1)</a> <a href='/blog/categories/kgtp' style='font-size: 120.0%'>KGTP(4)</a> <a href='/blog/categories/latex' style='font-size: 105.0%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 105.0%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 105.0%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 115.0%'>Life(3)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(12)</a> <a href='/blog/categories/lucence' style='font-size: 105.0%'>Lucence(1)</a> <a href='/blog/categories/mac' style='font-size: 105.0%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 105.0%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 105.0%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 105.0%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 110.0%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 105.0%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 115.0%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 105.0%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 130.0%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 110.0%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 110.0%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 110.0%'>OpenHardware(2)</a> <a href='/blog/categories/opensource' style='font-size: 115.0%'>OpenSource(3)</a> <a href='/blog/categories/os' style='font-size: 105.0%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 105.0%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 105.0%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 105.0%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 115.0%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 110.0%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 105.0%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 105.0%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 105.0%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 105.0%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 120.0%'>Robot(4)</a> <a href='/blog/categories/search' style='font-size: 105.0%'>Search(1)</a> <a href='/blog/categories/seo' style='font-size: 110.0%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 105.0%'>SFD(1)</a> <a href='/blog/categories/sns' style='font-size: 110.0%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 105.0%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 105.0%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 105.0%'>Startup(1)</a> <a href='/blog/categories/tracing' style='font-size: 120.0%'>Tracing(4)</a> <a href='/blog/categories/travel' style='font-size: 105.0%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 115.0%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 105.0%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 115.0%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 105.0%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 110.0%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 105.0%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 105.0%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 110.0%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 105.0%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 105.0%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 105.0%'>Xen(1)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development/">Getting Started With ElasticSearch and Plugin Development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 4</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-1/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 1</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Weibo</h1>
+  <ul id="weibo">
+    <li>
+      <iframe 
+        width="100%" 
+        height="550" 
+        class="share_self" 
+        frameborder="0" 
+        scrolling="no" 
+        src="http://widget.weibo.com/weiboshow/index.php?
+        width=0&
+        height=550&
+        ptype=1&
+        speed=0&
+        skin=&
+        isTitle=0&
+        noborder=1&
+        isWeibo=1&
+        isFans=&
+        uid=1236738912&
+        verifier=8e94b428">
+      </iframe>
+    </li>
+  </ul>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/licalmer?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/licalmer">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+<h2>Douban Show</h2>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/hustcalm/?show=wishlist&amp;select=random&amp;n=9&amp;columns=3"></script>
+</div>
+</section>
+
+
+<section>
+<h1>Flag Counter</h1>
+ <a href="http://s01.flagcounter.com/more/5Vzn"><img src="http://s01.flagcounter.com/count/5Vzn/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a><br><a href="http://flagcounter.com/">free counters</a> 
+</section>
+
+
+<section>
+    <h1>Friends Link</h1>
+    <p><a href="http://blog-ossclub.rhcloud.com/">中科院开源软件协会</a></p>
+    <p><a href="http://blug.chinalug.org/">北京Linux用户组</a></p>
+    <p><a href="http://www.bjgug.org/">北京GNOME用户组</a></p>
+    <p><a href="http://www.lupaworld.com/">LUPA开源社区</a></p>
+    <p><a href="http://www.open-open.com/">开源资讯</a></p>
+    <p><a href="http://ikimi.net">KIMI YANG</a></p>
+</section>
+
+
+
+<section>
+<h1>CC License</h1>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br />Except where otherwise noted,content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Lihang Li -
+  <span class="credit">Powered by <a href="https://github.com">Github</a> & <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'welcometopandorasboxwhy';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://hustcalm.me/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development/';
+        var disqus_url = 'http://hustcalm.me/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
