@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-07-27T20:35:38+08:00</updated>
+  <updated>2014-08-13T11:03:53+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,617 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Getting Started With ElasticSearch and Plugin Development]]></title>
+    <link href="http://hustcalm.me/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development/"/>
+    <updated>2014-08-10T18:33:53+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development</id>
+    <content type="html"><![CDATA[<p>Coming across to <code>ElasticSearch</code> when preparing for the programming chanllege held by WorksApplications in Tokyo Event, and falling love with her after then. Well, with no much new techonoligies involved, <code>ElasticSearch</code> is definitely a beautiful piece of software and a successful product. Claimed that with the core search engine powered by <code>Lucene</code>, providing <code>RESTful interface</code> and born as a distributed and scheme-free search oriented product, <code>ElasticSearch</code> has boosted the huge
+business of <strong>Github</strong> with billions of lines and <strong>Stackoverflow</strong> with billions of Q&amp;A.</p>
+
+<p>After digging some 101 tutorials around, I found it easy to set up <code>ES</code>(abbreviated for ElasticSearch and will use afterwards) and begin to play in 10 minutes. However, to understand what is going on underhood and what is the most tricy and interesting part, also to those who try to develop plugins to enpower <code>ES</code>, I will share something which would be useful for newbies. There are already tons of tutorials online, to same your time, please see
+<a href="https://github.com/hustcalm/elasticsearch-getting-started">elasticsearch-getting-started</a> hosted on my github for a good cheat sheet.</p>
+
+<!--more-->
+
+
+<h3>Basic Concepts of ES</h3>
+
+<p>Someone got to do the dirty work when something happens so naturally and gracefully. <code>ES</code> is graceful enough to just give users <code>RESTful</code> interfaces and everything is done! You can just do <code>CRUD</code> operations as naturally as just sending some HTTP request to some urls according to some predefined rules. So, we know at this moment that, <code>RESTful</code> interfaces are a great method to bridge <code>ES</code> and <code>end users</code>. So, for the <code>CRUD</code>, what are mainly involved?</p>
+
+<p>To start with familiar concepts, let&rsquo;s go with <code>Database</code>. OK, when you get a <code>Database</code>, it is basically a container for all your data. You can create varies of <code>Tables</code> in a <code>Database</code>, for a specified <code>Table</code>, you would firstly define a scheme for it, as the first column should be <strong>_id</strong> as integer numbers, the second should be <strong>_name</strong> as strings, etc. Then in a <code>Table</code>, you would have many <code>Rows</code>, each <code>Row</code> relates to a specified <code>record</code>. If you know this well, it&rsquo;s easy to catch up
+with <code>ES</code>, after some adaptations to shift with the search engine background.</p>
+
+<p>Forget about the storage engine for good, let&rsquo;s see what is included in a <code>RESTful</code> url.</p>
+
+<h4>Index</h4>
+
+<p>An <code>index</code> is basically a <code>Table</code> to contain varies of <code>Documents</code>, here <code>Document</code> again means <code>record</code>. So basically when you do a search, you are searching on an <code>index</code> or multiple <code>indexes</code> at the same time. No trick at all here, <code>ES</code> will maintain <code>inverted index</code> for each <code>field</code> of each <code>document</code> in an <code>index</code>, also some other <code>inverted index</code> will be generated for search, so an action of search is actually matching the <code>query</code> or user input keywords with the <code>inverted index</code>
+records. For easy understanding, think it as a book, when you try to lookup a word, instead of searching for it from the very beginning page by page, just see the <code>Word Index</code> for a happy ending.</p>
+
+<h4>Type</h4>
+
+<p>Yes, <code>ES</code> can have different kinds of <code>Documents</code> in an <code>index</code>. What does that mean? In <code>MySQL</code>, can you have different kinds of <code>Records</code> in a single <code>Table</code>? Found it impossible, huh? <code>ES</code> can save you for free, here different kinds, we can also say different <code>Types</code>. Think it this way, you have many documents in an <code>index</code>, and not all the documents are the same kind, let&rsquo;s say, doc1 contains just a long text paragraph, doc2 contains another number indicating the number of
+words of one paragraph besides a long text paragraph, doc3 maybe contain another field for storing some comments and doc 4, etc. Thus we can have many kinds of <code>Documents</code> in a single <code>Index</code>, maybe each document is one kind, or there are m tpyes for n documents(n >= m). Got any idea about this?</p>
+
+<h4>Mapping</h4>
+
+<p>Claimed as <code>scheme-free</code>, the magic is really played by <code>guess</code> or <code>a default scheme framework</code>. If you try to creat an <code>index</code> and put <code>documents</code> in it, <code>ES</code> will try to construct the index according to a default manner, for example, storing the field as <code>string</code> and <code>anylyzed</code> using the default anylyzer.(An anylyzer is used to splitted a sentence or phrase into independent words, in order to let people search partial keywords in a document.) If the dafault scheme is just working good,
+you need not do anything. However, unfortunately this is not always the case, so we just mentioned that we have many <code>Types</code> of <code>Documents</code> in an <code>Index</code>, to change the way that <code>ES</code> is treating how each <code>Type</code> of <code>Document</code> is processed, we can specify a <code>Mapping</code> for each <code>Type</code>. Well, for <code>Mapping</code>, it is actually a <code>scheme</code> specified by user, isn&rsquo;t it?</p>
+
+<h4>ID</h4>
+
+<p>Well, well, finally we can put our <code>Documents</code> now. For each document, specify a <strong>ID</strong> when uploading to <code>ES</code>, such as <code>PUT /megacorp/employee/1</code> and <code>PUT /megacorp/employee/2</code>, here <code>1</code> and <code>2</code> are both <code>IDs</code>. Again for retrieving a specified document from <code>ES</code>, specify the <strong>ID</strong> also, as <code>GET /megacorp/employee/1</code>.</p>
+
+<p>OK, I think you are ready to go after being familiar with the basic concepts. Let&rsquo;s talk about something about <code>search</code>.</p>
+
+<h3>Search using ES</h3>
+
+<p>Simple and beautiful, <code>ES</code> is smart enough for basic searcing, even real-time suggestions and near real-time search is supported. So you want to search?</p>
+
+<pre><code>GET /megacorp/employee/_search
+GET /megacorp/employee/_search?q=last_name:Smith
+</code></pre>
+
+<p>Try this!</p>
+
+<p>For more sophiscated searches, try using <code>Query DSL</code>, like:</p>
+
+<pre><code>GET /megacorp/employee/_search
+{
+    "query" : {
+        "match" : {
+            "last_name" : "Smith"
+        }
+    }
+}
+</code></pre>
+
+<p>I won&rsquo;t talk too much about <code>Query DSL</code> here, go dig the <a href="http://www.elasticsearch.org/guide/en/elasticsearch/client/java-api/current/query-dsl-queries.html">ES Reference</a>.</p>
+
+<h3>Client API</h3>
+
+<p>As <code>Luncene</code> is born with <code>Java</code> blood, <code>Java</code> is the native client API for <code>ES</code>. Everything you can do with <code>RESTful</code> interfaces, you can get it done with <code>Java API</code> or other programming language bindings. However, comparing to the <code>RESTful</code> style, all the bindings suck a little especially when having to construct complicated searches or aggregations, using <code>Qeury DSL</code> is too much graceful than any <code>Client API</code>.</p>
+
+<p>The <a href="http://www.elasticsearch.org/guide/en/elasticsearch/client/">ES Reference</a> has detailed documentation on each <code>Client API</code>, go and find your own one.</p>
+
+<h3>Plugin Development</h3>
+
+<p>Well, as the development of <code>ES</code> is evolving too rapidly, I guess, the APIs and even fundamental classes are not stable enough, so for plugin development, there are not good official tutorials to follow. However, some good guys who have the training maybe, give some useful references to getting people started. Or, maybe they just hack the source code to figure out how, admirable! For <code>ES</code> plugins, there are basically two types, one is <strong>site</strong> plugin, the other is <strong>non-site</strong> plugin.</p>
+
+<h4>Site Plugin</h4>
+
+<p>As we said, all the <strong>CRUD</strong> operations can be done through <strong>RESTful</strong> interfaces, so basically speaking, a <strong>site</strong> plugin is a wrapper or delegation for easier <code>RESTful</code>, mainly focusing on the <strong>front-end</strong>. Any programming language or tools which are capable of sending and receiving of HTTP requests can be used, however <code>JavaScript</code> seems to be the most chosen one since it is so flexible and repid prototyping.</p>
+
+<p>For a great example, see <a href="http://mobz.github.io/elasticsearch-head/">ElasticSearch Head</a>.</p>
+
+<h4>Non-Site Plugin</h4>
+
+<p>As a <strong>site</strong> plugin, we are actually doing the user end work, as we are not playing with the <code>ES</code> source code or core component directly. For <strong>non-site</strong> plugin, we will write some <code>Java</code> code, inherate from some abstract classes relating to <code>Plugin</code> and <code>Module</code>.</p>
+
+<p>A <code>Plugin</code> will be instanced when loaded by <code>Plugin Manager</code> of <code>ES</code>, then the related <code>Modules</code> will be loaded, and the real job will be done through <code>Module Handlers</code>.</p>
+
+<h4>Good Example</h4>
+
+<p>For a complete reference and vivid example for plugin development, see <a href="https://github.com/hustcalm/elasticsearch-getting-started">elasticsearch-hotsearch</a> developed by <strong>Cgroups</strong> during the <strong>Tokyo Event</strong>.</p>
+
+<h3>Summary</h3>
+
+<p>For good overview and other references after reading this blog, see my github repo <a href="https://github.com/hustcalm/elasticsearch-getting-started">elasticsearch-getting-started</a>.</p>
+
+<p>We learn basic concepts of <code>ES</code> here, knowing <code>Client API</code> and <code>Plugin Development</code>, however, we don&rsquo;t cover <code>Distributed</code> and other interesting parts of <code>ES</code> here. By starting from here, I believe you are capable of digging deeper by yourself by referencing the official site and other guys&rsquo;s posts. Though the official documentation is under construction by the time when writing this post, people like you who read this post will find it no difficulty to move on:&ndash;)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 4]]></title>
+    <link href="http://hustcalm.me/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/"/>
+    <updated>2014-08-10T18:33:09+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4</id>
+    <content type="html"><![CDATA[<h3>CSDN开源夏令营 &ndash; 第四周工作总结</h3>
+
+<p>本周主要是在回顾“set trace-buffer-size”完成通信的基础上，对于指定参数size的处理，比如指定-1或者unlimited的时候，在KGTP端该如何做解析，以及该如何处理此时的buffer size。同时，根据“开题报告&#8221;的进度，中期检查的任务已经完成。对Trace Buffer的实现，做了初步的调研。</p>
+
+<h4>1. GDB和KGTP通信实现的回顾</h4>
+
+<p>利用GDBRSP，即GDB Remote Serial Protocol，GDB远程串行通信协议。简单来说，用于GDB远程调试发包，但是也支持File I/O和Console，而KGTP正是利用了GDBRSP对于File I/O的支持，完成GDB和KGTP的通信，在接受到GDB发送的Packet后，KGTP进行解析。而通信的介质则是通过debugfs或者其他kernel space和user space进行数据交换的接口进行的。
+具体实现，可以参考上一篇博文[1]。</p>
+
+<!--more-->
+
+
+<h4>2. GDB的Packet格式</h4>
+
+<p>GDB向target发送的Packet必须遵守提前设定的约定，才能被target按照相应的规则解析处理。关于GDB的Packet格式，可以参考[2]，这里详细列出了所有的预定义的指令和它们相应的响应数据。如果想进一步了解GDBRSP，可以阅读[3]。由于KGTP对Trace Point最感兴趣，因此我们也最关注Tracepoint Packets，只要有两种，分别以Q和q开头，其中Q表示设置命令，即set，而q表示查询命令，即query，具体看[4]。关于如何开始和停止Trace Experiments，看[5]。GDB对于用户输入的commands，会转换后封装成Packet，通过GDBRSP发给target，因此需要结合着[4]和[5]才能把对某一个命令如何进行包解析搞清楚，比如用户输入”tstart“，则会发送一个”QTStart“的包。</p>
+
+<h4>3. KGTP对GDB的Packet的处理实现</h4>
+
+<p>有了GDB和KGTP的通信的基础设施，比如DebugFS和GDBRSP，正常的文件读写即可完成GDB和KGTP的数据交换。而为了完成相应的任务，KGTP必须对接收到的GDB的Packet进行解析，而我们又知道了GDB得Packet格式，因此只需要对接收到的数据按照格式做相应的解析即可。</p>
+
+<p>在<code>gtp.c</code>的<code>gtp_write</code>函数，针对接收到的GDB包做了具体的解析，具体代码如下：</p>
+
+<pre><code>static ssize_t
+gtp_write(struct file *file, const char __user *buf, size_t size,
+      loff_t *ppos)
+{
+    char        *rsppkg = NULL;
+    int     i, ret;
+    unsigned char   csum;
+    int     is_reverse;
+
+    if (down_interruptible(&gt;p_rw_lock))
+        return -EINTR;
+
+    if (size == 0) {
+#ifdef GTP_DEBUG
+        printk(GTP_DEBUG "gtp_write: try write 0 size.\n");
+#endif
+        goto error_out;
+    }
+
+    size = min_t(size_t, size, GTP_RW_MAX);
+    if (copy_from_user(gtp_rw_buf, buf, size)) {
+        size = -EFAULT;
+        goto error_out;
+    }
+
+    if (gtp_rw_buf[0] == '+' || gtp_rw_buf[0] == '-'
+        || gtp_rw_buf[0] == '\3' || gtp_rw_buf[0] == '\n') {
+        if (gtp_rw_buf[0] == '+')
+            gtp_rw_size = 0;
+        size = 1;
+        goto out;
+    }
+
+    if (size &lt; 4) {
+        size = -EINVAL;
+        goto error_out;
+    }
+    /* Check format and get the rsppkg.  */
+    for (i = 0; i &lt; size - 2; i++) {
+        if (gtp_rw_buf[i] == '$')
+            rsppkg = gtp_rw_buf + i + 1;
+        else if (gtp_rw_buf[i] == '#')
+            break;
+    }
+    if (rsppkg &amp;&amp; gtp_rw_buf[i] == '#') {
+        /* Format is OK.  Check crc.  */
+        if (gtp_noack_mode &lt; 1)
+            gtp_read_ack = 1;
+        size = i + 3;
+        gtp_rw_buf[i] = '\0';
+    } else {
+        printk(KERN_WARNING "gtp_write: format error\n");
+        size = -EINVAL;
+        goto error_out;
+    }
+
+    wake_up_interruptible_nr(&gt;p_rw_wq, 1);
+
+    up(&gt;p_rw_lock);
+    if (down_interruptible(&gt;p_rw_lock))
+        return -EINTR;
+
+#ifdef GTP_DEBUG
+    printk(GTP_DEBUG "gtp_write: %s\n", rsppkg);
+#endif
+
+    /* Handle rsppkg and put return to gtp_rw_buf.  */
+    gtp_rw_buf[0] = '$';
+    gtp_rw_bufp = gtp_rw_buf + 1;
+    gtp_rw_size = 0;
+    ret = 1;
+    is_reverse = 0;
+    switch (rsppkg[0]) {
+    case '?':
+        if (gtp_current_pid == 0)
+            snprintf(gtp_rw_bufp, GTP_RW_BUFP_MAX, "S05");
+        else
+            snprintf(gtp_rw_bufp, GTP_RW_BUFP_MAX, "T05;thread:p%x.%x;",
+                 gtp_current_pid, gtp_current_pid);
+        gtp_rw_size += strlen(gtp_rw_bufp);
+        gtp_rw_bufp += strlen(gtp_rw_bufp);
+        break;
+    case 'g':
+        ret = gtp_gdbrsp_g();
+        break;
+    case 'm':
+        ret = gtp_gdbrsp_m(rsppkg + 1);
+        break;
+    case 'Q':
+#ifdef GTP_RB
+        /* This check for "tfind -1" and let GDB into step replay.
+           XXX: just test on X86_64.  */
+        if (gtp_replay_step_id) {
+            if (strcmp("QTFrame:ffffffff", rsppkg) == 0) {
+                ret = 0;
+                goto switch_done;
+            } else
+                gtp_replay_reset();
+        }
+#endif
+        if (rsppkg[1] == 'T')
+            ret = gtp_gdbrsp_QT(rsppkg + 2);
+        else if (strncmp("QStartNoAckMode", rsppkg, 15) == 0) {
+            ret = 0;
+            gtp_noack_mode = -1;
+        }
+        break;
+    case 'q':
+        if (rsppkg[1] == 'T')
+            ret = gtp_gdbrsp_qT(rsppkg + 2);
+        else if (rsppkg[1] == 'C') {
+            snprintf(gtp_rw_bufp, GTP_RW_BUFP_MAX, "QC%x",
+                 gtp_current_pid);
+            gtp_rw_size += strlen(gtp_rw_bufp);
+            gtp_rw_bufp += strlen(gtp_rw_bufp);
+            ret = 1;
+        } else if (strncmp("qSupported", rsppkg, 10) == 0) {
+#ifdef GTP_RB
+            snprintf(gtp_rw_bufp, GTP_RW_BUFP_MAX,
+                 "QStartNoAckMode+;ConditionalTracepoints+;"
+                 "TracepointSource+;DisconnectedTracing+;"
+                 "ReverseContinue+;ReverseStep+;"
+#if (LINUX_VERSION_CODE &gt;= KERNEL_VERSION(2,6,30))
+                 "EnableDisableTracepoints+;"
+#endif
+                 "qXfer:traceframe-info:read+;");
+#endif
+#if defined(GTP_FRAME_SIMPLE) || defined(GTP_FTRACE_RING_BUFFER)
+            snprintf(gtp_rw_bufp, GTP_RW_BUFP_MAX,
+                 "QStartNoAckMode+;ConditionalTracepoints+;"
+#if (LINUX_VERSION_CODE &gt;= KERNEL_VERSION(2,6,30))
+                 "EnableDisableTracepoints+;"
+#endif
+                 "TracepointSource+;DisconnectedTracing+;");
+#endif
+            gtp_rw_size += strlen(gtp_rw_bufp);
+            gtp_rw_bufp += strlen(gtp_rw_bufp);
+            ret = 1;
+        }
+#ifdef GTP_RB
+        else if (strncmp("qXfer:traceframe-info:read::",
+                   rsppkg, 28) == 0)
+            ret = gtp_gdbrsp_qxfer_traceframe_info_read(rsppkg
+                                    + 28);
+#endif
+        else if (strncmp("qRcmd,", rsppkg, 6) == 0)
+            ret = gtp_gdbrsp_qRcmd(rsppkg + 6);
+        else if (strncmp("qAttached", rsppkg, 9) == 0) {
+            snprintf(gtp_rw_bufp, GTP_RW_BUFP_MAX, "1");
+            gtp_rw_size += 1;
+            gtp_rw_bufp += 1;
+        }
+        break;
+    case 'S':
+    case 'C':
+        ret = -1;
+        break;
+    case 'b':
+        rsppkg[0] = rsppkg[1];
+        is_reverse = 1;
+    case 's':
+    case 'c':
+        ret = gtp_gdbrsp_resume (rsppkg[0] == 's', is_reverse);
+        break;
+    case 'v':
+        if (strncmp("vAttach;", rsppkg, 8) == 0) {
+#ifdef GTP_RB
+            if (gtp_replay_step_id)
+                gtp_replay_reset();
+#endif
+            ret = gtp_gdbrsp_vAttach(rsppkg + 8);
+        } else if (strncmp("vKill;", rsppkg, 7) == 0) {
+#ifdef GTP_RB
+            if (gtp_replay_step_id)
+                gtp_replay_reset();
+#endif
+            /* XXX:  When we add more code to support trace
+               user space program.  We need add more release
+               code to this part.
+               Release tracepoint for this tracepoint.  */
+            ret = 0;
+        }
+        break;
+    case 'D':
+#ifdef GTP_RB
+        if (gtp_replay_step_id)
+            gtp_replay_reset();
+#endif
+        gtp_gdbrsp_D(rsppkg + 1);
+        ret = 0;
+        break;
+    case 'H':
+        ret = gtp_gdbrsp_H(rsppkg + 1);
+        break;
+    case 'Z':
+    case 'z':
+        if (rsppkg[1] == '0')
+            ret = gtp_gdbrsp_breakpoint(rsppkg + 3,
+                            (rsppkg[0] == 'Z'));
+        break;
+    }
+switch_done:
+    if (ret == 0) {
+        snprintf(gtp_rw_bufp, GTP_RW_BUFP_MAX, "OK");
+        gtp_rw_bufp += 2;
+        gtp_rw_size += 2;
+    } else if (ret &lt; 0) {
+        snprintf(gtp_rw_bufp, GTP_RW_BUFP_MAX, "E%02x", -ret);
+        gtp_rw_bufp += 3;
+        gtp_rw_size += 3;
+    }
+
+    gtp_rw_bufp[0] = '#';
+    csum = 0;
+    for (i = 1; i &lt; gtp_rw_size + 1; i++)
+        csum += gtp_rw_buf[i];
+    gtp_rw_bufp[1] = INT2CHAR(csum &gt;&gt; 4);
+    gtp_rw_bufp[2] = INT2CHAR(csum &amp; 0x0f);
+    gtp_rw_bufp = gtp_rw_buf;
+    gtp_rw_size += 4;
+
+out:
+    wake_up_interruptible_nr(&gt;p_rw_wq, 1);
+error_out:
+    up(&gt;p_rw_lock);
+    return size;
+}
+</code></pre>
+
+<p>我们可以看到根据接收到的Packet，分别调用了不同的handler来做处理，这里我们重点关注Tracepoint Packets，关于以QT开头的包，处理代码如下：</p>
+
+<pre><code>static int
+gtp_gdbrsp_QT(char *pkg)
+{
+    int ret = 1;
+
+#ifdef GTP_DEBUG
+    printk(GTP_DEBUG "gtp_gdbrsp_QT: %s\n", pkg);
+#endif
+
+    if (strcmp("init", pkg) == 0)
+        ret = gtp_gdbrsp_qtinit();
+    else if (strcmp("Stop", pkg) == 0)
+        ret = gtp_gdbrsp_qtstop();
+    else if (strcmp("Start", pkg) == 0)
+        ret = gtp_gdbrsp_qtstart();
+    else if (strncmp("DP:", pkg, 3) == 0)
+        ret = gtp_gdbrsp_qtdp(pkg + 3);
+    else if (strncmp("DPsrc:", pkg, 6) == 0)
+        ret = gtp_gdbrsp_qtdpsrc(pkg + 6);
+    else if (strncmp("Disconnected:", pkg, 13) == 0)
+        ret = gtp_gdbrsp_qtdisconnected(pkg + 13);
+    else if (strncmp("Buffer:", pkg, 7) == 0)
+        ret = gtp_gdbrsp_qtbuffer(pkg + 7);
+    else if (strncmp("Frame:", pkg, 6) == 0)
+        ret = gtp_gdbrsp_qtframe(pkg + 6);
+    else if (strncmp("ro:", pkg, 3) == 0)
+        ret = gtp_gdbrsp_qtro(pkg + 3);
+    else if (strncmp("DV:", pkg, 3) == 0)
+        ret = gtp_gdbrsp_qtdv(pkg + 3);
+#if (LINUX_VERSION_CODE &gt;= KERNEL_VERSION(2,6,30))
+    else if (strncmp("Enable:", pkg, 7) == 0)
+        ret = gtp_gdbrsp_qtenable_qtdisable(pkg + 7, 1);
+    else if (strncmp("Disable:", pkg, 8) == 0)
+        ret = gtp_gdbrsp_qtenable_qtdisable(pkg + 8, 0);
+#endif
+
+#ifdef GTP_DEBUG
+    printk(GTP_DEBUG "gtp_gdbrsp_QT: return %d\n", ret);
+#endif
+
+    return ret;
+}
+</code></pre>
+
+<p>而以qT打头的包，处理的接口如下：</p>
+
+<pre><code>static int
+gtp_gdbrsp_qT(char *pkg)
+{
+    int ret = 1;
+
+#ifdef GTP_DEBUG
+    printk(GTP_DEBUG "gtp_gdbrsp_qT: %s\n", pkg);
+#endif
+
+    if (strcmp("Status", pkg) == 0)
+        ret = gtp_gdbrsp_qtstatus();
+    else if (strcmp("fP", pkg) == 0)
+        ret = gtp_gdbrsp_qtfp();
+    else if (strcmp("sP", pkg) == 0)
+        ret = gtp_gdbrsp_qtsp();
+    else if (strcmp("fV", pkg) == 0)
+        ret = gtp_gdbrsp_qtfsv(1);
+    else if (strcmp("sV", pkg) == 0)
+        ret = gtp_gdbrsp_qtfsv(0);
+    else if (strncmp("V:", pkg, 2) == 0)
+        ret = gtp_gdbrsp_qtv(pkg + 2);
+
+    return ret;
+</code></pre>
+
+<p>从以上接口可以看到，是一个dispatch的过程，KGTP首先判断接收到的GDB包属于哪一类包，之后分发，而对于一个类型的包，又细分很多子包，最终分发给具体的接口实现，拿上面为例，有如下一个流程：
+<strong>gtp_write &ndash;> gtp_gdbrsp_QT &ndash;> gtp_gdbrsp_qtbuffer</strong>。</p>
+
+<p>通过以上分析，我们已经在Packet层面对GDB和KGTP的通信有了深入的理解。</p>
+
+<h4>4. KGTP中set-buffer-size的处理逻辑</h4>
+
+<p>有了以上分析，在用户输入了以下指令：</p>
+
+<pre><code>set remote trace buffer-size on
+set trace-buffer-size xxx
+</code></pre>
+
+<p>之后会发生什么呢？</p>
+
+<p>让我们分别测试一下。</p>
+
+<p>（1）set trace-buffer-size 100</p>
+
+<pre><code>Aug 03 11:00:08 localhost.localdomain kernel: gtp_write: QTBuffer:size:64
+Aug 03 11:00:08 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:64
+Aug 03 11:00:08 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Aug 03 11:00:08 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer:setting buffer size to 100
+Aug 03 11:00:08 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Aug 03 11:00:08 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>（2）set trace-buffer-size 1000000</p>
+
+<pre><code>Aug 03 11:00:33 localhost.localdomain kernel: gtp_write: QTBuffer:size:f4240
+Aug 03 11:00:33 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:f4240
+Aug 03 11:00:33 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Aug 03 11:00:33 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer:setting buffer size to 1000000
+Aug 03 11:00:33 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Aug 03 11:00:33 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>（3）set trace-buffer-size -1</p>
+
+<pre><code>Aug 03 11:00:18 localhost.localdomain kernel: gtp_write: QTBuffer:size:-1
+Aug 03 11:00:18 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:-1
+Aug 03 11:00:18 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Aug 03 11:00:18 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer:setting buffer size to 0
+Aug 03 11:00:18 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Aug 03 11:00:18 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>（4）set trace-buffer-size unlimited</p>
+
+<pre><code>Aug 03 11:00:44 localhost.localdomain kernel: gtp_write: QTBuffer:size:-1
+Aug 03 11:00:44 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:-1
+Aug 03 11:00:44 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Aug 03 11:00:44 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer:setting buffer size to 0
+Aug 03 11:00:44 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Aug 03 11:00:44 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>可以看到，<code>This packet directs the target to make the trace buffer be of size size if possible. A value of -1 tells the target to use whatever size it prefers</code>.</p>
+
+<p>也就是说，-1和unlimited等价，GDB告诉target可以使用自己认为合适的size，而给一个合理范围的正整数n，则会要求target使用的buffer size为n，单位是byte。</p>
+
+<p>因此，当我们接到GDB发来的size为-1的包时，可以直接忽略掉，而收到normal size的包时，需要跟当前使用的buffer size作对比，然后做相应处理。</p>
+
+<h4>5. KGTP中set-buffer-size的具体实现</h4>
+
+<p>目前KGTP的set-buffer-size分支，已经实现了对size处理的逻辑，参考[6]，具体代码如下：</p>
+
+<pre><code>static int
+gtp_gdbrsp_qtbuffer(char *pkg)
+{
+#ifdef GTP_DEBUG
+    printk(GTP_DEBUG "gtp_gdbrsp_qtbuffer\n");
+#endif
+
+    // Handle QTBuffer:circular:value
+    if (strncmp("circular:", pkg, 9) == 0) {
+        ULONGEST setting;
+
+        pkg += 9;
+        if (pkg[0] == '\0')
+            return -EINVAL;
+        hex2ulongest(pkg, &amp;setting);
+
+#ifdef GTP_FTRACE_RING_BUFFER
+#if (LINUX_VERSION_CODE &gt; KERNEL_VERSION(2,6,38)) \
+    || defined(GTP_SELF_RING_BUFFER)
+        gtp_circular = (int)setting;
+        if (gtp_frame)
+            ring_buffer_change_overwrite(gtp_frame, (int)setting);
+#else
+        if (gtp_circular != (int)setting)
+            gtp_circular_is_changed = 1;
+#endif
+#endif
+        gtp_circular = (int)setting;
+
+        return 0;
+    }
+    // Handle QTBuffer:size:size 
+    else if (strncmp("size:", pkg, 5) == 0) {
+
+        ULONGEST size;
+        int unlimited_or_not;
+
+        pkg += 5;
+
+        if (pkg[0] == '\0')
+            return -EINVAL;
+
+        // The size may equal to -1, so compare the pkg with "-1"
+        if((strncmp("-1", pkg, 2) == 0) &amp;&amp; (*(pkg + 2) == '\0')) {
+            unlimited_or_not = 1;
+        }
+
+        if(unlimited_or_not == 1) {
+            // The user wants KGTP to choose the right size
+            // So we just ignore the request
+
+#ifdef GTP_DEBUG
+    printk(GTP_DEBUG "gtp_gdbrsp_qtbuffer:keep buffer size as the user tells KGTP to use unlimited size");
+#endif
+
+            return 0;
+        }
+
+        // User wants to change the buffer size
+        hex2ulongest(pkg, &amp;size);
+
+#ifdef GTP_DEBUG
+    printk(GTP_DEBUG "gtp_gdbrsp_qtbuffer:setting buffer size to %ld\n", size);
+#endif
+
+        // Handle the new ringbuffer size blow
+        // gtp_set_trace_buffer_size(size);
+
+        return 0;
+    }
+
+    return 1;
+}
+</code></pre>
+
+<p>让我们测试一下：</p>
+
+<p>（1）set trace-buffer-size -1</p>
+
+<pre><code>Aug 03 12:37:28 localhost.localdomain kernel: gtp_write: QTBuffer:size:-1
+Aug 03 12:37:28 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:-1
+Aug 03 12:37:28 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Aug 03 12:37:28 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer:keep buffer size as the user tells KGTP to use unlimited size
+Aug 03 12:37:28 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Aug 03 12:37:28 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>（2）set trace-buffer-size unlimited</p>
+
+<pre><code>Aug 03 12:37:57 localhost.localdomain kernel: gtp_write: QTBuffer:size:-1
+Aug 03 12:37:57 localhost.localdomain kernel: gtp_gdbrsp_QT: Buffer:size:-1
+Aug 03 12:37:57 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer
+Aug 03 12:37:57 localhost.localdomain kernel: gtp_gdbrsp_qtbuffer:keep buffer size as the user tells KGTP to use unlimited size
+Aug 03 12:37:57 localhost.localdomain kernel: gtp_gdbrsp_QT: return 0
+Aug 03 12:37:57 localhost.localdomain kernel: gtp_read
+</code></pre>
+
+<p>Bingo！目前已经正确地实现了对size的解析处理，接下来的工作是继续调研KGTP trace buffer的实现，并根据size大小做出调整。</p>
+
+<h4>6. 参考链接</h4>
+
+<ul>
+<li>[1] <a href="http://blog.csdn.net/calmdownba/article/details/38174759">http://blog.csdn.net/calmdownba/article/details/38174759</a></li>
+<li>[2] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Packets.html#Packets">https://sourceware.org/gdb/current/onlinedocs/gdb/Packets.html#Packets</a></li>
+<li>[3] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Remote-Protocol.html#Remote-Protocol">https://sourceware.org/gdb/current/onlinedocs/gdb/Remote-Protocol.html#Remote-Protocol</a></li>
+<li>[4] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Tracepoint-Packets.html</a></li>
+<li>[5] <a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html">https://sourceware.org/gdb/current/onlinedocs/gdb/Starting-and-Stopping-Trace-Experiments.html</a></li>
+<li>[6] <a href="https://code.csdn.net/Calmdownba/kgtp/tree/set-buffer-size">https://code.csdn.net/Calmdownba/kgtp/tree/set-buffer-size</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 3]]></title>
@@ -2529,372 +3140,6 @@ For all other cases, use urllibx(note that <code>urllib and urllib2</code> have 
 <li><a href="http://www.zacwitte.com/resolving-http-redirects-in-python">Resolving HTTP Redirects in Python</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Install CentOS 6.4 Minial With Grub2 and a USB Stick - the Simple Way]]></title>
-    <link href="http://hustcalm.me/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way/"/>
-    <updated>2013-11-04T17:08:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/11/04/install-centos-6-dot-4-minial-with-grub2-and-a-usb-stick-the-simple-way</id>
-    <content type="html"><![CDATA[<p>What a shame that I failed over and over to just install CentOS 6.4 minimal to my Desktop PC!!!</p>
-
-<p>I got a broken Ubuntu 12.04 on my hand with a working Grub2, cheers:&ndash;) Also, I luckily have a 4 GB USB stick(who esle dosen&rsquo;t,kidding).</p>
-
-<h2>The Goal</h2>
-
-<p>Install CentOS 6.4 minial with Grub2 and a single USB stick, making no bootable USB stick, but do some tricks with the ISO file instead.</p>
-
-<!--more-->
-
-
-<h2>Preparation</h2>
-
-<p>In a nutshell, we need a working Grub(or other bootloaders, I use Grub2), a USB Stick with a vfat or ext2 partition and CentOS ISO file.</p>
-
-<h3>Bootloader</h3>
-
-<p>As I have a broken Ubuntu 12.04 and a already working Grub2, I would just go on.</p>
-
-<p>However, you have many choices due to your OS. Such as:</p>
-
-<ul>
-<li>Grub Legacy</li>
-<li>Grub4dos</li>
-<li>EasyBCD</li>
-</ul>
-
-
-<h3>ISO</h3>
-
-<p>Download it from a mirror that&rsquo;s close enough to you. Check out the <a href="http://isoredirect.centos.org/centos/6/isos/x86_64/">Mirror List</a> and I choose <a href="http://mirrors.163.com/centos/6.4/isos/x86_64/">mirrors.163.com</a>.</p>
-
-<p>Save the <code>CentOS-6.4-x86_64-minimal.iso</code> to your hard drive.</p>
-
-<h3>USB Stick</h3>
-
-<p>According to the CentOS wiki, the installer will recognize ext2 or vfat. I choose vfat in my case.</p>
-
-<p>My device on my Linuxmint shows /dev/sdb and the partition shows /dev/sdb1. Just ensure that you have a VFAT partition, other things don&rsquo;t matter too much really.</p>
-
-<p>To play with device and partitions, you can use <code>fdisk</code> and <code>mkfs.*</code> or other tools that you favor.</p>
-
-<h3>Extract Files</h3>
-
-<p>I put the ISO file under <code>~/Downloads</code>. And I follow the instructions below:</p>
-
-<pre><code>mkdir /mnt/centos
-sudo mount -o loop -t iso9660 ~/Downloads/CentOS-6.4-x86_64-minimal.iso /mnt/centos
-mkdir /mnt/usbdisk
-mount /dev/sdb1 /mnt/usbdisk
-cp -r /mnt/centos/isolinux /mnt/centos/images /mnt/usbdisk
-sudo umount /mnt/centos
-cp ~/Downloads/CentOS-6.4-x86_64-minimal.iso /mnt/usbdisk
-sudo umount /mnt/usbdisk
-</code></pre>
-
-<p>After this, we have <code>CentOS-6.4-x86_64-minimal.iso</code>,<code>isolinux</code> and <code>images</code> on our USB Stick.</p>
-
-<h2>Installation</h2>
-
-<p>Now use Grub2 to boot into CentOS installation environment and complete the installation. I have a SATA hard disk locally and do remember <strong>CentOS installer will make your local hard disk to sdb or sdc, but not sda. The USB Stick will be sda during the installation.</strong></p>
-
-<p>To enter Grub2 command line, press <code>SHIFT</code> when your PC boots, or you may miss the menu entry due to <strong>HIDDEN_TIMEOUT</strong> configruration. Then press <code>c</code> to get a command line.</p>
-
-<p>Then follow the instructions below, you may adjust a little to suit your own PC.</p>
-
-<pre><code>linux (hd1,msdos1)/isolinux/vmlinuz
-initrd (hd1,msdos1)/isolinux/initrd.img
-boot
-</code></pre>
-
-<p>When you prompt to select <code>Installation Method</code>, use <code>Hard Drive</code> and select <code>sda1</code>, follow the routine procedures and you are done:&ndash;)</p>
-
-<p><strong>I tried <code>URL Method</code> but failed, either <code>mirrors.163.com</code> nor <code>mirrors.sohu.com</code> would work:&ndash;(</strong></p>
-
-<h2>Summary</h2>
-
-<p>All the essentials reside in Grub2 and isolinux or you may say bootloader and ISO stuff. Check them out and deep it for deep is the best way to solve varies of problems related to boot, installation and rescue.</p>
-
-<p>You may install by other methods, CD-ROW, bootable USB Stick or whatever you like.</p>
-
-<p>Enjoy the struggling and enjoy the gain!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Playing With Xen Under Centos6.4 to Build Your Own VPS]]></title>
-    <link href="http://hustcalm.me/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps/"/>
-    <updated>2013-10-14T10:28:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps</id>
-    <content type="html"><![CDATA[<p>Believe it or not, we are under an age called Cloud Computing.</p>
-
-<p>I used to be curious about VPS(Virtual Private Server), how they work, how to build them, etc. As far as I know, AWS, GCE or whatever else solutions depend heavily on Virtualization Technologies and AWS is definitly playing with Xen currently.</p>
-
-<p>I would like very much to have a trial for building my own VPS and blow are my steps doing it. You may need to read some basic wikis about Xen, <a href="http://wiki.xen.org/wiki/Xen_Overview">Xen Overview</a> and <a href="http://wiki.xen.org/wiki/Xen_Beginners_Guide">Xen Beginners Guide</a> should do some help:&ndash;)</p>
-
-<!--more-->
-
-
-<h2>Getting a working Dom0 on Centos6.4</h2>
-
-<h3>Install Centos</h3>
-
-<p>Use whatever way you like, remember a <strong>minimal install</strong> is recommended.</p>
-
-<h3>Install Xen</h3>
-
-<p>Thanks to <strong>Xen4Centos</strong> Project, we can get Xen installed in several simple commands(log in as root).</p>
-
-<pre><code>yum -y update
-yum install centos-release-xen
-yum install xen
-/usr/bin/grub-bootxen.sh
-reboot
-</code></pre>
-
-<p>After your machine comes to alive, simply type:</p>
-
-<pre><code>uname -r
-xl list
-</code></pre>
-
-<p>to verify that Xen Dom0 is running.</p>
-
-<h3>Config network</h3>
-
-<p>I use DHCP to get a valid IP for my box and there is a trick if you can&rsquo;t ping each other when two machinea are in the same LAN(probably the routing table is not working for you and just delete the record from your routing table).</p>
-
-<p>As me, for example, my laptop got a IP, say 192.168.0.10 and my VPS got 192.168.0.11, but they can&rsquo;t talk to each:&ndash;(</p>
-
-<p>First, check your routing table,</p>
-
-<pre><code>route
-</code></pre>
-
-<p>Then, delete the record that is evil,</p>
-
-<pre><code>route del -net 192.168.0.0 netmask 255.255.255.0
-</code></pre>
-
-<p><strong>Please substitute the parameters to suite your own networking</strong>.</p>
-
-<p>After that, ping each other,</p>
-
-<pre><code>ping 192.168.0.11
-</code></pre>
-
-<p>to verify the networking is good to go.</p>
-
-<p>In order to give our DomUs valid IPs, we may use a network bridge, do as follows:</p>
-
-<pre><code>yum -y install bridge-utils
-cp /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-xenbr0
-</code></pre>
-
-<p>My modified and working scripts look like this, for ifcfg-xenbr0:</p>
-
-<pre><code>DEVICE=xenbr0
-#HWADDR=00:24:E8:46:CC:C9
-TYPE=bridge
-#UUID=ff0ab497-0303-4dc3-b6f3-4a6cbd90466b
-ONBOOT=yes
-NM_CONTROLLED=no
-BOOTPROTO=dhcp
-</code></pre>
-
-<p>And for ifcfg-eth0:</p>
-
-<pre><code>DEVICE=eth0
-HWADDR=00:24:E8:46:CC:C9
-TYPE=Ethernet
-UUID=ff0ab497-0303-4dc3-b6f3-4a6cbd90466b
-ONBOOT=yes
-NM_CONTROLLED=no
-#BOOTPROTO=dhcp
-BRIDGE=xenbr0
-</code></pre>
-
-<p><strong>For static IP configuration, please refer to Xen wiki page!</strong></p>
-
-<p>Then, make the configuration work:</p>
-
-<pre><code>service network restart
-</code></pre>
-
-<p>If you got errors such as <code>error:check cable</code>, do this manualy:</p>
-
-<pre><code>ifup xenbr0
-</code></pre>
-
-<p>Verify it works by issuing:</p>
-
-<pre><code>ifconfig xenbr0
-</code></pre>
-
-<h3>Diable SELinux</h3>
-
-<p>Honestly speaking, I don&rsquo;t know WTF the real reason to do this, but people say <code>SELinux can really interfere with Xen</code>.</p>
-
-<pre><code>sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
-setenforce 0
-</code></pre>
-
-<p>You are good to go with a damn working Dom0 and congratulations!</p>
-
-<h2>Bringing Your DomUs Up</h2>
-
-<p>It&rsquo;s up to you to use PV or HVM, personally, I prefer to PV due to higher performance. But if you want a Windows(and other OS whose kernel can&rsquo;t be modified), HVM is your only choice.</p>
-
-<p>As for me, I want 3 DomUs, namely Debian, Fedora and Arch Linux.</p>
-
-<h3>Xen4Cli or Xen4Libvirt</h3>
-
-<p>Xen4Cli(xm and xl, currently xm deprecated) are intended for advanced users looking to hand setup the network, the backing filestore and the xen environment. While Xen4Libvirt are for newbies looking for the easiest install path.</p>
-
-<p>I prefer <code>xl</code> since I want to know what exactly is happening, and <code>xl</code> works for Debian and Arch Linux. However for Fedora, <code>Libvert</code> seems to be the right way(using <code>virt-install</code>).</p>
-
-<p>To install Libvirt,</p>
-
-<pre><code>yum install libvirt python-virtinst libvirt-daemon-xen
-</code></pre>
-
-<p>After the install, restart your Dom0 machine.</p>
-
-<h3>File or LVM based backend</h3>
-
-<p>Since Centos6.4 is shipped perfectly with LVM and also the default partition schema using LVM during OS Installation, I prefer <code>LVM</code>.</p>
-
-<p>As for me, I do the following:</p>
-
-<pre><code>lvresize -L -200G vg_centos6/lv_home -r
-lvcreate -L 30G -n fedora vg_centos6
-lvcreate -L 30G -n debian vg_centos6
-lvcreate -L 30G -n archlinux vg_centos6
-</code></pre>
-
-<p>Then verify the Logical Volumes using:</p>
-
-<pre><code>lvdisplay
-</code></pre>
-
-<p>Or</p>
-
-<pre><code>lvs
-</code></pre>
-
-<p>If you are not familiar with LVM, search Google for a good tutorial first.</p>
-
-<h3>Bridge, Routing or NAT</h3>
-
-<p>Three networking modes are provided and choose one according to your own networking environment.</p>
-
-<p>I got bridge working for me as described in above section.</p>
-
-<p>For choosing other modes, you can modify <code>/etc/xen/xend-config.sxp</code> or explicitly passing as parameters when creating DomUs.</p>
-
-<h3>Let DomUs fly</h3>
-
-<h4>Debian</h4>
-
-<p>I choose debian7.1 netinst.iso due to my poor bandwidth,</p>
-
-<pre><code>wget -c http://mirrors.sohu.com/debian-cd/7.1.0/amd64/iso-cd/debian-7.1.0-amd64-netinst.iso
-mount -o loop /path/to/debian-7.1.0-amd64-netinst.iso /mnt/debian
-cp /mnt/debian/install.amd/xen/debian.cfg /etc/xen/
-cd /etc/xen/
-vi debian.cfg  ## Make modifications according to the comments
-xl create -c debian.cfg
-</code></pre>
-
-<p>Then install Debian as a very normal one.</p>
-
-<h4>Arch Linux</h4>
-
-<p>I download archlinux-2013.10.01-dual.iso by issuing:</p>
-
-<pre><code>wget http://mirrors.sohu.com/archlinux/iso/latest/archlinux-2013.10.01-dual.iso
-</code></pre>
-
-<p>Then create a arch.cfg file in <code>/etc/xen/</code> similar like:</p>
-
-<pre><code># Refer to https://wiki.archlinux.org/index.php/Xen#Configuring_a_paravirtualized_.28PV.29_Arch_domU
-
-name = "arch"
-kernel = "/mnt/arch/arch/boot/x86_64/vmlinuz"
-ramdisk = "/mnt/arch/arch/boot/x86_64/archiso.img"
-extra = "archisobasedir=arch archisolabel=ARCH_201310"
-memory = 512
-disk = [ "phy:/dev/vg_centos6/archlinux,sda1,w", "file:/root/isos/arch/archlinux-2013.10.01-dual.iso,sdb,r" ]
-vif = [ '' ]
-</code></pre>
-
-<p>After that, bring the DomU up by:</p>
-
-<pre><code>mount /path/to/archlinux-2013.10.01-dual.iso /mnt/arch
-cd /etc/xen/
-xl create -c arch.cfg
-</code></pre>
-
-<p>Install your Arch Linux as you like since it&rsquo;s really a highly customized distro.</p>
-
-<h4>Fedora</h4>
-
-<p>Again I got Fedora-20-Alpha-x86_64-netinst.iso by issuing:</p>
-
-<pre><code>wget http://download.fedoraproject.org/pub/fedora/linux/releases/test/20-Alpha/Fedora/x86_64/iso/Fedora-20-Alpha-x86_64-netinst.iso
-</code></pre>
-
-<p>However, nightmares begin since I want to install it using the Debian way. <code>xl</code> just fails to boot normally but <code>virt-install</code> does the job.</p>
-
-<p>Using the <code>virt-install</code> method:</p>
-
-<pre><code>virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://mirrors.163.com/fedora/releases/19/Fedora/x86_64/os/ --os-type linux --accelerate --nographics --network=bridge:xenbr0
-</code></pre>
-
-<p>Or you can download the ISO file first, then issuing your own httpd locally, thus making it:</p>
-
-<pre><code>mount -o loop /path/to/fedora.iso /mnt/fedora
-yum -y install httpd
-service httpd start
-ln -s /mnt/fedora /var/www/html
-service iptables stop
-virt-install --virt-type xen -n fedora19 -r 512 --vcpus=2 -f /dev/vg_centos6/fedora19 --location http://your.http.server.ip.address.here/ --os-type linux --accelerate --nographics --network=bridge:xenbr0
-</code></pre>
-
-<p>Remember this is for full Fedora installation, if you are using a netinst, you need to copy all the files to /var/www/html instead of creating a symbolic link and modify the .treeinfo file. No warrants here, since I did&rsquo;t try it myself.</p>
-
-<h2>References</h2>
-
-<ul>
-<li><a href="http://wiki.centos.org/HowTos/Xen/Xen4QuickStart">Xen4 CentOS6 QuickStart</a></li>
-<li><a href="http://wiki.centos.org/HowTos/Xen/Xen4QuickStart/Xen4Libvirt">Xen4 Libvirt for CentOS 6</a></li>
-<li><a href="http://drewsymo.com/cloud-computing/install-xen-on-centos-and-create-a-fedora-debian-vm/">Install Xen 4 with Libvirt / XL on CentOS 6 (2013)</a></li>
-<li><a href="http://www.howtoforge.com/virtualization-with-xen-on-centos-6.2-x86_64-paravirtualization-and-hardware-virtualization">Virtualization With Xen On CentOS 6.2 (x86_64) (Paravirtualization &amp; Hardware Virtualization)</a></li>
-<li><a href="http://wiki.xen.org/wiki/Xen_Configuration_File_Options">Xen Configuration File Options</a></li>
-<li><a href="http://xenbits.xen.org/docs/unstable/man/xl.cfg.5.html">XL Domain Configuration File Syntax</a></li>
-<li><a href="http://wiki.xen.org/wiki/Network_Configuration_Examples_(Xen_4.1%2B">Network Configuration Examples (Xen 4.1+)</a>)</li>
-<li><a href="http://wiki.xen.org/wiki/Debian_Guest_Installation_Using_Debian_Installer">Debian Guest Installation Using Debian Installer</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/Xen">Xen For Arch Linux Wiki page</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/Installation_Guide">Arch Linux Installation Guide</a></li>
-<li><a href="http://bderzhavets.wordpress.com/2009/01/10/install-fedora-10-pv-domu-at-xen-331-centos-52-dom0-xen-330-intrepid-server-dom0-novells-xen-inified-kernel-via-local-apache-mirror/">Install Fedora 10 PV DomU at Xen 3.3.1 CentOS 5.2 Dom0 &amp; Xen 3.3.0 Intrepid Server Dom0 (Novell’s Xen-ified Kernel) via local Apache Mirror</a></li>
-<li><a href="https://lists.fedoraproject.org/pipermail/xen/2012-November/005938.html">Installing a domU without virt-install Fedora-xen</a></li>
-<li><a href="http://www.centos.bz/2012/03/centos-6-install-deploy-xen/">CentOS 6安装配置Xen</a></li>
-<li><a href="http://www.cnblogs.com/hseagle/p/3299713.html">Archlinux 简明安装指南</a></li>
-<li><a href="http://blog.csdn.net/holdsky/article/details/8497764">archlinux （2012.12.01-dual） i686 硬盘安装</a></li>
-<li><a href="http://en.wikipedia.org/wiki/Xen">Xen</a></li>
-<li><a href="http://wiki.xen.org/wiki/Choice_of_Toolstacks">Choice of Toolstacks</a>
-
-<ul>
-<li><a href="http://wiki.xen.org/wiki/XL_vs_Xend_Feature_Comparison">XL vs Xend Feature Comparison</a></li>
-</ul>
-</li>
-</ul>
-
-
-<hr />
-
-<p>I do believe you will get lots of annoying problems while playing with Xen. Enjoy the problems and enjoy Xen:&ndash;)</p>
 ]]></content>
   </entry>
   
