@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OpenSource | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/opensource/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2014-08-13T11:03:53+08:00</updated>
+  <updated>2015-03-08T15:35:54+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Playing With Kinect For Windows Using OpenNI and SensorKinect Under Ubuntu 12.04 LTS]]></title>
+    <link href="http://hustcalm.me/blog/2014/12/31/playing-with-kinect-for-windows-using-openni-and-sensorkinect-under-ubuntu-12-dot-04-lts/"/>
+    <updated>2014-12-31T16:19:56+08:00</updated>
+    <id>http://hustcalm.me/blog/2014/12/31/playing-with-kinect-for-windows-using-openni-and-sensorkinect-under-ubuntu-12-dot-04-lts</id>
+    <content type="html"><![CDATA[<p>Just a quick recap to make myself feel better after such a struggle for 1 day and hopes it does some help to those who tries to bring <strong>Kinect For Windows</strong> work under Linux, here Ubuntu especially.</p>
+
+<h3>Hardware Device</h3>
+
+<p>Kinect for Windows, not Kinect for XBox, so this post is kind of limited to some senarios. And I&rsquo;m currently using Kinect For Windows Version 1, not the fasion V2.</p>
+
+<!--more-->
+
+
+<h3>Some Concepts</h3>
+
+<ul>
+<li>gspca_kinect</li>
+</ul>
+
+
+<p>A simple Kinect kernel driver which has been integrated in the driver, and works by default on my Ubuntu. Think <strong>V4L</strong> or <strong>UCV</strong>, this driver allows you to access the RGB and depth frames from Kinect. See <a href="http://blog.jozilla.net/2012/03/29/getting-up-and-running-with-the-kinect-in-ubuntu-12-04/">Getting up and running with the Kinect in Ubuntu 12.04</a>. Note however the author is using a Kinct for XBox.</p>
+
+<ul>
+<li>OpenNI</li>
+</ul>
+
+
+<p>While, open source Kinect SDK supported by PrimeSense?</p>
+
+<h3>Verify &amp; Install</h3>
+
+<p>Follow <a href="http://choorucode.com/2013/07/23/how-to-get-started-with-kinect-for-windows-on-ubuntu-using-openni/">this</a>, if got compilition error, maybe you are lucky with <a href="https://github.com/avin2/SensorKinect/pull/5">this patch</a>.</p>
+
+<h3>Try Something Cool</h3>
+
+<p>Why not play with <a href="https://github.com/felixendres/rgbdslam_v2">RGBDSLAM</a>?</p>
+
+<h3>Links That Matter</h3>
+
+<ul>
+<li><a href="http://choorucode.com/2013/07/23/how-to-get-started-with-kinect-for-windows-on-ubuntu-using-openni/">How to get started with Kinect for Windows on Ubuntu using OpenNI</a></li>
+<li><a href="http://blog.jozilla.net/2012/03/29/getting-up-and-running-with-the-kinect-in-ubuntu-12-04/">Getting up and running with the Kinect in Ubuntu 12.04</a></li>
+<li><a href="http://pointclouds.org/documentation/tutorials/openni_grabber.php">The OpenNI Grabber Framework in PCL</a></li>
+<li><a href="http://mitchtech.net/ubuntu-kinect-openni-primesense/">Ubuntu + Kinect + OpenNI + PrimeSense</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[纪念一下刚刚过去的BLUG 2012]]></title>
