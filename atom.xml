@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2015-03-08T16:02:51+08:00</updated>
+  <updated>2015-12-14T00:19:50+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Something About SSE and Beyond]]></title>
+    <link href="http://hustcalm.me/blog/2015/12/12/something-about-sse-and-beyond/"/>
+    <updated>2015-12-12T11:15:30+08:00</updated>
+    <id>http://hustcalm.me/blog/2015/12/12/something-about-sse-and-beyond</id>
+    <content type="html"><![CDATA[<p>We happen to know CPU is the core worker of every single computer, however, not everybody cares much about the instruction set architecture. I&rsquo;m quite interested messing up with all these stuff and by taking the brownbag chance of my group, I give a somehow preliminary talk on SSE.</p>
+
+<!--more-->
+
+
+<p>Everything starts with SIMD (Single Instruction Multiple Data) before we talk about SSE (Streaming SIMD Extensions). It&rsquo;s kind of parallezation technique on data level utilized by hareware (here processor). Dedicated to boost multimedia applications, like image processing, specch related algorithm, etc. SSE on Intel CPUs, as it evloves, we have AVX (Advanded Vector Extensions) now. Also, we have NEON on ARM.</p>
+
+<p>If you happen also have interest, you may refer to my slides <a href="http://www.slideshare.net/calmli/something-about-sse-and-beyond">Something about SSE and beyond</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[找工作的一点经验和教训]]></title>
+    <link href="http://hustcalm.me/blog/2015/12/12/zhao-gong-zuo-de-yi-dian-jing-yan-he-jiao-xun/"/>
+    <updated>2015-12-12T11:14:31+08:00</updated>
+    <id>http://hustcalm.me/blog/2015/12/12/zhao-gong-zuo-de-yi-dian-jing-yan-he-jiao-xun</id>
+    <content type="html"><![CDATA[<p>转眼参加工作已经四个月又半了，虽然也还算是初入茅庐的小菜，不过也有自己的一些思考，结合之前找工作的经历，在这里简单谈一些“经验和教训”吧。</p>
+
+<p>找工作还是得突出在“找”上，且大多数情况下是人“找”工作，极少数的情况下会出现工作“找”你（这里我们不考虑猎头社招之类的，特指校招）。首先可以明确的，找工作的时候其实就是匹配你的skill和工作内容的匹配程度，以及你的品性和未来同事的匹配程度，明确了这一点其实准备起来还是可以非常有针对性的。不要太考虑自己的专业背景，专业院校，“英雄不问出处”，问一下自己，想做什么样的工作，哪些公司自己想去，他们需要什么样的人，需要具备怎么样的技能，我目前水平怎么样，匹配程度如何，如果想顺利去这些地方工作，应该怎么做，是不是需要有一个计划，具体又如何实施，如果这一系列的问题你都可以回答自己，或者通过跟他人讨论得出相对明确的答案，那么恭喜你！找工作你已经成功了一半了！</p>
+
+<!--more-->
+
+
+<p>拿我个人举例，本科读的是机械工程，无奈真的对这个学科提不起兴趣，个人觉得计算机科学真的很有魔力！在ACM集训队经过半年不成功的尝试后，加入学生团队向周围相关专业的人学习，通过实际的项目学习。兴趣导向，基本上确定了未来一定是进入IT行业了。不管是进公司也好，还是创业也好，甚至读个PhD出来，我几乎从来没有对未来想要进入的行业怀疑过。这里的IT，我想说是“信息行业”，不特指软件行业。根据个人经历，可以印证“功夫不负有心人”这句话，中间有大量的迷茫，彷徨，不知所措，痛苦，可正是在这些阶段，是自己飞速成长的时候。真正进入研究生阶段后，才算是转来了一个“跟计算机严重相关”的专业，也是从研究生阶段开始，通过对开源的学习和交流，自己的计算机水平才开始真正走上正轨。说实话，一开始面临找工作的问题，自己心里也不是那么有底的，非CS科班出身，一些知识点很散，不太成体系，导致知识面也许够宽，但蜻蜓点水的情况偏多。这也是非CS专业的人找工作的时候表现出来的一个通病。</p>
+
+<p>俗话说，“预则立，不预则废”，硕士阶段两个大目标其实也挺清晰的-毕业&amp;找工作。这两条主线贯穿始终，借用一位同学的话，你需要花两年的时间，认认真真地去“填”你的简历。所以，找工作真的不是那么一两个月的事情（水平很高的人请忽略），更多地把它当成一个系统的项目来做，往往最后会得到自己满意的结果。接下来简单从几个方面谈一谈如何去做准备工作（特指IT行业），希望能给大家一些启发(更多内容请参考我的slides &ndash; <a href="http://www.slideshare.net/calmli/some-experiences-and-lessons-learnt-from-hunting-a-job">找工作的一点经验和教训</a>)。</p>
+
+<h2>时间表</h2>
+
+<p>这里给出我个人认为比较合理的一个时间安排。研二的寒假开始梳理找工作事宜，推荐《程序员面试金典》的前面几章，思路很清晰。开始制定技术准备的计划，要看的书，要刷的题。基本上3-5月份默默修炼就好，6-7月可以寻找一些实习面试的机会，一来检验自己，二来找面试感觉。8月差不多开始正式战场（有的在7月份，比如去年的FB，这个大家注意留意就好），这时候基本就是笔试面试，总结，准备，再笔试面试，这一阶段有的时候挺微妙的，你可以发现自己前所未有的可以看清楚自己的内心活动，不管是喜悦还是沮丧。这个阶段，你的情绪也会变得更加敏感，突然的一个Offer，冷不丁的一个拒绝，都会在你内心荡起波澜。我是比较好的开局，之后陷入泥潭，后来又慢慢爬出来。虽然面试的进行，心态也会慢慢发生变化，长时间找工作的一大好处就是这个体验了，有很多认真深入思考的机会（有的时候是不得不思考了）。基本上10月的时候高峰期就过去了，这个时候，主战场基本结束了，但是不要过早地撤离，经过浴血奋战，你已经很有战斗的感觉了，所以可以权衡下手里的Offer，学习并体验一下“谈判技巧”，然后再看看有没有更好的机会。顺利的情况下，这是一个丰收的时刻，但难免很多纠结，这个时候注意不要跟身边的人做太多比较，追求自己想要的就好。</p>
+
+<h2>技术储备</h2>
+
+<p>基础的《数据结构》和《算法》个人认为最重要，值得花大时间，因此校招考查很难逃出这个范围（《算法导论》足矣）。我之前没上过这方面的课程（其实有相关课程，但跟没上过基本等效了，有点后悔当时没有认真跟着课堂走，否则可以省不少时间），所以花时间过了一遍《数据结构C语言版），后来花时间看了一部分《算法导论》，感觉十分有用！《操作系统》一定要有基本的了解吧，至少对“线程/进程”有个清醒的认识，《计算机网络》至少了解TCP/IP的基本概念，三次握手，etc。语言层面如果不是特别偏Java，建议用C/C++练习写算法，现在考察的时候这个比较主流的样子（当然这可能是我的主观感受）。C++的《深入理解对象模型》，《STL源码剖析》强烈推荐。其他的书籍参考<a href="http://www.slideshare.net/calmli/some-experiences-and-lessnons-learnt-from-hunting-a-job">slides</a>吧。</p>
+
+<p>如果面“机器学习”，“数据挖掘”的岗位，那要把相关课程过一下，然后基本概念一定要清楚。这里经验不太多，不过多讨论了。总结来说就是，根据你想找的工作岗位，除了基础知识（数据结构和算法），针对性地准备，不要觉得这样功利，遵守游戏规则而已。</p>
+
+<h2>临场表现</h2>
+
+<p>心态第一，笔试面试第二。注意沟通，随机应变。跟人感觉的话，首先是自信，然后是态度端正，绝对谦虚，给面试官足够的尊重。不要过于沉默寡言，该问的要问，该表达的想法要适当表达，但也切忌话太多，言多必失，且太多话真的容易招人反感（个人观点）。</p>
+
+<p>好好做题目，做到自己能够做到的最好程度。面试的过程就是表现自己的过程，把你的思维，思考方式都给面试官看，最好把你好学的一面也表现出来（真切的，不要装）。对于你来说，你是在争取一个Offer。而对于面试官来说，他在寻找一位同事，一位他愿意一起共事的人，知道了这一点，该如何表现其实变得容易了，不是吗？</p>
+
+<h2>知己知彼</h2>
+
+<p>这里特指谈Offer阶段吧，每年都有special啊，白菜价之类的，其实在找工作的过程中，少不了和周围同学的讨论，每年的行业也相对明朗。你自己的水平如何，面试表现如何，开了什么价位，是否匹配，自己完全可以判断的。这里的核心还是手里要有过硬的Offer吧，否则谈起来也不太容易。</p>
+
+<h2>继续跑</h2>
+
+<p>以为找完工作就结束了？Totally wrong！找完工作之后，即使拿到了还算不错的Offer，也真的觉得自己有太多的东西可以加强！So，努力提高自己的市场价值吧，努力的你会拿到自己应得的价的:&ndash;)</p>
+
+<p>No pain, No gain. Good luck, a great job is awaiting:&ndash;)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2014这一年]]></title>
@@ -2724,213 +2784,6 @@ boinccmd update
 <li><a href="http://www.forbes.com/sites/allbusiness/2013/11/25/7-principles-for-making-powerpoint-slides-with-impact/2/">5 Principles For Making PowerPoint Slides With Impact &ndash; 2</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux Getting Started - Methodologies and Practices]]></title>
-    <link href="http://hustcalm.me/blog/2014/01/06/linux-getting-started-methodologies-and-practices/"/>
-    <updated>2014-01-06T22:22:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/01/06/linux-getting-started-methodologies-and-practices</id>
-    <content type="html"><![CDATA[<p>This is basically a topic that I gave to <a href="http://blog-ossclub.rhcloud.com/">Open-CAS</a> group members as a technique share. Since I have known Linux for over 4 years and heavily used it for 2 years more or less, I find myself realy attracted by it.</p>
-
-<p>Also I want others to have the chance to live with a better OS(Unix and Linux, also Mac OS of course), so it&rsquo;s a good time to take the good points out of my mind and let more people know.</p>
-
-<p>It&rsquo;s good to learn from each other especially when there are problems to solve. So I put my mind at a <code>github</code> repo called <a href="https://github.com/hustcalm/linux-getting-started">linux-getting-started</a> and hope that others would join me to make this repo more useful.</p>
-
-<!--more-->
-
-
-<h3>What&rsquo;s in this repo</h3>
-
-<p>Currently, I&rsquo;m addressing two aspects for <code>Linux Getting Started</code>, namely <code>Methodologies</code> and <code>Practices</code>. I know these are really big words, but they just fit here since I want to tell people <code>how to learn</code> not just <code>what to learn</code>.</p>
-
-<h4>Methodologies</h4>
-
-<p>Know what you are gonna do before you step out. Basically, for Linux beginners, the first step that I recommend is <code>install a Linux distro that you like</code>. Then just <code>use it</code> before you want to know everything about it(seems that no one will never ever). It&rsquo;s an OS after all, you use it for your daily job and solve your problems, not a magic software that just plays magic.</p>
-
-<p>A good book would give you a real quick start, I have divided the books into three levels:</p>
-
-<ul>
-<li>[Beginner]</li>
-</ul>
-
-
-<p>Newbies who just get to know Linux &ndash; Learn how to live with shell</p>
-
-<ul>
-<li>[Developer]</li>
-</ul>
-
-
-<p>Experienced programmers especially for C/C++ guys &ndash; get used to Linux Platform</p>
-
-<ul>
-<li>[Next]</li>
-</ul>
-
-
-<p>Ones who will dive deeper into the most complicated but fun part &ndash; Kernel and Driver</p>
-
-<p><strong>In one word, use it, learn it, dive into it!</strong></p>
-
-<h4>Practices</h4>
-
-<p>Using and Reading will give a quite well understanding for Linux, but not enough for mastering it. To become <code>real Linux users or developers</code>, remember <code>never leave your eyes off the screen and your fingers off your keyboard</code>, practice will just make perfect things and a great Linuxer, believe me:&ndash;)</p>
-
-<p>I address two technical parts currently in this repo, <code>Shell Scripting</code> and <code>Makefile</code>. Other parts will definitely added as long as I maintain this repo.</p>
-
-<h5>Shell Scripting</h5>
-
-<p>Before beginning with <code>Shell Scripting</code>, I suppose you have already been familiar with varies of commands or utilities in shell.</p>
-
-<p>To be straight, <code>shell</code> itself is a program which will interpret user&rsquo;s commands or instructions, convert them to <code>system calls</code> or other things that OS can understand. So basically speaking, <code>shell</code> is the interface between <code>user</code> and <code>OS Kernel</code>.</p>
-
-<p>As a script language, it has its own variables, functions and flow control statements, also it features many other stuff which will ease much pain for system administration but maybe worse if not used properly. When we are writing shell scripts, we are actually dealing with processes and interprocess communication, each process would do its job and we can use <code>pipe</code>, <code>socket</code>, <code>named-pipes</code> or <code>file</code> to let them talk to each other.</p>
-
-<p>You can definitely play some magic with shell scripting by choosing your favorite shell, like <code>Bash</code>, <code>Ksh</code>, <code>Zsh</code>, etc.</p>
-
-<h5>Makefile</h5>
-
-<p>As you get to know <code>shell</code>, you are ready to know something about <code>makefile</code>. Before that, I will talk about <code>make</code>, <code>autotools</code> first.</p>
-
-<p>When we are trying to build a big project, no one want to invoke every single compiling commands by hand which is annoying but also error prone. Here comes <code>make</code> to figure out this problem. So when you download a package with source code, to build it, simply type:</p>
-
-<pre><code>make
-sudo make install
-</code></pre>
-
-<p>Then you are done!</p>
-
-<p>Is this that easy? Reality will really disappoint us, because the user&rsquo;s OS or environment always will not be consistent with the developer&rsquo;s. So <code>make</code> does not easy the pain for buiding a package or software from scratch, but making it easier to manage a big project.</p>
-
-<p>So what&rsquo;s the solution? Here comes the <code>Autotools</code>, which will generate <code>makefiles</code> automatically according to the configuration of your system. Like you got a third party library A, and one package needs the library for one feature, <code>Autotools</code> will take care of whether you got the library installed, if yes, then build the package with the feature enabled, or just disable it otherwise.</p>
-
-<p>Cool, isn&rsquo;t it? Yes for the users, but maybe no for the developers, I mean all the pain will be transfered to the developers since they got to write <code>Autotools</code> scripts to make things right. Just another wrapper to give a good, cross-platform and generic solution? Some people would quite agree with this opinion.</p>
-
-<p>Thanks to the <code>Autotools</code>, people are getting used to:</p>
-
-<pre><code>./configure
-make
-sudo make install
-</code></pre>
-
-<p>There are many others excellent build systems or tools out there, like <code>CMake</code>, <code>QMake</code>, <code>Scons</code>, <code>Ninja</code> ,etc. Go and try them out!</p>
-
-<hr />
-
-<h3>Where is the slide</h3>
-
-<p>Honestly speaking, the slide is just a chain which helps me to make a clear topic. So you will not find it big, just about 15 pages, however to spread all the sparking mind, you will find it&rsquo;s really a <code>big one</code> again.</p>
-
-<p>If you want, download the slide at <a href="https://github.com/hustcalm/linux-getting-started/blob/master/linux-getting-started-%40hustcalm.pdf">here</a>.</p>
-
-<hr />
-
-<h3>What if I want to see something else</h3>
-
-<p>Cool, buddy, I do hope that we can maintain this repo together and help more people to get started with Linux. So you are welcome to add interesting topics or useful links or good references or books to this repo.</p>
-
-<p>You may either <code>fork</code> this <a href="https://github.com/hustcalm/linux-getting-started">repo</a>, add something interesting, then <code>pull request</code> to me.</p>
-
-<p>Or you can just add what you want to know to the <code>wishList</code> file after <code>fork</code>, maybe shortly I will add stuff about the topic that you care about.</p>
-
-<p>Help others, help yourself:&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Getting Started With Qt and Qt Creator]]></title>
-    <link href="http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator/"/>
-    <updated>2014-01-02T15:42:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator</id>
-    <content type="html"><![CDATA[<p>Recently I&rsquo;m doing a project for the Lab and choose C++ as the programming language, but for the Framework, I considered MFC and Qt at first but choose Qt without hesitation as soon as I recalled the pains when I tried to play with MFC. In short, MFC is just showing too much to the developer and looks a little annoying and more complicated(C++ itself is complicated enough).</p>
-
-<p>To be clear, I did not try Qt before either and totally new to it. But after two months, I wrote a running application which can deal with Cameras, IMU and Inclinometer, also a 6DOF controller. Besides, we have multithreading in it and multiply timers are running simultaneously. To summarize what I have learned and also share my experience to you is the desire to write this post.</p>
-
-<!--more-->
-
-
-<p>I also find that Qt Creator is really cool with the plugin <code>FakeVim</code> enabled(It is installed by default ,at least in my Qt Creator 2.8.1 Windows version), a light wight IDE with powerful abilities! So in this post, after talking about how to get started with Qt, I will give some appreciations to Qt Creator:&ndash;)</p>
-
-<hr />
-
-<h3>Beginning with Qt</h3>
-
-<h4>Get to know Qt</h4>
-
-<p>It&rsquo;s essentially a GUI toolkit when fist designed, but after years of development, it has evolved into a framework which is cross platform and popular.</p>
-
-<p>For official introduction, visit <a href="http://qt-project.org/">Qt Project</a>.</p>
-
-<h4>Choosing the way that you use</h4>
-
-<p>I will not talk about the versions ,like 5.x or 4.x. Let&rsquo;s say something about the <code>prebuilt-binaries</code> and <code>source code</code>.</p>
-
-<p>If you choose to build from scratch, it would take a bit of time to do that since Qt is big enough. If using the built binaries, do look at the related compilor, for Windows, you got options for VS 2008, VS 2010, VS 2012 and MinGW stuff. If you are using VS 2008(in my case), choosing this file <a href="http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-win-opensource-4.8.5-vs2008.exe">Qt libraries 4.8.5 for Windows (VS 2008, 235 MB)</a>, just for an example,then probably you are good to go when you build your project with VS 2008 as the backend.</p>
-
-<p>For Qt Creator, I prefer to use the perbuilt one too, but if you want to install some specified plugins, build from source code may be needed.</p>
-
-<h4>A good book would help a lot</h4>
-
-<p>I read the book <code>C++ GUI Programming with Qt 4(2nd Edition)</code> not because it&rsquo;s the best book for Qt, just because that we got one Chinese version copy of the book in our Lab. I went through the first 3 chapters and the appendix(mainly to know more about <code>qmake</code>), then referenced other chapters while I got problems when coding.</p>
-
-<p>For the comment that I wrote for the book, you can find it <a href="http://book.douban.com/review/6489896/">here</a>.</p>
-
-<p>However, this book is recommended as the official Qt book. You may want to try it out yourself and make your own judge, if you find another excellent book, do let me know:&ndash;)</p>
-
-<h4>See what the official says</h4>
-
-<p>For the official tutorials, you can refer to their website, like:</p>
-
-<ul>
-<li><a href="http://qt-project.org/doc/qt-5/gettingstarted.html">Getting Started with Qt</a></li>
-<li><a href="http://qt-project.org/doc/qt-4.8/how-to-learn-qt.html">How to Learn Qt</a></li>
-<li><a href="http://qt-project.org/doc/qt-4.7/how-to-learn-qt.html">How to Learn Qt</a></li>
-</ul>
-
-
-<p>You may notice that each Qt version got their own getting started web page, however, don&rsquo;t bother, checkout them all and pick the brilliant part that suits yourself.</p>
-
-<p>As time goes by, there may be new links and the listed links would be out of date. Go to the official website and find the real links then.</p>
-
-<hr />
-
-<h3>Qt Creator as your Swiss Army Knife</h3>
-
-<p>Yes, it is just an IDE, compared with Eclipse, it&rsquo;s dedicated to Qt and C++(Not exactly, it supports Android and even BlackBerry development), so much light-wighted. However, it&rsquo;s flexible and with lots of plugins, see <a href="http://qt-project.org/wiki/Qt_Creator_Plug-in_Gallery">Qt Creator Plugin Gallery</a>.</p>
-
-<p>As I&rsquo;m not expert to Qt Creator either, I will give several examples here.</p>
-
-<h4>FakeVim</h4>
-
-<p>Default shipped with Qt Creator, I&rsquo;m really excited when I find it. Support external <code>.vimrc</code> and give you almost the native vim experience.</p>
-
-<p>I used the default <code>FakeVim</code> key bindings, they are just as same as the official vim, besides that, you may use other short cuts provided by Qt Creator, among them, <code>F2</code> for following the symbol under cursor and <code>F4</code> for switching header and souce file are the most frequently used. For generating source code tags, it&rsquo;s well cared by a background process, however when got large source files, I suffered for temporary <code>Not Responding</code>.</p>
-
-<p>For quick view of the options:
-<img src="http://hustcalm.me/images/blog_images/qt_creator-fakevim.png"></p>
-
-<h4>Doxygen</h4>
-
-<p>This plugin uses the standard <a href="http://www.doxygen.org">Doxygen</a> as the backend and give useful utilities for documenting the whole project or a file or a class, function. variable, whatever.</p>
-
-<p>The following links really help a lot:o</p>
-
-<ul>
-<li><a href="https://facwiki.cs.byu.edu/HCMI/index.php/Using_doxygen_with_Qt_Creator">Using doxygen with Qt Creator</a></li>
-<li><a href="http://dev.kofee.org/projects/qtcreator-doxygen/wiki">QtCreator-Doxygen</a></li>
-</ul>
-
-
-<h4>Version Control</h4>
-
-<p>Qt Creator makes it really easy for integrating with version control tools, an image will tell everything:
-<img src="http://hustcalm.me/images/blog_images/qt_creator-versioncontrol.png"></p>
-
-<hr />
-
-<p>Hope this post do a little help for your getting started with Qt Programming:&ndash;)</p>
 ]]></content>
   </entry>
   

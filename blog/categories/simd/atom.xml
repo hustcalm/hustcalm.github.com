@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: SIMD | Welcome to Pandora's Box]]></title>
+  <link href="http://hustcalm.me/blog/categories/simd/atom.xml" rel="self"/>
+  <link href="http://hustcalm.me/"/>
+  <updated>2015-12-14T00:19:50+08:00</updated>
+  <id>http://hustcalm.me/</id>
+  <author>
+    <name><![CDATA[Lihang Li]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Something about SSE and beyond]]></title>
+    <link href="http://hustcalm.me/blog/2015/12/12/something-about-sse-and-beyond/"/>
+    <updated>2015-12-12T11:15:30+08:00</updated>
+    <id>http://hustcalm.me/blog/2015/12/12/something-about-sse-and-beyond</id>
+    <content type="html"><![CDATA[<p>We happen to know CPU is the core worker of every single computer, however, not everybody cares much about the instruction set architecture. I&rsquo;m quite interested messing up with all these stuff and by taking the brownbag chance of my group, I give a somehow preliminary talk on SSE.</p>
+
+<!--more-->
+
+
+<p>Everything starts with SIMD (Single Instruction Multiple Data) before we talk about SSE (Streaming SIMD Extensions). It&rsquo;s kind of parallezation technique on data level utilized by hareware (here processor). Dedicated to boost multimedia applications, like image processing, specch related algorithm, etc. SSE on Intel CPUs, as it evloves, we have AVX (Advanded Vector Extensions) now. Also, we have NEON on ARM.</p>
+
+<p>If you happen also have interest, you may refer to my slides <a href="http://www.slideshare.net/calmli/something-about-sse-and-beyond">Something about SSE and beyond</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>
