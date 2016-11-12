@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2015-03-08T15:35:54+08:00</updated>
+  <updated>2016-11-12T13:03:26+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,107 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[工作后的一点感悟]]></title>
+    <link href="http://hustcalm.me/blog/2016/07/23/gong-zuo-hou-de-yi-dian-gan-wu/"/>
+    <updated>2016-07-23T00:19:26+08:00</updated>
+    <id>http://hustcalm.me/blog/2016/07/23/gong-zuo-hou-de-yi-dian-gan-wu</id>
+    <content type="html"><![CDATA[<p>转眼参加工作已经整一年了。这一年渐渐感受到作为一个社会人与学生时代的不同，离开象牙塔才逐渐有了心慌的感觉，以前很多下不定决心做的事情，在压力和自我追求的权衡中慢慢变得很容易坚定去做了。做了18年的学生（真是应了18年寒穿苦读的老话），走上工作岗位，踏上社会，心里是有莫名的解脱感的，可能自己确实想去探寻一下科技公司究竟都在做什么，且是近距离的观察➕亲身体会。一年的时间不长不短，略微有一点思考和感悟。</p>
+
+<!--more-->
+
+
+<h2>学生思维</h2>
+
+<p>从学生时代走向工作岗位，思维方式需要有一个转变，这是大多数应届毕业生都会面对的（尤其是在正式参加工作前没有实习经历的同学们）。学生思维具体体现在：产品意识不够强烈，如何站在老板的角度思考问题，动态的眼光看待外界环境。</p>
+
+<p>大家都知道，学生做项目基本是“可用，可运行”为主，受众也通常是自己或者实验室的同门，如果对自己比较自信又富有分享精神，开源社区的可能也是受众。质量保证是“学生项目”和“公司项目”根本的不同之一（我目前是这么认为的），一次产品的发布需要从需求分析开始，到需求明确，时间表制定，开发，peer review，测试（这是学生比较容易忽略的，测试用例的设计以及测试的执行是很重要的能力），dog food（相当于内部beta一下），bug
+fix，测试报告等文档，最后到release review（一些你之前根本不会考虑的问题，虽然不难，但做的时候多少会让你明白，原来发布一个小的算法都要做如此繁琐的review工作啊），才“有可能”顺利发布。发布后还没有大功告成，维护，更新，修bug，都是分内之事。</p>
+
+<p>本科阶段“混”毕业，研究生阶段“求”毕业。相信读研的同学们多少有点跟老板“斗争”的经历，毕业如一座大山，你想出去实习，老板想你做实验室的工作，不一致的目标导致冲突。作为过来人，反思一下，谁都没有错，站在不同的角度思考问题，老板是很有道理的，这个时候只能看如何跟老板沟通。进了公司，类似的情况肯定也会时有发生，和老板就一些问题意见不一致。不过退一万步讲，如果没有到那种你做的工作一点都不敢兴趣的地步（否则你早就离开了），我的体会是尽可能多地从老板的角度想一下问题。为什么？老板带领团队肯定是想做出东西来，整个团队的大目标是一致的，老板肯定希望团队能够健康快速平稳地发展，每个人都能够有所收获（个人能力以及福利待遇），他看问题和我们看问题的角度肯定不一样，他的很多做法我相信肯定有他的道理和相应的支撑。所以，出现了不一致怎么办？找老板沟通，就一些具体的问题讨论，有效地把一些看法讲清楚，本着大目标一致的原则，寻找共赢。（第一年，我的体会是少一些个性发挥，多一些踏实出活，多观察多干活，少说话，该说的一定说，没把握的或者太天马行空的再酝酿一下）。</p>
+
+<p>让我们回想一下，学生时代每个人都属于一个班级，然后在求学的某一个阶段，同学关系相对稳定（很少有同学随意到别的班级去了，当然有转校的，但是这种情况非常少），也就是说，你的外界环境相对少变化。工作之后，情况会变得完全不同，每个人都会有自己的职业发展轨迹和想法，你入职的第一天就可能会看到身边即将成为同事的哥们正在收拾东西准备下一段旅程了。时不时地，你会收到一些邮件说“Today is my last working at&hellip;” 或者“Friday will be my last working day&hellip; let&rsquo;s have lunch
+together”，一开始你可能会觉得不理解甚至惊愕，咋回事？在这工作不是挺好的吗？昨天还跟大家谈笑风生的同事，也许今天就是共事的最后一天，学生时代毕业的日期可以预期，身边的同事谁会下一个离开没有预期。接受它，这就是工作和市场，人才流动是行业发展和个人发展的必然。</p>
+
+<h2>想做的和该做的</h2>
+
+<p>这个其实是想说如何把自己的目标和兴趣，跟团队和老板的整体目标尽量地align起来。Work what you like, like what you
+work！需要搞明白的是，来公司工作是为了创造价值的，虽然说成“给老板打工“有些欠妥当，但试想一下，如果你是老板，你喜欢什么样的员工？我的答案是，主动努力地去解决老板的问题，为什么？老板的问题通常就是项目如何往前推进，如何解决项目里面的一些难题，解决这些问题就是在帮老板解决问题，就是这么简单。我觉得，这是该做的。扩展一点，不满足于完成自己被分配的工作，主动去承担问题解决的责任，从项目大的scope多一些思考并时常跟老板沟通（随时去办公室或者利用1:1 meeting的机会），这是一个良性的互动，你会收获很多。</p>
+
+<p>有时候很多工作的人会抱怨，“唉，我做的工作很没意思，我其实想去做&hellip;”，这是想做的。这里可以分两方面解读这个想法。一，确实对某一个技术领域感兴趣，想去探索。没问题，做好本职工作，你会有时间的。或者，尽可能去把自己的兴趣和做的项目align起来，这个要看机会，如果工作上暂时没有好的机会，去开源社区发挥自己的光和热也是很好的选择嘛。没有人能抑制你的兴趣，所以这个方面问题不大。二，好高骛远型的，一边说着手头的工作无趣，却不能把工作做到得心应手，这就是一个非常危险的想法了，这只会导致消极的工作态度，随之而来的是差的工作绩效（然后，你可以再发挥想象力了&hellip;）。我的观点，任何工作，当你做出成绩的时候，成就感本身就是乐趣。So,
+do it, do it greatly!</p>
+
+<h2>丛林法则和市场决定价值</h2>
+
+<p>在工作岗位上，合作和竞争是并存的（学生时代不也是如此吗），且比学生时代来的强烈不少。不管愿不愿意承认，职场犹如一个丛林，优胜劣汰无时无刻不在上演。初入职场，没啥体会，随着对职业发展路线的了解以及对所在工作环境的分析，丛林法则的想法会自己钻到你的脑子里。Be nice to everybody is not important, the most important thing is, get your job done, greatly and gracefully. Never be afraid to fail, always try to solve problems. Run, with the sense of crisis.
+你必须向前跑，且快速地跑，竞争是无情的（说的略夸张，可这就是事实不是吗）。</p>
+
+<p>市场不尊重传统，它只尊重创新。职场丛林里面的人展开残酷的市场竞争，用创新去颠覆，去开拓，去“屠杀”。当你按部就班的工作没什么波澜的时候，思考一下，你正在平庸的路上越走越远（享受生活不代表平庸，不代表就可以安于现状不努力）。反思一下，我的价值在哪里？几何？市场需要的价值是什么？相信我，你的生活不会因此变得无趣，充满了工作而丧失了生活情趣。你的市场价值的提升会带给你也许任何都给不了你的进步感和成就感，然后你的世界会更加开阔:&ndash;)</p>
+
+<p>（决没有任何强推价值观的想法，看到本文的人权当看看热闹就好：）发现自己工作后变懒了，博客过了一年没更新了，罪恶感上升啊，这一篇文章也给我拖了一个季度了，hustcalm于2016-11-12 12:52:24)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Something About SSE and Beyond]]></title>
+    <link href="http://hustcalm.me/blog/2015/12/12/something-about-sse-and-beyond/"/>
+    <updated>2015-12-12T11:15:30+08:00</updated>
+    <id>http://hustcalm.me/blog/2015/12/12/something-about-sse-and-beyond</id>
+    <content type="html"><![CDATA[<p>We happen to know CPU is the core worker of every single computer, however, not everybody cares much about the instruction set architecture. I&rsquo;m quite interested messing up with all these stuff and by taking the brownbag chance of my group, I give a somehow preliminary talk on SSE.</p>
+
+<!--more-->
+
+
+<p>Everything starts with SIMD (Single Instruction Multiple Data) before we talk about SSE (Streaming SIMD Extensions). It&rsquo;s kind of parallezation technique on data level utilized by hareware (here processor). Dedicated to boost multimedia applications, like image processing, specch related algorithm, etc. SSE on Intel CPUs, as it evloves, we have AVX (Advanded Vector Extensions) now. Also, we have NEON on ARM.</p>
+
+<p>If you happen also have interest, you may refer to my slides <a href="http://www.slideshare.net/calmli/something-about-sse-and-beyond">Something about SSE and beyond</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[找工作的一点经验和教训]]></title>
+    <link href="http://hustcalm.me/blog/2015/12/12/zhao-gong-zuo-de-yi-dian-jing-yan-he-jiao-xun/"/>
+    <updated>2015-12-12T11:14:31+08:00</updated>
+    <id>http://hustcalm.me/blog/2015/12/12/zhao-gong-zuo-de-yi-dian-jing-yan-he-jiao-xun</id>
+    <content type="html"><![CDATA[<p>转眼参加工作已经四个月又半了，虽然也还算是初入茅庐的小菜，不过也有自己的一些思考，结合之前找工作的经历，在这里简单谈一些“经验和教训”吧。</p>
+
+<p>找工作还是得突出在“找”上，且大多数情况下是人“找”工作，极少数的情况下会出现工作“找”你（这里我们不考虑猎头社招之类的，特指校招）。首先可以明确的，找工作的时候其实就是匹配你的skill和工作内容的匹配程度，以及你的品性和未来同事的匹配程度，明确了这一点其实准备起来还是可以非常有针对性的。不要太考虑自己的专业背景，专业院校，“英雄不问出处”，问一下自己，想做什么样的工作，哪些公司自己想去，他们需要什么样的人，需要具备怎么样的技能，我目前水平怎么样，匹配程度如何，如果想顺利去这些地方工作，应该怎么做，是不是需要有一个计划，具体又如何实施，如果这一系列的问题你都可以回答自己，或者通过跟他人讨论得出相对明确的答案，那么恭喜你！找工作你已经成功了一半了！</p>
+
+<!--more-->
+
+
+<p>拿我个人举例，本科读的是机械工程，无奈真的对这个学科提不起兴趣，个人觉得计算机科学真的很有魔力！在ACM集训队经过半年不成功的尝试后，加入学生团队向周围相关专业的人学习，通过实际的项目学习。兴趣导向，基本上确定了未来一定是进入IT行业了。不管是进公司也好，还是创业也好，甚至读个PhD出来，我几乎从来没有对未来想要进入的行业怀疑过。这里的IT，我想说是“信息行业”，不特指软件行业。根据个人经历，可以印证“功夫不负有心人”这句话，中间有大量的迷茫，彷徨，不知所措，痛苦，可正是在这些阶段，是自己飞速成长的时候。真正进入研究生阶段后，才算是转来了一个“跟计算机严重相关”的专业，也是从研究生阶段开始，通过对开源的学习和交流，自己的计算机水平才开始真正走上正轨。说实话，一开始面临找工作的问题，自己心里也不是那么有底的，非CS科班出身，一些知识点很散，不太成体系，导致知识面也许够宽，但蜻蜓点水的情况偏多。这也是非CS专业的人找工作的时候表现出来的一个通病。</p>
+
+<p>俗话说，“预则立，不预则废”，硕士阶段两个大目标其实也挺清晰的-毕业&amp;找工作。这两条主线贯穿始终，借用一位同学的话，你需要花两年的时间，认认真真地去“填”你的简历。所以，找工作真的不是那么一两个月的事情（水平很高的人请忽略），更多地把它当成一个系统的项目来做，往往最后会得到自己满意的结果。接下来简单从几个方面谈一谈如何去做准备工作（特指IT行业），希望能给大家一些启发(更多内容请参考我的slides &ndash; <a href="http://www.slideshare.net/calmli/some-experiences-and-lessons-learnt-from-hunting-a-job">找工作的一点经验和教训</a>)。</p>
+
+<h2>时间表</h2>
+
+<p>这里给出我个人认为比较合理的一个时间安排。研二的寒假开始梳理找工作事宜，推荐《程序员面试金典》的前面几章，思路很清晰。开始制定技术准备的计划，要看的书，要刷的题。基本上3-5月份默默修炼就好，6-7月可以寻找一些实习面试的机会，一来检验自己，二来找面试感觉。8月差不多开始正式战场（有的在7月份，比如去年的FB，这个大家注意留意就好），这时候基本就是笔试面试，总结，准备，再笔试面试，这一阶段有的时候挺微妙的，你可以发现自己前所未有的可以看清楚自己的内心活动，不管是喜悦还是沮丧。这个阶段，你的情绪也会变得更加敏感，突然的一个Offer，冷不丁的一个拒绝，都会在你内心荡起波澜。我是比较好的开局，之后陷入泥潭，后来又慢慢爬出来。虽然面试的进行，心态也会慢慢发生变化，长时间找工作的一大好处就是这个体验了，有很多认真深入思考的机会（有的时候是不得不思考了）。基本上10月的时候高峰期就过去了，这个时候，主战场基本结束了，但是不要过早地撤离，经过浴血奋战，你已经很有战斗的感觉了，所以可以权衡下手里的Offer，学习并体验一下“谈判技巧”，然后再看看有没有更好的机会。顺利的情况下，这是一个丰收的时刻，但难免很多纠结，这个时候注意不要跟身边的人做太多比较，追求自己想要的就好。</p>
+
+<h2>技术储备</h2>
+
+<p>基础的《数据结构》和《算法》个人认为最重要，值得花大时间，因此校招考查很难逃出这个范围（《算法导论》足矣）。我之前没上过这方面的课程（其实有相关课程，但跟没上过基本等效了，有点后悔当时没有认真跟着课堂走，否则可以省不少时间），所以花时间过了一遍《数据结构C语言版），后来花时间看了一部分《算法导论》，感觉十分有用！《操作系统》一定要有基本的了解吧，至少对“线程/进程”有个清醒的认识，《计算机网络》至少了解TCP/IP的基本概念，三次握手，etc。语言层面如果不是特别偏Java，建议用C/C++练习写算法，现在考察的时候这个比较主流的样子（当然这可能是我的主观感受）。C++的《深入理解对象模型》，《STL源码剖析》强烈推荐。其他的书籍参考<a href="http://www.slideshare.net/calmli/some-experiences-and-lessnons-learnt-from-hunting-a-job">slides</a>吧。</p>
+
+<p>如果面“机器学习”，“数据挖掘”的岗位，那要把相关课程过一下，然后基本概念一定要清楚。这里经验不太多，不过多讨论了。总结来说就是，根据你想找的工作岗位，除了基础知识（数据结构和算法），针对性地准备，不要觉得这样功利，遵守游戏规则而已。</p>
+
+<h2>临场表现</h2>
+
+<p>心态第一，笔试面试第二。注意沟通，随机应变。跟人感觉的话，首先是自信，然后是态度端正，绝对谦虚，给面试官足够的尊重。不要过于沉默寡言，该问的要问，该表达的想法要适当表达，但也切忌话太多，言多必失，且太多话真的容易招人反感（个人观点）。</p>
+
+<p>好好做题目，做到自己能够做到的最好程度。面试的过程就是表现自己的过程，把你的思维，思考方式都给面试官看，最好把你好学的一面也表现出来（真切的，不要装）。对于你来说，你是在争取一个Offer。而对于面试官来说，他在寻找一位同事，一位他愿意一起共事的人，知道了这一点，该如何表现其实变得容易了，不是吗？</p>
+
+<h2>知己知彼</h2>
+
+<p>这里特指谈Offer阶段吧，每年都有special啊，白菜价之类的，其实在找工作的过程中，少不了和周围同学的讨论，每年的行业也相对明朗。你自己的水平如何，面试表现如何，开了什么价位，是否匹配，自己完全可以判断的。这里的核心还是手里要有过硬的Offer吧，否则谈起来也不太容易。</p>
+
+<h2>继续跑</h2>
+
+<p>以为找完工作就结束了？Totally wrong！找完工作之后，即使拿到了还算不错的Offer，也真的觉得自己有太多的东西可以加强！So，努力提高自己的市场价值吧，努力的你会拿到自己应得的价的:&ndash;)</p>
+
+<p>No pain, No gain. Good luck, a great job is awaiting:&ndash;)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2014这一年]]></title>
@@ -2635,302 +2736,6 @@ boinccmd update
 <hr />
 
 <p>Happy digging and contributing:&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Making Your Slides the Awesome Way]]></title>
-    <link href="http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way/"/>
-    <updated>2014-01-12T00:08:45+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way</id>
-    <content type="html"><![CDATA[<p>People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? <code>PPT</code> would be the first choice to majority of people. For web developers, they would produce their slides in <code>HTML + CSS + Javascript</code>? And for researchers or people in academic area, will they use <code>Latex</code> or the popular <code>beamer</code> class?</p>
-
-<!--more-->
-
-
-<p>We do have kinds of approaches to make us slids work, but what is the awesome way? To be awesome, I mean the sides should look nice, easy to control its typeset and should maintain the same when playing at different devices or different software. Of course, the way to write your slide could be awesome too:&ndash;)</p>
-
-<p>I will simply go through what choices that we have, what&rsquo;s the advantage disadvantage, and finally choose the way that you think is awesome to you.</p>
-
-<hr />
-
-<h3>Choices for making slides</h3>
-
-<h4>The normal way &ndash; PPT or Keynote</h4>
-
-<p>I bet that this is the most adaptive way for people to get presentations done. On Windows and Linux, we use Office, specifically speaking the <code>Powerpoint</code> or <code>Impress</code> shipped with LibreOffice.</p>
-
-<p>On Mac, people use <code>Keynote</code> a lot.</p>
-
-<p>I won&rsquo;t make it long, see this for a fabulous discussion at:</p>
-
-<ul>
-<li><a href="http://readingsml.blogspot.com/2009/11/keynote-vs-powerpoint-vs-beamer.html">Keynote vs. Powerpoint vs. Beamer</a></li>
-</ul>
-
-
-<h4>Cool way utilizing browser &ndash; HTML + CSS</h4>
-
-<p>Yes, yes, we only need Browers and Terminals for our computer, right? Exaggerated enough, but browsers are really doing everything for us, including showing the slides, go to <a href="http://www.slideshare.net">slideshare</a> for a vivid experience. However, the slides showed on <code>slideshare</code> is powered by <code>Flash</code>, so do others who provide similar services.</p>
-
-<p>No Flash, let&rsquo;s see how to make slides using just <code>HTML</code> and <code>CSS</code>.</p>
-
-<p>A good tutorial goes here:</p>
-
-<ul>
-<li><a href="http://net.tutsplus.com/tutorials/html-css-techniques/how-to-create-presentation-slides-with-html-and-css-2/">How to Create Presentation Slides with HTML and CSS</a></li>
-</ul>
-
-
-<h4>Awesome way using Latex &ndash; beamer</h4>
-
-<p>Geek enough, but maybe mostly used by hackers and researchers, Latex &ndash; beamer is definitely awesome. It&rsquo;s like you are composing a literature when writing your slides.</p>
-
-<p>For getting started with Latex &ndash; beamer, See:</p>
-
-<ul>
-<li><a href="http://jeromyanglim.blogspot.com/2010/08/getting-started-with-beamer-tips-and.html">Getting Started with Beamer: Tips and Tricks for LaTeX Presentations</a></li>
-<li><a href="http://www.productivescholar.com/2008/03/15/how-to-use-the-latex-beamer-class-for-great-looking-presentations/">How-To Use the LaTeX Beamer Class for Great-Looking Presentations</a></li>
-<li><p><a href="http://lucatrevisan.wordpress.com/2010/11/18/presenting-a-beamer-talk-the-right-way/">Presenting a Beamer Talk the Right Way</a></p></li>
-<li><p><a href="http://www.math-linux.com/latex-26/How-to-make-a-presentation-with">How to make a presentation with Latex &ndash; Introduction to Beamer</a></p></li>
-<li><a href="http://www.uncg.edu/cmp/reu/presentations/Charles%20Batts%20-%20Beamer%20Tutorial.pdf">A Beamer Tutorial in Beamer</a></li>
-<li><a href="http://www.tug.org/pracjourn/2005-4/mertz/mertz.pdf">Beamer by Example</a></li>
-<li><a href="http://www.informatik.uni-freiburg.de/~frank/ENG/latex-course/latex-course-3/latex-course-3_en.html">examples of beamer class</a></li>
-<li><a href="http://heather.cs.ucdavis.edu/~matloff/beamer.html">Norm Matloff&rsquo;s Quick Tutorial on the Beamer Package for Slide Making in LaTeX</a></li>
-<li><a href="http://www.math.umbc.edu/~rouben/beamer/quickstart.html">A Beamer Quickstart</a></li>
-<li><a href="http://zrno.fsb.hr/katedra/download/materijali/1082.pdf">Beamer Class Tutorial &ndash; Warsaw University of Technology</a></li>
-</ul>
-
-
-<hr />
-
-<h3>Awesome way for making slides</h3>
-
-<p>To me, the awesome would be to use <code>HTML + CSS</code> or <code>beamer</code>. Why? Simply because they are cross platform naturely and it&rsquo;s really flexible when creating slides by writing plain markup files or something like that.</p>
-
-<hr />
-
-<h3>Choose your awesome way</h3>
-
-<p>Most of the times, you will find the ways or methods are not the essential things, the contents and the way you represent is the key. So just choose the right way for you, making it your awesome way. I believe everyone will make a perfect job once he gets skillful enough.</p>
-
-<hr />
-
-<h3>Other Useful Links</h3>
-
-<ul>
-<li><p><a href="http://johnmacfarlane.net/pandoc/demo/example9/producing-slide-shows-with-pandoc.html">Producing slide shows with Pandoc</a></p></li>
-<li><p><a href="http://www.forbes.com/sites/allbusiness/2013/11/25/7-principles-for-making-powerpoint-slides-with-impact/">5 Principles For Making PowerPoint Slides With Impact &ndash; 1</a></p></li>
-<li><a href="http://www.forbes.com/sites/allbusiness/2013/11/25/7-principles-for-making-powerpoint-slides-with-impact/2/">5 Principles For Making PowerPoint Slides With Impact &ndash; 2</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux Getting Started - Methodologies and Practices]]></title>
-    <link href="http://hustcalm.me/blog/2014/01/06/linux-getting-started-methodologies-and-practices/"/>
-    <updated>2014-01-06T22:22:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/01/06/linux-getting-started-methodologies-and-practices</id>
-    <content type="html"><![CDATA[<p>This is basically a topic that I gave to <a href="http://blog-ossclub.rhcloud.com/">Open-CAS</a> group members as a technique share. Since I have known Linux for over 4 years and heavily used it for 2 years more or less, I find myself realy attracted by it.</p>
-
-<p>Also I want others to have the chance to live with a better OS(Unix and Linux, also Mac OS of course), so it&rsquo;s a good time to take the good points out of my mind and let more people know.</p>
-
-<p>It&rsquo;s good to learn from each other especially when there are problems to solve. So I put my mind at a <code>github</code> repo called <a href="https://github.com/hustcalm/linux-getting-started">linux-getting-started</a> and hope that others would join me to make this repo more useful.</p>
-
-<!--more-->
-
-
-<h3>What&rsquo;s in this repo</h3>
-
-<p>Currently, I&rsquo;m addressing two aspects for <code>Linux Getting Started</code>, namely <code>Methodologies</code> and <code>Practices</code>. I know these are really big words, but they just fit here since I want to tell people <code>how to learn</code> not just <code>what to learn</code>.</p>
-
-<h4>Methodologies</h4>
-
-<p>Know what you are gonna do before you step out. Basically, for Linux beginners, the first step that I recommend is <code>install a Linux distro that you like</code>. Then just <code>use it</code> before you want to know everything about it(seems that no one will never ever). It&rsquo;s an OS after all, you use it for your daily job and solve your problems, not a magic software that just plays magic.</p>
-
-<p>A good book would give you a real quick start, I have divided the books into three levels:</p>
-
-<ul>
-<li>[Beginner]</li>
-</ul>
-
-
-<p>Newbies who just get to know Linux &ndash; Learn how to live with shell</p>
-
-<ul>
-<li>[Developer]</li>
-</ul>
-
-
-<p>Experienced programmers especially for C/C++ guys &ndash; get used to Linux Platform</p>
-
-<ul>
-<li>[Next]</li>
-</ul>
-
-
-<p>Ones who will dive deeper into the most complicated but fun part &ndash; Kernel and Driver</p>
-
-<p><strong>In one word, use it, learn it, dive into it!</strong></p>
-
-<h4>Practices</h4>
-
-<p>Using and Reading will give a quite well understanding for Linux, but not enough for mastering it. To become <code>real Linux users or developers</code>, remember <code>never leave your eyes off the screen and your fingers off your keyboard</code>, practice will just make perfect things and a great Linuxer, believe me:&ndash;)</p>
-
-<p>I address two technical parts currently in this repo, <code>Shell Scripting</code> and <code>Makefile</code>. Other parts will definitely added as long as I maintain this repo.</p>
-
-<h5>Shell Scripting</h5>
-
-<p>Before beginning with <code>Shell Scripting</code>, I suppose you have already been familiar with varies of commands or utilities in shell.</p>
-
-<p>To be straight, <code>shell</code> itself is a program which will interpret user&rsquo;s commands or instructions, convert them to <code>system calls</code> or other things that OS can understand. So basically speaking, <code>shell</code> is the interface between <code>user</code> and <code>OS Kernel</code>.</p>
-
-<p>As a script language, it has its own variables, functions and flow control statements, also it features many other stuff which will ease much pain for system administration but maybe worse if not used properly. When we are writing shell scripts, we are actually dealing with processes and interprocess communication, each process would do its job and we can use <code>pipe</code>, <code>socket</code>, <code>named-pipes</code> or <code>file</code> to let them talk to each other.</p>
-
-<p>You can definitely play some magic with shell scripting by choosing your favorite shell, like <code>Bash</code>, <code>Ksh</code>, <code>Zsh</code>, etc.</p>
-
-<h5>Makefile</h5>
-
-<p>As you get to know <code>shell</code>, you are ready to know something about <code>makefile</code>. Before that, I will talk about <code>make</code>, <code>autotools</code> first.</p>
-
-<p>When we are trying to build a big project, no one want to invoke every single compiling commands by hand which is annoying but also error prone. Here comes <code>make</code> to figure out this problem. So when you download a package with source code, to build it, simply type:</p>
-
-<pre><code>make
-sudo make install
-</code></pre>
-
-<p>Then you are done!</p>
-
-<p>Is this that easy? Reality will really disappoint us, because the user&rsquo;s OS or environment always will not be consistent with the developer&rsquo;s. So <code>make</code> does not easy the pain for buiding a package or software from scratch, but making it easier to manage a big project.</p>
-
-<p>So what&rsquo;s the solution? Here comes the <code>Autotools</code>, which will generate <code>makefiles</code> automatically according to the configuration of your system. Like you got a third party library A, and one package needs the library for one feature, <code>Autotools</code> will take care of whether you got the library installed, if yes, then build the package with the feature enabled, or just disable it otherwise.</p>
-
-<p>Cool, isn&rsquo;t it? Yes for the users, but maybe no for the developers, I mean all the pain will be transfered to the developers since they got to write <code>Autotools</code> scripts to make things right. Just another wrapper to give a good, cross-platform and generic solution? Some people would quite agree with this opinion.</p>
-
-<p>Thanks to the <code>Autotools</code>, people are getting used to:</p>
-
-<pre><code>./configure
-make
-sudo make install
-</code></pre>
-
-<p>There are many others excellent build systems or tools out there, like <code>CMake</code>, <code>QMake</code>, <code>Scons</code>, <code>Ninja</code> ,etc. Go and try them out!</p>
-
-<hr />
-
-<h3>Where is the slide</h3>
-
-<p>Honestly speaking, the slide is just a chain which helps me to make a clear topic. So you will not find it big, just about 15 pages, however to spread all the sparking mind, you will find it&rsquo;s really a <code>big one</code> again.</p>
-
-<p>If you want, download the slide at <a href="https://github.com/hustcalm/linux-getting-started/blob/master/linux-getting-started-%40hustcalm.pdf">here</a>.</p>
-
-<hr />
-
-<h3>What if I want to see something else</h3>
-
-<p>Cool, buddy, I do hope that we can maintain this repo together and help more people to get started with Linux. So you are welcome to add interesting topics or useful links or good references or books to this repo.</p>
-
-<p>You may either <code>fork</code> this <a href="https://github.com/hustcalm/linux-getting-started">repo</a>, add something interesting, then <code>pull request</code> to me.</p>
-
-<p>Or you can just add what you want to know to the <code>wishList</code> file after <code>fork</code>, maybe shortly I will add stuff about the topic that you care about.</p>
-
-<p>Help others, help yourself:&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Getting Started With Qt and Qt Creator]]></title>
-    <link href="http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator/"/>
-    <updated>2014-01-02T15:42:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator</id>
-    <content type="html"><![CDATA[<p>Recently I&rsquo;m doing a project for the Lab and choose C++ as the programming language, but for the Framework, I considered MFC and Qt at first but choose Qt without hesitation as soon as I recalled the pains when I tried to play with MFC. In short, MFC is just showing too much to the developer and looks a little annoying and more complicated(C++ itself is complicated enough).</p>
-
-<p>To be clear, I did not try Qt before either and totally new to it. But after two months, I wrote a running application which can deal with Cameras, IMU and Inclinometer, also a 6DOF controller. Besides, we have multithreading in it and multiply timers are running simultaneously. To summarize what I have learned and also share my experience to you is the desire to write this post.</p>
-
-<!--more-->
-
-
-<p>I also find that Qt Creator is really cool with the plugin <code>FakeVim</code> enabled(It is installed by default ,at least in my Qt Creator 2.8.1 Windows version), a light wight IDE with powerful abilities! So in this post, after talking about how to get started with Qt, I will give some appreciations to Qt Creator:&ndash;)</p>
-
-<hr />
-
-<h3>Beginning with Qt</h3>
-
-<h4>Get to know Qt</h4>
-
-<p>It&rsquo;s essentially a GUI toolkit when fist designed, but after years of development, it has evolved into a framework which is cross platform and popular.</p>
-
-<p>For official introduction, visit <a href="http://qt-project.org/">Qt Project</a>.</p>
-
-<h4>Choosing the way that you use</h4>
-
-<p>I will not talk about the versions ,like 5.x or 4.x. Let&rsquo;s say something about the <code>prebuilt-binaries</code> and <code>source code</code>.</p>
-
-<p>If you choose to build from scratch, it would take a bit of time to do that since Qt is big enough. If using the built binaries, do look at the related compilor, for Windows, you got options for VS 2008, VS 2010, VS 2012 and MinGW stuff. If you are using VS 2008(in my case), choosing this file <a href="http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-win-opensource-4.8.5-vs2008.exe">Qt libraries 4.8.5 for Windows (VS 2008, 235 MB)</a>, just for an example,then probably you are good to go when you build your project with VS 2008 as the backend.</p>
-
-<p>For Qt Creator, I prefer to use the perbuilt one too, but if you want to install some specified plugins, build from source code may be needed.</p>
-
-<h4>A good book would help a lot</h4>
-
-<p>I read the book <code>C++ GUI Programming with Qt 4(2nd Edition)</code> not because it&rsquo;s the best book for Qt, just because that we got one Chinese version copy of the book in our Lab. I went through the first 3 chapters and the appendix(mainly to know more about <code>qmake</code>), then referenced other chapters while I got problems when coding.</p>
-
-<p>For the comment that I wrote for the book, you can find it <a href="http://book.douban.com/review/6489896/">here</a>.</p>
-
-<p>However, this book is recommended as the official Qt book. You may want to try it out yourself and make your own judge, if you find another excellent book, do let me know:&ndash;)</p>
-
-<h4>See what the official says</h4>
-
-<p>For the official tutorials, you can refer to their website, like:</p>
-
-<ul>
-<li><a href="http://qt-project.org/doc/qt-5/gettingstarted.html">Getting Started with Qt</a></li>
-<li><a href="http://qt-project.org/doc/qt-4.8/how-to-learn-qt.html">How to Learn Qt</a></li>
-<li><a href="http://qt-project.org/doc/qt-4.7/how-to-learn-qt.html">How to Learn Qt</a></li>
-</ul>
-
-
-<p>You may notice that each Qt version got their own getting started web page, however, don&rsquo;t bother, checkout them all and pick the brilliant part that suits yourself.</p>
-
-<p>As time goes by, there may be new links and the listed links would be out of date. Go to the official website and find the real links then.</p>
-
-<hr />
-
-<h3>Qt Creator as your Swiss Army Knife</h3>
-
-<p>Yes, it is just an IDE, compared with Eclipse, it&rsquo;s dedicated to Qt and C++(Not exactly, it supports Android and even BlackBerry development), so much light-wighted. However, it&rsquo;s flexible and with lots of plugins, see <a href="http://qt-project.org/wiki/Qt_Creator_Plug-in_Gallery">Qt Creator Plugin Gallery</a>.</p>
-
-<p>As I&rsquo;m not expert to Qt Creator either, I will give several examples here.</p>
-
-<h4>FakeVim</h4>
-
-<p>Default shipped with Qt Creator, I&rsquo;m really excited when I find it. Support external <code>.vimrc</code> and give you almost the native vim experience.</p>
-
-<p>I used the default <code>FakeVim</code> key bindings, they are just as same as the official vim, besides that, you may use other short cuts provided by Qt Creator, among them, <code>F2</code> for following the symbol under cursor and <code>F4</code> for switching header and souce file are the most frequently used. For generating source code tags, it&rsquo;s well cared by a background process, however when got large source files, I suffered for temporary <code>Not Responding</code>.</p>
-
-<p>For quick view of the options:
-<img src="http://hustcalm.me/images/blog_images/qt_creator-fakevim.png"></p>
-
-<h4>Doxygen</h4>
-
-<p>This plugin uses the standard <a href="http://www.doxygen.org">Doxygen</a> as the backend and give useful utilities for documenting the whole project or a file or a class, function. variable, whatever.</p>
-
-<p>The following links really help a lot:o</p>
-
-<ul>
-<li><a href="https://facwiki.cs.byu.edu/HCMI/index.php/Using_doxygen_with_Qt_Creator">Using doxygen with Qt Creator</a></li>
-<li><a href="http://dev.kofee.org/projects/qtcreator-doxygen/wiki">QtCreator-Doxygen</a></li>
-</ul>
-
-
-<h4>Version Control</h4>
-
-<p>Qt Creator makes it really easy for integrating with version control tools, an image will tell everything:
-<img src="http://hustcalm.me/images/blog_images/qt_creator-versioncontrol.png"></p>
-
-<hr />
-
-<p>Hope this post do a little help for your getting started with Qt Programming:&ndash;)</p>
 ]]></content>
   </entry>
   
