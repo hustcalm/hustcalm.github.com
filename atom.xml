@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2015-12-14T00:19:50+08:00</updated>
+  <updated>2016-11-12T13:03:26+08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[工作后的一点感悟]]></title>
+    <link href="http://hustcalm.me/blog/2016/07/23/gong-zuo-hou-de-yi-dian-gan-wu/"/>
+    <updated>2016-07-23T00:19:26+08:00</updated>
+    <id>http://hustcalm.me/blog/2016/07/23/gong-zuo-hou-de-yi-dian-gan-wu</id>
+    <content type="html"><![CDATA[<p>转眼参加工作已经整一年了。这一年渐渐感受到作为一个社会人与学生时代的不同，离开象牙塔才逐渐有了心慌的感觉，以前很多下不定决心做的事情，在压力和自我追求的权衡中慢慢变得很容易坚定去做了。做了18年的学生（真是应了18年寒穿苦读的老话），走上工作岗位，踏上社会，心里是有莫名的解脱感的，可能自己确实想去探寻一下科技公司究竟都在做什么，且是近距离的观察➕亲身体会。一年的时间不长不短，略微有一点思考和感悟。</p>
+
+<!--more-->
+
+
+<h2>学生思维</h2>
+
+<p>从学生时代走向工作岗位，思维方式需要有一个转变，这是大多数应届毕业生都会面对的（尤其是在正式参加工作前没有实习经历的同学们）。学生思维具体体现在：产品意识不够强烈，如何站在老板的角度思考问题，动态的眼光看待外界环境。</p>
+
+<p>大家都知道，学生做项目基本是“可用，可运行”为主，受众也通常是自己或者实验室的同门，如果对自己比较自信又富有分享精神，开源社区的可能也是受众。质量保证是“学生项目”和“公司项目”根本的不同之一（我目前是这么认为的），一次产品的发布需要从需求分析开始，到需求明确，时间表制定，开发，peer review，测试（这是学生比较容易忽略的，测试用例的设计以及测试的执行是很重要的能力），dog food（相当于内部beta一下），bug
+fix，测试报告等文档，最后到release review（一些你之前根本不会考虑的问题，虽然不难，但做的时候多少会让你明白，原来发布一个小的算法都要做如此繁琐的review工作啊），才“有可能”顺利发布。发布后还没有大功告成，维护，更新，修bug，都是分内之事。</p>
+
+<p>本科阶段“混”毕业，研究生阶段“求”毕业。相信读研的同学们多少有点跟老板“斗争”的经历，毕业如一座大山，你想出去实习，老板想你做实验室的工作，不一致的目标导致冲突。作为过来人，反思一下，谁都没有错，站在不同的角度思考问题，老板是很有道理的，这个时候只能看如何跟老板沟通。进了公司，类似的情况肯定也会时有发生，和老板就一些问题意见不一致。不过退一万步讲，如果没有到那种你做的工作一点都不敢兴趣的地步（否则你早就离开了），我的体会是尽可能多地从老板的角度想一下问题。为什么？老板带领团队肯定是想做出东西来，整个团队的大目标是一致的，老板肯定希望团队能够健康快速平稳地发展，每个人都能够有所收获（个人能力以及福利待遇），他看问题和我们看问题的角度肯定不一样，他的很多做法我相信肯定有他的道理和相应的支撑。所以，出现了不一致怎么办？找老板沟通，就一些具体的问题讨论，有效地把一些看法讲清楚，本着大目标一致的原则，寻找共赢。（第一年，我的体会是少一些个性发挥，多一些踏实出活，多观察多干活，少说话，该说的一定说，没把握的或者太天马行空的再酝酿一下）。</p>
+
+<p>让我们回想一下，学生时代每个人都属于一个班级，然后在求学的某一个阶段，同学关系相对稳定（很少有同学随意到别的班级去了，当然有转校的，但是这种情况非常少），也就是说，你的外界环境相对少变化。工作之后，情况会变得完全不同，每个人都会有自己的职业发展轨迹和想法，你入职的第一天就可能会看到身边即将成为同事的哥们正在收拾东西准备下一段旅程了。时不时地，你会收到一些邮件说“Today is my last working at&hellip;” 或者“Friday will be my last working day&hellip; let&rsquo;s have lunch
+together”，一开始你可能会觉得不理解甚至惊愕，咋回事？在这工作不是挺好的吗？昨天还跟大家谈笑风生的同事，也许今天就是共事的最后一天，学生时代毕业的日期可以预期，身边的同事谁会下一个离开没有预期。接受它，这就是工作和市场，人才流动是行业发展和个人发展的必然。</p>
+
+<h2>想做的和该做的</h2>
+
+<p>这个其实是想说如何把自己的目标和兴趣，跟团队和老板的整体目标尽量地align起来。Work what you like, like what you
+work！需要搞明白的是，来公司工作是为了创造价值的，虽然说成“给老板打工“有些欠妥当，但试想一下，如果你是老板，你喜欢什么样的员工？我的答案是，主动努力地去解决老板的问题，为什么？老板的问题通常就是项目如何往前推进，如何解决项目里面的一些难题，解决这些问题就是在帮老板解决问题，就是这么简单。我觉得，这是该做的。扩展一点，不满足于完成自己被分配的工作，主动去承担问题解决的责任，从项目大的scope多一些思考并时常跟老板沟通（随时去办公室或者利用1:1 meeting的机会），这是一个良性的互动，你会收获很多。</p>
+
+<p>有时候很多工作的人会抱怨，“唉，我做的工作很没意思，我其实想去做&hellip;”，这是想做的。这里可以分两方面解读这个想法。一，确实对某一个技术领域感兴趣，想去探索。没问题，做好本职工作，你会有时间的。或者，尽可能去把自己的兴趣和做的项目align起来，这个要看机会，如果工作上暂时没有好的机会，去开源社区发挥自己的光和热也是很好的选择嘛。没有人能抑制你的兴趣，所以这个方面问题不大。二，好高骛远型的，一边说着手头的工作无趣，却不能把工作做到得心应手，这就是一个非常危险的想法了，这只会导致消极的工作态度，随之而来的是差的工作绩效（然后，你可以再发挥想象力了&hellip;）。我的观点，任何工作，当你做出成绩的时候，成就感本身就是乐趣。So,
+do it, do it greatly!</p>
+
+<h2>丛林法则和市场决定价值</h2>
+
+<p>在工作岗位上，合作和竞争是并存的（学生时代不也是如此吗），且比学生时代来的强烈不少。不管愿不愿意承认，职场犹如一个丛林，优胜劣汰无时无刻不在上演。初入职场，没啥体会，随着对职业发展路线的了解以及对所在工作环境的分析，丛林法则的想法会自己钻到你的脑子里。Be nice to everybody is not important, the most important thing is, get your job done, greatly and gracefully. Never be afraid to fail, always try to solve problems. Run, with the sense of crisis.
+你必须向前跑，且快速地跑，竞争是无情的（说的略夸张，可这就是事实不是吗）。</p>
+
+<p>市场不尊重传统，它只尊重创新。职场丛林里面的人展开残酷的市场竞争，用创新去颠覆，去开拓，去“屠杀”。当你按部就班的工作没什么波澜的时候，思考一下，你正在平庸的路上越走越远（享受生活不代表平庸，不代表就可以安于现状不努力）。反思一下，我的价值在哪里？几何？市场需要的价值是什么？相信我，你的生活不会因此变得无趣，充满了工作而丧失了生活情趣。你的市场价值的提升会带给你也许任何都给不了你的进步感和成就感，然后你的世界会更加开阔:&ndash;)</p>
+
+<p>（决没有任何强推价值观的想法，看到本文的人权当看看热闹就好：）发现自己工作后变懒了，博客过了一年没更新了，罪恶感上升啊，这一篇文章也给我拖了一个季度了，hustcalm于2016-11-12 12:52:24)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Something About SSE and Beyond]]></title>
@@ -2695,95 +2736,6 @@ boinccmd update
 <hr />
 
 <p>Happy digging and contributing:&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Making Your Slides the Awesome Way]]></title>
-    <link href="http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way/"/>
-    <updated>2014-01-12T00:08:45+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way</id>
-    <content type="html"><![CDATA[<p>People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? <code>PPT</code> would be the first choice to majority of people. For web developers, they would produce their slides in <code>HTML + CSS + Javascript</code>? And for researchers or people in academic area, will they use <code>Latex</code> or the popular <code>beamer</code> class?</p>
-
-<!--more-->
-
-
-<p>We do have kinds of approaches to make us slids work, but what is the awesome way? To be awesome, I mean the sides should look nice, easy to control its typeset and should maintain the same when playing at different devices or different software. Of course, the way to write your slide could be awesome too:&ndash;)</p>
-
-<p>I will simply go through what choices that we have, what&rsquo;s the advantage disadvantage, and finally choose the way that you think is awesome to you.</p>
-
-<hr />
-
-<h3>Choices for making slides</h3>
-
-<h4>The normal way &ndash; PPT or Keynote</h4>
-
-<p>I bet that this is the most adaptive way for people to get presentations done. On Windows and Linux, we use Office, specifically speaking the <code>Powerpoint</code> or <code>Impress</code> shipped with LibreOffice.</p>
-
-<p>On Mac, people use <code>Keynote</code> a lot.</p>
-
-<p>I won&rsquo;t make it long, see this for a fabulous discussion at:</p>
-
-<ul>
-<li><a href="http://readingsml.blogspot.com/2009/11/keynote-vs-powerpoint-vs-beamer.html">Keynote vs. Powerpoint vs. Beamer</a></li>
-</ul>
-
-
-<h4>Cool way utilizing browser &ndash; HTML + CSS</h4>
-
-<p>Yes, yes, we only need Browers and Terminals for our computer, right? Exaggerated enough, but browsers are really doing everything for us, including showing the slides, go to <a href="http://www.slideshare.net">slideshare</a> for a vivid experience. However, the slides showed on <code>slideshare</code> is powered by <code>Flash</code>, so do others who provide similar services.</p>
-
-<p>No Flash, let&rsquo;s see how to make slides using just <code>HTML</code> and <code>CSS</code>.</p>
-
-<p>A good tutorial goes here:</p>
-
-<ul>
-<li><a href="http://net.tutsplus.com/tutorials/html-css-techniques/how-to-create-presentation-slides-with-html-and-css-2/">How to Create Presentation Slides with HTML and CSS</a></li>
-</ul>
-
-
-<h4>Awesome way using Latex &ndash; beamer</h4>
-
-<p>Geek enough, but maybe mostly used by hackers and researchers, Latex &ndash; beamer is definitely awesome. It&rsquo;s like you are composing a literature when writing your slides.</p>
-
-<p>For getting started with Latex &ndash; beamer, See:</p>
-
-<ul>
-<li><a href="http://jeromyanglim.blogspot.com/2010/08/getting-started-with-beamer-tips-and.html">Getting Started with Beamer: Tips and Tricks for LaTeX Presentations</a></li>
-<li><a href="http://www.productivescholar.com/2008/03/15/how-to-use-the-latex-beamer-class-for-great-looking-presentations/">How-To Use the LaTeX Beamer Class for Great-Looking Presentations</a></li>
-<li><p><a href="http://lucatrevisan.wordpress.com/2010/11/18/presenting-a-beamer-talk-the-right-way/">Presenting a Beamer Talk the Right Way</a></p></li>
-<li><p><a href="http://www.math-linux.com/latex-26/How-to-make-a-presentation-with">How to make a presentation with Latex &ndash; Introduction to Beamer</a></p></li>
-<li><a href="http://www.uncg.edu/cmp/reu/presentations/Charles%20Batts%20-%20Beamer%20Tutorial.pdf">A Beamer Tutorial in Beamer</a></li>
-<li><a href="http://www.tug.org/pracjourn/2005-4/mertz/mertz.pdf">Beamer by Example</a></li>
-<li><a href="http://www.informatik.uni-freiburg.de/~frank/ENG/latex-course/latex-course-3/latex-course-3_en.html">examples of beamer class</a></li>
-<li><a href="http://heather.cs.ucdavis.edu/~matloff/beamer.html">Norm Matloff&rsquo;s Quick Tutorial on the Beamer Package for Slide Making in LaTeX</a></li>
-<li><a href="http://www.math.umbc.edu/~rouben/beamer/quickstart.html">A Beamer Quickstart</a></li>
-<li><a href="http://zrno.fsb.hr/katedra/download/materijali/1082.pdf">Beamer Class Tutorial &ndash; Warsaw University of Technology</a></li>
-</ul>
-
-
-<hr />
-
-<h3>Awesome way for making slides</h3>
-
-<p>To me, the awesome would be to use <code>HTML + CSS</code> or <code>beamer</code>. Why? Simply because they are cross platform naturely and it&rsquo;s really flexible when creating slides by writing plain markup files or something like that.</p>
-
-<hr />
-
-<h3>Choose your awesome way</h3>
-
-<p>Most of the times, you will find the ways or methods are not the essential things, the contents and the way you represent is the key. So just choose the right way for you, making it your awesome way. I believe everyone will make a perfect job once he gets skillful enough.</p>
-
-<hr />
-
-<h3>Other Useful Links</h3>
-
-<ul>
-<li><p><a href="http://johnmacfarlane.net/pandoc/demo/example9/producing-slide-shows-with-pandoc.html">Producing slide shows with Pandoc</a></p></li>
-<li><p><a href="http://www.forbes.com/sites/allbusiness/2013/11/25/7-principles-for-making-powerpoint-slides-with-impact/">5 Principles For Making PowerPoint Slides With Impact &ndash; 1</a></p></li>
-<li><a href="http://www.forbes.com/sites/allbusiness/2013/11/25/7-principles-for-making-powerpoint-slides-with-impact/2/">5 Principles For Making PowerPoint Slides With Impact &ndash; 2</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
