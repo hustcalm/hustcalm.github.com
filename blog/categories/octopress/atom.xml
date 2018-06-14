@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Know Your Website Better Using Google Webmaster Tools, Analytics and Authorship]]></title>
     <link href="http://hustcalm.me/blog/2014/01/23/know-your-website-better-using-google-webmaster-tools-analytics-and-authorship/"/>
-    <updated>2014-01-23T19:05:43+08:00</updated>
+    <updated>2014-01-23T03:05:43-08:00</updated>
     <id>http://hustcalm.me/blog/2014/01/23/know-your-website-better-using-google-webmaster-tools-analytics-and-authorship</id>
     <content type="html"><![CDATA[<p>I happened to get to know <code>Google Webmaster Tools</code>, <code>Google Analytics</code> and <code>Google Authorship Markup</code> when I try to tweak my <code>Octopress</code> website. Found that Google is really doing lots of interesting things for our websites, I will share some useful tips and links here.</p>
 
@@ -75,7 +75,7 @@ Tool</a>.</p>
   <entry>
     <title type="html"><![CDATA[Hello Octopress From Ubuntu 12.04]]></title>
     <link href="http://hustcalm.me/blog/2012/11/24/hello-octopress-from-ubuntu-12-dot-04/"/>
-    <updated>2012-11-24T01:00:00+08:00</updated>
+    <updated>2012-11-24T01:00:00-08:00</updated>
     <id>http://hustcalm.me/blog/2012/11/24/hello-octopress-from-ubuntu-12-dot-04</id>
     <content type="html"><![CDATA[<p>今天又把Octopress博客安了一个新家，Windows XP下虚拟出来的Ubuntu 12.04.想想从Cygwin上开始建立博客，后来到Ubuntu 11.04上维护，现在又搭一个新窝，自己都佩服自己的折腾能力了:)</p>
 
@@ -106,7 +106,7 @@ extconf.rb</code>的话生成的Makefile是依赖系统的1.8.7的，因为直�
   <entry>
     <title type="html"><![CDATA[为Octopress博客添加CreativeCommons License]]></title>
     <link href="http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license/"/>
-    <updated>2012-10-16T12:42:00+08:00</updated>
+    <updated>2012-10-16T12:42:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license</id>
     <content type="html"><![CDATA[<p>很久之前就听说了CreativeCommons License，并且看到很多博客站点上也在此License下授权，因此想在自己的Octopress上添加CC License。   <br/>
 我添加的是非商业化使用，自由分享修改的授权，即NonCommercial-ShareAlike。</p>
@@ -123,7 +123,7 @@ extconf.rb</code>的话生成的Makefile是依赖系统的1.8.7的，因为直�
   <entry>
     <title type="html"><![CDATA[为Octopress博客添加Flag Counter侧边栏]]></title>
     <link href="http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/"/>
-    <updated>2012-10-16T11:19:00+08:00</updated>
+    <updated>2012-10-16T11:19:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan</id>
     <content type="html"><![CDATA[<p>今天为自己的Octopress博客添加了访问者统计工具，<a href="http://www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。   <br/>
 拿到了代码后，添加到侧边栏，在custom/asides添加flag_counter.html，然后在_config.yml中开启即可，其中flag_counter.html的格式如下：</p>
@@ -154,7 +154,7 @@ Code you get from [Flag Counter](www.flagcounter.com)
   <entry>
     <title type="html"><![CDATA[开始使用Bshare和Douban在Octopress上]]></title>
     <link href="http://hustcalm.me/blog/2012/10/16/kai-shi-shi-yong-bsharehe-doubanzai-octopressshang/"/>
-    <updated>2012-10-16T01:24:00+08:00</updated>
+    <updated>2012-10-16T01:24:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/16/kai-shi-shi-yong-bsharehe-doubanzai-octopressshang</id>
     <content type="html"><![CDATA[<p>今天对自己的Octopress站点进行了一些小的更新，主要包括替换tag_cloud的显示为category_cloud，增加了Douban的侧边栏，增加了Bshare的文章分享。    <br/>
 其中category_cloud，自己目前使用：</p>

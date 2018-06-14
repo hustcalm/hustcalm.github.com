@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Machine | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/machine/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Machine Learning工具包PMTK3的简单解析]]></title>
     <link href="http://hustcalm.me/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi/"/>
-    <updated>2012-10-16T23:47:00+08:00</updated>
+    <updated>2012-10-16T23:47:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/16/machine-learninggong-ju-bao-pmtk3de-jian-dan-jie-xi</id>
     <content type="html"><![CDATA[<p>最近学习《机器学习》云里雾里的，很多时候不知道老师在说什么，参考书买的是Kevin P. Murphy的《Machine Learning:A Probabilistic Perspective》，一共上下两卷，打印版本的共50大洋。作者除了书之外，还在google code上维护了与书本同步的工具包代码和数据，叫做PMTK3，主页地址<a href="http://code.google.com/p/pmtk3">PMTK3 on Google Code</a>。</p>
 

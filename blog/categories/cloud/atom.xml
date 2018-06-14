@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cloud | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/cloud/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[再谈OpenAPI，从WebService说起]]></title>
     <link href="http://hustcalm.me/blog/2013/07/22/zai-tan-openapi%2Ccong-webserviceshuo-qi/"/>
-    <updated>2013-07-22T20:51:00+08:00</updated>
+    <updated>2013-07-22T20:51:00-07:00</updated>
     <id>http://hustcalm.me/blog/2013/07/22/zai-tan-openapi,cong-webserviceshuo-qi</id>
     <content type="html"><![CDATA[<p>最近对<a href="https://github.com/hustcalm/SNS-Shim">SNS-Shim</a>做了更新，目前支持新浪微博，人人网，QQ互联（包括QQ，Qzone，腾讯微博），豆瓣，网易微博，使用相应的wrapper类可以方便地拿到用户的个人信息，以及发布新的状态。</p>
 

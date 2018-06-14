@@ -4,7 +4,7 @@
   <title><![CDATA[Category: HTTP | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/http/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Look inside mongoose - an easy to use web server implementation]]></title>
     <link href="http://hustcalm.me/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation/"/>
-    <updated>2014-04-09T20:22:54+08:00</updated>
+    <updated>2014-04-09T05:22:54-07:00</updated>
     <id>http://hustcalm.me/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation</id>
     <content type="html"><![CDATA[<p>I come across with Network Programming recently and find it really charming. Afer reading the book &ldquo;Advanced Linux Programming&rdquo;, I&rsquo;m more curious about how to implement a basic http server or web server.</p>
 

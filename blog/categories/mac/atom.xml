@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installing OpenCV on Mac OS X - 10 Minutes Tutorial]]></title>
-    <link href="http://hustcalm.me/blog/2014/01/24/installing-opencv-on-mac-os-x-10-minutes-tutorial/"/>
-    <updated>2014-01-24T00:03:00+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/01/24/installing-opencv-on-mac-os-x-10-minutes-tutorial</id>
+    <link href="http://hustcalm.me/blog/2014/01/23/installing-opencv-on-mac-os-x-10-minutes-tutorial/"/>
+    <updated>2014-01-23T08:03:00-08:00</updated>
+    <id>http://hustcalm.me/blog/2014/01/23/installing-opencv-on-mac-os-x-10-minutes-tutorial</id>
     <content type="html"><![CDATA[<p>A simple tutorial to get OpenCV set up on Mac OS X. I get this done on my Macbook Pro with Mavericks OS. Luckily enough, you will success following the instructions blow.</p>
 
 <hr />

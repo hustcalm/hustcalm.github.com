@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 1394 | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/1394/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Notes about IEEE 1394 AVT Cameras - FirePackage and OpenCV]]></title>
     <link href="http://hustcalm.me/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv/"/>
-    <updated>2013-12-10T21:10:00+08:00</updated>
+    <updated>2013-12-10T21:10:00-08:00</updated>
     <id>http://hustcalm.me/blog/2013/12/10/notes-about-ieee-1394-avt-cameras-firepackage-and-opencv</id>
     <content type="html"><![CDATA[<p>I&rsquo;m trying to make AVT 1394 Cameras work with OpenCV using the standard <code>VideoCapture</code> recently but got no luck. Briefly speaking, OpenCV&rsquo;s support for camera input are <code>Operating System</code> and <code>Device Driver</code> aware.</p>
 

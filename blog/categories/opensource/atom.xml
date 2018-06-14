@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OpenSource | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/opensource/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Playing With Kinect For Windows Using OpenNI and SensorKinect Under Ubuntu 12.04 LTS]]></title>
     <link href="http://hustcalm.me/blog/2014/12/31/playing-with-kinect-for-windows-using-openni-and-sensorkinect-under-ubuntu-12-dot-04-lts/"/>
-    <updated>2014-12-31T16:19:56+08:00</updated>
+    <updated>2014-12-31T00:19:56-08:00</updated>
     <id>http://hustcalm.me/blog/2014/12/31/playing-with-kinect-for-windows-using-openni-and-sensorkinect-under-ubuntu-12-dot-04-lts</id>
     <content type="html"><![CDATA[<p>Just a quick recap to make myself feel better after such a struggle for 1 day and hopes it does some help to those who tries to bring <strong>Kinect For Windows</strong> work under Linux, here Ubuntu especially.</p>
 
@@ -66,7 +66,7 @@
   <entry>
     <title type="html"><![CDATA[纪念一下刚刚过去的BLUG 2012]]></title>
     <link href="http://hustcalm.me/blog/2012/11/25/ji-nian-yi-xia-gang-gang-guo-qu-de-blug-2012/"/>
-    <updated>2012-11-25T01:30:00+08:00</updated>
+    <updated>2012-11-25T01:30:00-08:00</updated>
     <id>http://hustcalm.me/blog/2012/11/25/ji-nian-yi-xia-gang-gang-guo-qu-de-blug-2012</id>
     <content type="html"><![CDATA[<p>挺high的一个party，nice game， nice food， nice guys!!!</p>
 
@@ -81,7 +81,7 @@
   <entry>
     <title type="html"><![CDATA[A stupid tutorial on starting contribution to Opensource software]]></title>
     <link href="http://hustcalm.me/blog/2012/11/02/a-stupid-tutorial-on-starting-contribution-to-opensource-software/"/>
-    <updated>2012-11-02T16:32:00+08:00</updated>
+    <updated>2012-11-02T16:32:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/11/02/a-stupid-tutorial-on-starting-contribution-to-opensource-software</id>
     <content type="html"><![CDATA[<p><strong>Anyone</strong> who&rsquo;s not a nerd can get on boat after this stupid tutorial, I guess.     <br/>
 <strong>All</strong> you need is passion before contributing to An Open Source Project and some learning about their workflow maybe.   <br/>
@@ -142,7 +142,7 @@ not, of course, search the bug tracker, if you confirm this is a new bug ,report
   <entry>
     <title type="html"><![CDATA[盘点我知道的代码托管站点：Code Hosting Website]]></title>
     <link href="http://hustcalm.me/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-%3Acode-hosting-website/"/>
-    <updated>2012-10-24T23:13:00+08:00</updated>
+    <updated>2012-10-24T23:13:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/24/pan-dian-wo-zhi-dao-de-dai-ma-tuo-guan-zhan-dian-:code-hosting-website</id>
     <content type="html"><![CDATA[<p>伴随着开源运动的发展，源码托管站点越来越流行了，提供托管服务的同时，大大促进了开源社区的交流并且加速了源码的共享和更新，下面罗列下我所知道的提供源码托管服务的站点，供大家参考。</p>
 

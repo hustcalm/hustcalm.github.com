@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Getting Started with Qt and Qt Creator]]></title>
     <link href="http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator/"/>
-    <updated>2014-01-02T15:42:00+08:00</updated>
+    <updated>2014-01-02T15:42:00-08:00</updated>
     <id>http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator</id>
     <content type="html"><![CDATA[<p>Recently I&rsquo;m doing a project for the Lab and choose C++ as the programming language, but for the Framework, I considered MFC and Qt at first but choose Qt without hesitation as soon as I recalled the pains when I tried to play with MFC. In short, MFC is just showing too much to the developer and looks a little annoying and more complicated(C++ itself is complicated enough).</p>
 
@@ -111,7 +111,7 @@
   <entry>
     <title type="html"><![CDATA[C/C++-不死的精灵]]></title>
     <link href="http://hustcalm.me/blog/2013/12/21/c-slash-c-plus-plus-bu-si-de-jing-ling/"/>
-    <updated>2013-12-21T13:18:00+08:00</updated>
+    <updated>2013-12-21T13:18:00-08:00</updated>
     <id>http://hustcalm.me/blog/2013/12/21/c-slash-c-plus-plus-bu-si-de-jing-ling</id>
     <content type="html"><![CDATA[<p>看了《C专家编程》和《Essential C++》后，对C/C++的好奇愈加强烈。作为平台级别的语言，很多操作系统都是基于C/C++构建的，因此要想学好C/C++，我觉得对系统底层的了解是必须的，至少对于一个真正的Programmer需要做到如此。总有一些言论，说现在C/C++程序员都成稀有群体了，现在大家都去玩简单易学的Python，甚至时髦小众的Golang了。呜呼，我想说，C/C++伴我们一路走来，作为不死之精灵，还将陪我们走一段很长的路。</p>
 
@@ -268,7 +268,7 @@
   <entry>
     <title type="html"><![CDATA[初识Go-Erlang-Dart]]></title>
     <link href="http://hustcalm.me/blog/2013/05/05/chu-shi-go-erlang-dart/"/>
-    <updated>2013-05-05T21:38:00+08:00</updated>
+    <updated>2013-05-05T21:38:00-07:00</updated>
     <id>http://hustcalm.me/blog/2013/05/05/chu-shi-go-erlang-dart</id>
     <content type="html"><![CDATA[<h2>Preface</h2>
 

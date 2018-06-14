@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[git和github的哲学和艺术]]></title>
     <link href="http://hustcalm.me/blog/2013/03/02/githe-githubde-zhe-xue-he-yi-zhu/"/>
-    <updated>2013-03-02T11:27:00+08:00</updated>
+    <updated>2013-03-02T11:27:00-08:00</updated>
     <id>http://hustcalm.me/blog/2013/03/02/githe-githubde-zhe-xue-he-yi-zhu</id>
     <content type="html"><![CDATA[<p>用git和github也有一段时间了，不过还是处于菜鸟阶段。基本上git涉及到version control的方方面面，而github就是程序员的集体智慧结晶和开源社会的伟大力量的体现了。</p>
 
@@ -39,7 +39,7 @@
   <entry>
     <title type="html"><![CDATA[git的global config和repo config]]></title>
     <link href="http://hustcalm.me/blog/2012/10/23/gitde-globle-confighe-repo-config/"/>
-    <updated>2012-10-23T18:26:00+08:00</updated>
+    <updated>2012-10-23T18:26:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/23/gitde-globle-confighe-repo-config</id>
     <content type="html"><![CDATA[<p>相比于CVS，SVN，现在越来越喜欢Git了，下面说说Git的全局配置，即global config以及代码库级别的配置，即repo config。</p>
 

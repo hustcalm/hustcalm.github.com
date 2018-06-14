@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Lucence | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/lucence/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Getting Started With ElasticSearch and Plugin Development]]></title>
     <link href="http://hustcalm.me/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development/"/>
-    <updated>2014-08-10T18:33:53+08:00</updated>
+    <updated>2014-08-10T03:33:53-07:00</updated>
     <id>http://hustcalm.me/blog/2014/08/10/getting-started-with-elasticsearch-and-plugin-development</id>
     <content type="html"><![CDATA[<p>Coming across to <code>ElasticSearch</code> when preparing for the programming chanllege held by WorksApplications in Tokyo Event, and falling love with her after then. Well, with no much new techonoligies involved, <code>ElasticSearch</code> is definitely a beautiful piece of software and a successful product. Claimed that with the core search engine powered by <code>Lucene</code>, providing <code>RESTful interface</code> and born as a distributed and scheme-free search oriented product, <code>ElasticSearch</code> has boosted the huge
 business of <strong>Github</strong> with billions of lines and <strong>Stackoverflow</strong> with billions of Q&amp;A.</p>

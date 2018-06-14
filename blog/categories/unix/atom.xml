@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Unix | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/unix/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[What is socket anyway?]]></title>
     <link href="http://hustcalm.me/blog/2014/04/17/what-is-socket-anyway/"/>
-    <updated>2014-04-17T21:05:06+08:00</updated>
+    <updated>2014-04-17T06:05:06-07:00</updated>
     <id>http://hustcalm.me/blog/2014/04/17/what-is-socket-anyway</id>
     <content type="html"><![CDATA[<p>I bet you&rsquo;ve heard of <code>socket</code> for a while, but do you really know what is a <code>socket</code>?</p>
 

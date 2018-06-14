@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[httplib httplib2 urllib urllib2-what's the difference]]></title>
     <link href="http://hustcalm.me/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/"/>
-    <updated>2013-11-14T11:24:00+08:00</updated>
+    <updated>2013-11-14T11:24:00-08:00</updated>
     <id>http://hustcalm.me/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference</id>
     <content type="html"><![CDATA[<p>Lots of people may got confused by the Python modules- <code>httplib, httplib2, urllib, urllib2</code>. Judge from their names, we may prefer the x2 module because they may be version 2 of the module and should work better. Maybe you are right for some degree(as for the httplib).</p>
 

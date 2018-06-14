@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Embedded | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/embedded/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Review of Raspberry Pi Robotic Projects - From a Technical Perspective]]></title>
     <link href="http://hustcalm.me/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective/"/>
-    <updated>2014-06-21T19:15:15+08:00</updated>
+    <updated>2014-06-21T04:15:15-07:00</updated>
     <id>http://hustcalm.me/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective</id>
     <content type="html"><![CDATA[<p>After being the reviewer for the <a href="http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/">BeagleBone Robotic Projects</a>, I&rsquo;m honored to be the reviewer for another book about robotic projects named <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotic Projects</a>. I will go no further to talk about the differences about <code>BeagleBone</code> and <code>Raspberry Pi</code>, all I know is that they are both cool and amazing. To start to play with <code>Raspberry Pi</code>, I suggest that you
 can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects</a> as an option.</p>
@@ -81,7 +81,7 @@ can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects
   <entry>
     <title type="html"><![CDATA[从开源硬件Arduino，Raspberry Pi，BeagleBone说起]]></title>
     <link href="http://hustcalm.me/blog/2013/07/27/cong-kai-yuan-ying-jian-arduino%2Craspberry-pi%2Cbeagleboneshuo-qi/"/>
-    <updated>2013-07-27T14:32:00+08:00</updated>
+    <updated>2013-07-27T14:32:00-07:00</updated>
     <id>http://hustcalm.me/blog/2013/07/27/cong-kai-yuan-ying-jian-arduino,raspberry-pi,beagleboneshuo-qi</id>
     <content type="html"><![CDATA[<p>最近“硬件复兴”了，“嵌入式”又重获新生，在移动互联网创业领域“粉墨登场”。想想本科的51单片机经历，在<a href="http://www.dian.org.cn">Dian</a>嵌入式项目组的DSP经历，ABU机器人比赛的控制组经历，还有零星地把玩过ARM和FPGA的经历，忍不住写下此文，谈谈自己对开源硬件的看法。</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: BIOS | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/bios/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[BIOS是如何被加载并执行的]]></title>
     <link href="http://hustcalm.me/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de/"/>
-    <updated>2013-03-13T22:32:00+08:00</updated>
+    <updated>2013-03-13T22:32:00-07:00</updated>
     <id>http://hustcalm.me/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de</id>
     <content type="html"><![CDATA[<p>最近在上杨立祥老师的《操作系统高级教程I》，主要讲述Linux 0.11是如何被加载到内存，并且开始接管计算机。那么系统是如何被加载并执行的呢？</p>
 

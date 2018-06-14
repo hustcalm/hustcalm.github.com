@@ -4,7 +4,7 @@
   <title><![CDATA[Category: POSIX | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/posix/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[POSIX threads-多线程编程初步]]></title>
     <link href="http://hustcalm.me/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu/"/>
-    <updated>2013-09-06T10:24:00+08:00</updated>
+    <updated>2013-09-06T10:24:00-07:00</updated>
     <id>http://hustcalm.me/blog/2013/09/06/posix-threads-duo-xian-cheng-bian-cheng-chu-bu</id>
     <content type="html"><![CDATA[<p>学习，总是要深入进去才是好的。</p>
 

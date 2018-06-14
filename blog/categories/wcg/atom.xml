@@ -4,7 +4,7 @@
   <title><![CDATA[Category: WCG | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/wcg/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Simply Get BOINC Running On CentOS 6.4 and Earn XRP]]></title>
-    <link href="http://hustcalm.me/blog/2014/01/22/simply-get-boinc-running-on-centos-6-dot-4-and-earn-xrp/"/>
-    <updated>2014-01-22T08:56:56+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/01/22/simply-get-boinc-running-on-centos-6-dot-4-and-earn-xrp</id>
+    <link href="http://hustcalm.me/blog/2014/01/21/simply-get-boinc-running-on-centos-6-dot-4-and-earn-xrp/"/>
+    <updated>2014-01-21T16:56:56-08:00</updated>
+    <id>http://hustcalm.me/blog/2014/01/21/simply-get-boinc-running-on-centos-6-dot-4-and-earn-xrp</id>
     <content type="html"><![CDATA[<p>Recently I got to know <a href="http://boinc.berkeley.edu">BOINC</a> from a friend and find it funny to play with. <code>BOINC</code> is an open-source software platform for computing using volunteered resources, which means that people can donate their computing resources to varies of research projects through it. <code>BOINC</code> is an acronym for <code>Berkeley Open Infrastructure for Network Computing</code>. See <a href="http://boinc.berkeley.edu">their website</a> for more details.</p>
 
 <!--more-->

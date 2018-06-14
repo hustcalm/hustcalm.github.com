@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[记Ubuntu/UbuntuKylin 13.04 发布派对及主持感想]]></title>
     <link href="http://hustcalm.me/blog/2013/05/11/ji-ubuntu-slash-ubuntukylin-13-dot-04-fa-bu-pai-dui-ji-zhu-chi-gan-xiang/"/>
-    <updated>2013-05-11T23:16:00+08:00</updated>
+    <updated>2013-05-11T23:16:00-07:00</updated>
     <id>http://hustcalm.me/blog/2013/05/11/ji-ubuntu-slash-ubuntukylin-13-dot-04-fa-bu-pai-dui-ji-zhu-chi-gan-xiang</id>
     <content type="html"><![CDATA[<p>UbuntuKylin开发团队和Ubuntu中国社区携手Beijing GNOME用户组举办的Ubuntu/UbuntuKylin 13.04发布派对北京站成功进行！作为今天的主持人，今天给自己打70分，还需要多多努力。不过开源社区的氛围很好，到场观众的热情都很高涨！活动一直从下午14：00进行到下午18：00，中场休息了5分钟。下面简单记录一下活动现场的点滴以及作为主持人的一点感悟！</p>
 
@@ -112,7 +112,7 @@
   <entry>
     <title type="html"><![CDATA[Ubuntu桌面管理器Unity快捷键大全]]></title>
     <link href="http://hustcalm.me/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan/"/>
-    <updated>2012-10-21T10:24:00+08:00</updated>
+    <updated>2012-10-21T10:24:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/21/ubuntuzhuo-mian-guan-li-qi-unitykuai-jie-jian-da-quan</id>
     <content type="html"><![CDATA[<p>在Windows下用惯了TotalCommander了，结合Windows本身的资源管理器，会使工作的效率有质的飞跃，如果要投个票，这个软件必须是Life Changing的:) 在Linux下的桌面管理器很多，重量级的经典的Gnome和KDE，以及很多轻量级的桌面管理器，Ubuntu开发团队为用户提供了他们自家的Unity，个人觉得还是非常好用的:) <br/>
 下面这篇文章来自<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">askubuntu</a>，这里除了一个比较全面的回答外，还有不少的cheatsheet提供下载，有png的，pdf的，还有源文件SVG的，如果喜欢，大家可以移步到<a href="http://www.askubuntu.com/questions/28086/what-are-unitys-keyboard-and-mouse-shortcuts">原文</a>。也可以通过本文下面部分的链接查看或者下载。</p>
@@ -163,7 +163,7 @@
   <entry>
     <title type="html"><![CDATA[Ubuntu下检出Cygwin搭建的Octopress遇到的问题]]></title>
     <link href="http://hustcalm.me/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti/"/>
-    <updated>2012-10-13T19:37:00+08:00</updated>
+    <updated>2012-10-13T19:37:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/13/ubuntuxia-jian-chu-cygwinda-jian-de-octopressyu-dao-de-wen-ti</id>
     <content type="html"><![CDATA[<p>原则很简单，只要记住“your_local_octopress_directory”对应的是remote source branch，而“<em>deploy”对应的是remote_master branch即可。    <br/>
 而参考上一篇文章中的链接“为已经存在的github Octopress配置本地环境“，分别检出了source和master到本地，然后就出现了以上的对应关系。     <br/>

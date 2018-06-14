@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Making your slides the awesome way]]></title>
-    <link href="http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way/"/>
-    <updated>2014-01-12T00:08:45+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/01/12/making-your-slides-the-awesome-way</id>
+    <link href="http://hustcalm.me/blog/2014/01/11/making-your-slides-the-awesome-way/"/>
+    <updated>2014-01-11T08:08:45-08:00</updated>
+    <id>http://hustcalm.me/blog/2014/01/11/making-your-slides-the-awesome-way</id>
     <content type="html"><![CDATA[<p>People will always find themselves making varies of slides for demo or promotion or report, whatever. Most would know how to make a slide ,right? <code>PPT</code> would be the first choice to majority of people. For web developers, they would produce their slides in <code>HTML + CSS + Javascript</code>? And for researchers or people in academic area, will they use <code>Latex</code> or the popular <code>beamer</code> class?</p>
 
 <!--more-->

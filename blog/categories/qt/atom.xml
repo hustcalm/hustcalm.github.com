@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Qt | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/qt/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Getting Started with Qt and Qt Creator]]></title>
     <link href="http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator/"/>
-    <updated>2014-01-02T15:42:00+08:00</updated>
+    <updated>2014-01-02T15:42:00-08:00</updated>
     <id>http://hustcalm.me/blog/2014/01/02/getting-started-with-qt-and-qt-creator</id>
     <content type="html"><![CDATA[<p>Recently I&rsquo;m doing a project for the Lab and choose C++ as the programming language, but for the Framework, I considered MFC and Qt at first but choose Qt without hesitation as soon as I recalled the pains when I tried to play with MFC. In short, MFC is just showing too much to the developer and looks a little annoying and more complicated(C++ itself is complicated enough).</p>
 

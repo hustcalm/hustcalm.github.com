@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[我对IT书籍阅读的一点感悟]]></title>
-    <link href="http://hustcalm.me/blog/2014/03/04/wo-dui-itshu-ji-yue-du-de-yi-dian-gan-wu/"/>
-    <updated>2014-03-04T09:54:25+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/03/04/wo-dui-itshu-ji-yue-du-de-yi-dian-gan-wu</id>
+    <link href="http://hustcalm.me/blog/2014/03/03/wo-dui-itshu-ji-yue-du-de-yi-dian-gan-wu/"/>
+    <updated>2014-03-03T17:54:25-08:00</updated>
+    <id>http://hustcalm.me/blog/2014/03/03/wo-dui-itshu-ji-yue-du-de-yi-dian-gan-wu</id>
     <content type="html"><![CDATA[<p>最近读书比较多，想着尽快把自己的短板补一补，读的过程中有点自己的感悟，发现IT书籍也是口味各异，都能跟文学书籍类比一下了，在此扯淡几句，图个乐子。</p>
 
 <p>要是说文学书籍，大家可能会想到“散文”，“议论文”，“记叙文”，“诗歌”，“回忆录”之类的。而说到IT书籍，诸如编程语言，操作系统，嵌入式，Web开发框架，设计模式，面向对象等等之类的书可能会立马涌上心头。当下电子书给传统的纸质书造成了很大的冲击，在这种情况下，更要合理地调整自己的阅读习惯。在琳琅满目的书籍面前，每个人都面临选择，该购买哪本书，如何在有限的时间内吸收书中的精华，达到自己的阅读目的？下面就我自己的阅读经历分析一下以上问题。</p>
@@ -80,9 +80,9 @@ Linux》来说，它全书分为四个部分，包括“Linux使用”，“系�
   
   <entry>
     <title type="html"><![CDATA[Review of BeagleBone Robotic Projects - From a Technical Perspective]]></title>
-    <link href="http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/"/>
-    <updated>2014-02-10T11:07:55+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective</id>
+    <link href="http://hustcalm.me/blog/2014/02/09/review-of-beaglebone-robotic-projects-from-a-technical-perspective/"/>
+    <updated>2014-02-09T19:07:55-08:00</updated>
+    <id>http://hustcalm.me/blog/2014/02/09/review-of-beaglebone-robotic-projects-from-a-technical-perspective</id>
     <content type="html"><![CDATA[<p>I&rsquo;m lucky to be a reviewer for the book <code>Beaglebone Robotic Projects</code> few months ago released by <a href="http://www.packtpub.com/">PACKT</a>. And I&rsquo;d like to recommend this book to readers who would like to play with <code>Beagle</code> for a while and start their own robotic projects. Below I&rsquo;ll talk a little bit about this book from a technical perspective.</p>
 
 <!--more-->

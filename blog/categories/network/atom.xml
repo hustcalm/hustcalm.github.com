@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Network | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/network/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Look inside mongoose - an easy to use web server implementation]]></title>
     <link href="http://hustcalm.me/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation/"/>
-    <updated>2014-04-09T20:22:54+08:00</updated>
+    <updated>2014-04-09T05:22:54-07:00</updated>
     <id>http://hustcalm.me/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation</id>
     <content type="html"><![CDATA[<p>I come across with Network Programming recently and find it really charming. Afer reading the book &ldquo;Advanced Linux Programming&rdquo;, I&rsquo;m more curious about how to implement a basic http server or web server.</p>
 
@@ -487,7 +487,7 @@ tv.tv_usec = (milli % 1000) * 1000;</p>
   <entry>
     <title type="html"><![CDATA[httplib httplib2 urllib urllib2-what's the difference]]></title>
     <link href="http://hustcalm.me/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference/"/>
-    <updated>2013-11-14T11:24:00+08:00</updated>
+    <updated>2013-11-14T11:24:00-08:00</updated>
     <id>http://hustcalm.me/blog/2013/11/14/httplib-httplib2-urllib-urllib2-whats-the-difference</id>
     <content type="html"><![CDATA[<p>Lots of people may got confused by the Python modules- <code>httplib, httplib2, urllib, urllib2</code>. Judge from their names, we may prefer the x2 module because they may be version 2 of the module and should work better. Maybe you are right for some degree(as for the httplib).</p>
 
@@ -599,7 +599,7 @@ For all other cases, use urllibx(note that <code>urllib and urllib2</code> have 
   <entry>
     <title type="html"><![CDATA[Many thanks to CMCC &amp; CMCC-EDU]]></title>
     <link href="http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu/"/>
-    <updated>2012-09-26T00:43:00+08:00</updated>
+    <updated>2012-09-26T00:43:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/09/26/many-thanks-to-cmcc-and-cmcc-edu</id>
     <content type="html"><![CDATA[<h2>Wireless NetWork is nice  of CMCC</h2>
 

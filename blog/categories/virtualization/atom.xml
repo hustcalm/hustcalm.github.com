@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Virtualization | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/virtualization/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Playing with Xen under Centos6.4 to build your own VPS]]></title>
     <link href="http://hustcalm.me/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps/"/>
-    <updated>2013-10-14T10:28:00+08:00</updated>
+    <updated>2013-10-14T10:28:00-07:00</updated>
     <id>http://hustcalm.me/blog/2013/10/14/playing-with-xen-under-centos6-dot-4-to-build-your-own-vps</id>
     <content type="html"><![CDATA[<p>Believe it or not, we are under an age called Cloud Computing.</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Assembly | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/assembly/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Something about SSE and beyond]]></title>
-    <link href="http://hustcalm.me/blog/2015/12/12/something-about-sse-and-beyond/"/>
-    <updated>2015-12-12T11:15:30+08:00</updated>
-    <id>http://hustcalm.me/blog/2015/12/12/something-about-sse-and-beyond</id>
+    <link href="http://hustcalm.me/blog/2015/12/11/something-about-sse-and-beyond/"/>
+    <updated>2015-12-11T19:15:30-08:00</updated>
+    <id>http://hustcalm.me/blog/2015/12/11/something-about-sse-and-beyond</id>
     <content type="html"><![CDATA[<p>We happen to know CPU is the core worker of every single computer, however, not everybody cares much about the instruction set architecture. I&rsquo;m quite interested messing up with all these stuff and by taking the brownbag chance of my group, I give a somehow preliminary talk on SSE.</p>
 
 <!--more-->

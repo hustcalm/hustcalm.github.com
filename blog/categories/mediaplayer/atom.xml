@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MediaPlayer | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/mediaplayer/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Successfully Compiled VLC 2.0.3 Under Ubuntu 11.04]]></title>
     <link href="http://hustcalm.me/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04/"/>
-    <updated>2012-10-13T22:18:00+08:00</updated>
+    <updated>2012-10-13T22:18:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/13/successfully-compiled-vlc-2-dot-0-3-under-ubuntu-11-dot-04</id>
     <content type="html"><![CDATA[<p>With Instructions On <a href="http://wiki.videolan.org/UnixCompile">UnixCompile</a> and <a href="http://wiki.videolan.org/User:J-b#VLC_configure_line">User:J-b</a>, I compile VLC successfully on Ubuntu 11.04.</p>
 

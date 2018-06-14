@@ -4,7 +4,7 @@
   <title><![CDATA[Category: License | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/license/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[为Octopress博客添加CreativeCommons License]]></title>
     <link href="http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license/"/>
-    <updated>2012-10-16T12:42:00+08:00</updated>
+    <updated>2012-10-16T12:42:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-creativecommons-license</id>
     <content type="html"><![CDATA[<p>很久之前就听说了CreativeCommons License，并且看到很多博客站点上也在此License下授权，因此想在自己的Octopress上添加CC License。   <br/>
 我添加的是非商业化使用，自由分享修改的授权，即NonCommercial-ShareAlike。</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Robot | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/robot/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Review of Raspberry Pi Robotic Projects - From a Technical Perspective]]></title>
     <link href="http://hustcalm.me/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective/"/>
-    <updated>2014-06-21T19:15:15+08:00</updated>
+    <updated>2014-06-21T04:15:15-07:00</updated>
     <id>http://hustcalm.me/blog/2014/06/21/review-of-raspberry-pi-robotic-projects-from-a-technical-perspective</id>
     <content type="html"><![CDATA[<p>After being the reviewer for the <a href="http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/">BeagleBone Robotic Projects</a>, I&rsquo;m honored to be the reviewer for another book about robotic projects named <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotic Projects</a>. I will go no further to talk about the differences about <code>BeagleBone</code> and <code>Raspberry Pi</code>, all I know is that they are both cool and amazing. To start to play with <code>Raspberry Pi</code>, I suggest that you
 can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects</a> as an option.</p>
@@ -80,9 +80,9 @@ can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects
   
   <entry>
     <title type="html"><![CDATA[Review of BeagleBone Robotic Projects - From a Technical Perspective]]></title>
-    <link href="http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/"/>
-    <updated>2014-02-10T11:07:55+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective</id>
+    <link href="http://hustcalm.me/blog/2014/02/09/review-of-beaglebone-robotic-projects-from-a-technical-perspective/"/>
+    <updated>2014-02-09T19:07:55-08:00</updated>
+    <id>http://hustcalm.me/blog/2014/02/09/review-of-beaglebone-robotic-projects-from-a-technical-perspective</id>
     <content type="html"><![CDATA[<p>I&rsquo;m lucky to be a reviewer for the book <code>Beaglebone Robotic Projects</code> few months ago released by <a href="http://www.packtpub.com/">PACKT</a>. And I&rsquo;d like to recommend this book to readers who would like to play with <code>Beagle</code> for a while and start their own robotic projects. Below I&rsquo;ll talk a little bit about this book from a technical perspective.</p>
 
 <!--more-->
@@ -151,7 +151,7 @@ can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects
   <entry>
     <title type="html"><![CDATA[2012 ABU Roboncon 国内赛总结]]></title>
     <link href="http://hustcalm.me/blog/2013/04/30/2012-abu-roboncon-guo-nei-sai-zong-jie/"/>
-    <updated>2013-04-30T01:50:00+08:00</updated>
+    <updated>2013-04-30T01:50:00-07:00</updated>
     <id>http://hustcalm.me/blog/2013/04/30/2012-abu-roboncon-guo-nei-sai-zong-jie</id>
     <content type="html"><![CDATA[<p>ABU的赛场离我已经快一年之久了，而这一年的任何一天都可以真切地回忆起备战的节奏，在地下室的紧张调试，在502的欢乐夜宵。2013的战役即将打响，主场是国防科大，不知道今年的格局又会是什么样，列强是否依旧强劲，弱旅中会不会杀出黑马！</p>
 
@@ -321,7 +321,7 @@ can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects
   <entry>
     <title type="html"><![CDATA[2012年亚太大学生机器人大赛CCTV视频汇总]]></title>
     <link href="http://hustcalm.me/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong/"/>
-    <updated>2012-10-23T17:55:00+08:00</updated>
+    <updated>2012-10-23T17:55:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/23/2012nian-ya-tai-da-xue-sheng-ji-qi-ren-da-sai-cctvshi-pin-hui-zong</id>
     <content type="html"><![CDATA[<p>央视终于在CCTV7播出了2012年亚太大学生机器人大赛的国内选拔赛的视频以及国际赛视频，现在把视频链接整理如下，方便各位Roboconer以及热爱机器人的朋友查看。</p>
 

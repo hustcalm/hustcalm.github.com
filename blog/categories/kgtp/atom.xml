@@ -4,7 +4,7 @@
   <title><![CDATA[Category: KGTP | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/kgtp/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 4]]></title>
     <link href="http://hustcalm.me/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/"/>
-    <updated>2014-08-10T18:33:09+08:00</updated>
+    <updated>2014-08-10T03:33:09-07:00</updated>
     <id>http://hustcalm.me/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4</id>
     <content type="html"><![CDATA[<h3>CSDN开源夏令营 &ndash; 第四周工作总结</h3>
 
@@ -525,7 +525,7 @@ Aug 03 12:37:57 localhost.localdomain kernel: gtp_read
   <entry>
     <title type="html"><![CDATA[KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 3]]></title>
     <link href="http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3/"/>
-    <updated>2014-07-27T19:34:52+08:00</updated>
+    <updated>2014-07-27T04:34:52-07:00</updated>
     <id>http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-3</id>
     <content type="html"><![CDATA[<h3>CSDN开源夏令营 &ndash; 第三周工作总结</h3>
 
@@ -747,7 +747,7 @@ Jul 27 07:19:53 localhost.localdomain kernel: gtp_read
   <entry>
     <title type="html"><![CDATA[KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 2]]></title>
     <link href="http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2/"/>
-    <updated>2014-07-27T19:34:48+08:00</updated>
+    <updated>2014-07-27T04:34:48-07:00</updated>
     <id>http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-2</id>
     <content type="html"><![CDATA[<h3>CSDN开源夏令营 &ndash; 第二周工作总结</h3>
 
@@ -967,7 +967,7 @@ Packets starting with ‘q’ are general query packets; packets starting with �
   <entry>
     <title type="html"><![CDATA[KGTP中增加对GDB命令“set trace-buffer-size”的支持 - Week 1]]></title>
     <link href="http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-1/"/>
-    <updated>2014-07-27T19:34:45+08:00</updated>
+    <updated>2014-07-27T04:34:45-07:00</updated>
     <id>http://hustcalm.me/blog/2014/07/27/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-1</id>
     <content type="html"><![CDATA[<h3>CSDN开源夏令营 &ndash; 第一周工作总结</h3>
 

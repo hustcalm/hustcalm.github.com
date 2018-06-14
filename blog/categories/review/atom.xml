@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Review | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/review/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Review of BeagleBone Robotic Projects - From a Technical Perspective]]></title>
-    <link href="http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective/"/>
-    <updated>2014-02-10T11:07:55+08:00</updated>
-    <id>http://hustcalm.me/blog/2014/02/10/review-of-beaglebone-robotic-projects-from-a-technical-perspective</id>
+    <link href="http://hustcalm.me/blog/2014/02/09/review-of-beaglebone-robotic-projects-from-a-technical-perspective/"/>
+    <updated>2014-02-09T19:07:55-08:00</updated>
+    <id>http://hustcalm.me/blog/2014/02/09/review-of-beaglebone-robotic-projects-from-a-technical-perspective</id>
     <content type="html"><![CDATA[<p>I&rsquo;m lucky to be a reviewer for the book <code>Beaglebone Robotic Projects</code> few months ago released by <a href="http://www.packtpub.com/">PACKT</a>. And I&rsquo;d like to recommend this book to readers who would like to play with <code>Beagle</code> for a while and start their own robotic projects. Below I&rsquo;ll talk a little bit about this book from a technical perspective.</p>
 
 <!--more-->

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SEO | Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/blog/categories/seo/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2016-11-12T13:03:26+08:00</updated>
+  <updated>2018-06-13T23:35:48-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Know Your Website Better Using Google Webmaster Tools, Analytics and Authorship]]></title>
     <link href="http://hustcalm.me/blog/2014/01/23/know-your-website-better-using-google-webmaster-tools-analytics-and-authorship/"/>
-    <updated>2014-01-23T19:05:43+08:00</updated>
+    <updated>2014-01-23T03:05:43-08:00</updated>
     <id>http://hustcalm.me/blog/2014/01/23/know-your-website-better-using-google-webmaster-tools-analytics-and-authorship</id>
     <content type="html"><![CDATA[<p>I happened to get to know <code>Google Webmaster Tools</code>, <code>Google Analytics</code> and <code>Google Authorship Markup</code> when I try to tweak my <code>Octopress</code> website. Found that Google is really doing lots of interesting things for our websites, I will share some useful tips and links here.</p>
 
@@ -75,7 +75,7 @@ Tool</a>.</p>
   <entry>
     <title type="html"><![CDATA[为Octopress博客添加Flag Counter侧边栏]]></title>
     <link href="http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan/"/>
-    <updated>2012-10-16T11:19:00+08:00</updated>
+    <updated>2012-10-16T11:19:00-07:00</updated>
     <id>http://hustcalm.me/blog/2012/10/16/wei-octopressbo-ke-tian-jia-flag-counterce-bian-lan</id>
     <content type="html"><![CDATA[<p>今天为自己的Octopress博客添加了访问者统计工具，<a href="http://www.flagcounter.com">Flag Counter</a>，如何获得代码请访问官网。   <br/>
 拿到了代码后，添加到侧边栏，在custom/asides添加flag_counter.html，然后在_config.yml中开启即可，其中flag_counter.html的格式如下：</p>

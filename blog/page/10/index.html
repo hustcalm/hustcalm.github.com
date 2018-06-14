@@ -9,8 +9,7 @@
   <meta name="author" content="Lihang Li">
 
   
-  <meta name="description" content="最近在上杨立祥老师的《操作系统高级教程I》，主要讲述Linux 0.11是如何被加载到内存，并且开始接管计算机。那么系统是如何被加载并执行的呢？ 基本上分为三步： （1）启动BIOS，准备实模式下的中断向量表和中断服务程序
-（2）从启动盘加载操作系统到内存，加载操作系统程序的工作， &hellip;">
+  <meta name="description" content="ASCII,ANSI,Unicode,UTF-8,BOM,UCS,GB2312,GBK,GB18030,BIG5,Code Page&hellip; Blabla&hellip; 对于以上概念，你是否都理解了呢？下面，带着大家彻底搞懂字符集和字符编码的相关知识。我是读了别人的posts， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,6 +90,74 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts/">彻底搞懂字符集和字符编码(Cooked From Other Posts)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-06T12:08:00-07:00" pubdate data-updated="true">Apr 6<span>th</span>, 2013</time>
+        
+           | <a href="/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts/#disqus_thread"
+             data-disqus-identifier="http://hustcalm.me/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>ASCII,ANSI,Unicode,UTF-8,BOM,UCS,GB2312,GBK,GB18030,BIG5,Code Page&hellip; Blabla&hellip;</p>
+
+<p>对于以上概念，你是否都理解了呢？下面，带着大家彻底搞懂字符集和字符编码的相关知识。我是读了别人的posts，然后cook出来，整理思路，所以需要大家边读边仔细阅读相应的post哦～</p>
+
+<h2>入门篇</h2>
+
+<p>首先，简单了解一下。</p>
+
+<ul>
+<li><a href="http://www.imkevinyang.com/2009/02/%E5%AD%97%E7%AC%A6%E7%BC%96%E8%A7%A3%E7%A0%81%E7%9A%84%E6%95%85%E4%BA%8B%EF%BC%88ascii%EF%BC%8Cansi%EF%BC%8Cunicode%EF%BC%8Cutf-8%E5%8C%BA%E5%88%AB%EF%BC%89.html">字符编解码的故事（ASCII，ANSI，Unicode，Utf-8区别）</a></li>
+</ul>
+
+
+<p>这篇文章，以类似《明朝那些事儿》的文笔，向大家介绍了”编码“的简史。</p>
+
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编码笔记：ASCII，Unicode和UTF-8</a></li>
+</ul>
+
+
+<p>阮一峰的博客，重点描述了ASCII和Unicode，并强调“<strong>UTF-8是Unicode的实现方式之一</strong>”，Little endian和Big endian的典故也说到了。跟上篇文章一样，适合入门。</p>
+
+<h2>初级篇</h2>
+
+<p>入门之后，需要搞清楚究竟“字符集”和“字符编码”是什么东东。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/04/06/che-di-gao-dong-zi-fu-ji-he-zi-fu-bian-ma-cooked-from-other-posts/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de/">BIOS是如何被加载并执行的</a></h1>
     
     
@@ -107,7 +174,7 @@
   
 
 
-<time datetime="2013-03-13T22:32:00+08:00" pubdate data-updated="true">Mar 13<span>th</span>, 2013</time>
+<time datetime="2013-03-13T22:32:00-07:00" pubdate data-updated="true">Mar 13<span>th</span>, 2013</time>
         
            | <a href="/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de/#disqus_thread"
              data-disqus-identifier="http://hustcalm.me/blog/2013/03/13/biosshi-ru-he-bei-jia-zai-bing-zhi-xing-de/">Comments</a>
@@ -162,7 +229,7 @@
   
 
 
-<time datetime="2013-03-02T11:27:00+08:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2013</time>
+<time datetime="2013-03-02T11:27:00-08:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2013</time>
         
            | <a href="/blog/2013/03/02/githe-githubde-zhe-xue-he-yi-zhu/#disqus_thread"
              data-disqus-identifier="http://hustcalm.me/blog/2013/03/02/githe-githubde-zhe-xue-he-yi-zhu/">Comments</a>
@@ -215,7 +282,7 @@
   
 
 
-<time datetime="2013-01-31T18:27:00+08:00" pubdate data-updated="true">Jan 31<span>st</span>, 2013</time>
+<time datetime="2013-01-31T18:27:00-08:00" pubdate data-updated="true">Jan 31<span>st</span>, 2013</time>
         
            | <a href="/blog/2013/01/31/zhuan-lai-de-%2Cwo-mei-ci-kan-du-you-shou-huo/#disqus_thread"
              data-disqus-identifier="http://hustcalm.me/blog/2013/01/31/zhuan-lai-de-%2Cwo-mei-ci-kan-du-you-shou-huo/">Comments</a>
@@ -267,7 +334,7 @@
   
 
 
-<time datetime="2012-12-23T23:25:00+08:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2012</time>
+<time datetime="2012-12-23T23:25:00-08:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2012</time>
         
            | <a href="/blog/2012/12/23/jie-zi-shu/#disqus_thread"
              data-disqus-identifier="http://hustcalm.me/blog/2012/12/23/jie-zi-shu/">Comments</a>
@@ -284,60 +351,6 @@
 <p>年与时驰，意与岁去，遂成枯落，多不接世。悲叹穷庐，将复何及！</p>
 
 <p><strong>自勉！</strong></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/30/fen-xiang-yi-xie-you-yong-de-ji-qi-xue-xi-fang-mian-de-lian-jie/">分享一些有用的机器学习方面的链接</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-30T19:37:00+08:00" pubdate data-updated="true">Nov 30<span>th</span>, 2012</time>
-        
-           | <a href="/blog/2012/11/30/fen-xiang-yi-xie-you-yong-de-ji-qi-xue-xi-fang-mian-de-lian-jie/#disqus_thread"
-             data-disqus-identifier="http://hustcalm.me/blog/2012/11/30/fen-xiang-yi-xie-you-yong-de-ji-qi-xue-xi-fang-mian-de-lian-jie/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>被机器学习上了不要紧，要紧的是你都不知道上你的是机器学习。发现学了机器学习之后，自残情绪剧增，分享几个优秀的机器学习方面的链接了以慰藉。</p>
-
-<ul>
-<li><a href="http://blog.csdn.net/shfkuang/article/details/7772935">机器学习与计算机视觉大牛族谱</a></li>
-<li><a href="http://doctorimage.cn/2012/11/19/maching-learning-computer-vison-family-sites/">机器学习与计算机视觉大牛族谱和链接</a></li>
-<li><a href="http://blog.csdn.net/j_study/article/details/7903302">人工智能、机器学习、计算机视觉（整理）</a></li>
-<li><a href="http://blog.csdn.net/j_study/article/details/7903823">计算机视觉方面的会议、期刊</a></li>
-<li><a href="http://blog.csdn.net/j_study/article/details/7938982">《SCI》、《EI》、《ISTP》简介</a></li>
-<li><a href="http://shijuanfeng.blogbus.com/logs/216968430.html">计算机视觉与图像处理、模式识别、机器学习学科之间的关系</a></li>
-<li><a href="http://wenku.baidu.com/course/view/49e8b8f67c1cfad6195fa705">机器学习Machine Learning百度课程-龙星计划</a></li>
-<li><a href="http://cs229.stanford.edu/">CS229 Machine Learning Stanford</a></li>
-<li><a href="http://mldemos.epfl.ch/">MLDemos可视化机器学习资源</a></li>
-</ul>
-
-
-<p>学。</p>
 </div>
   
   
@@ -377,30 +390,30 @@
 
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 104.61538461538461%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 109.23076923076923%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 104.61538461538461%'>Arduino(1)</a> <a href='/blog/categories/assembly' style='font-size: 104.61538461538461%'>Assembly(1)</a> <a href='/blog/categories/avt' style='font-size: 104.61538461538461%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 104.61538461538461%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 104.61538461538461%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 104.61538461538461%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 109.23076923076923%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 109.23076923076923%'>C/C++(2)</a> <a href='/blog/categories/career' style='font-size: 109.23076923076923%'>Career(2)</a> <a href='/blog/categories/centos' style='font-size: 109.23076923076923%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 104.61538461538461%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 109.23076923076923%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 104.61538461538461%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 104.61538461538461%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 104.61538461538461%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 104.61538461538461%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 109.23076923076923%'>Embedded(2)</a> <a href='/blog/categories/fedora' style='font-size: 109.23076923076923%'>Fedora(2)</a> <a href='/blog/categories/gdb' style='font-size: 118.46153846153845%'>GDB(4)</a> <a href='/blog/categories/geek' style='font-size: 113.84615384615384%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 109.23076923076923%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 104.61538461538461%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 104.61538461538461%'>HTTP(1)</a> <a href='/blog/categories/isa' style='font-size: 104.61538461538461%'>ISA(1)</a> <a href='/blog/categories/java' style='font-size: 104.61538461538461%'>Java(1)</a> <a href='/blog/categories/kgtp' style='font-size: 118.46153846153845%'>KGTP(4)</a> <a href='/blog/categories/latex' style='font-size: 104.61538461538461%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 104.61538461538461%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 104.61538461538461%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 123.07692307692308%'>Life(5)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(13)</a> <a href='/blog/categories/lucence' style='font-size: 104.61538461538461%'>Lucence(1)</a> <a href='/blog/categories/mac' style='font-size: 104.61538461538461%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 104.61538461538461%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 104.61538461538461%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 104.61538461538461%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 109.23076923076923%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 104.61538461538461%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 113.84615384615384%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 104.61538461538461%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 127.6923076923077%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 109.23076923076923%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 109.23076923076923%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 109.23076923076923%'>OpenHardware(2)</a> <a href='/blog/categories/opensource' style='font-size: 118.46153846153845%'>OpenSource(4)</a> <a href='/blog/categories/os' style='font-size: 104.61538461538461%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 104.61538461538461%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 104.61538461538461%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 104.61538461538461%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 113.84615384615384%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 109.23076923076923%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 104.61538461538461%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 104.61538461538461%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 104.61538461538461%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 104.61538461538461%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 118.46153846153845%'>Robot(4)</a> <a href='/blog/categories/search' style='font-size: 104.61538461538461%'>Search(1)</a> <a href='/blog/categories/seo' style='font-size: 109.23076923076923%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 104.61538461538461%'>SFD(1)</a> <a href='/blog/categories/simd' style='font-size: 104.61538461538461%'>SIMD(1)</a> <a href='/blog/categories/sns' style='font-size: 109.23076923076923%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 104.61538461538461%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 104.61538461538461%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 104.61538461538461%'>Startup(1)</a> <a href='/blog/categories/thinking' style='font-size: 113.84615384615384%'>Thinking(3)</a> <a href='/blog/categories/tracing' style='font-size: 118.46153846153845%'>Tracing(4)</a> <a href='/blog/categories/travel' style='font-size: 104.61538461538461%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 113.84615384615384%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 104.61538461538461%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 113.84615384615384%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 104.61538461538461%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 109.23076923076923%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 104.61538461538461%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 104.61538461538461%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 109.23076923076923%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 104.61538461538461%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 104.61538461538461%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 104.61538461538461%'>Xen(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 104.61538461538461%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 109.23076923076923%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 104.61538461538461%'>Arduino(1)</a> <a href='/blog/categories/assembly' style='font-size: 104.61538461538461%'>Assembly(1)</a> <a href='/blog/categories/avt' style='font-size: 104.61538461538461%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 104.61538461538461%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 104.61538461538461%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 104.61538461538461%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 109.23076923076923%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 109.23076923076923%'>C/C++(2)</a> <a href='/blog/categories/career' style='font-size: 109.23076923076923%'>Career(2)</a> <a href='/blog/categories/centos' style='font-size: 109.23076923076923%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 104.61538461538461%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 109.23076923076923%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 104.61538461538461%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 104.61538461538461%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 104.61538461538461%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 104.61538461538461%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 109.23076923076923%'>Embedded(2)</a> <a href='/blog/categories/fedora' style='font-size: 109.23076923076923%'>Fedora(2)</a> <a href='/blog/categories/gdb' style='font-size: 118.46153846153845%'>GDB(4)</a> <a href='/blog/categories/geek' style='font-size: 113.84615384615384%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 109.23076923076923%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 104.61538461538461%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 104.61538461538461%'>HTTP(1)</a> <a href='/blog/categories/isa' style='font-size: 104.61538461538461%'>ISA(1)</a> <a href='/blog/categories/java' style='font-size: 104.61538461538461%'>Java(1)</a> <a href='/blog/categories/kgtp' style='font-size: 118.46153846153845%'>KGTP(4)</a> <a href='/blog/categories/latex' style='font-size: 104.61538461538461%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 104.61538461538461%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 104.61538461538461%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 127.6923076923077%'>Life(6)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(13)</a> <a href='/blog/categories/lucence' style='font-size: 104.61538461538461%'>Lucence(1)</a> <a href='/blog/categories/mac' style='font-size: 104.61538461538461%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 104.61538461538461%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 104.61538461538461%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 104.61538461538461%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 109.23076923076923%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 104.61538461538461%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 113.84615384615384%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 104.61538461538461%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 127.6923076923077%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 109.23076923076923%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 109.23076923076923%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 109.23076923076923%'>OpenHardware(2)</a> <a href='/blog/categories/opensource' style='font-size: 118.46153846153845%'>OpenSource(4)</a> <a href='/blog/categories/os' style='font-size: 104.61538461538461%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 104.61538461538461%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 104.61538461538461%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 104.61538461538461%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 113.84615384615384%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 109.23076923076923%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 104.61538461538461%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 104.61538461538461%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 104.61538461538461%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 104.61538461538461%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 118.46153846153845%'>Robot(4)</a> <a href='/blog/categories/search' style='font-size: 104.61538461538461%'>Search(1)</a> <a href='/blog/categories/seo' style='font-size: 109.23076923076923%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 104.61538461538461%'>SFD(1)</a> <a href='/blog/categories/simd' style='font-size: 104.61538461538461%'>SIMD(1)</a> <a href='/blog/categories/sns' style='font-size: 109.23076923076923%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 104.61538461538461%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 104.61538461538461%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 104.61538461538461%'>Startup(1)</a> <a href='/blog/categories/thinking' style='font-size: 113.84615384615384%'>Thinking(3)</a> <a href='/blog/categories/tracing' style='font-size: 118.46153846153845%'>Tracing(4)</a> <a href='/blog/categories/travel' style='font-size: 104.61538461538461%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 113.84615384615384%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 104.61538461538461%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 113.84615384615384%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 104.61538461538461%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 109.23076923076923%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 104.61538461538461%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 104.61538461538461%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 109.23076923076923%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 104.61538461538461%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 104.61538461538461%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 104.61538461538461%'>Xen(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/07/23/gong-zuo-hou-de-yi-dian-gan-wu/">工作后的一点感悟</a>
+        <a href="/blog/2018/06/13/jin-kuang-za-tan/">近况杂谈</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/12/12/something-about-sse-and-beyond/">Something About SSE and Beyond</a>
+        <a href="/blog/2016/07/22/gong-zuo-hou-de-yi-dian-gan-wu/">工作后的一点感悟</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/12/12/zhao-gong-zuo-de-yi-dian-jing-yan-he-jiao-xun/">找工作的一点经验和教训</a>
+        <a href="/blog/2015/12/11/something-about-sse-and-beyond/">Something About SSE and Beyond</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2015/01/05/2014-zhe-yi-nian/">2014这一年</a>
+        <a href="/blog/2015/12/11/zhao-gong-zuo-de-yi-dian-jing-yan-he-jiao-xun/">找工作的一点经验和教训</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/12/31/playing-with-kinect-for-windows-using-openni-and-sensorkinect-under-ubuntu-12-dot-04-lts/">Playing With Kinect for Windows Using OpenNI and SensorKinect Under Ubuntu 12.04 LTS</a>
+        <a href="/blog/2015/01/04/2014-zhe-yi-nian/">2014这一年</a>
       </li>
     
   </ul>
@@ -480,7 +493,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2016 - Lihang Li -
+  Copyright &copy; 2018 - Lihang Li -
   <span class="credit">Powered by <a href="https://github.com">Github</a> & <a href="http://octopress.org">Octopress</a></span>
 </p>
 
