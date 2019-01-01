@@ -9,7 +9,7 @@
   <meta name="author" content="Lihang Li">
 
   
-  <meta name="description" content="CSDN开源夏令营 &ndash; 第三周工作总结 这一周主要实现了“set trace-buffer-size”实现的数据通信部分，即完成了GDB和KGTP的数据交互部分，下面简单分析一下实现。在说代码实现之前，还是简单地回顾一下，如何摸清KGTP的脉络。 1. 如何跟踪KGTP &hellip;">
+  <meta name="description" content="CSDN开源夏令营 &ndash; 第四周工作总结 本周主要是在回顾“set trace-buffer-size”完成通信的基础上，对于指定参数size的处理，比如指定-1或者unlimited的时候，在KGTP端该如何做解析，以及该如何处理此时的buffer size。同时，根据“开题报告&# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/">KGTP中增加对GDB命令“set Trace-buffer-size”的支持 - Week 4</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-10T03:33:09-07:00" pubdate data-updated="true">Aug 10<span>th</span>, 2014</time>
+        
+           | <a href="/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/#disqus_thread"
+             data-disqus-identifier="http://hustcalm.me/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>CSDN开源夏令营 &ndash; 第四周工作总结</h3>
+
+<p>本周主要是在回顾“set trace-buffer-size”完成通信的基础上，对于指定参数size的处理，比如指定-1或者unlimited的时候，在KGTP端该如何做解析，以及该如何处理此时的buffer size。同时，根据“开题报告&#8221;的进度，中期检查的任务已经完成。对Trace Buffer的实现，做了初步的调研。</p>
+
+<h4>1. GDB和KGTP通信实现的回顾</h4>
+
+<p>利用GDBRSP，即GDB Remote Serial Protocol，GDB远程串行通信协议。简单来说，用于GDB远程调试发包，但是也支持File I/O和Console，而KGTP正是利用了GDBRSP对于File I/O的支持，完成GDB和KGTP的通信，在接受到GDB发送的Packet后，KGTP进行解析。而通信的介质则是通过debugfs或者其他kernel space和user space进行数据交换的接口进行的。
+具体实现，可以参考上一篇博文[1]。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/10/kgtpzhong-zeng-jia-dui-gdbming-ling-set-trace-buffer-size-de-zhi-chi-week-4/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -289,52 +340,6 @@ can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/17/what-is-socket-anyway/">What Is Socket Anyway?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-17T06:05:06-07:00" pubdate data-updated="true">Apr 17<span>th</span>, 2014</time>
-        
-           | <a href="/blog/2014/04/17/what-is-socket-anyway/#disqus_thread"
-             data-disqus-identifier="http://hustcalm.me/blog/2014/04/17/what-is-socket-anyway/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I bet you&rsquo;ve heard of <code>socket</code> for a while, but do you really know what is a <code>socket</code>?</p>
-
-<p>This post is a quick getting-started for figuring out the basic concepts of socket and hopefully enpowers you to begin writing simple network programming snippets. It aims to bootstrap your understanding to socket and network programming and serves as a good starting point to truth. From definition to practice and deep into research, let&rsquo;s start the venture!</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/04/17/what-is-socket-anyway/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -367,11 +372,15 @@ can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects
 
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 104.61538461538461%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 109.23076923076923%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 104.61538461538461%'>Arduino(1)</a> <a href='/blog/categories/assembly' style='font-size: 104.61538461538461%'>Assembly(1)</a> <a href='/blog/categories/avt' style='font-size: 104.61538461538461%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 104.61538461538461%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 104.61538461538461%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 104.61538461538461%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 109.23076923076923%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 109.23076923076923%'>C/C++(2)</a> <a href='/blog/categories/career' style='font-size: 109.23076923076923%'>Career(2)</a> <a href='/blog/categories/centos' style='font-size: 109.23076923076923%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 104.61538461538461%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 109.23076923076923%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 104.61538461538461%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 104.61538461538461%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 104.61538461538461%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 104.61538461538461%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 109.23076923076923%'>Embedded(2)</a> <a href='/blog/categories/fedora' style='font-size: 109.23076923076923%'>Fedora(2)</a> <a href='/blog/categories/gdb' style='font-size: 118.46153846153845%'>GDB(4)</a> <a href='/blog/categories/geek' style='font-size: 113.84615384615384%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 109.23076923076923%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 104.61538461538461%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 104.61538461538461%'>HTTP(1)</a> <a href='/blog/categories/isa' style='font-size: 104.61538461538461%'>ISA(1)</a> <a href='/blog/categories/java' style='font-size: 104.61538461538461%'>Java(1)</a> <a href='/blog/categories/kgtp' style='font-size: 118.46153846153845%'>KGTP(4)</a> <a href='/blog/categories/latex' style='font-size: 104.61538461538461%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 104.61538461538461%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 104.61538461538461%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 132.30769230769232%'>Life(7)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(13)</a> <a href='/blog/categories/lucence' style='font-size: 104.61538461538461%'>Lucence(1)</a> <a href='/blog/categories/mac' style='font-size: 104.61538461538461%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 104.61538461538461%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 104.61538461538461%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 104.61538461538461%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 109.23076923076923%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 104.61538461538461%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 113.84615384615384%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 104.61538461538461%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 127.6923076923077%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 109.23076923076923%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 109.23076923076923%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 109.23076923076923%'>OpenHardware(2)</a> <a href='/blog/categories/opensource' style='font-size: 118.46153846153845%'>OpenSource(4)</a> <a href='/blog/categories/os' style='font-size: 104.61538461538461%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 104.61538461538461%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 104.61538461538461%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 104.61538461538461%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 113.84615384615384%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 109.23076923076923%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 104.61538461538461%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 104.61538461538461%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 104.61538461538461%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 104.61538461538461%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 118.46153846153845%'>Robot(4)</a> <a href='/blog/categories/search' style='font-size: 104.61538461538461%'>Search(1)</a> <a href='/blog/categories/seo' style='font-size: 109.23076923076923%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 104.61538461538461%'>SFD(1)</a> <a href='/blog/categories/simd' style='font-size: 104.61538461538461%'>SIMD(1)</a> <a href='/blog/categories/sns' style='font-size: 109.23076923076923%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 104.61538461538461%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 104.61538461538461%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 104.61538461538461%'>Startup(1)</a> <a href='/blog/categories/thinking' style='font-size: 118.46153846153845%'>Thinking(4)</a> <a href='/blog/categories/tracing' style='font-size: 118.46153846153845%'>Tracing(4)</a> <a href='/blog/categories/travel' style='font-size: 104.61538461538461%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 113.84615384615384%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 104.61538461538461%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 113.84615384615384%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 104.61538461538461%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 109.23076923076923%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 104.61538461538461%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 104.61538461538461%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 109.23076923076923%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 104.61538461538461%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 104.61538461538461%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 104.61538461538461%'>Xen(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 104.61538461538461%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 109.23076923076923%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 104.61538461538461%'>Arduino(1)</a> <a href='/blog/categories/assembly' style='font-size: 104.61538461538461%'>Assembly(1)</a> <a href='/blog/categories/avt' style='font-size: 104.61538461538461%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 104.61538461538461%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 104.61538461538461%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 104.61538461538461%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 109.23076923076923%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 109.23076923076923%'>C/C++(2)</a> <a href='/blog/categories/career' style='font-size: 109.23076923076923%'>Career(2)</a> <a href='/blog/categories/centos' style='font-size: 109.23076923076923%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 104.61538461538461%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 109.23076923076923%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 104.61538461538461%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 104.61538461538461%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 104.61538461538461%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 104.61538461538461%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 109.23076923076923%'>Embedded(2)</a> <a href='/blog/categories/fedora' style='font-size: 109.23076923076923%'>Fedora(2)</a> <a href='/blog/categories/gdb' style='font-size: 118.46153846153845%'>GDB(4)</a> <a href='/blog/categories/geek' style='font-size: 113.84615384615384%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 109.23076923076923%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 104.61538461538461%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 104.61538461538461%'>HTTP(1)</a> <a href='/blog/categories/isa' style='font-size: 104.61538461538461%'>ISA(1)</a> <a href='/blog/categories/java' style='font-size: 104.61538461538461%'>Java(1)</a> <a href='/blog/categories/kgtp' style='font-size: 118.46153846153845%'>KGTP(4)</a> <a href='/blog/categories/latex' style='font-size: 104.61538461538461%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 104.61538461538461%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 104.61538461538461%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.9230769230769%'>Life(8)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(13)</a> <a href='/blog/categories/lucence' style='font-size: 104.61538461538461%'>Lucence(1)</a> <a href='/blog/categories/mac' style='font-size: 104.61538461538461%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 104.61538461538461%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 104.61538461538461%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 104.61538461538461%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 109.23076923076923%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 104.61538461538461%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 113.84615384615384%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 104.61538461538461%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 127.6923076923077%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 109.23076923076923%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 109.23076923076923%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 109.23076923076923%'>OpenHardware(2)</a> <a href='/blog/categories/opensource' style='font-size: 118.46153846153845%'>OpenSource(4)</a> <a href='/blog/categories/os' style='font-size: 104.61538461538461%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 104.61538461538461%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 104.61538461538461%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 104.61538461538461%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 113.84615384615384%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 109.23076923076923%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 104.61538461538461%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 104.61538461538461%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 104.61538461538461%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 104.61538461538461%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 118.46153846153845%'>Robot(4)</a> <a href='/blog/categories/search' style='font-size: 104.61538461538461%'>Search(1)</a> <a href='/blog/categories/seo' style='font-size: 109.23076923076923%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 104.61538461538461%'>SFD(1)</a> <a href='/blog/categories/simd' style='font-size: 104.61538461538461%'>SIMD(1)</a> <a href='/blog/categories/sns' style='font-size: 109.23076923076923%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 104.61538461538461%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 104.61538461538461%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 104.61538461538461%'>Startup(1)</a> <a href='/blog/categories/thinking' style='font-size: 123.07692307692308%'>Thinking(5)</a> <a href='/blog/categories/tracing' style='font-size: 118.46153846153845%'>Tracing(4)</a> <a href='/blog/categories/travel' style='font-size: 104.61538461538461%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 113.84615384615384%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 104.61538461538461%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 113.84615384615384%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 104.61538461538461%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 109.23076923076923%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 104.61538461538461%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 104.61538461538461%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 109.23076923076923%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 104.61538461538461%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 104.61538461538461%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 104.61538461538461%'>Xen(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/01/01/2018de-zong-jie-he-si-kao/">2018的总结和思考</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/10/26/xi-ya-tu-chu-ti-yan/">西雅图初体验</a>
@@ -387,10 +396,6 @@ can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects
     
       <li class="post">
         <a href="/blog/2015/12/11/something-about-sse-and-beyond/">Something About SSE and Beyond</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/11/zhao-gong-zuo-de-yi-dian-jing-yan-he-jiao-xun/">找工作的一点经验和教训</a>
       </li>
     
   </ul>
@@ -470,7 +475,7 @@ can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2018 - Lihang Li -
+  Copyright &copy; 2019 - Lihang Li -
   <span class="credit">Powered by <a href="https://github.com">Github</a> & <a href="http://octopress.org">Octopress</a></span>
 </p>
 
