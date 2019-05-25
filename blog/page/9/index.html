@@ -9,7 +9,7 @@
   <meta name="author" content="Lihang Li">
 
   
-  <meta name="description" content="由于一个项目的需求，开始接触开放平台的API，已完成客户端的用户接入。参考了一些OpenAPI的相关文章后，开始动手封装国内的几大主流开放平台的Java SDK，下面谈一谈我在封装过程中的体会，也算是对自己工作的一个小结。 OpenAPI是啥 简单来讲，就是在UCG之外， &hellip;">
+  <meta name="description" content="想想自己的Windows XP从09年寒假买了联想的小Y之后就一直在用，期间换过不少次系统，短时间用过Windows 7,也曾经在自己硬盘上安装了Windows + 4个Linux，还包括一个不成功的尝试，在小Y上尝鲜Mac OS X。大四做机器人比赛，由于开发的需要一直不敢折腾自己的电脑（ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/01/you-an-zhuang-windows-8-dot-1tan-qi-%2Clinuxhe-windowsduo-xi-tong-de-an-zhuang-yi-ji-fen-qu-he-qi-dong-xiang-de-guan-li/">由安装Windows 8.1谈起，Linux和Windows多系统的安装以及分区和启动项的管理</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-01T10:54:00-07:00" pubdate data-updated="true">Jul 1<span>st</span>, 2013</time>
+        
+           | <a href="/blog/2013/07/01/you-an-zhuang-windows-8-dot-1tan-qi-%2Clinuxhe-windowsduo-xi-tong-de-an-zhuang-yi-ji-fen-qu-he-qi-dong-xiang-de-guan-li/#disqus_thread"
+             data-disqus-identifier="http://hustcalm.me/blog/2013/07/01/you-an-zhuang-windows-8-dot-1tan-qi-%2Clinuxhe-windowsduo-xi-tong-de-an-zhuang-yi-ji-fen-qu-he-qi-dong-xiang-de-guan-li/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>想想自己的Windows XP从09年寒假买了联想的小Y之后就一直在用，期间换过不少次系统，短时间用过Windows 7,也曾经在自己硬盘上安装了Windows + 4个Linux，还包括一个不成功的尝试，在小Y上尝鲜Mac OS X。大四做机器人比赛，由于开发的需要一直不敢折腾自己的电脑（很多开发工具只在Windows XP上表现良好，尤其是一些驱动），读了研究生后，启动越来越慢的XP成了一块心病，无奈懒于折腾，也习惯了XP下的一些工具和操作，当然更不能舍弃Windows这个领好的PC游戏平台！极品和仙剑，到了Linux只能止步了。</p>
+
+<p>不过5分钟的开机启动实在是忍无可忍了，恰巧最近几天，微软放出了Windows 8.1的预览版本（叫做Windows Blue，我猜想，微软内部发布Windows的相关人员可能也喜欢看海贼王，里面的All Blue是一片神奇的海域啊，看看Windows 8.1安装过程中的鱼，更让人浮想联翩了），在把自己的Ubuntu 11.04果断替换为Linux Mint 15 RC 之后，这次再把Windows XP替换为Windows 8.1预览版！</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/07/01/you-an-zhuang-windows-8-dot-1tan-qi-%2Clinuxhe-windowsduo-xi-tong-de-an-zhuang-yi-ji-fen-qu-he-qi-dong-xiang-de-guan-li/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -328,56 +374,6 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/05/chu-shi-go-erlang-dart/">初识Go-Erlang-Dart</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-05T21:38:00-07:00" pubdate data-updated="true">May 5<span>th</span>, 2013</time>
-        
-           | <a href="/blog/2013/05/05/chu-shi-go-erlang-dart/#disqus_thread"
-             data-disqus-identifier="http://hustcalm.me/blog/2013/05/05/chu-shi-go-erlang-dart/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Preface</h2>
-
-<p>今天Beijing GDG的活动是编程语言沙龙，一口气了解了3种对我来说比较陌生的编程语言(Go, Erlang和Dart），感觉心情比较舒爽，感谢GDG的分享(@许士伟，@连城，@韩国恺，@各位组织者）。趁着脑子还有点热，写点东西谈谈自己的想法吧:&ndash;)</p>
-
-<h2>Go</h2>
-
-<p>跟Unix很有缘分，因为打造Go语言的那些大牛曾经参与过Unix操作系统的开发，C语言在Bell实验室内部的时候，他们也是最早的受众用户吧；后来，Plan 9操作系统的开发，他们也在其列，可惜Plan 9没火起来（在Unix编程艺术里面得知，Unix有一个低迷期，不知道是不是跟当时的大环境有关系）。然后，Unix中的精髓，在Go语言中体现为连接和组合，本质上还是管道和文本话协议吧，按照我的理解。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/05/05/chu-shi-go-erlang-dart/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -410,11 +406,15 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
 
 <section>
   <h1>Category Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 104.61538461538461%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 109.23076923076923%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 104.61538461538461%'>Arduino(1)</a> <a href='/blog/categories/assembly' style='font-size: 104.61538461538461%'>Assembly(1)</a> <a href='/blog/categories/avt' style='font-size: 104.61538461538461%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 104.61538461538461%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 104.61538461538461%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 104.61538461538461%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 109.23076923076923%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 109.23076923076923%'>C/C++(2)</a> <a href='/blog/categories/career' style='font-size: 109.23076923076923%'>Career(2)</a> <a href='/blog/categories/centos' style='font-size: 109.23076923076923%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 104.61538461538461%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 109.23076923076923%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 104.61538461538461%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 104.61538461538461%'>Distribute(1)</a> <a href='/blog/categories/domain' style='font-size: 104.61538461538461%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 104.61538461538461%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 109.23076923076923%'>Embedded(2)</a> <a href='/blog/categories/fedora' style='font-size: 109.23076923076923%'>Fedora(2)</a> <a href='/blog/categories/gdb' style='font-size: 118.46153846153845%'>GDB(4)</a> <a href='/blog/categories/geek' style='font-size: 113.84615384615384%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 109.23076923076923%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 104.61538461538461%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 104.61538461538461%'>HTTP(1)</a> <a href='/blog/categories/isa' style='font-size: 104.61538461538461%'>ISA(1)</a> <a href='/blog/categories/java' style='font-size: 104.61538461538461%'>Java(1)</a> <a href='/blog/categories/kgtp' style='font-size: 118.46153846153845%'>KGTP(4)</a> <a href='/blog/categories/latex' style='font-size: 104.61538461538461%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 104.61538461538461%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 104.61538461538461%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.9230769230769%'>Life(8)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(13)</a> <a href='/blog/categories/lucence' style='font-size: 104.61538461538461%'>Lucence(1)</a> <a href='/blog/categories/mac' style='font-size: 104.61538461538461%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 104.61538461538461%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 104.61538461538461%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 104.61538461538461%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 109.23076923076923%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 104.61538461538461%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 113.84615384615384%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 104.61538461538461%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 127.6923076923077%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 109.23076923076923%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 109.23076923076923%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 109.23076923076923%'>OpenHardware(2)</a> <a href='/blog/categories/opensource' style='font-size: 118.46153846153845%'>OpenSource(4)</a> <a href='/blog/categories/os' style='font-size: 104.61538461538461%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 104.61538461538461%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 104.61538461538461%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 104.61538461538461%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 113.84615384615384%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 109.23076923076923%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 104.61538461538461%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 104.61538461538461%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 104.61538461538461%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 104.61538461538461%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 118.46153846153845%'>Robot(4)</a> <a href='/blog/categories/search' style='font-size: 104.61538461538461%'>Search(1)</a> <a href='/blog/categories/seo' style='font-size: 109.23076923076923%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 104.61538461538461%'>SFD(1)</a> <a href='/blog/categories/simd' style='font-size: 104.61538461538461%'>SIMD(1)</a> <a href='/blog/categories/sns' style='font-size: 109.23076923076923%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 104.61538461538461%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 104.61538461538461%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 104.61538461538461%'>Startup(1)</a> <a href='/blog/categories/thinking' style='font-size: 123.07692307692308%'>Thinking(5)</a> <a href='/blog/categories/tracing' style='font-size: 118.46153846153845%'>Tracing(4)</a> <a href='/blog/categories/travel' style='font-size: 104.61538461538461%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 113.84615384615384%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 104.61538461538461%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 113.84615384615384%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 104.61538461538461%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 109.23076923076923%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 104.61538461538461%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 104.61538461538461%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 109.23076923076923%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 104.61538461538461%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 104.61538461538461%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 104.61538461538461%'>Xen(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/1394' style='font-size: 104.61538461538461%'>1394(1)</a> <a href='/blog/categories/ar' style='font-size: 109.23076923076923%'>AR(2)</a> <a href='/blog/categories/arduino' style='font-size: 104.61538461538461%'>Arduino(1)</a> <a href='/blog/categories/assembly' style='font-size: 104.61538461538461%'>Assembly(1)</a> <a href='/blog/categories/avt' style='font-size: 104.61538461538461%'>AVT(1)</a> <a href='/blog/categories/barcamp' style='font-size: 104.61538461538461%'>Barcamp(1)</a> <a href='/blog/categories/bios' style='font-size: 104.61538461538461%'>BIOS(1)</a> <a href='/blog/categories/boinc' style='font-size: 104.61538461538461%'>BOINC(1)</a> <a href='/blog/categories/books' style='font-size: 109.23076923076923%'>Books(2)</a> <a href='/blog/categories/c-c-' style='font-size: 109.23076923076923%'>C/C++(2)</a> <a href='/blog/categories/career' style='font-size: 109.23076923076923%'>Career(2)</a> <a href='/blog/categories/centos' style='font-size: 109.23076923076923%'>Centos(2)</a> <a href='/blog/categories/cloud' style='font-size: 104.61538461538461%'>Cloud(1)</a> <a href='/blog/categories/cv' style='font-size: 109.23076923076923%'>CV(2)</a> <a href='/blog/categories/cygwin' style='font-size: 104.61538461538461%'>Cygwin(1)</a> <a href='/blog/categories/distribute' style='font-size: 104.61538461538461%'>Distribute(1)</a> <a href='/blog/categories/distributed' style='font-size: 104.61538461538461%'>Distributed(1)</a> <a href='/blog/categories/domain' style='font-size: 104.61538461538461%'>domain(1)</a> <a href='/blog/categories/dream' style='font-size: 104.61538461538461%'>Dream(1)</a> <a href='/blog/categories/embedded' style='font-size: 109.23076923076923%'>Embedded(2)</a> <a href='/blog/categories/fedora' style='font-size: 109.23076923076923%'>Fedora(2)</a> <a href='/blog/categories/gdb' style='font-size: 118.46153846153845%'>GDB(4)</a> <a href='/blog/categories/geek' style='font-size: 113.84615384615384%'>Geek(3)</a> <a href='/blog/categories/git' style='font-size: 109.23076923076923%'>Git(2)</a> <a href='/blog/categories/google' style='font-size: 104.61538461538461%'>Google(1)</a> <a href='/blog/categories/http' style='font-size: 104.61538461538461%'>HTTP(1)</a> <a href='/blog/categories/isa' style='font-size: 104.61538461538461%'>ISA(1)</a> <a href='/blog/categories/java' style='font-size: 104.61538461538461%'>Java(1)</a> <a href='/blog/categories/kgtp' style='font-size: 118.46153846153845%'>KGTP(4)</a> <a href='/blog/categories/latex' style='font-size: 104.61538461538461%'>Latex(1)</a> <a href='/blog/categories/learning' style='font-size: 104.61538461538461%'>Learning(1)</a> <a href='/blog/categories/license' style='font-size: 104.61538461538461%'>License(1)</a> <a href='/blog/categories/life' style='font-size: 136.9230769230769%'>Life(8)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>Linux(13)</a> <a href='/blog/categories/lucence' style='font-size: 104.61538461538461%'>Lucence(1)</a> <a href='/blog/categories/mac' style='font-size: 104.61538461538461%'>Mac(1)</a> <a href='/blog/categories/machine' style='font-size: 104.61538461538461%'>Machine(1)</a> <a href='/blog/categories/markdown' style='font-size: 104.61538461538461%'>Markdown(1)</a> <a href='/blog/categories/mediaplayer' style='font-size: 104.61538461538461%'>MediaPlayer(1)</a> <a href='/blog/categories/mlpr' style='font-size: 109.23076923076923%'>MLPR(2)</a> <a href='/blog/categories/name-com' style='font-size: 104.61538461538461%'>name.com(1)</a> <a href='/blog/categories/network' style='font-size: 113.84615384615384%'>Network(3)</a> <a href='/blog/categories/nlp' style='font-size: 104.61538461538461%'>NLP(1)</a> <a href='/blog/categories/octopress' style='font-size: 127.6923076923077%'>Octopress(6)</a> <a href='/blog/categories/openapi' style='font-size: 109.23076923076923%'>OpenAPI(2)</a> <a href='/blog/categories/opencv' style='font-size: 109.23076923076923%'>OpenCV(2)</a> <a href='/blog/categories/openhardware' style='font-size: 109.23076923076923%'>OpenHardware(2)</a> <a href='/blog/categories/opensource' style='font-size: 118.46153846153845%'>OpenSource(4)</a> <a href='/blog/categories/os' style='font-size: 104.61538461538461%'>OS(1)</a> <a href='/blog/categories/p4p' style='font-size: 104.61538461538461%'>P4P(1)</a> <a href='/blog/categories/posix' style='font-size: 104.61538461538461%'>POSIX(1)</a> <a href='/blog/categories/presentation' style='font-size: 104.61538461538461%'>Presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 113.84615384615384%'>Programming(3)</a> <a href='/blog/categories/ptam' style='font-size: 109.23076923076923%'>PTAM(2)</a> <a href='/blog/categories/pthread' style='font-size: 104.61538461538461%'>pthread(1)</a> <a href='/blog/categories/python' style='font-size: 104.61538461538461%'>Python(1)</a> <a href='/blog/categories/qt' style='font-size: 104.61538461538461%'>Qt(1)</a> <a href='/blog/categories/review' style='font-size: 104.61538461538461%'>Review(1)</a> <a href='/blog/categories/robot' style='font-size: 118.46153846153845%'>Robot(4)</a> <a href='/blog/categories/search' style='font-size: 104.61538461538461%'>Search(1)</a> <a href='/blog/categories/seo' style='font-size: 109.23076923076923%'>SEO(2)</a> <a href='/blog/categories/sfd' style='font-size: 104.61538461538461%'>SFD(1)</a> <a href='/blog/categories/simd' style='font-size: 104.61538461538461%'>SIMD(1)</a> <a href='/blog/categories/sns' style='font-size: 109.23076923076923%'>SNS(2)</a> <a href='/blog/categories/socket' style='font-size: 104.61538461538461%'>Socket(1)</a> <a href='/blog/categories/speaking' style='font-size: 104.61538461538461%'>Speaking(1)</a> <a href='/blog/categories/startup' style='font-size: 104.61538461538461%'>Startup(1)</a> <a href='/blog/categories/systems' style='font-size: 104.61538461538461%'>Systems(1)</a> <a href='/blog/categories/thinking' style='font-size: 123.07692307692308%'>Thinking(5)</a> <a href='/blog/categories/tracing' style='font-size: 118.46153846153845%'>Tracing(4)</a> <a href='/blog/categories/travel' style='font-size: 104.61538461538461%'>Travel(1)</a> <a href='/blog/categories/ubuntu' style='font-size: 113.84615384615384%'>Ubuntu(3)</a> <a href='/blog/categories/unix' style='font-size: 104.61538461538461%'>Unix(1)</a> <a href='/blog/categories/vim' style='font-size: 113.84615384615384%'>VIM(3)</a> <a href='/blog/categories/virtualization' style='font-size: 104.61538461538461%'>Virtualization(1)</a> <a href='/blog/categories/vlc' style='font-size: 109.23076923076923%'>VLC(2)</a> <a href='/blog/categories/vps' style='font-size: 104.61538461538461%'>VPS(1)</a> <a href='/blog/categories/wcg' style='font-size: 104.61538461538461%'>WCG(1)</a> <a href='/blog/categories/web' style='font-size: 109.23076923076923%'>Web(2)</a> <a href='/blog/categories/windows' style='font-size: 104.61538461538461%'>Windows(1)</a> <a href='/blog/categories/wordpress' style='font-size: 104.61538461538461%'>WordPress(1)</a> <a href='/blog/categories/xen' style='font-size: 104.61538461538461%'>Xen(1)</a> </span>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/05/18/everything-you-need-to-know-about-the-cap-theorem/">Everything You Need to Know About the CAP Theorem</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2019/01/01/2018de-zong-jie-he-si-kao/">2018的总结和思考</a>
@@ -430,10 +430,6 @@ SDK就清楚了）。再稍微具体点，就是在用户授权的情况下，�
     
       <li class="post">
         <a href="/blog/2016/07/22/gong-zuo-hou-de-yi-dian-gan-wu/">工作后的一点感悟</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/11/something-about-sse-and-beyond/">Something About SSE and Beyond</a>
       </li>
     
   </ul>

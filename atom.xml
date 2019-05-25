@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2019-01-01T14:00:34-08:00</updated>
+  <updated>2019-05-25T16:32:38-07:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Everything You Need to Know About the CAP Theorem]]></title>
+    <link href="http://hustcalm.me/blog/2019/05/18/everything-you-need-to-know-about-the-cap-theorem/"/>
+    <updated>2019-05-18T15:38:06-07:00</updated>
+    <id>http://hustcalm.me/blog/2019/05/18/everything-you-need-to-know-about-the-cap-theorem</id>
+    <content type="html"><![CDATA[<p>CAP? You thoght, what is it all about? Everytime you heard this word from some experienced guys discussing, you told yourself, this got be very complicated. Well, not really&hellip; It&rsquo;s simplier more than what you expected, I tried to figure out what is CAP recently and put everything I went through here for a record (for fun really). Read on&hellip;</p>
+
+<!--more-->
+
+
+<p>CAP == Consistence + Availability + Partition Tolerent. That&rsquo;s it! So simple! But when you want to understand what it is really talking about under the context of Distributed Systems, it suddenly becomes a mystery. Why is that? In my words, it as a design principle itself is too obvious to give us real practical design guidelines. Brought by Dr Eric Brewer from UC Berkeley in 1998 and offically represented in PODC 2000, I guess it&rsquo;s more like learnings from the systems they built at that time.
+Actually the context from the very beginning is distributed shared data, i.e. distributed storage. Why is that? Because computing is easy, stateless. Network is always unreliable (by natural), you can&rsquo;t do much about it. Storage is stateful (obviously) and can be reliable using algorithms despite of unreliable hardware.</p>
+
+<p>Let&#8217; see how to understand CAP fairly. You may have seen some triagles and be bold, hey, take 2 out of 3. Well, not really. When we go from single-node system to distributed computing, partition tolerant is a must-have property. While CAP can&rsquo;t be achived at the same time, you have to trade off between C and A. You want to have a real high availability system, fine, if partition happens, you have to sacrifice Consistency in some degree (and revover Consistency after partition healed). If you
+want Consistency all the time, partition will force you sacrifice Availability, you don&rsquo;t want to response with inconsistent data after all.</p>
+
+<p>Note that, Consistency here means <strong>Strong Consistency</strong>, this is very important when you try to understand CAP. Why? eventual consistency can ensure high availability. The consistency models employed highly depends on business scenarios, for serious data, strong consistency has to be enfored. Production systems may have deploy different consistency models to different sub-systems (components).</p>
+
+<p>Gilbert and Lynch from MIT gave a formal proof in 2002 for Brewer&rsquo;s conjecture. Read that paper, you will find, hmm, this is naive. However, I think the contribution here is to model such systems, give the community a common tongue on pushing the area forward and lay a good foundation since then. I can&rsquo;t help to think, for distributed systems, practice seems a lot complicated than theory. Model can be simple while production systems are always complicated and changing.</p>
+
+<p>In 2012, Brewer wrote a new article to talk about CAP and give it some new meaning refelecting 12 years later after further introduced. This article is much more helpful on discussing how to interpret it correctly (and also point how can it be misleading for the 2 out of 3 saying), the new context of CAP as new systems emerge and evolve, how to keep availabilty in the case of partition and recovery strategies when partition heals. It&rsquo;s worhy a reading, the discussions in it are
+practical engough (with very solid and convicing examples).</p>
+
+<p>A paper criticizing CAP appeared in 2015, saying CAP is too high-level to give anything useful when one tries to design such systems, partition in real-life is more like latency. The author came up with a new framework, which is more practical-oriented. I didn&rsquo;t read the paper in details, planning to, it&rsquo;s a very good paper on reviewing what is CAP, how it&rsquo;s proved, what are the short comings and how we can step further. Perhaps, this paper alone will just give you enough context of
+CAP, don&rsquo;t bother for other readings.</p>
+
+<p>I assemble a slides and put it <a href="https://drive.google.com/file/d/1c6_bZFSRXILkcYWaNSo7ICNsrKH_o4Mf/view?usp=sharing">here</a>.</p>
+
+<p>Moving forward, I will take a look at Lamport Clocks, Paxos, Raft, etc. So much fun:&ndash;)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2018的总结和思考]]></title>
@@ -2563,76 +2595,6 @@ Linux》来说，它全书分为四个部分，包括“Linux使用”，“系�
 <p>还有一点就是在有可能的情况下，多跟身边的人交流阅读心得，我觉得“读书会”是一个很好的方式，无奈当下生活节奏过快，线下的“读书会”难以组织，那么线上的一些评论网站就是不二的选择了。我个人目前比较推荐豆瓣读书，我的个人读书页面在<a href="http://book.douban.com/people/hustcalm/">这里</a>。</p>
 
 <p>这两天读了“多看阅读”上一本小书，叫做“独立博客”，由简书出品，虽然有点广告性质，但是里面独立博主的一些感想很有启发性。当下大环境下，独立博客更像是互联网中的孤岛，是博主自娱自乐的地方。希望在我的自娱自乐中能够带给大家一些帮助，如果你能到达我的孤岛的话:&ndash;)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Review of BeagleBone Robotic Projects - From a Technical Perspective]]></title>
-    <link href="http://hustcalm.me/blog/2014/02/09/review-of-beaglebone-robotic-projects-from-a-technical-perspective/"/>
-    <updated>2014-02-09T19:07:55-08:00</updated>
-    <id>http://hustcalm.me/blog/2014/02/09/review-of-beaglebone-robotic-projects-from-a-technical-perspective</id>
-    <content type="html"><![CDATA[<p>I&rsquo;m lucky to be a reviewer for the book <code>Beaglebone Robotic Projects</code> few months ago released by <a href="http://www.packtpub.com/">PACKT</a>. And I&rsquo;d like to recommend this book to readers who would like to play with <code>Beagle</code> for a while and start their own robotic projects. Below I&rsquo;ll talk a little bit about this book from a technical perspective.</p>
-
-<!--more-->
-
-
-<p>First of all, here is the cover of <a href="http://www.packtpub.com/beaglebone-robotic-projects/book">BeagleBone Robotic Projects</a>:</p>
-
-<p><a href="http://www.packtpub.com/beaglebone-robotic-projects/book"><img src="http://hustcalm.me/images/blog_images/books/9329OT_BeagleBone_Robotic_Projects_cov.jpg"></a></p>
-
-<h3>What you will learn from this book</h3>
-
-<h4>What is BeagleBone Black</h4>
-
-<p>As a <code>mini PC</code> or something, it is compared to <code>Raspberry Pi</code> sometimes. Some people would play with them as toys, some would like to do some amazing projects. It is a typical representative of <code>open source hardware</code>! And it runs the incredible <code>Linux</code>. Chapter 1 will guide you through to get your BeagleBone to work with a fully functioning desktop.</p>
-
-<h4>Talk with BeagleBone Black through programming</h4>
-
-<p>To be able to get started with BeagleBone and do what you want, some background in <code>Linux</code>, <code>Python</code> and <code>Programming</code> will be required. The 2nd chapter of the book will show you the basic Linux commands, brief tutorial for Python, etc.</p>
-
-<h4>Simple speech recognition and make the robot speak</h4>
-
-<p>Chapter 3 shows us how to make your robot speak as a robot utilizing <code>eSpeak</code> and how to do simple speech recognition using <code>PocketSphnix</code>. Also to test the <code>USB sound device</code>, we use <code>AlsaMixer</code> built upon <code>ALSA</code> libraries.</p>
-
-<h4>Use camera as the Robot&rsquo;s eyes</h4>
-
-<p>In chapter 4, the book first shows how to connect a USB camera to BeagleBone and viewing the images with <code>GUVCViewer</code>. After that is guide for installing a full-featured vision library &ndash; <code>OpenCV</code>. Then is a demo for detecting colored objects using <code>OpenCV</code>.</p>
-
-<h4>Make it run by using Servos and Motors</h4>
-
-<p>Chapter 5 will tell you how to make a <code>wheeled</code> robot and chapter 6 will show how a <code>legged</code> robot is made. The instructions for hooking up the wires and demos for controlling the servos and motors would definitely help a lot.</p>
-
-<h4>Sense the environment to make some intelligence</h4>
-
-<p>For avoiding obstables, we use a <code>USB sonar sensor</code> in chapter 7, or people will call it <code>ultrasonic sensor</code>. And for letting your robot know where it is, the book shows how to use a <code>GPS</code> module in chapter 9.</p>
-
-<h4>Remote control for more fun</h4>
-
-<p>Chapter 8 shows how to hook up a <code>LCD</code> display to your BeagleBone and control your robot with a <code>2.4GHz Keyboard</code>. Just imagine how it would be fun to see your robot running around whereas you just sitting there.</p>
-
-<h4>Impossible is nothing</h4>
-
-<p>Want something more? Chapter 10 will teach you how to integrate all the parts and skills covered in previous chapters to make a whole system. For more fun, chapter 11 is a good starting point. Want a sailing robot, flying robot or a submarine robot? This chapter will help a lot.</p>
-
-<hr />
-
-<h3>Highlights</h3>
-
-<p>For the highlights of the book, I want to say that it covers a lot for a typical <code>embedded system</code> and will be very helpful tutorials for hobbiests to get started with their robotic projects. Not only hardware, but also open source software are widely used, instructions are clear and easy to read. To summarize,</p>
-
-<ul>
-<li>You will know basic Linux through this book</li>
-<li>Python will be your handy programming language for doing robotic projects</li>
-<li>Getting to know various useful software packages(eSpeak, PocketSphinx, OpenCV, GUVCViewer, etc)</li>
-<li>Know the actuators for typical robots(servos and motors)</li>
-<li>Have a basic understanding of sensors(ultrasonic, camera, GPS, etc)</li>
-<li>Good starting point to make something big(multicopter maybe)</li>
-</ul>
-
-
-<hr />
-
-<p>In a word, you may as well give the book a try and hope it can help:&ndash;)</p>
 ]]></content>
   </entry>
   
