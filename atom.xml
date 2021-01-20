@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2020-01-15T13:01:39-08:00</updated>
+  <updated>2021-01-20T00:19:40-08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,106 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Bye, 2020]]></title>
+    <link href="http://hustcalm.me/blog/2021/01/15/bye-2020/"/>
+    <updated>2021-01-15T09:58:05-08:00</updated>
+    <id>http://hustcalm.me/blog/2021/01/15/bye-2020</id>
+    <content type="html"><![CDATA[<p>在30岁的这一天，还是觉得应该写点什么，正好也是对2020的一个总结和告别。记得去年写年终总结的时候，对于2020是充满期待的，没想到竟是如此魔幻的一年。新冠疫情对全球造成的冲击，似乎也超出了很多人的想象，记得美国这边刚有确诊的时候，很多人只是觉得这不过是大号流感罢了。说实话，在30岁的这个关口，自己一直默默地在做心理上的建设，似乎是出于对青春的不舍，更是希望自己能够从以前走的路上多多总结思考，为下一个十年的征程做一个好的心理开端。</p>
+
+<p>2020，无数人希望它赶紧过去，再也不见。如今它过去了，这个世界似乎还是那个模样，但我相信很多人的心理上多少还是会宽慰些吧。2020，对于我和我的家人，当然也是非常特殊的一个年份，接下来还是从几个方面简单回顾总结（生活，工作，阅读，投资），并制定一下2021的行动指南。</p>
+
+<!--more-->
+
+
+<p>2020，是我们在海外完整度过的第二个年份，转眼间来到异国他乡已经两年半了，不得不感叹，岁月如梭，白驹过隙。按照惯例，先对对账，把19年的行动指南搬过来：</p>
+
+<pre><code>0. 多多陪伴家人
+1. 坚持每周健身（提高三分球命中率和稳定性）
+2. 坚持工作中在视频理解方面的技术积累，注重系统性
+3. 培养自己的阅读品味（不追求数量，根据自己的时间安排阅读，多思考）
+4. 培养自己的领导力，并在工作，项目上付诸实践
+5. 分布式系统方面的阅读和积累，动手实现一些经典算法（比如Paxos）
+6. 带老婆和宝宝去一次长途旅行
+7. 练习滑雪，可以比较熟练地在蓝道玩耍，有可能就挑战黑道
+8. 研究游戏引擎的原理和实现（纯粹是满足好奇心）
+9. 参加CVPR 2020
+</code></pre>
+
+<p>其实我对于今年的完成度是心里没底的，年底前想起来就翻了翻去年的总结文章，结果自己都吃惊了，貌似还不错呢。看来，立下行动指南还真的挺有用的，不需要刻意地去想，每天盯着，你定了，那么大多数情况下你会跟随内心走，行动不会偏差太多。先说完成的好的，0，3，4，7，其中0完成的最好（疫情原因，有很多的时间可以跟宝宝一起成长，而且父母跟我们难得一起生活了接近一年，仔细想想，从初中住校开始算起，那么多年加起来可能都没有这一年在一块的时间长，哈哈）。3的话，还不错，读完了《毛选》，陆续读了几本好书，又通过其他渠道了解到更多的好书，慢慢形成良性循环了。4呢，就是慢慢来，厚积薄发，戒骄戒躁，稳步提升。7算是超额完成，体验了Stevens Pass的黑道，对于滑雪算是真正入门了。完成较好的，1和2。如果没有疫情，每周健身对于我来说是小菜一碟，然而疫情后健身房关门，打乱了计划。所幸，坚持了篮球，又自己买了瑜伽垫和健身球。三分球真的有提高，这一点我自己也特别开心，练习方法就是跟小伙伴按照轮数练习，每轮投25个，每个点分别5个；买来的装备可以在家里愉快地练习核心力量了，这里需要检讨下，刚买的时候用的很勤快，后来爸妈回国了，一忙起来了就堕落了，21年还是要坚持下去，保持身体健康。那么剩下来的5，6，8，9，就完成得不好了，5的话，其实在读《Designing Data-Intensive Applications》，且非常享受，只是投入还是比较有限，也没有去动手实现算法，自己对于分布式还是有热情，会慢慢花时间去做更多的研究。6由于疫情原因没能成行，希望今年能有机会吧，不过带着宝宝和爸妈在周边转悠也挺好的，对于Mountain Baker印象比较深刻，也是辰辰的第一次雪山之旅。8算是彻底没碰，貌似觉得优先级没有那么高了，被其他事情替掉了（一会细说）。9本来是想线上参加，那阵子情绪不怎么高涨，工作上也在忙，所以就放弃了，现在想想，还是应该参加一下，跟上研究和技术的发展；21年，无论是线上还是线下，都争取参加。那么好了，年度review告一段落。下面，咱们展望一下，2021！</p>
+
+<h2>生活</h2>
+
+<p>2020年的生活，很大的不同是由疫情带来的，在造成不便利的同时，又使得陪伴家人的时间大大增加。记得3月份之前，每天在公司偶尔会打开手机想看一眼宝宝是不是在睡觉（在婴儿床上放了个摄像头），然后下班后就兴冲冲回家想看看宝宝在干嘛。从WFH开始之后，可以说每天都在看着宝宝成长，工作时间，爸妈会带着宝宝出去遛弯，但只要小家伙在家，就会时不时下去看一眼或者陪他玩一会儿，哈哈。另外就是，疫情使得原本计划5月份回国的父母推迟了计划，申请了延期并顺利获批，这样算下来，父母跟我们一起生活了几乎整整一年（差一个星期就满一年）。真的难以想象，就像刚才说的，初中后开始住校，每个周末才回家（父亲出车，很多时候不在家）；高中变成每两周回家一个周末；大学，读研，工作后，基本都是过年回家呆几天而已（不超过一个星期）。这一次父母过来帮忙带娃，一下子在一起生活了一年时间，真的远超之前在一起的时间，最重要的是，每天都会见面，之前回家都是间断的。怎么说呢，在外面生活惯了，难免跟父母有一些理念上的小冲突，不过整体我们过得非常愉快，有小宝宝这个开心果，大家就更加融洽了，只要大家都围绕小孩子转，那么一切问题都不是问题。这里还是要表扬一下老婆，一年的时间，几乎没有跟父母拌过嘴，什么事情都考虑地很周到，大赞！</p>
+
+<p>父母帮忙带娃，工作日的白天我们可以专心工作，晚上我们就多陪陪宝宝。周末的时候就给父母一些休息的时间，不过还是要检讨一下，炉石的战棋模式我真的是疯狂玩了一阵子，那时候周末就沉浸在下棋的快乐和烦恼中，很多时候都没有怎么陪娃，好在后来慢慢回归理性，变回休闲玩家，情况大大好转。不得不说，人是容易依赖的，仗着父母在，真的可以为所欲为（哈哈哈），就觉得说，小孩子丢给你们好了，我就专心当好司机，周末带大家出去玩。而且，而且，洗碗也不需要我了，甚至倒垃圾都不用了，现在回想起来，真的是不太好，做些力所能及的家务还是应该坚持的，不能因为父母在，自己立马就甩手掌柜了（有这种想法的人是不是有很多，举手，哈哈哈！）。</p>
+
+<p>因为父母回国的事情，也稍微烦恼了一小段时间，查机票，预约核酸和抗体检测，心里一直悬着一块石头没有着落。好在后来顺利回去，隔离，回家，一切都按照计划进行。本来计划5月份坐海南航空回国（买的往返机票），后来海航飞不了，就在9月份开始关注新的回国方案，订了加拿大航空的转机方案。无奈，10月底国内有新规，需要提供核酸之外的抗体检测，且有效时间也从72小时缩短到48小时，令人感到十分紧张。新规出台的当天，果断买了达美的直飞，心想说，这时候钱不是问题，父母想回去了才是第一要务。很多人说，这政策分明就是不想让我们回去吗？怎么说呢，咱也要表示理解吧，毕竟抗疫的代价实在太高了，谨慎保护胜利果实没什么毛病。</p>
+
+<p>基本来讲呢，2020年的生活非常特殊（我想疫情可能使得大家都有同感），可以说充实，也可以说重复。我用两个关键词来总结吧：亲情，陪伴。新的一年，希望宝宝继续健康快乐地成长，陪他继续充满好奇心地探索这个世界；也希望家人，朋友们，健康，快乐！</p>
+
+<h2>工作</h2>
+
+<p>2019年，自己在跟老板建立了信任之后一直在加强那份信任，努力输出。2020年呢，信任已经相对牢固，老板也给了我更多的发挥空间，不停地给我创造一些提高的机会。除了做好本职工作外，开始注重培养自己的领导力，关注一个组如何运作，一个org如何协调，通过不断地观察，思考，总结，实践，加强自己的业务能力。说实话，上半年的工作并没有太大的浪花，基本都是之前在做的东西；变化主要发生在下半年，这也是自己觉得比较值得肯定的一点，创造做项目的机会。其实19年底的时候，某个项目负责人就跟我简单聊过，说一个想法是否可行，我简单思索后给出了肯定的答复。几个月过去了，项目的时机相对成熟起来，那个人又来找我说有一些文档，看看能不能给一些反馈，我立刻嗅到了一个很好的项目机会，非常认真地给了自己的想法。随着想法慢慢成形，我们开始两个人的每周讨论，开始做原型。最开始进展顺利，并做了一次比较成功的demo后，项目就正式定下来了。接下来我根据项目需求，慢慢做优化改进，直到最近，产品化的事情进入末段冲刺阶段。回头看，真的非常感谢那个负责人愿意找我讨论，寻求我的见解；也非常感谢自己的老板，给予我工作上那么大的灵活度。目前这个项目的第一阶段接近尾声，过程中对于跨团队合作，沟通，时间点确认，技术问题讨论等都有了新的体会。相信之后的阶段会带给自己更多的提升机会。</p>
+
+<p>工作的主要内容还是围绕视频理解，自己的体会还是涉猎太有限了，对于这个领域还没有一个非常系统以及深入的理解。算法，系统，视频编解码这些领域，都需要慢慢花时间去补充知识点，并自己去融会贯通，灵活运用。</p>
+
+<p>暑假跟一个实习生合作，由于疫情，只能是远程办公，这也给合作带来了一些挑战。按照“设定目标-执行-回顾-改进”的思路，整体的合作非常愉快，既能够让实习生有独立思考的空间，又能够在适当的时候提供必要的讨论。相比于去年的合作，今年不管是在心态上，沟通方式上，都更加游刃有余了。8月份的时候，去年的实习生以正式员工的身份加入了我们组，我真的是非常高兴，自己终于有了做同一个方向的小伙伴了。而且难得的是，我可以给他提供一些有用的建议和帮助，跟他一起成长。从入职至今，项目的进展都非常顺利，非常期待我们新的一年的合作！</p>
+
+<p>2021年，希望继续做出一些有用的工作，在积累技术，培养领导力的同时，更多地跟同事们交流学习。一个人的力量是有限的，而一群人的力量，不可限量。</p>
+
+<h2>阅读</h2>
+
+<p>本来19年给自己定下flag说，读完《毛选》，事实证明，太激进注定失败。也间接让我不再立flag，转而制定行动指南。今年的阅读，品味上升了，但是阅读时间还是比较有限，阅读量也没有达到满意的程度。《毛选》一共四卷，10月份的时候结束第一遍阅读，不得不说，太值得了！很多人听了《毛选》这个名字，就会觉得说，嗯，这种书是给那种坐办公室的人读的吧，跟咱没啥关系。看到读《毛选》的人也会觉得不可思议（我不确定是不是，就是有这种感觉而已）。我从一开始阅读，也是试试看的心态，权当是回顾历史了，从伟人的独特视角来观察。没想到，读到一些精彩的文章，我才意识到《毛选》的哲学思想和思辨，让人欲罢不能。不管说是创业也好，平常工作也罢，就算是老老实实过日子，我觉得读一读都会有收获。阅读的过程中，我有个小小的体会，很多事情真的没那么复杂，不管这万千世界如何变化，本质上的principles就那么些，理解了这些才能抓住事物的本质和重点。书里的几句话，可能会让你感觉到工作生活上的共鸣，带着启发再去实际中去进一步体会，运用，效果很好。</p>
+
+<p>坚持了一段时间的《古文观止》阅读，主要是用手机App（史籍），然后又买了纸质版，因为实在太喜欢了。其实高三的时候，为了加强文学素养（语文多几分），自己就坚持读过一个版本的《古文观止》，可惜走马观花，很多东西还十分地不理解。这次阅读，每每读到一些好文，好句，好的道理，拍案叫绝，并不由自主地分享给朋友们。目前阅读了前三卷的周文，第四卷的战国文，正在阅读第五卷的汉文，翻了下目录，剩下的内容还有不少，2021年继续享受这份阅读的快乐。</p>
+
+<p>还买了一些蒙氏教育的书籍，想多少了解一下这个理念的精髓，大概读了其中一本的前5，6章，就暂停了。目前对于培养孩子，还没有形成比较好的理念，摸索的时间也比较有限，现在就是顺其自然，自由探索。接下来，需要加强这方面的阅读，至少自己心里还有杆秤，对于宝宝的发展有个大概的指导原则。</p>
+
+<p>其他的就主要是技术，管理，领导力，投资方面的书籍了。这里不多赘述了，简单列个书单在这里吧（小部分已经读完第一遍，其他都是今年想读完的）：</p>
+
+<pre><code>0. Designing Data-Intensive Applications
+1. Radical Candor
+2. Dare to Lead
+3. 养育男孩
+4. 培养高情商男孩
+5. 交易心理分析
+6. The Simple Path to Wealth
+7. 投资学
+8. 期权、期货及其他衍生产品
+9. 金融市场技术分析
+10. Python金融大数据分析
+11. How to Make Money in Stocks: A Winning System in Good Times or Bad
+</code></pre>
+
+<p>希望今年至少完成这个列表并切实地有所收获，如果超额完成任务，那将是非常开心的一件事情。</p>
+
+<h2>投资</h2>
+
+<p>记得去年的总结里面提到了，自己一直对于经济如何运作，金融市场怎么回事充满了好奇心，且表示自己不准备去动股票。2020年，情况发生了很大的变化。从我开始认真研究401K，各种退休账户，投资账户，ESPP开始，自己的观点悄悄地发生了变化。意识到手里的钱放着就不停地在贬值这一朴素真理之后，进军股票市场便成了理所应该的事情了。其实我后来读《投资学》意识到，除了股票这种风险资产，也可以去配置债券等无风险资产的。但怎么说呢，谁让“炒股”这个词这么流行，那么多人在讨论买卖股票呢，于是进入金融市场最开始交易的就是股票了。我本来的预期就是抗通胀，入市前想着强烈看好Nvidia，拿了一个小资金开了账户后就买进了（当时我记得是400块左右一股）。当进入市场，稍有盈利就觉得挺好了，慢慢地心态就发生变化了（是的，贪婪是人的本性），导致有那么几天超级关注自己的账户（估计新手朋友们都有过这个经历吧，哈哈），稍微的涨跌心里都会咯噔，而且有时候疯狂地在雅虎财经刷帖子。后来在一只疫苗股上重仓，亏了30%，整个人都不好了（把Nvidia换掉了，囧）。这次亏损让自己的心理发生了一系列的变化，有时候觉得说，唉，亏了，好惨；有时候又想的特别开，亏了是好事呀，刚入市，亏损了可以让你树立好的风险意识，不至于一开始顺风顺水，到了后面胡来，亏个底掉。</p>
+
+<p>事实证明，还是要感谢这次亏损。现在每天听一些财经节目已经成为了我新的日常，最喜欢“视野环球财经”和“雷公的投资频道”，其他的一些财经博主也都会提供很有用的信息和分析（这里暂时不一一列出了）。开始学习如何分析一家公司，如何阅读财报，如何理解消息面的东西，如何止盈止损，如何控制风险。最最最，最重要的是，如何保持良好的心态。《交易心理分析》的作者认为，交易最关键的不是技术，也不是内幕消息，就是心态。技术再好，心态跟不上，也很难成为长期赢家。这里定义一下赢家：一次交易翻了10倍，又在其他交易上亏回去，每年的投资表现上蹿下跳的，不是赢家。赢家是那种洞察市场规律，保持良好心态，每年能够获得稳定收益的投资者。赚一次钱不难，难的是，多次赚钱。</p>
+
+<p>我非常享受进入新的世界，学习新知识，获取新技能的这个过程，不知不觉地，自己的认知也在慢慢进化。通过自己的努力，年底的时候亏损基本上抹平了，2020年不赔不赚，当然这是从资金上来说，从获取知识，探索世界的角度来讲，我赚大了！伴随着疫情，金融市场大水漫灌，我2020年的投资成绩应该是垫底的，不过我仍然觉得，自己开了一个非常好的头。磨练了心态，尤其是亏损承受能力；学习了知识，熟悉了大部分的金融市场用语，能够跟上大多数财经博主的分析；锻炼了技术，自己慢慢形成分析的习惯了，而不是无脑跟风买卖。</p>
+
+<p>整体而言，我把自己定位成一个价值投资者（小资金投机纯属娱乐）。不期望一笔交易带来10倍的回报，而是希望通过自己切切实实的努力，投资能够取得稳定的理性的回报。2021年，继续探索这个新世界，提升自己的投资水平！这里引用一下视野哥Rhino常说的一句话：市场的钱是赚不完的，但本金是可以亏完的。与各位投资朋友们共勉:&ndash;)</p>
+
+<h2>2021 行动指南</h2>
+
+<pre><code>0. 多多陪伴家人
+1. 坚持健身和打篮球
+2. 坚持阅读，继续提升阅读品味和质量
+3. 坚持工作中在视频理解方面的技术积累，注重系统性
+4. 培养自己的领导力，并在工作，项目上付诸实践
+5. 磨练投资心态，提升投资水平
+6. 带老婆和宝宝去一次长途旅行
+7. 参加CVPR 2021
+</code></pre>
+
+<p>三十了，正式开启下一个黄金十年！与朋友们共勉，希望疫情尽快过去，每个人都健康，快乐！（2020年1月19号，晚上11点58分）</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2019的总结和思考]]></title>
@@ -1916,713 +2016,6 @@ add #include &lt;unistd.h&gt; to the first line
 <p>As the orinigal <a href="http://www.robots.ox.ac.uk/~gk/PTAM/README.txt">README.txt</a> says, PTAM works well with Nvidia display card, I got <code>Segmentation Fault as soon as ... got video source</code> as I&rsquo;m using a display card shipped with an Intel motherboard.</p>
 
 <p>However, I think the root cause is that the display card driver does not know how to handle the color space coming from the webcam, so I&rsquo;m planning to deep into the mechanism and try to find out why. <a href="http://ewokrampage.wordpress.com/troubleshooting-faq/">George Klein</a> says that a nvidia display card and driver combo works fine after all.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Look Inside Mongoose - an Easy to Use Web Server Implementation]]></title>
-    <link href="http://hustcalm.me/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation/"/>
-    <updated>2014-04-09T05:22:54-07:00</updated>
-    <id>http://hustcalm.me/blog/2014/04/09/look-inside-mongoose-an-easy-to-use-web-server-implementation</id>
-    <content type="html"><![CDATA[<p>I come across with Network Programming recently and find it really charming. Afer reading the book &ldquo;Advanced Linux Programming&rdquo;, I&rsquo;m more curious about how to implement a basic http server or web server.</p>
-
-<p>The source code of chapter 11 of &ldquo;ALP&rdquo; does tell the key idea, thus communicating through sockets between client and server, for HTTP compliance, just implement the HTTP protocal(<a href="https://tools.ietf.org/html/rfc2616">RFC
-2616</a>). To know the things better, I&rsquo;d like to know how to implement a core and basic HTTP server. You may know &lsquo;Apache&rsquo;, &lsquo;NginX&rsquo; and &lsquo;Lighttpd&rsquo; for a while, and they do lead the main tread. Basically, they are heavy enough to begin to know a basic HTTP server implementation.</p>
-
-<!--more-->
-
-
-<p>After googling around, I find <a href="http://stackoverflow.com/questions/176409/how-to-build-a-simple-http-server-in-c">this link on stackoverflow</a> is valuable and a good starting point to follow. From there, I decide to dig into <a href="https://code.google.com/p/mongoose/">mongoose</a>. To walk through what mongoose does and provides, I will present some comments of core source code.</p>
-
-<h2>Be aware of the Protocal Stack</h2>
-
-<p>Many people get confused by <code>HTTP</code>, <code>FTP</code>, <code>TCP/IP</code>, <code>SMTP</code>, etc. To get all these stuff clear of your head, do please spend several miniutes to learn the <code>Internet communication model</code>, like the <code>OSI 7-layer model</code> or the <code>TCP/IP 4-layer model</code>.</p>
-
-<p>Once you know the <code>phsical</code>, <code>data-link</code>, <code>network</code>, <code>transportation</code>, <code>application</code> what&rsquo;s all about, trust me, you will find all the confused words gone:&ndash;)</p>
-
-<h2>HTTP Basics</h2>
-
-<p>A web server, basicly implements the <code>HTTP</code> protocol to define how <code>the client interacts with the server</code>, thus enabling the communication of varies of devices. But aware that <code>HTTP</code> is an application protocol, built upon <code>TCP/IP</code> which handles the real transportation of data, in the perspective of programming, that is <code>Socket</code>.</p>
-
-<p>Give the references a shot:</p>
-
-<ul>
-<li><a href="http://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html">HTTP(HyperText Transfer Protocol) Basics</a></li>
-<li><a href="http://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177">HTTP: The Protocol Every Web Developer Must Know</a></li>
-<li><a href="http://www.jmarshall.com/easy/http/">HTTP Made Really Easy</a></li>
-<li><a href="http://www.slideshare.net/sanjoysanyal/http-basics">HTTP basics &ndash; slideshare</a></li>
-</ul>
-
-
-<h2>Socket Basics</h2>
-
-<p>In a word, <code>socket</code> is the <code>API</code> of <code>TCP/IP</code> provided to programmers.
-See my blog <a href="http://hustcalm.me/blog/2014/04/17/what-is-socket-anyway/">What Is Socket Anyway?</a>.</p>
-
-<h2>Cross Platform development concerns</h2>
-
-<p>Wow, <code>Mongoose</code> works on Windows, Mac, UNIX/Linux, iPhone, Android eCos, QNX and many other platforms, what an amazing software!</p>
-
-<p>Well, the basic idea behind <code>cross platform development</code> is to abstract another layer to adapt to the different implementations to the same task on different <code>OS and platforms</code>, my personal understanding, sorry:&ndash;)</p>
-
-<p>When you see the source code of <code>Mongoose</code>, be prepared to come across with lots of <code>#ifdef</code> and <code>#ifndef</code>, etc. Things got really complicated when dealing with <code>cross platform development</code>, there are even specifed books and literatures talking about it.</p>
-
-<p>OK I&rsquo;m also newbie to this, so please <code>RTFSC</code>.</p>
-
-<h2>HTTP features kept in mind</h2>
-
-<p>As an <code>embedded</code> web server, <code>Mongoose</code> needs not to implement everything, just the core functionalities, however really powerful enough. Like <code>CGI, SSI, SSL, Digest auth, Websocket, WEbDAV, Resumed download, URL rewrite, file blacklist, Custom error pages, Virtual hosts, IP-based ACL, Windows service</code>, even <code>Lua Server Pages</code>.</p>
-
-<p>As <code>HTTP</code> is an application protocol, so every feature is really related to the description in the <code>RFC</code>s along with many more extensions like <a href="http://datatracker.ietf.org/doc/rfc2818/">HTTPS &ndash; HTTP over TLS</a>.</p>
-
-<p>Though many heavy web servers like <code>Apache</code> or <code>Nginx</code> does not implement everything of <code>HTTP</code>, so <code>keep it simple and work</code>.</p>
-
-<h2>The programming paradigm</h2>
-
-<p>There is not any <code>class</code> defined in <code>Mongoose</code>, though it can be compiled using <code>C++</code>, so the source code is <code>pure C</code> actually. The underlying dirty work will be handled by <a href="https://github.com/cesanta/net_skeleton">net_skeleton</a>, like the <code>management of socket connections</code> and <code>sending and receiving data packets</code>.</p>
-
-<p>To be clear, <code>object</code> is implemented through the use of <code>struct</code>, like <code>mg_server</code>, <code>mg_connection</code>. Get a good knowledge of <code>C programming language</code> before you decide to dig into <code>Mongoose</code>, period.</p>
-
-<h2>I/O Models to know</h2>
-
-<p><code>Blocking I/O</code> or <code>Asynchronous I/O</code>?</p>
-
-<p>See the following references for good:</p>
-
-<ul>
-<li><a href="http://www.madwizard.org/programming/tutorials/netcpp/5">NetworkingCPP &ndash; I/O Models</a></li>
-<li><a href="http://www.kegel.com/c10k.html">The C10K problem</a></li>
-<li><a href="http://www.ibm.com/developerworks/linux/library/l-async/">Boost application performance using asynchronous I/O</a></li>
-</ul>
-
-
-<p><code>Mongoose</code> is using the traditional <code>select()</code>, serving many clients with each thread, and using nonblocking I/O as illustrated in the function <code>ns_server_poll</code> implemented in <code>net_skeleton</code>.</p>
-
-<h2>The core of Mongoose</h2>
-
-<p>Let the journey begin!</p>
-
-<h3>Net Skeleton</h3>
-
-<p>Quote from <a href="https://github.com/cesanta/net_skeleton">here</a>:</p>
-
-<blockquote><p>Net Skeleton is a networking library written in C. It provides easy to use event-driven interface that allows to implement network protocols or scalable network applications with little effort. Net Skeleton releives developers from the burden of network programming complexity and let them concentrate on the logic. Net Skeleton saves time and money.</p></blockquote>
-
-<figure class='code'><figcaption><span>Core interfaces provided by net_skeleton</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">void</span> <span class="nf">ns_server_free</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">ns_server_poll</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="n">milli</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">ns_server_wakeup</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">ns_server_wakeup_ex</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="n">ns_callback_t</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">ns_iterate</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="n">ns_callback_t</span> <span class="n">cb</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">param</span><span class="p">);</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="nf">ns_add_sock</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="n">sock_t</span> <span class="n">sock</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">p</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">ns_bind</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">addr</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">ns_set_ssl_cert</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ssl_cert</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">ns_set_ssl_ca_cert</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ssl_ca_cert</span><span class="p">);</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="nf">ns_connect</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">host</span><span class="p">,</span>
-</span><span class='line'>                                 <span class="kt">int</span> <span class="n">port</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ssl</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">connection_param</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">ns_send</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">ns_printf</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="p">...);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">ns_vprintf</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="kt">va_list</span> <span class="n">ap</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Utility functions</span>
-</span><span class='line'><span class="kt">void</span> <span class="o">*</span><span class="nf">ns_start_thread</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="p">),</span> <span class="kt">void</span> <span class="o">*</span><span class="n">p</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">ns_socketpair</span><span class="p">(</span><span class="n">sock_t</span> <span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">ns_socketpair2</span><span class="p">(</span><span class="n">sock_t</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="kt">int</span> <span class="n">sock_type</span><span class="p">);</span>  <span class="c1">// SOCK_STREAM or SOCK_DGRAM</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">ns_set_close_on_exec</span><span class="p">(</span><span class="n">sock_t</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">ns_sock_to_str</span><span class="p">(</span><span class="n">sock_t</span> <span class="n">sock</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">ns_hexdump</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="kt">int</span> <span class="n">dst_len</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>Core data structures used in net_skeleton</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">struct</span> <span class="n">ns_server</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kt">void</span> <span class="o">*</span><span class="n">server_data</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">sock_t</span> <span class="n">listening_sock</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="n">active_connections</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">ns_callback_t</span> <span class="n">callback</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">SSL_CTX</span> <span class="o">*</span><span class="n">ssl_ctx</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">SSL_CTX</span> <span class="o">*</span><span class="n">client_ssl_ctx</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">sock_t</span> <span class="n">ctl</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">struct</span> <span class="n">ns_connection</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="n">prev</span><span class="p">,</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="n">server</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">sock_t</span> <span class="n">sock</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">union</span> <span class="n">socket_address</span> <span class="n">sa</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">struct</span> <span class="n">iobuf</span> <span class="n">recv_iobuf</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">struct</span> <span class="n">iobuf</span> <span class="n">send_iobuf</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">SSL</span> <span class="o">*</span><span class="n">ssl</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">void</span> <span class="o">*</span><span class="n">connection_data</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">time_t</span> <span class="n">last_io_time</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">;</span>
-</span><span class='line'><span class="cp">#define NSF_FINISHED_SENDING_DATA   (1 &lt;&lt; 0)</span>
-</span><span class='line'><span class="cp">#define NSF_BUFFER_BUT_DONT_SEND    (1 &lt;&lt; 1)</span>
-</span><span class='line'><span class="cp">#define NSF_SSL_HANDSHAKE_DONE      (1 &lt;&lt; 2)</span>
-</span><span class='line'><span class="cp">#define NSF_CONNECTING              (1 &lt;&lt; 3)</span>
-</span><span class='line'><span class="cp">#define NSF_CLOSE_IMMEDIATELY       (1 &lt;&lt; 4)</span>
-</span><span class='line'><span class="cp">#define NSF_ACCEPTED                (1 &lt;&lt; 5)</span>
-</span><span class='line'><span class="cp">#define NSF_WANT_READ               (1 &lt;&lt; 6)</span>
-</span><span class='line'><span class="cp">#define NSF_WANT_WRITE              (1 &lt;&lt; 7)</span>
-</span><span class='line'>
-</span><span class='line'><span class="cp">#define NSF_USER_1                  (1 &lt;&lt; 26)</span>
-</span><span class='line'><span class="cp">#define NSF_USER_2                  (1 &lt;&lt; 27)</span>
-</span><span class='line'><span class="cp">#define NSF_USER_3                  (1 &lt;&lt; 28)</span>
-</span><span class='line'><span class="cp">#define NSF_USER_4                  (1 &lt;&lt; 29)</span>
-</span><span class='line'><span class="cp">#define NSF_USER_5                  (1 &lt;&lt; 30)</span>
-</span><span class='line'><span class="cp">#define NSF_USER_6                  (1 &lt;&lt; 31)</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>Data structures and interfaces for I/O used for sending and receiving data</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">struct</span> <span class="n">iobuf</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">size_t</span> <span class="n">len</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">size_t</span> <span class="n">size</span><span class="p">;</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">void</span> <span class="nf">iobuf_init</span><span class="p">(</span><span class="k">struct</span> <span class="n">iobuf</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">initial_size</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">iobuf_free</span><span class="p">(</span><span class="k">struct</span> <span class="n">iobuf</span> <span class="o">*</span><span class="p">);</span>
-</span><span class='line'><span class="kt">size_t</span> <span class="nf">iobuf_append</span><span class="p">(</span><span class="k">struct</span> <span class="n">iobuf</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">data_size</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">iobuf_remove</span><span class="p">(</span><span class="k">struct</span> <span class="n">iobuf</span> <span class="o">*</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">data_size</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>Event handling in net_skeleton</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="c1">// Net skeleton interface</span>
-</span><span class='line'><span class="c1">// Events. Meaning of event parameter (evp) is given in the comment.</span>
-</span><span class='line'><span class="k">enum</span> <span class="n">ns_event</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">NS_POLL</span><span class="p">,</span>     <span class="c1">// Sent to each connection on each call to ns_server_poll()</span>
-</span><span class='line'>  <span class="n">NS_ACCEPT</span><span class="p">,</span>   <span class="c1">// New connection accept()-ed. union socket_address *remote_addr</span>
-</span><span class='line'>  <span class="n">NS_CONNECT</span><span class="p">,</span>  <span class="c1">// connect() succeeded or failed. int *success_status</span>
-</span><span class='line'>  <span class="n">NS_RECV</span><span class="p">,</span>     <span class="c1">// Data has benn received. int *num_bytes</span>
-</span><span class='line'>  <span class="n">NS_SEND</span><span class="p">,</span>     <span class="c1">// Data has been written to a socket. int *num_bytes</span>
-</span><span class='line'>  <span class="n">NS_CLOSE</span>     <span class="c1">// Connection is closed. NULL</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Callback function (event handler) prototype, must be defined by user.</span>
-</span><span class='line'><span class="c1">// Net skeleton will call event handler, passing events defined above.</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">ns_connection</span><span class="p">;</span>
-</span><span class='line'><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="n">ns_callback_t</span><span class="p">)(</span><span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">enum</span> <span class="n">ns_event</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">evp</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Besides the interfaces provieded, there are lots of <code>private</code> functions to make everything possible, these are all implemented in <code>net_skeleton.c</code> as <code>static</code> functions.</p>
-
-<h3>Mongoose</h3>
-
-<p>Well, here finally comes the main character! As the dirty work has been done by <code>net_skeleton</code>, <code>mongoose</code> can focus on the real job.</p>
-
-<figure class='code'><figcaption><span>Core interfaces of mongoose</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="c1">// Server management functions</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="nf">mg_create_server</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">server_param</span><span class="p">,</span> <span class="n">mg_handler_t</span> <span class="n">handler</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">mg_destroy_server</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">**</span><span class="p">);</span>
-</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">mg_set_option</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">opt</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">val</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">mg_poll_server</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="n">milliseconds</span><span class="p">);</span>
-</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="nf">mg_get_valid_option_names</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
-</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">mg_get_option</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="n">server</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">mg_set_listening_socket</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sock</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">mg_get_listening_socket</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">mg_iterate_over_connections</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">,</span> <span class="n">mg_handler_t</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">mg_wakeup_server</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">);</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="nf">mg_connect</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Connection management functions</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">mg_send_status</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="n">status_code</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">mg_send_header</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">val</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">mg_send_data</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">int</span> <span class="n">data_len</span><span class="p">);</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">mg_printf_data</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">mg_websocket_write</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="n">opcode</span><span class="p">,</span>
-</span><span class='line'>                       <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">data_len</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Deprecated in favor of mg_send_* interface</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">mg_write</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">mg_printf</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="n">conn</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="p">...);</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">mg_get_header</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">);</span>
-</span><span class='line'><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">mg_get_mime_type</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">default_mime_type</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">mg_get_var</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="n">conn</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">var_name</span><span class="p">,</span>
-</span><span class='line'>               <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">buf_len</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">mg_parse_header</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">hdr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">var_name</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span><span class="p">);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">mg_parse_multipart</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">buf_len</span><span class="p">,</span>
-</span><span class='line'>                       <span class="kt">char</span> <span class="o">*</span><span class="n">var_name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">var_name_len</span><span class="p">,</span>
-</span><span class='line'>                       <span class="kt">char</span> <span class="o">*</span><span class="n">file_name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">file_name_len</span><span class="p">,</span>
-</span><span class='line'>                       <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">data</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">data_len</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Utility functions</span>
-</span><span class='line'><span class="kt">void</span> <span class="o">*</span><span class="nf">mg_start_thread</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="p">),</span> <span class="kt">void</span> <span class="o">*</span><span class="n">param</span><span class="p">);</span>
-</span><span class='line'><span class="kt">char</span> <span class="o">*</span><span class="nf">mg_md5</span><span class="p">(</span><span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="p">...);</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">mg_authorize_digest</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="kt">FILE</span> <span class="o">*</span><span class="n">fp</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">struct</span> <span class="n">mg_expansion</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">keyword</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">handler</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">);</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'><span class="kt">void</span> <span class="nf">mg_template</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">text</span><span class="p">,</span>
-</span><span class='line'>                 <span class="k">struct</span> <span class="n">mg_expansion</span> <span class="o">*</span><span class="n">expansions</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>Core data structures</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="c1">// This structure contains information about HTTP request.</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">mg_connection</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">request_method</span><span class="p">;</span> <span class="c1">// &quot;GET&quot;, &quot;POST&quot;, etc</span>
-</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">uri</span><span class="p">;</span>            <span class="c1">// URL-decoded URI</span>
-</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">http_version</span><span class="p">;</span>   <span class="c1">// E.g. &quot;1.0&quot;, &quot;1.1&quot;</span>
-</span><span class='line'>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">query_string</span><span class="p">;</span>   <span class="c1">// URL part after &#39;?&#39;, not including &#39;?&#39;, or NULL</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">char</span> <span class="n">remote_ip</span><span class="p">[</span><span class="mi">48</span><span class="p">];</span>         <span class="c1">// Max IPv6 string length is 45 characters</span>
-</span><span class='line'>  <span class="kt">char</span> <span class="n">local_ip</span><span class="p">[</span><span class="mi">48</span><span class="p">];</span>          <span class="c1">// Local IP address</span>
-</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">remote_port</span><span class="p">;</span> <span class="c1">// Client&#39;s port</span>
-</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">local_port</span><span class="p">;</span>  <span class="c1">// Local port number</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">num_headers</span><span class="p">;</span>            <span class="c1">// Number of HTTP headers</span>
-</span><span class='line'>  <span class="k">struct</span> <span class="n">mg_header</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>         <span class="c1">// HTTP header name</span>
-</span><span class='line'>    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">value</span><span class="p">;</span>        <span class="c1">// HTTP header value</span>
-</span><span class='line'>  <span class="p">}</span> <span class="n">http_headers</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">content</span><span class="p">;</span>              <span class="c1">// POST (or websocket message) data, or NULL</span>
-</span><span class='line'>  <span class="kt">size_t</span> <span class="n">content_len</span><span class="p">;</span>         <span class="c1">// Data length</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">is_websocket</span><span class="p">;</span>           <span class="c1">// Connection is a websocket connection</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">status_code</span><span class="p">;</span>            <span class="c1">// HTTP status code for HTTP error handler</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">wsbits</span><span class="p">;</span>                 <span class="c1">// First byte of the websocket frame</span>
-</span><span class='line'>  <span class="kt">void</span> <span class="o">*</span><span class="n">server_param</span><span class="p">;</span>         <span class="c1">// Parameter passed to mg_add_uri_handler()</span>
-</span><span class='line'>  <span class="kt">void</span> <span class="o">*</span><span class="n">connection_param</span><span class="p">;</span>     <span class="c1">// Placeholder for connection-specific data</span>
-</span><span class='line'>  <span class="kt">void</span> <span class="o">*</span><span class="n">callback_param</span><span class="p">;</span>       <span class="c1">// Needed by mg_iterate_over_connections()</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">struct</span> <span class="n">mg_server</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">struct</span> <span class="n">ns_server</span> <span class="n">ns_server</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">union</span> <span class="n">socket_address</span> <span class="n">lsa</span><span class="p">;</span>   <span class="c1">// Listening socket address</span>
-</span><span class='line'>  <span class="n">mg_handler_t</span> <span class="n">event_handler</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">config_options</span><span class="p">[</span><span class="n">NUM_OPTIONS</span><span class="p">];</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Local endpoint representation</span>
-</span><span class='line'><span class="k">union</span> <span class="n">endpoint</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>                     <span class="c1">// Opened regular local file</span>
-</span><span class='line'>  <span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="n">nc</span><span class="p">;</span>   <span class="c1">// CGI or proxy-&gt;target connection</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>Event handling</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">enum</span> <span class="n">mg_event</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">MG_POLL</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>  <span class="c1">// Callback return value is ignored</span>
-</span><span class='line'>  <span class="n">MG_CONNECT</span><span class="p">,</span>     <span class="c1">// If callback returns MG_FALSE, connect fails</span>
-</span><span class='line'>  <span class="n">MG_AUTH</span><span class="p">,</span>        <span class="c1">// If callback returns MG_FALSE, authentication fails</span>
-</span><span class='line'>  <span class="n">MG_REQUEST</span><span class="p">,</span>     <span class="c1">// If callback returns MG_FALSE, Mongoose continues with req</span>
-</span><span class='line'>  <span class="n">MG_REPLY</span><span class="p">,</span>       <span class="c1">// If callback returns MG_FALSE, Mongoose closes connection</span>
-</span><span class='line'>  <span class="n">MG_CLOSE</span><span class="p">,</span>       <span class="c1">// Connection is closed, callback return value is ignored</span>
-</span><span class='line'>  <span class="n">MG_LUA</span><span class="p">,</span>         <span class="c1">// Called before LSP page invoked</span>
-</span><span class='line'>  <span class="n">MG_HTTP_ERROR</span>   <span class="c1">// If callback returns MG_FALSE, Mongoose continues with err</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'><span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">mg_handler_t</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mg_connection</span> <span class="o">*</span><span class="p">,</span> <span class="k">enum</span> <span class="n">mg_event</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Find something? Yes, <code>mongoose</code> is heavily using the underlying <code>net_skeleton</code>, as <code>ns_server</code> in <code>mg_server</code> suggests.</p>
-
-<p>Or look at this:</p>
-
-<figure class='code'><figcaption><span>Mongoose is just a wrapper for application built upon net_skeleton?</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">int</span> <span class="nf">mg_poll_server</span><span class="p">(</span><span class="k">struct</span> <span class="n">mg_server</span> <span class="o">*</span><span class="n">server</span><span class="p">,</span> <span class="kt">int</span> <span class="n">milliseconds</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>   <span class="k">return</span> <span class="n">ns_server_poll</span><span class="p">(</span><span class="o">&amp;</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ns_server</span><span class="p">,</span> <span class="n">milliseconds</span><span class="p">);</span>
-</span><span class='line'> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>To be really aware of what is heppening under the hood, the functions below is the key:</p>
-
-<figure class='code'><figcaption><span>The key functions to implement the basic web server</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">ns_add_to_set</span><span class="p">(</span><span class="n">sock_t</span> <span class="n">sock</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">set</span><span class="p">,</span> <span class="n">sock_t</span> <span class="o">*</span><span class="n">max_fd</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>   <span class="k">if</span> <span class="p">(</span><span class="n">sock</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>     <span class="n">FD_SET</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">set</span><span class="p">);</span>
-</span><span class='line'>     <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">max_fd</span> <span class="o">==</span> <span class="n">INVALID_SOCKET</span> <span class="o">||</span> <span class="n">sock</span> <span class="o">&gt;</span> <span class="o">*</span><span class="n">max_fd</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>       <span class="o">*</span><span class="n">max_fd</span> <span class="o">=</span> <span class="n">sock</span><span class="p">;</span>
-</span><span class='line'>     <span class="p">}</span>
-</span><span class='line'>   <span class="p">}</span>
-</span><span class='line'> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">ns_server_poll</span><span class="p">(</span><span class="k">struct</span> <span class="n">ns_server</span> <span class="o">*</span><span class="n">server</span><span class="p">,</span> <span class="kt">int</span> <span class="n">milli</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>   <span class="k">struct</span> <span class="n">ns_connection</span> <span class="o">*</span><span class="n">conn</span><span class="p">,</span> <span class="o">*</span><span class="n">tmp_conn</span><span class="p">;</span>
-</span><span class='line'>   <span class="k">struct</span> <span class="n">timeval</span> <span class="n">tv</span><span class="p">;</span>
-</span><span class='line'>   <span class="n">fd_set</span> <span class="n">read_set</span><span class="p">,</span> <span class="n">write_set</span><span class="p">;</span>
-</span><span class='line'>   <span class="kt">int</span> <span class="n">num_active_connections</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>   <span class="n">sock_t</span> <span class="n">max_fd</span> <span class="o">=</span> <span class="n">INVALID_SOCKET</span><span class="p">;</span>
-</span><span class='line'>   <span class="kt">time_t</span> <span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="k">if</span> <span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">listening_sock</span> <span class="o">==</span> <span class="n">INVALID_SOCKET</span> <span class="o">&amp;&amp;</span>
-</span><span class='line'>       <span class="n">server</span><span class="o">-&gt;</span><span class="n">active_connections</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">read_set</span><span class="p">);</span>
-</span><span class='line'>   <span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">write_set</span><span class="p">);</span>
-</span><span class='line'>   <span class="n">ns_add_to_set</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">listening_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max_fd</span><span class="p">);</span>
-</span><span class='line'>   <span class="n">ns_add_to_set</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ctl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max_fd</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="k">for</span> <span class="p">(</span><span class="n">conn</span> <span class="o">=</span> <span class="n">server</span><span class="o">-&gt;</span><span class="n">active_connections</span><span class="p">;</span> <span class="n">conn</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">tmp_conn</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>     <span class="n">tmp_conn</span> <span class="o">=</span> <span class="n">conn</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-</span><span class='line'>     <span class="n">ns_call</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">NS_POLL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">current_time</span><span class="p">);</span>
-</span><span class='line'>     <span class="n">ns_add_to_set</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max_fd</span><span class="p">);</span>
-</span><span class='line'>     <span class="k">if</span> <span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_CONNECTING</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>       <span class="n">ns_add_to_set</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">write_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max_fd</span><span class="p">);</span>
-</span><span class='line'>     <span class="p">}</span>
-</span><span class='line'>     <span class="k">if</span> <span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">send_iobuf</span><span class="p">.</span><span class="n">len</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_BUFFER_BUT_DONT_SEND</span><span class="p">))</span> <span class="p">{</span>
-</span><span class='line'>       <span class="n">ns_add_to_set</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">write_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">max_fd</span><span class="p">);</span>
-</span><span class='line'>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_CLOSE_IMMEDIATELY</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>       <span class="n">ns_close_conn</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
-</span><span class='line'>     <span class="p">}</span>
-</span><span class='line'>   <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">tv</span><span class="p">.</span><span class="n">tv_sec</span> <span class="o">=</span> <span class="n">milli</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">;</span>
-</span><span class='line'><span class="n">tv</span><span class="p">.</span><span class="n">tv_usec</span> <span class="o">=</span> <span class="p">(</span><span class="n">milli</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">select</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span> <span class="n">max_fd</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">write_set</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'> <span class="c1">// Accept new connections</span>
-</span><span class='line'> <span class="k">if</span> <span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">listening_sock</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span> <span class="o">&amp;&amp;</span>
-</span><span class='line'>     <span class="n">FD_ISSET</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">listening_sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">))</span> <span class="p">{</span>
-</span><span class='line'>   <span class="c1">// We&#39;re not looping here, and accepting just one connection at</span>
-</span><span class='line'>   <span class="c1">// a time. The reason is that eCos does not respect non-blocking</span>
-</span><span class='line'>   <span class="c1">// flag on a listening socket and hangs in a loop.</span>
-</span><span class='line'>   <span class="k">if</span> <span class="p">((</span><span class="n">conn</span> <span class="o">=</span> <span class="n">accept_conn</span><span class="p">(</span><span class="n">server</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>     <span class="n">conn</span><span class="o">-&gt;</span><span class="n">last_io_time</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">;</span>
-</span><span class='line'>   <span class="p">}</span>
-</span><span class='line'> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'> <span class="c1">// Read possible wakeup calls</span>
-</span><span class='line'> <span class="k">if</span> <span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ctl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">INVALID_SOCKET</span> <span class="o">&amp;&amp;</span>
-</span><span class='line'>     <span class="n">FD_ISSET</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ctl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">))</span> <span class="p">{</span>
-</span><span class='line'>   <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
-</span><span class='line'>   <span class="n">recv</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ctl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span><span class='line'>   <span class="n">send</span><span class="p">(</span><span class="n">server</span><span class="o">-&gt;</span><span class="n">ctl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span><span class='line'> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="n">conn</span> <span class="o">=</span> <span class="n">server</span><span class="o">-&gt;</span><span class="n">active_connections</span><span class="p">;</span> <span class="n">conn</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">tmp_conn</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>       <span class="n">tmp_conn</span> <span class="o">=</span> <span class="n">conn</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-</span><span class='line'>       <span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">read_set</span><span class="p">))</span> <span class="p">{</span>
-</span><span class='line'>         <span class="n">conn</span><span class="o">-&gt;</span><span class="n">last_io_time</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">;</span>
-</span><span class='line'>         <span class="n">ns_read_from_socket</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
-</span><span class='line'>       <span class="p">}</span>
-</span><span class='line'>       <span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">write_set</span><span class="p">))</span> <span class="p">{</span>
-</span><span class='line'>         <span class="k">if</span> <span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_CONNECTING</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>           <span class="n">ns_read_from_socket</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
-</span><span class='line'>         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_BUFFER_BUT_DONT_SEND</span><span class="p">))</span> <span class="p">{</span>
-</span><span class='line'>           <span class="n">conn</span><span class="o">-&gt;</span><span class="n">last_io_time</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">;</span>
-</span><span class='line'>           <span class="n">ns_write_to_socket</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
-</span><span class='line'>         <span class="p">}</span>
-</span><span class='line'>       <span class="p">}</span>
-</span><span class='line'>     <span class="p">}</span>
-</span><span class='line'>   <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="k">for</span> <span class="p">(</span><span class="n">conn</span> <span class="o">=</span> <span class="n">server</span><span class="o">-&gt;</span><span class="n">active_connections</span><span class="p">;</span> <span class="n">conn</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">tmp_conn</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>     <span class="n">tmp_conn</span> <span class="o">=</span> <span class="n">conn</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-</span><span class='line'>     <span class="n">num_active_connections</span><span class="o">++</span><span class="p">;</span>
-</span><span class='line'>     <span class="k">if</span> <span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">NSF_CLOSE_IMMEDIATELY</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>       <span class="n">ns_close_conn</span><span class="p">(</span><span class="n">conn</span><span class="p">);</span>
-</span><span class='line'>     <span class="p">}</span>
-</span><span class='line'>   <span class="p">}</span>
-</span><span class='line'>   <span class="c1">//DBG((&quot;%d active connections&quot;, num_active_connections));</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="k">return</span> <span class="n">num_active_connections</span><span class="p">;</span>
-</span><span class='line'> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Feel something? Go dig yourself for much more fun:&ndash;)</p>
-
-<h2>Good References</h2>
-
-<ul>
-<li><a href="http://tinyhttpd.sourceforge.net/">tinyhttpd</a></li>
-<li><a href="http://www.ibm.com/developerworks/systems/library/es-nweb/#icomments">nweb: a tiny, safe Web server (static pages only)</a></li>
-<li><a href="https://users.cs.jmu.edu/bernstdh/web/common/lectures/slides_http-server-example_java.php">Design and Implementation of an HTTP Server in Java</a></li>
-</ul>
-
 ]]></content>
   </entry>
   
