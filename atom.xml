@@ -4,7 +4,7 @@
   <title><![CDATA[Welcome to Pandora's Box]]></title>
   <link href="http://hustcalm.me/atom.xml" rel="self"/>
   <link href="http://hustcalm.me/"/>
-  <updated>2021-01-20T00:30:08-08:00</updated>
+  <updated>2022-01-01T22:49:05-08:00</updated>
   <id>http://hustcalm.me/</id>
   <author>
     <name><![CDATA[Lihang Li]]></name>
@@ -12,6 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[你好，2022]]></title>
+    <link href="http://hustcalm.me/blog/2022/01/01/ni-hao-2022/"/>
+    <updated>2022-01-01T18:24:31-08:00</updated>
+    <id>http://hustcalm.me/blog/2022/01/01/ni-hao-2022</id>
+    <content type="html"><![CDATA[<p>又是一年。30岁开启的黄金十年的第一个年头，整体来说还是十分充实的，酸甜苦辣，一应俱全。故事从我爸妈21年的11月底飞回国说起，开始两个人独立带娃的旅程，习惯了爷爷奶奶在的一年，心里多少有些忐忑。再加上对于要不要送娃去daycare的纠结，心里总是略紧张。这种紧张感其实在准备送爸妈回国的时候就开始了，买机票，准备健康码，还要不停地盯着政策的变化。一开始买的11月初的加拿大航空，就在起飞前一周政策突然更新，只能果断改买直飞，并且开始预约抗体检测。好在最后顺利飞回去了，且隔离条件还不错，心里终于了结了一件事。</p>
+
+<p>带娃的一年大体分为几个阶段，艰难的启动期（没有送daycare，两个人轮流边工作边带娃），daycare过渡期（第一个daycare呆了6周退学，中间gap两周找新的daycare），daycare噩梦期（好不容易适应了第二个daycare，娃由于老师的疏忽小腿闭合性骨裂在家休养了一个多月，回到学校没多久又到了肺炎，去ER住院一晚），daycare适应期（终于熬到了7月份，娃升班了，新班级的老师非常好，娃终于慢慢喜欢上daycare了，再往后也没再出现大的意外），愉快的daycare生活（非常routine的上下学，整个夏天及之后都非常不错），美妙的度假（12月份带娃第一次飞机旅行，在San
+Diego玩了一周，回来后带娃去滑雪，小孩子学东西真是太快了，穿上板子就滑起来了），然后给2021的带娃之旅画下了完美的句号。接下来再从几个方面总结一下自己的2021，继往开来。</p>
+
+<!--more-->
+
+
+<p>先对下2021的行动指南：</p>
+
+<pre><code>0. 多多陪伴家人
+1. 坚持健身和打篮球
+2. 坚持阅读，继续提升阅读品味和质量
+3. 坚持工作中在视频理解方面的技术积累，注重系统性
+4. 培养自己的领导力，并在工作，项目上付诸实践
+5. 磨练投资心态，提升投资水平
+6. 带老婆和宝宝去一次长途旅行
+7. 参加CVPR 2021
+</code></pre>
+
+<p>0自然不必说了，完成情况满分，痛并快乐着的带娃生活。1和2也做得非常不错，爸妈在的时间自己足足胖了20磅，夏天周末骑车，周中打篮球，顺利减回来了。接近年终的时候本着以球会友的理念，报名了一个本地的华人篮球联赛，由于疫情的反扑，比赛暂停了，但是交朋友的目的达到了已经。然后也更加清楚了自己的篮球水平，养生局打一打，自己练练投篮出出汗就挺好了，哈哈。在阅读方面，自己有一个书单：</p>
+
+<pre><code>0. Designing Data-Intensive Applications
+1. Radical Candor
+2. Dare to Lead
+3. 养育男孩
+4. 培养高情商男孩
+5. 交易心理分析
+6. The Simple Path to Wealth
+7. 投资学
+8. 期权、期货及其他衍生产品
+9. 金融市场技术分析
+10. Python金融大数据分析
+11. How to Make Money in Stocks: A Winning System in Good Times or Bad
+</code></pre>
+
+<p>这些书里面除了《期权、期货及其他衍生产品》没有读，其它的都读完了:&ndash;) 《Python金融大数据分析》还是今天才结尾，虽说有点拖拉了，但自己还是比较满意了。除了这个书单，还读了邻居家上大二的女儿写的《Bigger Than Leadership》和K8S的founder之一写的《Designing Distributed Systems》，闲暇之余继续阅读《古文观止》。还有开了头，没有读完的书，包括《mindset》，《System Design Interview》，《The
+Montessori
+Toddler》，没读完的书自动进入2022的书单。今年的阅读给自己带来了几点切身的体会，第一就是不同书籍所需精力和注意力不同，因此可以不同时间段阅读，比如有些枕边书就是每天睡前读几页，那种200页左右的书，你会发现很快也就读完了，而那种需要聚精会神看的书，一定要有一个好的阅读学习环境，我一般都是在娃睡了后；第二就是制定阅读计划对于完成书单至关重要，咱们也不是说必须要读完走马观花也无所谓那种，而是要有目标性地阅读，有的放矢，不至于中途放弃，我自己摸索出来的一个不错的节奏是，两本书同时读，每周各读50页，最初是周一到周五各10页，后来由于要打篮球，且感觉每天读过于紧张，进而把实际阅读时间定为4天，灵活调整；另外就是跟朋友多交流，多相互推荐一些自己看过的好书，且可以谈一些自己的心得，一般朋友推荐的书都经过了实际检验，基本上读后都会很有收获。</p>
+
+<p>对于3和4，主要是工作方面的，分别是技术层面和领导力。技术上最近看了很多用GPU加速视频处理的东西，但略感系统性不足，越来越感觉做好本职工作的同时，紧跟业界和学界的步伐不太容易，因此同行交流更加弥足珍贵，参加一些学术会议和技术研讨会可以让自己全身心在几天的时间里面了解最新动态，并思考哪些可以应用到自己的工作中去，这一点需要加强了。下半年从IC转了manager，实现了自己职业生涯的一个阶段性小目标，有了自己的小团队，更加真切地体会到了责任感以及时间的紧迫感（同时兼顾IC的开发工作和manager的管理工作），好在合作的员工都在实习阶段跟自己合作过，因此自己转manager的过程非常顺利。这里需要提一点，微软的manager
+training资源非常好，有一个为期一年的Learning
+Path，个人认为对于新的manager非常有用，虽然说讲得东西有时候很抽象，但是非常系统，对于日常工作的指导很有价值，主要是提供了一个框架和思路，以及一筹莫展时可以求助于哪些资源。自己目前对于工作的定位是技术和管理两手抓，技术上更加突出系统性地积累（平常多一些技术笔记和反思），管理上好好思考如何打造团队文化，帮助团队成长，做出好的产品。</p>
+
+<p>5是投资方面的，年度投资业绩非常一般，公司股票账户表现尚可，自己管理的资金小亏，听了一年的“视野环球财经”，止损了“雷公的投资频道”以及其他很多现在看起来不太专业的财经博主。整体来讲，自己感觉还是不错的，因为投资是一个长跑，不期望入市就开始赚钱，先做到活下来，了解游戏规则，慢慢打磨自己的投资体系，这也是为什么自己阅读金融书籍的原因，想系统性地构建，一旦自己的投资体系建成了，就不再瞎折腾了，但可以预见的是，这将是一个长期的过程，因为市场中永远不变的是变化。好的方面是，自己在沿着定好的思路在实践，阅读+实操+博采众长，最终归于独立思考。</p>
+
+<p>6完成的很好，去San Diego玩了一周很开心。7的话，很遗憾鸽了，恰巧开会那周工作比较忙（当然参加会议也不知道该听些什么），还是希望疫情尽快过去，能够线下抽出大块的时间专心参加会议，学习思考，跟同行交流。</p>
+
+<p>年度总结基本上就说完了，下面按照去年的框架再简单展望一下2022。</p>
+
+<h2>生活</h2>
+
+<p>新的一年，辰辰马上就要三岁了。希望在他的第一个雪季，能带他练好基本功，为坐缆车滑绿道打下坚实的基础。今天也给老婆买了滑雪装备，希望她也能好好练习，到时候一家人一起滑雪。要帮辰辰看一下preschool，努力帮他找到一个最合适的。希望今年能带家人出门旅游两次，夏天一次，冬天一次。新的一年，也希望跟朋友们多聚一聚，越来越感觉社交的重要性，人的支撑系统里面社交是不可或缺的一环。</p>
+
+<h2>工作</h2>
+
+<p>工作上希望能够有所突破，尤其是自己能够主动发起项目，从全局出发，清晰地定位项目目标，计划实施，以及跨团队合作等等。目前来讲，一切都在往好的方面发展，自己要再接再厉，多多鞭策自己，制定高一些的目标。Live Video
+Analytics这个领域很庞大，希望自己的团队不要拘泥于局部的东西，比如说做AI的不一定就是训练模型，也包括的模型的集成，部署，优化，构建pipeline的预处理，后处理，跟其它数据系统的联动等等。希望自己能够在business方面有更多认知和自己的理解，捋清楚自己所在org的business model，每个团队的分工，映射到自己的小团队应该如何推进工作。具体实施的话，多跟upper
+level的人沟通学习，高质量地参加相关培训（做笔记），关注公司内外跟自己工作相关的同事并跟踪交流。</p>
+
+<h2>阅读</h2>
+
+<p>目前的书单：</p>
+
+<pre><code>0. 期权、期货及其他衍生产品
+1. Mindset Secrets for Winning
+2. Trade Like a Stock Market Wizard
+3. Think &amp; Trade Like a Champion
+4. How To Trade in Stocks
+5. How I Made $2,000,000 in The Stock Market
+6. The Most Important Thing
+7. Mindset: The New Psychology of Success
+8. The Coaching Habit: Say Less, Ask More &amp; Change the Way You Lead Forever
+9. System Design Interview
+10. The Montessori Toddler
+11. The Zero Marginal Cost Society
+12. 古文观止
+</code></pre>
+
+<p>主要还是技术，管理，领导力，投资，育儿，文学方面的书籍，年中发现好的书籍应该会扩充这个书单，这个等年终总结的时候再细说。</p>
+
+<h2>投资</h2>
+
+<p>新的一年按照计划继续阅读金融书籍，操作层面上要更加细致一些，目前的基本要求是对于自己的持仓，必须亲自去看公司财报了解基本面，再结合技术面决定做长线还是波段，尽可能地少做短线。其它的也没有什么好说的了，投资是一项修行，独立思考，慢慢成长。</p>
+
+<h2>2022 行动指南</h2>
+
+<pre><code>0. 多多陪伴家人
+1. 坚持健身和打篮球
+2. 坚持阅读，继续提升阅读品味和质量
+3. 坚持工作中在视频理解方面的技术积累，注重系统性
+4. 培养自己的领导力，并在工作，项目上付诸实践
+5. 继续磨练投资心态，提升投资水平
+6. 带老婆和宝宝至少去一次长途旅行
+7. 带老婆和娃一起滑雪，打好基础
+8. 自己滑雪，挑战黑道
+9. 坚持练吉他，能够完整地弹几首曲子
+</code></pre>
+
+<p>刚才在生活那部分忘说了，下半年自己买了把吉他又开始自学了，记得上次自学还是大学毕业的暑假，心心念念这么多年，还是捡起来了。然后发现，在心里种下的草，迟早要拔。另外，2021的最后一天，全麻状态拔了三颗智齿，美美地睡了一觉（真的是断片状态，啥都不知道，也不会做梦，想想都放松）。最后，还是借用去年的那句话，与朋友们共勉，希望疫情尽快过去，每个人都健康，快乐！（2022年1月1号，晚上10点25分）</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bye, 2020]]></title>
@@ -1913,109 +2021,6 @@ can list the book <a href="http://bit.ly/1hrlCQP">Raspberry Pi Robotics Projects
 
 
 <p>Well, this is really where it hurts. Catch up with the paper, conquer it or give up early!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Build PTAM on Fedora 20 the Easy Way - 10 Minutes Tutorial]]></title>
-    <link href="http://hustcalm.me/blog/2014/04/17/build-ptam-on-fedora-20-the-easy-way-10-minutes-tutorial/"/>
-    <updated>2014-04-17T04:21:41-07:00</updated>
-    <id>http://hustcalm.me/blog/2014/04/17/build-ptam-on-fedora-20-the-easy-way-10-minutes-tutorial</id>
-    <content type="html"><![CDATA[<p>It&rsquo;s been a while since the last post <a href="http://hustcalm.me/blog/2013/09/27/ptam-compilation-on-linux-howto/">PTAM Compilation on Linux-HowTo</a> about playing with PTAM. And now Isis Innovation has released the source code under GPLv3 and put it on <a href="https://github.com/Oxford-PTAM/PTAM-GPL">Github</a>.</p>
-
-<p>Last time, we demostrate detailed instructions on how to get PTAM running on Debian derived systems(Linux Mint 15 and Ubuntu 12.04), now I want talk about building the source code on Fedora 20. It won&rsquo;t be long, since I just want to talk about the key components, thus the mandatory dependencies(<strong>TooN, libCVD, Gvars3, OpenGL, libjpeg, libpng, libtiff</strong>, etc).</p>
-
-<!--more-->
-
-
-<p>As the PTAM source code use the GNU autoconf tools, so the typical way to install is <code>./configure &amp;&amp; make &amp;&amp; sudo make install</code>, however, to make sure that certain third libs are correctly configured and can found when running <code>configure</code>, you may want to have a look at the output after <code>configure</code> and install any key dependency which is missed.</p>
-
-<p>Whenever you are not sure, see the <strong>Official Website</strong> for sure!!!</p>
-
-<h2>Install Dependencies</h2>
-
-<h3>TooN</h3>
-
-<p><a href="http://www.edwardrosten.com/cvd/toon.html">TooN</a> is a numerics library used by libCVD. Since they are just a bundle of header files, installation is trivial.</p>
-
-<pre><code>sudo yum install liblapack-devel
-sudo yum install libblas-devel
-
-./configure &amp;&amp; make &amp;&amp; sudo make install
-</code></pre>
-
-<h3>libCVD</h3>
-
-<p><a href="http://www.edwardrosten.com/cvd/">libCVD</a> is a very portable and high performance C++ library for computer vision, image, and video processing.</p>
-
-<p>This is the key component for building PTAM, thus should be careful. Make sure you installed OpenGL correctly, also for the video source, if you are using a UVC webcam, check if <code>v4l2</code> is working. Or if you are using a IEEE1394 camera, get libxx1394 series libs installed which can drive your camera. For Image I/O, always have libjpeg, libpng and libtiff.</p>
-
-<p>See the output after running <code>configure</code> and ensure all the options related are OK.</p>
-
-<pre><code>sudo yum install freeglut-devel
-
-./configure
-
-make
-
-sudo make install
-</code></pre>
-
-<h3>GVars3</h3>
-
-<p><a href="http://www.edwardrosten.com/cvd/gvars3.html">GVars3</a> is a configuration library which integrates well with TooN. Not much to worry when buiding.</p>
-
-<pre><code>./configure &amp;&amp; make &amp;&amp; sudo make install
-</code></pre>
-
-<h2>Build PTAM</h2>
-
-<h3>Run ldconfig</h3>
-
-<p>The libs built above may reside in <code>/usr/local/lib</code> when using the default directorys in their Makefiles, to make the system aware of the newly installed libs.</p>
-
-<pre><code>sudo vi /etc/ld.so.conf
-add /usr/local/lib to the file
-sudo ldconfig
-</code></pre>
-
-<h3>Prepare for Makefile</h3>
-
-<pre><code>cd the_PTAM_Directory
-cp Build/Linux/* .
-vi Makefile
-add -lGLU -lGL -llapack to the linker commands
-</code></pre>
-
-<h3>Fix usleep declaration</h3>
-
-<pre><code>vi Tracker.cc
-add #include &lt;unistd.h&gt; to the first line
-</code></pre>
-
-<h3>Build</h3>
-
-<pre><code>make
-</code></pre>
-
-<p>If nothing wrong, you are done!</p>
-
-<h2>Run PTAM</h2>
-
-<p>Simply invoke <code>CameraCalibrator</code> to calibrate your camera. Then invoke <code>PTAM</code> for real fun.</p>
-
-<p>If you use UVC webcam using <code>v4l2</code>, you may want to install:</p>
-
-<pre><code>sudo yum install v4l-utils
-</code></pre>
-
-<p>Use <code>v4l2-ctl</code> to play with your camera.</p>
-
-<h2>Trouble Shooting</h2>
-
-<p>As the orinigal <a href="http://www.robots.ox.ac.uk/~gk/PTAM/README.txt">README.txt</a> says, PTAM works well with Nvidia display card, I got <code>Segmentation Fault as soon as ... got video source</code> as I&rsquo;m using a display card shipped with an Intel motherboard.</p>
-
-<p>However, I think the root cause is that the display card driver does not know how to handle the color space coming from the webcam, so I&rsquo;m planning to deep into the mechanism and try to find out why. <a href="http://ewokrampage.wordpress.com/troubleshooting-faq/">George Klein</a> says that a nvidia display card and driver combo works fine after all.</p>
 ]]></content>
   </entry>
   
